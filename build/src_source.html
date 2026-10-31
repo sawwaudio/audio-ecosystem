@@ -1,0 +1,14 @@
+<section id="sourceSection"><div class="between"><span class="title">AUDIO SOURCE / 再生音源</span><span class="badge" id="sourceBadge">PCM WAV</span></div>
+<div class="touchBar"><label for="sourceMode">再生に使う音源</label><select id="sourceMode" aria-label="再生に使う音源"><option value="pcm">PCM WAV — 非圧縮（原本から作成）</option><option value="original">原本ファイル — Ogg / Opus / FLAC</option><option value="compat">互換MP3 — v0.23と同じ</option></select></div>
+<p class="micro" id="sourceCoverage"></p>
+<p class="micro" id="sourceLast" role="status" aria-live="polite">まだ読み込んでいません。音源は必要になった時に1つずつ読み込みます。</p>
+<details id="auditPanel"><summary><span>音源形式監査 · 47サンプル</span><span class="micro">AUDIT ▾</span></summary>
+<p class="micro" style="margin:10px 0 0">A1 非圧縮マスター取得済み · A2 非圧縮マスターあり（抜粋のみ保持） · B1 原典自体が非可逆 · C1 原典未保持（MP3のみ）</p>
+<div class="auditWrap" id="auditTable"></div>
+<div class="buttons"><button id="verifyHashes">SHA-256を全件検証</button><button id="exportAudit">↓ 監査表CSV</button></div><p class="micro" id="verifyStatus">全件検証は約190MBを読み込みます。Wi-Fi環境で実行してください。</p></details>
+<details id="dbPanel"><summary><span>WILDLIFE SOUND MASTER DATABASE · 52対象</span><span class="micro">DB ▾</span></summary>
+<p class="micro" id="dbSummary" style="margin:10px 0 0"></p>
+<div class="touchBar"><label for="dbFilter">表示</label><select id="dbFilter"><option value="all">すべて</option><option value="in-app">アプリ収録済み</option><option value="verified">候補（確認済み・未取得）</option><option value="partial">候補（一部未確認）</option><option value="excluded">ライセンスで不採用</option><option value="not-found">未発見</option><option value="pending-list">リスト受領待ち</option></select><button id="dbExport">↓ CSV</button></div>
+<div class="auditWrap" id="dbTable"></div>
+<p class="micro">「確認済み」は形式・ライセンス・録音地を出典ページで確認した候補です。この環境からは音声ファイルを取得できないため、アプリにはまだ入っていません。</p></details>
+</section>

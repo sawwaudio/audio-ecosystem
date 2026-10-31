@@ -1,0 +1,11 @@
+<details class="scenePresets" id="geoPanel" open><summary>地域・生息環境で選ぶ — GEOGRAPHIC FILTER</summary>
+<p class="micro">選んだ条件に合う実録音だけで自律演奏します。該当がない場合は他地域の録音や合成音で代用しません。生物の自然分布と録音地は別に判定します。</p>
+<div class="geoGrid">
+<label>地域<select id="geoRegion"><option value="off">使わない（シーン設定）</option><option value="world">All World</option><option value="japan">Japan</option><option value="asia">Asia</option><option value="europe">Europe</option><option value="africa">Africa</option><option value="north_america">North America</option><option value="south_america">South America</option><option value="oceania">Oceania</option><option value="marine">Ocean / Marine</option></select></label>
+<label>判定<select id="geoBasis"><option value="native">自然分布する種</option><option value="recorded">その地域で録音</option><option value="endemic">固有種のみ</option></select></label>
+<label>生息環境<select id="geoHabitat"><option value="any">指定なし</option><option value="temperate_forest">Temperate Forest</option><option value="tropical_rainforest">Tropical Rainforest</option><option value="mountain">Mountain</option><option value="grassland">Grassland</option><option value="wetland">Wetland</option><option value="river">River</option><option value="coast">Coast</option><option value="ocean">Ocean</option><option value="night_forest">Night Forest</option></select></label>
+<label>時間帯<select id="geoTime"><option value="any">指定なし</option><option value="day">Day</option><option value="dusk">Dusk / Dawn</option><option value="night">Night</option></select></label>
+<label>音の性格<select id="geoRole"><option value="any">指定なし</option><option>Drone</option><option>Melody</option><option>Pulse</option><option>Percussion</option><option>Texture</option><option>Call &amp; Response</option><option>Atmosphere</option><option>Experimental</option></select></label>
+</div>
+<p class="micro" id="geoResult" role="status" aria-live="polite">地域フィルターは未使用です。</p><div id="geoList" class="geoList"></div>
+</details>

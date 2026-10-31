@@ -1,0 +1,1349 @@
+{
+ "blackbird": {
+  "en": "Common blackbird",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "africa"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": null,
+  "recordedArea": null,
+  "recordedRegions": [],
+  "recordingEnvironment": "不明",
+  "wildOrCaptive": "不明",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day",
+   "dusk"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0291,
+   "tonality": 0.11,
+   "envCV": 1.5294,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2024.0184,
+   "activity": 0.3556,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "日本では迷鳥。オセアニアの個体群は移入。"
+ },
+ "american-field-cricket": {
+  "en": "Fall field cricket",
+  "nativeRegions": [
+   "north_america"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "米国",
+  "recordedArea": "北東部（録音者のガレージ）",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "屋内（ガレージ）",
+  "wildOrCaptive": "不明（屋内）",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "night",
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Pulse"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0083,
+   "tonality": 0.1799,
+   "envCV": 0.9947,
+   "pulseHz": 25.0,
+   "pulseStrength": 0.6717,
+   "centroidHz": 4173.3134,
+   "activity": 0.3311,
+   "autoRoles": [
+    "Pulse",
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": ""
+ },
+ "barking-treefrog": {
+  "en": "Barking treefrog",
+  "nativeRegions": [
+   "north_america"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "米国",
+  "recordedArea": "ミシシッピ州 University of Mississippi Field Station",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "野外調査地",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Pulse",
+   "Call & Response"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0031,
+   "tonality": 0.132,
+   "envCV": 0.6976,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 3521.7512,
+   "activity": 0.1412,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "背景に他種のカエル。"
+ },
+ "autumn-insects": {
+  "en": "Autumn insect chorus (bell cricket etc.)",
+  "nativeRegions": [
+   "asia",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "日本",
+  "recordedArea": "兵庫県香美町・JR餘部駅",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "駅周辺の草地（推定せず：原本は駅名のみ）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Texture",
+   "Drone"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0031,
+   "tonality": 0.1162,
+   "envCV": 0.1499,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 5173.131,
+   "activity": 0.0,
+   "autoRoles": [
+    "Drone",
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "複数種の混合。分布は主種スズムシ（Meloimorpha japonica）に基づく。"
+ },
+ "cicada": {
+  "en": "Large brown cicada",
+  "nativeRegions": [
+   "asia",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "日本",
+  "recordedArea": "神奈川県川崎市宮前区・東高根森林公園",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "公園林",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Drone",
+   "Texture"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.036,
+   "tonality": 0.0507,
+   "envCV": 0.1793,
+   "pulseHz": 1.6807,
+   "pulseStrength": 0.5853,
+   "centroidHz": 5807.1369,
+   "activity": 0.0,
+   "autoRoles": [
+    "Drone",
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": ""
+ },
+ "higurashi": {
+  "en": "Evening cicada",
+  "nativeRegions": [
+   "asia",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "日本",
+  "recordedArea": "神奈川県川崎市麻生区",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "不明",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest",
+   "mountain"
+  ],
+  "activity": [
+   "dusk",
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Melody",
+   "Call & Response"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0736,
+   "tonality": 0.0808,
+   "envCV": 0.4933,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 6169.0667,
+   "activity": 0.0667,
+   "autoRoles": [
+    "Drone"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "明け方・夕方に鳴く。"
+ },
+ "niiniizemi": {
+  "en": "Kaempfer cicada",
+  "nativeRegions": [
+   "asia",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "日本",
+  "recordedArea": "神奈川県横浜市青葉区",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "不明",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Drone"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0044,
+   "tonality": 0.0816,
+   "envCV": 0.1615,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 8004.2796,
+   "activity": 0.0,
+   "autoRoles": [
+    "Drone"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": ""
+ },
+ "tsukutsukuboshi": {
+  "en": "Meimuna opalifera cicada",
+  "nativeRegions": [
+   "asia",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "日本",
+  "recordedArea": "神奈川県川崎市麻生区",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "不明",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Melody",
+   "Pulse"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.3532,
+   "tonality": 0.0247,
+   "envCV": 0.2839,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 6008.6119,
+   "activity": 0.0069,
+   "autoRoles": [
+    "Drone",
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": ""
+ },
+ "minminzemi": {
+  "en": "Robust cicada",
+  "nativeRegions": [
+   "asia",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "日本",
+  "recordedArea": "埼玉県志木市",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "不明",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest",
+   "mountain"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Pulse",
+   "Melody"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0,
+   "tonality": 0.1407,
+   "envCV": 0.3633,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 4295.2204,
+   "activity": 0.0,
+   "autoRoles": [
+    "Drone"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "原録音11024Hz。"
+ },
+ "japanese-bush-warbler": {
+  "en": "Japanese bush warbler",
+  "nativeRegions": [
+   "asia",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "日本",
+  "recordedArea": "岐阜県・谷汲山華厳寺",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "寺社林",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest",
+   "mountain"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0,
+   "tonality": 0.7989,
+   "envCV": 0.0327,
+   "pulseHz": 7.4074,
+   "pulseStrength": 0.1342,
+   "centroidHz": 4.5077,
+   "activity": 0.0,
+   "autoRoles": [
+    "Drone"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "原録音11024Hz。"
+ },
+ "hototogisu": {
+  "en": "Lesser cuckoo",
+  "nativeRegions": [
+   "asia",
+   "japan",
+   "africa"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "日本",
+  "recordedArea": "神奈川県川崎市宮前区・東高根森林公園",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "公園林",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest",
+   "mountain"
+  ],
+  "activity": [
+   "day",
+   "night"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0,
+   "tonality": 0.1705,
+   "envCV": 1.1461,
+   "pulseHz": 6.0606,
+   "pulseStrength": 0.6856,
+   "centroidHz": 1605.2435,
+   "activity": 0.2841,
+   "autoRoles": [
+    "Pulse",
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "越冬地にアフリカ東部を含む。夜間にも鳴く。原録音7812Hz。"
+ },
+ "tide-rocks": {
+  "en": null,
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音（分布なし）",
+  "recordedCountry": null,
+  "recordedArea": null,
+  "recordedRegions": [],
+  "recordingEnvironment": "岩場の潮間帯",
+  "wildOrCaptive": "—",
+  "habitats": [
+   "coast"
+  ],
+  "activity": [],
+  "activityBasis": null,
+  "soundRoles": [
+   "Texture",
+   "Atmosphere"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0007,
+   "tonality": 0.5387,
+   "envCV": 0.9519,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 34.661,
+   "activity": 0.2649,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "環境音。録音地不明のため地域フィルターでは All World / Ocean・Marine のみ。"
+ },
+ "rocky-beach": {
+  "en": null,
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音（分布なし）",
+  "recordedCountry": null,
+  "recordedArea": null,
+  "recordedRegions": [],
+  "recordingEnvironment": "岩浜",
+  "wildOrCaptive": "—",
+  "habitats": [
+   "coast"
+  ],
+  "activity": [],
+  "activityBasis": null,
+  "soundRoles": [
+   "Atmosphere"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0029,
+   "tonality": 0.2458,
+   "envCV": 0.4571,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 271.6976,
+   "activity": 0.018,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "環境音。録音地不明。15kbps参考素材。"
+ },
+ "kajika-frog": {
+  "en": "Kajika frog",
+  "nativeRegions": [
+   "japan",
+   "asia"
+  ],
+  "japanNative": true,
+  "japanEndemic": true,
+  "distributionBasis": "https://en.wikipedia.org/wiki/Kajika_frog（endemic to Japan: Honshu, Kyushu, Shikoku）",
+  "recordedCountry": null,
+  "recordedArea": null,
+  "recordedRegions": [],
+  "recordingEnvironment": "不明",
+  "wildOrCaptive": "不明",
+  "habitats": [
+   "river",
+   "mountain"
+  ],
+  "activity": [
+   "day",
+   "night"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Melody",
+   "Call & Response"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0073,
+   "tonality": 0.1418,
+   "envCV": 0.9323,
+   "pulseHz": 18.1818,
+   "pulseStrength": 0.71,
+   "centroidHz": 1794.6309,
+   "activity": 0.2108,
+   "autoRoles": [
+    "Pulse",
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "日本固有種。録音地は原本に記載なし → 「日本で録音」フィルター対象外。"
+ },
+ "brown-eared-bulbul": {
+  "en": "Brown-eared bulbul",
+  "nativeRegions": [
+   "asia",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "日本",
+  "recordedArea": "静岡県伊豆市（34.9695, 138.9262）",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "不明",
+  "wildOrCaptive": "野外（iNaturalist観察282617142）",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0042,
+   "tonality": 0.1849,
+   "envCV": 1.0897,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 366.3294,
+   "activity": 0.1408,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": ""
+ },
+ "autumn-insects-2": {
+  "en": "Autumn insect chorus II",
+  "nativeRegions": [
+   "asia",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "日本",
+  "recordedArea": "兵庫県美方郡香美町・JR餘部駅",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "駅周辺",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Texture",
+   "Drone"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0022,
+   "tonality": 0.1345,
+   "envCV": 0.2445,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 4999.0276,
+   "activity": 0.0028,
+   "autoRoles": [
+    "Drone",
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "混合録音。autumn-insects とは別テイク（類似度上位15組に入らず）。"
+ },
+ "tree-cricket-europe": {
+  "en": "Italian tree cricket",
+  "nativeRegions": [
+   "europe",
+   "africa",
+   "asia"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": null,
+  "recordedArea": null,
+  "recordedRegions": [],
+  "recordingEnvironment": "不明（図鑑付属CD）",
+  "wildOrCaptive": "不明",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Drone",
+   "Melody"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0007,
+   "tonality": 0.2301,
+   "envCV": 0.829,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2997.6835,
+   "activity": 0.0,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "日本のカンタンは別種（Oecanthus longicauda）。"
+ },
+ "field-cricket-europe": {
+  "en": "European field cricket",
+  "nativeRegions": [
+   "europe",
+   "africa",
+   "asia"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": null,
+  "recordedArea": null,
+  "recordedRegions": [],
+  "recordingEnvironment": "不明（図鑑付属CD）",
+  "wildOrCaptive": "不明",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "day",
+   "night"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Pulse"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0019,
+   "tonality": 0.1229,
+   "envCV": 1.2399,
+   "pulseHz": 3.8462,
+   "pulseStrength": 0.7467,
+   "centroidHz": 4725.0648,
+   "activity": 0.4816,
+   "autoRoles": [
+    "Pulse",
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": ""
+ },
+ "river-esk": {
+  "en": null,
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音（分布なし）",
+  "recordedCountry": "英国",
+  "recordedArea": "スコットランド・Esk川（Kagyu Samye Ling付近）",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "河川",
+  "wildOrCaptive": "—",
+  "habitats": [
+   "river"
+  ],
+  "activity": [],
+  "activityBasis": null,
+  "soundRoles": [
+   "Atmosphere",
+   "Texture"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.1167,
+   "tonality": 0.1018,
+   "envCV": 0.6499,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1324.2863,
+   "activity": 0.2016,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "環境音。"
+ },
+ "forest-leaves": {
+  "en": null,
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音（分布なし）",
+  "recordedCountry": "カナダ",
+  "recordedArea": "46.8906, -71.2458",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "秋の森林",
+  "wildOrCaptive": "—",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [],
+  "activityBasis": null,
+  "soundRoles": [
+   "Texture",
+   "Percussion"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0077,
+   "tonality": 0.4509,
+   "envCV": 0.8986,
+   "pulseHz": 15.3846,
+   "pulseStrength": 0.6739,
+   "centroidHz": 113.514,
+   "activity": 0.1106,
+   "autoRoles": [
+    "Pulse",
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "環境音。原典は96kHz/32-bit WAV。"
+ },
+ "forest-wind": {
+  "en": null,
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音（分布なし）",
+  "recordedCountry": "スウェーデン",
+  "recordedArea": "Tuntorp, Brastad, Lysekil",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "松林（強風25m/s）",
+  "wildOrCaptive": "—",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [],
+  "activityBasis": null,
+  "soundRoles": [
+   "Atmosphere",
+   "Drone"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0733,
+   "tonality": 0.0497,
+   "envCV": 0.3789,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1499.5729,
+   "activity": 0.0608,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "環境音。"
+ },
+ "rain-field": {
+  "en": null,
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音（分布なし）",
+  "recordedCountry": null,
+  "recordedArea": null,
+  "recordedRegions": [],
+  "recordingEnvironment": "不明",
+  "wildOrCaptive": "—",
+  "habitats": [],
+  "activity": [],
+  "activityBasis": null,
+  "soundRoles": [
+   "Atmosphere",
+   "Texture"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0001,
+   "tonality": 0.0512,
+   "envCV": 0.2618,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1236.7928,
+   "activity": 0.0,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "録音地・環境不明 → 生息環境フィルターでは使わない。"
+ },
+ "fire-field": {
+  "en": null,
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音（分布なし）",
+  "recordedCountry": null,
+  "recordedArea": null,
+  "recordedRegions": [],
+  "recordingEnvironment": "暖炉（人工環境）",
+  "wildOrCaptive": "—",
+  "habitats": [],
+  "activity": [],
+  "activityBasis": null,
+  "soundRoles": [
+   "Texture",
+   "Percussion",
+   "Experimental"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.1788,
+   "tonality": 0.2008,
+   "envCV": 0.2872,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2324.8953,
+   "activity": 0.0102,
+   "autoRoles": [
+    "Atmosphere",
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "自然環境音ではない。"
+ },
+ "gampsocleis-glabra": {
+  "en": "Gampsocleis glabra (bush-cricket)",
+  "nativeRegions": [
+   "europe",
+   "asia"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": null,
+  "recordedArea": null,
+  "recordedRegions": [],
+  "recordingEnvironment": "不明（図鑑付属CD）",
+  "wildOrCaptive": "不明",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Drone",
+   "Texture"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0023,
+   "tonality": 0.0465,
+   "envCV": 0.2896,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 10181.5094,
+   "activity": 0.0,
+   "autoRoles": [
+    "Drone"
+   ],
+   "analysedFrom": "compat"
+  },
+  "note": "日本のキリギリスは別種（G. buergeri / G. mikado）。"
+ },
+ "locust": {
+  "en": "Migratory locust",
+  "nativeRegions": [
+   "africa",
+   "asia",
+   "europe",
+   "oceania",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": null,
+  "recordedArea": null,
+  "recordedRegions": [],
+  "recordingEnvironment": "不明（図鑑付属CD）",
+  "wildOrCaptive": "不明",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Percussion",
+   "Texture"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.2738,
+   "tonality": 0.0925,
+   "envCV": 1.9643,
+   "pulseHz": 16.6667,
+   "pulseStrength": 0.7591,
+   "centroidHz": 3041.4822,
+   "activity": 0.1907,
+   "autoRoles": [
+    "Pulse",
+    "Percussion",
+    "Texture"
+   ],
+   "analysedFrom": "compat"
+  },
+  "note": "日本に自然分布（トノサマバッタ）するが録音地は不明 → 日本生息種フィルター対象／日本録音フィルター対象外。"
+ },
+ "tettigonia-viridissima": {
+  "en": "Great green bush-cricket",
+  "nativeRegions": [
+   "europe",
+   "africa",
+   "asia"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": null,
+  "recordedArea": null,
+  "recordedRegions": [],
+  "recordingEnvironment": "不明（図鑑付属CD）",
+  "wildOrCaptive": "不明",
+  "habitats": [
+   "grassland",
+   "temperate_forest"
+  ],
+  "activity": [
+   "dusk",
+   "night"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Pulse",
+   "Texture"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0008,
+   "tonality": 0.0743,
+   "envCV": 0.7619,
+   "pulseHz": 11.7647,
+   "pulseStrength": 0.9328,
+   "centroidHz": 10477.4068,
+   "activity": 0.0081,
+   "autoRoles": [
+    "Pulse"
+   ],
+   "analysedFrom": "compat"
+  },
+  "note": ""
+ },
+ "tettigonia-cantans": {
+  "en": "Upland green bush-cricket",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "africa"
+  ],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "https://en.wikipedia.org/wiki/Tettigonia_cantans（Europe, E Palearctic, Near East, N Africa。日本の記載なし）",
+  "recordedCountry": null,
+  "recordedArea": null,
+  "recordedRegions": [],
+  "recordingEnvironment": "不明（図鑑付属CD）",
+  "wildOrCaptive": "不明",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "day",
+   "night"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Drone",
+   "Texture"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0025,
+   "tonality": 0.0548,
+   "envCV": 0.8725,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 9206.0412,
+   "activity": 0.0833,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "compat"
+  },
+  "note": "日本での分布は未確認。"
+ },
+ "chorthippus-biguttulus": {
+  "en": "Bow-winged grasshopper",
+  "nativeRegions": [
+   "europe",
+   "asia"
+  ],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "https://en.wikipedia.org/wiki/Chorthippus_biguttulus（\"well into Asia including Japan\"。ただし日本産ヒナバッタを別種 C. maritimus とする見解があり未確定扱い）",
+  "recordedCountry": null,
+  "recordedArea": null,
+  "recordedRegions": [],
+  "recordingEnvironment": "不明（図鑑付属CD）",
+  "wildOrCaptive": "不明",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Pulse"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.2471,
+   "tonality": 0.0365,
+   "envCV": 1.2417,
+   "pulseHz": 16.6667,
+   "pulseStrength": 0.9567,
+   "centroidHz": 6570.4242,
+   "activity": 0.48,
+   "autoRoles": [
+    "Pulse",
+    "Texture"
+   ],
+   "analysedFrom": "compat"
+  },
+  "note": "日本産の扱いが分類学的に未確定。"
+ },
+ "chorthippus-brunneus": {
+  "en": "Common field grasshopper",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "africa"
+  ],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "https://en.wikipedia.org/wiki/Chorthippus_brunneus（Europe, N Africa, temperate Asia。日本の記載なし）",
+  "recordedCountry": null,
+  "recordedArea": null,
+  "recordedRegions": [],
+  "recordingEnvironment": "不明（図鑑付属CD）",
+  "wildOrCaptive": "不明",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Percussion"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.399,
+   "tonality": 0.0841,
+   "envCV": 2.9339,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 4283.4298,
+   "activity": 0.1448,
+   "autoRoles": [
+    "Percussion",
+    "Texture"
+   ],
+   "analysedFrom": "compat"
+  },
+  "note": "日本での分布は未確認。"
+ },
+ "sparrow": {
+  "en": "Eurasian tree sparrow",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "ロシア",
+  "recordedArea": "モスクワ州プーシチノ",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "不明",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Melody",
+   "Texture"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0073,
+   "tonality": 0.0816,
+   "envCV": 0.968,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 4098.443,
+   "activity": 0.3151,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "compat"
+  },
+  "note": "日本に自然分布するが録音はロシア → 日本生息種：対象／日本録音：対象外。"
+ },
+ "swallow": {
+  "en": "Barn swallow",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "africa",
+   "north_america",
+   "south_america",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "米国",
+  "recordedArea": "ミネソタ州 Minnesota Valley NWR",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "橋（野生生物保護区）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "grassland",
+   "wetland"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.048,
+   "tonality": 0.0734,
+   "envCV": 1.293,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 3341.0381,
+   "activity": 0.3542,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "compat"
+  },
+  "note": "日本で繁殖。録音は米国。"
+ },
+ "white-eye": {
+  "en": "Indian white-eye",
+  "nativeRegions": [
+   "asia"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（出典URL未記録・要確認）",
+  "recordedCountry": "インド",
+  "recordedArea": "詳細不明",
+  "recordedRegions": [
+   "asia"
+  ],
+  "recordingEnvironment": "不明",
+  "wildOrCaptive": "野外",
+  "habitats": [],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "種の一般的な鳴く時間帯（録音時刻ではない）",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "鳴き方の既知特徴による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.005,
+   "tonality": 0.1242,
+   "envCV": 1.1778,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 3725.5524,
+   "activity": 0.4405,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "compat"
+  },
+  "note": "日本のメジロは別種（Zosterops japonicus）。生息環境は熱帯〜亜熱帯の疎林で、指定9区分に該当なし。"
+ }
+}

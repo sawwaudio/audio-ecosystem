@@ -1,0 +1,66 @@
+﻿No,分類,対象,学名,状態,日本に自然分布,日本固有,候補,出典,URL,形式・品質,ライセンス,採用可否,録音国,録音環境,野外/飼育,録音日,備考
+1,哺乳類,キツネ（アカギツネ）,Vulpes vulpes,partial,はい,いいえ,Red Fox (Vulpes vulpes) (W1CDR0001529 BD12).ogg,Wikimedia Commons / British Library,https://commons.wikimedia.org/wiki/File:Red_Fox_(Vulpes_vulpes)_(W1CDR0001529_BD12).ogg,Ogg Vorbis,未確認（同シリーズ2件はCC BY-SA 4.0を確認）,unverified,未確認（英国コレクション）,,,,ファイルページ未取得。
+1,哺乳類,キツネ（アカギツネ）,Vulpes vulpes,partial,はい,いいえ,NPS audio recording - Grand Teton NP - Red Fox,Western Soundscape Archive (Univ. of Utah),https://collections.lib.utah.edu/ark:/87278/s6mw2wjr,MP3/MP4配信（元WAV）,CC BY-NC-ND 3.0 US,no,米国,,,,NCのため不採用。
+2,哺乳類,シカ（ニホンジカ）,Cervus nippon,partial,はい,いいえ,Sika Deer (Cervus nippon) (W1CDR0001426 BD2).ogg,Wikimedia Commons / British Library,https://commons.wikimedia.org/wiki/File:Sika_Deer_(Cervus_nippon)_(W1CDR0001426_BD2).ogg,Ogg Vorbis,未確認（同シリーズはCC BY-SA 4.0）,unverified,未確認（英国の移入個体群の可能性）,,,,英国録音なら「分布：日本を含む／録音地：海外（移入）」。
+3,哺乳類,サル（ニホンザル）,Macaca fuscata,not-found,はい,はい,,,,,,,,,,,Commonsに音声ファイルが見つからず（動画のみ）。研究データは論文付属で利用条件未確認。
+4,哺乳類,テナガザル,Hylobatidae (Hylobates lar ほか),partial,いいえ,いいえ,Lar Gibbon hoots.ogg,Wikimedia Commons,https://commons.wikimedia.org/wiki/File:Lar_Gibbon_hoots.ogg,Ogg Vorbis,未確認,unverified,,,,,
+4,哺乳類,テナガザル,Hylobatidae (Hylobates lar ほか),partial,いいえ,いいえ,pone.0071432.s006.oga（Koda et al. 2013 付属）,Wikimedia Commons / PLOS ONE,https://commons.wikimedia.org/wiki/File:Possible-Role-of-Mother-Daughter-Vocal-Interactions-on-the-Development-of-Species-Specific-Song-in-pone.0071432.s006.oga,Ogg Vorbis 23kbps 25秒,ページに記載なし（PLOS ONEは通常CC BY）,unverified,未記載,,,,低ビットレート。種・飼育/野生とも未記載。
+4,哺乳類,テナガザル,Hylobatidae (Hylobates lar ほか),partial,いいえ,いいえ,White-handed gibbons discriminate context-specific songs,figshare,https://figshare.com/articles/media/White-handed_gibbons_discriminate_context-specific_songs_compositions/12363050/1,未確認,未確認,unverified,,,,,
+5,哺乳類,ゾウ,Elephantidae,partial,いいえ,いいえ,Elephant voice - trumpeting.ogg,Wikimedia Commons,https://commons.wikimedia.org/wiki/File:Elephant_voice_-_trumpeting.ogg,Ogg Vorbis,未確認,unverified,,,,,
+5,哺乳類,ゾウ,Elephantidae,partial,いいえ,いいえ,Elephant trumpeting,Siemens Stiftung Medienportal,https://medienportal.siemens-stiftung.org/en/elephant-trumpeting-101868,音声105.7kB（形式未記載）,CC BY-SA 4.0,yes,未記載,,未記載,,ライセンスは確認済みだが小容量・録音地不明で品質面は低い。
+6,哺乳類,オオカミ,Canis lupus,partial,いいえ,いいえ,Wolf howls.ogg,Wikimedia Commons,https://commons.wikimedia.org/wiki/File:Wolf_howls.ogg,Ogg Vorbis,未確認,unverified,,,,,ニホンオオカミ・エゾオオカミは絶滅。現生個体の日本での自然分布なし。
+6,哺乳類,オオカミ,Canis lupus,partial,いいえ,いいえ,NPS Sound Library - Wolf（Denali）,National Park Service,https://nps.gov/subjects/sound/sounds-wolf.htm,ページ上に形式記載なし,記載なし（Credit: NPS）,unverified,米国（アラスカ・デナリ国立公園）,,,,ニホンオオカミ・エゾオオカミは絶滅。現生個体の日本での自然分布なし。 米国政府著作物ならPDの可能性。ページに明記なし。
+6,哺乳類,オオカミ,Canis lupus,partial,いいえ,いいえ,Gray Wolf howl response to adults,Western Soundscape Archive,https://collections.lib.utah.edu/ark:/87278/s63n2gvr,MP4配信（元WAV）,All rights reserved（International Wolf Center）,no,,,,,ニホンオオカミ・エゾオオカミは絶滅。現生個体の日本での自然分布なし。
+7,哺乳類,コウモリ,Chiroptera (Pipistrellus pipistrellus ほか),partial,はい,いいえ,Pipistrellus pipistrellus（時間伸長エコーロケーション）,Zenodo 10.5281/zenodo.4329598,https://doi.org/10.5281/zenodo.4329598,未確認,未確認,unverified,アルバニア,,,2003-08-06 / 2004-04-23,超音波のため、可聴化（タイムエキスパンション）した録音を使う必要がある。
+7,哺乳類,コウモリ,Chiroptera (Pipistrellus pipistrellus ほか),partial,はい,いいえ,ChiroVox / Global Bat Acoustic Collection,ChiroVox,https://ir.unimas.my/id/eprint/38362/,WAV想定（未確認）,未確認,unverified,,,,,超音波のため、可聴化（タイムエキスパンション）した録音を使う必要がある。
+8,水中生物,クジラ（ザトウクジラ）,Megaptera novaeangliae,verified,はい,いいえ,MBARI_MARS_2017_1107h22_HS1P2.wav,Freesound / MBARI,https://freesound.org/people/MBARI_MARS/sounds/496870,WAV 32kHz / 16-bit / mono / 102分59秒 / 377.2MB,CC BY 4.0（MBARIの表示）,yes,"米国（カリフォルニア州サンタクルーズ沖 36.71,-122.186 深海）",海洋（MARS海底ハイドロフォン）,野生,2017-11-07,日本近海（小笠原・沖縄）に回遊。 非圧縮WAVマスター。冒頭にナガスクジラの20Hzパルスを含む。Freesoundはログイン要・この環境から取得不可。
+9,水中生物,イルカ（ハンドウイルカ）,Tursiops truncatus / T. aduncus,partial,はい,いいえ,Underwater recordings of the whistles of bottlenose dolphins in Fremantle Inner Harbour,figshare 5011637,https://figshare.com/articles/Underwater_recordings_of_the_whistles_of_bottlenose_dolphins_in_Fremantle_Inner_Harbour_Western_Australia/5011637,WAV ×336（1ホイッスル1ファイル）,ページ本文から確認できず,unverified,オーストラリア（西オーストラリア州フリーマントル）,港湾（自律録音機）,,,
+10,水中生物,シャチ,Orcinus orca,verified,はい,いいえ,Killer whale.ogg,Wikimedia Commons / National Park Service,https://commons.wikimedia.org/wiki/File:Killer_whale.ogg,Ogg Vorbis 74kbps / 30秒 / 267KB,Public domain（米国連邦政府著作物）,yes,米国（アラスカ・グレーシャーベイ湾口）,海洋（固定ハイドロフォン）,記載なし（野生個体群の記述）,,北海道・知床沖に出現。 非可逆・低ビットレート。南アラスカ定住型と推定。
+10,水中生物,シャチ,Orcinus orca,verified,はい,いいえ,Orcasound call catalog,Orcasound,https://www.orcasound.net/data/processed/SRKW/call-catalog/latest.html,未確認,未確認,unverified,,,,,北海道・知床沖に出現。
+11,水中生物,魚類,Opsanus tau ほか,excluded,未確認,未確認,GSO Fish Sounds Collection,University of Rhode Island,https://web.uri.edu/gso/research/fish-sounds/,MP3（デジタル化）,URI著作権・再配布/作品組込/商用不可,no,米国大西洋岸・カリブ,,,,研究目的のみ。
+11,水中生物,魚類,Opsanus tau ほか,excluded,未確認,未確認,FishSounds（fishsounds.net）,FishSounds,https://www.uvic.ca/news/media/2022+fishsounds-online-library+media-release,未確認,未確認,unverified,,,,,
+12,水中生物,テッポウエビ,Alpheidae,not-found,はい,いいえ,Gray's Reef snapping shrimp（記事内の言及のみ）,NOAA Sanctuaries,https://sanctuaries.noaa.gov/news/dec21/oh-snap.html,ファイルなし,記載なし,unverified,米国（グレイズリーフ）,,,,NOAAサンクチュアリの記事は録音の存在を示すが音声ファイル・利用条件の記載なし。
+13,鳥類,フクロウ類,Strix uralensis（フクロウ）/ Strix aluco,verified,はい,いいえ,Strix aluco - Tawny Owl XC565862.mp3,Wikimedia Commons（xeno-canto由来）,https://commons.wikimedia.org/wiki/File:Strix_aluco_-_Tawny_Owl_XC565862.mp3,MP3 91kbps / 9.5秒,CC BY-SA 4.0,yes,ドイツ（ベルリン）,街路樹（公園から50m）,野生,,採用可能な候補はモリフクロウ（日本に分布しない）。日本のフクロウ S. uralensis は xeno-canto に多数あるがライセンス未確認。 種は S. aluco（日本に分布しない）。
+13,鳥類,フクロウ類,Strix uralensis（フクロウ）/ Strix aluco,verified,はい,いいえ,XC359120 Ural Owl ほか,xeno-canto,https://xeno-canto.org/359120,未確認,未確認（xeno-cantoは自動取得を拒否）,unverified,,,,,採用可能な候補はモリフクロウ（日本に分布しない）。日本のフクロウ S. uralensis は xeno-canto に多数あるがライセンス未確認。
+14,鳥類,キツツキ,Dendrocopos major ほか,partial,はい,いいえ,Great Spotted Woodpecker drumming（xeno-canto多数）,xeno-canto,https://www.xeno-canto.org/622797,未確認,未確認,unverified,,,,,
+15,鳥類,アビ類（ハシグロアビ）,Gavia immer,verified,いいえ,いいえ,Common Loon（USFWS）,Public Domain Audio & Video（USFWS素材）,https://publicdomainaudiovideo.blogspot.com/2009/08/common-loon.html,VBR MP3 377kB / OGG 244kB,Public domain（USFWS）,yes,未記載,,,,日本のアビ類（アビ・オオハム等）とは別種。 録音者・録音地不明。
+15,鳥類,アビ類（ハシグロアビ）,Gavia immer,verified,いいえ,いいえ,Common Loons on Yellowstone Lake,Acoustic Atlas (MSU),https://acousticatlas.org/item.php?id=2488,録音48kHz/24-bit・配信MP3,CC BY-NC 4.0,no,米国（イエローストーン湖）,,,,日本のアビ類（アビ・オオハム等）とは別種。 高品質だがNCのため不採用。
+16,鳥類,コトドリ,Menura novaehollandiae,partial,いいえ,いいえ,xeno-canto Menura novaehollandiae（多数）,xeno-canto,https://www.xeno-canto.org/148568,未確認,未確認,unverified,,,,,
+17,鳥類,日本の鳴禽類（オオルリ・コマドリ・キビタキ・クロツグミ）,Cyanoptila cyanomelana / Larvivora akahige / Ficedula narcissina / Turdus cardis,partial,はい,いいえ,ウグイス（Uguisu5740_cu.ogg）,Wikimedia Commons,https://commons.wikimedia.org/wiki/File:Uguisu5740_cu.ogg,Ogg Vorbis 11024Hz,CC BY 2.1 JP,yes,日本（岐阜県）,,,,ウグイス・ヒヨドリはアプリ収録済み（v0.23）。他はxeno-cantoに候補、ライセンス未確認。 アプリ収録済み。
+17,鳥類,日本の鳴禽類（オオルリ・コマドリ・キビタキ・クロツグミ）,Cyanoptila cyanomelana / Larvivora akahige / Ficedula narcissina / Turdus cardis,partial,はい,いいえ,ヒヨドリ（伊豆）,Wikimedia Commons / iNaturalist,https://commons.wikimedia.org/wiki/File:Hypsipetes-amaurotis-2025-05-20-282617142.ogg,Ogg Vorbis 48kHz,CC BY 4.0,yes,日本（静岡県伊豆市）,,,,ウグイス・ヒヨドリはアプリ収録済み（v0.23）。他はxeno-cantoに候補、ライセンス未確認。 アプリ収録済み。
+17,鳥類,日本の鳴禽類（オオルリ・コマドリ・キビタキ・クロツグミ）,Cyanoptila cyanomelana / Larvivora akahige / Ficedula narcissina / Turdus cardis,partial,はい,いいえ,オオルリ XC805727 ほか,xeno-canto,https://xeno-canto.org/805727,未確認,未確認,unverified,,,,,ウグイス・ヒヨドリはアプリ収録済み（v0.23）。他はxeno-cantoに候補、ライセンス未確認。
+18,両生類,カジカガエル,Buergeria buergeri,in-app,はい,はい,Buergeria buergeri.ogg,Wikimedia Commons,https://commons.wikimedia.org/wiki/File:Buergeria_buergeri.ogg,Ogg Vorbis 44.1kHz stereo,CC BY-SA 4.0,yes,記載なし,,,,日本固有種。収録音源は録音地不明のため「日本で録音」には入らない。日本録音の原本を引き続き探す。 v0.24でPCM WAV化（原本復号）。
+19,両生類,モリアオガエル,Zhangixalus arboreus,not-found,はい,はい,,,,,,,,,,,日本固有種（AmphibiaWeb）。公開ライセンスの録音は今回の検索で見つからず。
+20,爬虫類,トッケイヤモリ,Gekko gecko,verified,いいえ,いいえ,Mating call of a male Tokay gecko (Gekko gecko).ogg,Wikimedia Commons,https://commons.wikimedia.org/wiki/File:Mating_call_of_a_male_Tokay_gecko_(Gekko_gecko).ogg,Ogg Vorbis 73kbps / 29秒,Public domain（作者による放棄）,yes,ラオス（ボケオ県フエサイ北2.5km・メコン川岸）,川岸・日没直後,記載なし,2007-04-22,カメラ内蔵マイク。
+21,昆虫類,スズムシ,Meloimorpha japonica,in-app,はい,いいえ,,,,,,,,,,,収録済みは混合合唱（スズムシ等）のみ。単独種の公開録音は今回見つからず。
+22,昆虫類,カンタン,Oecanthus longicauda,not-found,はい,いいえ,,,,,,,,,,,アプリの tree-cricket-europe は欧州の別種 O. pellucens。
+23,昆虫類,カネタタキ,Ornebius kanetataki,not-found,はい,いいえ,,,,,,,,,,,
+24,昆虫類,ケラ,Gryllotalpa orientalis,verified,はい,いいえ,BioAcoustica 900 6 Gryllotalpa orientalis 125.flac,Wikimedia Commons / BioAcoustica (Natural History Museum),https://commons.wikimedia.org/wiki/File:BioAcoustica_900_6_Gryllotalpa_orientalis_125.flac,FLAC（ロスレス）723kbps / 9分24秒 / 48.6MB,CC BY 3.0,yes,記載なし,湿った土6cmの箱（観察窓越し）,飼育下（箱内）と判断できる記述,1975-01-10,Nagra IV-D。ロスレス原本。録音地不明のため「日本で録音」には入らない。
+25,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+26,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+27,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+28,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+29,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+30,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+31,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+32,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+33,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+34,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+35,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+36,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+37,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+38,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+39,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+40,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+41,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+42,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+43,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+44,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+45,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+46,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+47,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+48,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+49,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+50,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+51,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,
+52,—,（52対象リスト受領待ち）,,pending-list,未確認,未確認,,,,,,,,,,,

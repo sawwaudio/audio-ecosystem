@@ -1,0 +1,1807 @@
+{
+ "schema": "ae-audio-manifest/1",
+ "version": "v0.24",
+ "recordings": {
+  "blackbird": {
+   "compat": {
+    "path": "audio/compat/blackbird.mp3",
+    "bytes": 500760,
+    "sha256": "879a480255c22749fde179bee93dd4559d6bc78e66c67b431795e51e9c713e41",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 31.294694,
+    "lossless": false,
+    "gain": 1.453126,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/blackbird.ogg",
+    "bytes": 394173,
+    "sha256": "feee312114936620aa0feaaf617f620ceb2443bbaea25431ee51553d778ab79f",
+    "format": "vorbis",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 31.254059,
+    "lossless": false,
+    "gain": 1.3794616472892451
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1378304,
+    "duration": 31.254059,
+    "parts": [
+     {
+      "path": "audio/pcm/blackbird.wav",
+      "bytes": 8269868,
+      "sha256": "1474ef06143371bddafc74b65139c9f43a85e8fdf744060cd6c6a2655168f13a",
+      "frames": 1378304
+     }
+    ],
+    "pcmDataSha256": "4bfff8f1ca0bd40fdff31d4d0948c155aa7efd06bec7ac646cea0dd1baaa60fa",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.5505395531654358,
+    "gain": 1.3794616472892451,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "american-field-cricket": {
+   "compat": {
+    "path": "audio/compat/american-field-cricket.mp3",
+    "bytes": 168064,
+    "sha256": "cb3688398e6601eb13198fc154a4f9fc61b84352d47a0dfaf82f6b52451d8da2",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 10.501224,
+    "lossless": false,
+    "gain": 2.99422,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/field-cricket.ogg",
+    "bytes": 113283,
+    "sha256": "aad6ef2a0d99ca0c2ed247147ff8ec4ac9372a37d1156d176634d13b31f5004e",
+    "format": "vorbis",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 10.453333,
+    "lossless": false,
+    "gain": 2.414916231041813
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 460992,
+    "duration": 10.453333,
+    "parts": [
+     {
+      "path": "audio/pcm/american-field-cricket.wav",
+      "bytes": 2765996,
+      "sha256": "d23261196dbdd8263376aedea1c45d7659e456f5250dc67457e2c3f1654d5ed0",
+      "frames": 460992
+     }
+    ],
+    "pcmDataSha256": "4707138b311341e3e29ffa404f84851af60960618bcacb0716da6db84d2b17a1",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.2671748101711273,
+    "gain": 2.414916231041813,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "barking-treefrog": {
+   "compat": {
+    "path": "audio/compat/barking-treefrog.mp3",
+    "bytes": 688841,
+    "sha256": "1a091b4909906adc7339caf9d4b105872c8f9afe49e48f7a11deb5ffda72e921",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 43.049796,
+    "lossless": false,
+    "gain": 0.8,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/barking-treefrog.ogg",
+    "bytes": 1042574,
+    "sha256": "4e7cca31717718e6f0c0d6a45c9d1721e0d3e51baf2d676e6a695c09e5fca3a0",
+    "format": "vorbis",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 43.003356,
+    "lossless": false,
+    "gain": 0.7595758934214046
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 1896448,
+    "duration": 43.003356,
+    "parts": [
+     {
+      "path": "audio/pcm/barking-treefrog.wav",
+      "bytes": 5689388,
+      "sha256": "06ccbfa22797ec6894ee8aab4f4cee021c7b72ceec60e7d0584c800ff44725af",
+      "frames": 1896448
+     }
+    ],
+    "pcmDataSha256": "b59ce116bcc706014667df8d0801e548e427ef45c6f2f0fa9a6750afb71afd78",
+    "headroomScale": 0.988850279383554,
+    "decodedPeak": 1.0111743211746216,
+    "gain": 0.7681404447748367,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0112>0dBFSのため係数0.988850で格納し再生ゲインで相殺。"
+   }
+  },
+  "autumn-insects": {
+   "compat": {
+    "path": "audio/compat/autumn-insects.mp3",
+    "bytes": 256671,
+    "sha256": "46097c389b93ac83996446093dde0fb053b2d666f262e92aeeca915ff933af75",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 16.039184,
+    "lossless": false,
+    "gain": 0.8,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/bell-cricket.ogg",
+    "bytes": 73267,
+    "sha256": "ca483e519845458f458af35fcba35c26ee84f1691ddce73a8cd319a072a467be",
+    "format": "vorbis",
+    "sampleRate": 16000,
+    "channels": 1,
+    "duration": 16.0,
+    "lossless": false,
+    "gain": 0.7519468128369493
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 16000,
+    "channels": 1,
+    "frames": 256000,
+    "duration": 16.0,
+    "parts": [
+     {
+      "path": "audio/pcm/autumn-insects.wav",
+      "bytes": 768044,
+      "sha256": "1d98ff824c90f16a5037f8d4a96b6607c571374ab77cfb80a10789af62b7223d",
+      "frames": 256000
+     }
+    ],
+    "pcmDataSha256": "41c22b42b438fc53eae19d84bac023238071ce2fdad6a59863c01566381e3d21",
+    "headroomScale": 0.9978439201019681,
+    "decodedPeak": 1.0020605325698853,
+    "gain": 0.7535715733579947,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0021>0dBFSのため係数0.997844で格納し再生ゲインで相殺。"
+   }
+  },
+  "cicada": {
+   "compat": {
+    "path": "audio/compat/cicada.mp3",
+    "bytes": 1486725,
+    "sha256": "f9115e2720c141c23d9b9e0c0c018fc6eaff73596ea878bfc8068a41fce72051",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 92.917551,
+    "lossless": false,
+    "gain": 1.000855,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/cicada.ogg",
+    "bytes": 880987,
+    "sha256": "621f514c83e8096e1ee8f6c40e6a6cdeb4ea8227584e74f34c86724e18596471",
+    "format": "vorbis",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 92.879819,
+    "lossless": false,
+    "gain": 0.9508490028438619
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 4096000,
+    "duration": 92.879819,
+    "parts": [
+     {
+      "path": "audio/pcm/cicada.wav",
+      "bytes": 12288044,
+      "sha256": "139067c50b901d5914ccffbf421337d8021a77e88992605f18aba2be6ce42a80",
+      "frames": 4096000
+     }
+    ],
+    "pcmDataSha256": "157d40d4d97c8387027111e7969c9402319db104de4101f48bdd23e8a896371b",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.6792080402374268,
+    "gain": 0.9508490028438619,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "higurashi": {
+   "compat": {
+    "path": "audio/compat/higurashi.mp3",
+    "bytes": 1541060,
+    "sha256": "ff4873c1b2688435995395bb1f44f1319f49e411649d835e880c4638ebcd44e6",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 96.313469,
+    "lossless": false,
+    "gain": 2.509035,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/higurashi.ogg",
+    "bytes": 1154202,
+    "sha256": "a2e3e32db6ab8c8b0d8bb5d9e02ddbbf3493e5c2f5d207381f8457dfb34b658e",
+    "format": "vorbis",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 96.274717,
+    "lossless": false,
+    "gain": 2.3836349172354674
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 4245715,
+    "duration": 96.274717,
+    "parts": [
+     {
+      "path": "audio/pcm/higurashi.part1.wav",
+      "bytes": 14680106,
+      "sha256": "a3ff0c525c44a4110cdde70dbeb64782d5486dace72fb74f38ad6e9835ea39e3",
+      "frames": 2446677
+     },
+     {
+      "path": "audio/pcm/higurashi.part2.wav",
+      "bytes": 10794272,
+      "sha256": "74c77121565d4d0e7236f70afc0b157da6800a7f59aff0be6f1c865fe5bf8494",
+      "frames": 1799038
+     }
+    ],
+    "pcmDataSha256": "8353dd8f0071fc3ad481cf3caf7f7a44cb9a1ae032c8c147104c2c4019d79c6d",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.31884118914604187,
+    "gain": 2.3836349172354674,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "niiniizemi": {
+   "compat": {
+    "path": "audio/compat/niiniizemi.mp3",
+    "bytes": 601488,
+    "sha256": "14e9d0c3fc536f581737ed60d388dd3b1fc2f0142b6bdcf3ebca1f38b61ba908",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 37.590204,
+    "lossless": false,
+    "gain": 2.674939,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/niiniizemi.ogg",
+    "bytes": 432935,
+    "sha256": "dbbbbaa0b123c498293b4e021c3d8ac9a8a9cf917c9f3bb54c2bbe2392c66b97",
+    "format": "vorbis",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 37.54712,
+    "lossless": false,
+    "gain": 2.539791544500989
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1655828,
+    "duration": 37.54712,
+    "parts": [
+     {
+      "path": "audio/pcm/niiniizemi.wav",
+      "bytes": 9935012,
+      "sha256": "67291f77d2c6453a23fc0c64132f7e9f360896ba77ec999b58f77f15e71444cd",
+      "frames": 1655828
+     }
+    ],
+    "pcmDataSha256": "a25b6aaa5d3266a09c8a3cfad7642eb6c3cd346fe5d097cebee2cbabd3a7e09d",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.20779195427894592,
+    "gain": 2.539791544500989,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "tsukutsukuboshi": {
+   "compat": {
+    "path": "audio/compat/tsukutsukuboshi.mp3",
+    "bytes": 626147,
+    "sha256": "66bb07deb415b433f96495b479d7fa8037a889bb945f748c48f07d8370c68cbd",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 39.131429,
+    "lossless": false,
+    "gain": 1.557229,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/tsukutsukuboshi.ogg",
+    "bytes": 511965,
+    "sha256": "f4e80a74e602c69929aac5316ddf484b9f57767333df0b2f236ee11232201cb7",
+    "format": "vorbis",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 39.079546,
+    "lossless": false,
+    "gain": 1.4829558057205214
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1723408,
+    "duration": 39.079546,
+    "parts": [
+     {
+      "path": "audio/pcm/tsukutsukuboshi.wav",
+      "bytes": 10340492,
+      "sha256": "9cd876dcf13d1db6e987efb2e1f43fde46f7959cc2f0708f8de03a261a04d9a8",
+      "frames": 1723408
+     }
+    ],
+    "pcmDataSha256": "412e486c7a0a4fde2fce21e51f16627fad35296325cb32e7a6de6c1f0872f608",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.5137312412261963,
+    "gain": 1.4829558057205214,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "minminzemi": {
+   "compat": {
+    "path": "audio/compat/minminzemi.mp3",
+    "bytes": 574738,
+    "sha256": "4a12514167494189003194429b579134c814e02f656efaa5cce0e1d33db948e9",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 35.918367,
+    "lossless": false,
+    "gain": 1.514933,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/minminzemi.ogg",
+    "bytes": 153601,
+    "sha256": "302aee23b8903bc33e3d63ad306351969cc9826de618c876da06c2c308f7294a",
+    "format": "vorbis",
+    "sampleRate": 11024,
+    "channels": 1,
+    "duration": 35.878084,
+    "lossless": false,
+    "gain": 1.4231717753983586
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 11024,
+    "channels": 1,
+    "frames": 395520,
+    "duration": 35.878084,
+    "parts": [
+     {
+      "path": "audio/pcm/minminzemi.wav",
+      "bytes": 1186604,
+      "sha256": "d1a049e2ef90c37b5ac0e348ecdb63e9df1f11fa9de41aea83f665bb97c24539",
+      "frames": 395520
+     }
+    ],
+    "pcmDataSha256": "3e103fb484d17275eadec9f7a163906ca590a77cedd41912c356b28f3fe20736",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.2805178761482239,
+    "gain": 1.4231717753983586,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "japanese-bush-warbler": {
+   "compat": {
+    "path": "audio/compat/japanese-bush-warbler.mp3",
+    "bytes": 64828,
+    "sha256": "6f868f398f6a7348ed04790a9baeac161ac3c763817f49efe5ef277708046f46",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 4.04898,
+    "lossless": false,
+    "gain": 0.548327,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/japanese-bush-warbler.ogg",
+    "bytes": 27804,
+    "sha256": "46de8b1fa39345b864a776348632bfde457e9794c07f35ef763f6711add0c545",
+    "format": "vorbis",
+    "sampleRate": 11024,
+    "channels": 1,
+    "duration": 4.017417,
+    "lossless": false,
+    "gain": 0.5189058330748547
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 11024,
+    "channels": 1,
+    "frames": 44288,
+    "duration": 4.017417,
+    "parts": [
+     {
+      "path": "audio/pcm/japanese-bush-warbler.wav",
+      "bytes": 132908,
+      "sha256": "3c69609cbec86a1a1a07e618b29ebd901f86ada5c5e7854af549b3932ce90d25",
+      "frames": 44288
+     }
+    ],
+    "pcmDataSha256": "1318d1b316d9544ed09fff8ee5fb54ccca8889ea1f63d9daf3061a162704747e",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.37039774656295776,
+    "gain": 0.5189058330748547,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "hototogisu": {
+   "compat": {
+    "path": "audio/compat/hototogisu.mp3",
+    "bytes": 107460,
+    "sha256": "b221826074b45a664dd8216e9f4e6a696f24b2c77e0373270e469918d9fd4f34",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 6.713469,
+    "lossless": false,
+    "gain": 1.103671,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/hototogisu.ogg",
+    "bytes": 22090,
+    "sha256": "455ceaca052596f2f2a75e9a3d2096a832d2e2058f156223aaeb7af7ad6e3287",
+    "format": "vorbis",
+    "sampleRate": 7812,
+    "channels": 1,
+    "duration": 6.686764,
+    "lossless": false,
+    "gain": 1.0463800405554917
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 7812,
+    "channels": 1,
+    "frames": 52237,
+    "duration": 6.686764,
+    "parts": [
+     {
+      "path": "audio/pcm/hototogisu.wav",
+      "bytes": 156755,
+      "sha256": "7cf4ea6833be8c6dc1de26e23b2b29552eff3bb39330c3ae7e3e33e3ac370578",
+      "frames": 52237
+     }
+    ],
+    "pcmDataSha256": "a5c53c847ce6d325855e1a549300e95aaeacfea1262ed55e8f1de3ffa8d6e5c0",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.5914832353591919,
+    "gain": 1.0463800405554917,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "tide-rocks": {
+   "compat": {
+    "path": "audio/compat/tide-rocks.mp3",
+    "bytes": 486967,
+    "sha256": "6b819fcb311514926de72d25b692024503a5d5648c3b222f2e556f3f0164892c",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 30.432653,
+    "lossless": false,
+    "gain": 1.823484,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/tide-rocks.ogg",
+    "bytes": 1232559,
+    "sha256": "07634cf0f0b5a8ed6e0b83222f41f84b36ca4cb482e3229abfe7a35b9e2b72b6",
+    "format": "vorbis",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 30.406531,
+    "lossless": false,
+    "gain": 1.4019136457261914
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1340928,
+    "duration": 30.406531,
+    "parts": [
+     {
+      "path": "audio/pcm/tide-rocks.wav",
+      "bytes": 8045612,
+      "sha256": "8c29636c8b7151be84979e96b721877eb4bcd38b04d7098012eec059705fcac8",
+      "frames": 1340928
+     }
+    ],
+    "pcmDataSha256": "52dd2d3bb0ef8f8408fecb96ab15af4345f4206a954d329d8ad49230c1b90c83",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.4387344717979431,
+    "gain": 1.4019136457261914,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "rocky-beach": {
+   "compat": {
+    "path": "audio/compat/rocky-beach.mp3",
+    "bytes": 160123,
+    "sha256": "8530ab4210a25c43d21ac02bfcb231fe9196184409f2518492b75743d14c3a63",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 10.004898,
+    "lossless": false,
+    "gain": 12,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/rocky-beach.opus",
+    "bytes": 18817,
+    "sha256": "c8beddf8558b77e6f71af39c473b72e232f1e2e32d26ef1a1ec3164a9d08adf9",
+    "format": "opus",
+    "sampleRate": 48000,
+    "channels": 1,
+    "duration": 9.9535,
+    "lossless": false,
+    "gain": 11.371018997350557
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 1,
+    "frames": 477768,
+    "duration": 9.9535,
+    "parts": [
+     {
+      "path": "audio/pcm/rocky-beach.wav",
+      "bytes": 1433348,
+      "sha256": "ebfd00ef0aa696b642b09f48a3e29bb1e9065f0d957bb0d7e1e151265c878839",
+      "frames": 477768
+     }
+    ],
+    "pcmDataSha256": "aeb7a5ac6dfda0e75aa41782487a79f8e3549f5397b860c2aeaea21ab1966eb3",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.0035184547305107117,
+    "gain": 11.371018997350557,
+    "lossless": false,
+    "provenance": "opus原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "kajika-frog": {
+   "compat": {
+    "path": "audio/compat/kajika-frog.mp3",
+    "bytes": 368267,
+    "sha256": "89385beb5cfcd2206e3e1cc855a3858fa197a1de2aacef3e13c18efd08d283dc",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 23.013878,
+    "lossless": false,
+    "gain": 3.877296,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/kajika-frog.ogg",
+    "bytes": 249753,
+    "sha256": "1c72d3698d9594a152a31793798506c7f490bdf8d12f2c9ef16d3ed5ac44db5f",
+    "format": "vorbis",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 22.980181,
+    "lossless": false,
+    "gain": 3.6805520278635093
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1013426,
+    "duration": 22.980181,
+    "parts": [
+     {
+      "path": "audio/pcm/kajika-frog.wav",
+      "bytes": 6080600,
+      "sha256": "b48e309a02681634f9989884faa8ed16663f934d7d24658b374decd63f78710a",
+      "frames": 1013426
+     }
+    ],
+    "pcmDataSha256": "bf4a6789e3db658eaebb49ea596ecccb5f2ede4cb1c3e5cb8d5948d548178929",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.20631878077983856,
+    "gain": 3.6805520278635093,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "brown-eared-bulbul": {
+   "compat": {
+    "path": "audio/compat/brown-eared-bulbul.mp3",
+    "bytes": 87398,
+    "sha256": "2fa0c6c07f2ca3b93e9e9cd271564ca0c4a714a4623f8b86015c48cd4601b133",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 5.459592,
+    "lossless": false,
+    "gain": 2.116454,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/brown-eared-bulbul.ogg",
+    "bytes": 41932,
+    "sha256": "8354319c1237a66533f102eeadbf67f74a9b4cb268286a892369108c4112f56b",
+    "format": "vorbis",
+    "sampleRate": 48000,
+    "channels": 1,
+    "duration": 5.418667,
+    "lossless": false,
+    "gain": 2.0026716209809035
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 1,
+    "frames": 260096,
+    "duration": 5.418667,
+    "parts": [
+     {
+      "path": "audio/pcm/brown-eared-bulbul.wav",
+      "bytes": 780332,
+      "sha256": "9fc7e9c49ad522982040ebfe0deedc4417cf0b8fe72c090032e1f965a5babe22",
+      "frames": 260096
+     }
+    ],
+    "pcmDataSha256": "7a820a860366997fde527f960b20619fafc568d97853b9febcfbff8664ba6965",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.3779790699481964,
+    "gain": 2.0026716209809035,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "autumn-insects-2": {
+   "compat": {
+    "path": "audio/compat/autumn-insects-2.mp3",
+    "bytes": 144658,
+    "sha256": "58e43d800e0dc1b49528fcf2556f0b70ebf953dcb11c6eea32eacc8f022e52aa",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 9.038367,
+    "lossless": false,
+    "gain": 0.8,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/autumn-insects-2.ogg",
+    "bytes": 42341,
+    "sha256": "6a3305fef82fc101a21dab2917899fcaa9bfe0bbf03deb826fefa500fc97476a",
+    "format": "vorbis",
+    "sampleRate": 16000,
+    "channels": 1,
+    "duration": 9.0,
+    "lossless": false,
+    "gain": 0.7535310468360445
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 16000,
+    "channels": 1,
+    "frames": 144000,
+    "duration": 9.0,
+    "parts": [
+     {
+      "path": "audio/pcm/autumn-insects-2.wav",
+      "bytes": 432044,
+      "sha256": "f8f7f4229baf7af0ad5b6ed2c7fbcbf3363def7005ed6df73f06ddda4200a96f",
+      "frames": 144000
+     }
+    ],
+    "pcmDataSha256": "d2d774317286ed44029c1f747e7cfd018a5dc4d0a2e4b64d8f36d41f5ed152d9",
+    "headroomScale": 0.9627609943291832,
+    "decodedPeak": 1.038575530052185,
+    "gain": 0.7826771662691607,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0386>0dBFSのため係数0.962761で格納し再生ゲインで相殺。"
+   }
+  },
+  "tree-cricket-europe": {
+   "compat": {
+    "path": "audio/compat/tree-cricket-europe.mp3",
+    "bytes": 409645,
+    "sha256": "b6cedf674382f7b6ec7594f583def15dda58baec16aa71c3e5b0013b3289beb2",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.6,
+    "lossless": false,
+    "gain": 0.635162,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/tree-cricket-europe.oga",
+    "bytes": 342805,
+    "sha256": "a095c395822c67c0dea82e05f9bf3817ab3a74e89488b526ee2f4b81aeff77ed",
+    "format": "vorbis",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 25.550794,
+    "lossless": false,
+    "gain": 0.6020242760149697
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1126790,
+    "duration": 25.550794,
+    "parts": [
+     {
+      "path": "audio/pcm/tree-cricket-europe.wav",
+      "bytes": 6760784,
+      "sha256": "465f7221646ebf13faa0682e802fca05a7069a2b0dbda4464b7e3928dc7ec931",
+      "frames": 1126790
+     }
+    ],
+    "pcmDataSha256": "8c8ecf462995261fda14f4b12013c5a1797f85208a1772891a8af8227dbe75ea",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.5355300307273865,
+    "gain": 0.6020242760149697,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "field-cricket-europe": {
+   "compat": {
+    "path": "audio/compat/field-cricket-europe.mp3",
+    "bytes": 515388,
+    "sha256": "b89b631abcc8ee0c5c9331b21683054b7339e466fc0ff43a57d4f3f9b8461ab9",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 32.20898,
+    "lossless": false,
+    "gain": 0.501423,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/field-cricket-europe.ogg",
+    "bytes": 505967,
+    "sha256": "7774774bdc468b07e3d19fabcb4064e9453aaaa3c64998a50f7788688e788b8c",
+    "format": "vorbis",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 32.169048,
+    "lossless": false,
+    "gain": 0.4750703610002235
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1418655,
+    "duration": 32.169048,
+    "parts": [
+     {
+      "path": "audio/pcm/field-cricket-europe.wav",
+      "bytes": 8511974,
+      "sha256": "fc812986f13df7cac3cb805936352449a8f951f9365c8d2cbc2cfff49604e7c3",
+      "frames": 1418655
+     }
+    ],
+    "pcmDataSha256": "bef59d3138f26e6d80996e9de767ca662a867c9a72ee9d59ae949b5aec8fce6f",
+    "headroomScale": 0.9136716868880032,
+    "decodedPeak": 1.0943756103515625,
+    "gain": 0.5199574068211846,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0944>0dBFSのため係数0.913672で格納し再生ゲインで相殺。"
+   }
+  },
+  "river-esk": {
+   "compat": {
+    "path": "audio/compat/river-esk.mp3",
+    "bytes": 443081,
+    "sha256": "5226276355a2dcba859de487bcc2eb146803f480ae5f7d4ec54caf012ed8b4b9",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 27.689796,
+    "lossless": false,
+    "gain": 1.775923,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/river-esk.ogg",
+    "bytes": 483519,
+    "sha256": "fe4493ab8e309de8c4b58c82cc1e84e7831add270547da854a2ae927ee774e05",
+    "format": "vorbis",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 27.637574,
+    "lossless": false,
+    "gain": 0.8421781756511812
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1218817,
+    "duration": 27.637574,
+    "parts": [
+     {
+      "path": "audio/pcm/river-esk.wav",
+      "bytes": 7312946,
+      "sha256": "c2b531aecfd6f94830ec7334d3753440f8351ded5d6ba097f0624900a7b3cdc1",
+      "frames": 1218817
+     }
+    ],
+    "pcmDataSha256": "fcc2fd294f84911488224c584973b7f6086057929131b0032a185267458718a7",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.6075855493545532,
+    "gain": 0.8421781756511812,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "forest-leaves": {
+   "compat": {
+    "path": "audio/compat/forest-leaves.mp3",
+    "bytes": 288985,
+    "sha256": "d38bed8294f1c294c975cc75fcea3297bbd70ff00a409f666f6cbeb51d606cfc",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 18.050612,
+    "lossless": false,
+    "gain": 1.473878,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/forest-leaves.flac",
+    "bytes": 1585599,
+    "sha256": "a7d162d51fece2e5d2639ae21106cab06548a7f0bf7ac50425235f591efc5a93",
+    "format": "flac",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 18.0,
+    "lossless": true,
+    "gain": 0.39127861823564736
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 793800,
+    "duration": 18.0,
+    "parts": [
+     {
+      "path": "audio/pcm/forest-leaves.wav",
+      "bytes": 3175244,
+      "sha256": "d6024a90ffa7745aab255e919032d23cf6f44940a2af259535b420ae930cb551",
+      "frames": 793800
+     }
+    ],
+    "pcmDataSha256": "97b322ff864986c92e6335ed9698bbd77318808a3e571c342314cfb6d122fbfd",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.54278564453125,
+    "gain": 0.39127861823564736,
+    "lossless": true,
+    "provenance": "FLAC原本の可逆復号（ビット完全）"
+   }
+  },
+  "forest-wind": {
+   "compat": {
+    "path": "audio/compat/forest-wind.mp3",
+    "bytes": 968038,
+    "sha256": "22fe56829949a7cd59f5c041d810a213bd7c778839b763d8602c18bde2ae2ef3",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 60.499592,
+    "lossless": false,
+    "gain": 3.2,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/forest-wind.ogg",
+    "bytes": 1909781,
+    "sha256": "964e7d4ec810227bf2435197d3da4ad82aaf8ca16c59e4d1e02b41c6cac02ce6",
+    "format": "vorbis",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 60.458667,
+    "lossless": false,
+    "gain": 2.8551222497724
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 2902016,
+    "duration": 60.458667,
+    "parts": [
+     {
+      "path": "audio/pcm/forest-wind.part1.wav",
+      "bytes": 14680106,
+      "sha256": "65e3f70fa7d41c00cccaf3aea36dd0f399428f0900cbba9d0dc6e8e36a25fcfe",
+      "frames": 2446677
+     },
+     {
+      "path": "audio/pcm/forest-wind.part2.wav",
+      "bytes": 2732078,
+      "sha256": "d79154dc9ec32832e8551363409ef9a0850ff094cb115e531689b453c532d224",
+      "frames": 455339
+     }
+    ],
+    "pcmDataSha256": "31b91b0754987dda561c9ffb68c2e07128229fba8068fd7f687d8e983239b7e0",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.3571667969226837,
+    "gain": 2.8551222497724,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "rain-field": {
+   "compat": {
+    "path": "audio/compat/rain-field.mp3",
+    "bytes": 165974,
+    "sha256": "5d455c452a23a9f1556582ee9bb2a27d45c988a2007f5cd7104401fdd7c37a55",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 10.370612,
+    "lossless": false,
+    "gain": 1.189077,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/rain-field.ogg",
+    "bytes": 198913,
+    "sha256": "c34d12243125c28f09426c076019f8321b602347a8564c38be771cb997c1a152",
+    "format": "vorbis",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 10.331429,
+    "lossless": false,
+    "gain": 1.1275076060918223
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 455616,
+    "duration": 10.331429,
+    "parts": [
+     {
+      "path": "audio/pcm/rain-field.wav",
+      "bytes": 1366892,
+      "sha256": "7584046df870f67b621ad693afb39d71aee35f49cad2875d9128ad4769576ec7",
+      "frames": 455616
+     }
+    ],
+    "pcmDataSha256": "529b8c129fbca24487c252cb454ed3d653175902054a49be5f0fbe56f7947f9e",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.6727811694145203,
+    "gain": 1.1275076060918223,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "fire-field": {
+   "compat": {
+    "path": "audio/compat/fire-field.mp3",
+    "bytes": 408391,
+    "sha256": "8bf45f377c188400a263539a503bafa4a6a337da5a5bbf1b7a13fafe38fb84a8",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.521633,
+    "lossless": false,
+    "gain": 2.10659,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   },
+   "original": {
+    "path": "audio/original/fire-field.ogg",
+    "bytes": 511116,
+    "sha256": "0fb9fb4a44fe378ceffb2b80d0cf420e28404e04f5f200b7bc0205eadeebc8d4",
+    "format": "vorbis",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.49551,
+    "lossless": false,
+    "gain": 2.0060333455401604
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 1124352,
+    "duration": 25.49551,
+    "parts": [
+     {
+      "path": "audio/pcm/fire-field.wav",
+      "bytes": 3373100,
+      "sha256": "ea555b06777e791eb53a465bd0fc9f6c68d456ce61047562a7bb56f50adda097",
+      "frames": 1124352
+     }
+    ],
+    "pcmDataSha256": "c9ef230ad3e67d5195953597eb4eec71fde4ed99b9223539da055a5bc35e5383",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.37976494431495667,
+    "gain": 2.0060333455401604,
+    "lossless": false,
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+   }
+  },
+  "gampsocleis-glabra": {
+   "compat": {
+    "path": "audio/compat/gampsocleis-glabra.mp3",
+    "bytes": 484459,
+    "sha256": "504c41bb8b717c0001e4cf8e18c7788cbf33981a0921e3cfe69e4cf08d297037",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 30.275918,
+    "lossless": false,
+    "gain": 0.95116406131677,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   }
+  },
+  "locust": {
+   "compat": {
+    "path": "audio/compat/locust.mp3",
+    "bytes": 344443,
+    "sha256": "b70af52a1227a86cb0d32e9279d86ba27c899f0e6d612923d5997b5be1571bb5",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 21.524898,
+    "lossless": false,
+    "gain": 1.8575719849503158,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   }
+  },
+  "tettigonia-viridissima": {
+   "compat": {
+    "path": "audio/compat/tettigonia-viridissima.mp3",
+    "bytes": 558856,
+    "sha256": "bf061bf7c730a9ebe21573ed27b89972c771fa7e27a14c6a95d71118f6102550",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 34.925714,
+    "lossless": false,
+    "gain": 1.3058388443554516,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   }
+  },
+  "tettigonia-cantans": {
+   "compat": {
+    "path": "audio/compat/tettigonia-cantans.mp3",
+    "bytes": 555512,
+    "sha256": "0b95f5f59f835e30321aad5f83030677d54f4cb056d25455402be23dd39b3711",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 34.716735,
+    "lossless": false,
+    "gain": 0.8103512537205337,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   }
+  },
+  "chorthippus-biguttulus": {
+   "compat": {
+    "path": "audio/compat/chorthippus-biguttulus.mp3",
+    "bytes": 455620,
+    "sha256": "a269c3554fa15c0456e1367d9de8eeb54678896ee3a579e8c60582234fddc076",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 28.473469,
+    "lossless": false,
+    "gain": 1.9980491204215756,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   }
+  },
+  "chorthippus-brunneus": {
+   "compat": {
+    "path": "audio/compat/chorthippus-brunneus.mp3",
+    "bytes": 421765,
+    "sha256": "fcf46755dbfe5ab18c21c20306f53dc40356771bb5355d9bff699f377c4a9dae",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 26.357551,
+    "lossless": false,
+    "gain": 1.5855165637426452,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   }
+  },
+  "sparrow": {
+   "compat": {
+    "path": "audio/compat/sparrow.mp3",
+    "bytes": 176841,
+    "sha256": "d4221b37e6a0bbf988e10819c9176727edeb753997d007f160dccb17d159ada5",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 11.049796,
+    "lossless": false,
+    "gain": 1.7422386898137336,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   }
+  },
+  "swallow": {
+   "compat": {
+    "path": "audio/compat/swallow.mp3",
+    "bytes": 297214,
+    "sha256": "67676c6eb3cdf5338ca880d226c5e00184da9704cea47f4ba910331a4823c3af",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 18.573061,
+    "lossless": false,
+    "gain": 1.2175658824266113,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   }
+  },
+  "white-eye": {
+   "compat": {
+    "path": "audio/compat/white-eye.mp3",
+    "bytes": 96593,
+    "sha256": "7857041795047a85b7e2118ebab6bfd210e9dbb9ad45eb288e237b9f58a812ca",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 6.034286,
+    "lossless": false,
+    "gain": 0.8893973753198151,
+    "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   }
+  }
+ },
+ "instruments": {
+  "harp-45": {
+   "pcm": {
+    "path": "instruments/pcm/KSHarp_A2_mf1.wav",
+    "bytes": 2007670,
+    "sha256": "1df9f4d138ca3931fcb458bcdf01304cadf2e5f4eef67bbc17b0e42c0e60fce6",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 11.381088,
+    "parts": [
+     {
+      "path": "instruments/pcm/KSHarp_A2_mf1.wav",
+      "bytes": 2007670,
+      "sha256": "1df9f4d138ca3931fcb458bcdf01304cadf2e5f4eef67bbc17b0e42c0e60fce6",
+      "frames": 501906
+     }
+    ],
+    "gain": 0.6414525434893121,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/harp-45.mp3",
+    "bytes": 182693,
+    "sha256": "4325c5b6c8c8bf695c8ae732204125031cae1b49276f52b19cc642455dc7df54",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  },
+  "harp-69": {
+   "pcm": {
+    "path": "instruments/pcm/KSHarp_A4_mf1.wav",
+    "bytes": 2143618,
+    "sha256": "3665f3975cad4a33f46784aa4f896f4b4319ba2b7831e892d975bc38c9f09f23",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 12.151769,
+    "parts": [
+     {
+      "path": "instruments/pcm/KSHarp_A4_mf1.wav",
+      "bytes": 2143618,
+      "sha256": "3665f3975cad4a33f46784aa4f896f4b4319ba2b7831e892d975bc38c9f09f23",
+      "frames": 535893
+     }
+    ],
+    "gain": 0.6065715005102775,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/harp-69.mp3",
+    "bytes": 195231,
+    "sha256": "a1b89b83e0776af882454ce5ba4419b7d98b06830286b115951d47df9e02eced",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  },
+  "harp-59": {
+   "pcm": {
+    "path": "instruments/pcm/KSHarp_B3_mf1.wav",
+    "bytes": 1981130,
+    "sha256": "f6f71be8c640822ef48a448b245585659acdfcc7ed5774e10f37be2fc02fcab4",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 11.230635,
+    "parts": [
+     {
+      "path": "instruments/pcm/KSHarp_B3_mf1.wav",
+      "bytes": 1981130,
+      "sha256": "f6f71be8c640822ef48a448b245585659acdfcc7ed5774e10f37be2fc02fcab4",
+      "frames": 495271
+     }
+    ],
+    "gain": 0.6257338479526701,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/harp-59.mp3",
+    "bytes": 180185,
+    "sha256": "ed179830ee1c23269c749fbe7af739c3a1e224f32bab9c61d64778532e13d77e",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  },
+  "harp-72": {
+   "pcm": {
+    "path": "instruments/pcm/KSHarp_C5_mf1.wav",
+    "bytes": 1237142,
+    "sha256": "7c8b862f6fd3f1442ed87537af976d84bda8c05a5b4900e8907d570b5202a517",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 7.013016,
+    "parts": [
+     {
+      "path": "instruments/pcm/KSHarp_C5_mf1.wav",
+      "bytes": 1237142,
+      "sha256": "7c8b862f6fd3f1442ed87537af976d84bda8c05a5b4900e8907d570b5202a517",
+      "frames": 309274
+     }
+    ],
+    "gain": 0.4211037394444562,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/harp-72.mp3",
+    "bytes": 112894,
+    "sha256": "6f80223558375b529039656c101c4b2925afb6787e6cef0b96742a8f8c1cd00f",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  },
+  "harp-62": {
+   "pcm": {
+    "path": "instruments/pcm/KSHarp_D4_mf1.wav",
+    "bytes": 1921690,
+    "sha256": "ebfde8aab4411019e37e3426f4dd88d6a52a38c2d0261d7f10ec63d8ff584dc7",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 10.893673,
+    "parts": [
+     {
+      "path": "instruments/pcm/KSHarp_D4_mf1.wav",
+      "bytes": 1921690,
+      "sha256": "ebfde8aab4411019e37e3426f4dd88d6a52a38c2d0261d7f10ec63d8ff584dc7",
+      "frames": 480411
+     }
+    ],
+    "gain": 0.6199912459227958,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/harp-62.mp3",
+    "bytes": 175169,
+    "sha256": "422ad7ff8e4ab49f92ebeac9abbcb443c1afd36f43840f3c0077625da9a71f5a",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  },
+  "harp-52": {
+   "pcm": {
+    "path": "instruments/pcm/KSHarp_E3_mf1.wav",
+    "bytes": 2461138,
+    "sha256": "aafa9d41ec0f77da8f2891055af8b3f9557e0ba1f1df93d53ae6e1fda07afae5",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 13.951769,
+    "parts": [
+     {
+      "path": "instruments/pcm/KSHarp_E3_mf1.wav",
+      "bytes": 2461138,
+      "sha256": "aafa9d41ec0f77da8f2891055af8b3f9557e0ba1f1df93d53ae6e1fda07afae5",
+      "frames": 615273
+     }
+    ],
+    "gain": 0.601371731595191,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/harp-52.mp3",
+    "bytes": 224071,
+    "sha256": "0096f105251651359842da6e5f3792ee9fab92315778b4c9de25a2ee49b4827a",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  },
+  "harp-65": {
+   "pcm": {
+    "path": "instruments/pcm/KSHarp_F4_mf1.wav",
+    "bytes": 1913498,
+    "sha256": "db27ebbb37334c10e06f2ae63f4d9ff555e4d11704fcc6f0bcf503863867e577",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 10.847234,
+    "parts": [
+     {
+      "path": "instruments/pcm/KSHarp_F4_mf1.wav",
+      "bytes": 1913498,
+      "sha256": "db27ebbb37334c10e06f2ae63f4d9ff555e4d11704fcc6f0bcf503863867e577",
+      "frames": 478363
+     }
+    ],
+    "gain": 0.642287397144434,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/harp-65.mp3",
+    "bytes": 174334,
+    "sha256": "0d19f2ac9f684c503b9cebc4fb7f22ab53da42d4dd4b353bc1c4f03e87c36da5",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  },
+  "harp-55": {
+   "pcm": {
+    "path": "instruments/pcm/KSHarp_G3_mf1.wav",
+    "bytes": 1806874,
+    "sha256": "62600eb1b37bc2829ca65351f7ca7e506c9ae472abd5bea0765a8b8fa7df2772",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 10.242789,
+    "parts": [
+     {
+      "path": "instruments/pcm/KSHarp_G3_mf1.wav",
+      "bytes": 1806874,
+      "sha256": "62600eb1b37bc2829ca65351f7ca7e506c9ae472abd5bea0765a8b8fa7df2772",
+      "frames": 451707
+     }
+    ],
+    "gain": 0.6346802133249544,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/harp-55.mp3",
+    "bytes": 164720,
+    "sha256": "72f3b1f191060fecb622a4f966b50684cabb48ba265221b45cf027103a911502",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  },
+  "vibes-45": {
+   "pcm": {
+    "path": "instruments/pcm/Vibes_soft_A2_v1_rr1_Main.wav",
+    "bytes": 1811676,
+    "sha256": "b6e23a94322107d0ab884d7c38e51be538eb45f613c6a24e980c2261151bed75",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 10.270023,
+    "parts": [
+     {
+      "path": "instruments/pcm/Vibes_soft_A2_v1_rr1_Main.wav",
+      "bytes": 1811676,
+      "sha256": "b6e23a94322107d0ab884d7c38e51be538eb45f613c6a24e980c2261151bed75",
+      "frames": 452908
+     }
+    ],
+    "gain": 0.5228956613037338,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/vibes-45.mp3",
+    "bytes": 165138,
+    "sha256": "7ab44f28075843470730b8e61cd3ad0fafb04138e5a2d4e62e8eefa83c51ba17",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  },
+  "vibes-69": {
+   "pcm": {
+    "path": "instruments/pcm/Vibes_soft_A4_v1_rr1_Main.wav",
+    "bytes": 1465148,
+    "sha256": "48e942290a982768d7a0038e28a76a99cb666673518b29ebdc55de5e1491025f",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 8.305578,
+    "parts": [
+     {
+      "path": "instruments/pcm/Vibes_soft_A4_v1_rr1_Main.wav",
+      "bytes": 1465148,
+      "sha256": "48e942290a982768d7a0038e28a76a99cb666673518b29ebdc55de5e1491025f",
+      "frames": 366276
+     }
+    ],
+    "gain": 0.5728443632625206,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/vibes-69.mp3",
+    "bytes": 133374,
+    "sha256": "b334e8fe94aaf45cc0149a5f930dad7ba338bba1f4886239e94266f748bc96f6",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  },
+  "vibes-59": {
+   "pcm": {
+    "path": "instruments/pcm/Vibes_soft_B3_v1_rr1_Main.wav",
+    "bytes": 1850652,
+    "sha256": "7edfbd70f93781d2cbb17c2fc8befe474de9987c6353db2358af4e13a0269345",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 10.490975,
+    "parts": [
+     {
+      "path": "instruments/pcm/Vibes_soft_B3_v1_rr1_Main.wav",
+      "bytes": 1850652,
+      "sha256": "7edfbd70f93781d2cbb17c2fc8befe474de9987c6353db2358af4e13a0269345",
+      "frames": 462652
+     }
+    ],
+    "gain": 0.6016413418905358,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/vibes-59.mp3",
+    "bytes": 168482,
+    "sha256": "c929839662e3ad2e498df3877c4a752fec8fa5eed78536762ae91eed078ed849",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  },
+  "vibes-72": {
+   "pcm": {
+    "path": "instruments/pcm/Vibes_soft_C5_v1_rr1_Main.wav",
+    "bytes": 641932,
+    "sha256": "be995c1164dcbbcf83688d095864a4abd0feaa68b71d1d2e78c35f62461fc03b",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 3.638821,
+    "parts": [
+     {
+      "path": "instruments/pcm/Vibes_soft_C5_v1_rr1_Main.wav",
+      "bytes": 641932,
+      "sha256": "be995c1164dcbbcf83688d095864a4abd0feaa68b71d1d2e78c35f62461fc03b",
+      "frames": 160472
+     }
+    ],
+    "gain": 0.5174522104784284,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/vibes-72.mp3",
+    "bytes": 58977,
+    "sha256": "760351830315e3f2bc551a47aeb23bc9874418cd6e95db68c9614259b45cac30",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  },
+  "vibes-62": {
+   "pcm": {
+    "path": "instruments/pcm/Vibes_soft_D4_v1_rr1_Main.wav",
+    "bytes": 1973784,
+    "sha256": "daedf613863d4de0a383d66b2db6ab9ffd8dc492d16ff7d735cf3b3107046a26",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 11.189002,
+    "parts": [
+     {
+      "path": "instruments/pcm/Vibes_soft_D4_v1_rr1_Main.wav",
+      "bytes": 1973784,
+      "sha256": "daedf613863d4de0a383d66b2db6ab9ffd8dc492d16ff7d735cf3b3107046a26",
+      "frames": 493435
+     }
+    ],
+    "gain": 0.6520926631558223,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/vibes-62.mp3",
+    "bytes": 179767,
+    "sha256": "932f51065dd200b22ba7739e0349c562149676f033a585dacfdbb6c6724feb74",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  },
+  "vibes-65": {
+   "pcm": {
+    "path": "instruments/pcm/Vibes_soft_F4_v1_rr1_Main.wav",
+    "bytes": 1368508,
+    "sha256": "95b7d6eeb71d77cce607c0c52b0a6dfd23d0eeedc2eb393fb9a6c5a5768f4aa5",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 7.757732,
+    "parts": [
+     {
+      "path": "instruments/pcm/Vibes_soft_F4_v1_rr1_Main.wav",
+      "bytes": 1368508,
+      "sha256": "95b7d6eeb71d77cce607c0c52b0a6dfd23d0eeedc2eb393fb9a6c5a5768f4aa5",
+      "frames": 342116
+     }
+    ],
+    "gain": 0.6527475733651391,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/vibes-65.mp3",
+    "bytes": 124596,
+    "sha256": "99ca395fae97e9fb6259c750aede17edc64ac5632fd744de2b7d57accc26b468",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  },
+  "vibes-55": {
+   "pcm": {
+    "path": "instruments/pcm/Vibes_soft_G3_v1_rr1_Main.wav",
+    "bytes": 2519544,
+    "sha256": "9b479e4c84fb1caafba8c1c106a8922cea20bba81c37d65f93afae339626767f",
+    "format": "wav",
+    "codec": "Linear PCM 16-bit",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 14.28288,
+    "parts": [
+     {
+      "path": "instruments/pcm/Vibes_soft_G3_v1_rr1_Main.wav",
+      "bytes": 2519544,
+      "sha256": "9b479e4c84fb1caafba8c1c106a8922cea20bba81c37d65f93afae339626767f",
+      "frames": 629875
+     }
+    ],
+    "gain": 0.6186419941734493,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+   },
+   "compat": {
+    "path": "instruments/compat/vibes-55.mp3",
+    "bytes": 229086,
+    "sha256": "b5a234cd34518ade168def001933c9b60f79d91eb0a98328a6433847cc20490f",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 1.0,
+    "lossless": false
+   }
+  }
+ }
+}

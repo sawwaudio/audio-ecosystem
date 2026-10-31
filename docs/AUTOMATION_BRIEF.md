@@ -20,6 +20,11 @@ AUDIO ECOSYSTEM を、**ソフトウェアとして販売できる品質**まで
 | 音源の原本（約10GB） | オーナーのMac（`~/Downloads/AUDIO_ECOSYSTEM_masters/`）。リポジトリには入れない |
 | 旧公開版 | claude.ai アーティファクト YJZWabEPYiB2gmCiQvSsYq（v0.24・容量上限256MBのため更新停止） |
 
+## 音源ライブラリの継続更新（オーナーの指定：適宜更新していくこと）
+- 音源ライブラリは常に更新し続ける。各回の実行で、バックログの実装に加えて**候補の追加調査を1テーマ**行い（例：未発見の52対象、日本の生物、Drone/Pulse など不足している音の性格）、`docs/additional_candidates_*.csv` に追記する。採用条件：WAV/AIFF（FLACは変換元として可）、CC0 / CC BY（/ PD）、実録音、種名の根拠あり、重複なし。
+- 原本のダウンロードと取り込み（照合・PCM化・メタデータ・クレジット）は、オーナーのMacとChromeが必要なのでチャットで行う。自動実行では候補リストの更新までにとどめる。
+- 取り込んだ音源は必ず `CREDITS.md`・`data/recording_licenses.json`・`data/audio_manifest.json`・マスター台帳に反映する。
+
 ## 1回の実行手順
 1. この文書、`AUTOMATION_LOG.md`、最新のR&Dレポートを読む。
 2. GitHub リポジトリを add_repo（push）で追加して浅くクローンする。

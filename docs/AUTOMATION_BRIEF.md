@@ -2,6 +2,9 @@
 
 この文書は、5時間ごとに起動する自動改善セッションへの常設指示。各セッションは会話の記憶を持たないため、毎回この文書を最初に読む。
 
+## コミュニケーションの決まり
+- **オーナーへの回答・報告・ログ・ドキュメントはすべて日本語で書く**（オーナーの指定）。英語はアプリの英語表示や英語版の文言を作る時だけ使う。
+
 ## 最終目標
 AUDIO ECOSYSTEM を、**ソフトウェアとして販売できる品質**まで継続的に改善する。
 実在する生物・自然の実録音を、高音質・正確な出典・安定した再生で、自由に演奏・自律生成できるアンビエント制作環境。
@@ -9,21 +12,21 @@ AUDIO ECOSYSTEM を、**ソフトウェアとして販売できる品質**まで
 ## 正本の置き場所（毎回ここから読む）
 | もの | 場所 |
 |---|---|
-| 公開アプリ（正本） | Artifact https://claude.ai/artifact/YJZWabEPYiB2gmCiQvSsYq の `index.html` と `audio/` `instruments/` `data/` |
-| 開発用ソース | 同 Artifact の `dev/*.txt`（元は .py / .js / .html / .css） |
-| R&Dレポート最新版 | プロジェクト `claude/AUDIO_ECOSYSTEM_RD_REPORT_v0_24.md`（以降のバージョンも同じ場所） |
-| 音源候補・ライセンス | プロジェクト `claude/WILDLIFE_SOUND_CANDIDATES_v0_25R.md`、`claude/candidate_master_v0_25R.csv` |
-| 元の指示書 | プロジェクト `claude/INSTRUCTION_01_RD_v0_23.md`、`INSTRUCTION_02_GLOBAL_WILDLIFE.md`、`INSTRUCTION_03_LIBRARY_EXPANSION.md` |
-| ロードマップ | プロジェクト `claude/ROADMAP.md` |
-| 改善バックログと実行ログ | プロジェクト `claude/AUTOMATION_LOG.md`（なければ作る） |
+| **正本（アプリ・音源・データ・ドキュメント）** | GitHub `ss2d5sgg-tech/audio-ecosystem`（main）。GitHub Pages で https://ss2d5sgg-tech.github.io/audio-ecosystem/ に公開 |
+| アプリ本体 | リポジトリ直下の `index.html`（音源は `audio/`・`instruments/`、データは `data/`） |
+| ビルド・テスト用ソース | `build/` |
+| ロードマップ・R&D・調査・本書・ログ | `docs/`（プロジェクト「saww audio ecosystem」の `claude/` にも写しあり） |
+| 元の指示書 | プロジェクト `claude/INSTRUCTION_01〜03` |
+| 音源の原本（約10GB） | オーナーのMac（`~/Downloads/AUDIO_ECOSYSTEM_masters/`）。リポジトリには入れない |
+| 旧公開版 | claude.ai アーティファクト YJZWabEPYiB2gmCiQvSsYq（v0.24・容量上限256MBのため更新停止） |
 
 ## 1回の実行手順
 1. この文書、`AUTOMATION_LOG.md`、最新のR&Dレポートを読む。
-2. Artifact を `action:"read"` で読み、`index.html` と必要な `data/*.json`、`dev/*` を作業ディレクトリに取得する。
+2. GitHub リポジトリを add_repo（push）で追加して浅くクローンする。
 3. バックログから**1〜2件**、販売品質への寄与が最も大きいものを選ぶ（下の優先順）。大きな作業は分割し、1回で完了できる単位にする。
 4. 実装する。既存機能（25レイヤー、32自然録音以上、8音色、15楽器、試聴、WAV録音、プリセット、PCM/原本/MP3切替、地域フィルター、監査表、DB）を壊さない。
 5. Playwright（ローカルの http.server で配信）で回帰テストを行う：コンソールエラー0、自律演奏開始、PCM/MP3切替、地域フィルター、390px幅で横はみ出しなし、v0.23とのパリティ（25レイヤー・8音色）。テストが通らなければ公開しない。
-6. 同じ Artifact URL に再公開する（`url` を指定。読み込み済みの最新版に変更を重ねる）。変更した `dev/` ファイルも一緒に公開する。
+6. テストが通ったら main にコミットしてプッシュする（日本語のコミットメッセージ）。1ファイル100MB未満・リポジトリ1GB未満を守る。
 7. `AUTOMATION_LOG.md` に、日時・やったこと・テスト結果・未検証事項・次の候補を追記する。版を上げたら R&D レポートの新版をプロジェクトに書く。
 8. 何も安全に改善できない場合（テスト失敗、取得不可など）は、公開せずにログだけ残す。
 

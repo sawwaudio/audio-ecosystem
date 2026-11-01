@@ -10,5 +10,5 @@ A virtual instrument for ambient music built from real field recordings of the n
 - ロードマップ / Roadmap: [docs/ROADMAP.md](docs/ROADMAP.md)
 - ビルドとテスト / Build & tests: `build/`
 
-各録音は元のライセンス（CC0 / CC BY / CC BY-SA / パブリックドメイン など）に従います。アプリのコード自体の利用条件は別途定めます。
-Each recording keeps its original license. Terms for the application code will be defined separately.
+各録音は元のライセンス（CC0 / CC BY / CC BY-SA / パブリックドメイン など）に従います。アプリのコードはオープンソースではありません（[LICENSE](LICENSE)）。販売を前提にした権利方針は [docs/COMMERCIAL_POLICY.md](docs/COMMERCIAL_POLICY.md)。
+Each recording keeps its original license. The application code is not open source (see LICENSE).

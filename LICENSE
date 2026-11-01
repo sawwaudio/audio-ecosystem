@@ -1,0 +1,14 @@
+AUDIO ECOSYSTEM
+Copyright (c) 2026 SAW SOUND LAB. All rights reserved.
+
+アプリケーションのコード（index.html 内のスクリプト・スタイル、build/ のスクリプト）とデザインは
+オープンソースではありません。許可なく複製・再配布・改変・販売することはできません。
+The application code (scripts and styles in index.html, scripts in build/) and design are NOT open source.
+No permission is granted to copy, redistribute, modify or sell them without written permission.
+
+収録している音声素材（audio/、instruments/）は、それぞれ元のライセンス（CC0 / CC BY / CC BY-SA /
+パブリックドメインなど）に従います。各素材のライセンスと出典は CREDITS.md と data/recording_licenses.json を参照してください。
+この LICENSE は、それらの素材に対する元のライセンス上の権利を制限しません。
+Bundled audio (audio/, instruments/) remains under each item's original license (CC0 / CC BY / CC BY-SA /
+public domain, etc.); see CREDITS.md and data/recording_licenses.json. This notice does not restrict any
+rights granted by those original licenses.

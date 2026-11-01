@@ -56,6 +56,10 @@ const EXACT={
 '複数の虫が鳴く、秋の合唱録音。':'An autumn chorus of several insect species.','澄んだ反復音。響きの間を残して配置。':'Clear repeating calls, placed with space to ring.','細く連続する高い声。':'A thin, continuous high-pitched call.','輪郭の強い反復する声。':'A sharply defined repeating call.',
 '兵庫・餘部で収録した秋の合唱。':'An autumn chorus recorded at Amarube, Hyōgo.','短いさえずり。録音自体が約4秒です。':'A short song; the recording itself is about 4 seconds.','笛のようなカエルの声。':'A flute-like frog call.',
 '複数種：Meloimorpha japonica 等':'Multiple species: Meloimorpha japonica etc.','該当なし':'n/a','水辺の実録音 / 録音地不明':'Waterside recording / location unknown',
+// 商用モード（v0.27）
+'商用モード — ライセンス区分で選ぶ':'Commercial mode — filter by license tier','使う素材':'Sources to use','すべての素材（CC BY-SA を含む）':'All sources (including CC BY-SA)','BY-SAを除く（販売・リール用）':'Exclude BY-SA (for sale & reels)','CC0・パブリックドメインのみ（表記不要）':'CC0 / public domain only (no attribution needed)',
+'書き出した音を販売物やリール動画に使う場合は「BY-SAを除く」を選んでください。対象外の素材は自律演奏・環境層・試聴・書き出しのすべてで鳴らさず、他の素材や合成音で代用しません。':'If you will use exported audio in products for sale or in reels, choose “Exclude BY-SA”. Excluded sources are silenced everywhere — autonomous play, ambience, previews and exports — and are never replaced by other recordings or synthesized sounds.',
+'参加中の生き物はすべて対象外のため、生物の声は無音です（代用しません）。':'All active creatures are excluded, so the creature layer is silent (no substitutes).','選んだ環境層はすべて対象外のため、環境層は無音です（代用しません）。':'All selected ambience layers are excluded, so the ambience is silent (no substitutes).',
 // 地域フィルター
 '地域・生息環境で選ぶ — GEOGRAPHIC FILTER':'GEOGRAPHIC FILTER — region & habitat','選んだ条件に合う実録音だけで自律演奏します。該当がない場合は他地域の録音や合成音で代用しません。生物の自然分布と録音地は別に判定します。':'Plays only real recordings that match. Nothing is substituted with other regions or synth sounds. Natural distribution and recording location are judged separately.',
 '地域':'Region','使わない（シーン設定）':'Off (use scene setting)','判定':'Basis','自然分布する種':'Species native here','その地域で録音':'Recorded in this region','固有種のみ（Japanのみ）':'Endemics only (Japan only)',
@@ -108,6 +112,8 @@ const NAMES=Object.assign({},EXTRA_NAMES),LATIN={};
 try{const recs=JSON.parse(document.getElementById('ae-recordings').textContent),meta=JSON.parse(document.getElementById('ae-wildlife-meta').textContent);
  for(const r of recs){const en=meta[r.id]&&meta[r.id].en;if(en){NAMES[r.jp]=en;if(r.latin)LATIN[r.latin]=en}}}catch(e){}
 const RULES=[
+ [/^使える実録音 (\d+)\/(\d+)件（環境層 (\d+)件）$/,m=>'Usable recordings '+m[1]+'/'+m[2]+' ('+m[3]+' ambience)'],[/^対象外の(\d+)件は代用せず鳴らしません。$/,m=>m[1]+' excluded source(s) will not play and are not substituted.'],
+ [/^参加中の(\d+)件は対象外のため鳴りません。$/,m=>m[1]+' active source(s) are excluded and will not play.'],[/^商用モードの対象外の素材です（(.+)）。代用はしません。$/,m=>'Excluded by commercial mode ('+m[1]+'). No substitute is played.'],
  [/^(\d+)種・素材が参加$/,m=>m[1]+' species & sources active'],[/^(\d+)音$/,m=>m[1]+' voices'],[/^(\d+)レイヤー$/,m=>m[1]+' layers'],[/^(\d+(?:\.\d+)?)秒$/,m=>m[1]+' s'],
  [/^(\d+)秒・原本全長$/,m=>m[1]+' s · full original'],[/^(\d+)秒・抜粋（原本 (\d+)秒）$/,m=>m[1]+' s · excerpt (original '+m[2]+' s)'],
  [/^生物 (\d+)$/,m=>'Creatures '+m[1]],[/^自動バランス (\d+%)$/,m=>'Auto balance '+m[1]],[/^音声メモリ (.+)$/,m=>'Audio memory '+m[1]],

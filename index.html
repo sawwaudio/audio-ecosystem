@@ -55,6 +55,7 @@
 <details><summary>旧合成音・抽象音を使う</summary><label class="legacyToggle"><input id="legacyNature" type="checkbox"> 実録音の環境層から旧合成環境音に切り替える</label><div class="micro">自然の実録音ではありません。旧プリセットの音色を残しています。</div><div id="natureControls"></div><span id="count-nature" class="micro"></span></details></section>
 <details id="bioSection" open><summary><span>1. 鳴かせる生き物を選ぶ</span><span class="micro">鳥・虫・動物・波 ▾</span></summary>
 <p class="micro" style="margin:12px 0">参加中の声を先頭に表示します。「この声を聴く」で音を確認し、「この音場に加える」で独立した声として重ねます。</p>
+<details class="scenePresets" id="rightsPanel" open><summary>商用モード — ライセンス区分で選ぶ</summary><p class="micro">書き出した音を販売物やリール動画に使う場合は「BY-SAを除く」を選んでください。対象外の素材は自律演奏・環境層・試聴・書き出しのすべてで鳴らさず、他の素材や合成音で代用しません。</p><div class="touchBar"><label for="rightsMode">使う素材</label><select id="rightsMode"><option value="all">すべての素材（CC BY-SA を含む）</option><option value="nosa">BY-SAを除く（販売・リール用）</option><option value="cc0">CC0・パブリックドメインのみ（表記不要）</option></select></div><p class="micro" id="rightsResult" role="status" aria-live="polite"></p></details>
 <details class="scenePresets" id="geoPanel" open><summary>地域・生息環境で選ぶ — GEOGRAPHIC FILTER</summary>
 <p class="micro">選んだ条件に合う実録音だけで自律演奏します。該当がない場合は他地域の録音や合成音で代用しません。生物の自然分布と録音地は別に判定します。</p>
 <div class="geoGrid">
@@ -328,6 +329,7 @@ function attributionText(entries,{scope='recording',date=new Date()}={}){
  const L=[];L.push('AUDIO ECOSYSTEM — クレジット・帰属表示 / Credits & Attribution');
  L.push((scope==='recording'?'録音日時 / Recorded: ':'作成日時 / Generated: ')+date.toISOString());
  L.push(scope==='recording'?'この録音で鳴った実録音素材：'+entries.length+'件（帰属表示が必要：'+req.length+'件） / Field & instrument recordings heard in this capture: '+entries.length+' ('+req.length+' require attribution)':'収録している実録音素材：'+entries.length+'件（帰属表示が必要：'+req.length+'件） / Recordings included in the app: '+entries.length+' ('+req.length+' require attribution)');
+ L.push(...rightsSummaryLine(entries));
  L.push('');L.push('この音声を公開・配布する場合は、以下の帰属表示（作品名・作者・出典・ライセンス・改変の有無）を添えてください。');
  L.push('If you publish or share this audio, include the attribution below (title, author, source, license, and that it was modified).');
  L.push('改変 / Modified: AUDIO ECOSYSTEM 内で抜粋・音量・定位・フェード・ミックス等の処理を行っています。 Excerpted, level-adjusted, panned, faded and mixed in AUDIO ECOSYSTEM.');
@@ -444,7 +446,7 @@ function syncEcosystem(){
 }
 function ecosystemWait(){const speed=ecosystem.rate/100;return R(4,11)+(1-speed)*R(12,26)}
 function resetBioSequence(){residentDue.clear();bioCooldown.clear();bioRecent.length=0;lastBioId=null;nextBioAt=ctx?ctx.currentTime+.1:0}
-function candidatePool(){return Object.entries(speciesDefinitions).flatMap(([group,rows])=>rows.map(row=>({id:row[0],group}))).filter(({id,group})=>speciesSettings[id].enabled&&speciesSettings[id].level>0&&p[group==='landscape'?'water':group]>0&&!activeBio.has(id)&&!loadingBio.has(id)&&(bioCooldown.get(id)||0)<=ctx.currentTime)}
+function candidatePool(){return Object.entries(speciesDefinitions).flatMap(([group,rows])=>rows.map(row=>({id:row[0],group}))).filter(({id,group})=>speciesSettings[id].enabled&&speciesSettings[id].level>0&&p[group==='landscape'?'water':group]>0&&!activeBio.has(id)&&!loadingBio.has(id)&&(bioCooldown.get(id)||0)<=ctx.currentTime&&rightsAllowed(id))}
 function chooseBio(pool){
  if(pool.length>1)pool=pool.filter(x=>x.id!==lastBioId);
  const fresh=pool.filter(x=>!bioRecent.includes(x.id));if(fresh.length)pool=fresh;
@@ -506,7 +508,7 @@ const nativePreview=$('previewPlayer');
 function previewMessage(message){$('previewStatus').textContent=message;for(const el of document.querySelectorAll('[data-preview-message]'))el.textContent=el.dataset.previewMessage===previewVoice?.id?message:''}
 function stopPreview(){previewEpoch++;if(previewVoice){nativePreview.pause();nativePreview.removeAttribute('src');nativePreview.load();previewVoice=null}previewMessage('試聴停止');}
 function previewSpecies(id){
- stopPreview();const r=recordings.find(x=>x.id===id),pick=r&&pickPreview(id);if(!r||!pick){previewMessage('実録音未収録です。合成模倣音は下の合成音試聴で確認できます。');return Promise.resolve(false)}
+ stopPreview();const r=recordings.find(x=>x.id===id),pick=r&&pickPreview(id);if(r&&!rightsAllowed(id)){previewMessage('商用モードの対象外の素材です（'+r.license+'）。代用はしません。');return Promise.resolve(false)}if(!r||!pick){previewMessage('実録音未収録です。合成模倣音は下の合成音試聴で確認できます。');return Promise.resolve(false)}
  // play() remains directly inside the user's click; no decode/resume awaits before it.
  if(playing)pause();stopSampleVoices();const token=++previewEpoch;previewVoice={id};const row=document.querySelector('[data-resident-id="'+id+'"]');(row||$('previewDock')).append(nativePreview);nativePreview.hidden=false;let partIndex=0,partOffset=0;nativePreview.src=pick.parts[0].path;nativePreview.volume=.8;const label=SOURCE_LABEL[pick.key];
  nativePreview.onplaying=()=>{if(token===previewEpoch)previewMessage('再生中：'+r.jp+' · '+label)};nativePreview.ontimeupdate=()=>{if(token===previewEpoch)previewMessage(r.jp+' · '+label+' '+(partOffset+nativePreview.currentTime).toFixed(1)+' / '+Math.round(pick.entry.duration||r.duration)+'秒')};nativePreview.onended=()=>{if(token!==previewEpoch)return;if(partIndex<pick.parts.length-1){partOffset+=pick.parts[partIndex].frames/pick.entry.sampleRate;partIndex++;nativePreview.src=pick.parts[partIndex].path;nativePreview.play().catch(()=>previewMessage('続きの再生待ち：下のプレイヤーの▶を押してください'));return}previewMessage('再生終了：'+r.jp+' · '+label);previewVoice=null};nativePreview.onerror=()=>{if(token===previewEpoch)previewMessage('再生エラー '+(nativePreview.error?.code||'')+'：下のプレイヤーの▶を押してください')};
@@ -535,6 +537,7 @@ async function loadEmbedded(){ $('realStatus').textContent=recordings.length+'�
 function stopBioVoices(){stopPreview();bioEpoch++;for(const v of activeBio.values()){try{v.source.stop()}catch(e){}detach(v.source,v.g,v.pan,v.mix);}activeBio.clear();}
 async function playSpecies(id,force=false){
  if(force)return previewSpecies(id);
+ if(!rightsAllowed(id))return false;
  if(activeBio.has(id)||loadingBio.has(id)||activeBio.size+loadingBio.size>=16)return false;loadingBio.add(id);if(!ctx)setup();const epoch=bioEpoch;try{await ctx.resume();await loadOne(id);if(epoch!==bioEpoch||(!force&&(!playing||!speciesSettings[id].enabled)))return false;
  const settings=speciesSettings[id],parent=Object.entries(speciesDefinitions).find(([,arr])=>arr.some(row=>row[0]===id))?.[0]||(recordings.find(r=>r.id===id)?.fieldBed?'landscape':null);if(!parent)return false;
  let level=force?Math.max(settings.level,35):settings.level;if(!force&&p[parent==='landscape'?'water':parent]<=0)return false;if(level<=0)return false;
@@ -577,7 +580,7 @@ function updateFieldLevels(){if(!ctx)return;for(const v of fieldVoices)v.volume.
 function stopFieldVoices(id){if(!id)fieldEpoch++;for(const v of [...fieldVoices])if(!id||v.id===id){try{v.source.stop()}catch{}detach(v.source,v.fade,v.volume,v.pan);fieldVoices.delete(v)}if(id)fieldNext.delete(id);else fieldNext.clear()}
 async function launchField(id){
  if(fieldPending.has(id)||fieldVoices.size+fieldPending.size>=2*Object.keys(fieldDefaults).length)return;fieldPending.add(id);const epoch=fieldEpoch;
- try{const buffer=await loadOne(id);if(epoch!==fieldEpoch||!playing||fieldConfig.legacy||fieldConfig.levels[id]<=0)return;
+ try{if(!rightsAllowed(id))return;const buffer=await loadOne(id);if(epoch!==fieldEpoch||!playing||fieldConfig.legacy||fieldConfig.levels[id]<=0||!rightsAllowed(id))return;
  const r=recordings.find(x=>x.id===id),t=ctx.currentTime+.025,d=buffer.duration,fade=Math.min(.8,d/4),source=ctx.createBufferSource(),env=G(0),volume=G(fieldConfig.levels[id]/100*fieldBalance()),pan=ctx.createStereoPanner?ctx.createStereoPanner():G();
  source.buffer=buffer;source.playbackRate.value=1;if(pan.pan)pan.pan.value=id==='forest-leaves'?.12:id==='river-esk'?-.12:0;
  source.connect(env);env.connect(volume);volume.connect(pan);pan.connect(master);
@@ -589,7 +592,7 @@ async function launchField(id){
 // v0.26 環境層のローテーション：同時に鳴るのは FIELD_MAX 層まで。それ以上選ばれている時は、1周（抜粋の長さ）ごとに待っている層と入れ替える。
 // 鳴っている層だけがメモリに固定されるので、環境層を増やしても音声メモリの上限に当たらない（待機中の層は通常のLRUで解放される）。
 const FIELD_MAX=4,fieldWaitSince=new Map();
-function fieldOn(){return Object.entries(fieldConfig.levels).filter(([,l])=>l>0).map(([id])=>id)}
+function fieldOn(){return Object.entries(fieldConfig.levels).filter(([id,l])=>l>0&&rightsAllowed(id)).map(([id])=>id)}
 function fieldTick(){if(!playing||!ctx||fieldConfig.legacy||auditionKey)return;const now=ctx.currentTime,on=fieldOn(),sounding=new Set([...[...fieldVoices].map(v=>v.id),...fieldPending]);
  for(const id of [...fieldWaitSince.keys()])if(!on.includes(id)||sounding.has(id))fieldWaitSince.delete(id);
  for(const id of on)if(!sounding.has(id)&&!fieldWaitSince.has(id))fieldWaitSince.set(id,now);
@@ -700,6 +703,53 @@ async function verifyHashes(filter){
 $('verifyHashes').onclick=()=>{$('verifyHashes').disabled=true;verifyHashes().catch(e=>$('verifyStatus').textContent=e.message).finally(()=>$('verifyHashes').disabled=false)};
 renderSourceStatus();
 window.__sourceDebug={get mode(){return sourceMode},setSourceMode,manifest:audioManifest,log:()=>sourceLog.slice(),failures:()=>Object.fromEntries(sourceFailures),instruments:()=>[...instrumentSources].map(([id,s])=>({id,...s})),verifyHashes,manifestFiles,joinWav,memory:()=>({pcmBytes:pcmBytes(),budget:PCM_BUDGET,species:speciesBuffers.size,instruments:instrumentBuffers.size})};
+
+// v0.27 商用モード（ライセンス区分フィルター） — docs/COMMERCIAL_POLICY.md 4-1
+// 区分 A：CC0・パブリックドメイン・自前（表記不要） / B：CC BY（表記必要） / C：CC BY-SA（継承あり。販売版・リールでは使わない）
+// 自律演奏の生物音・環境層・試聴・実録音ライブラリの▶・WAV書き出しのすべてに効く（発音の入口で判定する）。
+// 対象外の素材は他の素材や合成音で代用せず、鳴らさない。理由は画面に表示する。利用者がインポートした音声は利用者の責任として常に許可する。
+var RIGHTS={mode:'all'};
+const RIGHTS_MODES={all:'すべての素材（CC BY-SA を含む）',nosa:'BY-SAを除く（販売・リール用）',cc0:'CC0・パブリックドメインのみ（表記不要）'};
+const RIGHTS_TIER_LABEL={A:'A 表記不要（CC0・PD）',B:'B 表記必要（CC BY）',C:'C 継承あり（CC BY-SA）',X:'区分不明'};
+try{const m=localStorage.getItem('ae-rights');if(RIGHTS_MODES[m])RIGHTS.mode=m}catch(e){}
+function rightsTierOf(lic){lic=String(lic||'').trim();if(/BY-SA/i.test(lic))return 'C';if(/\b(NC|ND)\b/i.test(lic))return 'X';if(/^CC BY\b/i.test(lic))return 'B';if(/^(CC0|Public domain|PD\b|owned)/i.test(lic))return 'A';return 'X'}
+function rightsTierAllowed(tier,mode){mode=mode||((typeof RIGHTS==='object'&&RIGHTS)?RIGHTS.mode:'all');if(mode==='all')return true;if(mode==='nosa')return tier==='A'||tier==='B';return tier==='A'}
+function rightsAllowed(id){
+ if(typeof bufferOrigins!=='undefined'&&bufferOrigins.get(id)==='import')return true; // 利用者の音声：権利は利用者が確認（クレジットに別記）
+ const r=recordings.find(x=>x.id===id);if(!r)return true; // 録音のない合成音（コードで生成）は区分の対象外
+ return rightsTierAllowed(rightsTierOf(r.license));
+}
+for(const r of recordings)r.rightsTier=rightsTierOf(r.license);
+for(const s of instrumentSamples)s.rightsTier=rightsTierOf(s.license||'CC0');
+function rightsSummaryLine(entries){
+ const c={A:0,B:0,C:0,X:0,U:0};for(const e of entries){if(e.imported)c.U++;else c[rightsTierOf(e.license)]++}
+ return ['商用モード / Commercial mode: '+RIGHTS_MODES[RIGHTS.mode]+' / '+{all:'All sources (including CC BY-SA)',nosa:'Excluding BY-SA (for sale & reels)',cc0:'CC0 / public domain only (no attribution needed)'}[RIGHTS.mode],
+  'ライセンス区分 / Rights tiers: A（CC0・PD・表記不要 / no attribution）'+c.A+'件 · B（CC BY・表記必要 / attribution）'+c.B+'件 · C（CC BY-SA・継承あり / share-alike）'+c.C+'件'+(c.X?' · 区分不明 / unknown '+c.X+'件':'')+(c.U?' · 利用者の音声 / user-imported '+c.U+'件':'')]}
+function renderRights(){
+ const sel=$('rightsMode');if(sel)sel.value=RIGHTS.mode;
+ const ok=recordings.filter(r=>rightsAllowed(r.id)),blocked=recordings.length-ok.length,beds=ok.filter(r=>r.fieldBed).length;
+ const enabled=Object.entries(speciesSettings).filter(([id,v])=>v.enabled&&recordings.some(r=>r.id===id)),enabledOk=enabled.filter(([id])=>rightsAllowed(id));
+ const bedsOn=Object.entries(fieldConfig.levels).filter(([,l])=>l>0).map(([id])=>id),bedsOk=bedsOn.filter(rightsAllowed);
+ const parts=['使える実録音 '+ok.length+'/'+recordings.length+'件（環境層 '+beds+'件）'];
+ if(blocked)parts.push('対象外の'+blocked+'件は代用せず鳴らしません。');
+ if(enabled.length&&!enabledOk.length)parts.push('参加中の生き物はすべて対象外のため、生物の声は無音です（代用しません）。');
+ else if(enabled.length>enabledOk.length)parts.push('参加中の'+(enabled.length-enabledOk.length)+'件は対象外のため鳴りません。');
+ if(bedsOn.length&&!bedsOk.length&&!fieldConfig.legacy)parts.push('選んだ環境層はすべて対象外のため、環境層は無音です（代用しません）。');
+ const out=$('rightsResult');if(!out)return;const key=parts.join('|');if(out.dataset.key===key)return;out.dataset.key=key;
+ out.replaceChildren(...parts.flatMap((t,i)=>i?[' ',Object.assign(document.createElement('span'),{textContent:t})]:[Object.assign(document.createElement('span'),{textContent:t})]));
+}
+function applyRights(mode){
+ if(RIGHTS_MODES[mode])RIGHTS.mode=mode;try{localStorage.setItem('ae-rights',RIGHTS.mode)}catch(e){}
+ for(const id of [...activeBio.keys()])if(!rightsAllowed(id))fadeResident(id);
+ for(const v of [...fieldVoices])if(!rightsAllowed(v.id))stopFieldVoices(v.id);
+ if(previewVoice&&!rightsAllowed(previewVoice.id))stopPreview();
+ if(typeof resetBioSequence==='function'&&ctx)nextBioAt=ctx.currentTime+.1;
+ renderRights();if(typeof updateFieldLevels==='function')updateFieldLevels();
+}
+$('rightsMode').onchange=e=>applyRights(e.target.value);
+setInterval(renderRights,1500);renderRights();
+window.__rightsDebug={get mode(){return RIGHTS.mode},set:m=>{applyRights(m);return RIGHTS.mode},allowed:rightsAllowed,tierOf:rightsTierOf,summary:rightsSummaryLine,
+ pool:()=>ctx?candidatePool().map(x=>x.id):null,fieldOn:()=>fieldOn(),active:()=>({bio:[...activeBio.keys()],field:[...fieldVoices].map(v=>v.id),preview:previewVoice?.id||null})};
 
 // v0.24 GEOGRAPHIC / HABITAT FILTER — drives both the visible list and the autonomous species pool.
 const wildMeta=JSON.parse($('ae-wildlife-meta').textContent);
@@ -840,6 +890,10 @@ const EXACT={
 '複数の虫が鳴く、秋の合唱録音。':'An autumn chorus of several insect species.','澄んだ反復音。響きの間を残して配置。':'Clear repeating calls, placed with space to ring.','細く連続する高い声。':'A thin, continuous high-pitched call.','輪郭の強い反復する声。':'A sharply defined repeating call.',
 '兵庫・餘部で収録した秋の合唱。':'An autumn chorus recorded at Amarube, Hyōgo.','短いさえずり。録音自体が約4秒です。':'A short song; the recording itself is about 4 seconds.','笛のようなカエルの声。':'A flute-like frog call.',
 '複数種：Meloimorpha japonica 等':'Multiple species: Meloimorpha japonica etc.','該当なし':'n/a','水辺の実録音 / 録音地不明':'Waterside recording / location unknown',
+// 商用モード（v0.27）
+'商用モード — ライセンス区分で選ぶ':'Commercial mode — filter by license tier','使う素材':'Sources to use','すべての素材（CC BY-SA を含む）':'All sources (including CC BY-SA)','BY-SAを除く（販売・リール用）':'Exclude BY-SA (for sale & reels)','CC0・パブリックドメインのみ（表記不要）':'CC0 / public domain only (no attribution needed)',
+'書き出した音を販売物やリール動画に使う場合は「BY-SAを除く」を選んでください。対象外の素材は自律演奏・環境層・試聴・書き出しのすべてで鳴らさず、他の素材や合成音で代用しません。':'If you will use exported audio in products for sale or in reels, choose “Exclude BY-SA”. Excluded sources are silenced everywhere — autonomous play, ambience, previews and exports — and are never replaced by other recordings or synthesized sounds.',
+'参加中の生き物はすべて対象外のため、生物の声は無音です（代用しません）。':'All active creatures are excluded, so the creature layer is silent (no substitutes).','選んだ環境層はすべて対象外のため、環境層は無音です（代用しません）。':'All selected ambience layers are excluded, so the ambience is silent (no substitutes).',
 // 地域フィルター
 '地域・生息環境で選ぶ — GEOGRAPHIC FILTER':'GEOGRAPHIC FILTER — region & habitat','選んだ条件に合う実録音だけで自律演奏します。該当がない場合は他地域の録音や合成音で代用しません。生物の自然分布と録音地は別に判定します。':'Plays only real recordings that match. Nothing is substituted with other regions or synth sounds. Natural distribution and recording location are judged separately.',
 '地域':'Region','使わない（シーン設定）':'Off (use scene setting)','判定':'Basis','自然分布する種':'Species native here','その地域で録音':'Recorded in this region','固有種のみ（Japanのみ）':'Endemics only (Japan only)',
@@ -892,6 +946,8 @@ const NAMES=Object.assign({},EXTRA_NAMES),LATIN={};
 try{const recs=JSON.parse(document.getElementById('ae-recordings').textContent),meta=JSON.parse(document.getElementById('ae-wildlife-meta').textContent);
  for(const r of recs){const en=meta[r.id]&&meta[r.id].en;if(en){NAMES[r.jp]=en;if(r.latin)LATIN[r.latin]=en}}}catch(e){}
 const RULES=[
+ [/^使える実録音 (\d+)\/(\d+)件（環境層 (\d+)件）$/,m=>'Usable recordings '+m[1]+'/'+m[2]+' ('+m[3]+' ambience)'],[/^対象外の(\d+)件は代用せず鳴らしません。$/,m=>m[1]+' excluded source(s) will not play and are not substituted.'],
+ [/^参加中の(\d+)件は対象外のため鳴りません。$/,m=>m[1]+' active source(s) are excluded and will not play.'],[/^商用モードの対象外の素材です（(.+)）。代用はしません。$/,m=>'Excluded by commercial mode ('+m[1]+'). No substitute is played.'],
  [/^(\d+)種・素材が参加$/,m=>m[1]+' species & sources active'],[/^(\d+)音$/,m=>m[1]+' voices'],[/^(\d+)レイヤー$/,m=>m[1]+' layers'],[/^(\d+(?:\.\d+)?)秒$/,m=>m[1]+' s'],
  [/^(\d+)秒・原本全長$/,m=>m[1]+' s · full original'],[/^(\d+)秒・抜粋（原本 (\d+)秒）$/,m=>m[1]+' s · excerpt (original '+m[2]+' s)'],
  [/^生物 (\d+)$/,m=>'Creatures '+m[1]],[/^自動バランス (\d+%)$/,m=>'Auto balance '+m[1]],[/^音声メモリ (.+)$/,m=>'Audio memory '+m[1]],

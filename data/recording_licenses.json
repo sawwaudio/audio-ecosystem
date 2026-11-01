@@ -47,7 +47,8 @@
   "previewFile": "blackbird.mp3",
   "previewGain": 0.9327868378505203,
   "previewRms": 0.0820038691163063,
-  "previewPeak": 0.6968365907669067
+  "previewPeak": 0.6968365907669067,
+  "rightsTier": "C"
  },
  {
   "id": "american-field-cricket",
@@ -97,7 +98,8 @@
   "previewFile": "american-field-cricket.mp3",
   "previewGain": 2.15993893253146,
   "previewRms": 0.036749232560396194,
-  "previewPeak": 0.30093443393707275
+  "previewPeak": 0.30093443393707275,
+  "rightsTier": "C"
  },
  {
   "id": "barking-treefrog",
@@ -149,7 +151,8 @@
   "previewFile": "barking-treefrog.mp3",
   "previewGain": 0.6677239686492997,
   "previewRms": 0.09617816656827927,
-  "previewPeak": 0.9734561443328857
+  "previewPeak": 0.9734561443328857,
+  "rightsTier": "C"
  },
  {
   "id": "autumn-insects",
@@ -199,7 +202,8 @@
   "previewFile": "autumn-insects.mp3",
   "previewGain": 0.6982165664146345,
   "previewRms": 0.06366608291864395,
-  "previewPeak": 0.9309432506561279
+  "previewPeak": 0.9309432506561279,
+  "rightsTier": "B"
  },
  {
   "id": "cicada",
@@ -249,7 +253,8 @@
   "previewFile": "cicada.mp3",
   "previewGain": 1.0057788525983735,
   "previewRms": 0.09492288529872894,
-  "previewPeak": 0.6462653279304504
+  "previewPeak": 0.6462653279304504,
+  "rightsTier": "B"
  },
  {
   "id": "higurashi",
@@ -299,7 +304,8 @@
   "previewFile": "higurashi.mp3",
   "previewGain": 1.5175213110264612,
   "previewRms": 0.027282247319817543,
-  "previewPeak": 0.42833006381988525
+  "previewPeak": 0.42833006381988525,
+  "rightsTier": "B"
  },
  {
   "id": "niiniizemi",
@@ -349,7 +355,8 @@
   "previewFile": "niiniizemi.mp3",
   "previewGain": 2.3276619273622075,
   "previewRms": 0.05009360983967781,
-  "previewPeak": 0.2792501747608185
+  "previewPeak": 0.2792501747608185,
+  "rightsTier": "B"
  },
  {
   "id": "tsukutsukuboshi",
@@ -399,7 +406,8 @@
   "previewFile": "tsukutsukuboshi.mp3",
   "previewGain": 0.9320886669655338,
   "previewRms": 0.05289849638938904,
-  "previewPeak": 0.6973585486412048
+  "previewPeak": 0.6973585486412048,
+  "rightsTier": "B"
  },
  {
   "id": "minminzemi",
@@ -449,7 +457,8 @@
   "previewFile": "minminzemi.mp3",
   "previewGain": 2.285333861434276,
   "previewRms": 0.0620354525744915,
-  "previewPeak": 0.2844223380088806
+  "previewPeak": 0.2844223380088806,
+  "rightsTier": "C"
  },
  {
   "id": "japanese-bush-warbler",
@@ -499,7 +508,8 @@
   "previewFile": "japanese-bush-warbler.mp3",
   "previewGain": 1.7559267975674762,
   "previewRms": 0.17261594533920288,
-  "previewPeak": 0.3701748847961426
+  "previewPeak": 0.3701748847961426,
+  "rightsTier": "B"
  },
  {
   "id": "hototogisu",
@@ -549,7 +559,8 @@
   "previewFile": "hototogisu.mp3",
   "previewGain": 1.0586383575888825,
   "previewRms": 0.08591441065073013,
-  "previewPeak": 0.6139962673187256
+  "previewPeak": 0.6139962673187256,
+  "rightsTier": "B"
  },
  {
   "id": "tide-rocks",
@@ -599,7 +610,8 @@
   "previewFile": "tide-rocks.mp3",
   "previewGain": 1.8612868649546883,
   "previewRms": 0.04888858646154404,
-  "previewPeak": 0.34922075271606445
+  "previewPeak": 0.34922075271606445,
+  "rightsTier": "A"
  },
  {
   "id": "rocky-beach",
@@ -649,7 +661,8 @@
   "previewFile": "rocky-beach.mp3",
   "previewGain": 4,
   "previewRms": 0.00028313026996329427,
-  "previewPeak": 0.0033473894000053406
+  "previewPeak": 0.0033473894000053406,
+  "rightsTier": "B"
  },
  {
   "id": "kajika-frog",
@@ -699,7 +712,8 @@
   "previewFile": "kajika-frog.mp3",
   "previewGain": 2.392055137608219,
   "previewRms": 0.014910344034433365,
-  "previewPeak": 0.2717328667640686
+  "previewPeak": 0.2717328667640686,
+  "rightsTier": "C"
  },
  {
   "id": "brown-eared-bulbul",
@@ -749,7 +763,8 @@
   "previewFile": "brown-eared-bulbul.mp3",
   "previewGain": 1.8128577328835265,
   "previewRms": 0.035310808569192886,
-  "previewPeak": 0.35854992270469666
+  "previewPeak": 0.35854992270469666,
+  "rightsTier": "B"
  },
  {
   "id": "autumn-insects-2",
@@ -799,7 +814,8 @@
   "previewFile": "autumn-insects-2.mp3",
   "previewGain": 0.6094173993146033,
   "previewRms": 0.037959322333335876,
-  "previewPeak": 1.0665924549102783
+  "previewPeak": 1.0665924549102783,
+  "rightsTier": "B"
  },
  {
   "id": "tree-cricket-europe",
@@ -849,7 +865,8 @@
   "previewFile": "tree-cricket-europe.mp3",
   "previewGain": 0.950634172195591,
   "previewRms": 0.21105606853961945,
-  "previewPeak": 0.6837540864944458
+  "previewPeak": 0.6837540864944458,
+  "rightsTier": "C"
  },
  {
   "id": "field-cricket-europe",
@@ -899,7 +916,8 @@
   "previewFile": "field-cricket-europe.mp3",
   "previewGain": 0.4690307640960531,
   "previewRms": 0.2671172320842743,
-  "previewPeak": 1.3858366012573242
+  "previewPeak": 1.3858366012573242,
+  "rightsTier": "C"
  },
  {
   "id": "river-esk",
@@ -951,7 +969,8 @@
   "previewFile": "river-esk.mp3",
   "previewGain": 1.7899909328406471,
   "previewRms": 0.048416618257761,
-  "previewPeak": 0.3631303310394287
+  "previewPeak": 0.3631303310394287,
+  "rightsTier": "C"
  },
  {
   "id": "forest-leaves",
@@ -1002,7 +1021,8 @@
   "previewFile": "forest-leaves.mp3",
   "previewGain": 3.221244898584619,
   "previewRms": 0.020444083958864212,
-  "previewPeak": 0.20178534090518951
+  "previewPeak": 0.20178534090518951,
+  "rightsTier": "A"
  },
  {
   "id": "forest-wind",
@@ -1054,7 +1074,8 @@
   "previewFile": "forest-wind.mp3",
   "previewGain": 1.57060862866225,
   "previewRms": 0.0452815443277359,
-  "previewPeak": 0.4138523042201996
+  "previewPeak": 0.4138523042201996,
+  "rightsTier": "C"
  },
  {
   "id": "rain-field",
@@ -1106,7 +1127,8 @@
   "previewFile": "rain-field.mp3",
   "previewGain": 1.0170146138857887,
   "previewRms": 0.041210662573575974,
-  "previewPeak": 0.6391255259513855
+  "previewPeak": 0.6391255259513855,
+  "rightsTier": "A"
  },
  {
   "id": "fire-field",
@@ -1158,7 +1180,8 @@
   "previewFile": "fire-field.mp3",
   "previewGain": 3.8497111707983414,
   "previewRms": 0.005476578138768673,
-  "previewPeak": 0.1688438355922699
+  "previewPeak": 0.1688438355922699,
+  "rightsTier": "A"
  },
  {
   "id": "gampsocleis-glabra",
@@ -1201,7 +1224,8 @@
   "embeddedDuration": 30.226984,
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
-  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。"
+  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "rightsTier": "C"
  },
  {
   "id": "locust",
@@ -1244,7 +1268,8 @@
   "embeddedDuration": 21.49229,
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
-  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。"
+  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "rightsTier": "C"
  },
  {
   "id": "tettigonia-viridissima",
@@ -1287,7 +1312,8 @@
   "embeddedDuration": 34.890045,
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
-  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。"
+  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "rightsTier": "C"
  },
  {
   "id": "tettigonia-cantans",
@@ -1330,7 +1356,8 @@
   "embeddedDuration": 34.666395,
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
-  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。"
+  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "rightsTier": "C"
  },
  {
   "id": "chorthippus-biguttulus",
@@ -1373,7 +1400,8 @@
   "embeddedDuration": 28.44644,
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
-  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。"
+  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "rightsTier": "C"
  },
  {
   "id": "chorthippus-brunneus",
@@ -1416,7 +1444,8 @@
   "embeddedDuration": 26.317483,
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
-  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。"
+  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "rightsTier": "C"
  },
  {
   "id": "sparrow",
@@ -1459,7 +1488,8 @@
   "embeddedDuration": 11,
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
-  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。"
+  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "rightsTier": "C"
  },
  {
   "id": "swallow",
@@ -1502,7 +1532,8 @@
   "embeddedDuration": 18.546939,
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
-  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。"
+  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "rightsTier": "C"
  },
  {
   "id": "white-eye",
@@ -1545,7 +1576,8 @@
   "embeddedDuration": 5.986395,
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
-  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。"
+  "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "rightsTier": "A"
  },
  {
   "id": "kashiwa-insects",
@@ -1596,7 +1628,8 @@
   "previewGain": 9.799698,
   "previewRms": 0.005000396125380734,
   "previewPeak": 0.03070296347141266,
-  "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）"
+  "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "rightsTier": "A"
  },
  {
   "id": "bamboo-stream",
@@ -1647,7 +1680,8 @@
   "previewGain": 16.0,
   "previewRms": 0.0011976370673128312,
   "previewPeak": 0.010272033512592316,
-  "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）"
+  "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "rightsTier": "A"
  },
  {
   "id": "ricefield-frogs",
@@ -1698,7 +1732,8 @@
   "previewGain": 0.806068,
   "previewRms": 0.06079184362311935,
   "previewPeak": 0.5289493799209595,
-  "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）"
+  "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "rightsTier": "B"
  },
  {
   "id": "kyoto-rain",
@@ -1749,6 +1784,7 @@
   "previewGain": 0.831148,
   "previewRms": 0.05895745308452062,
   "previewPeak": 0.3453735113143921,
-  "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）"
+  "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "rightsTier": "B"
  }
 ]

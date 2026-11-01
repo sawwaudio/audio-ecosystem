@@ -1506,5 +1506,206 @@
    "analysedFrom": "pcm"
   },
   "note": "日本録音の環境層（v0.25）。生息環境が市街地の庭のため、生息環境フィルターには使わない。"
+ },
+ "takayama-river": {
+  "en": "River at Takayama (Japan)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "日本",
+  "recordedArea": "高山（作品名）",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "川（原典は作品名「River Takayama Soft」とタグ「WATERFALL」のみ）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "river"
+  ],
+  "activity": [],
+  "activityBasis": null,
+  "soundRoles": [
+   "Atmosphere",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.1002,
+   "tonality": 0.0745,
+   "envCV": 0.0979,
+   "pulseHz": 2.9851,
+   "pulseStrength": 0.0513,
+   "centroidHz": 1194.6817,
+   "activity": 0.0,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "日本録音の環境層（v0.28）。録音地は作品名とタグによる。"
+ },
+ "california-stream": {
+  "en": "Forest stream (California)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "米国",
+  "recordedArea": "米国カリフォルニア州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "滝の下流の渓流（原典記載）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "river",
+   "temperate_forest"
+  ],
+  "activity": [],
+  "activityBasis": null,
+  "soundRoles": [
+   "Atmosphere",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.199,
+   "tonality": 0.0766,
+   "envCV": 0.3191,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1763.4816,
+   "activity": 0.0185,
+   "autoRoles": [
+    "Atmosphere",
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "環境層（v0.28）。CC0（表記不要）。"
+ },
+ "midwest-woods-wind": {
+  "en": "Late-summer woods, leaves and wind (US Midwest)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "米国",
+  "recordedArea": "米国中西部",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "静かな森（原典記載。少数の鳥を含む）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "録音時刻（原典記載：平日の日中）",
+  "soundRoles": [
+   "Atmosphere",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0436,
+   "tonality": 0.2726,
+   "envCV": 0.3204,
+   "pulseHz": 18.1818,
+   "pulseStrength": 0.5713,
+   "centroidHz": 744.9373,
+   "activity": 0.0216,
+   "autoRoles": [
+    "Atmosphere",
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "環境層（v0.28）。CC0（表記不要）。"
+ },
+ "tokyo-park-cicadas": {
+  "en": "Summer cicada chorus (park in Tokyo)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "日本",
+  "recordedArea": "東京都",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "都市公園（原典記載）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "録音時刻（原典記載：夏の日中）",
+  "soundRoles": [
+   "Drone",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.1429,
+   "tonality": 0.056,
+   "envCV": 0.1572,
+   "pulseHz": 15.3846,
+   "pulseStrength": 0.7883,
+   "centroidHz": 4501.2834,
+   "activity": 0.0,
+   "autoRoles": [
+    "Atmosphere",
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "日本録音の環境層（v0.28）。"
+ },
+ "nakameguro-cicadas": {
+  "en": "Cicadas by the Meguro River (Nakameguro, Tokyo)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "日本",
+  "recordedArea": "東京都目黒区",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "市街地の川沿い（原典記載。遠くの交通音あり）",
+  "wildOrCaptive": "野外",
+  "habitats": [],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "セミの一般的な鳴く時間帯（録音時刻の記載なし）",
+  "soundRoles": [
+   "Drone",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.1119,
+   "tonality": 0.0451,
+   "envCV": 0.0899,
+   "pulseHz": 14.2857,
+   "pulseStrength": 0.4754,
+   "centroidHz": 5888.0108,
+   "activity": 0.0,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "日本録音の環境層（v0.28）。市街地のため生息環境フィルターには使わない。生息環境が市街地の庭のため、生息環境フィルターには使わない。"
  }
 }

@@ -56,7 +56,7 @@ for b in J['beds']:
              embeddedSha256=pc['pcmDataSha256'], embeddedDuration=float(b['excerpt']), embeddedSampleRate=b['sr'], embeddedChannels=b['ch'],
              embeddedOffset=float(b['start']), embeddedOriginalBytes=False, pcmEquality=True,
              performanceGain=round(cp['gain'], 6),
-             changes=f"原本から {excerpt}（45秒）を{how}。区間は1秒ごとのRMSの揺れが最小の区間を自動選択。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+             changes=f"原本から {excerpt}（{b['excerpt']}秒）を{how}。区間は1秒ごとのRMSの揺れが最小の区間を自動選択。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
              validationV025='PASS: 原本SHA-256、抜粋のビット完全一致、Chromiumでのデコードと環境層の発音。聴感と実機は未検証。',
              previewFormat='MP3', previewSha256=cp['sha256'], previewFile=rid + '.mp3', previewGain=round(cp['gain'], 6),
              previewRms=cp['rms'], previewPeak=cp['peak'], masterLocation='オーナーのMac（~/Downloads、原本は無加工）')
@@ -148,7 +148,7 @@ rows = []
 for b in J['beds']:
     m = b['meta']; url = f"https://freesound.org/people/{m['user']}/sounds/{m['fs']}/"
     if '| ' + m['id'] + ' |' in cr: continue
-    rows.append(f"| {m['id']} | {m['jp']}（{b['start']}〜{b['start'] + 45}秒の抜粋） | {m['author']} | [{m['license']}]({m['licenseURL']}) | [{m['title']}]({url}) |")
+    rows.append(f"| {m['id']} | {m['jp']}（{b['start']}〜{b['start'] + b['excerpt']}秒の抜粋） | {m['author']} | [{m['license']}]({m['licenseURL']}) | [{m['title']}]({url}) |")
 if rows:
     i = cr.index(anchor_line); j = cr.rfind('\n|', 0, i); j = cr.index('\n', j + 1)
     cr = cr[:j] + '\n' + '\n'.join(rows) + cr[j:]

@@ -97,8 +97,8 @@ def main():
         n = len(x) // sr
         db = np.array([10 * np.log10(max(1e-12, (x[i * sr:(i + 1) * sr] ** 2).mean())) for i in range(n)])
         pk = np.array([np.abs(x[i * sr:(i + 1) * sr]).max() for i in range(n)])
-        L = int(EXCERPT)
-        lo, hi = 5, n - 5 - L
+        L = int(min(EXCERPT, n - 2))  # 原本が短い場合は全長に近い長さ
+        lo = min(5, max(0, (n - L) // 2)); hi = n - lo - L
         med = float(np.median(db))
         best = None
         for s in range(lo, hi + 1):

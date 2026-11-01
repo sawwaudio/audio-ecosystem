@@ -1,0 +1,389 @@
+{
+ "target": 0.03464990840950625,
+ "targetFrom": "v0.25 と同じ基準（既存の環境層5本の中央値）",
+ "beds": [
+  {
+   "meta": {
+    "id": "takayama-river",
+    "fs": 746927,
+    "user": "kzarkses",
+    "file": "746927__kzarkses__watrfall_river-takayama-soft_cp_none_zoom-sg.wav",
+    "sha": "847535220f4b222c3afb1aac1d6bc10b8fe2956db95747826ec5a1cba9188b8d",
+    "jp": "高山の川（日本）",
+    "en": "River at Takayama (Japan)",
+    "title": "WATRFall_River Takayama Soft_CP_NONE_ZOOM SG",
+    "author": "kzarkses",
+    "license": "CC BY 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+    "date": "不明（Freesound公開 2024-07-20）",
+    "location": "日本・高山（作品名とタグ。県名などの記載なし）",
+    "locationEn": "Takayama, Japan (from title and tags; no prefecture given)",
+    "area": "高山（作品名）",
+    "habitats": [
+     "river"
+    ],
+    "activity": [],
+    "activityBasis": null,
+    "roles": [
+     "Atmosphere",
+     "Texture"
+    ],
+    "env": "川（原典は作品名「River Takayama Soft」とタグ「WATERFALL」のみ）",
+    "notes": "川の流れ。録音地は作品名の「Takayama」とタグ「JAPAN」による（県名・日時の記載なし）。Zoom（SGマイク）。既定の川（Esk川・CC BY-SA）の置き換え。",
+    "japan": true,
+    "defaultLevel": 38,
+    "metaNote": "日本録音の環境層（v0.28）。録音地は作品名とタグによる。",
+    "added": "v0.28"
+   },
+   "sr": 96000,
+   "ch": 2,
+   "srcDuration": 107.476,
+   "srcBytes": 61906912,
+   "start": 53,
+   "excerpt": 45,
+   "peak": 0.2531815767288208,
+   "rmsDb": -26.42,
+   "score": 0.31,
+   "pcm": {
+    "parts": [
+     {
+      "path": "audio/pcm/takayama-river.part1.wav",
+      "bytes": 14680106,
+      "sha256": "5f271759772033e3d81252f9edf8b40b5d8c8ff0642df1ac347c9d4a010d65dd",
+      "frames": 2446677
+     },
+     {
+      "path": "audio/pcm/takayama-river.part2.wav",
+      "bytes": 11239982,
+      "sha256": "66904376239d5895343e543e885f1a56a6fcd802f729f7a0a8f8883c41151443",
+      "frames": 1873323
+     }
+    ],
+    "frames": 4320000,
+    "pcmDataSha256": "99f29c89be49a78d1104fc7486c00fcbb453747b7d4f93d8ffc53dede1210e12",
+    "gain": 0.7258795649502465,
+    "exact": true,
+    "srcCodec": "pcm_s24le",
+    "srcBits": 24
+   },
+   "compat": {
+    "path": "audio/compat/takayama-river.mp3",
+    "bytes": 721023,
+    "sha256": "f6969eb1681e6cf7b266265acadcdc4cf5cfcd1c0d8759cc952b21d03092cdcc",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "gain": 1.0799566263571232,
+    "rms": 0.04537438746313599,
+    "peak": 0.23964205384254456
+   }
+  },
+  {
+   "meta": {
+    "id": "california-stream",
+    "fs": 617253,
+    "user": "ultraaccel",
+    "file": "617253__ultraaccel__running-water-downstream-from-waterfall-in-a-california-forest.wav",
+    "sha": "136353e0f082c9e8b62fd8ec20637fbd9b3c3dd4332be95e88e98f9f7bf8dd93",
+    "jp": "森の渓流（カリフォルニア）",
+    "en": "Forest stream (California)",
+    "title": "Running Water - Downstream from Waterfall in a California Forest",
+    "author": "ultraaccel",
+    "license": "CC0 1.0",
+    "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "date": "不明（Freesound公開 2022-02-03）",
+    "location": "米国カリフォルニア州の森（滝の下流）",
+    "locationEn": "Forest stream below a waterfall, California, USA",
+    "area": "米国カリフォルニア州",
+    "habitats": [
+     "river",
+     "temperate_forest"
+    ],
+    "activity": [],
+    "activityBasis": null,
+    "roles": [
+     "Atmosphere",
+     "Texture"
+    ],
+    "env": "滝の下流の渓流（原典記載）",
+    "notes": "渓流の実録音。原本が39秒のため、全長に近い長さを使う。",
+    "japan": false,
+    "country": "米国",
+    "regions": [
+     "north_america"
+    ],
+    "defaultLevel": 0,
+    "metaNote": "環境層（v0.28）。CC0（表記不要）。",
+    "added": "v0.28"
+   },
+   "sr": 48000,
+   "ch": 2,
+   "srcDuration": 39.432,
+   "srcBytes": 11357104,
+   "start": 1,
+   "excerpt": 37,
+   "peak": 0.7093230485916138,
+   "rmsDb": -24.54,
+   "score": 2.802,
+   "pcm": {
+    "parts": [
+     {
+      "path": "audio/pcm/california-stream.wav",
+      "bytes": 10656044,
+      "sha256": "27f5bd73935a66e47eedaaa9e93c703ebb9f70d3f0e2df5d1ac971127218e730",
+      "frames": 1776000
+     }
+    ],
+    "frames": 1776000,
+    "pcmDataSha256": "8106eddd414d93ac342b809cf05a680d280085114595a6281d3af17ae404b454",
+    "gain": 0.5843316044447049,
+    "exact": true,
+    "srcCodec": "pcm_s24le",
+    "srcBits": 24
+   },
+   "compat": {
+    "path": "audio/compat/california-stream.mp3",
+    "bytes": 593128,
+    "sha256": "12dacf7a66815461ecd8d7e5d2af7a445e9319af472af34eebffef092324480a",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 37.0,
+    "gain": 1.0071249795481103,
+    "rms": 0.0486556995435624,
+    "peak": 0.36989331245422363
+   }
+  },
+  {
+   "meta": {
+    "id": "midwest-woods-wind",
+    "fs": 669113,
+    "user": "kvgarlic",
+    "file": "669113__kvgarlic__latesummer-quiet-woods-and-leaves-and-wind-september-13-2022.wav",
+    "sha": "e88e8d18eb2b1642706b1df01fa97e9bdc929b21d52828e6b812ee98d4a26fac",
+    "jp": "晩夏の森の風と葉（米国中西部）",
+    "en": "Late-summer woods, leaves and wind (US Midwest)",
+    "title": "LateSummer quiet woods and Leaves and Wind SEPTEMBER 13 2022.WAV",
+    "author": "kvgarlic",
+    "license": "CC0 1.0",
+    "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "date": "2022-09-13（作品名）",
+    "location": "米国中西部の森",
+    "locationEn": "Woods in the US Midwest",
+    "area": "米国中西部",
+    "habitats": [
+     "temperate_forest"
+    ],
+    "activity": [
+     "day"
+    ],
+    "activityBasis": "録音時刻（原典記載：平日の日中）",
+    "roles": [
+     "Atmosphere",
+     "Texture"
+    ],
+    "env": "静かな森（原典記載。少数の鳥を含む）",
+    "notes": "北寄りの風と葉、少数の鳥（種は未特定）。サンプルレート96,096Hz（原本どおり）。松林の強風（CC BY-SA）の置き換え候補。",
+    "japan": false,
+    "country": "米国",
+    "regions": [
+     "north_america"
+    ],
+    "defaultLevel": 0,
+    "metaNote": "環境層（v0.28）。CC0（表記不要）。",
+    "added": "v0.28"
+   },
+   "sr": 96096,
+   "ch": 2,
+   "srcDuration": 572.092408,
+   "srcBytes": 329857510,
+   "start": 227,
+   "excerpt": 45,
+   "peak": 0.07699394226074219,
+   "rmsDb": -38.78,
+   "score": 2.113,
+   "pcm": {
+    "parts": [
+     {
+      "path": "audio/pcm/midwest-woods-wind.part1.wav",
+      "bytes": 14680106,
+      "sha256": "49df9e282a64f63b1a5a0f05926bcafc52916bbf7aa76b25e615f3f05edd2327",
+      "frames": 2446677
+     },
+     {
+      "path": "audio/pcm/midwest-woods-wind.part2.wav",
+      "bytes": 11265902,
+      "sha256": "a211b54c2af335be20a8329de79b8bd5ade2da6185b24501034d066c4dfa15fe",
+      "frames": 1877643
+     }
+    ],
+    "frames": 4324320,
+    "pcmDataSha256": "190b71bc4ea2e2237864efe291e0399cc8aa80b9d9bd3d1330a15c1ec79946d9",
+    "gain": 3.012077138415515,
+    "exact": true,
+    "srcCodec": "pcm_s24le",
+    "srcBits": 24
+   },
+   "compat": {
+    "path": "audio/compat/midwest-woods-wind.mp3",
+    "bytes": 721023,
+    "sha256": "59622de65d297d7edb0ea3c2208459afe763d018eb8213cf18dc44e1599503fa",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "gain": 6.767595751898724,
+    "rms": 0.007240735440493936,
+    "peak": 0.047501835972070694
+   }
+  },
+  {
+   "meta": {
+    "id": "tokyo-park-cicadas",
+    "fs": 400179,
+    "user": "harrietniamh",
+    "file": "400179__harrietniamh__summer-cicada.wav",
+    "sha": "4f3dbc486aa6b291ef8a2369b61bdbc0c760032c31a606acf7e3b9eec250cd10",
+    "jp": "夏のセミの合唱（東京の公園）",
+    "en": "Summer cicada chorus (park in Tokyo)",
+    "title": "Summer Cicada",
+    "author": "harrietniamh",
+    "license": "CC BY 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+    "date": "夏・日中（原典記載。年は不明、Freesound公開 2017-08-22）",
+    "location": "東京都内の公園",
+    "locationEn": "A park in Tokyo, Japan",
+    "area": "東京都",
+    "habitats": [
+     "temperate_forest"
+    ],
+    "activity": [
+     "day"
+    ],
+    "activityBasis": "録音時刻（原典記載：夏の日中）",
+    "roles": [
+     "Drone",
+     "Texture"
+    ],
+    "env": "都市公園（原典記載）",
+    "notes": "セミの合唱。種は未特定（推測で特定しない）。種数KPIに加算しない。Zoom H4n。原本は32-bit浮動小数点のため24-bitへ変換。",
+    "japan": true,
+    "chorus": true,
+    "defaultLevel": 0,
+    "metaNote": "日本録音の環境層（v0.28）。",
+    "added": "v0.28"
+   },
+   "sr": 48000,
+   "ch": 2,
+   "srcDuration": 50.466875,
+   "srcBytes": 19388916,
+   "start": 3,
+   "excerpt": 45,
+   "peak": 0.13211071491241455,
+   "rmsDb": -35.09,
+   "score": 2.313,
+   "pcm": {
+    "parts": [
+     {
+      "path": "audio/pcm/tokyo-park-cicadas.wav",
+      "bytes": 12960044,
+      "sha256": "932861332a2218d92f119002bef49895515774adbb85756a67670afc97f15b02",
+      "frames": 2160000
+     }
+    ],
+    "frames": 2160000,
+    "pcmDataSha256": "95c99cf97e68998835c363b1c30f1d01d52581a6edc20d58cb322fb3dbb6f02b",
+    "gain": 1.9679504616941388,
+    "exact": false,
+    "srcCodec": "pcm_f32le",
+    "srcBits": 32
+   },
+   "compat": {
+    "path": "audio/compat/tokyo-park-cicadas.mp3",
+    "bytes": 721023,
+    "sha256": "20de3c74ced5b34113f884db93d2455a6c6afe6d835b695d79b242570365114a",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "gain": 3.9753994053528214,
+    "rms": 0.01232640180549614,
+    "peak": 0.08062513172626495
+   }
+  },
+  {
+   "meta": {
+    "id": "nakameguro-cicadas",
+    "fs": 817737,
+    "user": "naotokui",
+    "file": "817737__naotokui__cicadas-in-nakameguro-tokyo.aiff",
+    "sha": "f7c8b18e4a8af1a2b46393e2325981184983b80972f26b66787fd36ef7ae1b16",
+    "jp": "目黒川沿いのセミ（東京・中目黒）",
+    "en": "Cicadas by the Meguro River (Nakameguro, Tokyo)",
+    "title": "Cicadas in Nakameguro, Tokyo",
+    "author": "naotokui",
+    "license": "CC BY 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+    "date": "夏（原典記載。日付不明）",
+    "location": "東京都目黒区中目黒・目黒川沿い（事務所の窓から）",
+    "locationEn": "By the Meguro River, Nakameguro, Tokyo, Japan (from an office window)",
+    "area": "東京都目黒区",
+    "habitats": [],
+    "activity": [
+     "day"
+    ],
+    "activityBasis": "セミの一般的な鳴く時間帯（録音時刻の記載なし）",
+    "roles": [
+     "Drone",
+     "Texture"
+    ],
+    "env": "市街地の川沿い（原典記載。遠くの交通音あり）",
+    "notes": "大きなセミの合唱。種は未特定。種数KPIに加算しない。遠くの交通音を含む（原典記載）。市街地のため生息環境フィルターには使わない。原本はAIFF 32-bitのため24-bitへ変換。",
+    "japan": true,
+    "chorus": true,
+    "defaultLevel": 0,
+    "metaNote": "日本録音の環境層（v0.28）。市街地のため生息環境フィルターには使わない。",
+    "added": "v0.28"
+   },
+   "sr": 96000,
+   "ch": 2,
+   "srcDuration": 388.183948,
+   "srcBytes": 298129368,
+   "start": 158,
+   "excerpt": 45,
+   "peak": 0.6050243377685547,
+   "rmsDb": -20.69,
+   "score": 0.505,
+   "pcm": {
+    "parts": [
+     {
+      "path": "audio/pcm/nakameguro-cicadas.part1.wav",
+      "bytes": 14680106,
+      "sha256": "0351da82789fcb33960c4c9075ffd7dc8ed0b60f35f9f5c004accb1542e163c6",
+      "frames": 2446677
+     },
+     {
+      "path": "audio/pcm/nakameguro-cicadas.part2.wav",
+      "bytes": 11239982,
+      "sha256": "16ab01b3bae6003db2220d02576326c79d3dfff80a04cdc3d4c22e257bfc1e1f",
+      "frames": 1873323
+     }
+    ],
+    "frames": 4320000,
+    "pcmDataSha256": "d0b6ec38312a3537e06eaaa79638920f44d7ace7288c713a99708583ddf8bec9",
+    "gain": 0.37514650785699644,
+    "exact": false,
+    "srcCodec": "pcm_s32be",
+    "srcBits": 32
+   },
+   "compat": {
+    "path": "audio/compat/nakameguro-cicadas.mp3",
+    "bytes": 721023,
+    "sha256": "98406afe20b68949b9c28f02cbd187595918637dcf89b90f08fc84ba510d7635",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "gain": 0.67882137831671,
+    "rms": 0.07218742952560167,
+    "peak": 0.40750837326049805
+   }
+  }
+ ]
+}

@@ -1433,6 +1433,214 @@
     "lossless": true,
     "provenance": "原本WAV（24-bit・48000Hz）のサンプルをそのまま切り出した抜粋（480秒〜525秒）。ビット完全。原本全長はオーナーのMacに保管。"
    }
+  },
+  "takayama-river": {
+   "compat": {
+    "path": "audio/compat/takayama-river.mp3",
+    "bytes": 721023,
+    "sha256": "f6969eb1681e6cf7b266265acadcdc4cf5cfcd1c0d8759cc952b21d03092cdcc",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "lossless": false,
+    "gain": 1.079957,
+    "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 4320000,
+    "duration": 45.0,
+    "parts": [
+     {
+      "path": "audio/pcm/takayama-river.part1.wav",
+      "bytes": 14680106,
+      "sha256": "5f271759772033e3d81252f9edf8b40b5d8c8ff0642df1ac347c9d4a010d65dd",
+      "frames": 2446677
+     },
+     {
+      "path": "audio/pcm/takayama-river.part2.wav",
+      "bytes": 11239982,
+      "sha256": "66904376239d5895343e543e885f1a56a6fcd802f729f7a0a8f8883c41151443",
+      "frames": 1873323
+     }
+    ],
+    "pcmDataSha256": "99f29c89be49a78d1104fc7486c00fcbb453747b7d4f93d8ffc53dede1210e12",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.2531815767288208,
+    "gain": 0.7258795649502465,
+    "lossless": true,
+    "provenance": "原本（96000Hz）からサンプル単位でそのまま切り出し（再量子化・リサンプルなし）した抜粋（53秒〜98秒）。ビット完全。原本全長はオーナーのMacに保管。"
+   }
+  },
+  "california-stream": {
+   "compat": {
+    "path": "audio/compat/california-stream.mp3",
+    "bytes": 593128,
+    "sha256": "12dacf7a66815461ecd8d7e5d2af7a445e9319af472af34eebffef092324480a",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 37.0,
+    "lossless": false,
+    "gain": 1.007125,
+    "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1776000,
+    "duration": 37.0,
+    "parts": [
+     {
+      "path": "audio/pcm/california-stream.wav",
+      "bytes": 10656044,
+      "sha256": "27f5bd73935a66e47eedaaa9e93c703ebb9f70d3f0e2df5d1ac971127218e730",
+      "frames": 1776000
+     }
+    ],
+    "pcmDataSha256": "8106eddd414d93ac342b809cf05a680d280085114595a6281d3af17ae404b454",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.7093230485916138,
+    "gain": 0.5843316044447049,
+    "lossless": true,
+    "provenance": "原本（48000Hz）からサンプル単位でそのまま切り出し（再量子化・リサンプルなし）した抜粋（1秒〜38秒）。ビット完全。原本全長はオーナーのMacに保管。"
+   }
+  },
+  "midwest-woods-wind": {
+   "compat": {
+    "path": "audio/compat/midwest-woods-wind.mp3",
+    "bytes": 721023,
+    "sha256": "59622de65d297d7edb0ea3c2208459afe763d018eb8213cf18dc44e1599503fa",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "lossless": false,
+    "gain": 6.767596,
+    "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 96096,
+    "channels": 2,
+    "frames": 4324320,
+    "duration": 45.0,
+    "parts": [
+     {
+      "path": "audio/pcm/midwest-woods-wind.part1.wav",
+      "bytes": 14680106,
+      "sha256": "49df9e282a64f63b1a5a0f05926bcafc52916bbf7aa76b25e615f3f05edd2327",
+      "frames": 2446677
+     },
+     {
+      "path": "audio/pcm/midwest-woods-wind.part2.wav",
+      "bytes": 11265902,
+      "sha256": "a211b54c2af335be20a8329de79b8bd5ade2da6185b24501034d066c4dfa15fe",
+      "frames": 1877643
+     }
+    ],
+    "pcmDataSha256": "190b71bc4ea2e2237864efe291e0399cc8aa80b9d9bd3d1330a15c1ec79946d9",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.07699394226074219,
+    "gain": 3.012077138415515,
+    "lossless": true,
+    "provenance": "原本（96096Hz）からサンプル単位でそのまま切り出し（再量子化・リサンプルなし）した抜粋（227秒〜272秒）。ビット完全。原本全長はオーナーのMacに保管。"
+   }
+  },
+  "tokyo-park-cicadas": {
+   "compat": {
+    "path": "audio/compat/tokyo-park-cicadas.mp3",
+    "bytes": 721023,
+    "sha256": "20de3c74ced5b34113f884db93d2455a6c6afe6d835b695d79b242570365114a",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "lossless": false,
+    "gain": 3.975399,
+    "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 2160000,
+    "duration": 45.0,
+    "parts": [
+     {
+      "path": "audio/pcm/tokyo-park-cicadas.wav",
+      "bytes": 12960044,
+      "sha256": "932861332a2218d92f119002bef49895515774adbb85756a67670afc97f15b02",
+      "frames": 2160000
+     }
+    ],
+    "pcmDataSha256": "95c99cf97e68998835c363b1c30f1d01d52581a6edc20d58cb322fb3dbb6f02b",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.13211071491241455,
+    "gain": 1.9679504616941388,
+    "lossless": false,
+    "provenance": "原本（48000Hz）から24-bitへ変換して切り出し（原本はpcm_f32le 32-bit。リサンプルなし）した抜粋（3秒〜48秒）。原本全長はオーナーのMacに保管。"
+   }
+  },
+  "nakameguro-cicadas": {
+   "compat": {
+    "path": "audio/compat/nakameguro-cicadas.mp3",
+    "bytes": 721023,
+    "sha256": "98406afe20b68949b9c28f02cbd187595918637dcf89b90f08fc84ba510d7635",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "lossless": false,
+    "gain": 0.678821,
+    "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 4320000,
+    "duration": 45.0,
+    "parts": [
+     {
+      "path": "audio/pcm/nakameguro-cicadas.part1.wav",
+      "bytes": 14680106,
+      "sha256": "0351da82789fcb33960c4c9075ffd7dc8ed0b60f35f9f5c004accb1542e163c6",
+      "frames": 2446677
+     },
+     {
+      "path": "audio/pcm/nakameguro-cicadas.part2.wav",
+      "bytes": 11239982,
+      "sha256": "16ab01b3bae6003db2220d02576326c79d3dfff80a04cdc3d4c22e257bfc1e1f",
+      "frames": 1873323
+     }
+    ],
+    "pcmDataSha256": "d0b6ec38312a3537e06eaaa79638920f44d7ace7288c713a99708583ddf8bec9",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.6050243377685547,
+    "gain": 0.37514650785699644,
+    "lossless": false,
+    "provenance": "原本（96000Hz）から24-bitへ変換して切り出し（原本はpcm_s32be 32-bit。リサンプルなし）した抜粋（158秒〜203秒）。原本全長はオーナーのMacに保管。"
+   }
   }
  },
  "instruments": {

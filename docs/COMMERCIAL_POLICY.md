@@ -26,6 +26,10 @@
 - BY-SA 17本：blackbird, american-field-cricket, barking-treefrog, minminzemi（日本）, kajika-frog, tree-cricket-europe, field-cricket-europe, river-esk（既定の環境層）, forest-wind, gampsocleis-glabra, locust, tettigonia-viridissima, tettigonia-cantans, chorthippus-biguttulus, chorthippus-brunneus, sparrow, swallow。
 - ダウンロード済みの候補（約94本）はほぼ全て A か B。
 
+### 更新（v0.28・2026-11-01）
+- 自然録音41本＝**A 9本、B 15本、C 17本**。既定の環境層は「高山の川（CC BY）＋森の葉（CC0）」になり、「BY-SAを除く」でも既定の音場がそのまま鳴る。
+- 環境層の BY-SA 2本（Esk川・松林の強風）は置き換え候補を収録済み（高山の川・森の渓流・米国中西部の森の風）。残る BY-SA 15本はすべて種単位の録音で、置き換えには種名の根拠がある CC0/CC BY 録音の調査が必要。
+
 ## 4. やること
 1. **商用モード（ライセンス区分フィルター）**：「すべて／BY-SAを除く（販売・リール用）／CC0・自前のみ（表記不要）」を選べるようにする。自律演奏・環境層・試聴・書き出しの全てに効かせる。書き出し時に、含まれる区分を表示する。
 2. **BY-SA 17本の置き換え**：

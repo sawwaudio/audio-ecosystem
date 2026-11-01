@@ -3,7 +3,7 @@ const {chromium}=require('playwright');(async()=>{const b=await chromium.launch(
 const pg=await b.newPage({viewport:{width:390,height:900}});const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
 const R={},fail=[];const ok=(k,c)=>{R[k]=c;if(!c)fail.push(k)};const NEW=['kashiwa-insects','bamboo-stream','ricefield-frogs','kyoto-rain'];
 await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
-R.controls=await pg.evaluate(()=>[...document.querySelectorAll('#fieldControls input')].map(i=>i.id));ok('nine_controls',R.controls.length===9&&NEW.every(id=>R.controls.includes('field-'+id)));
+R.controls=await pg.evaluate(()=>[...document.querySelectorAll('#fieldControls input')].map(i=>i.id));ok('field_controls',R.controls.length===14&&NEW.every(id=>R.controls.includes('field-'+id)));
 await pg.click('#play');await pg.waitForTimeout(3000);
 // PCM・互換MP3の両方で4本を1本ずつデコード
 for(const mode of ['pcm','compat']){await pg.selectOption('#sourceMode',mode);for(const id of NEW){const d=await pg.evaluate(async id=>{try{const buf=await __bioDebug.loadOne(id);return {ok:true,dur:buf.duration,ch:buf.numberOfChannels}}catch(e){return {ok:false,e:e.message}}},id);R[mode+':'+id]=d;ok(mode+'_'+id,d.ok&&Math.abs(d.dur-45)<0.2&&d.ch===(mode==='pcm'?2:1))}}

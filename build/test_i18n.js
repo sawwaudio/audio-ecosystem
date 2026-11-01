@@ -40,5 +40,7 @@ await pg.evaluate(()=>__i18n.set('ja'));
 const st=await pg.evaluate(()=>({layers:__audioEcosystemDebug.getState().layerCount,voices:document.querySelectorAll('#touchVoice option').length,audition:document.querySelectorAll('#auditionButtons button').length,real:document.querySelectorAll('#realButtons button').length,instr:__sourceDebug.instruments()}));
 R.state=st;ok('layers25',st.layers===25);ok('voices8',st.voices===8);ok('audition25',st.audition===25);
 ok('overflow_ja',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
+// 一覧（＋区切り）の末尾に地名付きの名前が来ても全体を訳す（v0.26で修正した不具合）
+R.listTr=await pg.evaluate(()=>__i18n.t('ホトトギス ＋ 秋の虫の合唱 II（兵庫） ＋ ヒヨドリ（伊豆）'));ok('list_tail_name',R.listTr==='Lesser cuckoo + Autumn insect chorus II + Brown-eared bulbul');
 R.errs=errs;ok('no_console_errors',errs.length===0);
 console.log(JSON.stringify(R,null,1));console.log(fail.length?'FAIL: '+fail.join(', '):'ALL PASS');await b.close();process.exit(fail.length?1:0)})().catch(e=>{console.error(e);process.exit(1)});

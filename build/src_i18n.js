@@ -77,7 +77,7 @@ const EXACT={
 '無料・商用利用可。録音ごとにCC BY、CC BY-SA、Public domainが異なります。公開時は各録音の表示条件に従ってください。CC BY-SA素材を加工した音声作品には継承条件があります。権利者による推奨を意味しません。インポート音声は利用者による権利確認が必要です。':'Free, commercial use allowed. Each recording is CC BY, CC BY-SA or public domain — follow each recording’s attribution terms when publishing. Audio works derived from CC BY-SA material carry share-alike conditions. This does not imply endorsement by the rights holders. Imported audio requires your own rights check.',
 '（出典・ライセンスの記載は原典のまま表示しています）':'(Source and license details are shown as written in the originals)',
 // 環境実録音
-'環境実録音 / FIELD AMBIENCE':'FIELD AMBIENCE','9素材 · 全素材を同時再生可':'9 sources · all can play together','川・森の葉・風・雨・火と日本録音の4素材（柏の虫・竹林と小川・水田のカエル・京都の雨）を独立して重ねます。音量0で停止。重なりに応じて全体音量を自動調整します。':'River, forest leaves, wind, rain and fire plus four Japanese recordings (Kashiwa insects, bamboo & stream, rice-paddy frogs, Kyoto rain) layer independently. Volume 0 stops a bed. Overall level auto-balances with overlap.',
+'環境実録音 / FIELD AMBIENCE':'FIELD AMBIENCE','9素材 · 全素材を同時再生可':'9 sources · all can play together','川・森の葉・風・雨・火と日本録音の4素材（柏の虫・竹林と小川・水田のカエル・京都の雨）を独立して重ねます。音量0で停止。同時に鳴るのは4層までで、それ以上選ぶと順番に入れ替わります。重なりに応じて全体音量を自動調整します。':'River, forest leaves, wind, rain and fire plus four Japanese recordings (Kashiwa insects, bamboo & stream, rice-paddy frogs, Kyoto rain) layer independently. Volume 0 stops a bed. Up to 4 beds sound at once; select more and they take turns. Overall level auto-balances with overlap.',
 '川と森の葉を選択中':'River and forest leaves selected','旧合成音・抽象音を使う':'Use legacy synth / abstract sounds','実録音の環境層から旧合成環境音に切り替える':'Switch the ambience from real recordings to legacy synth beds',
 '自然の実録音ではありません。旧プリセットの音色を残しています。':'These are not real nature recordings; kept from older presets.','旧合成環境音を有効化':'Legacy synth ambience enabled','実録音の環境音に戻しました':'Back to real-recording ambience','環境音の読み込み待ち':'Waiting for ambience to load','実録音の環境層':'Recorded ambience','環境層':'Ambience',
 '原本全長':'full original','抜粋':'excerpt',
@@ -94,7 +94,7 @@ const EXACT={
 '最後の読み込み':'Last loaded','参加中':'Active','読み込み完了':'Loaded',
 // 国・地域（地域フィルターの一覧）
 // 録音地（原典の記載を英語表記にしたもの。原文は日本語表示と台帳に残る）
-'原本に記載なし':'Not stated in source','千葉県柏市（畑と小さな林）':'Kashiwa, Chiba, Japan (field and small wood)','日本（地名の記載なし）':'Japan (no place name given)','和歌山県・高野山近くの富貴地区の水田':'Rice paddy in the Fuki area near Kōyasan, Wakayama, Japan','京都府京都市（庭）':'Kyoto, Japan (garden)','録音場所不明':'Location unknown','録音場所不明（北西ヨーロッパの鳴く虫コレクション）':'Location unknown (north-western European singing-insect collection)','録音地点不明（北西ヨーロッパの音源集由来）':'Location unknown (from a north-western European sound collection)',
+'原本に記載なし':'Not stated in source','同時に鳴るのは4層まで（順番に入れ替え）':'up to 4 beds at once (rotating)','千葉県柏市（畑と小さな林）':'Kashiwa, Chiba, Japan (field and small wood)','日本（地名の記載なし）':'Japan (no place name given)','和歌山県・高野山近くの富貴地区の水田':'Rice paddy in the Fuki area near Kōyasan, Wakayama, Japan','京都府京都市（庭）':'Kyoto, Japan (garden)','録音場所不明':'Location unknown','録音場所不明（北西ヨーロッパの鳴く虫コレクション）':'Location unknown (north-western European singing-insect collection)','録音地点不明（北西ヨーロッパの音源集由来）':'Location unknown (from a north-western European sound collection)',
 '米国北東部・録音者のガレージ':'North-eastern USA, recordist’s garage','兵庫県香美町・JR餘部駅':'JR Amarube Station, Kami, Hyōgo, Japan','JR餘部駅・兵庫県美方郡香美町':'JR Amarube Station, Kami, Mikata District, Hyōgo, Japan',
 '神奈川県川崎市宮前区・東高根森林公園':'Higashi-Takane Forest Park, Miyamae-ku, Kawasaki, Kanagawa, Japan','神奈川県川崎市麻生区':'Asao-ku, Kawasaki, Kanagawa, Japan','神奈川県横浜市青葉区':'Aoba-ku, Yokohama, Kanagawa, Japan','埼玉県志木市':'Shiki, Saitama, Japan',
 '岐阜県・谷汲山華厳寺':'Kegon-ji Temple, Mt. Tanigumi, Gifu, Japan','静岡県伊豆市':'Izu, Shizuoka, Japan','スコットランド・Kagyu Samye Ling近くのEsk川':'River Esk near Kagyu Samye Ling, Scotland','モスクワ州プーシチノ、ロシア':'Pushchino, Moscow Oblast, Russia','インド（詳細不明）':'India (details unknown)',
@@ -128,8 +128,8 @@ const RULES=[
  [/^再生待ち：下のプレイヤーの▶を押してください（(.*)）$/,m=>'Waiting to play: press ▶ on the player below ('+tr(m[1])+')'],[/^(.+)：下のプレイヤーの▶を押してください$/,m=>tr(m[1])+': press ▶ on the player below'],
  [/^(.+)：読み込みました。権利は別途確認してください。$/,m=>tr(m[1])+': imported. Please check the rights separately.'],
  [/^再生エラー (.*)$/,m=>'Playback error '+m[1]],[/^検証中 (.*)$/,m=>'Verifying '+m[1]],[/^不一致・失敗 (.*)$/,m=>'Mismatch / failed '+m[1]],[/^サイズ不一致 (.*)$/,m=>'Size mismatch '+m[1]],[/^ファイルのSHA-256一致（(.*)$/,m=>'File SHA-256 matches ('+m[1]],
- [/^(.+)（(録音地|自然分布)）$/,m=>tr(m[1])+' '+EXACT['（'+m[2]+'）']],
- [/^(.+)（(伊豆|兵庫)）$/,m=>NAMES[m[0]]?NAMES[m[0]]:tr(m[1])+' ('+(m[2]==='伊豆'?'Izu':'Hyōgo')+')']
+ [/^([^＋·—/]+)（(録音地|自然分布)）$/,m=>tr(m[1])+' '+EXACT['（'+m[2]+'）']],
+ [/^([^＋·—/]+)（(伊豆|兵庫)）$/,m=>NAMES[m[0]]?NAMES[m[0]]:tr(m[1])+' ('+(m[2]==='伊豆'?'Izu':'Hyōgo')+')']
 ];
 const cache=new Map();
 function leaf(s){if(!JP.test(s))return s;if(EXACT[s]!==undefined)return EXACT[s];if(NAMES[s])return NAMES[s];for(const [re,f] of RULES){const m=s.match(re);if(m){const v=f(m);if(v!==s)return v}}return null}

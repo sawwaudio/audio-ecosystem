@@ -39,6 +39,13 @@ This app bundles the following field recordings and instrument samples under the
 | sparrow | スズメ（Passer montanus） | Vladimir Yu. Arkhipov (Arkhivov) | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | [Passer montanus.ogg](https://commons.wikimedia.org/wiki/File:Passer_montanus.ogg) |
 | swallow | ツバメ（Hirundo rustica） | Jonathon Jongsma | [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) | [Hirundo rustica - Barn Swallow - XC83449.ogg](https://commons.wikimedia.org/wiki/File:Hirundo_rustica_-_Barn_Swallow_-_XC83449.ogg) |
 | white-eye | ハイバラメジロ（Zosterops palpebrosus） | Gypsypkd | [Public domain](https://commons.wikimedia.org/wiki/Template:PD-self) | [Oriental White Eye.ogg](https://commons.wikimedia.org/wiki/File:Oriental_White_Eye.ogg) |
+| kashiwa-insects | 虫の合唱（千葉・柏）（日本録音・10〜55秒の抜粋） | RutgerMuller | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [Japan_Kashiwa_Insects_Far_and_Upclose.wav](https://freesound.org/people/RutgerMuller/sounds/365257/) |
+| bamboo-stream | 竹林の風と小川・鳥（日本録音・106〜151秒の抜粋） | tomasloos | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [Birds, wind through bamboo and a little waterstream - Japan - Binaural](https://freesound.org/people/tomasloos/sounds/843520/) |
+| ricefield-frogs | 夜の水田のカエルの合唱（和歌山）（日本録音・98〜143秒の抜粋） | Robin_Dupuy | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | [AMBIENCE-SWAMP_Frogs_Water_Night_May_RiceField_Fuki_Binaural_RD_001](https://freesound.org/people/Robin_Dupuy/sounds/853181/) |
+| kyoto-rain | 京都の夜の雨（庭）（日本録音・480〜525秒の抜粋） | LG | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | [20180523 - Tranquil rainy night in Kyoto increase and decrease.wav](https://freesound.org/people/LG/sounds/462729/) |
+
+日本録音の環境層4本（v0.25）は Freesound の原本WAV（24-bit）から45秒をサンプル単位で切り出したもので、音量・定位・フェードを演奏時に加えています。CC BY 4.0 の2本（Robin_Dupuy・LG）は、公開・配布する作品に作者名・作品名・出典・ライセンスの表示が必要です（WAV録音には自動で埋め込まれます）。
+The four Japanese ambience beds (v0.25) are 45-second sample-exact excerpts of the original 24-bit WAVs on Freesound; level, panning and fades are applied during playback. The two CC BY 4.0 recordings (Robin_Dupuy, LG) require attribution in anything you publish (captured WAVs embed it automatically).
 
 ## 楽器サンプル / Instrument samples
 

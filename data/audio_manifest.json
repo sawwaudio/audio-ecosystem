@@ -1,6 +1,6 @@
 {
  "schema": "ae-audio-manifest/1",
- "version": "v0.24",
+ "version": "v0.25",
  "recordings": {
   "blackbird": {
    "compat": {
@@ -1274,6 +1274,164 @@
     "lossless": false,
     "gain": 0.8893973753198151,
     "provenance": "v0.23互換音源（原本または原本相当からの再エンコード・モノラル化）"
+   }
+  },
+  "kashiwa-insects": {
+   "compat": {
+    "path": "audio/compat/kashiwa-insects.mp3",
+    "bytes": 721023,
+    "sha256": "0d4c083a34853b5ae7d1532736b339841122fb4710c1a07b7d22c2a44452b2e9",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "lossless": false,
+    "gain": 9.799698,
+    "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 4320000,
+    "duration": 45.0,
+    "parts": [
+     {
+      "path": "audio/pcm/kashiwa-insects.part1.wav",
+      "bytes": 14680106,
+      "sha256": "511da434b0c5efac73c2c0ab5abe055293cf750b33c6d145a4c838188cdca388",
+      "frames": 2446677
+     },
+     {
+      "path": "audio/pcm/kashiwa-insects.part2.wav",
+      "bytes": 11239982,
+      "sha256": "b2559d1ed747a2cca5576a0794a35ee28115939e42463f31d9ed5557e52d799f",
+      "frames": 1873323
+     }
+    ],
+    "pcmDataSha256": "52418b01a6c5cc0832a8020de5e02d69443a06470760e1db2fc3ee32a90251ed",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.04256141185760498,
+    "gain": 5.49643929115026,
+    "lossless": true,
+    "provenance": "原本WAV（24-bit・96000Hz）のサンプルをそのまま切り出した抜粋（10秒〜55秒）。ビット完全。原本全長はオーナーのMacに保管。"
+   }
+  },
+  "bamboo-stream": {
+   "compat": {
+    "path": "audio/compat/bamboo-stream.mp3",
+    "bytes": 721023,
+    "sha256": "4a76093a37b7ac5c7dbc81f034d0b87ec64ba965bec044088f886c6a630bc879",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "lossless": false,
+    "gain": 16.0,
+    "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 2160000,
+    "duration": 45.0,
+    "parts": [
+     {
+      "path": "audio/pcm/bamboo-stream.wav",
+      "bytes": 12960044,
+      "sha256": "0a406ef1f248cc538c070bb3129d7e4a555b7699b84788511d67a04fb2364e3b",
+      "frames": 2160000
+     }
+    ],
+    "pcmDataSha256": "dccac2e3415c70ad9c786ddfd6b84316c8df3950546061d5c5b37438a1ac0183",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.017446517944335938,
+    "gain": 7.850067010999555,
+    "lossless": true,
+    "provenance": "原本WAV（24-bit・48000Hz）のサンプルをそのまま切り出した抜粋（106秒〜151秒）。ビット完全。原本全長はオーナーのMacに保管。"
+   }
+  },
+  "ricefield-frogs": {
+   "compat": {
+    "path": "audio/compat/ricefield-frogs.mp3",
+    "bytes": 721023,
+    "sha256": "daaa90ed1d9627733eaef9c1db64cb76b30393fbd7a446936a1728fa8734cd8b",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "lossless": false,
+    "gain": 0.806068,
+    "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 2160000,
+    "duration": 45.0,
+    "parts": [
+     {
+      "path": "audio/pcm/ricefield-frogs.wav",
+      "bytes": 12960044,
+      "sha256": "5248a8e8dd48baca91c1fb0f8f939e0f606436466131b6f2224bd64d2a3d3e4c",
+      "frames": 2160000
+     }
+    ],
+    "pcmDataSha256": "3d939f3df72a5d91bceba0bab26a41dff885b7f577c5d1a721dede47bc524162",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.7989691495895386,
+    "gain": 0.32518655168680016,
+    "lossless": true,
+    "provenance": "原本WAV（24-bit・48000Hz）のサンプルをそのまま切り出した抜粋（98秒〜143秒）。ビット完全。原本全長はオーナーのMacに保管。"
+   }
+  },
+  "kyoto-rain": {
+   "compat": {
+    "path": "audio/compat/kyoto-rain.mp3",
+    "bytes": 721023,
+    "sha256": "3468ba02cc672f8e3e3e4da7ae4e95feedca7136f0414fc72e821e6a9e26838e",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "lossless": false,
+    "gain": 0.831148,
+    "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "wav",
+    "codec": "Linear PCM 24-bit",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 2160000,
+    "duration": 45.0,
+    "parts": [
+     {
+      "path": "audio/pcm/kyoto-rain.wav",
+      "bytes": 12960044,
+      "sha256": "e5f52826f445a213b2f3d5bce42854c99154d991a28bfea2b779335137c5edca",
+      "frames": 2160000
+     }
+    ],
+    "pcmDataSha256": "015b76356432d5a6b92f4e100a2627900e01034cc6e288b42ea5d2eb1e77407d",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.3964611291885376,
+    "gain": 0.5299640106453238,
+    "lossless": true,
+    "provenance": "原本WAV（24-bit・48000Hz）のサンプルをそのまま切り出した抜粋（480秒〜525秒）。ビット完全。原本全長はオーナーのMacに保管。"
    }
   }
  },

@@ -1,0 +1,274 @@
+{
+ "target": 0.03464990840950625,
+ "targetFrom": [
+  0.0609,
+  0.0213,
+  0.1025,
+  0.0346,
+  0.0092
+ ],
+ "beds": [
+  {
+   "meta": {
+    "id": "kashiwa-insects",
+    "fs": 365257,
+    "user": "RutgerMuller",
+    "file": "365257__rutgermuller__japan_kashiwa_insects_far_and_upclose.wav",
+    "sha": "cfdce0a468bc29ea38928edf963563ccd03346e325c1a9c5ddda4b336ebb6030",
+    "jp": "虫の合唱（千葉・柏）",
+    "en": "Insect chorus (Kashiwa, Chiba)",
+    "title": "Japan_Kashiwa_Insects_Far_and_Upclose.wav",
+    "author": "RutgerMuller",
+    "license": "CC0 1.0",
+    "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "date": "2016-10下旬（原典記載。日・時刻不明）",
+    "location": "千葉県柏市（畑と小さな林）",
+    "area": "千葉県柏市",
+    "habitats": [
+     "grassland",
+     "temperate_forest"
+    ],
+    "activity": [],
+    "activityBasis": null,
+    "roles": [
+     "Texture",
+     "Drone"
+    ],
+    "env": "畑と小さな林の縁（原典記載）",
+    "notes": "複数の鳴く虫の合唱。種は未特定（推測で特定しない）。種数KPIに加算しない。Zoom H2n（MSステレオ）。原典では後半に近接した高い声がある。",
+    "desc_en": "In Kashiwa, Chiba, Japan. Late October 2016. Recorded with Zoom H2n in MS-stereo (source description)."
+   },
+   "sr": 96000,
+   "ch": 2,
+   "srcDuration": 202.593156,
+   "srcBytes": 116693702,
+   "start": 10,
+   "excerpt": 45,
+   "peak": 0.04256141185760498,
+   "rmsDb": -44.01,
+   "score": 1.38,
+   "pcm": {
+    "parts": [
+     {
+      "path": "audio/pcm/kashiwa-insects.part1.wav",
+      "bytes": 14680106,
+      "sha256": "511da434b0c5efac73c2c0ab5abe055293cf750b33c6d145a4c838188cdca388",
+      "frames": 2446677
+     },
+     {
+      "path": "audio/pcm/kashiwa-insects.part2.wav",
+      "bytes": 11239982,
+      "sha256": "b2559d1ed747a2cca5576a0794a35ee28115939e42463f31d9ed5557e52d799f",
+      "frames": 1873323
+     }
+    ],
+    "frames": 4320000,
+    "pcmDataSha256": "52418b01a6c5cc0832a8020de5e02d69443a06470760e1db2fc3ee32a90251ed",
+    "gain": 5.49643929115026
+   },
+   "compat": {
+    "path": "audio/compat/kashiwa-insects.mp3",
+    "bytes": 721023,
+    "sha256": "0d4c083a34853b5ae7d1532736b339841122fb4710c1a07b7d22c2a44452b2e9",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "gain": 9.79969769974538,
+    "rms": 0.005000396125380734,
+    "peak": 0.03070296347141266
+   }
+  },
+  {
+   "meta": {
+    "id": "bamboo-stream",
+    "fs": 843520,
+    "user": "tomasloos",
+    "file": "843520__tomasloos__birds-wind-through-bamboo-and-a-little-waterstream-japan-binaural.wav",
+    "sha": "aa26e3734d6c449af778ec6d434e3e2eacd533bbc832e55c6889afe5280ec124",
+    "jp": "竹林の風と小川・鳥",
+    "en": "Wind in bamboo, a small stream and birds (Japan)",
+    "title": "Birds, wind through bamboo and a little waterstream - Japan - Binaural",
+    "author": "tomasloos",
+    "license": "CC0 1.0",
+    "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "date": "不明（Freesound公開 2026-01-29）",
+    "location": "日本（地名の記載なし）",
+    "area": null,
+    "habitats": [
+     "temperate_forest",
+     "river"
+    ],
+    "activity": [],
+    "activityBasis": null,
+    "roles": [
+     "Atmosphere",
+     "Texture"
+    ],
+    "env": "小さな竹林と小川のそばのベンチ（原典記載）",
+    "notes": "バイノーラル（Zoom H5＋Soundman OKM2 Classic）。鳥の種は未特定。録音地は作品名の「Japan」のみで地名は不明。",
+    "desc_en": "Sitting on a bench next to a small bamboo forest with a small stream (source description)."
+   },
+   "sr": 48000,
+   "ch": 2,
+   "srcDuration": 206.132,
+   "srcBytes": 59398784,
+   "start": 106,
+   "excerpt": 45,
+   "peak": 0.017446517944335938,
+   "rmsDb": -55.26,
+   "score": 3.34,
+   "pcm": {
+    "parts": [
+     {
+      "path": "audio/pcm/bamboo-stream.wav",
+      "bytes": 12960044,
+      "sha256": "0a406ef1f248cc538c070bb3129d7e4a555b7699b84788511d67a04fb2364e3b",
+      "frames": 2160000
+     }
+    ],
+    "frames": 2160000,
+    "pcmDataSha256": "dccac2e3415c70ad9c786ddfd6b84316c8df3950546061d5c5b37438a1ac0183",
+    "gain": 7.850067010999555
+   },
+   "compat": {
+    "path": "audio/compat/bamboo-stream.mp3",
+    "bytes": 721023,
+    "sha256": "4a76093a37b7ac5c7dbc81f034d0b87ec64ba965bec044088f886c6a630bc879",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "gain": 16.0,
+    "rms": 0.0011976370673128312,
+    "peak": 0.010272033512592316
+   }
+  },
+  {
+   "meta": {
+    "id": "ricefield-frogs",
+    "fs": 853181,
+    "user": "Robin_Dupuy",
+    "file": "853181__robin_dupuy__ambience-swamp_frogs_water_night_may_ricefield_fuki_binaural_rd_001.wav",
+    "sha": "01adbea37f1cf2fb0ec135ae1a8ffc78c081ad719a1781af6b81b8e0eda53796",
+    "jp": "夜の水田のカエルの合唱（和歌山）",
+    "en": "Night frog chorus in a rice paddy (Wakayama)",
+    "title": "AMBIENCE-SWAMP_Frogs_Water_Night_May_RiceField_Fuki_Binaural_RD_001",
+    "author": "Robin_Dupuy",
+    "license": "CC BY 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+    "date": "2026-05-06・夜（原典記載）",
+    "location": "和歌山県・高野山近くの富貴地区の水田",
+    "area": "和歌山県（高野山近く・富貴）",
+    "habitats": [
+     "wetland"
+    ],
+    "activity": [
+     "night"
+    ],
+    "activityBasis": "録音時刻（原典記載：夜）",
+    "roles": [
+     "Call & Response",
+     "Texture"
+    ],
+    "env": "夜の水田（原典記載）",
+    "notes": "カエルの合唱。種は未特定（推測で特定しない）。種数KPIに加算しない。原典の記載では、1匹の声をきっかけに別の群れが鳴き返す鳴き交わしが繰り返される。バイノーラル。",
+    "desc_en": "Binaural frog chorus in a Japanese rice paddy at night, May 6, 2026, Fuki area near Koyasan, Wakayama (source description)."
+   },
+   "sr": 48000,
+   "ch": 2,
+   "srcDuration": 615.0,
+   "srcBytes": 177120928,
+   "start": 98,
+   "excerpt": 45,
+   "peak": 0.7989691495895386,
+   "rmsDb": -19.45,
+   "score": 0.308,
+   "pcm": {
+    "parts": [
+     {
+      "path": "audio/pcm/ricefield-frogs.wav",
+      "bytes": 12960044,
+      "sha256": "5248a8e8dd48baca91c1fb0f8f939e0f606436466131b6f2224bd64d2a3d3e4c",
+      "frames": 2160000
+     }
+    ],
+    "frames": 2160000,
+    "pcmDataSha256": "3d939f3df72a5d91bceba0bab26a41dff885b7f577c5d1a721dede47bc524162",
+    "gain": 0.32518655168680016
+   },
+   "compat": {
+    "path": "audio/compat/ricefield-frogs.mp3",
+    "bytes": 721023,
+    "sha256": "daaa90ed1d9627733eaef9c1db64cb76b30393fbd7a446936a1728fa8734cd8b",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "gain": 0.8060681744001841,
+    "rms": 0.06079184362311935,
+    "peak": 0.5289493799209595
+   }
+  },
+  {
+   "meta": {
+    "id": "kyoto-rain",
+    "fs": 462729,
+    "user": "LG",
+    "file": "462729__lg__20180523-tranquil-rainy-night-in-kyoto-increase-and-decrease.wav",
+    "sha": "0244ade45b03c17685443ab8694e6729e3fc6a9975965b7af4869ccabdd1c385",
+    "jp": "京都の夜の雨（庭）",
+    "en": "Rainy night in a Kyoto garden",
+    "title": "20180523 - Tranquil rainy night in Kyoto increase and decrease.wav",
+    "author": "LG",
+    "license": "CC BY 4.0",
+    "licenseURL": "https://creativecommons.org/licenses/by/4.0/",
+    "date": "2018-05-23・夜（作品名・原典記載）",
+    "location": "京都府京都市（庭）",
+    "area": "京都府京都市",
+    "habitats": [],
+    "activity": [
+     "night"
+    ],
+    "activityBasis": "録音時刻（原典記載：夜）",
+    "roles": [
+     "Atmosphere",
+     "Texture"
+    ],
+    "env": "市街地の庭（原典記載。タグに city / urban）",
+    "notes": "雨が強まり弱まる長尺録音（Sony PCM-D50）。市街地の庭のため生息環境フィルターでは使わない。",
+    "desc_en": "Long field recording of a rainy night in Kyoto, recorded in the garden. Sony PCM-D50 (source description)."
+   },
+   "sr": 48000,
+   "ch": 2,
+   "srcDuration": 835.186521,
+   "srcBytes": 240533762,
+   "start": 480,
+   "excerpt": 45,
+   "peak": 0.3964611291885376,
+   "rmsDb": -23.69,
+   "score": 0.407,
+   "pcm": {
+    "parts": [
+     {
+      "path": "audio/pcm/kyoto-rain.wav",
+      "bytes": 12960044,
+      "sha256": "e5f52826f445a213b2f3d5bce42854c99154d991a28bfea2b779335137c5edca",
+      "frames": 2160000
+     }
+    ],
+    "frames": 2160000,
+    "pcmDataSha256": "015b76356432d5a6b92f4e100a2627900e01034cc6e288b42ea5d2eb1e77407d",
+    "gain": 0.5299640106453238
+   },
+   "compat": {
+    "path": "audio/compat/kyoto-rain.mp3",
+    "bytes": 721023,
+    "sha256": "3468ba02cc672f8e3e3e4da7ae4e95feedca7136f0414fc72e821e6a9e26838e",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "gain": 0.8311480202080669,
+    "rms": 0.05895745308452062,
+    "peak": 0.3453735113143921
+   }
+  }
+ ]
+}

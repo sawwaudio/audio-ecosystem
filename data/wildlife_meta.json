@@ -1345,5 +1345,166 @@
    "analysedFrom": "compat"
   },
   "note": "日本のメジロは別種（Zosterops japonicus）。生息環境は熱帯〜亜熱帯の疎林で、指定9区分に該当なし。"
+ },
+ "kashiwa-insects": {
+  "en": "Insect chorus (Kashiwa, Chiba)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "日本",
+  "recordedArea": "千葉県柏市",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "畑と小さな林の縁（原典記載）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "grassland",
+   "temperate_forest"
+  ],
+  "activity": [],
+  "activityBasis": null,
+  "soundRoles": [
+   "Texture",
+   "Drone"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0568,
+   "tonality": 0.2075,
+   "envCV": 0.3768,
+   "pulseHz": 1.4184,
+   "pulseStrength": 0.6934,
+   "centroidHz": 3196.083,
+   "activity": 0.0123,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "日本録音の環境層（v0.25）。"
+ },
+ "bamboo-stream": {
+  "en": "Wind in bamboo, a small stream and birds (Japan)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "日本",
+  "recordedArea": null,
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "小さな竹林と小川のそばのベンチ（原典記載）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest",
+   "river"
+  ],
+  "activity": [],
+  "activityBasis": null,
+  "soundRoles": [
+   "Atmosphere",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.2381,
+   "tonality": 0.0864,
+   "envCV": 0.344,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2111.8093,
+   "activity": 0.0175,
+   "autoRoles": [
+    "Atmosphere",
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "日本録音の環境層（v0.25）。録音地の地名は原典に記載なし。"
+ },
+ "ricefield-frogs": {
+  "en": "Night frog chorus in a rice paddy (Wakayama)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "日本",
+  "recordedArea": "和歌山県（高野山近く・富貴）",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "夜の水田（原典記載）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "録音時刻（原典記載：夜）",
+  "soundRoles": [
+   "Call & Response",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0043,
+   "tonality": 0.0745,
+   "envCV": 0.3342,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2372.2897,
+   "activity": 0.0019,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "日本録音の環境層（v0.25）。"
+ },
+ "kyoto-rain": {
+  "en": "Rainy night in a Kyoto garden",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "日本",
+  "recordedArea": "京都府京都市",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "市街地の庭（原典記載。タグに city / urban）",
+  "wildOrCaptive": "野外",
+  "habitats": [],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "録音時刻（原典記載：夜）",
+  "soundRoles": [
+   "Atmosphere",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.1218,
+   "tonality": 0.0599,
+   "envCV": 0.1122,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1363.0061,
+   "activity": 0.0,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "日本録音の環境層（v0.25）。生息環境が市街地の庭のため、生息環境フィルターには使わない。"
  }
 }

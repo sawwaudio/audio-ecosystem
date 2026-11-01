@@ -24,7 +24,7 @@ const EXACT={
 'このブラウザの音声形式対応を確認してください。':'Please check this browser’s audio format support.','v0.24は音源を別ファイルから読み込むため、ローカルサーバー経由で開いてください。':'This version loads audio from separate files. Please open it through a local web server.',
 'WAV構造エラー':'WAV structure error','WAV分割ファイルの形式不一致':'WAV part format mismatch',
 // 監査・DB
-'音源形式監査 · 47サンプル':'Source format audit · 47 samples','A1 非圧縮マスター取得済み · A2 非圧縮マスターあり（抜粋のみ保持） · B1 原典自体が非可逆 · C1 原典未保持（MP3のみ）':'A1 uncompressed master held · A2 uncompressed master exists (excerpt only) · B1 source itself is lossy · C1 source not held (MP3 only)',
+'音源形式監査 · 51サンプル':'Source format audit · 51 samples','A1 非圧縮マスター取得済み · A2 非圧縮マスターあり（抜粋のみ保持） · B1 原典自体が非可逆 · C1 原典未保持（MP3のみ）':'A1 uncompressed master held · A2 uncompressed master exists (excerpt only) · B1 source itself is lossy · C1 source not held (MP3 only)',
 'SHA-256を全件検証':'Verify all SHA-256','↓ 監査表CSV':'↓ Audit CSV','全件検証は約190MBを読み込みます。Wi-Fi環境で実行してください。':'Full verification downloads about 190 MB. Please use Wi-Fi.',
 'このページではSHA-256検証を使えません（HTTPSが必要）':'SHA-256 verification is unavailable on this page (HTTPS required)','（不一致）':'(mismatch)',
 'WILDLIFE SOUND MASTER DATABASE · 52対象':'WILDLIFE SOUND MASTER DATABASE · 52 targets','表示':'Show','すべて':'All','アプリ収録済み':'In the app','候補（確認済み・未取得）':'Candidates (verified, not yet acquired)',
@@ -39,7 +39,7 @@ const EXACT={
 '鳥':'Birds','虫':'Insects','動物':'Animals','水・波':'Water & waves','全体の活動量':'Overall activity','同時に鳴ける数':'Max simultaneous voices','実録音の音量':'Recording volume',
 '鳥の混ざり具合':'Bird mix','虫の混ざり具合':'Insect mix','動物の混ざり具合':'Animal mix','水と波の混ざり具合':'Water & wave mix','声の同時発音数':'Simultaneous voices',
 '最大16生物音 · 初期12音 · 重なりに応じて全体音量を自動調整':'Up to 16 creature voices · 12 by default · overall level auto-balanced by overlap',
-'32実録音 / 環境層と自律演奏':'32 recordings / ambience beds and autonomous play','23レイヤーを自律演奏中。和声・音密度・音響空間が連続的に変化します。':'Playing 23 layers autonomously. Harmony, density and space evolve continuously.',
+'36実録音 / 環境層と自律演奏':'36 recordings / ambience beds and autonomous play','23レイヤーを自律演奏中。和声・音密度・音響空間が連続的に変化します。':'Playing 23 layers autonomously. Harmony, density and space evolve continuously.',
 '次の出現順を組み直しました':'Next appearance order reshuffled','選んだ音が次の出現から混ざります':'Selected sounds join from their next appearance','音質モードを変更。新しい音の倍音数と最大同時発音数を実際に切り替えます。':'Quality mode changed. Partial count and max polyphony switch for new notes.',
 '音声メモリ上限です。再生中の実録音を停止してから選択してください。':'Audio memory limit reached. Stop a playing recording before selecting another.',
 '小音量から開始してください。再生後は自動的に和声と音響風景が進化します。':'Start at a low volume. After playback begins, harmony and soundscape evolve on their own.',
@@ -72,12 +72,12 @@ const EXACT={
 '試聴は自律演奏を止め、選んだ録音だけを再生します':'Preview pauses autonomous play and plays only the chosen recording','試聴を止める':'Stop preview','試聴停止':'Preview stopped','実録音の試聴プレイヤー':'Recording preview player',
 '続きの再生待ち：下のプレイヤーの▶を押してください':'Waiting to continue: press ▶ on the player below','再生中':'Playing','再生終了':'Finished','試聴失敗':'Preview failed','次の音へ進みます':'Moving to the next sound',
 // ライブラリ・クレジット
-'実録音ライブラリ · 32録音 / 個別試聴':'Recording library · 32 recordings / individual preview','日本の生き物を選ぶ':'Choose Japanese wildlife','生物音の自律選択をオフ':'Turn off creature auto-selection','生物音の自律選択をオフにしました':'Creature auto-selection turned off',
+'実録音ライブラリ · 36録音 / 個別試聴':'Recording library · 36 recordings / individual preview','日本の生き物を選ぶ':'Choose Japanese wildlife','生物音の自律選択をオフ':'Turn off creature auto-selection','生物音の自律選択をオフにしました':'Creature auto-selection turned off',
 '録音者・出典・利用条件':'Recordists, sources & terms of use','↓ ライセンス台帳':'↓ License ledger',
 '無料・商用利用可。録音ごとにCC BY、CC BY-SA、Public domainが異なります。公開時は各録音の表示条件に従ってください。CC BY-SA素材を加工した音声作品には継承条件があります。権利者による推奨を意味しません。インポート音声は利用者による権利確認が必要です。':'Free, commercial use allowed. Each recording is CC BY, CC BY-SA or public domain — follow each recording’s attribution terms when publishing. Audio works derived from CC BY-SA material carry share-alike conditions. This does not imply endorsement by the rights holders. Imported audio requires your own rights check.',
 '（出典・ライセンスの記載は原典のまま表示しています）':'(Source and license details are shown as written in the originals)',
 // 環境実録音
-'環境実録音 / FIELD AMBIENCE':'FIELD AMBIENCE','5素材 · 全素材を同時再生可':'5 sources · all can play together','川・森の葉・風・雨・火を独立して重ねます。音量0で停止。重なりに応じて全体音量を自動調整します。':'River, forest leaves, wind, rain and fire layer independently. Volume 0 stops a bed. Overall level auto-balances with overlap.',
+'環境実録音 / FIELD AMBIENCE':'FIELD AMBIENCE','9素材 · 全素材を同時再生可':'9 sources · all can play together','川・森の葉・風・雨・火と日本録音の4素材（柏の虫・竹林と小川・水田のカエル・京都の雨）を独立して重ねます。音量0で停止。重なりに応じて全体音量を自動調整します。':'River, forest leaves, wind, rain and fire plus four Japanese recordings (Kashiwa insects, bamboo & stream, rice-paddy frogs, Kyoto rain) layer independently. Volume 0 stops a bed. Overall level auto-balances with overlap.',
 '川と森の葉を選択中':'River and forest leaves selected','旧合成音・抽象音を使う':'Use legacy synth / abstract sounds','実録音の環境層から旧合成環境音に切り替える':'Switch the ambience from real recordings to legacy synth beds',
 '自然の実録音ではありません。旧プリセットの音色を残しています。':'These are not real nature recordings; kept from older presets.','旧合成環境音を有効化':'Legacy synth ambience enabled','実録音の環境音に戻しました':'Back to real-recording ambience','環境音の読み込み待ち':'Waiting for ambience to load','実録音の環境層':'Recorded ambience','環境層':'Ambience',
 '原本全長':'full original','抜粋':'excerpt',
@@ -94,7 +94,7 @@ const EXACT={
 '最後の読み込み':'Last loaded','参加中':'Active','読み込み完了':'Loaded',
 // 国・地域（地域フィルターの一覧）
 // 録音地（原典の記載を英語表記にしたもの。原文は日本語表示と台帳に残る）
-'原本に記載なし':'Not stated in source','録音場所不明':'Location unknown','録音場所不明（北西ヨーロッパの鳴く虫コレクション）':'Location unknown (north-western European singing-insect collection)','録音地点不明（北西ヨーロッパの音源集由来）':'Location unknown (from a north-western European sound collection)',
+'原本に記載なし':'Not stated in source','千葉県柏市（畑と小さな林）':'Kashiwa, Chiba, Japan (field and small wood)','日本（地名の記載なし）':'Japan (no place name given)','和歌山県・高野山近くの富貴地区の水田':'Rice paddy in the Fuki area near Kōyasan, Wakayama, Japan','京都府京都市（庭）':'Kyoto, Japan (garden)','録音場所不明':'Location unknown','録音場所不明（北西ヨーロッパの鳴く虫コレクション）':'Location unknown (north-western European singing-insect collection)','録音地点不明（北西ヨーロッパの音源集由来）':'Location unknown (from a north-western European sound collection)',
 '米国北東部・録音者のガレージ':'North-eastern USA, recordist’s garage','兵庫県香美町・JR餘部駅':'JR Amarube Station, Kami, Hyōgo, Japan','JR餘部駅・兵庫県美方郡香美町':'JR Amarube Station, Kami, Mikata District, Hyōgo, Japan',
 '神奈川県川崎市宮前区・東高根森林公園':'Higashi-Takane Forest Park, Miyamae-ku, Kawasaki, Kanagawa, Japan','神奈川県川崎市麻生区':'Asao-ku, Kawasaki, Kanagawa, Japan','神奈川県横浜市青葉区':'Aoba-ku, Yokohama, Kanagawa, Japan','埼玉県志木市':'Shiki, Saitama, Japan',
 '岐阜県・谷汲山華厳寺':'Kegon-ji Temple, Mt. Tanigumi, Gifu, Japan','静岡県伊豆市':'Izu, Shizuoka, Japan','スコットランド・Kagyu Samye Ling近くのEsk川':'River Esk near Kagyu Samye Ling, Scotland','モスクワ州プーシチノ、ロシア':'Pushchino, Moscow Oblast, Russia','インド（詳細不明）':'India (details unknown)',
@@ -128,6 +128,7 @@ const RULES=[
  [/^再生待ち：下のプレイヤーの▶を押してください（(.*)）$/,m=>'Waiting to play: press ▶ on the player below ('+tr(m[1])+')'],[/^(.+)：下のプレイヤーの▶を押してください$/,m=>tr(m[1])+': press ▶ on the player below'],
  [/^(.+)：読み込みました。権利は別途確認してください。$/,m=>tr(m[1])+': imported. Please check the rights separately.'],
  [/^再生エラー (.*)$/,m=>'Playback error '+m[1]],[/^検証中 (.*)$/,m=>'Verifying '+m[1]],[/^不一致・失敗 (.*)$/,m=>'Mismatch / failed '+m[1]],[/^サイズ不一致 (.*)$/,m=>'Size mismatch '+m[1]],[/^ファイルのSHA-256一致（(.*)$/,m=>'File SHA-256 matches ('+m[1]],
+ [/^(.+)（(録音地|自然分布)）$/,m=>tr(m[1])+' '+EXACT['（'+m[2]+'）']],
  [/^(.+)（(伊豆|兵庫)）$/,m=>NAMES[m[0]]?NAMES[m[0]]:tr(m[1])+' ('+(m[2]==='伊豆'?'Izu':'Hyōgo')+')']
 ];
 const cache=new Map();

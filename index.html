@@ -591,7 +591,7 @@ async function launchField(id){
 }
 // v0.26 環境層のローテーション：同時に鳴るのは FIELD_MAX 層まで。それ以上選ばれている時は、1周（抜粋の長さ）ごとに待っている層と入れ替える。
 // 鳴っている層だけがメモリに固定されるので、環境層を増やしても音声メモリの上限に当たらない（待機中の層は通常のLRUで解放される）。
-const FIELD_MAX=4,fieldWaitSince=new Map();
+const FIELD_MAX=4,fieldWaitSince=new Map();let fieldLastSwap=-Infinity;
 function fieldOn(){return Object.entries(fieldConfig.levels).filter(([id,l])=>l>0&&rightsAllowed(id)).map(([id])=>id)}
 function fieldTick(){if(!playing||!ctx||fieldConfig.legacy||auditionKey)return;const now=ctx.currentTime,on=fieldOn(),sounding=new Set([...[...fieldVoices].map(v=>v.id),...fieldPending]);
  for(const id of [...fieldWaitSince.keys()])if(!on.includes(id)||sounding.has(id))fieldWaitSince.delete(id);
@@ -600,7 +600,7 @@ function fieldTick(){if(!playing||!ctx||fieldConfig.legacy||auditionKey)return;c
  const due=on.filter(id=>sounding.has(id)&&fieldNext.has(id)&&now+.05>=fieldNext.get(id));
  let free=FIELD_MAX-on.filter(id=>sounding.has(id)).length;
  while(free>0&&waiting.length){launchField(waiting.shift());free--}
- for(const id of due){if(waiting.length){fieldNext.delete(id);launchField(waiting.shift())}else launchField(id)}
+ for(const id of due){if(waiting.length&&now-fieldLastSwap>2){fieldLastSwap=now;fieldNext.delete(id);launchField(waiting.shift())}else launchField(id)} // 入れ替えは2秒に1回まで（重なると一瞬6層になるため）
  updateFieldLevels()}
 for(const r of recordings.filter(r=>r.fieldBed)){
  const label=document.createElement('label');label.className='fieldControl';label.innerHTML='<span></span><output id="field-value-'+r.id+'"></output><input type="range" id="field-'+r.id+'" min="0" max="100"><small></small>';

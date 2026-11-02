@@ -7,11 +7,11 @@
 // 投稿はしない（Instagram への投稿はオーナーが行う）。
 //
 // 使い方（リポジトリ直下で python3 -m http.server 8765 を起動してから）：
-//   node build/render_reel.js --sec 30 [--mode nosa|cc0] [--region japan] [--basis recorded] [--scene summer] [--warmup 6] [--out 出力先（既定は一時フォルダの ae_reels。リポジトリ内に動画を置かない）] [--keep]
+//   node build/render_reel.js --sec 30 [--mode nosa|cc0] [--region japan] [--basis recorded] [--scene summer] [--style motion|analysis（既定 motion。v0.37）] [--warmup 6] [--out 出力先（既定は一時フォルダの ae_reels。リポジトリ内に動画を置かない）] [--keep]
 // 出力：<名前>.mp4（H.264/AAC）、<名前>_credits.txt（キャプション案＋帰属表示）、<名前>_report.json（検査結果）。
 // 終了コード：検査がすべて合格なら 0、それ以外は 1。
 const {chromium}=require('playwright');const fs=require('fs'),path=require('path'),cp=require('child_process');
-const A={sec:30,mode:'nosa',region:'',basis:'recorded',scene:'',warmup:6,out:require('path').join(require('os').tmpdir(),'ae_reels'),url:'http://localhost:8765/index.html',keep:false};
+const A={sec:30,mode:'nosa',region:'',basis:'recorded',scene:'',style:'motion',warmup:6,out:require('path').join(require('os').tmpdir(),'ae_reels'),url:'http://localhost:8765/index.html',keep:false};
 for(let i=2;i<process.argv.length;i++){const k=process.argv[i].replace(/^--/,'');if(k==='keep'){A.keep=true;continue}const v=process.argv[++i];if(!(k in A)||v===undefined){console.error('不明な引数: --'+k);process.exit(2)}A[k]=typeof A[k]==='number'?Number(v):v}
 if(!['nosa','cc0'].includes(A.mode)){console.error('--mode は nosa か cc0 のみ（リールに BY-SA を含めないため）');process.exit(2)}
 if(!(A.sec>=1&&A.sec<=60)){console.error('--sec は 1〜60');process.exit(2)}
@@ -32,7 +32,7 @@ const meanVolume=f=>{const r=cp.spawnSync('ffmpeg',['-v','info','-nostats','-i',
   await pg.click('#play');await pg.waitForTimeout(A.warmup*1000);
   const pcm=await pg.evaluate(m=>typeof MediaRecorder!=='undefined'&&MediaRecorder.isTypeSupported(m),PCM_MIME);
   const dlP=pg.waitForEvent('download',{timeout:(A.sec+90)*1000});
-  await pg.evaluate(([s,o])=>__reelDebug.start(s,o),[A.sec,pcm?{mime:PCM_MIME,videoBitsPerSecond:20000000}:{}]);
+  await pg.evaluate(([s,o])=>__reelDebug.start(s,o),[A.sec,pcm?{mime:PCM_MIME,videoBitsPerSecond:20000000,style:A.style}:{style:A.style}]);
   const dl=await dlP;const raw=path.join(work,dl.suggestedFilename());await dl.saveAs(raw);await pg.waitForTimeout(300);
   const st=await pg.evaluate(()=>__reelDebug.state());const res=st.result||{};
   R.intermediate={file:path.basename(raw),mime:pcm?PCM_MIME:'(アプリ既定)',bytes:fs.statSync(raw).size,frames:res.frames,duration:res.duration};

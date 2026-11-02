@@ -6,7 +6,7 @@ const R={},fail=[];const ok=(k,c)=>{R[k+'_ok']=!!c;if(!c)fail.push(k)};
 await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
 // 画面
 R.ui=await pg.evaluate(()=>({types:[...document.querySelectorAll('#fxType option')].map(o=>o.value),targets:[...document.querySelectorAll('#fxTarget option')].map(o=>o.value),beats:[...document.querySelectorAll('#fxBeats button')].map(x=>x.textContent),status:document.getElementById('fxStatus').textContent,inMixer:!!document.querySelector('#mixerSection #fxPanel')}));
-ok('ui',R.ui.types.join()==='delay,echo,pingpong,reverb,flanger,phaser,sweep,roll'&&R.ui.targets.join()==='master,bio,field,music,sampler'&&R.ui.beats.join()==='1/8,1/4,1/2,1,2,4'&&R.ui.status==='オフ'&&R.ui.inMixer);
+ok('ui',R.ui.types.join()==='delay,echo,pingpong,reverb,flanger,phaser,sweep,roll,gate,crush'&&R.ui.targets.join()==='master,bio,field,music,sampler'&&R.ui.beats.join()==='1/8,1/4,1/2,1,2,4'&&R.ui.status==='オフ'&&R.ui.inMixer);
 const render=o=>pg.evaluate(o=>__fxDebug.render(o),o);
 const maxAbs=a=>a.reduce((m,v)=>Math.max(m,Math.abs(v)),0),energy=a=>a.reduce((m,v)=>m+v*v,0);
 // 120BPM・1/2拍＝0.25秒＝12000サンプル
@@ -31,6 +31,16 @@ const sw=await render({type:'sweep',input:'noise',beats:1,dur:1});const hf=a=>{l
 // 7) ロール：1.0秒で押すと、直前の1/2拍（0.75〜1.0秒）をそのまま繰り返す（サンプル一致）
 const rl=await render({type:'roll',input:'chirp',engageAt:1,dur:1.75});let err=0;for(let k=0;k<36000;k++)err=Math.max(err,Math.abs(rl.L[48000+k]-rl.inL[36000+(k%B)]));R.rollErr=err;R.rollBefore=maxAbs(rl.L.slice(0,47900).map((v,i)=>v-rl.inL[i]));
 ok('roll',R.rollErr<1e-4&&R.rollBefore<1e-6);
+// 7b) トランスゲート（v0.39）：120BPM・1/2拍＝0.25秒ごとに、前半0.125秒だけ鳴り、後半は無音（ドライ0）。差し込んだだけ（オフ）は原音と一致
+const rms=a=>Math.sqrt(energy(a)/a.length);const tg=await render({type:'gate',input:'tone',dur:1});R.gate=[];for(let w=0;w<8;w++)R.gate.push(+rms(tg.L.slice(w*6000,(w+1)*6000)).toFixed(4));
+ok('gate',R.gate.every((v,i)=>i%2===0?Math.abs(v-.3536)<.01:v<1e-4));
+const tg1=await render({type:'gate',input:'tone',beats:1,dur:1});R.gate1=[0,1,2,3].map(w=>+rms(tg1.L.slice(w*12000,(w+1)*12000)).toFixed(4));ok('gate_beat',R.gate1[0]>.3&&R.gate1[1]<1e-4&&R.gate1[2]>.3&&R.gate1[3]<1e-4);
+const tgh=await render({type:'gate',input:'tone',depth:.5,dur:.5});R.gateHalf=[+rms(tgh.L.slice(0,6000)).toFixed(4),+rms(tgh.L.slice(6000,12000)).toFixed(4)];ok('gate_drywet',Math.abs(R.gateHalf[0]-.3536)<.01&&Math.abs(R.gateHalf[1]-.1768)<.01);
+// 7c) ビットクラッシュ（v0.39）：6サンプルごとに値を保持（サンプルレート1/6）し、6ビットの段（1/32刻み）に丸める。オフは原音と一致
+const cr=await render({type:'crush',input:'tone',dur:.25});let held=0,grid=0,n=0;for(let i=6;i<12000;i++){n++;if(Math.abs(cr.L[i]-cr.L[i-(i%6)])<1e-6)held++;if(Math.abs(cr.L[i]*32-Math.round(cr.L[i]*32))<1e-3)grid++}
+R.crush={hold:+(held/n).toFixed(4),grid:+(grid/n).toFixed(4),diff:+Math.sqrt(energy(cr.L.map((v,i)=>v-cr.inL[i]))/energy(cr.inL)).toFixed(3),peak:+maxAbs(cr.L).toFixed(4)};
+ok('crush',R.crush.hold>.999&&R.crush.grid>.9&&R.crush.diff>.05&&R.crush.peak<=.5+1/64+1e-6);
+for(const t of ['gate','crush']){const o=await render({type:t,input:'chirp',on:false,dur:.5});R[t+'Bypass']=maxAbs(o.L.map((v,i)=>v-o.inL[i]));ok(t+'_bypass',R[t+'Bypass']<1e-6)}
 // 8) 操作：拍・テンポ（TAP）・ドライ／ウェット
 await pg.evaluate(()=>document.getElementById('mixerSection').open=true);
 await pg.click('#fxBeats button:nth-child(4)');R.beats=await pg.evaluate(()=>__fxDebug.state().beats);ok('beat_button',R.beats===1);
@@ -47,6 +57,12 @@ ok('live_master',R.live1.st.inserted.join()==='master'&&R.live1.status==='オン
 let pk=-Infinity;for(let i=0;i<20;i++){pk=Math.max(pk,await pg.evaluate(()=>__mixerDebug.peakDb('master')));await pg.waitForTimeout(50)}R.livePeak=pk;ok('live_sound',pk>-80&&pk<=0.5);
 await pg.selectOption('#fxTarget','field');await pg.waitForTimeout(300);R.live2=await pg.evaluate(()=>__fxDebug.state().inserted.sort());ok('live_channel',R.live2.length>=2&&R.live2.every(k=>k.startsWith('field:'))&&R.live2.includes('field:dry')&&R.live2.includes('field:wet'));
 await pg.click('#fxOn');R.offState=await pg.evaluate(()=>__fxDebug.state());ok('off',!R.offState.on&&R.offState.inserted.length>=2);
+// 9b) 実演奏：10種類すべてを順に切り替え → エラーなし・マスターのピークが 0dBFS を超えない・オフで経路が残る（v0.39）
+await pg.selectOption('#fxTarget','master');await pg.click('#fxOn');R.allTypes={};
+for(const t of ['delay','echo','pingpong','reverb','flanger','phaser','sweep','roll','gate','crush']){await pg.selectOption('#fxType',t);let mx=-Infinity;for(let i=0;i<8;i++){mx=Math.max(mx,await pg.evaluate(()=>__mixerDebug.peakDb('master')));await pg.waitForTimeout(60)}R.allTypes[t]={peak:+mx.toFixed(2),ins:(await pg.evaluate(()=>__fxDebug.state().inserted)).join()}}
+ok('all_types_live',Object.values(R.allTypes).every(v=>v.peak<=0&&v.ins==='master'));
+await pg.selectOption('#fxType','crush');await pg.selectOption('#fxTarget','music');await pg.waitForTimeout(200);R.crushMusic=await pg.evaluate(()=>__fxDebug.state().inserted.sort());ok('crush_channel',R.crushMusic.length>=2&&R.crushMusic.every(k=>k.startsWith('music:')));
+await pg.click('#fxOn');
 // 10) 押している間だけ（ロール）
 await pg.selectOption('#fxType','roll');await pg.selectOption('#fxTarget','master');const hold=pg.locator('#fxHold');await hold.scrollIntoViewIfNeeded();const hb=await hold.boundingBox();
 await pg.mouse.move(hb.x+hb.width/2,hb.y+hb.height/2);await pg.mouse.down();await pg.waitForTimeout(400);R.holdDown=await pg.evaluate(()=>__fxDebug.state());await pg.mouse.up();await pg.waitForTimeout(100);R.holdUp=await pg.evaluate(()=>__fxDebug.state());

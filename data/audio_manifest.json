@@ -1605,6 +1605,3274 @@
     "lossless": false,
     "provenance": "原本（96000Hz）から24-bitへ変換して切り出し（原本はpcm_s32be 32-bit。リサンプルなし）した抜粋（158秒〜203秒）。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
+  },
+  "tawny-owl": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/tawny-owl.mp3",
+    "bytes": 401284,
+    "sha256": "2a9db8aabbae895c4ce692261f391d874e730059bba851455b164c11a9c69dd5",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 1.563832,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1102500,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/tawny-owl.flac",
+      "bytes": 1120969,
+      "sha256": "ee458e371f14c13edc2168d3e21425a0bab816301783eb798dc1865f976dcf5e",
+      "frames": 1102500
+     }
+    ],
+    "pcmDataSha256": "48b8fb591e8d8e3b9cdfcf07cbac7a8cf2f9e1546c793c5423163cdfd1b73928",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.80303955078125,
+    "gain": 0.9805933382653269,
+    "lossless": true,
+    "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（11.25秒〜36.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "european-nightjar": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/european-nightjar.mp3",
+    "bytes": 290943,
+    "sha256": "94a2f6d3cd65ae84a78396a3b0e122db29d5bbbdd811ea09e0e5a2a87550c794",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 18.119751,
+    "lossless": false,
+    "gain": 0.587769,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 799081,
+    "duration": 18.12,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/european-nightjar.flac",
+      "bytes": 833864,
+      "sha256": "22dbdc4748c032dce90afd1ec4177d75f8b99f41cc5efb9df7968dee8c241509",
+      "frames": 799081
+     }
+    ],
+    "pcmDataSha256": "2671a9c3c58ff39ba046e1ba77ba83891c7a0955b2194955dad2971d7dc69186",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.93115234375,
+    "gain": 0.39483337740607705,
+    "lossless": true,
+    "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "eurasian-wren": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/eurasian-wren.mp3",
+    "bytes": 401284,
+    "sha256": "e72169762f7e524c27c9693a664273d9d71ec91ec73a4196d52aa25ddf520064",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 4.202499,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1102500,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/eurasian-wren.flac",
+      "bytes": 3539485,
+      "sha256": "e16e7ff949bb1770ab24747bfbb14799dd9fb21f1baf0559b7563d55a26f8367",
+      "frames": 1102500
+     }
+    ],
+    "pcmDataSha256": "c838dbdd37d2e3aabf6067533444480ef968fdbcba1e1c7817464fd7c41ee7b9",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.4530518054962158,
+    "gain": 2.651295135103241,
+    "lossless": true,
+    "provenance": "原本（44100Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（51.5秒〜76.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "eurasian-wren-ireland": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/eurasian-wren-ireland.mp3",
+    "bytes": 401284,
+    "sha256": "b38d5ff39b5de5e91b3da8e5a80b90b0887d3600a089552ef6f3a99b03782883",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 1.685337,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 2400000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/eurasian-wren-ireland.flac",
+      "bytes": 8327906,
+      "sha256": "f67570f4aab8115aca31c9f57ef5b686658de6eced01d58a130ebc9a0fb16f79",
+      "frames": 2400000
+     }
+    ],
+    "pcmDataSha256": "785db1f940f922591ee1c69bdc8c3900d618258404ba624c731da89923c47e00",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.8688231706619263,
+    "gain": 0.959945695320249,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（26.75秒〜51.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "eurasian-wren-alarm": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/eurasian-wren-alarm.mp3",
+    "bytes": 401284,
+    "sha256": "708e8599289e4614576510a12585a4e1347746f39b03ed751d055f95900cc747",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 3.606882,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 1,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/eurasian-wren-alarm.flac",
+      "bytes": 1517135,
+      "sha256": "ad95ab256707f2a98650d2597eb39f406aba542af5817658213ea4d5c6897e9c",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "53242af6127195f4f519c3476dc2bd4ae87fc940df7d4585ae8f09b3764fe916",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.7240674495697021,
+    "gain": 3.4306162348948686,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（5.5秒〜30.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "song-thrush": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/song-thrush.mp3",
+    "bytes": 401284,
+    "sha256": "c949630bfe01873f9014544414e9483fa99a73f60474ead62c739a4ac6f137ed",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 4.652212,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 1102500,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/song-thrush.flac",
+      "bytes": 1846793,
+      "sha256": "fd6b1000f0393ab4e95af2c4a95e967c2de2d77a564fa11c55c60c649f4a9b1e",
+      "frames": 1102500
+     }
+    ],
+    "pcmDataSha256": "148fa5827c15cb9f6be7b40e444b8affb729740d918ab3fdff332d51f622f35c",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.29515767097473145,
+    "gain": 4.419437379243675,
+    "lossless": false,
+    "provenance": "原本（44100Hz・32-bit・1ch）から切り出し（pcm_f32le 32-bit → 24-bit 整数に変換）した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "song-thrush-2": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/song-thrush-2.mp3",
+    "bytes": 401284,
+    "sha256": "08a53b47633fb145508a88ca5172d7dd80353e317ac89bbb2a37cf0ad60b070e",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 4.025597,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/song-thrush-2.flac",
+      "bytes": 4673373,
+      "sha256": "e40c104adeb76d9c0a6f0d8fa08820c0f8d5193d5e3ee9779b61363fa6efafd4",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "0e07ab56a961c3016cdc3502d39e7edd756cf7966b8f407b55b6497ac68aad46",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.5341672897338867,
+    "gain": 1.7464803039239878,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（22秒〜47秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "nightingale": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/nightingale.mp3",
+    "bytes": 401284,
+    "sha256": "d3825ae3716b5c3d12a19af77da5e1e9ecbee059090609700e90f28b7c496055",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 1.756431,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 1,
+    "frames": 2400000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/nightingale.flac",
+      "bytes": 3778514,
+      "sha256": "a73335d99066af7af516b48c1db730915b51d3adbe191875ef95d2ccae4f1b9f",
+      "frames": 2400000
+     }
+    ],
+    "pcmDataSha256": "7011bc9763415dbbb5e3b3b3c937b8bc5c783d50df7c1003b88c39f6c637da72",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.6734907627105713,
+    "gain": 1.6686635617374463,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（14秒〜39秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "nightingale-russia": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/nightingale-russia.mp3",
+    "bytes": 401284,
+    "sha256": "cd31527c3820080513ca30b971d68666a40ba592b288b24e98681cf273239648",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 2.004224,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/nightingale-russia.flac",
+      "bytes": 4347641,
+      "sha256": "77f21b1cb7bc09093b9ba640a471b4bcdcfca6711e3f4536f03921df1b31d356",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "b9b022da78f4e859306fa02a2657fdaeedc13e8049b161fb24b69fddf0f12158",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.5867034196853638,
+    "gain": 1.2450608098902896,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（41秒〜66秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "nightingale-vendee": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/nightingale-vendee.mp3",
+    "bytes": 401284,
+    "sha256": "db4e7fd45de9cc002b00d5830c9209ee7d7fd53c7de23232ec7dfd0393563631",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 4.395752,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/nightingale-vendee.flac",
+      "bytes": 4309298,
+      "sha256": "cbd0dd016413412648f90ddca3b32ba9690818dfdf1a0ab8a1ce5a885bd7ca0f",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "c95609193c9769d53ff4ebf5af4fa34f7c44f0b95d447e77c05b57815c89e64c",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.4543735980987549,
+    "gain": 1.9410075630964647,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（399.25秒〜424.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "uguisu-yokohama": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/uguisu-yokohama.mp3",
+    "bytes": 401284,
+    "sha256": "f563d7fda73e4778d3d7d5508983f9c91f4b2167e4f67c3f9570c0dcebeb4f9b",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 2.037181,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/uguisu-yokohama.flac",
+      "bytes": 1961869,
+      "sha256": "d69a325f370346224e39d4c844743279b90892d7ca014f3143dbc16e0a7698f4",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "ce11f86daaac5fd5d68fc8a15fd95784e207a5af9151637f5e28630550ba2195",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.61285400390625,
+    "gain": 1.3682562700167429,
+    "lossless": true,
+    "provenance": "原本（48000Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "loon-1": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/loon-1.mp3",
+    "bytes": 401284,
+    "sha256": "b2109e2a9d88b9b238540ee344f115cfda208c85e34a4c4512f0121c4b9d0c59",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 2.471426,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 2400000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/loon-1.flac",
+      "bytes": 7465848,
+      "sha256": "a346a6f0d31a65f46a346d33b5508cb6b2ac2aa4529b669efe1faccfcd2ac63c",
+      "frames": 2400000
+     }
+    ],
+    "pcmDataSha256": "ee11bd55bdc057cc01cf4876bf42ed1b842f9cf3b88e41012d4409c6f46fdb40",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.33697259426116943,
+    "gain": 1.5587394709029576,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（6.25秒〜31.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "loon-2": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/loon-2.mp3",
+    "bytes": 401284,
+    "sha256": "fc82f11f26cc54b5f4cf48809e80856e07b3542cb7c4c7db78cc2140c86543ff",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 3.249635,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 2400000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/loon-2.flac",
+      "bytes": 7518690,
+      "sha256": "f268d366c2d539da8d3509fb408f95fb6c0db9fedbbc81dcdc6e0a8fd64ffbd6",
+      "frames": 2400000
+     }
+    ],
+    "pcmDataSha256": "9ad8187a344c7303a7690be7478e90bf916c5a68cd39c4e0c959a76cde994c5a",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.2537214756011963,
+    "gain": 2.0654038638249665,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（37.75秒〜62.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "loon-3": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/loon-3.mp3",
+    "bytes": 401284,
+    "sha256": "fde63eedeb07ba54697d0a9a8845ae456fa82dfa8f0b25ac3e0bb2c0d2b2a72f",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 3.992556,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 2400000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/loon-3.flac",
+      "bytes": 4502698,
+      "sha256": "a4e693d7810787dce08d5319324bdb3ba77561981b55c245bbd9973b8c3f2568",
+      "frames": 2400000
+     }
+    ],
+    "pcmDataSha256": "dd7d26b4b90eccf9db6032fe3b566873fef7034b703e25dea4ab9b49750a8c1c",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.18562018871307373,
+    "gain": 2.532538851845595,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（67秒〜92秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "lyrebird": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/lyrebird.mp3",
+    "bytes": 456455,
+    "sha256": "234bd26533e69713a09b86e0ad04aa64628b8e7670cdaf8597da8eb878af891f",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 28.448435,
+    "lossless": false,
+    "gain": 2.764933,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1254576,
+    "duration": 28.448,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/lyrebird.flac",
+      "bytes": 3251552,
+      "sha256": "4cd2b368d1f5a469fee14ffef94dfb9a3acd0562a8e3de1bb12c0a0121b6391f",
+      "frames": 1254576
+     }
+    ],
+    "pcmDataSha256": "b305789d4bdbad8cd8e74dd61adc31d5c4d74b8cc42ab8307669a4df86812c0e",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.73626708984375,
+    "gain": 1.564760650772027,
+    "lossless": true,
+    "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "lyrebird-healesville": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/lyrebird-healesville.mp3",
+    "bytes": 401284,
+    "sha256": "875000db80823e90e80a57c7362bd245afb8b411f9ffedbe7b5fd68404675189",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 0.673986,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/lyrebird-healesville.flac",
+      "bytes": 1288205,
+      "sha256": "dff599ef22865923b05c07190ff2bdb5d527be63b090c81af2d0a620de43399a",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "6ecc06c84e2bf38fda74b96e963b973efc2771cd113a24b9853aa2b496068393",
+    "headroomScale": 1.0,
+    "decodedPeak": 1.0,
+    "gain": 0.45276417384306167,
+    "lossless": true,
+    "provenance": "原本（48000Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "woodpecker": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/woodpecker.mp3",
+    "bytes": 401284,
+    "sha256": "2bed566eea3437a076453fe4d7cd1aa80051231216840537f49b3d6101dc19f0",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 3.857971,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1102500,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/woodpecker.flac",
+      "bytes": 2141992,
+      "sha256": "8343a0f6ff2e5883d9551430e7e67dcca7819f70539d8532a3cd959354cc2021",
+      "frames": 1102500
+     }
+    ],
+    "pcmDataSha256": "68e36893756fd3cfcab47caf96be9166eb38fd5f79ab7a873560270e99c773ed",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.272308349609375,
+    "gain": 2.473572335015398,
+    "lossless": true,
+    "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（4.75秒〜29.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "woodpecker-leipzig": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/woodpecker-leipzig.mp3",
+    "bytes": 401284,
+    "sha256": "b262a7d52c91cc30f4c1a13ece3c4336e7ee9fb6c207b558e6ea3c561a9a4a12",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 14.508793,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 2400000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/woodpecker-leipzig.flac",
+      "bytes": 7031512,
+      "sha256": "1db948df0290c15a74d0edf00b0e720316f2daa68ba07c428ea410830815d634",
+      "frames": 2400000
+     }
+    ],
+    "pcmDataSha256": "d583918d6a667d4a90c540ff42fe07f9cef765a7c86b654988aecb07c209df89",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.16865825653076172,
+    "gain": 9.705668046851567,
+    "lossless": false,
+    "provenance": "原本（192000Hz・24-bit・2ch）から切り出し（192000Hz → 96000Hz に変換（soxr））した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "woodpecker-illinois": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/woodpecker-illinois.mp3",
+    "bytes": 401284,
+    "sha256": "99350a86bd6555e6699237b0b9974e677407f76f1015d2b4d00f5b213f99bce3",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 1.859035,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 1,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/woodpecker-illinois.flac",
+      "bytes": 2490652,
+      "sha256": "61ecd22a222990186bfad5c2cdef95c99b491488510ce6849393abdc158a84d2",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "b038bb90742828cb840a485519b980c76663efde94e4f380d0dd583fed24d39c",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.34875667095184326,
+    "gain": 1.765999780917603,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（9.25秒〜34.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "scops-owls-crete": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/scops-owls-crete.mp3",
+    "bytes": 401284,
+    "sha256": "861c8279101198560a15c7d5b2861094bdeba375e55e1ae8b665a4bbb2c269ed",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 5.081023,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/scops-owls-crete.flac",
+      "bytes": 5340241,
+      "sha256": "e442474c498be0ece07652c481d321f02debacda15ef3b4b0ba541abd94f6d78",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "1394787f78bbc2cc45375c33f3e111cbfcf76b426ce06ab4875ab92247e3111c",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.472212553024292,
+    "gain": 2.098890876623805,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（27秒〜52秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "edge-forest-nl": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/edge-forest-nl.mp3",
+    "bytes": 401284,
+    "sha256": "b1e4f7e92e5aec02b24fa5b0817e08f73a33292229e719146cbcf86ebca3b4b3",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 1.899721,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/edge-forest-nl.flac",
+      "bytes": 5225255,
+      "sha256": "0627c4169470e1c6662def3b480d409bbe0cd2fbd1e5bc9716b1f40fe46faa65",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "8795377dd1c619d2ec37dffd81185208df925aa7e6ae2139944e2fd6df8cf2ed",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.46887195110321045,
+    "gain": 1.2314899780681492,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "dawn-chorus-ashdown": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/dawn-chorus-ashdown.mp3",
+    "bytes": 641193,
+    "sha256": "39cf79ee50114bd9e068cb0b30e786b3edf3664cb8186f323d073994bbb3a31a",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 12.269099,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/dawn-chorus-ashdown.flac",
+      "bytes": 6896751,
+      "sha256": "ddd28f91a13cbc6c09a8f12920c42a6f4eec7d9154db7a8a19950c888ef422b2",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "e9023cb2ccd89f2ccf0b1106f57951de0631f977500fd7f8d09a152ec3dbd52a",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.19794952869415283,
+    "gain": 3.147914373173224,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（250秒〜290秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "dawn-chorus-brittany": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/dawn-chorus-brittany.mp3",
+    "bytes": 641193,
+    "sha256": "2926f8dc3a2dd1e1cdfc3ed887221d0951ff34cc513380228714e405a9278b2d",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 16.0,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/dawn-chorus-brittany.flac",
+      "bytes": 6326386,
+      "sha256": "076285c139cc01aec18c1e8a0fc1f76b047765b00d21b75b21ae72b7f61e47f2",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "d1bb11a4cd4ac2d6f71ec7dc382e17a496a50d377a106306d18027ee232bd135",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.10683882236480713,
+    "gain": 8.87286373960286,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（128秒〜168秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "dawn-chorus-provence": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/dawn-chorus-provence.mp3",
+    "bytes": 641193,
+    "sha256": "54c81cf7fb7ce39f2ffa62d642ad72ebd2f2e172bec491ec2a87389201e7f0e7",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 1.560368,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/dawn-chorus-provence.flac",
+      "bytes": 8424659,
+      "sha256": "4e87334947ad375fecf053785b81e8c2a1759b557b8ed6661cc76010428f2273",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "e35e9cbaa2d961611731216ea1c9fcc813c0c27a566df1a04b7cd8ef2f69a196",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.8466939926147461,
+    "gain": 0.8452308300291811,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（42.75秒〜82.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "fujinomiya-forest-birds": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/fujinomiya-forest-birds.mp3",
+    "bytes": 641193,
+    "sha256": "5114c9d69c9df91b46f2cdf583b74a431721ee05d72d58df7e732a42707ad3fb",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 9.297102,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 3840000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/fujinomiya-forest-birds.flac",
+      "bytes": 13949929,
+      "sha256": "828f95ed7dc7e34bd7babe3f23175e23457a00d9e1dd23ecfd9817264cfd1761",
+      "frames": 3840000
+     }
+    ],
+    "pcmDataSha256": "9ac7165ff2940a9a1a86bef783fc479efc69bc7274b4c015121cfc4c4d6b02df",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.35947489738464355,
+    "gain": 5.875732067564736,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（11.5秒〜51.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "fox": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/fox.mp3",
+    "bytes": 401284,
+    "sha256": "1b42a4e59bd5d773e786f5e4428ad83cbc337f8212e3554d0af399ce422b40d5",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 2.923314,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/fox.flac",
+      "bytes": 4649571,
+      "sha256": "c57d928b160f4f717f5bdff8ef406f473167be52a43414dd7c2dea996eda6adc",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "cbeb0199245dd34e0bc3d1d8e840bab50371b470f7a2fc0d7f19bac46cb17a7e",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.9909151792526245,
+    "gain": 1.3011599230875086,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "wolf": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/wolf.mp3",
+    "bytes": 401284,
+    "sha256": "9b29f5dc11c50cb03fe8b51fd950a0a47affa90553011c37b96a0b1eb3bfac3a",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 1.476214,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/wolf.flac",
+      "bytes": 5114846,
+      "sha256": "5e77a6007915fb37b2df05940c7777c93d2c743c6a32d5715a1e29162e86d91e",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "ad73ddbb69fd912267b8e095b5af37ddaaa81ae6ec4744ecf946edeb52fa89b5",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.37158334255218506,
+    "gain": 0.8566741560474473,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（13.5秒〜38.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "roe-deer": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/roe-deer.mp3",
+    "bytes": 401284,
+    "sha256": "6e6baff55583445ef07d8bcef5119309ad14255d010b7804938757b4387d34a5",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 10.236749,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/roe-deer.flac",
+      "bytes": 4259508,
+      "sha256": "a9cff84b019b5d1decc9c8b58d4d30769a3d4506d816699a39fee2c73596b9bf",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "3c5cb14166ab8f484f629cd07d73c111698d3d19c3d4833f31c765a01caf8df5",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.24343276023864746,
+    "gain": 5.1271770372573044,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（47.5秒〜72.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "siamang": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/siamang.mp3",
+    "bytes": 401284,
+    "sha256": "398955bcc9605fb9426578c8de8eab8a45ccdf66b90a5f536f9d17690b72b7dd",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 0.865629,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1102500,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/siamang.flac",
+      "bytes": 1865569,
+      "sha256": "951cbe5281140daf5c6c3e84c8fbd16ab7bdef8492559c42402d607fddaba914",
+      "frames": 1102500
+     }
+    ],
+    "pcmDataSha256": "e8522208f96f60f41380e2610e6df58c912aa8c9e687d0abd5efa6d0b66b53e3",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.96630859375,
+    "gain": 0.5637110319379253,
+    "lossless": true,
+    "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（9.25秒〜34.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "siamang-belgium": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/siamang-belgium.mp3",
+    "bytes": 401284,
+    "sha256": "94750ab7d329105fcd274d7052d4a678bed932c6bd7d9cdf012d9c015d227a65",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 2.445279,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/siamang-belgium.flac",
+      "bytes": 858986,
+      "sha256": "4e78164baaee624165bf193830e83cb24dff55ae024f218cdafb07c1ce263558",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "248c4dee61103b0299bbfed55c688eb6671be5d699603ebff4dd526274fda91f",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.3375244140625,
+    "gain": 1.6425900825900364,
+    "lossless": true,
+    "provenance": "原本（48000Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（3.25秒〜28.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "howler-belize": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/howler-belize.mp3",
+    "bytes": 401284,
+    "sha256": "68d3c727471897e9fed8e9bb84ce443b096e87ca0b111950306fbb3ce9f84f0f",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 0.794346,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1102500,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/howler-belize.flac",
+      "bytes": 2934643,
+      "sha256": "eade599f6b8570f8ecb1f85c7912bda7db873a6cc39e741e0d76d5aa876e6d1e",
+      "frames": 1102500
+     }
+    ],
+    "pcmDataSha256": "644aea2b60cc17a713ff26a8b01e3bbedb5ed27e2066c7a7d4927aac86e81d63",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.926544189453125,
+    "gain": 0.48969694972804556,
+    "lossless": true,
+    "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（18.25秒〜43.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "elephant-zoo": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/elephant-zoo.mp3",
+    "bytes": 125849,
+    "sha256": "58ccc074959f30c4641f2bf8369059cd33d60b05d0546e7974a75712edfa607d",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 7.8,
+    "lossless": false,
+    "gain": 0.974395,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 374400,
+    "duration": 7.8,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/elephant-zoo.flac",
+      "bytes": 354315,
+      "sha256": "2c0bb3c4af82b37017c2bb179b630f9374974fc259682ea4786f946c24042d0b",
+      "frames": 374400
+     }
+    ],
+    "pcmDataSha256": "503d82f549e12f5193b9ededd1551192401c3ea7145995b9ba009641709017bb",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.544677734375,
+    "gain": 0.6545660130416229,
+    "lossless": true,
+    "provenance": "原本（48000Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "sea-lion-valparaiso": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/sea-lion-valparaiso.mp3",
+    "bytes": 401284,
+    "sha256": "668be762762ded4f3f21ff1ecebe20a843f2c60564b24d981996db24fb6920cb",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 1.687859,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/sea-lion-valparaiso.flac",
+      "bytes": 4403328,
+      "sha256": "eef868841009236fa586684dbdd914c4a409954f443d98d34b389ad3382bba9f",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "0bba303f65aa86b1a4aa1b62ae650425776c01571e015f8682dd7bf2067f7ae6",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.9440256357192993,
+    "gain": 1.1105210711559046,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（242.5秒〜267.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "sea-lion-valdivia": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/sea-lion-valdivia.mp3",
+    "bytes": 58140,
+    "sha256": "86fbdb9a8f8c5b72bb8f76d11150fa2b1ca6abbae199b4d2932be5b9e3ba8cde",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 3.571927,
+    "lossless": false,
+    "gain": 1.183648,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 171452,
+    "duration": 3.572,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/sea-lion-valdivia.flac",
+      "bytes": 616588,
+      "sha256": "b69b81fb83ae64cb776bcf99803c741f78e678da4b0d07844f4d6e991c3f6446",
+      "frames": 171452
+     }
+    ],
+    "pcmDataSha256": "e566619623a0d74d2229b42b4f5437d05820d6f1910b1c84460844eb238c2342",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.8311054706573486,
+    "gain": 0.7856741093398858,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "bats-backyard": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/bats-backyard.mp3",
+    "bytes": 316021,
+    "sha256": "f04068bd090f565c5ccd91f0ccf7d5ee311b4a97e4db388b89847a06c8446bdf",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 19.68483,
+    "lossless": false,
+    "gain": 9.462415,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 868101,
+    "duration": 19.685,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/bats-backyard.flac",
+      "bytes": 845035,
+      "sha256": "f12a0104d4c2d9c1d003bdb4eb9614a6c19c2b7e2abbc70d9c1298677299ba40",
+      "frames": 868101
+     }
+    ],
+    "pcmDataSha256": "c5d272822077143d41227ab1e8f7c295b0fa296301f8786a7d494bd23b6276e7",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.52508544921875,
+    "gain": 4.3936322750129095,
+    "lossless": true,
+    "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "bat-batbox": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/bat-batbox.mp3",
+    "bytes": 401284,
+    "sha256": "f09671a8867ddef9224de91f974db63b0266b98bbcbbeb8b12db95def032f551",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 2.676577,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1102500,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/bat-batbox.flac",
+      "bytes": 1369707,
+      "sha256": "c579071f0d552dadf72f1e3dc222bc430564d0e43ba650331378b11f1944f63b",
+      "frames": 1102500
+     }
+    ],
+    "pcmDataSha256": "7253f3b76974e5f62d912fbc60d2d552f86a975fab5ebdacbf1eaf20685be037",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.91693115234375,
+    "gain": 1.793765541343942,
+    "lossless": true,
+    "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（18.75秒〜43.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "bat-slowed": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/bat-slowed.mp3",
+    "bytes": 401284,
+    "sha256": "48dd2d242501acbd9182d65c82ddf300ef8af9b338bb634b661350ff47d7dd11",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 5.649306,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 2400000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/bat-slowed.flac",
+      "bytes": 2411456,
+      "sha256": "879a151c0162857c428a3fa0f43dd1a6302b2510536f86069ee6c3a79d649629",
+      "frames": 2400000
+     }
+    ],
+    "pcmDataSha256": "2d031ce212efd0660201a881aefc93162e097a125f3c26336d13574720a4f3fd",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.7079458236694336,
+    "gain": 2.4720383704059445,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（11.25秒〜36.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "dolphin": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/dolphin.mp3",
+    "bytes": 401284,
+    "sha256": "a5e7206969e192b98cc68bfdcbb37faf3f3a9e6b4535c868d4a836c7b3b365f2",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 2.249382,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 1,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/dolphin.flac",
+      "bytes": 2489007,
+      "sha256": "319fa38d1fe94f4162900d601fbda026122d845b3e3e273eaecfb75480237a68",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "f341f49bd7b0a6dc8aac2becfdf19a1af4fab56ca72ea414a0226ac5816c8086",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.944061279296875,
+    "gain": 2.135284784308149,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（15.75秒〜40.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "atlantic-spotted-dolphin": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/atlantic-spotted-dolphin.mp3",
+    "bytes": 401284,
+    "sha256": "6b2ac53663aeb029a0c5390acf5922ccdfdab2547bdedb15b52610e5c80ecc6c",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 1.175107,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1102500,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/atlantic-spotted-dolphin.flac",
+      "bytes": 2022518,
+      "sha256": "5b86518b55d2d68baf76ff52a630707906f698df3300465a8bb29a51f196e2e2",
+      "frames": 1102500
+     }
+    ],
+    "pcmDataSha256": "d4b6ba8aad4c3221ab77fce5c260b6ccfb958279ad6515ace44b356afabe5ff4",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.85491943359375,
+    "gain": 0.788966430765915,
+    "lossless": true,
+    "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（83.75秒〜108.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "amazon-river-dolphins": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/amazon-river-dolphins.mp3",
+    "bytes": 401284,
+    "sha256": "6397db94f4cb4538f309a7db8ff6800f3d31f9ba570c85a3749b8015c5c39499",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 1.460853,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 2400000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/amazon-river-dolphins.flac",
+      "bytes": 8683373,
+      "sha256": "485eca3034af31c22f09561f92a550998fa21cef3698496c40cd48649ef29159",
+      "frames": 2400000
+     }
+    ],
+    "pcmDataSha256": "ffcd7f13602fb7021512e1d831533222216f654ea06c40bfd60b3d1003a2cdc1",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.89125657081604,
+    "gain": 0.9810373947747865,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（37.5秒〜62.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "humpback": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/humpback.mp3",
+    "bytes": 401284,
+    "sha256": "c5d49288c4296dff232219583dd0df18ee28343c72ae528f4956b5961f8d3ce5",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 1.444379,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 32000,
+    "channels": 1,
+    "frames": 800000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/humpback.flac",
+      "bytes": 879306,
+      "sha256": "6741474f1a112a779c63ed859c7da8d3cbf8212157dcb1082df368c2e6b9c804",
+      "frames": 800000
+     }
+    ],
+    "pcmDataSha256": "7ddacaccba2d155408b777340200d0e4aa86982d2f4f2bead061a9731eb071cc",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.650390625,
+    "gain": 1.3721761600565765,
+    "lossless": true,
+    "provenance": "原本（32000Hz・16-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（300.75秒〜325.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "treefrog-france": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/treefrog-france.mp3",
+    "bytes": 401284,
+    "sha256": "1a5cf3e5b366eef8f452f3594a46efd35afc43e4de1870a30fbfe16cf9b0e42d",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 2.508722,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1102500,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/treefrog-france.flac",
+      "bytes": 1910642,
+      "sha256": "e3ccde580aa7ccec746ebf6e585c55661292c295ca4bb039bcaebcda461eba01",
+      "frames": 1102500
+     }
+    ],
+    "pcmDataSha256": "d9cdfa5bf0fd42653bdba27e30d8b765acd1461dc2a9d991ff94816ed9c212c1",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.49322509765625,
+    "gain": 1.6834542839901439,
+    "lossless": true,
+    "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "common-toad": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/common-toad.mp3",
+    "bytes": 182692,
+    "sha256": "92af6cdf6602cc0eabe8df157f0dd6bd1190579db36020238a1f0d83d19c2cec",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 11.344717,
+    "lossless": false,
+    "gain": 2.832609,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 544546,
+    "duration": 11.345,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/common-toad.flac",
+      "bytes": 776661,
+      "sha256": "2fa15c3c83cfd2250476916a2988e83c63ba96bce4693b68b2e84b93908806e8",
+      "frames": 544546
+     }
+    ],
+    "pcmDataSha256": "70177136f84684ef1a2e365b25fc2d9b38276b413735de9c0f20f8f90839e42a",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.878326416015625,
+    "gain": 1.2319493660502165,
+    "lossless": true,
+    "provenance": "原本（48000Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "small-frog-ojai": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/small-frog-ojai.mp3",
+    "bytes": 56050,
+    "sha256": "160033bc5c59efd1d68002726f472cdbeb3ee4b027e62ff5ec235cc9fe384b5d",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 3.423107,
+    "lossless": false,
+    "gain": 5.520085,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 1,
+    "frames": 328575,
+    "duration": 3.423,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/small-frog-ojai.flac",
+      "bytes": 539646,
+      "sha256": "910048ab1d7d5f1c0f1e5d0df57a409893b8e5045987bbc47a17905819f5cd88",
+      "frames": 328575
+     }
+    ],
+    "pcmDataSha256": "a6192494ab14d398d8fc26514fb9dca2d2dbcbe7421ee4f6c7573fea0f4b480b",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.24975848197937012,
+    "gain": 5.241016779714913,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "pacific-treefrog-chorus": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/pacific-treefrog-chorus.mp3",
+    "bytes": 641193,
+    "sha256": "e6033a4c82fe92ea3119d431f4c53ef022e183101d12668ded8e0789bdaf1490",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 1.488496,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1764000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/pacific-treefrog-chorus.flac",
+      "bytes": 7193447,
+      "sha256": "bf535114b8dcd6c794c8368e71b8aa2625b68403ad345e7603be3f627d6eb626",
+      "frames": 1764000
+     }
+    ],
+    "pcmDataSha256": "181a89f2d4eb0c5592ec0db2dc8ad92a39be9623283a14414bcc17005f420cd9",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.9129302501678467,
+    "gain": 0.7467361869369024,
+    "lossless": false,
+    "provenance": "原本（44100Hz・32-bit・2ch）から切り出し（pcm_s32le 32-bit → 24-bit 整数に変換）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "owl-fox-brittany": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/owl-fox-brittany.mp3",
+    "bytes": 401284,
+    "sha256": "f046614ecaead05445e578d3290c503d7d35b8435a7018871b716b4f8d192b46",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 6.217162,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/owl-fox-brittany.flac",
+      "bytes": 4556915,
+      "sha256": "c29529eb8c32837d0ffe872b93b987c9221bfe380862c6254d3787af3fb2a179",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "aae671e6bd4ace2f35b2fe1eaf2606e1331a30142b7c75f9dd7cc402aa4b2cba",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.39966797828674316,
+    "gain": 3.1796025901988045,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（109.5秒〜134.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "whales-orcas-norway": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/whales-orcas-norway.mp3",
+    "bytes": 401284,
+    "sha256": "bc770c9738b7e4ee48811d2fc0b87a0f730a62fbcb131ee20d0830265ad673ae",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 1.31749,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1200000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/whales-orcas-norway.flac",
+      "bytes": 4968164,
+      "sha256": "d4bcc1e0c128b0835b27fd928007651a6a762571d70b70af4d7d6a92ebc5a077",
+      "frames": 1200000
+     }
+    ],
+    "pcmDataSha256": "906afbff773a732cdeb876ead63890b51d5ef45cb0d501982393d7f2ce1a1c0f",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.3423515558242798,
+    "gain": 0.8673407428302089,
+    "lossless": false,
+    "provenance": "原本（48000Hz・32-bit・2ch）から切り出し（pcm_s32le 32-bit → 24-bit 整数に変換）した抜粋（214.25秒〜239.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "snapping-shrimp": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/snapping-shrimp.mp3",
+    "bytes": 641193,
+    "sha256": "ac859172c65ee098ff3c69520eda6e154e6d358bf3d3b3037569434c6d3cb905",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 7.11852,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/snapping-shrimp.flac",
+      "bytes": 7846831,
+      "sha256": "b1599f8982188afffa324ceb2c63e9e5234be712fa7a4813dab758d194728740",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "69b439d763155b7c2ce9527e80f9b03eb2679ef1eeaf8c3d694e1471a70686b4",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.9320608377456665,
+    "gain": 3.4083097587891173,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（4.5秒〜44.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "bullfrogs-hk": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/bullfrogs-hk.mp3",
+    "bytes": 401284,
+    "sha256": "3fd8aaed7d94bce3c55f685a5965eb695dfd393c7a92c60f3f142fdb0a556ff5",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 0.893461,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 1102500,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/bullfrogs-hk.flac",
+      "bytes": 995736,
+      "sha256": "a93eceec3ed0ede213e13117c65aa8eb9a45b6b225f85d104504c45c54f8014b",
+      "frames": 1102500
+     }
+    ],
+    "pcmDataSha256": "4963f6c60730a4baed8a3f3387c5dbe7d3efbd28605339cfbfb557f266203399",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.73980712890625,
+    "gain": 0.8487638192622114,
+    "lossless": true,
+    "provenance": "原本（44100Hz・16-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（5.75秒〜30.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "peepers-toads-ozarks": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/peepers-toads-ozarks.mp3",
+    "bytes": 641193,
+    "sha256": "60287733d5b22a3721009719515ced37cec959f62684af59c70c7fff2216568d",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 9.486478,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/peepers-toads-ozarks.flac",
+      "bytes": 7247601,
+      "sha256": "3f1fd829c61a4bd674047e4838ce0dce1aa6106d41003c1ee867bffb2bb18557",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "64a0680d30540ba45b184c26ede42b670e6bfe728573234bc0f103e66f260b98",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.2010594606399536,
+    "gain": 3.499116265257452,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（29.75秒〜69.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "treefrogs-newyork": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/treefrogs-newyork.mp3",
+    "bytes": 641193,
+    "sha256": "012cc8174808c47d609a5f98a122e1639bfdf40bc8e000f0f9936caff4ff3445",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 1.586997,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/treefrogs-newyork.flac",
+      "bytes": 4058375,
+      "sha256": "54c5b693e0ed86c45423cb56eae6ec3b813b4195eb1298cd209378fbb5710bd2",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "f2d8f2c75a088d303b973c374cf40ffb92fd7a48978aa1c839f2065e4a256928",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.41064453125,
+    "gain": 0.9104892432546376,
+    "lossless": true,
+    "provenance": "原本（48000Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "frog-pond-netherlands": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/frog-pond-netherlands.mp3",
+    "bytes": 568468,
+    "sha256": "9fa53340ec97ceb229bfaf684cc05d742a2b9f180c5fb3a06a51507cd7cb50ac",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 35.464671,
+    "lossless": false,
+    "gain": 11.695796,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 3404608,
+    "duration": 35.465,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/frog-pond-netherlands.flac",
+      "bytes": 11156445,
+      "sha256": "7bbb946bf0db77442cc294b36346b0e3fa562d93b24ba8a7b3b2060e9aa972cf",
+      "frames": 3404608
+     }
+    ],
+    "pcmDataSha256": "b108638a87d97f1ba3100911aedf8cc81515333ae87152065c0009cf357c494b",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.14473259449005127,
+    "gain": 7.2937752702517225,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "lake-frogs-katydids": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/lake-frogs-katydids.mp3",
+    "bytes": 641193,
+    "sha256": "6e7a93d08943fdb7d8a74d3a4040f3ce23af2842481de5ce3f95da80eeade0e3",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 9.652934,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/lake-frogs-katydids.flac",
+      "bytes": 8355577,
+      "sha256": "93bb254d9eaf27998c867f170bfff0e3ee457c227f610d3fa3c89f25ef72229a",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "4e5d2532bf617cfed9f48babecf389cb0673eaddb90d56450c232872de651ab6",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.08613383769989014,
+    "gain": 5.167083785225003,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "utah-canyon-frogs": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/utah-canyon-frogs.mp3",
+    "bytes": 641193,
+    "sha256": "96c1981be2480f33e475c4bcd91bda3cf61e773111dcb2cbccc4288989fef272",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 16.0,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/utah-canyon-frogs.flac",
+      "bytes": 6890292,
+      "sha256": "ee90938704eba57f95c896a3352220f37cbdb0dc6dd06cf37c6d77216b121d3c",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "899b9c5f2a2267c623bdffaa6cb72b5e701925ec6596749a8a81fee73bd44c33",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.0309140682220459,
+    "gain": 10.585176306498576,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（19.25秒〜59.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "brazil-frog-chorus": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/brazil-frog-chorus.mp3",
+    "bytes": 641193,
+    "sha256": "9ed483807a836a8f7c3eaf26337401a8a4d7452c327d415dddd0039cca8ab4a2",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 10.720916,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/brazil-frog-chorus.flac",
+      "bytes": 7275558,
+      "sha256": "63f2e6c5b86b19f16811d1c4615ab9e8f173512adcd2523e0b33a0c1831d3d6c",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "882219f11d7da41e5593ab5ef7aa0840cc02ea71cc7b6e8a3672041ed842b422",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.07463538646697998,
+    "gain": 6.446910895159815,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（37.25秒〜77.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "amazon-night-jungle": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/amazon-night-jungle.mp3",
+    "bytes": 657911,
+    "sha256": "b5fd5206c1d27d9518be8296669861ffe8a66986f42005c4fe3c99f3fabebc46",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 41.039433,
+    "lossless": false,
+    "gain": 1.837811,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1969887,
+    "duration": 41.039,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/amazon-night-jungle.flac",
+      "bytes": 9276815,
+      "sha256": "da48149175bb4c07669cb774805d7ded1f237ca4107ddf55e064adb141423fad",
+      "frames": 1969887
+     }
+    ],
+    "pcmDataSha256": "ddb5663c6549b90f9fb229639e140a0da2025e9a7d0a2b237841409009c94090",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.4105943441390991,
+    "gain": 1.1050780654770866,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "podlaskie-spring-night": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/podlaskie-spring-night.mp3",
+    "bytes": 641193,
+    "sha256": "ad196f56d9a669ef5ffe2687d1a21abfa7b42c7366b7e62d98aa9cfe7379812b",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 1.152194,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 3840000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/podlaskie-spring-night.flac",
+      "bytes": 13182383,
+      "sha256": "beca07a5906967fd13ffb1fd16304366ff2b582f3385a944c2aee5d367d95f55",
+      "frames": 3840000
+     }
+    ],
+    "pcmDataSha256": "9dfb04928a778d6375f511f1ca955cecbc4211840bcc04f6b0b0597e240034fc",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.8379930257797241,
+    "gain": 0.5710137036693917,
+    "lossless": false,
+    "provenance": "原本（192000Hz・32-bit・2ch）から切り出し（pcm_f32le 32-bit → 24-bit 整数に変換・192000Hz → 96000Hz に変換（soxr））した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "frog-creek-ojai": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/frog-creek-ojai.mp3",
+    "bytes": 641193,
+    "sha256": "1db1194aca16ad9fe72ac39ecad1f68f1047195dc48cd7d618956397947521de",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 16.0,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 3840000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/frog-creek-ojai.flac",
+      "bytes": 11611409,
+      "sha256": "e64167e6f8a9dbd03502b023d78dbad14706b2f5c309f0536767dba8c8a560c8",
+      "frames": 3840000
+     }
+    ],
+    "pcmDataSha256": "022215afc2d98a64b833d101d5b855fb77a89efb235eb541992dc2be3ac56d47",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.058887362480163574,
+    "gain": 9.332675162887847,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（94.5秒〜134.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "malaysian-frogs": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/malaysian-frogs.mp3",
+    "bytes": 641193,
+    "sha256": "087946397596a46cbfa32d4bab7efb5c354b53447a9dd2333d6c6be81637436d",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 2.198341,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/malaysian-frogs.flac",
+      "bytes": 3749750,
+      "sha256": "23de0ab9e2bb5093ec2429e7b37bd4645461be6561093fd0fd530282043e979a",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "8551372cec6ed74613d3854a9b9132818034735e0c2ed836749f130595ebbce0",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.32314538955688477,
+    "gain": 1.476701165924238,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（34.25秒〜74.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "wetlands-night": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/wetlands-night.mp3",
+    "bytes": 641193,
+    "sha256": "f3e3175c0e9c484044b7512e877be12d4efec02d158559765af4220d1f8ba9e5",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 1.710728,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/wetlands-night.flac",
+      "bytes": 6616878,
+      "sha256": "a15f3dc7784f98aa47d049977dc74648989a4745f4ce9aef9fa898dc2150e4df",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "8da423cfc02bed95b8a2b36c91ace487bdf91c08151f6b60b0b6d8b887421a79",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.7916815280914307,
+    "gain": 1.0300973270042695,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（36.5秒〜76.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "amphibians-campsite": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/amphibians-campsite.mp3",
+    "bytes": 641193,
+    "sha256": "3d8ca1d4b25b54896fbb260bae1fa89530bcf278e5b683f8f9a8da733d0097d9",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 16.0,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/amphibians-campsite.flac",
+      "bytes": 6701812,
+      "sha256": "f7f16690c9cd4f7262db63b39f1913be0c3c40b6d29223cfbf084a8500325222",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "204675c7c1f38a57f629327cf22e5c1353081f5813f6ca29289dc28f7de7f378",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.02963387966156006,
+    "gain": 9.714836362304576,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（91.25秒〜131.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "pond-hydrophone-essex": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/pond-hydrophone-essex.mp3",
+    "bytes": 641193,
+    "sha256": "2e4de6367790c37b6fdc5ca6fc5be23bd6fb8adf997666ccc177d78f52e8c70f",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 16.0,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 1,
+    "frames": 3840000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/pond-hydrophone-essex.flac",
+      "bytes": 8700265,
+      "sha256": "fc4b6083f2849f5689a02e20981d5768cc9e515805441b7049612affed5efc72",
+      "frames": 3840000
+     }
+    ],
+    "pcmDataSha256": "c086bcc8d0358022c05e2bf6536a741e5b49795b1a9be386a6c0232bdcc1987d",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.8119399547576904,
+    "gain": 11.148640820819738,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（16.75秒〜56.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "reedbed-pondlife": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/reedbed-pondlife.mp3",
+    "bytes": 641193,
+    "sha256": "51d96857d7edbaf53d026f07c745173db3056a36bc8899207de9e6ab317f2932",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 3.21984,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 3840000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/reedbed-pondlife.flac",
+      "bytes": 17624630,
+      "sha256": "79e94c0aa1b7b901dcb3c9609b555805a66a2819d430976493c85294a18ed5b9",
+      "frames": 3840000
+     }
+    ],
+    "pcmDataSha256": "41d7b2b146fe8ddec5d11128eb6b76a6e37a0fb629ce36220600a9ffdbf6d6ae",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.9742494821548462,
+    "gain": 1.6705214953711434,
+    "lossless": false,
+    "provenance": "原本（96000Hz・32-bit・2ch）から切り出し（pcm_f32le 32-bit → 24-bit 整数に変換）した抜粋（313.25秒〜353.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "garden-pond-hydrophone": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/garden-pond-hydrophone.mp3",
+    "bytes": 641193,
+    "sha256": "8d7acc79367a6f7141bdf6ebc9bf22a5652ec57a13b27f465c9f3ee62483662f",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 9.927294,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 1764000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/garden-pond-hydrophone.flac",
+      "bytes": 3232826,
+      "sha256": "a85b9bebe05a0366562aae16164eb097a8914615b250a428607fad014d7fd97f",
+      "frames": 1764000
+     }
+    ],
+    "pcmDataSha256": "6952bdfe7b70b71df3fad94321884f6e10ef5a8255835d0fa94b7ae09ae25322",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.5329643487930298,
+    "gain": 9.418866824839085,
+    "lossless": true,
+    "provenance": "原本（44100Hz・24-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "titi-monkeys-tefe": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/titi-monkeys-tefe.mp3",
+    "bytes": 401284,
+    "sha256": "0982e82b24835aaf15c24299b4e19ddf5a4579c71555ec96a169df6f81d34f93",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.000249,
+    "lossless": false,
+    "gain": 0.959808,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 2400000,
+    "duration": 25.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/titi-monkeys-tefe.flac",
+      "bytes": 9894995,
+      "sha256": "5e188af0a62bf4219e248941e06a61013ce48e11010c34b4e404065668735df1",
+      "frames": 2400000
+     }
+    ],
+    "pcmDataSha256": "65ab48d1ef31dc0f41979861b26b86d06c8ef37b1f491f7dea9574cd0705e245",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.9440633058547974,
+    "gain": 0.4697937899488795,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "tokyo-cicadas-afternoon": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/tokyo-cicadas-afternoon.mp3",
+    "bytes": 370355,
+    "sha256": "9870a25fc058669ededfd6fd208ae0ca1bfd9dd65d568d1f9d4bc979692a34b6",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 23.075465,
+    "lossless": false,
+    "gain": 16.0,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1107622,
+    "duration": 23.075,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/tokyo-cicadas-afternoon.flac",
+      "bytes": 4316960,
+      "sha256": "5050942fe422eb8c0c03aa6cdeffd03c7565190d8c5927ae61403a62f302f536",
+      "frames": 1107622
+     }
+    ],
+    "pcmDataSha256": "8a9f209acc9ba663ef94de957741e497fd6ce9dcbd07b3a34062f84521d154a5",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.05752885341644287,
+    "gain": 7.2372829866009845,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・6ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "crickets-washington": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/crickets-washington.mp3",
+    "bytes": 641193,
+    "sha256": "5fc2607b7536de81edcc308939042a2bedff744a05a86de76a5691425384f3f2",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 16.0,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1764000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/crickets-washington.flac",
+      "bytes": 6530887,
+      "sha256": "2aadd9aa723f60ffc973255316b1a522694d7a75711a7bd3bc75a52066e61465",
+      "frames": 1764000
+     }
+    ],
+    "pcmDataSha256": "b9f5f7e8721a8e1bf0327280d6782822a7a3b0676557ce429ddc1433f146a7d0",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.03864312171936035,
+    "gain": 9.01174330248616,
+    "lossless": true,
+    "provenance": "原本（44100Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（108秒〜148秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "night-woods-pennsylvania": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/night-woods-pennsylvania.mp3",
+    "bytes": 641193,
+    "sha256": "71c23862d6704c38d76cf11274fcbb1c593b0aa0dbc787d3571581a5372376f9",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 7.455286,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 3840000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/night-woods-pennsylvania.flac",
+      "bytes": 15210256,
+      "sha256": "041292b337a520dfd08dd614796eb520a84774c88363b276884c074a81902679",
+      "frames": 3840000
+     }
+    ],
+    "pcmDataSha256": "a8d30ca3ca97060d55c67fcec60ac64937deaf937b2709bf62c0b9d09587421c",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.22904181480407715,
+    "gain": 3.4942869548662228,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "night-insects-indiana": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/night-insects-indiana.mp3",
+    "bytes": 641193,
+    "sha256": "da52fc8f4d147bd31213ae32cfd0d855e30dfcd2896dfaf6ef3ceeac7eb03d98",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 1.567077,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/night-insects-indiana.flac",
+      "bytes": 9028703,
+      "sha256": "36b588af8133af6c66b64e268ee8f3af7b7c70e22d526e68ce7b8f9f054002f8",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "2935ebff427208d114301c44dd7c90b9d4ba9618bb2fb9ef616b72886cb5a509",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.46310973167419434,
+    "gain": 0.7776218668567774,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "rain-loon-ontario": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/rain-loon-ontario.mp3",
+    "bytes": 641193,
+    "sha256": "f18b55bfbc71d418806be49ac1209b96da6c3d19a177c0d38e2ab205d3eb073e",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 1.028379,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 3840000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/rain-loon-ontario.flac",
+      "bytes": 17039303,
+      "sha256": "eab5cb934ce3e104f62704f7984fae01daf83c7aa122e35ad0cb219e7172c1a6",
+      "frames": 3840000
+     }
+    ],
+    "pcmDataSha256": "37ea720a07eeb7c1d4e35f2482b9f5b1017ffde78ea444aa6e65878141a6bdf0",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.9832056760787964,
+    "gain": 0.5946676814166719,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（116秒〜156秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "iceland-forest": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/iceland-forest.mp3",
+    "bytes": 641193,
+    "sha256": "c20d4b09fddb331a1a7d50685040f40431520c63f5b66341b05cee2ff599f5dc",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 12.899984,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/iceland-forest.flac",
+      "bytes": 6612486,
+      "sha256": "0c46b8fc354d6ae9d6858a5dc421ce41f02e8eed793e900e2a2544c91f318495",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "75ab5f6ba6fe4564b4567c4ef36e34358b5f8ff3cdd4fbf946df1a781eed326a",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.03161430358886719,
+    "gain": 8.481847118551167,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・4ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（159秒〜199秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "rock-tide-northumberland": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/rock-tide-northumberland.mp3",
+    "bytes": 641193,
+    "sha256": "eedc8809d020e4e35d10d273115a4ac7bf012576bf918d20f0710dee971963db",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 1.603428,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/rock-tide-northumberland.flac",
+      "bytes": 8312414,
+      "sha256": "e40418c8bf95529d3d5eb00df75184cea2b71058a96446f622242bd2be49fd32",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "94becd971c5ae36b0aff1334d30120eb03453e3c609699ff2c3fa216c4970616",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.4685781002044678,
+    "gain": 0.4870093109316256,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（391秒〜431秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "forest-thunderstorm-hamburg": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/forest-thunderstorm-hamburg.mp3",
+    "bytes": 641193,
+    "sha256": "33429d778f94a45333710786c8a5f29530c48d75b7ad98e008858a1f293f592c",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 2.121282,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1764000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/forest-thunderstorm-hamburg.flac",
+      "bytes": 7867413,
+      "sha256": "09794bc8ecb8f62206d7c29c544dae9b1039eec658444c68a5c0fbec26020726",
+      "frames": 1764000
+     }
+    ],
+    "pcmDataSha256": "88158f85b955634a466a94da24748de500e74215a2dbec95d42be96746e4176e",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.35167741775512695,
+    "gain": 1.1232702063057116,
+    "lossless": true,
+    "provenance": "原本（44100Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（62秒〜102秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "stormy-night": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/stormy-night.mp3",
+    "bytes": 666271,
+    "sha256": "5e9cdab2ff3676861ae0e39f6eb599fbf68d441d84300388d52ca7a5d56ffd38",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 41.585714,
+    "lossless": false,
+    "gain": 2.00961,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 3992228,
+    "duration": 41.586,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/stormy-night.flac",
+      "bytes": 15996377,
+      "sha256": "34467e4a75435d3c02ad61debd90dbdf59827e662f8fc6382dfd71c5008b7225",
+      "frames": 3992228
+     }
+    ],
+    "pcmDataSha256": "abee2245fe81102c0006adeea277323d5f22a59bc0b804be164cefa144f21dc9",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.18764197826385498,
+    "gain": 1.1997362140091992,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "yukinoura-bamboo": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yukinoura-bamboo.mp3",
+    "bytes": 641193,
+    "sha256": "10d2b2f613a38410dbdf1f70e946bbe426dfb2d8c9615fe0145c972882727be1",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 2.940334,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 3840000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yukinoura-bamboo.flac",
+      "bytes": 15641268,
+      "sha256": "cd20957c147f8c0c8c3480ce0f56c7f77f1ecc366756fe752817a08284fe7048",
+      "frames": 3840000
+     }
+    ],
+    "pcmDataSha256": "400f54c735ec634a0c3f18da0fb4720020a1dbdc4899262410bba1f225bf92d6",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.23714792728424072,
+    "gain": 1.6609994858780863,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（162秒〜202秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "river-cicadas-provence": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/river-cicadas-provence.mp3",
+    "bytes": 488220,
+    "sha256": "34c3799a0a40e0a654eb3c43add426656255e9626b362bd7cfa32d212220012f",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 30.445351,
+    "lossless": false,
+    "gain": 0.889939,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1461376,
+    "duration": 30.445,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/river-cicadas-provence.flac",
+      "bytes": 6869289,
+      "sha256": "cafc037df5e85761bf1fffdb80326ea6ab7265f6b46e9fed68517137192ddf80",
+      "frames": 1461376
+     }
+    ],
+    "pcmDataSha256": "d034a132b0624d71ccaa906e11d19ee61ee3ee21f3b91a18ec5c27a818290b8b",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.6015945672988892,
+    "gain": 0.34378736165398993,
+    "lossless": false,
+    "provenance": "原本（48000Hz・32-bit・2ch）から切り出し（pcm_f32le 32-bit → 24-bit 整数に変換）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "forest-drips-after-storm": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/forest-drips-after-storm.mp3",
+    "bytes": 641193,
+    "sha256": "f510dea74a59cbf635b2b33c4ce125ed0978e9c0e00b8015aa861b74cd4b0d16",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 10.033423,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 3840000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/forest-drips-after-storm.flac",
+      "bytes": 15745804,
+      "sha256": "a7025716b7a94e82d2815a0b0b11e255601ad6193bec9f600a9b1caaeecd667b",
+      "frames": 3840000
+     }
+    ],
+    "pcmDataSha256": "f766472950d67bae7b409240ab069425d8ee3b0bb4c921a6a16386e36a985492",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.22930192947387695,
+    "gain": 5.168910276300199,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（316秒〜356秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "waves-deadmans-cove": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/waves-deadmans-cove.mp3",
+    "bytes": 641193,
+    "sha256": "afbe936388b2362cfe350d181f051321d7d640bc3330e251afb14ad3c06feaae",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 0.978695,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/waves-deadmans-cove.flac",
+      "bytes": 8446453,
+      "sha256": "32e5406b9c5d7f807796e1db69d9270fab67c38880e2851aa44b88ee2681e3e1",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "e02ce746270ba6a9f4448e1f6429f1896cfc91859443f77abe6bce41442c8bd9",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.5892021656036377,
+    "gain": 0.5101651648774976,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（138秒〜178秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "winter-fens-kampina": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/winter-fens-kampina.mp3",
+    "bytes": 641193,
+    "sha256": "404da30190a703b96a96df74f4d58b91064951eb472f704590591b5e209aad81",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 2.31177,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/winter-fens-kampina.flac",
+      "bytes": 7335465,
+      "sha256": "62b86a041a5d0428912e7dc03490de2e4fbb20fc9ee867ec90a42a87f3590d99",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "5e4f5967550312af24d7f6675e201dfe50551438a400eb2606ae49652f26a981",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.12166762351989746,
+    "gain": 1.4577848124282808,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "yamanushi-river": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yamanushi-river.mp3",
+    "bytes": 641193,
+    "sha256": "8c9eb9959b8683d2db4284e8707be26df797067e8b97910301c642079a59710e",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 1.254846,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 3840000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yamanushi-river.flac",
+      "bytes": 11796670,
+      "sha256": "ae6e49dbaa17dbb56832f6f8a601159ceaa0602c326e6c6eee8aba9c94711d6d",
+      "frames": 3840000
+     }
+    ],
+    "pcmDataSha256": "40b10fc7d5a75c734f0c13a7086dd5d7cedf72331af5c2e74fa69be1decfdeab",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.28764045238494873,
+    "gain": 0.8097256749653841,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（35秒〜75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "ice-lake-sweden": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/ice-lake-sweden.mp3",
+    "bytes": 641193,
+    "sha256": "27fc5cd13db211b599bd9f4e95eeb4d01fa4c1cf73b7631e7f86b8049d895afa",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 5.672006,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 3840000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/ice-lake-sweden.flac",
+      "bytes": 13793508,
+      "sha256": "0ac5dcf278cb918a8f9686fbf8c9a8b1b11fe7655a25d376a827d04225e87054",
+      "frames": 3840000
+     }
+    ],
+    "pcmDataSha256": "d04bc53a7c395444999e68d022b87d00c5f35c8c0c1d56c82723c11645d53c06",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.03825044631958008,
+    "gain": 3.777219200646733,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（128秒〜168秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "waves-big-lagoon": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/waves-big-lagoon.mp3",
+    "bytes": 641193,
+    "sha256": "c09889f6d8ee8d720e13d834f006822b477586d33d35e7ec21c77e04924db0e6",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 1.572911,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1764000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/waves-big-lagoon.flac",
+      "bytes": 7676142,
+      "sha256": "1c68e6e744688858fb93234cecb256d94b6c4d5a8ddccccfd80f24d323ff76da",
+      "frames": 1764000
+     }
+    ],
+    "pcmDataSha256": "b8185376ff75d71d79554eca0110bee54dbb79e4360ce4ad2b21b07e02afa257",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.273531436920166,
+    "gain": 0.8612098734750547,
+    "lossless": false,
+    "provenance": "原本（44100Hz・32-bit・2ch）から切り出し（pcm_s32le 32-bit → 24-bit 整数に変換）した抜粋（34秒〜74秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "rain-rapids-nz": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/rain-rapids-nz.mp3",
+    "bytes": 641193,
+    "sha256": "a1c98e2117591a0372e64fd4dd43a748d7915b91d2e99733a42c10c9e30a1bff",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 4.286223,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/rain-rapids-nz.flac",
+      "bytes": 8281091,
+      "sha256": "0c2ce40ed21cbba85d7a7c71a2cce57ec92b979d34ee4906f8d4e4f3258e5a84",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "3620d6c26ce5cbff28e33e0dff12debc7e56fe58f62ee04209a9a8dae401b0e7",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.22212958335876465,
+    "gain": 1.9043194547626252,
+    "lossless": false,
+    "provenance": "原本（48000Hz・32-bit・2ch）から切り出し（pcm_f32le 32-bit → 24-bit 整数に変換）した抜粋（45秒〜85秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "birds-stream-paris": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/birds-stream-paris.mp3",
+    "bytes": 641193,
+    "sha256": "8daa7ca0258e0204fd82e35ef1c0d6befe05f67544fcc5c4b2465a0f841d2768",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 11.673195,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/birds-stream-paris.flac",
+      "bytes": 6988474,
+      "sha256": "2a87f10a170f0af125f9a6c396c4d878268b90393e99977cffdf62ecf361e4d3",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "ce4b2d7c6d58144f169f4a38c6e2e0e5dbbfbf3c07885978d6419be7af03c0eb",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.053330183029174805,
+    "gain": 7.08370977153294,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（275秒〜315秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "waterfall-hexenklamm": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/waterfall-hexenklamm.mp3",
+    "bytes": 641193,
+    "sha256": "f4d07e4691c79a9c65bbb25a5a45adb1ac8deae1ee949958e2665a25fdfb15f0",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 2.460903,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 96000,
+    "channels": 2,
+    "frames": 3840000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/waterfall-hexenklamm.flac",
+      "bytes": 11759755,
+      "sha256": "ddce17a4711029cc43051fe694aed04b8b6a2d120535dfb29fe40010034a985e",
+      "frames": 3840000
+     }
+    ],
+    "pcmDataSha256": "08209446e8532f99968b0eb0453dffed37b1aee06686f76efbb7cc0e4fb2a634",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.3274306058883667,
+    "gain": 1.5490017952984236,
+    "lossless": true,
+    "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（329秒〜369秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
+  },
+  "rain-frogs-guiana": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/rain-frogs-guiana.mp3",
+    "bytes": 641193,
+    "sha256": "1f4c49abcae01b408d7d514f43ff8e5bf5f356828ec907515abcaacbe12f376a",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.0,
+    "lossless": false,
+    "gain": 2.03711,
+    "provenance": "v0.38：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1920000,
+    "duration": 40.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/rain-frogs-guiana.flac",
+      "bytes": 8610281,
+      "sha256": "da287dbcb086025143344996fd8cb82d442ae0bbe8a34c2928ff7f0b6efa1b2d",
+      "frames": 1920000
+     }
+    ],
+    "pcmDataSha256": "17e9a37b625ba4f30cc76820084faf7fa09327d157d08e8721b373a658ee2704",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.38560950756073,
+    "gain": 1.0314936294351558,
+    "lossless": true,
+    "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   }
   }
  },
  "instruments": {

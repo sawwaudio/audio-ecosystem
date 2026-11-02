@@ -38,7 +38,7 @@ const txt=fs.readFileSync(await d2.path(),'utf8');ok('txt_saved',/_credits\.txt$
 // 全素材の帰属表示（41録音＋15楽器）
 await pg.evaluate(()=>{document.getElementById('realRecordings').open=true;document.querySelectorAll('#realRecordings details').forEach(d=>d.open=true)});
 const dl3=pg.waitForEvent('download');await pg.click('#creditsAttribution');const d3=await dl3;const lib=fs.readFileSync(await d3.path(),'utf8');
-R.libLines=lib.split('\r\n').filter(l=>/^\d+\. /.test(l)).length;ok('library_56',R.libLines===56);
+R.libLines=lib.split('\r\n').filter(l=>/^\d+\. /.test(l)).length;ok('library_142',R.libLines===142);  // v0.38：録音127＋楽器15
 // 英語表示
 await pg.click('#langToggle');await pg.waitForTimeout(300);R.summaryEn=await pg.textContent('#recordCreditsSummary');
 ok('summary_en',/^Credits for this capture: \d+ source\(s\) \(\d+ require attribution\)$/.test(R.summaryEn));

@@ -1707,5 +1707,3457 @@
    "analysedFrom": "pcm"
   },
   "note": "日本録音の環境層（v0.28）。市街地のため生息環境フィルターには使わない。生息環境が市街地の庭のため、生息環境フィルターには使わない。"
+ },
+ "tawny-owl": {
+  "en": "Tawny owl",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "africa"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "英国",
+  "recordedArea": "ウェールズ",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "英国ウェールズ・グウィネズ州 Penrhyndeudraeth",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest",
+   "night_forest"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Call & Response"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0576,
+   "tonality": 0.2287,
+   "envCV": 3.7734,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 889.0382,
+   "activity": 0.3352,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "european-nightjar": {
+  "en": "European nightjar",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "africa"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "英国",
+  "recordedArea": "ウェールズ",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "英国ウェールズ・Blaenau Ffestiniog",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "night",
+   "dusk"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Drone"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0,
+   "tonality": 0.0954,
+   "envCV": 0.4336,
+   "pulseHz": 28.5714,
+   "pulseStrength": 0.9236,
+   "centroidHz": 1771.2754,
+   "activity": 0.0,
+   "autoRoles": [
+    "Drone",
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "eurasian-wren": {
+  "en": "Eurasian wren (song)",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "africa",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "フランス",
+  "recordedArea": "イゼール県",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "フランス・イゼール県 Claix（Peuil の自然地区）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0043,
+   "tonality": 0.1272,
+   "envCV": 1.8689,
+   "pulseHz": 5.5556,
+   "pulseStrength": 0.5594,
+   "centroidHz": 4565.4081,
+   "activity": 0.3825,
+   "autoRoles": [
+    "Pulse",
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "eurasian-wren-ireland": {
+  "en": "Eurasian wren (song, Ireland)",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "africa",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "アイルランド",
+  "recordedArea": "キルデア州",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "アイルランド・キルデア州 Maynooth",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0065,
+   "tonality": 0.1085,
+   "envCV": 2.0941,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 4048.8935,
+   "activity": 0.436,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "eurasian-wren-alarm": {
+  "en": "Eurasian wren (alarm call)",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "africa",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "不明",
+  "recordedArea": "",
+  "recordedRegions": [],
+  "recordingEnvironment": "原典に記載なし",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Pulse"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0224,
+   "tonality": 0.0533,
+   "envCV": 2.5847,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 4460.4381,
+   "activity": 0.4457,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。録音地の記載なし。"
+ },
+ "song-thrush": {
+  "en": "Song thrush",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "africa"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "英国",
+  "recordedArea": "ケンブリッジシャー",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "英国イングランド・ケンブリッジ",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0097,
+   "tonality": 0.1643,
+   "envCV": 1.9024,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2329.1554,
+   "activity": 0.3645,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "song-thrush-2": {
+  "en": "Song thrush (Southampton)",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "africa"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "英国",
+  "recordedArea": "ハンプシャー",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "英国イングランド・サウサンプトン",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0049,
+   "tonality": 0.1731,
+   "envCV": 1.1504,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 3005.4369,
+   "activity": 0.2985,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "nightingale": {
+  "en": "Common nightingale",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "africa"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "フランス",
+  "recordedArea": "ヴォクリューズ県",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "フランス・ヴォクリューズ県 Malemort-du-Comtat",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "night",
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0015,
+   "tonality": 0.1092,
+   "envCV": 2.2929,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2654.9833,
+   "activity": 0.4523,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "nightingale-russia": {
+  "en": "Nightingale (NW Russia, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "ロシア",
+  "recordedArea": "レニングラード州",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "ロシア・レニングラード州キンギセップ地区 Pustomerzhskoe",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0025,
+   "tonality": 0.1478,
+   "envCV": 1.8599,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2676.6287,
+   "activity": 0.3637,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "nightingale-vendee": {
+  "en": "Nightingale close-up (Vendée, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "フランス",
+  "recordedArea": "ヴァンデ県",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "フランス・ヴァンデ県 Terval",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "night",
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.065,
+   "tonality": 0.1209,
+   "envCV": 1.798,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2260.5157,
+   "activity": 0.3907,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "uguisu-yokohama": {
+  "en": "Japanese bush warbler (Yokohama, city)",
+  "nativeRegions": [
+   "asia",
+   "japan"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "日本",
+  "recordedArea": "神奈川県横浜市",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "神奈川県横浜市（投稿者の自宅付近）",
+  "wildOrCaptive": "野外",
+  "habitats": [],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0021,
+   "tonality": 0.2536,
+   "envCV": 0.8457,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 211.7813,
+   "activity": 0.2139,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "loon-1": {
+  "en": "Loon call (Wisconsin) 1",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "米国",
+  "recordedArea": "ウィスコンシン州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国ウィスコンシン州 Mercer Lake（ジオタグは Minocqua）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody",
+   "Call & Response"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0001,
+   "tonality": 0.2953,
+   "envCV": 0.6932,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1508.9424,
+   "activity": 0.168,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "loon-2": {
+  "en": "Loon call (Wisconsin) 2",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "米国",
+  "recordedArea": "ウィスコンシン州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国ウィスコンシン州 Mercer Lake（ジオタグは Minocqua）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody",
+   "Call & Response"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0001,
+   "tonality": 0.2939,
+   "envCV": 0.9442,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1163.6977,
+   "activity": 0.2518,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "loon-3": {
+  "en": "Loon call (Wisconsin) 3",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "米国",
+  "recordedArea": "ウィスコンシン州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国ウィスコンシン州 Mercer Lake（ジオタグは Minocqua）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody",
+   "Call & Response"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0,
+   "tonality": 0.2632,
+   "envCV": 0.5994,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1244.9908,
+   "activity": 0.1173,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "lyrebird": {
+  "en": "Superb lyrebird",
+  "nativeRegions": [
+   "oceania"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "オーストラリア",
+  "recordedArea": "ビクトリア州",
+  "recordedRegions": [
+   "oceania"
+  ],
+  "recordingEnvironment": "オーストラリア・ビクトリア州 Bogong Village 付近",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.1384,
+   "tonality": 0.1694,
+   "envCV": 1.2031,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2048.289,
+   "activity": 0.1864,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "lyrebird-healesville": {
+  "en": "Superb lyrebird mimicry (Healesville Sanctuary)",
+  "nativeRegions": [
+   "oceania"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "オーストラリア",
+  "recordedArea": "ビクトリア州",
+  "recordedRegions": [
+   "oceania"
+  ],
+  "recordingEnvironment": "オーストラリア・ビクトリア州 ヒールズビル・サンクチュアリ",
+  "wildOrCaptive": "飼育（動物保護施設）",
+  "habitats": [],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody",
+   "Experimental"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0251,
+   "tonality": 0.1161,
+   "envCV": 1.1791,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1979.803,
+   "activity": 0.3358,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "woodpecker": {
+  "en": "Woodpecker (species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "不明",
+  "recordedArea": "",
+  "recordedRegions": [],
+  "recordingEnvironment": "原典に記載なし",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Percussion"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.003,
+   "tonality": 0.3108,
+   "envCV": 0.5977,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 132.9499,
+   "activity": 0.103,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。録音地の記載なし。"
+ },
+ "woodpecker-leipzig": {
+  "en": "Woodpecker (Leipzig, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "ドイツ",
+  "recordedArea": "ザクセン州",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "ドイツ・ザクセン州ライプツィヒ",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Percussion"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0117,
+   "tonality": 0.2039,
+   "envCV": 2.0806,
+   "pulseHz": 20.0,
+   "pulseStrength": 0.8713,
+   "centroidHz": 375.9501,
+   "activity": 0.1558,
+   "autoRoles": [
+    "Pulse",
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "woodpecker-illinois": {
+  "en": "Woodpecker drumming (Illinois, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "米国",
+  "recordedArea": "イリノイ州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国イリノイ州 ショーニー国有林（Carbondale）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Percussion",
+   "Pulse"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0035,
+   "tonality": 0.3266,
+   "envCV": 0.733,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 221.4681,
+   "activity": 0.1594,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "scops-owls-crete": {
+  "en": "Scops owls (Crete, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "ギリシャ",
+  "recordedArea": "クレタ島",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "ギリシャ・クレタ島 Kare（内陸の村）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Call & Response",
+   "Pulse"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.407,
+   "tonality": 0.0601,
+   "envCV": 1.6901,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 4008.1427,
+   "activity": 0.2426,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "edge-forest-nl": {
+  "en": "Forest edge at dawn (Netherlands): woodpeckers & thrushes",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "オランダ",
+  "recordedArea": "北ブラバント州",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "オランダ・北ブラバント州 Helvoirt（Loonse en Drunense Duinen 付近）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Percussion",
+   "Melody"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0083,
+   "tonality": 0.2326,
+   "envCV": 0.5655,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1377.7685,
+   "activity": 0.1079,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "dawn-chorus-ashdown": {
+  "en": "Dawn chorus with distant cuckoo (Ashdown Forest, UK)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "英国",
+  "recordedArea": "イースト・サセックス",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "英国イングランド・アッシュダウンの森",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Melody"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0022,
+   "tonality": 0.4683,
+   "envCV": 0.5097,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 105.8913,
+   "activity": 0.0532,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "dawn-chorus-brittany": {
+  "en": "Dawn chorus (Brittany, France)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "フランス",
+  "recordedArea": "フィニステール県",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "フランス・ブルターニュ Plomodiern 付近",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Melody"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0114,
+   "tonality": 0.179,
+   "envCV": 0.996,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2861.5738,
+   "activity": 0.225,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "dawn-chorus-provence": {
+  "en": "Provençal dawn chorus with nightingale",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "フランス",
+  "recordedArea": "ヴォクリューズ県",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "フランス・ヴォクリューズ県 Méthamis（Vallat de Coulombey）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0123,
+   "tonality": 0.139,
+   "envCV": 1.2533,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 3733.8493,
+   "activity": 0.2333,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "fujinomiya-forest-birds": {
+  "en": "Forest birdsong (Fujinomiya, Shizuoka)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "日本",
+  "recordedArea": "静岡県富士宮市",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "静岡県富士宮市（原典の地名）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest",
+   "mountain"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0033,
+   "tonality": 0.1637,
+   "envCV": 0.8094,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 342.497,
+   "activity": 0.0254,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "fox": {
+  "en": "Fox cry at night",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "不明",
+  "recordedArea": "",
+  "recordedRegions": [],
+  "recordingEnvironment": "原典に記載なし（寝室の窓のすぐ外）",
+  "wildOrCaptive": "野外",
+  "habitats": [],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Call & Response"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0096,
+   "tonality": 0.2501,
+   "envCV": 2.3469,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 197.159,
+   "activity": 0.1067,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。録音地の記載なし。"
+ },
+ "wolf": {
+  "en": "Wolf pack howling (Vercors)",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "north_america"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "フランス",
+  "recordedArea": "ヴェルコール",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "フランス・ヴェルコールの森",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest",
+   "mountain",
+   "night_forest"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Drone",
+   "Call & Response"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0013,
+   "tonality": 0.3935,
+   "envCV": 0.4491,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 616.4908,
+   "activity": 0.0275,
+   "autoRoles": [
+    "Drone"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "roe-deer": {
+  "en": "Roe deer calls (Brittany)",
+  "nativeRegions": [
+   "europe",
+   "asia"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "フランス",
+  "recordedArea": "モルビアン県",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "フランス・モルビアン県 Saint-Dolay",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "dusk"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Call & Response"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0635,
+   "tonality": 0.1021,
+   "envCV": 1.9558,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2044.1792,
+   "activity": 0.2143,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "siamang": {
+  "en": "Siamang (Hong Kong Zoo)",
+  "nativeRegions": [
+   "asia"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "中国（香港）",
+  "recordedArea": "香港",
+  "recordedRegions": [
+   "asia"
+  ],
+  "recordingEnvironment": "香港・中西区（香港動植物公園）",
+  "wildOrCaptive": "飼育（動物園）",
+  "habitats": [],
+  "activity": [
+   "dusk"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Call & Response",
+   "Melody"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0007,
+   "tonality": 0.3046,
+   "envCV": 1.0928,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 478.5086,
+   "activity": 0.3324,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "siamang-belgium": {
+  "en": "Siamangs (zoo, Belgium)",
+  "nativeRegions": [
+   "asia"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "ベルギー",
+  "recordedArea": "エノー州",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "ベルギー・エノー州 Brugelette（動物園）",
+  "wildOrCaptive": "飼育（動物園）",
+  "habitats": [],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Call & Response"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0003,
+   "tonality": 0.3069,
+   "envCV": 0.66,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 636.4705,
+   "activity": 0.1273,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "howler-belize": {
+  "en": "Black howler monkeys at night (Belize)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "ベリーズ",
+  "recordedArea": "カヨ地区",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "ベリーズ・カヨ地区 ブルーホール国立公園付近",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "tropical_rainforest",
+   "night_forest"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Drone",
+   "Call & Response"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0342,
+   "tonality": 0.1631,
+   "envCV": 0.5977,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2243.0787,
+   "activity": 0.1554,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "elephant-zoo": {
+  "en": "Elephant (zoo, Belgium, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "ベルギー",
+  "recordedArea": "エノー州",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "ベルギー・エノー州 Brugelette（動物園）",
+  "wildOrCaptive": "飼育（動物園）",
+  "habitats": [],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Experimental"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0009,
+   "tonality": 0.3191,
+   "envCV": 0.8741,
+   "pulseHz": 28.5714,
+   "pulseStrength": 0.9537,
+   "centroidHz": 322.3348,
+   "activity": 0.1662,
+   "autoRoles": [
+    "Pulse",
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "sea-lion-valparaiso": {
+  "en": "Sea lions (Valparaíso, Chile, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "チリ",
+  "recordedArea": "バルパライソ州",
+  "recordedRegions": [
+   "south_america",
+   "marine"
+  ],
+  "recordingEnvironment": "チリ・バルパライソ Caleta Portales（魚市場の近く）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "coast"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Call & Response"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0487,
+   "tonality": 0.1187,
+   "envCV": 1.5888,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 830.3043,
+   "activity": 0.3807,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "sea-lion-valdivia": {
+  "en": "Growling sea lion (Valdivia, Chile, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "チリ",
+  "recordedArea": "ロス・リオス州",
+  "recordedRegions": [
+   "south_america",
+   "marine"
+  ],
+  "recordingEnvironment": "チリ・ロス・リオス州バルディビアの沿岸",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "coast"
+  ],
+  "activity": [],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Percussion"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0167,
+   "tonality": 0.1453,
+   "envCV": 1.8699,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 530.4396,
+   "activity": 0.2999,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "bats-backyard": {
+  "en": "Insect-eating bats hunting (species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "不明",
+  "recordedArea": "",
+  "recordedRegions": [],
+  "recordingEnvironment": "原典に記載なし（投稿者の裏庭）",
+  "wildOrCaptive": "野外",
+  "habitats": [],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Pulse",
+   "Experimental"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0168,
+   "tonality": 0.0916,
+   "envCV": 2.9615,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 10234.4276,
+   "activity": 0.2301,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。録音地の記載なし。"
+ },
+ "bat-batbox": {
+  "en": "Bat echolocation via bat detector (France)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "フランス",
+  "recordedArea": "ドローム県",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "フランス・ドローム県 Eurre の自然保護区（Livron-sur-Drôme）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "river"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Pulse",
+   "Experimental"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0382,
+   "tonality": 0.0268,
+   "envCV": 1.6726,
+   "pulseHz": 9.0909,
+   "pulseStrength": 0.2332,
+   "centroidHz": 1973.4927,
+   "activity": 0.3095,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "bat-slowed": {
+  "en": "Bat echolocation at 0.05× speed",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "不明",
+  "recordedArea": "",
+  "recordedRegions": [],
+  "recordingEnvironment": "原典に記載なし",
+  "wildOrCaptive": "野外",
+  "habitats": [],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Experimental"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0,
+   "tonality": 0.1285,
+   "envCV": 2.8903,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1120.5572,
+   "activity": 0.3725,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。録音地の記載なし。"
+ },
+ "dolphin": {
+  "en": "Dolphins underwater (Caribbean, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "メキシコ",
+  "recordedArea": "キンタナロー州",
+  "recordedRegions": [
+   "north_america",
+   "marine"
+  ],
+  "recordingEnvironment": "メキシコ・キンタナロー州 プンタ・アレン近くの沖",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "ocean"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody",
+   "Experimental"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0222,
+   "tonality": 0.1018,
+   "envCV": 0.9525,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1559.5609,
+   "activity": 0.168,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "atlantic-spotted-dolphin": {
+  "en": "Atlantic spotted dolphin",
+  "nativeRegions": [
+   "marine"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "スペイン",
+  "recordedArea": "カナリア諸島",
+  "recordedRegions": [
+   "africa",
+   "marine"
+  ],
+  "recordingEnvironment": "スペイン・カナリア諸島ラ・ゴメラ島 Valle Gran Rey 沖",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "ocean"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody",
+   "Experimental"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0434,
+   "tonality": 0.1101,
+   "envCV": 0.7092,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 4759.1944,
+   "activity": 0.1223,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "amazon-river-dolphins": {
+  "en": "Amazonian river dolphins (Rio Tefé, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "ブラジル",
+  "recordedArea": "アマゾナス州",
+  "recordedRegions": [
+   "south_america"
+  ],
+  "recordingEnvironment": "ブラジル・アマゾナス州 テフェ川（Tauary 村の近く）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "river",
+   "tropical_rainforest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Pulse",
+   "Experimental"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0091,
+   "tonality": 0.2028,
+   "envCV": 1.2505,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1468.5677,
+   "activity": 0.3328,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "humpback": {
+  "en": "Humpback whale song (Monterey Bay, deep water)",
+  "nativeRegions": [
+   "marine"
+  ],
+  "japanNative": true,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "米国",
+  "recordedArea": "カリフォルニア州沖",
+  "recordedRegions": [
+   "north_america",
+   "marine"
+  ],
+  "recordingEnvironment": "米国カリフォルニア州サンタクルーズ沖の深海（36.71, −122.186）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "ocean"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody",
+   "Drone"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0046,
+   "tonality": 0.41,
+   "envCV": 1.1394,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 144.8439,
+   "activity": 0.2708,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "treefrog-france": {
+  "en": "Tree frog (SW France, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "フランス",
+  "recordedArea": "ロット＝エ＝ガロンヌ県",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "フランス・ロット＝エ＝ガロンヌ県 Saint-Sernin",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Pulse"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0277,
+   "tonality": 0.4567,
+   "envCV": 2.0917,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 494.9348,
+   "activity": 0.2374,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "common-toad": {
+  "en": "Common toad",
+  "nativeRegions": [
+   "europe",
+   "asia",
+   "africa"
+  ],
+  "japanNative": false,
+  "japanEndemic": false,
+  "distributionBasis": "一般的な分布知識（種名が原典に記載されているもの。出典URL未記録・要確認）",
+  "recordedCountry": "不明",
+  "recordedArea": "",
+  "recordedRegions": [],
+  "recordingEnvironment": "原典に記載なし（ヒキガエルの道路横断を助ける活動中、バケツの中）",
+  "wildOrCaptive": "野外",
+  "habitats": [],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Pulse"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0034,
+   "tonality": 0.1741,
+   "envCV": 3.3028,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 567.9128,
+   "activity": 0.1033,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。録音地の記載なし。"
+ },
+ "small-frog-ojai": {
+  "en": "Small frog croaks (Ojai, California, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "米国",
+  "recordedArea": "カリフォルニア州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国カリフォルニア州 Ojai",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "river"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Pulse"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0784,
+   "tonality": 0.0636,
+   "envCV": 1.8589,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2159.2388,
+   "activity": 0.3712,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "pacific-treefrog-chorus": {
+  "en": "Pacific tree frog chorus (Petrolia, California)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "米国",
+  "recordedArea": "カリフォルニア州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国カリフォルニア州 Petrolia の小さな池",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Pulse"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0012,
+   "tonality": 0.1934,
+   "envCV": 0.7628,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2161.8754,
+   "activity": 0.1601,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "owl-fox-brittany": {
+  "en": "Tawny owl and fox at night (Brittany)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "フランス",
+  "recordedArea": "モルビアン県",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "フランス・モルビアン県 Saint-Dolay の広い野原",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "grassland",
+   "night_forest"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Call & Response",
+   "Atmosphere"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0086,
+   "tonality": 0.124,
+   "envCV": 1.1062,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1516.7393,
+   "activity": 0.1768,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "whales-orcas-norway": {
+  "en": "Humpback whales and orcas underwater (Norway)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "ノルウェー",
+  "recordedArea": "トロムス",
+  "recordedRegions": [
+   "europe",
+   "marine"
+  ],
+  "recordingEnvironment": "ノルウェー・トロムス Skjervøy",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "ocean"
+  ],
+  "activity": [],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody",
+   "Atmosphere"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0015,
+   "tonality": 0.4079,
+   "envCV": 0.7829,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 252.0223,
+   "activity": 0.1897,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "snapping-shrimp": {
+  "en": "Snapping shrimp (Florida, underwater)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "米国",
+  "recordedArea": "フロリダ州",
+  "recordedRegions": [
+   "north_america",
+   "marine"
+  ],
+  "recordingEnvironment": "米国フロリダ州 New Smyrna Beach（キャナベラル国立海岸）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "coast",
+   "ocean"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Percussion"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.1627,
+   "tonality": 0.0467,
+   "envCV": 1.6277,
+   "pulseHz": 6.8966,
+   "pulseStrength": 0.0702,
+   "centroidHz": 2056.6501,
+   "activity": 0.1407,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "bullfrogs-hk": {
+  "en": "Bullfrogs in a car park (Hong Kong, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "中国（香港）",
+  "recordedArea": "香港",
+  "recordedRegions": [
+   "asia"
+  ],
+  "recordingEnvironment": "香港（駐車場）",
+  "wildOrCaptive": "野外",
+  "habitats": [],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Pulse",
+   "Drone"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0095,
+   "tonality": 0.1555,
+   "envCV": 1.2568,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 797.814,
+   "activity": 0.3613,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "peepers-toads-ozarks": {
+  "en": "Spring peepers and American toads (Ozarks)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "米国",
+  "recordedArea": "ミズーリ州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国ミズーリ州 Edgar Springs（オザークの小川の近く）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland",
+   "river"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Pulse"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.003,
+   "tonality": 0.2001,
+   "envCV": 0.5924,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2339.5537,
+   "activity": 0.1084,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "treefrogs-newyork": {
+  "en": "Tree frog chorus (New York, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "米国",
+  "recordedArea": "ニューヨーク州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国ニューヨーク州ダッチェス郡北部 Milan（トウモロコシ畑のそばの湿地）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0005,
+   "tonality": 0.1876,
+   "envCV": 0.2885,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 3052.857,
+   "activity": 0.0054,
+   "autoRoles": [
+    "Drone"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "frog-pond-netherlands": {
+  "en": "Frogs in a forest pond (Netherlands)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "オランダ",
+  "recordedArea": "フレヴォラント州",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "オランダ・フレヴォラント州 Dronten",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland",
+   "temperate_forest"
+  ],
+  "activity": [],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Pulse"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0048,
+   "tonality": 0.102,
+   "envCV": 0.7033,
+   "pulseHz": 22.2222,
+   "pulseStrength": 0.7787,
+   "centroidHz": 1784.4197,
+   "activity": 0.1599,
+   "autoRoles": [
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "lake-frogs-katydids": {
+  "en": "Frogs and katydids on a lake at night (Illinois)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "米国",
+  "recordedArea": "イリノイ州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国イリノイ州の湖",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Pulse"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.2356,
+   "tonality": 0.0375,
+   "envCV": 0.2796,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 6748.7747,
+   "activity": 0.0005,
+   "autoRoles": [
+    "Drone",
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "utah-canyon-frogs": {
+  "en": "Frogs, toads and night birds in a canyon (Utah)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "米国",
+  "recordedArea": "ユタ州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国ユタ州 Hite 付近の小さな峡谷の水たまり",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland",
+   "mountain"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Call & Response"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.01,
+   "tonality": 0.2172,
+   "envCV": 0.665,
+   "pulseHz": 25.0,
+   "pulseStrength": 0.9163,
+   "centroidHz": 1951.8391,
+   "activity": 0.1393,
+   "autoRoles": [
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "brazil-frog-chorus": {
+  "en": "Night frog chorus with crickets (Rio de Janeiro State, Brazil)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "ブラジル",
+  "recordedArea": "リオデジャネイロ州",
+  "recordedRegions": [
+   "south_america"
+  ],
+  "recordingEnvironment": "ブラジル・リオデジャネイロ州 Resende（Serrinha do Alambari）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "tropical_rainforest",
+   "night_forest"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Pulse"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0229,
+   "tonality": 0.1219,
+   "envCV": 0.5411,
+   "pulseHz": 9.0909,
+   "pulseStrength": 0.8,
+   "centroidHz": 3091.8758,
+   "activity": 0.1469,
+   "autoRoles": [
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "amazon-night-jungle": {
+  "en": "Amazon rainforest at night (Tefé)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "ブラジル",
+  "recordedArea": "アマゾナス州",
+  "recordedRegions": [
+   "south_america"
+  ],
+  "recordingEnvironment": "ブラジル・アマゾナス州テフェ",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "tropical_rainforest",
+   "night_forest"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Atmosphere"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.045,
+   "tonality": 0.072,
+   "envCV": 0.1688,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 5394.2746,
+   "activity": 0.0018,
+   "autoRoles": [
+    "Drone"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "podlaskie-spring-night": {
+  "en": "Spring night frog chorus (Podlaskie, Poland)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "ポーランド",
+  "recordedArea": "ポドラシェ県",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "ポーランド・ポドラシェ県 Wiktorowo（道路脇の池）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland",
+   "grassland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0006,
+   "tonality": 0.1284,
+   "envCV": 0.2722,
+   "pulseHz": 4.3478,
+   "pulseStrength": 0.5737,
+   "centroidHz": 1792.6525,
+   "activity": 0.0004,
+   "autoRoles": [
+    "Drone",
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "frog-creek-ojai": {
+  "en": "Night creek with frogs and crickets (Ojai, California)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "米国",
+  "recordedArea": "カリフォルニア州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国カリフォルニア州 Ojai の小川",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "river",
+   "wetland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Pulse"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0069,
+   "tonality": 0.1194,
+   "envCV": 0.54,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2337.5147,
+   "activity": 0.0947,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "malaysian-frogs": {
+  "en": "Frogs in the evening (Mersing, Malaysia)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "マレーシア",
+  "recordedArea": "ジョホール州",
+  "recordedRegions": [
+   "asia"
+  ],
+  "recordingEnvironment": "マレーシア・ジョホール州 Mersing",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "tropical_rainforest",
+   "wetland"
+  ],
+  "activity": [
+   "dusk"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Call & Response"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0019,
+   "tonality": 0.2299,
+   "envCV": 0.5234,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 976.9495,
+   "activity": 0.0678,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "wetlands-night": {
+  "en": "Wetlands at night: frogs, toads, bird whistles",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "不明",
+  "recordedArea": "",
+  "recordedRegions": [],
+  "recordingEnvironment": "原典に記載なし",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Call & Response"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0036,
+   "tonality": 0.123,
+   "envCV": 1.2667,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2207.9776,
+   "activity": 0.3373,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。録音地の記載なし。"
+ },
+ "amphibians-campsite": {
+  "en": "Amphibian night chorus (near Abbeville, France)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "フランス",
+  "recordedArea": "ソンム県",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "フランス北部 アブヴィル近郊のキャンプ場（池の近く）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0188,
+   "tonality": 0.1527,
+   "envCV": 0.3899,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 989.7903,
+   "activity": 0.0141,
+   "autoRoles": [
+    "Drone"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "pond-hydrophone-essex": {
+  "en": "Small pond hydrophone (Essex, UK)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "英国",
+  "recordedArea": "エセックス",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "英国イングランド・エセックス Billericay",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Experimental",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.5046,
+   "tonality": 0.0164,
+   "envCV": 0.545,
+   "pulseHz": 1.8692,
+   "pulseStrength": 0.0932,
+   "centroidHz": 4808.3437,
+   "activity": 0.0136,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "reedbed-pondlife": {
+  "en": "Reedbed and pond life underwater (Northamptonshire, UK)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "英国",
+  "recordedArea": "ノーサンプトンシャー",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "英国イングランド・ノーサンプトンシャー Brixworth Country Park",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Experimental",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0447,
+   "tonality": 0.1848,
+   "envCV": 0.6602,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 946.6275,
+   "activity": 0.1041,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "garden-pond-hydrophone": {
+  "en": "Garden pond hydrophone (Devon, UK)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "英国",
+  "recordedArea": "デヴォン",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "英国イングランド・デヴォン Crediton",
+  "wildOrCaptive": "野外",
+  "habitats": [],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Experimental",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0499,
+   "tonality": 0.0873,
+   "envCV": 1.8363,
+   "pulseHz": 1.3245,
+   "pulseStrength": 0.0406,
+   "centroidHz": 1835.2265,
+   "activity": 0.2886,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "titi-monkeys-tefe": {
+  "en": "Zogzog monkeys yelling (Amazon, species not stated)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "ブラジル",
+  "recordedArea": "アマゾナス州",
+  "recordedRegions": [
+   "south_america"
+  ],
+  "recordingEnvironment": "ブラジル・アマゾナス州テフェ近郊 Tauary 村",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "tropical_rainforest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Call & Response"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.027,
+   "tonality": 0.0927,
+   "envCV": 0.2989,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 4493.1207,
+   "activity": 0.0096,
+   "autoRoles": [
+    "Drone"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "tokyo-cicadas-afternoon": {
+  "en": "Cicadas on a summer afternoon (Tokyo)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "日本",
+  "recordedArea": "東京都",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "東京（詳細の記載なし）",
+  "wildOrCaptive": "野外",
+  "habitats": [],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Drone",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0516,
+   "tonality": 0.1834,
+   "envCV": 0.2694,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1391.3843,
+   "activity": 0.0093,
+   "autoRoles": [
+    "Drone"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "crickets-washington": {
+  "en": "Crickets at night (Naches, Washington)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "米国",
+  "recordedArea": "ワシントン州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国ワシントン州 Naches 近くの Nile Valley",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Pulse"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0126,
+   "tonality": 0.2579,
+   "envCV": 0.2511,
+   "pulseHz": 28.5714,
+   "pulseStrength": 0.537,
+   "centroidHz": 1042.523,
+   "activity": 0.0084,
+   "autoRoles": [
+    "Drone",
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "night-woods-pennsylvania": {
+  "en": "Night woods: crickets and katydids (Pennsylvania)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "米国",
+  "recordedArea": "ペンシルベニア州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国ペンシルベニア州 French Creek 州立公園（Douglassville）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest",
+   "night_forest"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0617,
+   "tonality": 0.071,
+   "envCV": 0.1189,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 3408.2211,
+   "activity": 0.0,
+   "autoRoles": [
+    "Drone"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "night-insects-indiana": {
+  "en": "Night insects in September (Indiana)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "米国",
+  "recordedArea": "インディアナ州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国インディアナ州 Albion",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0466,
+   "tonality": 0.0637,
+   "envCV": 0.0979,
+   "pulseHz": 11.7647,
+   "pulseStrength": 0.2463,
+   "centroidHz": 3597.3907,
+   "activity": 0.0,
+   "autoRoles": [
+    "Drone"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "rain-loon-ontario": {
+  "en": "Rain with a loon call (Ontario, Canada)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "カナダ",
+  "recordedArea": "オンタリオ州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "カナダ・オンタリオ州 Minden 近くの Schuyler Lake",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Atmosphere",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0611,
+   "tonality": 0.2337,
+   "envCV": 0.3358,
+   "pulseHz": 22.2222,
+   "pulseStrength": 0.5565,
+   "centroidHz": 669.459,
+   "activity": 0.0258,
+   "autoRoles": [
+    "Atmosphere",
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "iceland-forest": {
+  "en": "Open area in a forest (Iceland)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "アイスランド",
+  "recordedArea": "",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "アイスランドの森（詳細の記載なし）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Atmosphere"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.001,
+   "tonality": 0.7887,
+   "envCV": 0.1428,
+   "pulseHz": 20.0,
+   "pulseStrength": 0.2366,
+   "centroidHz": 12.2505,
+   "activity": 0.0011,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "rock-tide-northumberland": {
+  "en": "Tide on volcanic rock (Northumberland, UK)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "英国",
+  "recordedArea": "ノーサンバーランド",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "英国イングランド・ノーサンバーランド Alnwick（Bathing House の海岸）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "coast"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Atmosphere"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0844,
+   "tonality": 0.096,
+   "envCV": 0.2104,
+   "pulseHz": 25.0,
+   "pulseStrength": 0.6913,
+   "centroidHz": 933.4776,
+   "activity": 0.0004,
+   "autoRoles": [
+    "Atmosphere",
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "forest-thunderstorm-hamburg": {
+  "en": "Thunderstorm in the forest (near Hamburg)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "ドイツ",
+  "recordedArea": "ハンブルク近郊",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "ドイツ・ハンブルク近郊",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Atmosphere",
+   "Drone"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.1094,
+   "tonality": 0.1117,
+   "envCV": 0.502,
+   "pulseHz": 20.0,
+   "pulseStrength": 0.8272,
+   "centroidHz": 1261.5459,
+   "activity": 0.0895,
+   "autoRoles": [
+    "Atmosphere",
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "stormy-night": {
+  "en": "Stormy night",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "不明",
+  "recordedArea": "",
+  "recordedRegions": [],
+  "recordingEnvironment": "原典に記載なし",
+  "wildOrCaptive": "野外",
+  "habitats": [],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Atmosphere",
+   "Drone"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0123,
+   "tonality": 0.2003,
+   "envCV": 0.356,
+   "pulseHz": 1.0638,
+   "pulseStrength": 0.4903,
+   "centroidHz": 344.7389,
+   "activity": 0.0349,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。録音地の記載なし。"
+ },
+ "yukinoura-bamboo": {
+  "en": "Bamboo forest at Yukinoura (Saikai, Nagasaki)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "日本",
+  "recordedArea": "長崎県西海市",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "長崎県西海市雪浦（町の出入口の道路沿いの竹林）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Atmosphere",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0593,
+   "tonality": 0.1439,
+   "envCV": 0.4682,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2696.392,
+   "activity": 0.0589,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "river-cicadas-provence": {
+  "en": "River and cicadas (Vaucluse, France)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "フランス",
+  "recordedArea": "ヴォクリューズ県",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "フランス・ヴォクリューズ県 Saint-Léger-du-Ventoux",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "river",
+   "mountain"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Drone"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0682,
+   "tonality": 0.178,
+   "envCV": 0.2403,
+   "pulseHz": 22.2222,
+   "pulseStrength": 0.578,
+   "centroidHz": 1053.0877,
+   "activity": 0.0046,
+   "autoRoles": [
+    "Atmosphere",
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "forest-drips-after-storm": {
+  "en": "Water falling from trees after a thunderstorm",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "不明",
+  "recordedArea": "",
+  "recordedRegions": [],
+  "recordingEnvironment": "原典に記載なし",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Percussion"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0843,
+   "tonality": 0.083,
+   "envCV": 0.3823,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2222.9381,
+   "activity": 0.0349,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。録音地の記載なし。"
+ },
+ "waves-deadmans-cove": {
+  "en": "Waves at Deadman’s Cove (Long Beach, Washington)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "米国",
+  "recordedArea": "ワシントン州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国ワシントン州 Long Beach（Deadman’s Cove）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "coast"
+  ],
+  "activity": [],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Atmosphere"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0256,
+   "tonality": 0.0748,
+   "envCV": 0.304,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 940.8268,
+   "activity": 0.0197,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "winter-fens-kampina": {
+  "en": "Winter fens (Kampina, Netherlands)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "オランダ",
+  "recordedArea": "北ブラバント州",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "オランダ・北ブラバント州 Boxtel（カンピナ国立公園）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland",
+   "grassland"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Atmosphere"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0003,
+   "tonality": 0.3412,
+   "envCV": 0.3041,
+   "pulseHz": 3.125,
+   "pulseStrength": 0.0453,
+   "centroidHz": 92.4179,
+   "activity": 0.0062,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "yamanushi-river": {
+  "en": "River at Yamanushi (Japan)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "日本",
+  "recordedArea": "",
+  "recordedRegions": [
+   "asia",
+   "japan"
+  ],
+  "recordingEnvironment": "日本（原典は題名の「Yamanushi」とタグ「JAPAN」のみ）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "river"
+  ],
+  "activity": [],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.2245,
+   "tonality": 0.044,
+   "envCV": 0.1919,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1892.3558,
+   "activity": 0.0,
+   "autoRoles": [
+    "Atmosphere",
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "ice-lake-sweden": {
+  "en": "Water under lake ice in a windy forest (Sweden)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "スウェーデン",
+  "recordedArea": "ブレーキンゲ県",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "スウェーデン・ブレーキンゲ県 Holmsjö（Stora Alljungen 湖）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland",
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Atmosphere",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0012,
+   "tonality": 0.5333,
+   "envCV": 0.4685,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 58.7585,
+   "activity": 0.0609,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "waves-big-lagoon": {
+  "en": "Ocean waves at Big Lagoon (Redwood Coast, California)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "米国",
+  "recordedArea": "カリフォルニア州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "米国カリフォルニア州北部 ビッグラグーン（レッドウッド海岸）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "coast"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Atmosphere"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0211,
+   "tonality": 0.2023,
+   "envCV": 0.34,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 336.2332,
+   "activity": 0.0142,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "rain-rapids-nz": {
+  "en": "Rain and rapids (Sharplin Falls, New Zealand)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "ニュージーランド",
+  "recordedArea": "カンタベリー",
+  "recordedRegions": [
+   "oceania"
+  ],
+  "recordingEnvironment": "ニュージーランド・カンタベリー Mount Somers（シャープリン滝）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "river",
+   "mountain"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Atmosphere"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.1283,
+   "tonality": 0.0611,
+   "envCV": 0.0893,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1418.8431,
+   "activity": 0.0,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "birds-stream-paris": {
+  "en": "Morning birds and stream (Rueil-Malmaison, near Paris)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "フランス",
+  "recordedArea": "オー＝ド＝セーヌ県",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "フランス・リュエイユ＝マルメゾン（森の近くの住宅の2階の窓）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Atmosphere",
+   "Melody"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0301,
+   "tonality": 0.1426,
+   "envCV": 0.3605,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1809.2611,
+   "activity": 0.0338,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "waterfall-hexenklamm": {
+  "en": "Waterfall with distant birds (Hexenklamm, Germany)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "ドイツ",
+  "recordedArea": "ラインラント＝プファルツ州",
+  "recordedRegions": [
+   "europe"
+  ],
+  "recordingEnvironment": "ドイツ・ラインラント＝プファルツ州 ピルマゼンス近郊のヘクセンクラム（プファルツの森の峡谷）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "river",
+   "mountain",
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Drone"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.4258,
+   "tonality": 0.0233,
+   "envCV": 0.1535,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 4494.5004,
+   "activity": 0.0012,
+   "autoRoles": [
+    "Atmosphere",
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
+ },
+ "rain-frogs-guiana": {
+  "en": "Light rain, frogs and toads at night (French Guiana)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "フランス（仏領ギアナ）",
+  "recordedArea": "仏領ギアナ",
+  "recordedRegions": [
+   "south_america"
+  ],
+  "recordingEnvironment": "仏領ギアナ Rémire-Montjoly（家の前）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "tropical_rainforest",
+   "night_forest"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Atmosphere",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0951,
+   "tonality": 0.1484,
+   "envCV": 0.2911,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 2434.8916,
+   "activity": 0.0126,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.38 取り込み。原典確認日 2026-11-02。"
  }
 }

@@ -8,7 +8,7 @@ await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
 ok('default_all',await pg.evaluate(()=>__rightsDebug.mode==='all'&&document.getElementById('rightsMode').value==='all'));
 // 区分：自然録音41本＝A9・B15・C17（v0.28）、楽器15本＝すべてA
 R.tiers=await pg.evaluate(()=>{const c={};for(const r of JSON.parse(document.getElementById('ae-recordings').textContent)){const t=__rightsDebug.tierOf(r.license);c[t]=(c[t]||0)+1}return c});
-ok('tiers_9_15_17',R.tiers.A===9&&R.tiers.B===15&&R.tiers.C===17&&!R.tiers.X);
+ok('tiers_59_51_17',R.tiers.A===59&&R.tiers.B===51&&R.tiers.C===17&&!R.tiers.X);  // v0.38：86本追加（BY-SA の新規採用なし）
 ok('instruments_A',await pg.evaluate(()=>JSON.parse(document.getElementById('ae-instruments').textContent).every(s=>__rightsDebug.tierOf(s.license)==='A')));
 const tierOf=await pg.evaluate(()=>Object.fromEntries(JSON.parse(document.getElementById('ae-recordings').textContent).map(r=>[r.id,__rightsDebug.tierOf(r.license)])));
 // BY-SAを除く：日本の生き物（BY-SAのミンミンゼミ・カジカガエルを含む）＋環境層すべて
@@ -25,7 +25,7 @@ R.nosaHeard=[...heard];R.nosaFields=[...fields];
 ok('nosa_no_BYSA_bio',[...heard].every(x=>tierOf[x]!=='C'));ok('nosa_no_BYSA_field',[...fields].every(x=>tierOf[x]!=='C'));ok('nosa_pool_clean',poolBad.length===0);
 ok('nosa_still_plays',heard.size>=1&&fields.size>=1);
 R.signal=await pg.evaluate(()=>__bioDebug.signal());ok('nonsilent',R.signal.rms>1e-4);
-R.result=await pg.textContent('#rightsResult');ok('result_text',R.result.includes('使える実録音 24/41件')&&R.result.includes('対象外の17件'));
+R.result=await pg.textContent('#rightsResult');ok('result_text',R.result.includes('使える実録音 110/127件')&&R.result.includes('対象外の17件'));
 await pg.click('#stopRecord');const d=await dl;const buf=fs.readFileSync(await d.path());
 const icmt=(()=>{let o=12;while(o+8<=buf.length){const id=buf.toString('ascii',o,o+4),sz=buf.readUInt32LE(o+4);if(id==='LIST'){let p=o+12;while(p+8<=o+8+sz){const k=buf.toString('ascii',p,p+4),n=buf.readUInt32LE(p+4);if(k==='ICMT')return buf.toString('utf8',p+8,p+8+n);p+=8+n+(n%2)}}o+=8+sz+(sz%2)}return ''})();
 R.icmtHead=icmt.split('\r\n').slice(0,5);

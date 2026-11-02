@@ -15,7 +15,7 @@ AUDIO ECOSYSTEM を、**ソフトウェアとして販売できる品質**まで
 ## 正本の置き場所（毎回ここから読む）
 | もの | 場所 |
 |---|---|
-| **正本（アプリ・音源・データ・ドキュメント）** | GitHub `ss2d5sgg-tech/audio-ecosystem`（main）。GitHub Pages で https://ss2d5sgg-tech.github.io/audio-ecosystem/ に公開 |
+| **正本（アプリ・音源・データ・ドキュメント）** | GitHub `sawwaudio/audio-ecosystem`（main）。GitHub Pages で https://sawwaudio.github.io/audio-ecosystem/ に公開（2026-11-02 に旧 `ss2d5sgg-tech/audio-ecosystem` から組織 sawwaudio へ移管。旧 Pages の URL は転送されない） |
 | アプリ本体 | リポジトリ直下の `index.html`（音源は `audio/`・`instruments/`、データは `data/`） |
 | ビルド・テスト用ソース | `build/` |
 | ロードマップ・R&D・調査・本書・ログ | `docs/`（プロジェクト「saww audio ecosystem」の `claude/` にも写しあり） |

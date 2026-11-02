@@ -57,6 +57,8 @@ const EXACT={
 '兵庫・餘部で収録した秋の合唱。':'An autumn chorus recorded at Amarube, Hyōgo.','短いさえずり。録音自体が約4秒です。':'A short song; the recording itself is about 4 seconds.','笛のようなカエルの声。':'A flute-like frog call.',
 '複数種：Meloimorpha japonica 等':'Multiple species: Meloimorpha japonica etc.','該当なし':'n/a','水辺の実録音 / 録音地不明':'Waterside recording / location unknown',
 // 商用モード（v0.27）
+// 合成音の整理・タッチ演奏の移動（v0.33）
+'実録音がまだない生き物（自分の録音を読み込めます）':'Creatures without a recording yet (you can import your own)','実録音未収録 · 自律演奏では鳴りません（自分の録音を読み込むと鳴ります）':'No recording yet · silent in autonomous play (import your own recording to hear it)','実録音なし':'No recording','タッチで演奏 / TOUCH PLAY':'TOUCH PLAY',
 // リールモード（v0.31）
 'REEL / 縦動画 1080×1920':'REEL / VERTICAL VIDEO 1080×1920','長さ':'Length','リールの長さ':'Reel length','● リールを録画':'● Record reel','■ 停止して書き出し':'■ Stop & export','リール映像のプレビュー':'Reel video preview',
 'いまの演奏を縦長の動画（スペクトログラム・波形・鳴いている生き物の名前と録音地・帰属表示）として録画します。リールには CC BY-SA の素材を含めません（録画を始めると商用モードを「BY-SAを除く」に切り替えます）。書き出し形式はブラウザによって MP4 または WebM です（変換はしません）。':'Records the current performance as a vertical video (spectrogram, waveform, the names and recording locations of the creatures you hear, and attribution). Reels never include CC BY-SA sources (starting a recording switches commercial mode to “Exclude BY-SA”). The file is MP4 or WebM depending on the browser (no conversion).',

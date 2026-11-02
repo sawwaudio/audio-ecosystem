@@ -28,8 +28,8 @@
     "gain": 1.3794616472892451
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 44100,
     "channels": 2,
@@ -37,9 +37,9 @@
     "duration": 31.254059,
     "parts": [
      {
-      "path": "audio/pcm/blackbird.wav",
-      "bytes": 8269868,
-      "sha256": "1474ef06143371bddafc74b65139c9f43a85e8fdf744060cd6c6a2655168f13a",
+      "path": "audio/pcm/blackbird.flac",
+      "bytes": 2474833,
+      "sha256": "8407e505c20b57a7b79f7da8f1ebfda709ae4e23be1cdfcf4a58cf81bcc63eb9",
       "frames": 1378304
      }
     ],
@@ -48,7 +48,7 @@
     "decodedPeak": 0.5505395531654358,
     "gain": 1.3794616472892451,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "american-field-cricket": {
@@ -77,8 +77,8 @@
     "gain": 2.414916231041813
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 44100,
     "channels": 2,
@@ -86,9 +86,9 @@
     "duration": 10.453333,
     "parts": [
      {
-      "path": "audio/pcm/american-field-cricket.wav",
-      "bytes": 2765996,
-      "sha256": "d23261196dbdd8263376aedea1c45d7659e456f5250dc67457e2c3f1654d5ed0",
+      "path": "audio/pcm/american-field-cricket.flac",
+      "bytes": 1577036,
+      "sha256": "7b4170584abe6f525f9af5a3b319d9b5a574c0af364ee4fcdc1b66ff972ef147",
       "frames": 460992
      }
     ],
@@ -97,7 +97,7 @@
     "decodedPeak": 0.2671748101711273,
     "gain": 2.414916231041813,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "barking-treefrog": {
@@ -126,8 +126,8 @@
     "gain": 0.7595758934214046
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 44100,
     "channels": 1,
@@ -135,9 +135,9 @@
     "duration": 43.003356,
     "parts": [
      {
-      "path": "audio/pcm/barking-treefrog.wav",
-      "bytes": 5689388,
-      "sha256": "06ccbfa22797ec6894ee8aab4f4cee021c7b72ceec60e7d0584c800ff44725af",
+      "path": "audio/pcm/barking-treefrog.flac",
+      "bytes": 3583765,
+      "sha256": "36047b12aac65f43795ca2082f3cf9cbe530e5827a9d615b71a84daaa583c705",
       "frames": 1896448
      }
     ],
@@ -146,7 +146,7 @@
     "decodedPeak": 1.0111743211746216,
     "gain": 0.7681404447748367,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0112>0dBFSのため係数0.988850で格納し再生ゲインで相殺。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0112>0dBFSのため係数0.988850で格納し再生ゲインで相殺。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "autumn-insects": {
@@ -175,8 +175,8 @@
     "gain": 0.7519468128369493
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 16000,
     "channels": 1,
@@ -184,9 +184,9 @@
     "duration": 16.0,
     "parts": [
      {
-      "path": "audio/pcm/autumn-insects.wav",
-      "bytes": 768044,
-      "sha256": "1d98ff824c90f16a5037f8d4a96b6607c571374ab77cfb80a10789af62b7223d",
+      "path": "audio/pcm/autumn-insects.flac",
+      "bytes": 660931,
+      "sha256": "bd33476d66a63cc1eb7779da2bd9e5aa05c0a6d292e3740321084b3f2a54d36c",
       "frames": 256000
      }
     ],
@@ -195,7 +195,7 @@
     "decodedPeak": 1.0020605325698853,
     "gain": 0.7535715733579947,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0021>0dBFSのため係数0.997844で格納し再生ゲインで相殺。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0021>0dBFSのため係数0.997844で格納し再生ゲインで相殺。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "cicada": {
@@ -224,8 +224,8 @@
     "gain": 0.9508490028438619
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 44100,
     "channels": 1,
@@ -233,9 +233,9 @@
     "duration": 92.879819,
     "parts": [
      {
-      "path": "audio/pcm/cicada.wav",
-      "bytes": 12288044,
-      "sha256": "139067c50b901d5914ccffbf421337d8021a77e88992605f18aba2be6ce42a80",
+      "path": "audio/pcm/cicada.flac",
+      "bytes": 9453864,
+      "sha256": "80b12166f5872faa150b72a221eb40885cfbbba64d61251d5b0314fb9359c26d",
       "frames": 4096000
      }
     ],
@@ -244,7 +244,7 @@
     "decodedPeak": 0.6792080402374268,
     "gain": 0.9508490028438619,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "higurashi": {
@@ -273,8 +273,8 @@
     "gain": 2.3836349172354674
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 44100,
     "channels": 2,
@@ -282,16 +282,10 @@
     "duration": 96.274717,
     "parts": [
      {
-      "path": "audio/pcm/higurashi.part1.wav",
-      "bytes": 14680106,
-      "sha256": "a3ff0c525c44a4110cdde70dbeb64782d5486dace72fb74f38ad6e9835ea39e3",
-      "frames": 2446677
-     },
-     {
-      "path": "audio/pcm/higurashi.part2.wav",
-      "bytes": 10794272,
-      "sha256": "74c77121565d4d0e7236f70afc0b157da6800a7f59aff0be6f1c865fe5bf8494",
-      "frames": 1799038
+      "path": "audio/pcm/higurashi.flac",
+      "bytes": 7996133,
+      "sha256": "40a4ff6026aa0011fd3b6d3042bd65f52a7dfd9b4c1d0169ff764a9e181bfb26",
+      "frames": 4245715
      }
     ],
     "pcmDataSha256": "8353dd8f0071fc3ad481cf3caf7f7a44cb9a1ae032c8c147104c2c4019d79c6d",
@@ -299,7 +293,7 @@
     "decodedPeak": 0.31884118914604187,
     "gain": 2.3836349172354674,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "niiniizemi": {
@@ -328,8 +322,8 @@
     "gain": 2.539791544500989
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 44100,
     "channels": 2,
@@ -337,9 +331,9 @@
     "duration": 37.54712,
     "parts": [
      {
-      "path": "audio/pcm/niiniizemi.wav",
-      "bytes": 9935012,
-      "sha256": "67291f77d2c6453a23fc0c64132f7e9f360896ba77ec999b58f77f15e71444cd",
+      "path": "audio/pcm/niiniizemi.flac",
+      "bytes": 2888724,
+      "sha256": "7a124f573013fb048568fb26266b4b2b0138c2ef630b7bb524f8ce769ea1eb1a",
       "frames": 1655828
      }
     ],
@@ -348,7 +342,7 @@
     "decodedPeak": 0.20779195427894592,
     "gain": 2.539791544500989,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "tsukutsukuboshi": {
@@ -377,8 +371,8 @@
     "gain": 1.4829558057205214
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 44100,
     "channels": 2,
@@ -386,9 +380,9 @@
     "duration": 39.079546,
     "parts": [
      {
-      "path": "audio/pcm/tsukutsukuboshi.wav",
-      "bytes": 10340492,
-      "sha256": "9cd876dcf13d1db6e987efb2e1f43fde46f7959cc2f0708f8de03a261a04d9a8",
+      "path": "audio/pcm/tsukutsukuboshi.flac",
+      "bytes": 4032345,
+      "sha256": "cc7900cf2b01fa2a62b91887f171e634305f276799f0ffa122a1e512cbb97a71",
       "frames": 1723408
      }
     ],
@@ -397,7 +391,7 @@
     "decodedPeak": 0.5137312412261963,
     "gain": 1.4829558057205214,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "minminzemi": {
@@ -426,8 +420,8 @@
     "gain": 1.4231717753983586
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 11024,
     "channels": 1,
@@ -435,9 +429,9 @@
     "duration": 35.878084,
     "parts": [
      {
-      "path": "audio/pcm/minminzemi.wav",
-      "bytes": 1186604,
-      "sha256": "d1a049e2ef90c37b5ac0e348ecdb63e9df1f11fa9de41aea83f665bb97c24539",
+      "path": "audio/pcm/minminzemi.flac",
+      "bytes": 954143,
+      "sha256": "9226578b6cd3e387a6c592ede54a52035ee8495bd5900f6be9bdc12fa6f78090",
       "frames": 395520
      }
     ],
@@ -446,7 +440,7 @@
     "decodedPeak": 0.2805178761482239,
     "gain": 1.4231717753983586,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "japanese-bush-warbler": {
@@ -475,8 +469,8 @@
     "gain": 0.5189058330748547
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 11024,
     "channels": 1,
@@ -484,9 +478,9 @@
     "duration": 4.017417,
     "parts": [
      {
-      "path": "audio/pcm/japanese-bush-warbler.wav",
-      "bytes": 132908,
-      "sha256": "3c69609cbec86a1a1a07e618b29ebd901f86ada5c5e7854af549b3932ce90d25",
+      "path": "audio/pcm/japanese-bush-warbler.flac",
+      "bytes": 100983,
+      "sha256": "22b6b57fe71fd0a5e3a54d37dad1bd8187a9ddb11bba1616ded7325249bdfefe",
       "frames": 44288
      }
     ],
@@ -495,7 +489,7 @@
     "decodedPeak": 0.37039774656295776,
     "gain": 0.5189058330748547,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "hototogisu": {
@@ -524,8 +518,8 @@
     "gain": 1.0463800405554917
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 7812,
     "channels": 1,
@@ -533,9 +527,9 @@
     "duration": 6.686764,
     "parts": [
      {
-      "path": "audio/pcm/hototogisu.wav",
-      "bytes": 156755,
-      "sha256": "7cf4ea6833be8c6dc1de26e23b2b29552eff3bb39330c3ae7e3e33e3ac370578",
+      "path": "audio/pcm/hototogisu.flac",
+      "bytes": 127383,
+      "sha256": "43314851c6ad375177dca1076fc647536a50b6d20f51124f12cc3f5559a429b8",
       "frames": 52237
      }
     ],
@@ -544,7 +538,7 @@
     "decodedPeak": 0.5914832353591919,
     "gain": 1.0463800405554917,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "tide-rocks": {
@@ -573,8 +567,8 @@
     "gain": 1.4019136457261914
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 44100,
     "channels": 2,
@@ -582,9 +576,9 @@
     "duration": 30.406531,
     "parts": [
      {
-      "path": "audio/pcm/tide-rocks.wav",
-      "bytes": 8045612,
-      "sha256": "8c29636c8b7151be84979e96b721877eb4bcd38b04d7098012eec059705fcac8",
+      "path": "audio/pcm/tide-rocks.flac",
+      "bytes": 4267320,
+      "sha256": "d6858f2cb1f2a29c8c9a06659c77f1ef2d195dbdc6fb22102f5532468c5fdb24",
       "frames": 1340928
      }
     ],
@@ -593,7 +587,7 @@
     "decodedPeak": 0.4387344717979431,
     "gain": 1.4019136457261914,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "rocky-beach": {
@@ -622,8 +616,8 @@
     "gain": 11.371018997350557
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 48000,
     "channels": 1,
@@ -631,9 +625,9 @@
     "duration": 9.9535,
     "parts": [
      {
-      "path": "audio/pcm/rocky-beach.wav",
-      "bytes": 1433348,
-      "sha256": "ebfd00ef0aa696b642b09f48a3e29bb1e9065f0d957bb0d7e1e151265c878839",
+      "path": "audio/pcm/rocky-beach.flac",
+      "bytes": 322594,
+      "sha256": "db57a3ecb9f3d0c6af59392180abfba8b1ea4df1b1ccaea6531158a4762a98c9",
       "frames": 477768
      }
     ],
@@ -642,7 +636,7 @@
     "decodedPeak": 0.0035184547305107117,
     "gain": 11.371018997350557,
     "lossless": false,
-    "provenance": "opus原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "opus原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "kajika-frog": {
@@ -671,8 +665,8 @@
     "gain": 3.6805520278635093
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 44100,
     "channels": 2,
@@ -680,9 +674,9 @@
     "duration": 22.980181,
     "parts": [
      {
-      "path": "audio/pcm/kajika-frog.wav",
-      "bytes": 6080600,
-      "sha256": "b48e309a02681634f9989884faa8ed16663f934d7d24658b374decd63f78710a",
+      "path": "audio/pcm/kajika-frog.flac",
+      "bytes": 1577747,
+      "sha256": "7c4b9e7e6120a4074da60358acc465a95444c32a243855778354895fc74438d9",
       "frames": 1013426
      }
     ],
@@ -691,7 +685,7 @@
     "decodedPeak": 0.20631878077983856,
     "gain": 3.6805520278635093,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "brown-eared-bulbul": {
@@ -720,8 +714,8 @@
     "gain": 2.0026716209809035
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 48000,
     "channels": 1,
@@ -729,9 +723,9 @@
     "duration": 5.418667,
     "parts": [
      {
-      "path": "audio/pcm/brown-eared-bulbul.wav",
-      "bytes": 780332,
-      "sha256": "9fc7e9c49ad522982040ebfe0deedc4417cf0b8fe72c090032e1f965a5babe22",
+      "path": "audio/pcm/brown-eared-bulbul.flac",
+      "bytes": 445757,
+      "sha256": "b876546a82eb452753722bb53e15955c0e0d1cabbb840ba54a7fd570bc73d1ed",
       "frames": 260096
      }
     ],
@@ -740,7 +734,7 @@
     "decodedPeak": 0.3779790699481964,
     "gain": 2.0026716209809035,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "autumn-insects-2": {
@@ -769,8 +763,8 @@
     "gain": 0.7535310468360445
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 16000,
     "channels": 1,
@@ -778,9 +772,9 @@
     "duration": 9.0,
     "parts": [
      {
-      "path": "audio/pcm/autumn-insects-2.wav",
-      "bytes": 432044,
-      "sha256": "f8f7f4229baf7af0ad5b6ed2c7fbcbf3363def7005ed6df73f06ddda4200a96f",
+      "path": "audio/pcm/autumn-insects-2.flac",
+      "bytes": 355665,
+      "sha256": "e3442d8ee9a78fe588a85e08dc2a2ea690b8f06c10e4fef1e3bf63ff4dfc8dc0",
       "frames": 144000
      }
     ],
@@ -789,7 +783,7 @@
     "decodedPeak": 1.038575530052185,
     "gain": 0.7826771662691607,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0386>0dBFSのため係数0.962761で格納し再生ゲインで相殺。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0386>0dBFSのため係数0.962761で格納し再生ゲインで相殺。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "tree-cricket-europe": {
@@ -818,8 +812,8 @@
     "gain": 0.6020242760149697
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 44100,
     "channels": 2,
@@ -827,9 +821,9 @@
     "duration": 25.550794,
     "parts": [
      {
-      "path": "audio/pcm/tree-cricket-europe.wav",
-      "bytes": 6760784,
-      "sha256": "465f7221646ebf13faa0682e802fca05a7069a2b0dbda4464b7e3928dc7ec931",
+      "path": "audio/pcm/tree-cricket-europe.flac",
+      "bytes": 3964087,
+      "sha256": "72627c0d2279fe80f535ff5fe0bbb87944b098cd15ae9fbadb8c5b0a0c0d6e43",
       "frames": 1126790
      }
     ],
@@ -838,7 +832,7 @@
     "decodedPeak": 0.5355300307273865,
     "gain": 0.6020242760149697,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "field-cricket-europe": {
@@ -867,8 +861,8 @@
     "gain": 0.4750703610002235
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 44100,
     "channels": 2,
@@ -876,9 +870,9 @@
     "duration": 32.169048,
     "parts": [
      {
-      "path": "audio/pcm/field-cricket-europe.wav",
-      "bytes": 8511974,
-      "sha256": "fc812986f13df7cac3cb805936352449a8f951f9365c8d2cbc2cfff49604e7c3",
+      "path": "audio/pcm/field-cricket-europe.flac",
+      "bytes": 4677753,
+      "sha256": "c3dda17133d151e79f1e50e4a6a34ba429d6854e954d4c333a65ccfe73eeb378",
       "frames": 1418655
      }
     ],
@@ -887,7 +881,7 @@
     "decodedPeak": 1.0943756103515625,
     "gain": 0.5199574068211846,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0944>0dBFSのため係数0.913672で格納し再生ゲインで相殺。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0944>0dBFSのため係数0.913672で格納し再生ゲインで相殺。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "river-esk": {
@@ -916,8 +910,8 @@
     "gain": 0.8421781756511812
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 44100,
     "channels": 2,
@@ -925,9 +919,9 @@
     "duration": 27.637574,
     "parts": [
      {
-      "path": "audio/pcm/river-esk.wav",
-      "bytes": 7312946,
-      "sha256": "c2b531aecfd6f94830ec7334d3753440f8351ded5d6ba097f0624900a7b3cdc1",
+      "path": "audio/pcm/river-esk.flac",
+      "bytes": 5239771,
+      "sha256": "a6b011620e13e226f50a2f8a4197290b937045a1aeac36529ba047c8358bcb5c",
       "frames": 1218817
      }
     ],
@@ -936,7 +930,7 @@
     "decodedPeak": 0.6075855493545532,
     "gain": 0.8421781756511812,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "forest-leaves": {
@@ -965,8 +959,8 @@
     "gain": 0.39127861823564736
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
@@ -974,9 +968,9 @@
     "duration": 18.0,
     "parts": [
      {
-      "path": "audio/pcm/forest-leaves.wav",
-      "bytes": 3175244,
-      "sha256": "d6024a90ffa7745aab255e919032d23cf6f44940a2af259535b420ae930cb551",
+      "path": "audio/pcm/forest-leaves.flac",
+      "bytes": 1583712,
+      "sha256": "4ea595a994ab8116ac632329de6957943017b50b6d96c26a2d899b04a8dea75e",
       "frames": 793800
      }
     ],
@@ -985,7 +979,7 @@
     "decodedPeak": 0.54278564453125,
     "gain": 0.39127861823564736,
     "lossless": true,
-    "provenance": "FLAC原本の可逆復号（ビット完全）"
+    "provenance": "FLAC原本の可逆復号（ビット完全） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "forest-wind": {
@@ -1014,8 +1008,8 @@
     "gain": 2.8551222497724
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 48000,
     "channels": 2,
@@ -1023,16 +1017,10 @@
     "duration": 60.458667,
     "parts": [
      {
-      "path": "audio/pcm/forest-wind.part1.wav",
-      "bytes": 14680106,
-      "sha256": "65e3f70fa7d41c00cccaf3aea36dd0f399428f0900cbba9d0dc6e8e36a25fcfe",
-      "frames": 2446677
-     },
-     {
-      "path": "audio/pcm/forest-wind.part2.wav",
-      "bytes": 2732078,
-      "sha256": "d79154dc9ec32832e8551363409ef9a0850ff094cb115e531689b453c532d224",
-      "frames": 455339
+      "path": "audio/pcm/forest-wind.flac",
+      "bytes": 9251417,
+      "sha256": "3fa8d77be219b5d4dcd6e171d6894e7085d745895e9c677e5c76e29c059212fa",
+      "frames": 2902016
      }
     ],
     "pcmDataSha256": "31b91b0754987dda561c9ffb68c2e07128229fba8068fd7f687d8e983239b7e0",
@@ -1040,7 +1028,7 @@
     "decodedPeak": 0.3571667969226837,
     "gain": 2.8551222497724,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "rain-field": {
@@ -1069,8 +1057,8 @@
     "gain": 1.1275076060918223
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 44100,
     "channels": 1,
@@ -1078,9 +1066,9 @@
     "duration": 10.331429,
     "parts": [
      {
-      "path": "audio/pcm/rain-field.wav",
-      "bytes": 1366892,
-      "sha256": "7584046df870f67b621ad693afb39d71aee35f49cad2875d9128ad4769576ec7",
+      "path": "audio/pcm/rain-field.flac",
+      "bytes": 671930,
+      "sha256": "f91116f10eddc5c5dde7aa022f059a598f99fef4fcf68beba55d7489eca7cb89",
       "frames": 455616
      }
     ],
@@ -1089,7 +1077,7 @@
     "decodedPeak": 0.6727811694145203,
     "gain": 1.1275076060918223,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "fire-field": {
@@ -1118,8 +1106,8 @@
     "gain": 2.0060333455401604
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 44100,
     "channels": 1,
@@ -1127,9 +1115,9 @@
     "duration": 25.49551,
     "parts": [
      {
-      "path": "audio/pcm/fire-field.wav",
-      "bytes": 3373100,
-      "sha256": "ea555b06777e791eb53a465bd0fc9f6c68d456ce61047562a7bb56f50adda097",
+      "path": "audio/pcm/fire-field.flac",
+      "bytes": 2349294,
+      "sha256": "c4597d6279ceb5a9783d9d60a905c58ae83a32af0e5794f3cb987f4361ede303",
       "frames": 1124352
      }
     ],
@@ -1138,7 +1126,7 @@
     "decodedPeak": 0.37976494431495667,
     "gain": 2.0060333455401604,
     "lossless": false,
-    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。"
+    "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "gampsocleis-glabra": {
@@ -1291,8 +1279,8 @@
     "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 96000,
     "channels": 2,
@@ -1300,16 +1288,10 @@
     "duration": 45.0,
     "parts": [
      {
-      "path": "audio/pcm/kashiwa-insects.part1.wav",
-      "bytes": 14680106,
-      "sha256": "511da434b0c5efac73c2c0ab5abe055293cf750b33c6d145a4c838188cdca388",
-      "frames": 2446677
-     },
-     {
-      "path": "audio/pcm/kashiwa-insects.part2.wav",
-      "bytes": 11239982,
-      "sha256": "b2559d1ed747a2cca5576a0794a35ee28115939e42463f31d9ed5557e52d799f",
-      "frames": 1873323
+      "path": "audio/pcm/kashiwa-insects.flac",
+      "bytes": 16524397,
+      "sha256": "e4c54c8d4adb69088da171058827a70836c21b9a675455eb323a04850e78ebca",
+      "frames": 4320000
      }
     ],
     "pcmDataSha256": "52418b01a6c5cc0832a8020de5e02d69443a06470760e1db2fc3ee32a90251ed",
@@ -1317,7 +1299,7 @@
     "decodedPeak": 0.04256141185760498,
     "gain": 5.49643929115026,
     "lossless": true,
-    "provenance": "原本WAV（24-bit・96000Hz）のサンプルをそのまま切り出した抜粋（10秒〜55秒）。ビット完全。原本全長はオーナーのMacに保管。"
+    "provenance": "原本WAV（24-bit・96000Hz）のサンプルをそのまま切り出した抜粋（10秒〜55秒）。ビット完全。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "bamboo-stream": {
@@ -1335,8 +1317,8 @@
     "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 48000,
     "channels": 2,
@@ -1344,9 +1326,9 @@
     "duration": 45.0,
     "parts": [
      {
-      "path": "audio/pcm/bamboo-stream.wav",
-      "bytes": 12960044,
-      "sha256": "0a406ef1f248cc538c070bb3129d7e4a555b7699b84788511d67a04fb2364e3b",
+      "path": "audio/pcm/bamboo-stream.flac",
+      "bytes": 8101029,
+      "sha256": "e90344658e5875b42fb52728e9cd1fca49d73f30579bb9ef3118fb260495e963",
       "frames": 2160000
      }
     ],
@@ -1355,7 +1337,7 @@
     "decodedPeak": 0.017446517944335938,
     "gain": 7.850067010999555,
     "lossless": true,
-    "provenance": "原本WAV（24-bit・48000Hz）のサンプルをそのまま切り出した抜粋（106秒〜151秒）。ビット完全。原本全長はオーナーのMacに保管。"
+    "provenance": "原本WAV（24-bit・48000Hz）のサンプルをそのまま切り出した抜粋（106秒〜151秒）。ビット完全。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "ricefield-frogs": {
@@ -1373,8 +1355,8 @@
     "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 48000,
     "channels": 2,
@@ -1382,9 +1364,9 @@
     "duration": 45.0,
     "parts": [
      {
-      "path": "audio/pcm/ricefield-frogs.wav",
-      "bytes": 12960044,
-      "sha256": "5248a8e8dd48baca91c1fb0f8f939e0f606436466131b6f2224bd64d2a3d3e4c",
+      "path": "audio/pcm/ricefield-frogs.flac",
+      "bytes": 8687670,
+      "sha256": "f0da1993f1f9ec497e2877d8a84f7ce2758a9db4d6d1f3a22d64a9ac6abc7d34",
       "frames": 2160000
      }
     ],
@@ -1393,7 +1375,7 @@
     "decodedPeak": 0.7989691495895386,
     "gain": 0.32518655168680016,
     "lossless": true,
-    "provenance": "原本WAV（24-bit・48000Hz）のサンプルをそのまま切り出した抜粋（98秒〜143秒）。ビット完全。原本全長はオーナーのMacに保管。"
+    "provenance": "原本WAV（24-bit・48000Hz）のサンプルをそのまま切り出した抜粋（98秒〜143秒）。ビット完全。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "kyoto-rain": {
@@ -1411,8 +1393,8 @@
     "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 48000,
     "channels": 2,
@@ -1420,9 +1402,9 @@
     "duration": 45.0,
     "parts": [
      {
-      "path": "audio/pcm/kyoto-rain.wav",
-      "bytes": 12960044,
-      "sha256": "e5f52826f445a213b2f3d5bce42854c99154d991a28bfea2b779335137c5edca",
+      "path": "audio/pcm/kyoto-rain.flac",
+      "bytes": 10154143,
+      "sha256": "ff03943c070de001f9f673d0e9b81503060f9e7341a37efa475e8e4137ab318b",
       "frames": 2160000
      }
     ],
@@ -1431,7 +1413,7 @@
     "decodedPeak": 0.3964611291885376,
     "gain": 0.5299640106453238,
     "lossless": true,
-    "provenance": "原本WAV（24-bit・48000Hz）のサンプルをそのまま切り出した抜粋（480秒〜525秒）。ビット完全。原本全長はオーナーのMacに保管。"
+    "provenance": "原本WAV（24-bit・48000Hz）のサンプルをそのまま切り出した抜粋（480秒〜525秒）。ビット完全。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "takayama-river": {
@@ -1449,8 +1431,8 @@
     "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 96000,
     "channels": 2,
@@ -1458,16 +1440,10 @@
     "duration": 45.0,
     "parts": [
      {
-      "path": "audio/pcm/takayama-river.part1.wav",
-      "bytes": 14680106,
-      "sha256": "5f271759772033e3d81252f9edf8b40b5d8c8ff0642df1ac347c9d4a010d65dd",
-      "frames": 2446677
-     },
-     {
-      "path": "audio/pcm/takayama-river.part2.wav",
-      "bytes": 11239982,
-      "sha256": "66904376239d5895343e543e885f1a56a6fcd802f729f7a0a8f8883c41151443",
-      "frames": 1873323
+      "path": "audio/pcm/takayama-river.flac",
+      "bytes": 6064667,
+      "sha256": "280979c77b61bd51a6ca5b90d508991fcc8adc8a0e5dcc305ece5d1e93074e75",
+      "frames": 4320000
      }
     ],
     "pcmDataSha256": "99f29c89be49a78d1104fc7486c00fcbb453747b7d4f93d8ffc53dede1210e12",
@@ -1475,7 +1451,7 @@
     "decodedPeak": 0.2531815767288208,
     "gain": 0.7258795649502465,
     "lossless": true,
-    "provenance": "原本（96000Hz）からサンプル単位でそのまま切り出し（再量子化・リサンプルなし）した抜粋（53秒〜98秒）。ビット完全。原本全長はオーナーのMacに保管。"
+    "provenance": "原本（96000Hz）からサンプル単位でそのまま切り出し（再量子化・リサンプルなし）した抜粋（53秒〜98秒）。ビット完全。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "california-stream": {
@@ -1493,8 +1469,8 @@
     "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 48000,
     "channels": 2,
@@ -1502,9 +1478,9 @@
     "duration": 37.0,
     "parts": [
      {
-      "path": "audio/pcm/california-stream.wav",
-      "bytes": 10656044,
-      "sha256": "27f5bd73935a66e47eedaaa9e93c703ebb9f70d3f0e2df5d1ac971127218e730",
+      "path": "audio/pcm/california-stream.flac",
+      "bytes": 8261841,
+      "sha256": "2eb26d088440831221b71cae409b4acc5a288749aad4317c8e3ea54be382ff79",
       "frames": 1776000
      }
     ],
@@ -1513,7 +1489,7 @@
     "decodedPeak": 0.7093230485916138,
     "gain": 0.5843316044447049,
     "lossless": true,
-    "provenance": "原本（48000Hz）からサンプル単位でそのまま切り出し（再量子化・リサンプルなし）した抜粋（1秒〜38秒）。ビット完全。原本全長はオーナーのMacに保管。"
+    "provenance": "原本（48000Hz）からサンプル単位でそのまま切り出し（再量子化・リサンプルなし）した抜粋（1秒〜38秒）。ビット完全。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "midwest-woods-wind": {
@@ -1531,8 +1507,8 @@
     "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 96096,
     "channels": 2,
@@ -1540,16 +1516,10 @@
     "duration": 45.0,
     "parts": [
      {
-      "path": "audio/pcm/midwest-woods-wind.part1.wav",
-      "bytes": 14680106,
-      "sha256": "49df9e282a64f63b1a5a0f05926bcafc52916bbf7aa76b25e615f3f05edd2327",
-      "frames": 2446677
-     },
-     {
-      "path": "audio/pcm/midwest-woods-wind.part2.wav",
-      "bytes": 11265902,
-      "sha256": "a211b54c2af335be20a8329de79b8bd5ade2da6185b24501034d066c4dfa15fe",
-      "frames": 1877643
+      "path": "audio/pcm/midwest-woods-wind.flac",
+      "bytes": 17472955,
+      "sha256": "798b60f3789fdb71654fcc4e774e71eb2c7867a33d329d8c5279e0cb208cf1dc",
+      "frames": 4324320
      }
     ],
     "pcmDataSha256": "190b71bc4ea2e2237864efe291e0399cc8aa80b9d9bd3d1330a15c1ec79946d9",
@@ -1557,7 +1527,7 @@
     "decodedPeak": 0.07699394226074219,
     "gain": 3.012077138415515,
     "lossless": true,
-    "provenance": "原本（96096Hz）からサンプル単位でそのまま切り出し（再量子化・リサンプルなし）した抜粋（227秒〜272秒）。ビット完全。原本全長はオーナーのMacに保管。"
+    "provenance": "原本（96096Hz）からサンプル単位でそのまま切り出し（再量子化・リサンプルなし）した抜粋（227秒〜272秒）。ビット完全。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "tokyo-park-cicadas": {
@@ -1575,8 +1545,8 @@
     "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 48000,
     "channels": 2,
@@ -1584,9 +1554,9 @@
     "duration": 45.0,
     "parts": [
      {
-      "path": "audio/pcm/tokyo-park-cicadas.wav",
-      "bytes": 12960044,
-      "sha256": "932861332a2218d92f119002bef49895515774adbb85756a67670afc97f15b02",
+      "path": "audio/pcm/tokyo-park-cicadas.flac",
+      "bytes": 9464698,
+      "sha256": "0625293f69622cd7c927a3fd1067d4ce14573b7794b72a4a14400b60c4465e54",
       "frames": 2160000
      }
     ],
@@ -1595,7 +1565,7 @@
     "decodedPeak": 0.13211071491241455,
     "gain": 1.9679504616941388,
     "lossless": false,
-    "provenance": "原本（48000Hz）から24-bitへ変換して切り出し（原本はpcm_f32le 32-bit。リサンプルなし）した抜粋（3秒〜48秒）。原本全長はオーナーのMacに保管。"
+    "provenance": "原本（48000Hz）から24-bitへ変換して切り出し（原本はpcm_f32le 32-bit。リサンプルなし）した抜粋（3秒〜48秒）。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   },
   "nakameguro-cicadas": {
@@ -1613,8 +1583,8 @@
     "provenance": "v0.25：原本WAVの抜粋から作成した互換MP3（44.1kHz・モノラル・128kbps）"
    },
    "pcm": {
-    "format": "wav",
-    "codec": "Linear PCM 24-bit",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
     "bitDepth": 24,
     "sampleRate": 96000,
     "channels": 2,
@@ -1622,16 +1592,10 @@
     "duration": 45.0,
     "parts": [
      {
-      "path": "audio/pcm/nakameguro-cicadas.part1.wav",
-      "bytes": 14680106,
-      "sha256": "0351da82789fcb33960c4c9075ffd7dc8ed0b60f35f9f5c004accb1542e163c6",
-      "frames": 2446677
-     },
-     {
-      "path": "audio/pcm/nakameguro-cicadas.part2.wav",
-      "bytes": 11239982,
-      "sha256": "16ab01b3bae6003db2220d02576326c79d3dfff80a04cdc3d4c22e257bfc1e1f",
-      "frames": 1873323
+      "path": "audio/pcm/nakameguro-cicadas.flac",
+      "bytes": 18806225,
+      "sha256": "965475caf4325c8b82b4f5efb3593240fa28c5a2d0686d32a12e45d464aa1fb9",
+      "frames": 4320000
      }
     ],
     "pcmDataSha256": "d0b6ec38312a3537e06eaaa79638920f44d7ace7288c713a99708583ddf8bec9",
@@ -1639,33 +1603,34 @@
     "decodedPeak": 0.6050243377685547,
     "gain": 0.37514650785699644,
     "lossless": false,
-    "provenance": "原本（96000Hz）から24-bitへ変換して切り出し（原本はpcm_s32be 32-bit。リサンプルなし）した抜粋（158秒〜203秒）。原本全長はオーナーのMacに保管。"
+    "provenance": "原本（96000Hz）から24-bitへ変換して切り出し（原本はpcm_s32be 32-bit。リサンプルなし）した抜粋（158秒〜203秒）。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
    }
   }
  },
  "instruments": {
   "harp-45": {
    "pcm": {
-    "path": "instruments/pcm/KSHarp_A2_mf1.wav",
-    "bytes": 2007670,
-    "sha256": "1df9f4d138ca3931fcb458bcdf01304cadf2e5f4eef67bbc17b0e42c0e60fce6",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/KSHarp_A2_mf1.flac",
+    "bytes": 304164,
+    "sha256": "a556ad9bfc269c4bb66715ba629015f9d88e7a9aa798f6ea21c8106ada6135ac",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 11.381088,
     "parts": [
      {
-      "path": "instruments/pcm/KSHarp_A2_mf1.wav",
-      "bytes": 2007670,
-      "sha256": "1df9f4d138ca3931fcb458bcdf01304cadf2e5f4eef67bbc17b0e42c0e60fce6",
+      "path": "instruments/pcm/KSHarp_A2_mf1.flac",
+      "bytes": 304164,
+      "sha256": "a556ad9bfc269c4bb66715ba629015f9d88e7a9aa798f6ea21c8106ada6135ac",
       "frames": 501906
      }
     ],
     "gain": 0.6414525434893121,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "22b2cd1e56dba61c34b5b683ccf32a00cb0f1a857f61e1bbaee2b63fd1f2c731"
    },
    "compat": {
     "path": "instruments/compat/harp-45.mp3",
@@ -1681,26 +1646,27 @@
   },
   "harp-69": {
    "pcm": {
-    "path": "instruments/pcm/KSHarp_A4_mf1.wav",
-    "bytes": 2143618,
-    "sha256": "3665f3975cad4a33f46784aa4f896f4b4319ba2b7831e892d975bc38c9f09f23",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/KSHarp_A4_mf1.flac",
+    "bytes": 322678,
+    "sha256": "a5e48a19715b04693bfa90d8682b5ed27c09acad9fc8f7c579e114d884fabde2",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 12.151769,
     "parts": [
      {
-      "path": "instruments/pcm/KSHarp_A4_mf1.wav",
-      "bytes": 2143618,
-      "sha256": "3665f3975cad4a33f46784aa4f896f4b4319ba2b7831e892d975bc38c9f09f23",
+      "path": "instruments/pcm/KSHarp_A4_mf1.flac",
+      "bytes": 322678,
+      "sha256": "a5e48a19715b04693bfa90d8682b5ed27c09acad9fc8f7c579e114d884fabde2",
       "frames": 535893
      }
     ],
     "gain": 0.6065715005102775,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "00c8909c5741a08ac7655880eacd12084d087f33e1269cb22765e85948868157"
    },
    "compat": {
     "path": "instruments/compat/harp-69.mp3",
@@ -1716,26 +1682,27 @@
   },
   "harp-59": {
    "pcm": {
-    "path": "instruments/pcm/KSHarp_B3_mf1.wav",
-    "bytes": 1981130,
-    "sha256": "f6f71be8c640822ef48a448b245585659acdfcc7ed5774e10f37be2fc02fcab4",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/KSHarp_B3_mf1.flac",
+    "bytes": 300880,
+    "sha256": "e11f446d9d0b809bad1397f2c7993cc3aedb48257e05bbd061ca641181cb08be",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 11.230635,
     "parts": [
      {
-      "path": "instruments/pcm/KSHarp_B3_mf1.wav",
-      "bytes": 1981130,
-      "sha256": "f6f71be8c640822ef48a448b245585659acdfcc7ed5774e10f37be2fc02fcab4",
+      "path": "instruments/pcm/KSHarp_B3_mf1.flac",
+      "bytes": 300880,
+      "sha256": "e11f446d9d0b809bad1397f2c7993cc3aedb48257e05bbd061ca641181cb08be",
       "frames": 495271
      }
     ],
     "gain": 0.6257338479526701,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "759131849668a49d6e77aafbd5ec90d0c5f9730b398d00d703a1c2c793f1c275"
    },
    "compat": {
     "path": "instruments/compat/harp-59.mp3",
@@ -1751,26 +1718,27 @@
   },
   "harp-72": {
    "pcm": {
-    "path": "instruments/pcm/KSHarp_C5_mf1.wav",
-    "bytes": 1237142,
-    "sha256": "7c8b862f6fd3f1442ed87537af976d84bda8c05a5b4900e8907d570b5202a517",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/KSHarp_C5_mf1.flac",
+    "bytes": 194687,
+    "sha256": "c424f0782d6d9eec55937e9d478ebdffc3c6962018f2d9387c06b612a6903118",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 7.013016,
     "parts": [
      {
-      "path": "instruments/pcm/KSHarp_C5_mf1.wav",
-      "bytes": 1237142,
-      "sha256": "7c8b862f6fd3f1442ed87537af976d84bda8c05a5b4900e8907d570b5202a517",
+      "path": "instruments/pcm/KSHarp_C5_mf1.flac",
+      "bytes": 194687,
+      "sha256": "c424f0782d6d9eec55937e9d478ebdffc3c6962018f2d9387c06b612a6903118",
       "frames": 309274
      }
     ],
     "gain": 0.4211037394444562,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "3d33ea20630f4199a67f2523c75a5b84abcc4da073760c7d492231f6ef7b14b7"
    },
    "compat": {
     "path": "instruments/compat/harp-72.mp3",
@@ -1786,26 +1754,27 @@
   },
   "harp-62": {
    "pcm": {
-    "path": "instruments/pcm/KSHarp_D4_mf1.wav",
-    "bytes": 1921690,
-    "sha256": "ebfde8aab4411019e37e3426f4dd88d6a52a38c2d0261d7f10ec63d8ff584dc7",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/KSHarp_D4_mf1.flac",
+    "bytes": 292436,
+    "sha256": "fb50e0e2c98ead3ae72c14bfc32f8d77407366905d1972769fc0c7db54048214",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 10.893673,
     "parts": [
      {
-      "path": "instruments/pcm/KSHarp_D4_mf1.wav",
-      "bytes": 1921690,
-      "sha256": "ebfde8aab4411019e37e3426f4dd88d6a52a38c2d0261d7f10ec63d8ff584dc7",
+      "path": "instruments/pcm/KSHarp_D4_mf1.flac",
+      "bytes": 292436,
+      "sha256": "fb50e0e2c98ead3ae72c14bfc32f8d77407366905d1972769fc0c7db54048214",
       "frames": 480411
      }
     ],
     "gain": 0.6199912459227958,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "b4aadde358e3735657304a81759ccb1373c9e8896b66bfa56b4180ab4114797c"
    },
    "compat": {
     "path": "instruments/compat/harp-62.mp3",
@@ -1821,26 +1790,27 @@
   },
   "harp-52": {
    "pcm": {
-    "path": "instruments/pcm/KSHarp_E3_mf1.wav",
-    "bytes": 2461138,
-    "sha256": "aafa9d41ec0f77da8f2891055af8b3f9557e0ba1f1df93d53ae6e1fda07afae5",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/KSHarp_E3_mf1.flac",
+    "bytes": 363635,
+    "sha256": "60fdd05ccabee7eca063df967291b38594a41b2bceca4f872802190254664d4a",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 13.951769,
     "parts": [
      {
-      "path": "instruments/pcm/KSHarp_E3_mf1.wav",
-      "bytes": 2461138,
-      "sha256": "aafa9d41ec0f77da8f2891055af8b3f9557e0ba1f1df93d53ae6e1fda07afae5",
+      "path": "instruments/pcm/KSHarp_E3_mf1.flac",
+      "bytes": 363635,
+      "sha256": "60fdd05ccabee7eca063df967291b38594a41b2bceca4f872802190254664d4a",
       "frames": 615273
      }
     ],
     "gain": 0.601371731595191,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "76b29f4d723abce48ac6e33d8d7efe9dacf95cb9858f75e8589c643413af5350"
    },
    "compat": {
     "path": "instruments/compat/harp-52.mp3",
@@ -1856,26 +1826,27 @@
   },
   "harp-65": {
    "pcm": {
-    "path": "instruments/pcm/KSHarp_F4_mf1.wav",
-    "bytes": 1913498,
-    "sha256": "db27ebbb37334c10e06f2ae63f4d9ff555e4d11704fcc6f0bcf503863867e577",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/KSHarp_F4_mf1.flac",
+    "bytes": 289389,
+    "sha256": "4effb48d71ba7506924fb261068ab738b3a3147921fc83c1b6eaf3dd64b341dc",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 10.847234,
     "parts": [
      {
-      "path": "instruments/pcm/KSHarp_F4_mf1.wav",
-      "bytes": 1913498,
-      "sha256": "db27ebbb37334c10e06f2ae63f4d9ff555e4d11704fcc6f0bcf503863867e577",
+      "path": "instruments/pcm/KSHarp_F4_mf1.flac",
+      "bytes": 289389,
+      "sha256": "4effb48d71ba7506924fb261068ab738b3a3147921fc83c1b6eaf3dd64b341dc",
       "frames": 478363
      }
     ],
     "gain": 0.642287397144434,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "91b7284a0b765f0c7ff2188afebc69aeb1356b6337321460bdacd59fd2b824ea"
    },
    "compat": {
     "path": "instruments/compat/harp-65.mp3",
@@ -1891,26 +1862,27 @@
   },
   "harp-55": {
    "pcm": {
-    "path": "instruments/pcm/KSHarp_G3_mf1.wav",
-    "bytes": 1806874,
-    "sha256": "62600eb1b37bc2829ca65351f7ca7e506c9ae472abd5bea0765a8b8fa7df2772",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/KSHarp_G3_mf1.flac",
+    "bytes": 277734,
+    "sha256": "c9e5a2ead1509fcf3baabdef1c7765c99c96851010d45a171e3d3f36fa59df15",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 10.242789,
     "parts": [
      {
-      "path": "instruments/pcm/KSHarp_G3_mf1.wav",
-      "bytes": 1806874,
-      "sha256": "62600eb1b37bc2829ca65351f7ca7e506c9ae472abd5bea0765a8b8fa7df2772",
+      "path": "instruments/pcm/KSHarp_G3_mf1.flac",
+      "bytes": 277734,
+      "sha256": "c9e5a2ead1509fcf3baabdef1c7765c99c96851010d45a171e3d3f36fa59df15",
       "frames": 451707
      }
     ],
     "gain": 0.6346802133249544,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "1e3301db7e530b2b254fd6e8ab6a56d622dc3a8a6ea7e4606f474a63e2b6e2c2"
    },
    "compat": {
     "path": "instruments/compat/harp-55.mp3",
@@ -1926,26 +1898,27 @@
   },
   "vibes-45": {
    "pcm": {
-    "path": "instruments/pcm/Vibes_soft_A2_v1_rr1_Main.wav",
-    "bytes": 1811676,
-    "sha256": "b6e23a94322107d0ab884d7c38e51be538eb45f613c6a24e980c2261151bed75",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/Vibes_soft_A2_v1_rr1_Main.flac",
+    "bytes": 225626,
+    "sha256": "dabb11d360ab3891cfcb2037bc6d98896014de04cf965813be6fc2bdb592eaf6",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 10.270023,
     "parts": [
      {
-      "path": "instruments/pcm/Vibes_soft_A2_v1_rr1_Main.wav",
-      "bytes": 1811676,
-      "sha256": "b6e23a94322107d0ab884d7c38e51be538eb45f613c6a24e980c2261151bed75",
+      "path": "instruments/pcm/Vibes_soft_A2_v1_rr1_Main.flac",
+      "bytes": 225626,
+      "sha256": "dabb11d360ab3891cfcb2037bc6d98896014de04cf965813be6fc2bdb592eaf6",
       "frames": 452908
      }
     ],
     "gain": 0.5228956613037338,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "3db75c1296e01c42b8518cbd6d5a5e8342928a11e8e1faa64ce3ea553333a0c2"
    },
    "compat": {
     "path": "instruments/compat/vibes-45.mp3",
@@ -1961,26 +1934,27 @@
   },
   "vibes-69": {
    "pcm": {
-    "path": "instruments/pcm/Vibes_soft_A4_v1_rr1_Main.wav",
-    "bytes": 1465148,
-    "sha256": "48e942290a982768d7a0038e28a76a99cb666673518b29ebdc55de5e1491025f",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/Vibes_soft_A4_v1_rr1_Main.flac",
+    "bytes": 178757,
+    "sha256": "4683ce88b9bd8f57402b4bfe5d3ffabfcec4ed139527fc6bb54288108a55ac81",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 8.305578,
     "parts": [
      {
-      "path": "instruments/pcm/Vibes_soft_A4_v1_rr1_Main.wav",
-      "bytes": 1465148,
-      "sha256": "48e942290a982768d7a0038e28a76a99cb666673518b29ebdc55de5e1491025f",
+      "path": "instruments/pcm/Vibes_soft_A4_v1_rr1_Main.flac",
+      "bytes": 178757,
+      "sha256": "4683ce88b9bd8f57402b4bfe5d3ffabfcec4ed139527fc6bb54288108a55ac81",
       "frames": 366276
      }
     ],
     "gain": 0.5728443632625206,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "e136da57d3f022426e90146ab3b0f2d2fff5efeb9d27384c3cff86d22b320576"
    },
    "compat": {
     "path": "instruments/compat/vibes-69.mp3",
@@ -1996,26 +1970,27 @@
   },
   "vibes-59": {
    "pcm": {
-    "path": "instruments/pcm/Vibes_soft_B3_v1_rr1_Main.wav",
-    "bytes": 1850652,
-    "sha256": "7edfbd70f93781d2cbb17c2fc8befe474de9987c6353db2358af4e13a0269345",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/Vibes_soft_B3_v1_rr1_Main.flac",
+    "bytes": 228136,
+    "sha256": "155a706bb8a3cebdabf4e9f343e7faf2aea966ea18db866adc21bd6782731cbf",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 10.490975,
     "parts": [
      {
-      "path": "instruments/pcm/Vibes_soft_B3_v1_rr1_Main.wav",
-      "bytes": 1850652,
-      "sha256": "7edfbd70f93781d2cbb17c2fc8befe474de9987c6353db2358af4e13a0269345",
+      "path": "instruments/pcm/Vibes_soft_B3_v1_rr1_Main.flac",
+      "bytes": 228136,
+      "sha256": "155a706bb8a3cebdabf4e9f343e7faf2aea966ea18db866adc21bd6782731cbf",
       "frames": 462652
      }
     ],
     "gain": 0.6016413418905358,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "256c3df50130ba23392142aaf2b3ab324bbefd762aae9c9b87e8990c53ab2463"
    },
    "compat": {
     "path": "instruments/compat/vibes-59.mp3",
@@ -2031,26 +2006,27 @@
   },
   "vibes-72": {
    "pcm": {
-    "path": "instruments/pcm/Vibes_soft_C5_v1_rr1_Main.wav",
-    "bytes": 641932,
-    "sha256": "be995c1164dcbbcf83688d095864a4abd0feaa68b71d1d2e78c35f62461fc03b",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/Vibes_soft_C5_v1_rr1_Main.flac",
+    "bytes": 87945,
+    "sha256": "c3a97964b4f3a7792ed4b189d547db3e5884a03d17546d1f6a0158bb5d090e17",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 3.638821,
     "parts": [
      {
-      "path": "instruments/pcm/Vibes_soft_C5_v1_rr1_Main.wav",
-      "bytes": 641932,
-      "sha256": "be995c1164dcbbcf83688d095864a4abd0feaa68b71d1d2e78c35f62461fc03b",
+      "path": "instruments/pcm/Vibes_soft_C5_v1_rr1_Main.flac",
+      "bytes": 87945,
+      "sha256": "c3a97964b4f3a7792ed4b189d547db3e5884a03d17546d1f6a0158bb5d090e17",
       "frames": 160472
      }
     ],
     "gain": 0.5174522104784284,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "21fe164c6fd916c13bd7ed8428dc54eceb2766cc8a433c6103ec59b3b2a00391"
    },
    "compat": {
     "path": "instruments/compat/vibes-72.mp3",
@@ -2066,26 +2042,27 @@
   },
   "vibes-62": {
    "pcm": {
-    "path": "instruments/pcm/Vibes_soft_D4_v1_rr1_Main.wav",
-    "bytes": 1973784,
-    "sha256": "daedf613863d4de0a383d66b2db6ab9ffd8dc492d16ff7d735cf3b3107046a26",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/Vibes_soft_D4_v1_rr1_Main.flac",
+    "bytes": 245210,
+    "sha256": "30efdfcf28ef92f0212cd1684dfcde4ea01400eb30313b7764e46607bc10daaf",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 11.189002,
     "parts": [
      {
-      "path": "instruments/pcm/Vibes_soft_D4_v1_rr1_Main.wav",
-      "bytes": 1973784,
-      "sha256": "daedf613863d4de0a383d66b2db6ab9ffd8dc492d16ff7d735cf3b3107046a26",
+      "path": "instruments/pcm/Vibes_soft_D4_v1_rr1_Main.flac",
+      "bytes": 245210,
+      "sha256": "30efdfcf28ef92f0212cd1684dfcde4ea01400eb30313b7764e46607bc10daaf",
       "frames": 493435
      }
     ],
     "gain": 0.6520926631558223,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "a1d5715a45fd10249b66e04768690fe95ba884e52d005182f86efdde91dcdd0f"
    },
    "compat": {
     "path": "instruments/compat/vibes-62.mp3",
@@ -2101,26 +2078,27 @@
   },
   "vibes-65": {
    "pcm": {
-    "path": "instruments/pcm/Vibes_soft_F4_v1_rr1_Main.wav",
-    "bytes": 1368508,
-    "sha256": "95b7d6eeb71d77cce607c0c52b0a6dfd23d0eeedc2eb393fb9a6c5a5768f4aa5",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/Vibes_soft_F4_v1_rr1_Main.flac",
+    "bytes": 174499,
+    "sha256": "9af6552cc67d53d14860aec3659ed3e061f8b74a2a28a13af099e7d8aaf6bac3",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 7.757732,
     "parts": [
      {
-      "path": "instruments/pcm/Vibes_soft_F4_v1_rr1_Main.wav",
-      "bytes": 1368508,
-      "sha256": "95b7d6eeb71d77cce607c0c52b0a6dfd23d0eeedc2eb393fb9a6c5a5768f4aa5",
+      "path": "instruments/pcm/Vibes_soft_F4_v1_rr1_Main.flac",
+      "bytes": 174499,
+      "sha256": "9af6552cc67d53d14860aec3659ed3e061f8b74a2a28a13af099e7d8aaf6bac3",
       "frames": 342116
      }
     ],
     "gain": 0.6527475733651391,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "7b7e0f51b0e2457570b7b710fd44133c1c4f1177d4da7d3a3c00063ebca05b94"
    },
    "compat": {
     "path": "instruments/compat/vibes-65.mp3",
@@ -2136,26 +2114,27 @@
   },
   "vibes-55": {
    "pcm": {
-    "path": "instruments/pcm/Vibes_soft_G3_v1_rr1_Main.wav",
-    "bytes": 2519544,
-    "sha256": "9b479e4c84fb1caafba8c1c106a8922cea20bba81c37d65f93afae339626767f",
-    "format": "wav",
-    "codec": "Linear PCM 16-bit",
+    "path": "instruments/pcm/Vibes_soft_G3_v1_rr1_Main.flac",
+    "bytes": 314802,
+    "sha256": "ca01b2025db70f13a74c6cc25a0635e769de9a907ca5e53b8b99a8f779f73b16",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
     "bitDepth": 16,
     "sampleRate": 44100,
     "channels": 2,
     "duration": 14.28288,
     "parts": [
      {
-      "path": "instruments/pcm/Vibes_soft_G3_v1_rr1_Main.wav",
-      "bytes": 2519544,
-      "sha256": "9b479e4c84fb1caafba8c1c106a8922cea20bba81c37d65f93afae339626767f",
+      "path": "instruments/pcm/Vibes_soft_G3_v1_rr1_Main.flac",
+      "bytes": 314802,
+      "sha256": "ca01b2025db70f13a74c6cc25a0635e769de9a907ca5e53b8b99a8f779f73b16",
       "frames": 629875
      }
     ],
     "gain": 0.6186419941734493,
     "lossless": true,
-    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工）"
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256一致・無加工） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。",
+    "pcmDataSha256": "2f77f0abe4a7831d60ff39adc160d1b1b1f7e789b962df017b50e4a8ac3781cd"
    },
    "compat": {
     "path": "instruments/compat/vibes-55.mp3",

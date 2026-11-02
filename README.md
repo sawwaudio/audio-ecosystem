@@ -4,7 +4,7 @@
 A virtual instrument for ambient music built from real field recordings of the natural world (work in progress).
 
 - アプリ / App: `index.html`（GitHub Pages で公開）
-- 音源 / Audio: `audio/`（pcm = 原本から作成した PCM WAV、original = 原本、compat = 互換MP3）, `instruments/`
+- 音源 / Audio: `audio/`（pcm = 原本から作成した PCM を FLAC（可逆圧縮）で配信、original = 原本、compat = 互換MP3）, `instruments/`
 - データ / Data: `data/`（音源マニフェスト、ライセンス台帳、生物メタデータ、候補DB）
 - クレジット / Credits: [CREDITS.md](CREDITS.md)
 - ロードマップ / Roadmap: [docs/ROADMAP.md](docs/ROADMAP.md)

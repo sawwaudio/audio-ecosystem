@@ -16,7 +16,7 @@ const EXACT={
 '低音ドローン':'Sub drone','オルガン持続音':'Organ drone','擦弦持続音':'Bowed drone','心拍の脈動（合成）':'Heartbeat pulse (synth)','ランダムキック':'Random kick','石の打撃（合成）':'Stone hits (synth)',
 '持続音・低音 / DRONES':'DRONES','音程のある楽器 / INSTRUMENTS':'INSTRUMENTS','打撃・脈動 / PERCUSSION':'PERCUSSION',
 // 再生音源
-'AUDIO SOURCE / 再生音源':'AUDIO SOURCE','再生に使う音源':'Playback source','PCM WAV — 非圧縮（原本から作成）':'PCM WAV — uncompressed (decoded from originals)',
+'AUDIO SOURCE / 再生音源':'AUDIO SOURCE','再生に使う音源':'Playback source','FLAC — 可逆圧縮（原本と同じ音）':'FLAC — lossless (same sound as the original)','再生用（FLAC）':'For playback (FLAC)',
 '原本ファイル — Ogg / Opus / FLAC':'Original files — Ogg / Opus / FLAC','互換MP3 — v0.23と同じ':'Compatibility MP3 — same as v0.23','互換MP3':'Compatibility MP3','原本ファイル':'Original files',
 '互換MP3：v0.23と同じ 44.1kHz / モノラル / 128kbps。比較・互換確認用。':'Compatibility MP3: same as v0.23, 44.1 kHz / mono / 128 kbps. For comparison and compatibility checks.',
 'まだ読み込んでいません。音源は必要になった時に1つずつ読み込みます。':'Nothing loaded yet. Sources are loaded one at a time when needed.',
@@ -123,6 +123,7 @@ const NAMES=Object.assign({},EXTRA_NAMES),LATIN={};
 try{const recs=JSON.parse(document.getElementById('ae-recordings').textContent),meta=JSON.parse(document.getElementById('ae-wildlife-meta').textContent);
  for(const r of recs){const en=meta[r.id]&&meta[r.id].en;if(en){NAMES[r.jp]=en;if(r.latin)LATIN[r.latin]=en}}}catch(e){}
 const RULES=[
+ [/^FLAC (\d+)-bit（可逆圧縮）$/,m=>'FLAC '+m[1]+'-bit (lossless)'],
  [/^リールに BY-SA を含めないため、商用モードを「(.+)」に切り替えました。$/,m=>'Switched commercial mode to “'+tr(m[1])+'” so the reel contains no BY-SA.'],[/^リールを録画中。(\d+)秒で自動書き出しします。$/,m=>'Recording reel. It will export automatically after '+m[1]+' s.'],
  [/^リール動画を書き出しました（(MP4|WEBM|MKV)・([\d.]+) MB）。$/,m=>'Reel video exported ('+m[1]+', '+m[2]+' MB).'],[/^このリールのクレジット：素材(\d+)件（帰属表示が必要 (\d+)件）$/,m=>'Credits for this reel: '+m[1]+' source(s) ('+m[2]+' require attribution)'],
  [/^BY-SA の素材が(\d+)件含まれています。このリールは公開しないでください。$/,m=>m[1]+' BY-SA source(s) are included. Do not publish this reel.'],[/^リールを録画できません: (.+)$/,m=>'Can’t record a reel: '+tr(m[1])],[/^リールの書き出しに失敗しました: (.+)$/,m=>'Reel export failed: '+tr(m[1])],
@@ -143,7 +144,7 @@ const RULES=[
  [/^([^ ]+) (\d+)$/,m=>{const l=leaf(m[1]);return l==null?m[0]:l+' '+m[2]}],
  [/^([A-Z][a-z]+ [a-z]+)（[^）]*）$/,m=>LATIN[m[1]]||m[1]],
  [/^([▶＋✓■↓↑↻✧●] ?)(.+)$/,m=>m[1]+tr(m[2])],
- [/^PCM WAV：自然録音 (\d+)\/(\d+) · 楽器 (\d+)\/(\d+)。残り(\d+)録音は原本を保持していないため互換MP3で再生します（MP3からのWAV化は音質改善にならないため行いません）。$/,m=>'PCM WAV: nature recordings '+m[1]+'/'+m[2]+' · instruments '+m[3]+'/'+m[4]+'. The remaining '+m[5]+' recordings play as compatibility MP3 because their originals are not held (converting MP3 to WAV would not improve quality, so it is not done).'],
+ [/^FLAC：自然録音 (\d+)\/(\d+) · 楽器 (\d+)\/(\d+)。残り(\d+)録音は原本を保持していないため互換MP3で再生します（MP3からのWAV化は音質改善にならないため行いません）。$/,m=>'FLAC: nature recordings '+m[1]+'/'+m[2]+' · instruments '+m[3]+'/'+m[4]+'. The remaining '+m[5]+' recordings play as compatibility MP3 because their originals are not held (converting MP3 to WAV would not improve quality, so it is not done).'],
  [/^原本ファイル：自然録音 (.*)$/,m=>'Original files: nature recordings '+tr(m[1])],
  [/^この録音のクレジット：素材(\d+)件（帰属表示が必要 (\d+)件）$/,m=>'Credits for this capture: '+m[1]+' source(s) ('+m[2]+' require attribution)'],
  [/^16-bit stereo WAVを書き出しました（(.*)）。?$/,m=>'Exported a 16-bit stereo WAV ('+m[1]+').'],[/^(?:音源を )?(.+) に切り替えました。次に鳴る音から反映されます。$/,m=>'Switched to '+tr(m[1])+'. Applies from the next sound.'],

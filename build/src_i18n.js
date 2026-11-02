@@ -61,6 +61,10 @@ const EXACT={
 'ミキサー / MIXER':'MIXER','4チャンネル · EQ · フィルター':'4 channels · EQ · filter','生き物':'Creatures','環境音':'Ambience','音楽':'Music','サンプラー':'Sampler','ミキサーを初期化':'Reset mixer',
 'チャンネルごとに音量と音色を調整します。つまみは上下にドラッグ、ダブルタップで初期値に戻ります。EQ を左いっぱいにすると、その帯域が消えます（キル）。FILTER は左でこもった音（ローパス）、右で軽い音（ハイパス）。':'Adjust level and tone per channel. Drag knobs up or down; double-tap to reset. Turn an EQ knob fully left to remove that band (kill). FILTER: left for a muffled sound (low-pass), right for a lighter sound (high-pass).',
 'サンプラーのチャンネルは、録音の切り取り機能（次の段階）で使います。':'The sampler channel will be used by the recording slicer (next stage).',
+// ミキサー M2 拍同期エフェクト（v0.36）
+'BEAT FX / エフェクト':'BEAT FX','効果':'Effect','かける先':'Apply to','テンポ（BPM）':'Tempo (BPM)','ドライ／ウェット':'Dry / wet','FX オン／オフ':'FX on/off','押している間だけ':'Hold to apply','拍の長さ':'Beat length','オフ':'Off','マスター':'Master',
+'ディレイ':'Delay','エコー':'Echo','ピンポンディレイ':'Ping-pong delay','リバーブ':'Reverb','フランジャー':'Flanger','フェイザー':'Phaser','フィルタースイープ':'Filter sweep','ロール':'Roll',
+'テンポは手入力か TAP（拍に合わせて4回ほど押す）で決めます。拍の長さは、ディレイ・エコー・ピンポンディレイでは繰り返しの間隔、リバーブでは残響の長さ（拍の2倍）、フランジャー・フェイザー・フィルタースイープでは揺れの周期、ロールでは繰り返す長さです。ディレイ・エコー・ピンポンディレイ・リバーブは、オフにしても余韻が自然に消えていきます。':'Set the tempo by typing it or with TAP (press about four times on the beat). Beat length sets the repeat interval for delay, echo and ping-pong delay, the decay length for reverb (twice the beat), the sweep cycle for flanger, phaser and filter sweep, and the loop length for roll. Delay, echo, ping-pong delay and reverb let their tails fade out naturally when switched off.',
 // 合成音の整理・タッチ演奏の移動（v0.33）
 '実録音がまだない生き物（自分の録音を読み込めます）':'Creatures without a recording yet (you can import your own)','実録音未収録 · 自律演奏では鳴りません（自分の録音を読み込むと鳴ります）':'No recording yet · silent in autonomous play (import your own recording to hear it)','実録音なし':'No recording','タッチで演奏 / TOUCH PLAY':'TOUCH PLAY',
 // リールモード（v0.31）
@@ -129,6 +133,7 @@ try{const recs=JSON.parse(document.getElementById('ae-recordings').textContent),
 const RULES=[
  [/^FLAC (\d+)-bit（可逆圧縮）$/,m=>'FLAC '+m[1]+'-bit (lossless)'],
  [/^(生き物|環境音|音楽|サンプラー) (TRIM|HI|MID|LOW|FILTER|ミュート|フェーダー)$/,m=>EXACT[m[1]]+' '+({'ミュート':'mute','フェーダー':'fader'}[m[2]]||m[2])],
+ [/^オン：(.+) · (\S+)拍（([\d.]+)秒）→ (.+)$/,m=>'On: '+tr(m[1])+' · '+m[2]+' beat ('+m[3]+' s) → '+tr(m[4])],
  [/^リールに BY-SA を含めないため、商用モードを「(.+)」に切り替えました。$/,m=>'Switched commercial mode to “'+tr(m[1])+'” so the reel contains no BY-SA.'],[/^リールを録画中。(\d+)秒で自動書き出しします。$/,m=>'Recording reel. It will export automatically after '+m[1]+' s.'],
  [/^リール動画を書き出しました（(MP4|WEBM|MKV)・([\d.]+) MB）。$/,m=>'Reel video exported ('+m[1]+', '+m[2]+' MB).'],[/^このリールのクレジット：素材(\d+)件（帰属表示が必要 (\d+)件）$/,m=>'Credits for this reel: '+m[1]+' source(s) ('+m[2]+' require attribution)'],
  [/^BY-SA の素材が(\d+)件含まれています。このリールは公開しないでください。$/,m=>m[1]+' BY-SA source(s) are included. Do not publish this reel.'],[/^リールを録画できません: (.+)$/,m=>'Can’t record a reel: '+tr(m[1])],[/^リールの書き出しに失敗しました: (.+)$/,m=>'Reel export failed: '+tr(m[1])],

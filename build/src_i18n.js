@@ -57,6 +57,15 @@ const EXACT={
 '兵庫・餘部で収録した秋の合唱。':'An autumn chorus recorded at Amarube, Hyōgo.','短いさえずり。録音自体が約4秒です。':'A short song; the recording itself is about 4 seconds.','笛のようなカエルの声。':'A flute-like frog call.',
 '複数種：Meloimorpha japonica 等':'Multiple species: Meloimorpha japonica etc.','該当なし':'n/a','水辺の実録音 / 録音地不明':'Waterside recording / location unknown',
 // 商用モード（v0.27）
+// リールモード（v0.31）
+'REEL / 縦動画 1080×1920':'REEL / VERTICAL VIDEO 1080×1920','長さ':'Length','リールの長さ':'Reel length','● リールを録画':'● Record reel','■ 停止して書き出し':'■ Stop & export','リール映像のプレビュー':'Reel video preview',
+'いまの演奏を縦長の動画（スペクトログラム・波形・鳴いている生き物の名前と録音地・帰属表示）として録画します。リールには CC BY-SA の素材を含めません（録画を始めると商用モードを「BY-SAを除く」に切り替えます）。書き出し形式はブラウザによって MP4 または WebM です（変換はしません）。':'Records the current performance as a vertical video (spectrogram, waveform, the names and recording locations of the creatures you hear, and attribution). Reels never include CC BY-SA sources (starting a recording switches commercial mode to “Exclude BY-SA”). The file is MP4 or WebM depending on the browser (no conversion).',
+'↓ クレジット（説明欄用）を保存':'↓ Save credits (for the caption)','録画中は「すべての素材」に切り替えられません（リールに BY-SA を含めないため）。':'You can’t switch to “All sources” while recording a reel (reels never include BY-SA).',
+'この環境は動画の録画（MediaRecorder）に対応していません':'This browser can’t record video (MediaRecorder unavailable)','この環境はキャンバスの録画に対応していません':'This browser can’t record the canvas','録画データがありません':'No recorded data',
+// プリセットの商用モード・区分（v0.30）
+'不正な商用モード':'Invalid commercial mode',
+// 区分バッジ（v0.29）
+'区分':'Tier','表記不要（CC0・PD）':'No attribution needed (CC0 / PD)','表記必要（CC BY）':'Attribution required (CC BY)','継承あり（CC BY-SA）':'Share-alike (CC BY-SA)','区分不明':'Unknown tier','商用モードの対象外（鳴りません）':'Excluded by commercial mode (will not play)','A 表記不要（CC0・PD）':'A — No attribution needed (CC0 / PD)','B 表記必要（CC BY）':'B — Attribution required (CC BY)','C 継承あり（CC BY-SA）':'C — Share-alike (CC BY-SA)',
 '商用モード — ライセンス区分で選ぶ':'Commercial mode — filter by license tier','使う素材':'Sources to use','すべての素材（CC BY-SA を含む）':'All sources (including CC BY-SA)','BY-SAを除く（販売・リール用）':'Exclude BY-SA (for sale & reels)','CC0・パブリックドメインのみ（表記不要）':'CC0 / public domain only (no attribution needed)',
 '書き出した音を販売物やリール動画に使う場合は「BY-SAを除く」を選んでください。対象外の素材は自律演奏・環境層・試聴・書き出しのすべてで鳴らさず、他の素材や合成音で代用しません。':'If you will use exported audio in products for sale or in reels, choose “Exclude BY-SA”. Excluded sources are silenced everywhere — autonomous play, ambience, previews and exports — and are never replaced by other recordings or synthesized sounds.',
 '参加中の生き物はすべて対象外のため、生物の声は無音です（代用しません）。':'All active creatures are excluded, so the creature layer is silent (no substitutes).','選んだ環境層はすべて対象外のため、環境層は無音です（代用しません）。':'All selected ambience layers are excluded, so the ambience is silent (no substitutes).',
@@ -112,6 +121,11 @@ const NAMES=Object.assign({},EXTRA_NAMES),LATIN={};
 try{const recs=JSON.parse(document.getElementById('ae-recordings').textContent),meta=JSON.parse(document.getElementById('ae-wildlife-meta').textContent);
  for(const r of recs){const en=meta[r.id]&&meta[r.id].en;if(en){NAMES[r.jp]=en;if(r.latin)LATIN[r.latin]=en}}}catch(e){}
 const RULES=[
+ [/^リールに BY-SA を含めないため、商用モードを「(.+)」に切り替えました。$/,m=>'Switched commercial mode to “'+tr(m[1])+'” so the reel contains no BY-SA.'],[/^リールを録画中。(\d+)秒で自動書き出しします。$/,m=>'Recording reel. It will export automatically after '+m[1]+' s.'],
+ [/^リール動画を書き出しました（(MP4|WEBM|MKV)・([\d.]+) MB）。$/,m=>'Reel video exported ('+m[1]+', '+m[2]+' MB).'],[/^このリールのクレジット：素材(\d+)件（帰属表示が必要 (\d+)件）$/,m=>'Credits for this reel: '+m[1]+' source(s) ('+m[2]+' require attribution)'],
+ [/^BY-SA の素材が(\d+)件含まれています。このリールは公開しないでください。$/,m=>m[1]+' BY-SA source(s) are included. Do not publish this reel.'],[/^リールを録画できません: (.+)$/,m=>'Can’t record a reel: '+tr(m[1])],[/^リールの書き出しに失敗しました: (.+)$/,m=>'Reel export failed: '+tr(m[1])],
+ [/^ライセンス区分と帰属情報を含みます（A (\d+)件・B (\d+)件・C (\d+)件）。$/,m=>'Includes license tiers and attribution info (A '+m[1]+' · B '+m[2]+' · C '+m[3]+').'],[/^プリセットの商用モード（(.+)）を適用しました。$/,m=>'Applied the preset’s commercial mode ('+tr(m[1])+').'],
+ [/^いまの商用モード（(.+)）の方がプリセット（(.+)）より厳しいため、いまの設定のままにしました。$/,m=>'Your current commercial mode ('+tr(m[1])+') is stricter than the preset’s ('+tr(m[2])+'), so it was kept.'],[/^このプリセットの素材のうち(\d+)件は商用モードの対象外のため鳴りません（代用しません）。$/,m=>m[1]+' source(s) in this preset are excluded by commercial mode and will not play (no substitutes).'],
  [/^使える実録音 (\d+)\/(\d+)件（環境層 (\d+)件）$/,m=>'Usable recordings '+m[1]+'/'+m[2]+' ('+m[3]+' ambience)'],[/^対象外の(\d+)件は代用せず鳴らしません。$/,m=>m[1]+' excluded source(s) will not play and are not substituted.'],
  [/^参加中の(\d+)件は対象外のため鳴りません。$/,m=>m[1]+' active source(s) are excluded and will not play.'],[/^商用モードの対象外の素材です（(.+)）。代用はしません。$/,m=>'Excluded by commercial mode ('+m[1]+'). No substitute is played.'],
  [/^(\d+)種・素材が参加$/,m=>m[1]+' species & sources active'],[/^(\d+)音$/,m=>m[1]+' voices'],[/^(\d+)レイヤー$/,m=>m[1]+' layers'],[/^(\d+(?:\.\d+)?)秒$/,m=>m[1]+' s'],

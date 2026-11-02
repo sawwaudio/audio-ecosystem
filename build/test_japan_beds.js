@@ -13,7 +13,10 @@ const g=await pg.evaluate(()=>__geoDebug.apply({region:'japan',basis:'recorded',
 ok('geo_jp_beds',NEW.every(id=>g.fields[id]>0)&&['river-esk','forest-leaves','forest-wind','rain-field','fire-field'].every(id=>g.fields[id]===0));
 await pg.waitForTimeout(7000);
 R.playing=await pg.evaluate(()=>[...new Set(__bioDebug.decoded().map(d=>d.id))]);R.fieldStatus=await pg.textContent('#fieldStatus');
-ok('beds_sounding',['柏','竹林','水田','京都'].every(k=>R.fieldStatus.includes(k))&&NEW.every(id=>R.playing.includes(id)));
+// v0.26 以降は同時に鳴る環境層が4層まで（順番に入れ替え）で、待機中の層のPCMはLRUで解放されうる。そのため「4本すべてがいまデコード済み」ではなく、
+// 4本がすべて鳴らす対象に入り、いま鳴っている環境層が日本録音の層だけであることを確かめる（v0.31 で修正。自律演奏の生物の選び方によって不定に失敗していた）。
+R.fieldNow=await pg.evaluate(()=>__rightsDebug.active().field);R.fieldOn=await pg.evaluate(()=>__rightsDebug.fieldOn());
+ok('beds_sounding',['柏','竹林','水田','京都'].every(k=>R.fieldStatus.includes(k))&&NEW.every(id=>R.fieldOn.includes(id))&&R.fieldNow.length>=3&&R.fieldNow.every(id=>R.fieldOn.includes(id))&&NEW.some(id=>R.fieldNow.includes(id)));
 R.signal=await pg.evaluate(()=>__bioDebug.signal());ok('nonsilent',R.signal.rms>1e-4);
 R.mem=await pg.evaluate(()=>__bioDebug.stats());ok('memory_budget',R.mem.pcmBytes<=R.mem.pcmBudget);
 // 夜×日本録音 → 水田のカエルと京都の雨だけ

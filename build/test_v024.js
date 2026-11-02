@@ -30,7 +30,8 @@ await pg.evaluate(()=>__previewDebug.stop());
 for(const mode of ['compat','original','pcm']){await pg.selectOption('#sourceMode',mode);R['mode_'+mode]=await pg.evaluate(async()=>{await __bioDebug.playSpecies('blackbird',true);return {d:__bioDebug.decoded().find(x=>x.id==='blackbird'),last:document.getElementById('sourceLast').textContent}})}
 R.memory=await pg.evaluate(()=>__sourceDebug.memory());
 // audit + verify subset
-await pg.click('#auditPanel summary');R.auditRows=await pg.evaluate(()=>document.querySelectorAll('#auditTable tbody tr').length);
+await pg.click('#auditPanel summary');await pg.waitForFunction(()=>document.querySelectorAll('#auditTable tbody tr').length>0,null,{timeout:5000}).catch(()=>{}); // toggle イベントは非同期のため待つ
+R.auditRows=await pg.evaluate(()=>document.querySelectorAll('#auditTable tbody tr').length);
 R.overflow2=await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
 R.verify=await pg.evaluate(()=>__sourceDebug.verifyHashes());
 // record wav still works

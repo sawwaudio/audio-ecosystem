@@ -1,4 +1,4 @@
-// v0.35 ミキサー M1 の回帰テスト（docs/DJ_MIXER_SPEC.md）。
+// v0.35 ミキサー M1 の回帰テスト（docs/DJ_MIXER_SPEC.md）。v0.41 でチャンネルごとの FX つまみが加わり、つまみは1チャンネル6個。
 // 周波数特性はページ内の OfflineAudioContext で、ミキサーの1レーン（本番と同じ makeMixLane）にインパルスを通して測る。
 const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
 const pg=await b.newPage({viewport:{width:390,height:900}});const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
@@ -6,7 +6,7 @@ const R={},fail=[];const ok=(k,c)=>{R[k+'_ok']=!!c;if(!c)fail.push(k)};
 await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
 // 画面：4チャンネル、タッチ演奏より上
 R.ui=await pg.evaluate(()=>{const y=id=>document.getElementById(id).getBoundingClientRect().top+scrollY;return {strips:[...document.querySelectorAll('#mixGrid .mixStrip')].map(s=>s.dataset.ch),knobs:document.querySelectorAll('#mixGrid .knob').length,faders:document.querySelectorAll('#mixGrid .fader').length,mixer:y('mixerSection'),touch:y('touchSection')}});
-ok('four_channels',R.ui.strips.join()==='bio,field,music,sampler'&&R.ui.knobs===20&&R.ui.faders===4);ok('above_touch',R.ui.mixer<R.ui.touch);
+ok('four_channels',R.ui.strips.join()==='bio,field,music,sampler'&&R.ui.knobs===24&&R.ui.faders===4);ok('above_touch',R.ui.mixer<R.ui.touch);
 // 周波数特性
 const F=[40,100,250,500,1000,2000,3000,6000,12000];
 const resp=s=>pg.evaluate(([s,F])=>__mixerDebug.response(s,F),[s,F]);

@@ -58,7 +58,7 @@ const EXACT={
 '複数種：Meloimorpha japonica 等':'Multiple species: Meloimorpha japonica etc.','該当なし':'n/a','水辺の実録音 / 録音地不明':'Waterside recording / location unknown',
 // 商用モード（v0.27）
 // ミキサー M1（v0.35）
-'ミキサー / MIXER':'MIXER','4チャンネル · EQ · フィルター':'4 channels · EQ · filter','生き物':'Creatures','環境音':'Ambience','音楽':'Music','サンプラー':'Sampler','ミキサーを初期化':'Reset mixer',
+'ミキサー / MIXER':'MIXER','4チャンネル · EQ · フィルター':'4 channels · EQ · filter','4チャンネル · EQ · フィルター · FX':'4 channels · EQ · filter · FX','生き物':'Creatures','環境音':'Ambience','音楽':'Music','サンプラー':'Sampler','ミキサーを初期化':'Reset mixer',
 'チャンネルごとに音量と音色を調整します。つまみは上下にドラッグ、ダブルタップで初期値に戻ります。EQ を左いっぱいにすると、その帯域が消えます（キル）。FILTER は左でこもった音（ローパス）、右で軽い音（ハイパス）。':'Adjust level and tone per channel. Drag knobs up or down; double-tap to reset. Turn an EQ knob fully left to remove that band (kill). FILTER: left for a muffled sound (low-pass), right for a lighter sound (high-pass).',
 'サンプラーのチャンネルは、録音の切り取り機能（次の段階）で使います。':'The sampler channel will be used by the recording slicer (next stage).',
 // ミキサー M2 拍同期エフェクト（v0.36）
@@ -68,6 +68,9 @@ const EXACT={
 // ミキサー M2 の仕上げ（v0.40）
 '効果ごとのつまみ：ディレイ・エコー・ピンポンディレイはフィードバック（最大62%）、リバーブは残響の長さ（拍の何倍か）、フランジャー・フェイザーは揺れの深さ、フィルタースイープはレゾナンス、ロールは繰り返しの音量、トランスゲートは各拍のうち音が鳴る割合、ビットクラッシュはビット数です。効果ごとに値を覚えています。':'Per-effect knob: feedback for delay, echo and ping-pong delay (up to 62%), decay length for reverb (as a multiple of the beat), modulation depth for flanger and phaser, resonance for filter sweep, repeat level for roll, the open portion of each step for trance gate, and bit depth for bit crush. Each effect remembers its own value.',
 'フィードバック':'Feedback','残響の長さ（拍の倍数）':'Decay length (× beat)','深さ':'Depth','レゾナンス':'Resonance','繰り返しの音量':'Repeat level','開いている割合':'Open portion','ビット数':'Bit depth',
+// ミキサー M3 チャンネルごとの空間系（v0.41）
+'CHANNEL FX / チャンネルFX':'CHANNEL FX','チャンネルFXの種類':'Channel FX type','ダブエコー':'Dub echo','スイープ':'Sweep','クラッシュ':'Crush',
+'各チャンネルの FX つまみで、選んだ効果をそのチャンネルだけにかけます。中央でオフ、左右に回すほど強くなります。リバーブは左で短く右で長い残響、ダブエコーは左で1/2拍・右で3/4拍の繰り返し（テンポは BEAT FX と共通）、スイープは左で低い帯域・右で高い帯域だけを通し、クラッシュは左右どちらも音を粗くします。':'Each channel’s FX knob applies the selected effect to that channel only. Center is off; turn left or right for more. Reverb: short decay to the left, long to the right. Dub echo: repeats every 1/2 beat to the left, 3/4 beat to the right (tempo shared with BEAT FX). Sweep: passes only a low band to the left, a high band to the right. Crush: makes the sound grittier in either direction.',
 // 合成音の整理・タッチ演奏の移動（v0.33）
 '実録音がまだない生き物（自分の録音を読み込めます）':'Creatures without a recording yet (you can import your own)','実録音未収録 · 自律演奏では鳴りません（自分の録音を読み込むと鳴ります）':'No recording yet · silent in autonomous play (import your own recording to hear it)','実録音なし':'No recording','タッチで演奏 / TOUCH PLAY':'TOUCH PLAY',
 // リールモード（v0.31）
@@ -142,7 +145,8 @@ try{const recs=JSON.parse(document.getElementById('ae-recordings').textContent),
  for(const r of recs){const en=meta[r.id]&&meta[r.id].en;if(en){NAMES[r.jp]=en;if(r.latin)LATIN[r.latin]=en}}}catch(e){}
 const RULES=[
  [/^FLAC (\d+)-bit（可逆圧縮）$/,m=>'FLAC '+m[1]+'-bit (lossless)'],
- [/^(生き物|環境音|音楽|サンプラー) (TRIM|HI|MID|LOW|FILTER|ミュート|フェーダー)$/,m=>EXACT[m[1]]+' '+({'ミュート':'mute','フェーダー':'fader'}[m[2]]||m[2])],
+ [/^(\d+)録音 \/ 必要な音だけ外部ファイルから読み込み（(.+)）$/,m=>m[1]+' recordings / only the sounds needed are loaded from external files ('+tr(m[2])+')'],
+ [/^(生き物|環境音|音楽|サンプラー) (TRIM|HI|MID|LOW|FILTER|FX|ミュート|フェーダー)$/,m=>EXACT[m[1]]+' '+({'ミュート':'mute','フェーダー':'fader'}[m[2]]||m[2])],
  [/^オン：(.+) · (\S+)拍（([\d.]+)秒）→ (.+)$/,m=>'On: '+tr(m[1])+' · '+m[2]+' beat ('+m[3]+' s) → '+tr(m[4])],
  [/^リールに BY-SA を含めないため、商用モードを「(.+)」に切り替えました。$/,m=>'Switched commercial mode to “'+tr(m[1])+'” so the reel contains no BY-SA.'],[/^リールを録画中。(\d+)秒で自動書き出しします。$/,m=>'Recording reel. It will export automatically after '+m[1]+' s.'],
  [/^リール動画を書き出しました（(MP4|WEBM|MKV)・([\d.]+) MB）。$/,m=>'Reel video exported ('+m[1]+', '+m[2]+' MB).'],[/^このリールのクレジット：素材(\d+)件（帰属表示が必要 (\d+)件）$/,m=>'Credits for this reel: '+m[1]+' source(s) ('+m[2]+' require attribution)'],

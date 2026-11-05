@@ -71,6 +71,15 @@ const EXACT={
 // ミキサー M3 チャンネルごとの空間系（v0.41）
 'CHANNEL FX / チャンネルFX':'CHANNEL FX','チャンネルFXの種類':'Channel FX type','ダブエコー':'Dub echo','スイープ':'Sweep','クラッシュ':'Crush',
 '各チャンネルの FX つまみで、選んだ効果をそのチャンネルだけにかけます。中央でオフ、左右に回すほど強くなります。リバーブは左で短く右で長い残響、ダブエコーは左で1/2拍・右で3/4拍の繰り返し（テンポは BEAT FX と共通）、スイープは左で低い帯域・右で高い帯域だけを通し、クラッシュは左右どちらも音を粗くします。':'Each channel’s FX knob applies the selected effect to that channel only. Center is off; turn left or right for more. Reverb: short decay to the left, long to the right. Dub echo: repeats every 1/2 beat to the left, 3/4 beat to the right (tempo shared with BEAT FX). Sweep: passes only a low band to the left, a high band to the right. Crush: makes the sound grittier in either direction.',
+// ミキサー M4 サンプラー／スライサー（v0.42）
+'サンプラーのチャンネルには、下の「サンプラー / SAMPLER」で切り取った録音の音が入ります。':'The sampler channel carries the recordings you slice in “SAMPLER” below.',
+'サンプラー / SAMPLER':'SAMPLER','8パッド · 切り取り · ループ':'8 pads · slice · loop','録音':'Recording','読み込む':'Load','サンプラーの波形。なぞって区間を選びます':'Sampler waveform. Drag across it to select a region',
+'始点':'Start','終点':'End','再生のしかた':'Playback','1回再生':'One-shot','ループ（もう一度押すと止まる）':'Loop (press again to stop)','押している間だけ鳴らす':'Play while held',
+'速度・音程（半音）':'Speed / pitch (semitones)','フェード（ミリ秒）':'Fade (ms)','逆再生':'Reverse','拍に合わせて鳴らす':'Start on the beat','割り当て先':'Assign to','区間をパッドに割り当て':'Assign region to pad','▶ 区間を試聴':'▶ Preview region',
+'サンプラーのパッド':'Sampler pads','■ パッドをすべて止める':'■ Stop all pads','割り当て先のパッドを空にする':'Clear the selected pad','空き':'Empty','1回':'Once','ループ':'Loop','押す間':'Held',
+'録音を選んで「読み込む」を押してください。':'Choose a recording and press “Load”.','読み込み中…':'Loading…','この録音は商用モードの対象外のため読み込めません（代用しません）。':'This recording is excluded by the current commercial mode, so it can’t be loaded (nothing is substituted).','区間が短すぎます（0.05秒以上）。':'The region is too short (0.05 s or longer).',
+'録音を選んで読み込み、波形を指でなぞって区間を切り取り、パッドに割り当てます。パッドを押すと鳴ります。音はミキサーのサンプラーチャンネルに入り、EQ・フィルター・エフェクトがかかります。':'Choose and load a recording, drag across the waveform to cut a region, and assign it to a pad. Press a pad to play it. The sound goes to the mixer’s sampler channel, so EQ, filter and effects apply.',
+'区間は1パッドあたり最大12秒です。速度・音程は再生速度を変えます（速くすると音も高くなります）。「拍に合わせて鳴らす」では、BEAT FX のテンポの次の拍で鳴り始めます。商用モードの対象外の録音は読み込めず、割り当て済みのパッドも鳴りません（代用しません）。切り取りは素材の改変にあたるため、書き出しのクレジットに改変の旨が入ります。':'Each pad holds up to 12 seconds. Speed / pitch changes the playback rate (faster also means higher). With “Start on the beat”, a pad starts on the next beat of the BEAT FX tempo. Recordings excluded by the commercial mode can’t be loaded, and pads that already hold them stay silent (nothing is substituted). Slicing counts as modifying the source, so exported credits state that it was modified.',
 // 合成音の整理・タッチ演奏の移動（v0.33）
 '実録音がまだない生き物（自分の録音を読み込めます）':'Creatures without a recording yet (you can import your own)','実録音未収録 · 自律演奏では鳴りません（自分の録音を読み込むと鳴ります）':'No recording yet · silent in autonomous play (import your own recording to hear it)','実録音なし':'No recording','タッチで演奏 / TOUCH PLAY':'TOUCH PLAY',
 // リールモード（v0.31）
@@ -145,6 +154,8 @@ try{const recs=JSON.parse(document.getElementById('ae-recordings').textContent),
  for(const r of recs){const en=meta[r.id]&&meta[r.id].en;if(en){NAMES[r.jp]=en;if(r.latin)LATIN[r.latin]=en}}}catch(e){}
 const RULES=[
  [/^FLAC (\d+)-bit（可逆圧縮）$/,m=>'FLAC '+m[1]+'-bit (lossless)'],
+ [/^パッド(\d+)$/,m=>'Pad '+m[1]],[/^パッド(\d+)はまだ空です。$/,m=>'Pad '+m[1]+' is empty.'],[/^パッド(\d+)に割り当てました（([\d.]+)秒）。$/,m=>'Assigned to pad '+m[1]+' ('+m[2]+' s).'],[/^パッド(\d+)の録音は商用モードの対象外のため鳴りません。$/,m=>'Pad '+m[1]+' holds a recording excluded by the commercial mode, so it stays silent.'],
+ [/^(.+) を読み込みました（([\d.]+)秒）。波形をなぞって区間を選びます。$/,m=>tr(m[1])+' loaded ('+m[2]+' s). Drag across the waveform to select a region.'],[/^読み込みに失敗しました: (.+)$/,m=>'Loading failed: '+tr(m[1])],[/^(1回|ループ|押す間)( · .+)$/,m=>({'1回':'Once','ループ':'Loop','押す間':'Held'}[m[1]])+m[2]],
  [/^(\d+)録音 \/ 必要な音だけ外部ファイルから読み込み（(.+)）$/,m=>m[1]+' recordings / only the sounds needed are loaded from external files ('+tr(m[2])+')'],
  [/^(生き物|環境音|音楽|サンプラー) (TRIM|HI|MID|LOW|FILTER|FX|ミュート|フェーダー)$/,m=>EXACT[m[1]]+' '+({'ミュート':'mute','フェーダー':'fader'}[m[2]]||m[2])],
  [/^オン：(.+) · (\S+)拍（([\d.]+)秒）→ (.+)$/,m=>'On: '+tr(m[1])+' · '+m[2]+' beat ('+m[3]+' s) → '+tr(m[4])],

@@ -38,7 +38,7 @@ await pg.goto('http://localhost:8765/index.html?lang=en');await pg.waitForTimeou
 await pg.evaluate(()=>__i18n.set('ja'));
 // 既存機能の維持（25レイヤー・8音色・15楽器）
 const st=await pg.evaluate(()=>({layers:__audioEcosystemDebug.getState().layerCount,voices:document.querySelectorAll('#touchVoice option').length,audition:document.querySelectorAll('#auditionButtons button').length,real:document.querySelectorAll('#realButtons button').length,instr:__sourceDebug.instruments()}));
-R.state=st;ok('layers34',st.layers===34);ok('voices6',st.voices===6);ok('audition34',st.audition===34); // v0.45：フルート・ハーモニクスを外し、実録音の低音6・打撃5を追加
+R.state=st;ok('layers38',st.layers===38);ok('voices10',st.voices===10);ok('audition38',st.audition===38); // v0.49：旋律の実録音4種を追加 // v0.45：フルート・ハーモニクスを外し、実録音の低音6・打撃5を追加
 ok('overflow_ja',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 // 一覧（＋区切り）の末尾に地名付きの名前が来ても全体を訳す（v0.26で修正した不具合）
 R.listTr=await pg.evaluate(()=>__i18n.t('ホトトギス ＋ 秋の虫の合唱 II（兵庫） ＋ ヒヨドリ（伊豆）'));ok('list_tail_name',R.listTr==='Lesser cuckoo + Autumn insect chorus II + Brown-eared bulbul');

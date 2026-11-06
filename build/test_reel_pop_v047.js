@@ -23,7 +23,7 @@ const s1=await snap();await wait(500);const s2=await snap();R.motion=+diff(s1,s2
 R.cost=await pg.evaluate(()=>{const c=document.getElementById('reelCanvas').getContext('2d');const t0=performance.now();for(let i=0;i<20;i++)window.reelDrawStudio(c,'pop');return (performance.now()-t0)/20});ok('draw_cost',R.cost<25);
 R.state=await pg.evaluate(()=>({subject:__studioDebug.subject(),photos:__studioDebug.imgCache().filter(x=>x.ok).length}));ok('subject',ids.includes(R.state.subject)&&R.state.photos>=1);
 // 4. 画面の配色：深い青紫の地・黄色の主ボタン・グループの色のタイル
-R.css=await pg.evaluate(()=>{const g=e=>getComputedStyle(e);const t=document.querySelector('#tileGrid .tile.on');return {bg:g(document.body).backgroundColor,reel:g(document.getElementById('reelRecord')).backgroundColor,tile:t?g(t).borderTopColor:null,group:t?t.dataset.group:null,mark:!!document.querySelector('.brandMark .petals'),live:document.body.classList.contains('live')}});
+R.css=await pg.evaluate(()=>{const g=e=>getComputedStyle(e);const t=document.querySelector('#tileGrid .tile.on');return {bg:g(document.body).backgroundColor,reel:g(document.getElementById('reelRecord')).backgroundColor,tile:t?g(t).borderTopColor:null,group:t?t.dataset.group:null,mark:!!document.querySelector('img.brandLogo'),live:document.body.classList.contains('live')}});
 const GC={birds:'rgb(143, 179, 214)',insects:'rgb(230, 194, 122)',animals:'rgb(207, 142, 106)',landscape:'rgb(142, 195, 160)'}; // v0.48 の自然の色
 ok('ui_colors',R.css.bg==='rgb(20, 26, 22)'&&R.css.reel==='rgb(230, 194, 122)'&&R.css.tile===GC[R.css.group]&&R.css.mark&&R.css.live); // v0.48 の配色
 // 3. 録画：ポップで書き出せて、写真と録音のクレジットが入る

@@ -77,7 +77,8 @@ if m:
 else:
     i = t.index('<script type="application/json" id="ae-photos">')
     t = t[:i] + blk + '\n' + t[i:]
-once('<div class="tileGrid" id="tileGrid"></div>',
+if 'id="ambSection"' not in t:
+  once('<div class="tileGrid" id="tileGrid"></div>',
      '<div class="tileGrid" id="tileGrid"></div><div id="ambSection" class="ambSection"><div class="ambHead"><h3 class="ambTitle">環境音</h3><span class="micro">雨・川・波・風・森</span></div><div id="ambGrid" class="ambGrid" role="group" aria-label="環境音"></div></div>')
 
 # ── 5. v0.48 の CSS を足す（src_studio.css の末尾は v0.47 の上書き。ここでさらに書体などを上書きする）──

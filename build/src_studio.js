@@ -3,7 +3,7 @@
    本体スクリプト（音声エンジン・音源ライブラリ）の後に読み込む。本体の関数と変数（ctx, master, recordings, loadOne, mixLane など）をそのまま使い、
    音声エンジンと音源の対応は変えない。build/integrate_v043.py が index.html の <script id="ae-studio"> にこのファイルを埋め込む。 */
 (()=>{'use strict';
-const VER='v0.48';
+const VER='v0.49';
 const PHOTOS=(()=>{try{return JSON.parse($('ae-photos').textContent)}catch(e){return {}}})();
 const TIERS=(()=>{try{return JSON.parse($('ae-tiers').textContent)}catch(e){return {plans:[],features:[]}}})();
 const APP_URL=/^https?:$/.test(location.protocol)&&!/^(localhost|127\.)/.test(location.hostname)?location.origin+location.pathname.replace(/index\.html$/,''):'https://sawwaudio.github.io/audio-ecosystem-sounds-1/';
@@ -38,7 +38,7 @@ function ambSVG(id){const k=ambKind(id),c='hsla(48,40%,82%,.85)',st='fill="none"
  else if(k==='storm')d='<path d="M30 52q4 -16 20 -14q6 -12 22 -6q14 0 14 14q8 4 4 12h-58q-10 -2 -2 -6z" '+st+'/><path d="M58 70l-8 14h10l-6 14" '+st+'/>'
  else d='<path d="M14 50q20 -10 40 0t40 -2" '+st+'/><path d="M24 66q18 -8 36 0t40 0" '+st+' opacity=".7"/><path d="M34 82q14 -6 28 0t26 0" '+st+' opacity=".5"/>';
  return '<svg viewBox="0 0 120 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="ag-'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(150,14%,17%)"/><stop offset="1" stop-color="hsl(150,16%,9%)"/></linearGradient></defs><rect width="120" height="120" fill="url(#ag-'+id+')"/>'+d+'</svg>'}
-function placeholderSVG(id,g){if(g==='ambience')return ambSVG(id);let h=0;for(const ch of id)h=(h*31+ch.charCodeAt(0))>>>0;const hue=PH_HUE[g]??180,rot=h%360,rings=[];
+function placeholderSVG(id,g){if(g==='ambience')return ambSVG(id);if(g!=='user'&&recordings.some(r=>r.id===id))return illustSVG(id,nameOf(id),g);let h=0;for(const ch of id)h=(h*31+ch.charCodeAt(0))>>>0;const hue=PH_HUE[g]??180,rot=h%360,rings=[];
  for(let i=0;i<7;i++){const r=14+i*11,wob=2+((h>>(i*3))&7)*.6;let d='';for(let k=0;k<=48;k++){const a=k/48*6.2832,rr=r+Math.sin(a*3+i+rot)*wob;d+=(k?'L':'M')+(60+Math.cos(a)*rr).toFixed(1)+' '+(60+Math.sin(a)*rr).toFixed(1)}rings.push('<path d="'+d+'Z" fill="none" stroke="hsla('+hue+',45%,'+(70-i*5)+'%,'+(0.55-i*.06).toFixed(2)+')" stroke-width="1"/>')}
  return '<svg viewBox="0 0 120 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="120" height="120" fill="hsl('+hue+',30%,9%)"/>'+rings.join('')+'<circle cx="60" cy="60" r="3" fill="hsl('+hue+',60%,75%)"/></svg>'}
 
@@ -46,7 +46,17 @@ function placeholderSVG(id,g){if(g==='ambience')return ambSVG(id);let h=0;for(co
 // タップで実録音をループ再生（切れ目はクロスフェード）。もう一度タップで止める。いくつでも重ねられる（同時に鳴らす数は 12 まで）。
 // 行き先はミキサーのチャンネル：生き物の声→「生き物」、環境の録音→「環境音」、自分の音→「サンプラー」。EQ・FX・録音・リールにそのまま入る。
 const userSounds=new Map();const tileState=new Map();let focusId=null;const TILE_MAX=12;
-function tst(id){let s=tileState.get(id);if(!s){s={id,vol:70,pan:0,loop:true,voice:null,loading:false};tileState.set(id,s)}return s}
+function tst(id){let s=tileState.get(id);if(!s){s={id,vol:70,pan:0,loop:true,rest:null,voice:null,loading:false};tileState.set(id,s)}return s}
+// v0.49：音ごとの「音量」と「休み（鳴き終わってから次に鳴くまで）」。ループの時も自律演奏の時も同じ設定が効く。
+// 休み：null＝おまかせ（ループは休まない・自律演奏は約12秒）、0＝休まない、5〜60秒。音量 0〜100（自律演奏の生き物の音量は ×0.5、環境の層は ×0.65 で、既定の釣り合いを保つ）
+const REST_OPTS=[[null,'おまかせ','Auto'],[0,'休まない','No rest'],[5,'5秒','5 s'],[15,'15秒','15 s'],[30,'30秒','30 s'],[60,'60秒','60 s']];
+function restLoop(id){const r=tst(id).rest;return r==null?0:r}
+function setSoundVol(id,v){v=clamp(Math.round(+v),0,100);setTileVol(id,v);const k=engineKind(id);
+ if(k==='bio'){speciesSettings[id].level=Math.round(v*.5);updateBioMix()}else if(k==='field'){const lv=Math.round(v*.65);if((fieldConfig.levels[id]||0)>0&&lv>0)setFieldLevel(id,lv);if(lv>0)lastFieldLevel.set(id,lv)}}
+function setSoundRest(id,r){const s=tst(id);s.rest=r==null||r===''?null:clamp(+r,0,90);if(engineKind(id)==='bio')speciesSettings[id].rest=s.rest==null?12:Math.max(1,s.rest)}
+function restSelect(id,cls){const sel=el('select',{class:cls||'restSel','aria-label':L('休み（鳴き終わってから次まで）','Rest (after each call)')});const cur=tst(id).rest;
+ for(const [v,ja,en] of REST_OPTS){const o=el('option',{value:v==null?'':String(v),text:L(ja,en)});if((v==null&&cur==null)||(v!=null&&cur===v))o.selected=true;sel.append(o)}
+ sel.addEventListener('change',()=>{setSoundRest(id,sel.value===''?null:+sel.value);if(sheetId===id)renderSheet();renderDockPanel(true)});return sel}
 function chanOf(id){if(userSounds.has(id))return 'sampler';const r=recordings.find(x=>x.id===id);return r&&r.kind==='landscape'?'field':'bio'}
 function nameOf(id){const u=userSounds.get(id);if(u)return u.name;const r=recordings.find(x=>x.id===id);return r?r.jp:id}
 function playingIds(){return [...tileState.values()].filter(s=>s.voice).map(s=>s.id)}
@@ -66,7 +76,7 @@ async function tileStart(id){const s=tst(id);if(s.voice||s.loading)return;
   const spawn=(t,first)=>{if(s.voice!==v)return;const d=b.duration,fade=Math.min(1.5,d/6),src=ctx.createBufferSource(),env=G(0);src.buffer=b;src.connect(env);env.connect(out);
    env.gain.setValueAtTime(0,t);env.gain.linearRampToValueAtTime(v.amp,t+(first?.12:fade));env.gain.setValueAtTime(v.amp,Math.max(t+.13,t+d-fade));env.gain.linearRampToValueAtTime(0,t+d);
    src.start(t);src.stop(t+d+.05);const n={src,env};v.srcs.add(n);src.onended=()=>{v.srcs.delete(n);try{env.disconnect()}catch(e){}};
-   const next=t+d-fade;if(s.loop)v.timer=setTimeout(()=>spawn(next,false),Math.max(0,(next-ctx.currentTime-.4)*1000));else v.timer=setTimeout(()=>{if(s.voice===v&&!s.loop)tileStop(id)},Math.max(0,(t+d-ctx.currentTime)*1000))};
+   const rs=restLoop(id),next=rs>0?t+d+rs:t+d-fade;if(s.loop)v.timer=setTimeout(()=>spawn(next,false),Math.max(0,(next-ctx.currentTime-.4)*1000));else v.timer=setTimeout(()=>{if(s.voice===v&&!s.loop)tileStop(id)},Math.max(0,(t+d-ctx.currentTime)*1000))};
   spawn(ctx.currentTime+.03,true);if(userSounds.has(id))bufferOrigins.set(id,'import');noteTile(id,noteRecUse);
   status(nameOf(id)+' を再生中');}
  catch(e){s.loading=false;s.voice=null;status(L('読み込みに失敗しました: ','Loading failed: ')+(e.message||e.name))}
@@ -101,10 +111,21 @@ function tileToggle(id){const s=tst(id);if(s.voice||s.loading){tileStop(id);retu
   if(!rightsAllowed(id)){status(L('この録音は商用モードの対象外のため鳴らしません（代用しません）。','This recording is excluded by the commercial mode, so it will not play (no substitute).'));return}
   const on=!member(id);setMember(id,on);if(on)focusId=id;status(nameOf(id)+(on?' を自律演奏に加えました':' を自律演奏から外しました'));renderTile(id);renderCount();return}
  tileStart(id)}
+// v0.49：下のバーの「鳴っている音」：鳴っている音をまとめて見て、音量・休みを変えたり、✕ で外したりする
+let dockPanelOpen=false,dockPanelKey='';
+function removeSound(id){const s=tileState.get(id);if(s&&(s.voice||s.loading))tileStop(id);else if(autoOn()&&member(id))setMember(id,false);renderTile(id);renderCount();renderDockPanel(true)}
+function renderDockPanel(force){const box=$('dockPanel'),btn=$('dockList');if(!box)return;box.hidden=!dockPanelOpen;if(btn)btn.setAttribute('aria-expanded',String(dockPanelOpen));if(!dockPanelOpen)return;
+ const ids=onIds(),key=ids.join('|')+'#'+lang();if(!force&&key===dockPanelKey)return;dockPanelKey=key;const list=$('dockPanelList');list.textContent='';
+ if(!ids.length){list.append(el('p',{class:'micro',text:L('いまは何も鳴っていません。写真や環境音をタップしてください。','Nothing is playing. Tap a photo or an ambience.')}));return}
+ for(const id of ids){const g=groupOf(id),s=tst(id),p=photoFor(id);const thumb=p?el('img',{src:p.small,alt:'',class:'dpThumb',referrerpolicy:'no-referrer'}):el('span',{class:'dpThumb ph',html:placeholderSVG(id,g)});
+  const vol=el('input',{type:'range',min:'0',max:'100',step:'1',value:String(s.vol),'aria-label':nameOf(id)+L('の音量',' volume')});const vv=el('output',{class:'value',text:String(s.vol)});
+  vol.addEventListener('input',()=>{setSoundVol(id,vol.value);vv.textContent=vol.value});
+  const x=el('button',{type:'button',class:'dpRemove','aria-label':nameOf(id)+L('を外す',' — remove'),text:'✕'});x.addEventListener('click',()=>removeSound(id));
+  const row=el('div',{class:'dpRow','data-id':id,'data-group':g},thumb,el('div',{class:'dpMain'},el('div',{class:'dpName',text:nameOf(id)}),el('div',{class:'dpCtl'},el('label',{class:'dpVol'},vol,vv),g==='ambience'?null:restSelect(id))),x);list.append(row)}}
 // 下の再生バー：止める（タイル・自律演奏・トラック・パッド）と、リールへ
 function stopEverything(){tileStopAll();if(playing)pause().catch(()=>{});if(trk.playing)trkStop();if(typeof smpStopAll==='function')try{smpStopAll()}catch(e){}renderDock()}
 function onIds(){return tileIds().filter(isOn)}
-function renderDock(){const d=$('dock');if(!d)return;const on=onIds(),show=on.length>0||autoOn()||trk.playing;if(d.hidden===show)d.hidden=!show;document.body.classList.toggle('docked',show);if(!show)return;
+function renderDock(){const d=$('dock');if(!d)return;const on=onIds(),show=on.length>0||autoOn()||trk.playing;if(d.hidden===show)d.hidden=!show;document.body.classList.toggle('docked',show);if(!show){if(dockPanelOpen){dockPanelOpen=false;renderDockPanel()}return}renderDockPanel();const dl=$('dockListN');if(dl)dl.textContent=String(on.length);
  const sound=on.filter(isSounding),names=(sound.length?sound:on).slice(-2).map(nameOf);
  const parts=[on.length?on.length+'音を再生中':'自律演奏中'];if(on.length&&autoOn())parts.push('自律演奏');if(names.length)parts.push(names.join(' ＋ '));
  const txt=parts.join(' · ');const el=$('dockText');if(el&&el.dataset.ja!==txt){el.dataset.ja=txt;el.textContent=txt}}
@@ -116,7 +137,7 @@ setInterval(()=>{for(const id of playingIds())if(!userSounds.has(id)&&!rightsAll
 
 // ───────── タイルの画面 ─────────
 const FILTERS=[['all','すべて','All'],['birds','鳥','Birds'],['insects','虫','Insects'],['amphibians','両生類','Amphibians'],['mammals','哺乳類','Mammals'],['aquatic','水の生き物','Water life'],['japan','日本','Japan'],['photo','写真あり','With photos'],['user','自分の音','My sounds'],['playing','再生中','Playing']];
-let tileFilter='all',tileShowAll=false;const TILE_PAGE=12; // 最初は12枚だけ見せる（スクロールせずにリール作成まで届くように）。残りは「すべて表示」
+let tileFilter='all',tileShowAll=false,soundTab='creatures';const TILE_PAGE=12; // 最初は12枚だけ見せる（スクロールせずにリール作成まで届くように）。残りは「すべて表示」
 function tileIds(){const lib=recordings.map(r=>r.id);const order=id=>{const p=photoFor(id)?0:1,r=recordings.find(x=>x.id===id),k=r.kind==='species'?0:r.kind==='mixed'?1:2;return p*10+k};
  const sorted=lib.slice().sort((a,b)=>order(a)-order(b));return [...userSounds.keys(),...sorted]}
 // 生き物の分類の絞り込み（鳥〜水の生き物）は生き物の欄だけに効く。環境音の欄は「日本・写真あり・自分の音・再生中」だけ効く
@@ -138,11 +159,15 @@ function makeTile(id,uid){const g=groupOf(id),p=photoFor(id),r=recordings.find(x
 function buildTiles(){const grid=$('tileGrid'),amb=$('ambGrid');if(!grid)return;grid.textContent='';if(amb)amb.textContent='';
  const all=tileIds().filter(matches),ids=all.filter(id=>groupOf(id)!=='ambience'),ambIds=all.filter(id=>groupOf(id)==='ambience'),cols=Math.max(1,(getComputedStyle(grid).gridTemplateColumns||'').split(' ').filter(Boolean).length||2),page=Math.ceil(TILE_PAGE/cols)*cols,cut=tileShowAll?ids.length:Math.min(ids.length,page);/* 列数に合わせて行をそろえる（2列なら12枚、5列なら15枚） */
  let uid=0;for(const id of ids.slice(0,cut)){uid++;grid.append(makeTile(id,uid));renderTile(id)}
- if(amb){for(const id of ambIds){uid++;amb.append(makeTile(id,uid));renderTile(id)}const box=$('ambSection');if(box)box.hidden=!ambIds.length}
+ if(amb){for(const id of ambIds){uid++;amb.append(makeTile(id,uid));renderTile(id)}}renderTabs(ids.length,ambIds.length)
  if(!grid.children.length)grid.append(el('p',{class:'micro',text:tileFilter==='user'?L('まだありません。「＋ 自分の音を追加」から読み込めます。','Nothing yet. Add one with “＋ Add my sound”.'):L('該当する音がありません。','No sounds match.')}));
  if(ids.length>page){const more=el('button',{type:'button',class:'tileMore','aria-expanded':String(tileShowAll),text:tileShowAll?L('少なく表示','Show fewer'):L('すべて表示（'+ids.length+'）','Show all ('+ids.length+')')});
   more.addEventListener('click',()=>{tileShowAll=!tileShowAll;buildTiles();if(!tileShowAll)$('tileSection').scrollIntoView({block:'start'})});grid.append(more)}
  renderCount();renderRightsDim()}
+function renderTabs(nc,na){const a=$('tabCreatures'),b=$('tabAmbience');if(!a)return;const on=soundTab==='ambience';a.setAttribute('aria-selected',String(!on));b.setAttribute('aria-selected',String(on));
+ $('creaturePane').hidden=on;$('ambSection').hidden=!on;const pc=onIds().filter(id=>groupOf(id)!=='ambience').length,pa=onIds().filter(id=>groupOf(id)==='ambience').length;
+ const ca=$('tabCreaturesN'),cb=$('tabAmbienceN');if(ca)ca.textContent=pc?L(pc+'音',pc+' on'):'';if(cb)cb.textContent=pa?L(pa+'音',pa+' on'):''}
+function setTab(t){soundTab=t;renderTabs()}
 function bindTile(tile,id){const play=tile.querySelector('.tilePlay'),info=tile.querySelector('.tileInfo');let timer=0,long=false,sx=0,sy=0;
  play.addEventListener('pointerdown',e=>{long=false;sx=e.clientX;sy=e.clientY;clearTimeout(timer);timer=setTimeout(()=>{long=true;openSheet(id)},520)});
  play.addEventListener('pointermove',e=>{if(Math.hypot(e.clientX-sx,e.clientY-sy)>12)clearTimeout(timer)});
@@ -157,7 +182,7 @@ function renderTile(id){const s=tileState.get(id);for(const tile of document.que
   b.setAttribute('aria-label',nameOf(id))}
  if(sheetId===id)renderSheet()}
 function renderAllTiles(){for(const id of tileIds())renderTile(id);renderCount()}
-function renderCount(){renderDock();const c=$('tileCount');if(c){const n=onIds().length;c.textContent=n?L(n+'音を再生中',n+' playing'):L(recordings.length+'録音',recordings.length+' recordings')}const tr=$('tileToReel');if(tr)tr.disabled=!onIds().length&&!autoOn()}
+function renderCount(){renderDock();renderTabs();const c=$('tileCount');if(c){const n=onIds().length;c.textContent=n?L(n+'音を再生中',n+' playing'):L(recordings.length+'録音',recordings.length+' recordings')}const tr=$('tileToReel');if(tr)tr.disabled=!onIds().length&&!autoOn()}
 function renderRightsDim(){for(const tile of document.querySelectorAll('.tile')){const id=tile.dataset.id;const blocked=!userSounds.has(id)&&!rightsAllowed(id);if(tile.classList.contains('blocked')!==blocked)tile.classList.toggle('blocked',blocked)}}
 // 再生中のタイルに小さな波形（周波数の棒）を描く
 let paintAt=0;function paintTiles(now){requestAnimationFrame(paintTiles);if(now-paintAt<40)return;paintAt=now;
@@ -176,11 +201,10 @@ function fmtSource(id){const e=audioManifest.recordings[id];const pc=e&&(e.pcm||
 function renderSheet(){const id=sheetId;if(!id)return;const s=tst(id),u=userSounds.get(id),r=recordings.find(x=>x.id===id),m=wildMeta[id]||{},p=photoFor(id),g=groupOf(id);
  $('sheetName').textContent=nameOf(id);$('sheetLatin').textContent=r?(binomial(r.latin)||r.latin||''):subOf(id);
  const ph=$('sheetPhoto');ph.textContent='';ph.append(p?el('img',{src:p.thumb,alt:L(nameOf(id)+'の写真',(m.en||nameOf(id))+' photo'),referrerpolicy:'no-referrer'}):el('span',{class:'ph',html:placeholderSVG(id,g)}));
- $('sheetPhotoCredit').textContent=p&&!p.user?L('写真：','Photo: ')+p.author+' · '+p.license+' · Wikimedia Commons':p&&p.user?L('画像：利用者が設定','Image: set by you'):L('写真なし（統一プレースホルダー）','No photo (standard placeholder)');
+ $('sheetPhotoCredit').textContent=!p&&g!=='user'?(g==='ambience'?L('図：環境音の種類を表す線画','Drawing: shows the kind of ambience'):L('イラスト：録音の名前と分類から描いた絵です（実写ではありません）','Illustration drawn from the recording’s name and category (not a photo)')):p&&!p.user?L('写真：','Photo: ')+p.author+' · '+p.license+' · Wikimedia Commons':p&&p.user?L('画像：利用者が設定','Image: set by you'):L('写真なし（統一プレースホルダー）','No photo (standard placeholder)');
  const pb=$('sheetPlay'),on=isOn(id);pb.textContent=on?L('■ 停止','■ Stop'):s.loading?L('読み込み中…','Loading…'):L('▶ 再生','▶ Play');pb.setAttribute('aria-pressed',String(on));
  $('sheetVol').value=String(s.vol);$('sheetVolVal').textContent=String(s.vol);$('sheetPan').value=String(Math.round(s.pan*100));$('sheetPanVal').textContent=s.pan===0?'C':(s.pan<0?'L':'R')+Math.round(Math.abs(s.pan)*100);$('sheetLoop').checked=s.loop;
- {const k=engineKind(id),box=$('sheetAuto');box.hidden=!k;if(k){const lv=k==='bio'?(speciesSettings[id].level??20):(fieldConfig.levels[id]||fieldLevelFor(id));$('sheetAutoLvl').value=String(lv);$('sheetAutoLvlVal').textContent=String(lv);
-  $('sheetRestRow').hidden=k!=='bio';if(k==='bio'){const r0=speciesSettings[id].rest??12;$('sheetRest').value=String(r0);$('sheetRestVal').textContent=String(r0)}}}
+ {const g2=groupOf(id),row=$('sheetRestRow');if(row){row.hidden=g2==='ambience';const box=$('sheetRestBox');if(box){box.textContent='';box.append(restSelect(id,'restSel sheetRestSel'))}}}
  $('sheetUser').hidden=!u;const dl=$('sheetInfo');dl.textContent='';
  const row=(k,v,href)=>{if(v==null||v==='')return;dl.append(el('dt',{text:k}),el('dd',{},href?el('a',{href,target:'_blank',rel:'noopener',text:v}):document.createTextNode(v)))};
  if(u){row('種類 / Type',u.origin==='mic'?'マイク録音 / Mic recording':u.origin==='bounce'?'出音の録音 / Output recording':'読み込んだ音声 / Imported audio');row('ファイル / File',u.file||'');row('長さ / Length',u.buffer.duration.toFixed(2)+' s · '+u.buffer.sampleRate/1000+' kHz · '+u.buffer.numberOfChannels+'ch');
@@ -193,11 +217,8 @@ function renderSheet(){const id=sheetId;if(!id)return;const s=tst(id),u=userSoun
 function bindSheet(){const d=$('tileSheet');if(!d)return;
  $('sheetClose').addEventListener('click',closeSheet);d.addEventListener('cancel',e=>{e.preventDefault();closeSheet()});d.addEventListener('click',e=>{if(e.target===d)closeSheet()});
  $('sheetPlay').addEventListener('click',()=>{if(sheetId)tileToggle(sheetId)});
- $('sheetVol').addEventListener('input',e=>{if(!sheetId)return;setTileVol(sheetId,e.target.value);$('sheetVolVal').textContent=e.target.value});
+ $('sheetVol').addEventListener('input',e=>{if(!sheetId)return;setSoundVol(sheetId,e.target.value);$('sheetVolVal').textContent=e.target.value;renderDockPanel(true)});
  $('sheetPan').addEventListener('input',e=>{if(!sheetId)return;setTilePan(sheetId,e.target.value/100);renderSheet()});
- $('sheetAutoLvl').addEventListener('input',e=>{const id=sheetId;if(!id)return;const v=+e.target.value,k=engineKind(id);$('sheetAutoLvlVal').textContent=String(v);
-  if(k==='bio'){speciesSettings[id].level=v;updateBioMix()}else if(k==='field'){if((fieldConfig.levels[id]||0)>0&&v>0)setFieldLevel(id,v);if(v>0)lastFieldLevel.set(id,v)}});
- $('sheetRest').addEventListener('input',e=>{const id=sheetId;if(!id||engineKind(id)!=='bio')return;speciesSettings[id].rest=+e.target.value;$('sheetRestVal').textContent=e.target.value});
  $('sheetLoop').addEventListener('change',e=>{if(!sheetId)return;const s=tst(sheetId);s.loop=e.target.checked;if(s.voice&&!s.loop){/* いまの1回が終わったら止まる */}});
  $('sheetSetImage').addEventListener('click',()=>$('tileUserImage').click());
  $('tileUserImage').addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];e.target.value='';if(!f||!sheetId||!userSounds.has(sheetId))return;const u=userSounds.get(sheetId);if(u.img)URL.revokeObjectURL(u.img);u.img=URL.createObjectURL(f);buildTiles();renderSheet()});
@@ -343,7 +364,11 @@ function cover(c,img,x,y,w,h,zoom){const iw=img.naturalWidth||img.width,ih=img.n
 function bgImage(){if(reelImgMode==='mine'&&reelUserImg)return {img:canvasImage(reelUserImg),credit:L('画像：利用者','Image: user'),user:true};return null}
 function reelBgDraw(c,alpha){const b=bgImage();if(!b||!b.img.ok)return;c.save();c.globalAlpha=alpha;cover(c,b.img.img,0,0,REEL_W,REEL_H,1.02);c.restore()}
 function subjectPhoto(id){if(reelImgMode==='none')return null;if(reelImgMode==='mine'){const b=bgImage();return b?{e:b.img,credit:b.credit,user:true}:null}
- const p=id&&photoFor(id);if(!p)return null;const e=canvasImage(p.thumb);if(e.fail)return null;return {e,p,credit:p.user?L('画像：利用者','Image: user'):'PHOTO '+p.author+' · '+p.license+' · Wikimedia Commons'}}
+ const p=id&&photoFor(id);if(!p)return illustImage(id);const e=canvasImage(p.thumb);if(e.fail)return null;return {e,p,credit:p.user?L('画像：利用者','Image: user'):'PHOTO '+p.author+' · '+p.license+' · Wikimedia Commons'}}
+// 写真がない時のリール用の絵（イラスト・環境音の線画）。実写ではないことをクレジットに書く
+const illCache=new Map();
+function illustImage(id){if(!id||userSounds.has(id))return null;let u=illCache.get(id);if(!u){u='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(placeholderSVG(id,groupOf(id)).replace('<svg ','<svg width="800" height="800" '));illCache.set(id,u)}
+ const e=canvasImage(u);if(e.fail)return null;return {e,illust:true,credit:L('イラスト：saww audio ecosystem（実写ではありません）','Illustration: saww audio ecosystem (not a photo)')}}
 function notePhoto(ph){const st=reelState;if(!st||!st.active||!ph||!ph.p||ph.p.user)return;st.photos=st.photos||new Map();if(!st.photos.has(ph.p.latin))st.photos.set(ph.p.latin,ph.p)}
 function header(c,t){const P=reelPal,X=REEL_SAFE.x0,Y=REEL_SAFE.y0;txt(c,'saww audio ecosystem',X,Y+34,'600 34px '+MONO,P.text);txt(c,'nature as an instrument.',X,Y+70,'24px '+MONO,P.dim);
  const st=reelState,el2=st&&st.active?(performance.now()-st.startedAt)/1000:t;const tc='T+'+String(Math.floor(el2/60)).padStart(2,'0')+':'+(el2%60).toFixed(1).padStart(4,'0');
@@ -535,7 +560,10 @@ function drawNature(c){const now=performance.now(),t=(now-A.t0)/1000,dt=Math.min
   const line=(w,al)=>{c.lineWidth=w;c.strokeStyle=rgb(paper?[255,255,255]:acc,al);c.beginPath();pts.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.stroke()};line(8,.12);line(2,.9)}
  // 4. 上：アプリ名と時間
  const st=reelState,tc=st&&st.active?((now-st.t0)/1000):t;const top=paper?Y0-20:Y0;const hc=paper?ink:[255,255,255];
- txt(c,'saww audio ecosystem',X0,top+30,'500 30px '+NAT_SANS,rgb(hc,.92));txt(c,'nature as an instrument.',X0,top+66,'italic 600 28px '+NAT_ITAL,rgb(paper?muted:[255,255,255],.75));
+ // ロゴ（v0.49。ヘッダーと同じ画像。丸く切り抜く）。読み込み前は文字だけ
+ const lg=document.querySelector('img.brandLogo'),le=lg&&lg.src?canvasImage(lg.src):null,LX=le&&le.ok?X0+92:X0;
+ if(le&&le.ok){c.save();c.beginPath();c.arc(X0+38,top+34,38,0,Math.PI*2);c.clip();c.drawImage(le.img,X0,top-4,76,76);c.restore();c.lineWidth=1.5;c.strokeStyle=rgb(hc,.35);c.beginPath();c.arc(X0+38,top+34,38,0,Math.PI*2);c.stroke()}
+ txt(c,'saww audio ecosystem',LX,top+30,'500 30px '+NAT_SANS,rgb(hc,.92));txt(c,'nature as an instrument.',LX,top+66,'italic 600 28px '+NAT_ITAL,rgb(paper?muted:[255,255,255],.75));
  txt(c,(st&&st.active?'● ':'')+String(Math.floor(tc/60)).padStart(2,'0')+':'+String(Math.floor(tc%60)).padStart(2,'0'),X1,top+30,'500 28px '+NAT_SANS,st&&st.active?rgb(acc):rgb(hc,.85),'right');
  // 5. 図鑑の1ページ：番号・和名・学名・英名・録音地・クレジット（替わる時に1行ずつ浮かぶ）
  let y=paper?PY+PH+56:1110;const rise=k=>{const u=clamp((t-NS.subjAt-.25-k*.12)/.7,0,1),e=1-Math.pow(1-u,3);c.globalAlpha=e;return (1-e)*24};
@@ -593,7 +621,10 @@ function buildPlans(){const box=$('plansBody');if(!box)return;box.textContent=''
 // base：既存の層（低音ドローン・ハープ・ピアノ）と同じ音量感になるよう、ソロ試聴のピーク・RMS を測ってそろえた値
 var REAL_DEF={didge:{mode:'loop',base:.3},organPedal:{mode:'loop',base:.27},natureLow:{mode:'loop',rec:'waves-big-lagoon',base:1.4},
  timpaniRoll:{mode:'event',base:.15},gong:{mode:'event',base:.15},pianoLow:{mode:'event',base:.17},
- frameDrum:{mode:'hit',base:.3},cajon:{mode:'hit',base:.26},darbuka:{mode:'hit',base:.32},slitDrum:{mode:'hit',base:.24},conga:{mode:'hit',base:.3}};
+ frameDrum:{mode:'hit',base:.3},cajon:{mode:'hit',base:.26},darbuka:{mode:'hit',base:.32},slitDrum:{mode:'hit',base:.24},conga:{mode:'hit',base:.3},
+ // v0.49 旋律（build/import_vcsl_v049.py）：いまの和音の音を range（midi）の中へオクターブで移し、1〜phrase 音の短いフレーズにする
+ kalimba:{mode:'melody',base:.36,range:[69,86],phrase:3},marimba:{mode:'melody',base:.3,range:[62,93],phrase:4},
+ tubularBells:{mode:'melody',base:.2,range:[60,77],phrase:1},glockenspiel:{mode:'melody',base:.16,range:[79,101],phrase:2}};
 function isRealLayer(k){return !!(REAL_DEF&&REAL_DEF[k])}
 function isRealLoop(k){return isRealLayer(k)&&REAL_DEF[k].mode==='loop'}
 function realSamples(k){return instrumentSamples.filter(x=>x.kind===k)}
@@ -602,9 +633,16 @@ function realLevel(k){return auditionKey===k?Math.max(.55,p[k]/100):p[k]/100}
 function realPick(k){const list=realSamples(k);if(!list.length)return null;if(!list[0].pitched)return {meta:list[Math.floor(Math.random()*list.length)],rate:1};
  const root=chords[chordIndex].root;let best=null;for(const m of list){const d0=((root-m.midi)%12+12)%12,d=d0>6?d0-12:d0;if(!best||Math.abs(d)<Math.abs(best.d))best={meta:m,d}}return {meta:best.meta,rate:2**(best.d/12)}}
 const realVoices=new Set();
+// v0.49 密度（重なり）：合成音・楽器（実録音）それぞれの倍率。本体の tick() が層ごとに __boostOf(key) を掛け、同時発音の上限は __boostCap() 倍
+let synthBoost=1,instrBoost=1;
+try{const b=JSON.parse(localStorage.getItem('saww.boost')||'{}');if(b.s>=.5&&b.s<=4)synthBoost=b.s;if(b.i>=.5&&b.i<=4)instrBoost=b.i}catch(e){}
+function layerIsReal(k){return !!REAL_DEF[k]||k==='harp'||k==='vibes'}
+function layerIsSynth(k){return !layerIsReal(k)&&['low','music','rhythm'].some(g=>groups[g].some(x=>x[0]===k))}
+function boostCap(){return Math.min(2.2,Math.max(1,synthBoost,instrBoost))}
+window.__boostOf=k=>layerIsReal(k)?instrBoost:layerIsSynth(k)?synthBoost:1;window.__boostCap=boostCap;
 function realOut(k,pan){const out=G(0),pn=ctx.createStereoPanner?ctx.createStereoPanner():G(1),wet=G(.2);if(pn.pan)pn.pan.value=pan||0;out.connect(pn);pn.connect(mixLane('music'));pn.connect(wet);wet.connect(mixLane('music','wet'));return {out,nodes:[out,pn,wet]}}
 function realPlay(k,meta,t,lvl,pan,rate){const b=instrumentBuffers.get(meta.id);if(!b)return false;
- if(realVoices.size>=12){const old=realVoices.values().next().value;try{old.env.gain.setTargetAtTime(0,ctx.currentTime,.03);old.src.stop(ctx.currentTime+.2)}catch(e){}realVoices.delete(old)}
+ if(realVoices.size>=12*boostCap()){const old=realVoices.values().next().value;try{old.env.gain.setTargetAtTime(0,ctx.currentTime,.03);old.src.stop(ctx.currentTime+.2)}catch(e){}realVoices.delete(old)}
  const d=REAL_DEF[k],{out,nodes}=realOut(k,pan),src=ctx.createBufferSource(),env=G(0),dur=b.duration/rate,amp=d.base*lvl*(instrumentGains.get(meta.id)||1);
  src.buffer=b;src.playbackRate.value=rate;src.connect(env);env.connect(out);out.gain.value=1;
  const fade=d.mode==='hit'?.05:Math.min(3,dur*.2);env.gain.setValueAtTime(0,t);env.gain.linearRampToValueAtTime(amp,t+(d.mode==='hit'?.003:.02));env.gain.setValueAtTime(amp,Math.max(t+.03,t+dur-fade));env.gain.linearRampToValueAtTime(0,t+dur);
@@ -613,6 +651,9 @@ function realPlay(k,meta,t,lvl,pan,rate){const b=instrumentBuffers.get(meta.id);
 function realLayerHit(k,t,gesture){const d=REAL_DEF[k];if(!ctx||d.mode==='loop')return false;if(p[k]===0&&auditionKey!==k)return false;
  const lvl=realLevel(k),go=(when)=>{if(d.mode==='hit'){const beat=60/((typeof fx!=='undefined'&&fx.bpm)||84)/2,n=1+Math.floor(Math.random()*4);let at=when;
    for(let i=0;i<n;i++){const pk=realPick(k);if(pk&&!realPlay(k,pk.meta,at,lvl*(i===0?1:R(.45,.85)),R(-.35,.35),2**(R(-.25,.25)/12)))break;at+=beat*(Math.random()<.3?2:1)}}
+  else if(d.mode==='melody'){const beat=60/((typeof fx!=='undefined'&&fx.bpm)||84)/2,n=1+Math.floor(Math.random()*d.phrase),pan=R(-.5,.5);let at=when;
+   for(let i=0;i<n;i++){let m=69+12*Math.log2(randomPitch()/440);while(m<d.range[0])m+=12;while(m>d.range[1])m-=12;const meta=nearestSample(k,m);
+    if(!realPlay(k,meta,at,lvl*(i===0?1:R(.55,.85)),pan+R(-.12,.12),2**((m-meta.midi)/12)))break;at+=beat*(Math.random()<.35?2:1)}}
   else{const pk=realPick(k);if(pk)realPlay(k,pk.meta,when,lvl,R(-.25,.25),pk.rate)}};
  const need=realSamples(k).filter(m=>!instrumentBuffers.has(m.id));
  if(!need.length){go(t);return true}
@@ -650,15 +691,50 @@ window.studioActive=()=>playingIds().length>0;
 window.studioSeed=fn=>{realSeed(fn);for(const id of playingIds())noteTile(id,fn);for(const v of trk.voices)noteTile(v.t.src,fn)};
 window.studioNow=()=>playingIds().filter(id=>!userSounds.has(id));
 window.__studioDebug={tiles:()=>tileIds().length,shown:()=>document.querySelectorAll('#tileGrid .tile').length,photos:()=>[...document.querySelectorAll('#tileGrid .tile img')].length,playing:playingIds,start:tileStart,stop:tileStop,toggle:tileToggle,stopAll:tileStopAll,photoFor,binomial,
- state:id=>{const s=tileState.get(id);return s?{vol:s.vol,pan:s.pan,loop:s.loop,on:!!s.voice}:null},isOn,isSounding,member,engineKind,setMember,natPal:id=>{const ph=subjectPhoto(id);return natPalette(ph&&ph.e,groupOf(id))},fieldLevel:id=>fieldConfig.levels[id]||0,stopEverything,dock:()=>({hidden:$('dock').hidden,text:$('dockText').textContent}),setVol:setTileVol,setLoop:(id,v)=>{tst(id).loop=!!v},open:openSheet,close:closeSheet,filter:f=>{tileFilter=f;renderFilters();buildTiles()},showAll:v=>{tileShowAll=!!v;buildTiles();return document.querySelectorAll('#tileGrid .tile').length},
+ state:id=>{const s=tileState.get(id);return s?{vol:s.vol,pan:s.pan,loop:s.loop,on:!!s.voice}:null},isOn,isSounding,member,engineKind,setMember,setSoundVol,setSoundRest,removeSound,restOf:id=>tst(id).rest,setTab,dockPanel:v=>{dockPanelOpen=!!v;renderDockPanel(true);return [...document.querySelectorAll('#dockPanelList .dpRow')].map(r=>r.dataset.id)},natPal:id=>{const ph=subjectPhoto(id);return natPalette(ph&&ph.e,groupOf(id))},fieldLevel:id=>fieldConfig.levels[id]||0,stopEverything,dock:()=>({hidden:$('dock').hidden,text:$('dockText').textContent}),setVol:setTileVol,setLoop:(id,v)=>{tst(id).loop=!!v},open:openSheet,close:closeSheet,filter:f=>{tileFilter=f;renderFilters();buildTiles()},showAll:v=>{tileShowAll=!!v;buildTiles();return document.querySelectorAll('#tileGrid .tile').length},
  addUser:(name,buffer,origin)=>{const id=addUserSound(name,buffer,origin||'import');buildTiles();renderTrackSources();return id},importFiles,parseAiff,users:()=>[...userSounds.keys()],
  tracks:()=>tracks.map(t=>({id:t.id,src:t.src,offset:t.offset,vol:t.vol,mute:t.mute,solo:t.solo,dest:t.dest,len:t.buffer?t.buffer.duration:null})),addTrack,trkPlay,trkStop,trkRecord,trkRecStop,trkMixdown,trk:()=>({playing:trk.playing,rec:trk.rec?trk.rec.kind:null,voices:trk.voices.size,len:trackLen()}),encodeWav24,encodeAiff24,
  setTemplate,template:()=>reelTpl,imgMode:v=>{if(v)reelImgMode=v;return reelImgMode},subject:reelSubject,photosUsed:()=>reelState&&reelState.photos?[...reelState.photos.keys()]:[],imgCache:()=>[...imgCache].map(([u,e])=>({u,ok:e.ok,fail:e.fail})),analyse:()=>{analyse();return {peakHz:A.peakHz,rmsDb:A.rmsDb,onsets:A.onsets}},
  entitlement:()=>window.sawwEntitlement,tiers:()=>TIERS};
-function init(){renderFilters();buildTiles();bindSheet();buildMasterEq();renderTracks();renderTrackSources();buildPlans();bindReel();
- $('tileStopAll').addEventListener('click',stopEverything);$('tileAddUser').addEventListener('click',()=>$('tileUserFile').click());$('tileUserFile').addEventListener('change',e=>{const fs=[...(e.target.files||[])];e.target.value='';importFiles(fs)});
+// ───────── v0.49 楽器（実録音）と合成音（シンセ）の整理 ─────────
+// オーナー要望（2026-11-06 20:05「楽器は全部楽器でまとめる。合成音も必要」）。本体が作ったつまみの行（.control）を移すだけで、値・保存・MIDI 割り当ては変わらない。
+// 振り分けは自動：本体の groups の low / music / rhythm のうち、実録音（REAL_DEF・ハープ・ヴィブラフォン）は「楽器」、それ以外は「合成音」。
+// 毎日の自動作業で楽器を足すときは groups の該当する群（低音＝low・旋律＝music・打楽器＝rhythm）と REAL_DEF に足せば、ここで正しい欄に入る。
+const LAYER_SECS=[['low','低音','持続音'],['music','旋律','旋律'],['rhythm','打楽器','打撃']];
+const shortLabel=s=>s.replace(/（実録音）|（合成）|^実録音/g,'').replace('（波の実録音・低域）','（波・低域）');
+function boostRow(id,label,val,set){const row=document.createElement('div');row.className='control boostRow';
+ row.innerHTML=`<div><label for="${id}">${label}</label><input type="range" id="${id}" min="50" max="400" step="10" value="${Math.round(val*100)}"></div><span class="value" id="${id}V">${Math.round(val*100)}%</span>`;
+ const inp=row.querySelector('input');inp.addEventListener('input',()=>{const v=Number(inp.value)/100;set(v);$(id+'V').textContent=inp.value+'%';try{localStorage.setItem('saww.boost',JSON.stringify({s:synthBoost,i:instrBoost}))}catch(e){}});
+ inp.addEventListener('dblclick',()=>{inp.value=100;inp.dispatchEvent(new Event('input'))});return row}
+function layerSub(title,keys){const box=document.createElement('div');box.className='layerSub';box.dataset.n=keys.length;
+ box.innerHTML=`<div class="layerSubHead"><span class="layerSubTitle">${title}</span><span class="micro">${keys.length}</span></div>`;
+ for(const k of keys){const row=$('param-'+k)?.closest('.control');if(!row)continue;const lab=row.querySelector('label');if(lab)lab.textContent=shortLabel(lab.textContent);row.dataset.layer=k;box.append(row)}return box}
+function organizeLayers(){const sp=$('synthPanel');if(!sp||$('instrPanel'))return;
+ const keysOf=(g,real)=>groups[g].map(x=>x[0]).filter(k=>layerIsReal(k)===real);
+ const ip=document.createElement('details');ip.id='instrPanel';ip.className='sub';
+ const nI=LAYER_SECS.reduce((n,[g])=>n+keysOf(g,true).length,0),nS=LAYER_SECS.reduce((n,[g])=>n+keysOf(g,false).length,0);
+ ip.innerHTML=`<summary><span>楽器（実録音）</span><span class="micro"><span id="instrCount">${nI}</span> · <span>低音 · 旋律 · 打楽器 ▾</span></span></summary><div class="layerBody" id="instrBody"></div>`;
+ sp.before(ip);const ib=ip.querySelector('#instrBody');
+ ib.append(boostRow('instrBoost','楽器の密度・重なり',instrBoost,v=>{instrBoost=v}));
+ for(const [g,ja] of LAYER_SECS){const ks=keysOf(g,true);if(ks.length)ib.append(layerSub(ja,ks))}
+ // 合成音：題名と小見出しを付け直し、つまみ（合成音の密度）を先頭に
+ const sum=sp.querySelector(':scope>summary');if(sum)sum.innerHTML=`<span>合成音（シンセ）</span><span class="micro"><span id="synthCount">${nS}</span> · <span>持続音 · 旋律 · 打撃 · 試聴 ▾</span></span>`;
+ const blk=sp.querySelector(':scope>.synthBlock');
+ const sb=document.createElement('div');sb.className='layerBody';sb.id='synthBody';sb.append(boostRow('synthBoost','合成音の密度・重なり',synthBoost,v=>{synthBoost=v}));
+ for(const [g,,ja] of LAYER_SECS){const ks=keysOf(g,false);if(ks.length)sb.append(layerSub(ja,ks))}
+ (blk||sum).after(sb);
+ // 元の小見出し（DRONES など。中身は上へ移した）は畳んで隠す。試聴の欄は残す
+ for(const g of ['low','music','rhythm']){const d=$(g+'Controls')?.closest('details');if(d&&d!==sp)d.hidden=true}
+ // 全体の音量・響き（MASTER ENVIRONMENT）は「全体の音量・活動量・同時発音数」へ移す（合成音だけでなく全部に効くため）
+ const mixAll=[...document.querySelectorAll('#performance details.sub>summary')].find(s=>s.textContent.trim().startsWith('全体の音量'));
+ if(blk&&mixAll){const t=blk.querySelector('.title');if(t)t.textContent='全体の音・響き・変化';const m=blk.querySelector('.between .micro');if(m)m.textContent='';blk.classList.add('masterBlock');mixAll.parentElement.append(blk)}}
+function init(){organizeLayers();renderFilters();buildTiles();bindSheet();buildMasterEq();renderTracks();renderTrackSources();buildPlans();bindReel();
+ $('tileStopAll').addEventListener('click',stopEverything);
+ $('dockList')?.addEventListener('click',()=>{dockPanelOpen=!dockPanelOpen;renderDockPanel(true)});$('dockPanelClose')?.addEventListener('click',()=>{dockPanelOpen=false;renderDockPanel()});
+ $('tabCreatures')?.addEventListener('click',()=>setTab('creatures'));$('tabAmbience')?.addEventListener('click',()=>setTab('ambience'));$('tileAddUser').addEventListener('click',()=>$('tileUserFile').click());$('tileUserFile').addEventListener('change',e=>{const fs=[...(e.target.files||[])];e.target.value='';importFiles(fs)});
  $('trkPlay').addEventListener('click',()=>trk.playing?trkStop():trkPlay());$('trkLoop').addEventListener('change',e=>{trk.loop=e.target.checked});$('trkMic').addEventListener('click',()=>trkRecord('mic'));$('trkBounce').addEventListener('click',()=>trkRecord('bounce'));
  $('trkAdd').addEventListener('click',()=>{const v=$('trkAddSrc').value;if(v)addTrack(v)});$('trkWav').addEventListener('click',()=>trkMixdown('wav').catch(e=>trkStatus(e.message)));$('trkAiff').addEventListener('click',()=>trkMixdown('aiff').catch(e=>trkStatus(e.message)));
+ {const lg=document.querySelector('img.brandLogo');if(lg&&lg.src)canvasImage(lg.src)} // リールの見出しのロゴを先に読み込む
  setTemplate('nature');natFonts();
  // 言語を切り替えたら、自分で組み立てた文言（L()）を作り直す
  $('langToggle')?.addEventListener('click',()=>setTimeout(()=>{renderFilters();buildTiles();renderTracks();buildPlans();if(sheetId)renderSheet()},0))}

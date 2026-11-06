@@ -22,7 +22,7 @@ const t1=R.map.first[0],t2=await pg.evaluate(()=>[...document.querySelectorAll('
 await pg.tap('#tileSection .tile[data-id="'+t1+'"] .tilePlay');await wait(2500);
 R.play1={pressed:await pg.getAttribute('#tileSection .tile[data-id="'+t1+'"] .tilePlay','aria-pressed'),bio:await peak('bio'),playing:await pg.evaluate(()=>__studioDebug.playing()),auto:await pg.evaluate(()=>document.getElementById('statusBadge').textContent)};
 ok('tap_play',R.play1.pressed==='true'&&R.play1.bio>-80&&R.play1.playing.includes(t1));
-await pg.tap('#tileSection .tile[data-id="'+t2+'"] .tilePlay');await wait(2500);R.layer={playing:await pg.evaluate(()=>__studioDebug.playing()),field:await peak('field')};ok('layer_two',R.layer.playing.length===2&&R.layer.field>-80);
+await pg.evaluate(()=>__studioDebug.setTab('ambience'));await pg.tap('#tileSection .tile[data-id="'+t2+'"] .tilePlay');await wait(2500);R.layer={playing:await pg.evaluate(()=>__studioDebug.playing()),field:await peak('field')};ok('layer_two',R.layer.playing.length===2&&R.layer.field>-80);await pg.evaluate(()=>__studioDebug.setTab('creatures'));
 R.wave=await pg.evaluate(id=>{const c=document.querySelector('#tileSection .tile[data-id="'+id+'"] .tileWave');const d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let n=0;for(let i=3;i<d.length;i+=4)if(d[i]>0)n++;return {lit:n,cls:c.closest('.tile').className}},t1);ok('playing_wave',R.wave.lit>20&&/\bon\b/.test(R.wave.cls));
 await pg.tap('#tileSection .tile[data-id="'+t1+'"] .tilePlay');await wait(900);R.stop1={pressed:await pg.getAttribute('#tileSection .tile[data-id="'+t1+'"] .tilePlay','aria-pressed'),bio:await peak('bio')};ok('tap_stop',R.stop1.pressed==='false'&&R.stop1.bio===-Infinity);
 // 4. 長押しで詳細・音量・ループ。キーボード（Enter で再生、i で詳細、Esc で閉じる）

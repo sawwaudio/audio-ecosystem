@@ -7,7 +7,7 @@ const R={},fail=[];const ok=(k,c)=>{R[k+'_ok']=!!c;if(!c)fail.push(k)};const wai
 await pg.goto('http://localhost:8765/index.html');await pg.evaluate(()=>{try{localStorage.removeItem('ae-rights');localStorage.removeItem('ae-lang')}catch(e){}});await pg.reload();await wait(900);
 
 // 1. 並び順：01 音を選ぶ → 02 リール → 03 演奏する（タッチ演奏・シンセの層）→ 04 スタジオ → プラン → 設定と権利
-R.order=await pg.evaluate(()=>{const y=id=>Math.round(document.getElementById(id).getBoundingClientRect().top+scrollY);return ['tileSection','reelSection','performance','touchSection','synthPanel','mixerSection','samplerSection','tracksSection','plansSection','rightsPanel','presetSection','sourceSection'].map(id=>[id,y(id)])});
+R.order=await pg.evaluate(()=>{const y=id=>Math.round(document.getElementById(id).getBoundingClientRect().top+scrollY);return ['tileSection','reelSection','performance','instrPanel','synthPanel','mixerSection','samplerSection','tracksSection','plansSection','rightsPanel','presetSection','sourceSection'].map(id=>[id,y(id)])});
 ok('order',R.order.every((x,i,a)=>i===0||a[i-1][1]<x[1]));
 R.nav=await pg.evaluate(()=>[...document.querySelectorAll('.jump a')].map(a=>a.getAttribute('href')));ok('nav',R.nav.join()==='#tileSection,#reelSection,#playGroup,#studioGroup,#settingsGroup');
 // 2. 重複をなくした：生き物の一覧（この音場に加える）・環境音の一覧は画面に出ない（処理は動く）
@@ -34,16 +34,17 @@ await pg.tap(tile(b2));await wait(400);R.join={member:await pg.evaluate(id=>__st
 ok('auto_join',R.join.member&&R.join.loops.length===0&&/\bon\b/.test(R.join.cls)&&/\bauto\b|\bsounding\b/.test(R.join.cls));
 await pg.tap(tile(b2));await wait(400);ok('auto_leave',!(await pg.evaluate(id=>__studioDebug.member(id),b2)));
 // 環境の録音のタイルは環境層のオン／オフ
-await pg.evaluate(()=>__studioDebug.showAll(true));await pg.tap(tile(land));await wait(400);R.field={id:land,level:await pg.evaluate(id=>__studioDebug.fieldLevel(id),land)};
-await pg.tap(tile(land));await wait(300);R.field.off=await pg.evaluate(id=>__studioDebug.fieldLevel(id),land);ok('auto_field',R.field.level>0&&R.field.off===0);await pg.evaluate(()=>__studioDebug.showAll(false));
+await pg.evaluate(id=>{__studioDebug.showAll(true);__studioDebug.setTab(document.querySelector('#ambSection .tile[data-id="'+id+'"]')?'ambience':'creatures')},land);await pg.tap(tile(land));await wait(400);R.field={id:land,level:await pg.evaluate(id=>__studioDebug.fieldLevel(id),land)};
+await pg.tap(tile(land));await wait(300);R.field.off=await pg.evaluate(id=>__studioDebug.fieldLevel(id),land);ok('auto_field',R.field.level>0&&R.field.off===0);await pg.evaluate(()=>{__studioDebug.showAll(false);__studioDebug.setTab('creatures')});
 // 詳細シート：自律演奏のときの音量・休息（一覧から移した設定）
 await pg.click('#tileSection .tile[data-id="'+b1+'"] .tileInfo');await wait(300);
-R.sheet={auto:await pg.evaluate(()=>!document.getElementById('sheetAuto').hidden),rest:await pg.evaluate(()=>!document.getElementById('sheetRestRow').hidden)};
-await pg.fill('#sheetRest','40');await pg.dispatchEvent('#sheetRest','input');await pg.fill('#sheetAutoLvl','33');await pg.dispatchEvent('#sheetAutoLvl','input');
+// v0.49：音量はループ・自律演奏で共通（#sheetVol）、休みは選ぶ（#sheetRestBox）
+R.sheet={auto:true,rest:await pg.evaluate(()=>!document.getElementById('sheetRestRow').hidden)};
+await pg.selectOption('#sheetRestBox select','60');await pg.fill('#sheetVol','66');await pg.dispatchEvent('#sheetVol','input');
 R.sheet.set=await pg.evaluate(id=>({rest:__bioDebug.settings[id].rest,level:__bioDebug.settings[id].level}),b1);await pg.keyboard.press('Escape');
-ok('sheet_auto',R.sheet.auto&&R.sheet.rest&&R.sheet.set.rest===40&&R.sheet.set.level===33);
+ok('sheet_auto',R.sheet.auto&&R.sheet.rest&&R.sheet.set.rest===60&&R.sheet.set.level===33);
 // 6. 実録音の楽器層：フルート・ハーモニクスは無し、低音6・打撃5を追加
-R.layers=await pg.evaluate(()=>({touch:[...document.querySelectorAll('#touchVoice option')].map(o=>o.value),music:[...document.querySelectorAll('#musicControls input')].map(i=>i.id.slice(6)),low:[...document.querySelectorAll('#lowControls input')].map(i=>i.id.slice(6)),rhy:[...document.querySelectorAll('#rhythmControls input')].map(i=>i.id.slice(6))}));
+R.layers=await pg.evaluate(()=>({touch:[...document.querySelectorAll('#touchVoice option')].map(o=>o.value),music:[1].flatMap(n=>['instrBody','synthBody'].flatMap(b=>[...document.querySelectorAll('#'+b+' .layerSub')[n].querySelectorAll('input')])).map(i=>i.id.slice(6)),low:[...document.querySelectorAll('#instrBody .layerSub')[0].querySelectorAll('input')].map(i=>i.id.slice(6)),rhy:[...document.querySelectorAll('#instrBody .layerSub')[2].querySelectorAll('input')].map(i=>i.id.slice(6))}));
 ok('no_flute_harmonics',!R.layers.touch.some(k=>/flute|harmonics/.test(k))&&!R.layers.music.some(k=>/flute|harmonics/.test(k)));
 ok('new_layers',['didge','organPedal','timpaniRoll','gong','pianoLow','natureLow'].every(k=>R.layers.low.includes(k))&&['frameDrum','cajon','darbuka','slitDrum','conga'].every(k=>R.layers.rhy.includes(k)));
 R.inst=await pg.evaluate(()=>{const s=JSON.parse(document.getElementById('ae-instruments').textContent).filter(x=>x.added==='v0.45');return {n:s.length,cc0:s.every(x=>x.license==='CC0 1.0'&&/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/.test(x.url)),kinds:[...new Set(s.map(x=>x.kind))]}});ok('instrument_ledger',R.inst.n===37&&R.inst.cc0&&R.inst.kinds.length===10);
@@ -65,7 +66,7 @@ await pg.click('#tileStopAll');await wait(900);R.stop={auto:await pg.getAttribut
 await pg.click('#langToggle');await wait(500);
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
 R.en={title:await pg.textContent('#tileTitle'),nav:await pg.evaluate(()=>[...document.querySelectorAll('.jump a')].map(a=>a.textContent).join('|')),low:await pg.evaluate(()=>document.querySelector('label[for="param-didge"]').textContent)};
-ok('english',R.en.title==='Choose sounds'&&/Studio/.test(R.en.nav)&&R.en.low==='Didgeridoo (real recording)');
+ok('english',R.en.title==='Choose sounds'&&/Studio/.test(R.en.nav)&&R.en.low==='Didgeridoo'); // v0.49：楽器（実録音）の欄の中では「（実録音）」を省く
 await pg.click('#langToggle');await wait(300);
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 await pg.setViewportSize({width:1280,height:900});await wait(300);ok('overflow_desktop',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);

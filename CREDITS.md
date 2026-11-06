@@ -205,3 +205,30 @@ Versilian Community Sample Library (VCSL), CC0 1.0 — https://github.com/sgossn
 | conga-2 | コンガ | [Conga_HitFM_v1_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Conga_HitFM_v1_rr1_Sum.wav) |
 | conga-3 | コンガ | [Tumba_HitN_v2_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Tumba_HitN_v2_rr1_Sum.wav) |
 | conga-4 | コンガ | [Quinto_HitN_v1_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Quinto_HitN_v1_rr1_Sum.wav) |
+
+## v0.49 で追加した旋律楽器の実録音（VCSL・CC0 1.0）
+
+Versilian Community Sample Library (VCSL), CC0 1.0 — https://github.com/sgossner/VCSL (commit c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e)。表記は不要だが、Versilian Studios と各録音者への謝意として記載する。
+
+| ID | 楽器 | 原本 |
+|---|---|---|
+| kalimba-1 | カリンバ（ケニアのムビラ） | [Mbira6_Normal_MainSpirit_B3_k3_vl3_rr2.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Plucked%20Idiophones/Kalimba%2C%20Kenya/Mbira6_Normal_MainSpirit_B3_k3_vl3_rr2.wav) |
+| kalimba-2 | カリンバ（ケニアのムビラ） | [Mbira6_Normal_MainSpirit_C#4_k2_vl3_rr2.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Plucked%20Idiophones/Kalimba%2C%20Kenya/Mbira6_Normal_MainSpirit_C%234_k2_vl3_rr2.wav) |
+| kalimba-3 | カリンバ（ケニアのムビラ） | [Mbira6_Normal_MainSpirit_D#4_k13_vl3_rr2.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Plucked%20Idiophones/Kalimba%2C%20Kenya/Mbira6_Normal_MainSpirit_D%234_k13_vl3_rr2.wav) |
+| kalimba-4 | カリンバ（ケニアのムビラ） | [Mbira6_Normal_MainSpirit_F#4_k14_vl3_rr2.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Plucked%20Idiophones/Kalimba%2C%20Kenya/Mbira6_Normal_MainSpirit_F%234_k14_vl3_rr2.wav) |
+| kalimba-5 | カリンバ（ケニアのムビラ） | [Mbira6_Normal_MainSpirit_A4_k1_vl3_rr2.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Plucked%20Idiophones/Kalimba%2C%20Kenya/Mbira6_Normal_MainSpirit_A4_k1_vl3_rr2.wav) |
+| marimba-1 | マリンバ | [Marimba_hit_Outrigger_F3_med_01.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Marimba/Marimba_hit_Outrigger_F3_med_01.wav) |
+| marimba-2 | マリンバ | [Marimba_hit_Outrigger_C4_med_01.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Marimba/Marimba_hit_Outrigger_C4_med_01.wav) |
+| marimba-3 | マリンバ | [Marimba_hit_Outrigger_B4_med_01.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Marimba/Marimba_hit_Outrigger_B4_med_01.wav) |
+| marimba-4 | マリンバ | [Marimba_hit_Outrigger_F5_med_01.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Marimba/Marimba_hit_Outrigger_F5_med_01.wav) |
+| marimba-5 | マリンバ | [Marimba_hit_Outrigger_C6_med_01.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Marimba/Marimba_hit_Outrigger_C6_med_01.wav) |
+| tubularBells-1 | チューブラーベル | [TB_hit_C4_v2_1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Tubular%20Bells%202/TB_hit_C4_v2_1.wav) |
+| tubularBells-2 | チューブラーベル | [TB_hit_E4_v2_1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Tubular%20Bells%202/TB_hit_E4_v2_1.wav) |
+| tubularBells-3 | チューブラーベル | [TB_hit_G4_v2_1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Tubular%20Bells%202/TB_hit_G4_v2_1.wav) |
+| tubularBells-4 | チューブラーベル | [TB_hit_C5_v2_1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Tubular%20Bells%202/TB_hit_C5_v2_1.wav) |
+| tubularBells-5 | チューブラーベル | [TB_hit_E5_v2_1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Tubular%20Bells%202/TB_hit_E5_v2_1.wav) |
+| glockenspiel-1 | グロッケンシュピール | [glock_medium_G4_01.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Glockenspiel/glock_medium_G4_01.wav) |
+| glockenspiel-2 | グロッケンシュピール | [glock_medium_C5_01.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Glockenspiel/glock_medium_C5_01.wav) |
+| glockenspiel-3 | グロッケンシュピール | [glock_medium_G5_01.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Glockenspiel/glock_medium_G5_01.wav) |
+| glockenspiel-4 | グロッケンシュピール | [glock_medium_C6_01.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Glockenspiel/glock_medium_C6_01.wav) |
+| glockenspiel-5 | グロッケンシュピール | [glock_medium_G6_01.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Glockenspiel/glock_medium_G6_01.wav) |

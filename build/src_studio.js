@@ -649,6 +649,16 @@ function setSynthOff(v){synthOff=!!v;try{localStorage.setItem('saww.synthOff',sy
 function renderSynthOff(){const c=$('synthOff');if(c)c.checked=synthOff;const sb=$('synthBody');if(sb)sb.classList.toggle('synthMuted',synthOff);
  const bd=$('synthOffBadge');if(bd)bd.hidden=!synthOff;const n=$('synthOffNote');if(n)n.textContent=synthOff?'合成音を止めています。楽器は実録音だけで鳴ります（つまみの値はそのまま。切ると元に戻ります）。':''}
 window.__synthOff={get:()=>synthOff,set:setSynthOff};
+// v0.52 合成音・楽器の層の設定（合成音を鳴らさない・合成音の密度・楽器の密度）をプリセットに保存する（バックログ C の残り②）。
+// 書き出しは layers:{synthOff,synthBoost,instrBoost}。読み込みは parse（検査のみ）→ apply（反映）。layers のない古いプリセットでは、いまの設定を変えない。
+function setBoost(id,v){v=Math.round(Math.min(4,Math.max(.5,v))*10)/10;if(id==='synthBoost')synthBoost=v;else instrBoost=v;
+ const el=$(id);if(el){el.value=String(Math.round(v*100));const o=$(id+'V');if(o)o.textContent=el.value+'%'}try{localStorage.setItem('saww.boost',JSON.stringify({s:synthBoost,i:instrBoost}))}catch(e){}}
+window.__layerPreset={get:()=>({synthOff,synthBoost:Math.round(synthBoost*100)/100,instrBoost:Math.round(instrBoost*100)/100}),
+ parse:o=>{if(o===undefined)return null;if(!o||typeof o!=='object'||Array.isArray(o))throw Error('不正な層の設定');const r={};
+  if(o.synthOff!==undefined){if(typeof o.synthOff!=='boolean')throw Error('不正な層の設定');r.synthOff=o.synthOff}
+  for(const k of ['synthBoost','instrBoost'])if(o[k]!==undefined){if(typeof o[k]!=='number'||!Number.isFinite(o[k]))throw Error('不正な層の設定');r[k]=o[k]}return r},
+ apply:r=>{if(!r)return [];if(r.synthBoost!==undefined)setBoost('synthBoost',r.synthBoost);if(r.instrBoost!==undefined)setBoost('instrBoost',r.instrBoost);
+  if(r.synthOff!==undefined)setSynthOff(r.synthOff);return r.synthOff?['合成音を鳴らさない設定（楽器は実録音だけ）を読み込みました。']:[]}};
 function realOut(k,pan){const out=G(0),pn=ctx.createStereoPanner?ctx.createStereoPanner():G(1),wet=G(.2);if(pn.pan)pn.pan.value=pan||0;out.connect(pn);pn.connect(mixLane('music'));pn.connect(wet);wet.connect(mixLane('music','wet'));return {out,nodes:[out,pn,wet]}}
 function realPlay(k,meta,t,lvl,pan,rate){const b=instrumentBuffers.get(meta.id);if(!b)return false;
  if(realVoices.size>=12*boostCap()){const old=realVoices.values().next().value;try{old.env.gain.setTargetAtTime(0,ctx.currentTime,.03);old.src.stop(ctx.currentTime+.2)}catch(e){}realVoices.delete(old)}

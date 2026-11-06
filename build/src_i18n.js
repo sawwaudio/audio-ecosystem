@@ -175,7 +175,9 @@ const EXACT={
 '無限に回るつまみ（エンコーダー・ジョグ）は、一覧の「動き方」で相対の方式を選んでください（機器の説明書に書かれている方式。迷ったら「相対（2の補数）」から試す）。ソフトテイクオーバーを入れると、MIDI のつまみの位置と画面の値がずれている時に、値が急に飛びません。':'For endless knobs (encoders, jog wheels), choose a relative mode under “Mode” in the list (the one given in your device’s manual; if unsure, try “Relative (two’s complement)” first). With soft takeover on, values do not jump when the position of a MIDI knob differs from the on-screen value.',
 // v0.51 合成音を鳴らさない（楽器は実録音だけ）
 '合成音を鳴らさない（楽器は実録音だけ）':'Mute synth sounds (instruments from real recordings only)','停止中':'Muted',
-'合成音を止めています。楽器は実録音だけで鳴ります（つまみの値はそのまま。切ると元に戻ります）。':'Synth sounds are muted. Instruments play from real recordings only (slider values are kept; turn this off to restore them).'
+'合成音を止めています。楽器は実録音だけで鳴ります（つまみの値はそのまま。切ると元に戻ります）。':'Synth sounds are muted. Instruments play from real recordings only (slider values are kept; turn this off to restore them).',
+// v0.52 層の設定（合成音を鳴らさない・密度）をプリセットに保存
+'不正な層の設定':'Invalid layer setting','合成音を鳴らさない設定（楽器は実録音だけ）を読み込みました。':'Loaded the “mute synth sounds” setting (instruments from real recordings only).'
 };
 // 合成のみの種（録音データに英名がないもの）
 const EXTRA_NAMES={'サヨナキドリ':'Common nightingale','カッコウ':'Common cuckoo','ミソサザイ':'Eurasian wren','モリフクロウ':'Tawny owl','アマガエル':'Japanese tree frog','シカ':'Sika deer','オオカミ':'Grey wolf','ザトウクジラ':'Humpback whale','イルカ':'Bottlenose dolphin','キツネ':'Red fox',

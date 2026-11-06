@@ -168,7 +168,11 @@ const EXACT={
 '割り当てたい操作部（つまみ・フェーダー・パッド・ボタン）を押してください。':'Press the control you want to map (knob, fader, pad or button).','つまみ・フェーダーには、MIDI のつまみかフェーダー（CC）を動かしてください。':'For knobs and faders, move a MIDI knob or fader (CC).',
 'この操作部は割り当てられません。':'This control can’t be mapped.','学習を終えました。':'Learning finished.','割り当てをすべて消しました。':'All mappings cleared.',
 'MIDI 機器（DJ コントローラ・キーボード・パッドなど）のつまみ・フェーダー・パッドで、ミキサー・BEAT FX・サンプラーを操作できます。「割り当てを学習」を押し、画面の操作部を押してから、MIDI 機器のつまみやパッドを動かすと割り当てられます。':'Control the mixer, BEAT FX and sampler with the knobs, faders and pads of a MIDI device (DJ controller, keyboard, pad controller…). Press “Learn mapping”, press a control on screen, then move a knob or hit a pad on your MIDI device to map it.',
-'割り当てはこの端末のブラウザにだけ保存され、外部へは送信しません。Web MIDI に対応したブラウザ（パソコンの Chrome・Edge など）で使えます。':'Mappings are saved only in this browser on this device and are never sent anywhere. Works in browsers that support Web MIDI (e.g. Chrome or Edge on a computer).'
+'割り当てはこの端末のブラウザにだけ保存され、外部へは送信しません。Web MIDI に対応したブラウザ（パソコンの Chrome・Edge など）で使えます。':'Mappings are saved only in this browser on this device and are never sent anywhere. Works in browsers that support Web MIDI (e.g. Chrome or Edge on a computer).',
+// v0.50 MIDI の相対エンコーダー・ソフトテイクオーバー（ミキサー M5 の残り）
+'動き方':'Mode','絶対値':'Absolute','相対（2の補数）':'Relative (two’s complement)','相対（64が中央）':'Relative (64 = centre)','相対（符号ビット）':'Relative (sign bit)',
+'ソフトテイクオーバー（MIDI のつまみが画面の値を通るまで動かさない）':'Soft takeover (ignore a MIDI knob until it passes the on-screen value)',
+'無限に回るつまみ（エンコーダー・ジョグ）は、一覧の「動き方」で相対の方式を選んでください（機器の説明書に書かれている方式。迷ったら「相対（2の補数）」から試す）。ソフトテイクオーバーを入れると、MIDI のつまみの位置と画面の値がずれている時に、値が急に飛びません。':'For endless knobs (encoders, jog wheels), choose a relative mode under “Mode” in the list (the one given in your device’s manual; if unsure, try “Relative (two’s complement)” first). With soft takeover on, values do not jump when the position of a MIDI knob differs from the on-screen value.'
 };
 // 合成のみの種（録音データに英名がないもの）
 const EXTRA_NAMES={'サヨナキドリ':'Common nightingale','カッコウ':'Common cuckoo','ミソサザイ':'Eurasian wren','モリフクロウ':'Tawny owl','アマガエル':'Japanese tree frog','シカ':'Sika deer','オオカミ':'Grey wolf','ザトウクジラ':'Humpback whale','イルカ':'Bottlenose dolphin','キツネ':'Red fox',
@@ -178,6 +182,7 @@ const NAMES=Object.assign({},EXTRA_NAMES),LATIN={};
 try{const recs=JSON.parse(document.getElementById('ae-recordings').textContent),meta=JSON.parse(document.getElementById('ae-wildlife-meta').textContent);
  for(const r of recs){const en=meta[r.id]&&meta[r.id].en;if(en){NAMES[r.jp]=en;if(r.latin)LATIN[r.latin]=en}}}catch(e){}
 const RULES=[
+ [/^ソフトテイクオーバー：MIDI のつまみを画面の値（(\d+)%）まで動かすと操作できます。$/,m=>'Soft takeover: move the MIDI knob to the on-screen value ('+m[1]+'%) to take control.'],
  [/^接続中の MIDI 入力：(.+)$/,m=>'Connected MIDI input: '+m[1].replace(/、/g,', ')],[/^ノート (\d+) · ch(\d+)$/,m=>'Note '+m[1]+' · ch'+m[2]],[/^ピッチベンド · ch(\d+)$/,m=>'Pitch bend · ch'+m[1]],
  [/^「(.+)」に割り当てます。MIDI のつまみ・フェーダーかパッド・ボタンを動かしてください。$/,m=>'Mapping to “'+tr(m[1])+'”. Move a MIDI knob, fader, pad or button.'],[/^「(.+)」に (.+) を割り当てました。$/,m=>'Mapped '+tr(m[2])+' to “'+tr(m[1])+'”.'],
  [/^FLAC (\d+)-bit（可逆圧縮）$/,m=>'FLAC '+m[1]+'-bit (lossless)'],

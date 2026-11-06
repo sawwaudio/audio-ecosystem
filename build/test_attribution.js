@@ -15,7 +15,7 @@ await pg.evaluate(async()=>{await __audioEcosystemDebug.startRecord()});
 await pg.waitForTimeout(6000);
 const used=await pg.evaluate(()=>__audioEcosystemDebug.attribution().used.map(u=>u.kind+':'+u.id));R.used=used;
 ok('used_tracked',used.length>=1&&used.some(u=>/^recording:(cicada|tsukutsukuboshi)$/.test(u)));
-await pg.click('#stopRecord');
+await pg.evaluate(()=>document.getElementById('tracksSection').open=true);await pg.click('#stopRecord');
 const d=await dl;R.wavName=d.suggestedFilename();ok('wav_name',/^saww_audio_ecosystem_.*\.wav$/.test(R.wavName));
 const fs=require('fs');const buf=fs.readFileSync(await d.path());
 // RIFF を走査
@@ -36,9 +36,9 @@ R.summary=await pg.textContent('#recordCreditsSummary');
 const dl2=pg.waitForEvent('download');await pg.click('#recordCreditsSave');const d2=await dl2;R.txtName=d2.suggestedFilename();
 const txt=fs.readFileSync(await d2.path(),'utf8');ok('txt_saved',/_credits\.txt$/.test(R.txtName)&&txt.includes('Σ64')&&txt===('﻿'+icmt));
 // 全素材の帰属表示（41録音＋15楽器）
-await pg.evaluate(()=>{document.getElementById('realRecordings').open=true;document.querySelectorAll('#realRecordings details').forEach(d=>d.open=true)});
+await pg.evaluate(()=>{document.getElementById('creditsPanel').open=true});
 const dl3=pg.waitForEvent('download');await pg.click('#creditsAttribution');const d3=await dl3;const lib=fs.readFileSync(await d3.path(),'utf8');
-R.libLines=lib.split('\r\n').filter(l=>/^\d+\. /.test(l)).length;ok('library_142',R.libLines===142);  // v0.38：録音127＋楽器15
+R.libLines=lib.split('\r\n').filter(l=>/^\d+\. /.test(l)).length;ok('library_179',R.libLines===179);  // v0.45：録音127＋楽器52（v0.38 の15＋VCSL の打楽器・低音37）
 // 英語表示
 await pg.click('#langToggle');await pg.waitForTimeout(300);R.summaryEn=await pg.textContent('#recordCreditsSummary');
 ok('summary_en',/^Credits for this capture: \d+ source\(s\) \(\d+ require attribution\)$/.test(R.summaryEn));

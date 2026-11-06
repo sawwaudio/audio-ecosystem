@@ -9,8 +9,9 @@ const wait=ms=>pg.waitForTimeout(ms);const peak=async ch=>pg.evaluate(async ch=>
 await pg.goto('http://localhost:8765/index.html');await wait(900);
 // 1. 名称・画面の順番
 R.brand=await pg.evaluate(()=>({title:document.title,h1:document.querySelector('header h1').textContent,tiles:document.getElementById('tileSection').getBoundingClientRect().top<document.getElementById('sourceSection').getBoundingClientRect().top}));
-ok('brand',R.brand.h1==='saww audio ecosystem'&&/^saww audio ecosystem v0\.43/.test(R.brand.title)&&R.brand.tiles);
-// 2. 写真と音の対応（学名の完全一致だけ）
+ok('brand',R.brand.h1==='saww audio ecosystem'&&/^saww audio ecosystem v0\.4\d/.test(R.brand.title)&&R.brand.tiles);
+// 2. 写真と音の対応（学名の完全一致だけ）。v0.45 から最初は12枚だけ見せるので、すべて表示してから数える
+await pg.evaluate(()=>__studioDebug.showAll(true));
 R.map=await pg.evaluate(()=>{const photos=JSON.parse(document.getElementById('ae-photos').textContent);const recs=JSON.parse(document.getElementById('ae-recordings').textContent);const bad=[],withPhoto=[];
  for(const r of recs){const p=__studioDebug.photoFor(r.id),b=__studioDebug.binomial(r.latin);if(p){withPhoto.push(r.id);if(!b||p.latin!==b||photos[b].file!==p.file)bad.push(r.id)}else if(b&&photos[b])bad.push('missing:'+r.id)
   if(p&&!/^(CC0|Public domain|CC BY \d)/.test(p.license))bad.push('license:'+r.id);if(p&&/SA|NC|ND/.test(p.license))bad.push('license:'+r.id)}
@@ -84,7 +85,7 @@ if(OUT)for(const tpl of ['minimal','waveform','wildlife']){await pg.selectOption
 await pg.evaluate(()=>__studioDebug.stopAll());await pg.evaluate(()=>__rightsDebug.set('all'));
 // 10. プラン：FREE / PRO（USD・提案価格・課金なし）・PRO の印
 R.plans=await pg.evaluate(()=>({cards:[...document.querySelectorAll('.planCard')].map(c=>c.querySelector('.planName').textContent+' '+c.querySelector('.planPrice').textContent),alt:document.querySelector('.plan-pro > .micro:not(.planNote)')?.textContent,rows:document.querySelectorAll('.planTable tbody tr').length,chips:[...document.querySelectorAll('[data-tier="pro"]')].filter(n=>n.querySelector('.proChip')).length,ent:__studioDebug.entitlement().enforce,pay:!!document.querySelector('#plansSection input, #plansSection form, script[src*="stripe"]')}));
-ok('plans',R.plans.cards.join('|')==='FREE $0 forever|PRO $9.99 USD / month'&&R.plans.alt==='$99 USD / year'&&R.plans.rows>=10&&R.plans.chips===4&&R.plans.ent===false&&!R.plans.pay);
+ok('plans',R.plans.cards.join('|')==='FREE $0 forever|PRO $9.99 USD / month'&&R.plans.alt==='$99 USD / year'&&R.plans.rows>=10&&R.plans.chips===3&&R.plans.ent===false&&!R.plans.pay);
 // 11. 英語表示・画面幅
 await pg.click('#langToggle');await wait(500);R.en=await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return {un:__i18n.untranslated().filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x)&&!/^@?(aria-label=)?(mic|bounce|import):|マイク録音|出音の録音|user_tone/.test(x)),filter:document.querySelector('#tileFilters button').textContent,h2:document.getElementById('tileTitle').textContent}});
 ok('english',R.en.un.length===0&&R.en.filter==='All');await pg.click('#langToggle');await wait(300);

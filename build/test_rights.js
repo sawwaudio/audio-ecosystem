@@ -26,7 +26,7 @@ ok('nosa_no_BYSA_bio',[...heard].every(x=>tierOf[x]!=='C'));ok('nosa_no_BYSA_fie
 ok('nosa_still_plays',heard.size>=1&&fields.size>=1);
 R.signal=await pg.evaluate(()=>__bioDebug.signal());ok('nonsilent',R.signal.rms>1e-4);
 R.result=await pg.textContent('#rightsResult');ok('result_text',R.result.includes('使える実録音 110/127件')&&R.result.includes('対象外の17件'));
-await pg.click('#stopRecord');const d=await dl;const buf=fs.readFileSync(await d.path());
+await pg.evaluate(()=>document.getElementById('tracksSection').open=true);await pg.click('#stopRecord');const d=await dl;const buf=fs.readFileSync(await d.path());
 const icmt=(()=>{let o=12;while(o+8<=buf.length){const id=buf.toString('ascii',o,o+4),sz=buf.readUInt32LE(o+4);if(id==='LIST'){let p=o+12;while(p+8<=o+8+sz){const k=buf.toString('ascii',p,p+4),n=buf.readUInt32LE(p+4);if(k==='ICMT')return buf.toString('utf8',p+8,p+8+n);p+=8+n+(n%2)}}o+=8+sz+(sz%2)}return ''})();
 R.icmtHead=icmt.split('\r\n').slice(0,5);
 ok('wav_mode_line',icmt.includes('商用モード / Commercial mode: BY-SAを除く（販売・リール用）'));

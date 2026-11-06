@@ -10,4 +10,4 @@ const h=await pg.evaluate(()=>__bioDebug.history().map(x=>x.id));const allowed=a
 console.log('played',[...new Set(h)].join(','),'outside filter:',h.filter(x=>!allowed.includes(x)));
 console.log('fields playing',await pg.evaluate(()=>document.getElementById('fieldStatus').textContent));
 console.log('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth),'errs',errs);
-await pg.locator('#geoPanel').screenshot({path:'shot_geo.png'});await b.close()})();
+await pg.evaluate(()=>{document.getElementById('comboPanel').open=true;document.getElementById('geoPanel').open=true});await pg.locator('#geoPanel').screenshot({path:'shot_geo.png'});await b.close()})();

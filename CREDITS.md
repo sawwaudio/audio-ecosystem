@@ -161,3 +161,47 @@ Versilian Community Sample Library (VCSL), CC0 1.0 — https://github.com/sgossn
 | vibes-62 | [Vibes_soft_D4_v1_rr1_Main.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Vibraphone/Soft%20Mallets/Vibes_soft_D4_v1_rr1_Main.wav) |
 | vibes-65 | [Vibes_soft_F4_v1_rr1_Main.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Vibraphone/Soft%20Mallets/Vibes_soft_F4_v1_rr1_Main.wav) |
 | vibes-55 | [Vibes_soft_G3_v1_rr1_Main.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Vibraphone/Soft%20Mallets/Vibes_soft_G3_v1_rr1_Main.wav) |
+
+## v0.45 で追加した楽器の実録音（VCSL・CC0 1.0）
+
+Versilian Community Sample Library (VCSL), CC0 1.0 — https://github.com/sgossner/VCSL (commit c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e)。表記は不要だが、Versilian Studios と各録音者への謝意として記載する。パイプオルガンは Simon Dalzell（Ivy Audio）の収録。
+
+| ID | 楽器 | 原本 |
+|---|---|---|
+| didge-1 | ディジュリドゥ | [Didgeridoo1_Sus2_Main.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Lip%20Aerophones/Didgeridoo/Didgeridoo1_Sus2_Main.wav) |
+| didge-2 | ディジュリドゥ | [Didgeridoo1_Sus3_Main.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Lip%20Aerophones/Didgeridoo/Didgeridoo1_Sus3_Main.wav) |
+| didge-3 | ディジュリドゥ | [Didgeridoo1_Sus8_Main.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Lip%20Aerophones/Didgeridoo/Didgeridoo1_Sus8_Main.wav) |
+| organPedal-1 | パイプオルガン（ペダル） | [NT5_PedalQuiet_C1_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Edge-blown%20Aerophones/Pipe%20Organ/Quiet%20Pedal/NT5_PedalQuiet_C1_rr1.wav) |
+| organPedal-2 | パイプオルガン（ペダル） | [NT5_PedalQuiet_D#1_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Edge-blown%20Aerophones/Pipe%20Organ/Quiet%20Pedal/NT5_PedalQuiet_D%231_rr1.wav) |
+| organPedal-3 | パイプオルガン（ペダル） | [NT5_PedalQuiet_F#1_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Edge-blown%20Aerophones/Pipe%20Organ/Quiet%20Pedal/NT5_PedalQuiet_F%231_rr1.wav) |
+| organPedal-4 | パイプオルガン（ペダル） | [NT5_PedalQuiet_A1_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Aerophones/Edge-blown%20Aerophones/Pipe%20Organ/Quiet%20Pedal/NT5_PedalQuiet_A1_rr1.wav) |
+| timpaniRoll-1 | ティンパニのロール | [Timpani1_Roll_v3_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Timpani%201/Roll/Timpani1_Roll_v3_rr1_Sum.wav) |
+| timpaniRoll-2 | ティンパニのロール | [Timpani3_Roll_v3_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Timpani%201/Roll/Timpani3_Roll_v3_rr1_Sum.wav) |
+| timpaniRoll-3 | ティンパニのロール | [Timpani5_Roll_v2_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Timpani%201/Roll/Timpani5_Roll_v2_rr1_Sum.wav) |
+| gong-1 | ゴング | [gong_p.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Gong%201/gong_p.wav) |
+| gong-2 | ゴング | [gong_mf.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Gong%201/gong_mf.wav) |
+| gong-3 | ゴング | [gong_2_mp.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Gong%201/gong_2_mp.wav) |
+| pianoLow-1 | グランドピアノ（最低音域） | [JHPiano_Sus_Close_A#0_vl3_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Steinway%20B/Sus/JHPiano_Sus_Close_A%230_vl3_rr1.wav) |
+| pianoLow-2 | グランドピアノ（最低音域） | [JHPiano_Sus_Close_C1_vl3_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Steinway%20B/Sus/JHPiano_Sus_Close_C1_vl3_rr1.wav) |
+| pianoLow-3 | グランドピアノ（最低音域） | [JHPiano_Sus_Close_F#1_vl3_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Steinway%20B/Sus/JHPiano_Sus_Close_F%231_vl3_rr1.wav) |
+| pianoLow-4 | グランドピアノ（最低音域） | [JHPiano_Sus_Close_C2_vl3_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Chordophones/Zithers/Grand%20Piano%2C%20Steinway%20B/Sus/JHPiano_Sus_Close_C2_vl3_rr1.wav) |
+| frameDrum-1 | フレームドラム | [HDrumL_Hit_v2_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Frame%20Drum/HDrumL_Hit_v2_rr1_Sum.wav) |
+| frameDrum-2 | フレームドラム | [HDrumL_Hit_v3_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Frame%20Drum/HDrumL_Hit_v3_rr1_Sum.wav) |
+| frameDrum-3 | フレームドラム | [HDrumL_HitMuted_v2_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Frame%20Drum/HDrumL_HitMuted_v2_rr1_Sum.wav) |
+| frameDrum-4 | フレームドラム | [HDrumS_Hit_v2_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Frame%20Drum/HDrumS_Hit_v2_rr1_Sum.wav) |
+| cajon-1 | カホン | [Cajon_hit1_mp_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit1_mp_rr1.wav) |
+| cajon-2 | カホン | [Cajon_hit2_mp_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit2_mp_rr1.wav) |
+| cajon-3 | カホン | [Cajon_hit3_mp_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit3_mp_rr1.wav) |
+| cajon-4 | カホン | [Cajon_hit1_f_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Cajon/Cajon_hit1_f_rr1.wav) |
+| darbuka-1 | ダルブッカ | [Darbuka_1_hit_vl1_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Darbuka/Darbuka_1_hit_vl1_rr1.wav) |
+| darbuka-2 | ダルブッカ | [Darbuka_2_hit_vl1_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Darbuka/Darbuka_2_hit_vl1_rr1.wav) |
+| darbuka-3 | ダルブッカ | [Darbuka_3_hit_vl2_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Darbuka/Darbuka_3_hit_vl2_rr1.wav) |
+| darbuka-4 | ダルブッカ | [Darbuka_4_hit_vl1_rr1.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Darbuka/Darbuka_4_hit_vl1_rr1.wav) |
+| slitDrum-1 | スリットドラム | [LogDrumLo_MedM_v1_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Slit%20Drum/LogDrumLo_MedM_v1_rr1_Sum.wav) |
+| slitDrum-2 | スリットドラム | [LogDrumLo_MedM_v2_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Slit%20Drum/LogDrumLo_MedM_v2_rr1_Sum.wav) |
+| slitDrum-3 | スリットドラム | [LogDrumHi_MedM_v1_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Slit%20Drum/LogDrumHi_MedM_v1_rr1_Sum.wav) |
+| slitDrum-4 | スリットドラム | [LogDrumHi_MedM_v2_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Idiophones/Struck%20Idiophones/Slit%20Drum/LogDrumHi_MedM_v2_rr1_Sum.wav) |
+| conga-1 | コンガ | [Conga_HitN_v1_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Conga_HitN_v1_rr1_Sum.wav) |
+| conga-2 | コンガ | [Conga_HitFM_v1_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Conga_HitFM_v1_rr1_Sum.wav) |
+| conga-3 | コンガ | [Tumba_HitN_v2_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Tumba_HitN_v2_rr1_Sum.wav) |
+| conga-4 | コンガ | [Quinto_HitN_v1_rr1_Sum.wav](https://raw.githubusercontent.com/sgossner/VCSL/c1ea7bcc3c7309650ab0da9d15c9cd1fbc4a4c7e/Membranophones/Struck%20Membranophones/Conga/Quinto_HitN_v1_rr1_Sum.wav) |

@@ -13,7 +13,7 @@ R.hist=await pg.evaluate(()=>__bioDebug.history().map(h=>h.id));
 ok('some_played',R.hist.length>=1);ok('no_synth_played',R.hist.every(id=>!synthIds.includes(id)));
 ok('pool_no_synth',await pg.evaluate(ids=>__bioDebug.candidatePool().every(x=>!ids.includes(x.id)),synthIds));
 // タッチ演奏は従来どおり動く（ハープは実録音）
-ok('touch_voices',await pg.evaluate(()=>document.querySelectorAll('#touchVoice option').length===8));
+ok('touch_voices',await pg.evaluate(()=>document.querySelectorAll('#touchVoice option').length===6));
 await pg.click('#langToggle');await pg.waitForTimeout(400);
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);

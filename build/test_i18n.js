@@ -10,13 +10,13 @@ const snap=()=>pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>
 await snap();await pg.waitForTimeout(300);const ja1=await snap();
 await pg.click('#langToggle');await pg.waitForTimeout(200);
 ok('switched_en',await pg.evaluate(()=>__i18n.get()==='en'&&document.documentElement.lang==='en'&&document.getElementById('langToggle').textContent==='日本語'));
-for(const t of ['birds','insects','animals','landscape']){await pg.click(`#bioTabs [data-tab="${t}"]`);await pg.waitForTimeout(150)}
+for(const t of ['birds','insects','animals','landscape']){await pg.evaluate(t=>document.querySelector(`#bioTabs [data-tab="${t}"]`).click(),t);await pg.waitForTimeout(150)} // v0.45：生き物の一覧は画面から外した（処理は動く）
 let un=(await pg.evaluate(()=>__i18n.untranslated())).filter(x=>!ALLOW.includes(x));R.untranslated_static=un;ok('static_all_en',un.length===0);
 ok('play_label_en',(await pg.textContent('#play')).includes('Start autonomous play'));
 await pg.click('#play');await pg.waitForTimeout(6000);
 ok('autoplay_running',await pg.evaluate(()=>__audioEcosystemDebug.getState().audioState==='running'));
 ok('pause_label_en',(await pg.textContent('#play')).includes('Pause'));
-await pg.selectOption('#geoRegion','japan');await pg.waitForTimeout(400);
+await pg.evaluate(()=>{document.getElementById('comboPanel').open=true;document.getElementById('geoPanel').open=true});await pg.selectOption('#geoRegion','japan');await pg.waitForTimeout(400);
 for(const m of ['compat','pcm']){await pg.selectOption('#sourceMode',m);await pg.evaluate(async()=>__bioDebug.playSpecies('blackbird',true))}
 await pg.waitForTimeout(800);
 un=(await pg.evaluate(()=>__i18n.untranslated())).filter(x=>!ALLOW.includes(x));R.untranslated_dynamic=un;ok('dynamic_all_en',un.length===0);
@@ -38,7 +38,7 @@ await pg.goto('http://localhost:8765/index.html?lang=en');await pg.waitForTimeou
 await pg.evaluate(()=>__i18n.set('ja'));
 // 既存機能の維持（25レイヤー・8音色・15楽器）
 const st=await pg.evaluate(()=>({layers:__audioEcosystemDebug.getState().layerCount,voices:document.querySelectorAll('#touchVoice option').length,audition:document.querySelectorAll('#auditionButtons button').length,real:document.querySelectorAll('#realButtons button').length,instr:__sourceDebug.instruments()}));
-R.state=st;ok('layers25',st.layers===25);ok('voices8',st.voices===8);ok('audition25',st.audition===25);
+R.state=st;ok('layers34',st.layers===34);ok('voices6',st.voices===6);ok('audition34',st.audition===34); // v0.45：フルート・ハーモニクスを外し、実録音の低音6・打撃5を追加
 ok('overflow_ja',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 // 一覧（＋区切り）の末尾に地名付きの名前が来ても全体を訳す（v0.26で修正した不具合）
 R.listTr=await pg.evaluate(()=>__i18n.t('ホトトギス ＋ 秋の虫の合唱 II（兵庫） ＋ ヒヨドリ（伊豆）'));ok('list_tail_name',R.listTr==='Lesser cuckoo + Autumn insect chorus II + Brown-eared bulbul');

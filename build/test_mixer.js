@@ -6,7 +6,7 @@ const R={},fail=[];const ok=(k,c)=>{R[k+'_ok']=!!c;if(!c)fail.push(k)};
 await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
 // 画面：4チャンネル、タッチ演奏より上
 R.ui=await pg.evaluate(()=>{const y=id=>document.getElementById(id).getBoundingClientRect().top+scrollY;return {strips:[...document.querySelectorAll('#mixGrid .mixStrip')].map(s=>s.dataset.ch),knobs:document.querySelectorAll('#mixGrid .knob').length,faders:document.querySelectorAll('#mixGrid .fader').length,mixer:y('mixerSection'),touch:y('touchSection')}});
-ok('four_channels',R.ui.strips.join()==='bio,field,music,sampler'&&R.ui.knobs===24&&R.ui.faders===4);ok('above_touch',R.ui.mixer<R.ui.touch);
+ok('four_channels',R.ui.strips.join()==='bio,field,music,sampler'&&R.ui.knobs===24&&R.ui.faders===4);ok('studio_after_perform',R.ui.mixer>R.ui.touch); // v0.45：04 スタジオは 03 演奏する（タッチ演奏を含む）の後
 // 周波数特性
 const F=[40,100,250,500,1000,2000,3000,6000,12000];
 const resp=s=>pg.evaluate(([s,F])=>__mixerDebug.response(s,F),[s,F]);

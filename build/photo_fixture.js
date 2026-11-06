@@ -1,10 +1,10 @@
 // テスト用：生き物の写真（Wikimedia Commons から表示時に読み込む）を、ネットワークに出ずに手元の試験画像で返す。
 // 写真の読み込み・キャンバスへの描画（CORS 付き）の経路を、オフラインの試験環境でも同じように通すため。
 // v0.47：Google Fonts（Dela Gothic One・M PLUS Rounded 1c）も外へ出さない。既定は空の CSS（端末の書体で表示）。
-//   環境変数 AE_FONT_DIR に @fontsource/dela-gothic-one と @fontsource/m-plus-rounded-1c を展開したフォルダを指定すると、本物の書体で表示する
+//   環境変数 AE_FONT_DIR に @fontsource の各書体（shippori-mincho-b1・zen-kaku-gothic-new・cormorant-garamond・dela-gothic-one・m-plus-rounded-1c）を展開したフォルダを指定すると、本物の書体で表示する
 //   （画面の確認・リールの書き出し用。npm pack で取得し、package/ の下に files/ と *.css がある形）。
-const fs=require('fs'),path=require('path');const body=fs.readFileSync(path.join(__dirname,'fixtures','photo_fixture.jpg'));
-function fontCss(dir){const pk=[['dela-gothic-one',['400']],['m-plus-rounded-1c',['500','700','800','900']]];let css='';
+const fs=require('fs'),path=require('path');const body=fs.readFileSync(process.env.AE_PHOTO||path.join(__dirname,'fixtures','photo_fixture.jpg')); // AE_PHOTO：画面確認用に別の試験画像を使う
+function fontCss(dir){const pk=[['dela-gothic-one',['400']],['m-plus-rounded-1c',['500','700','800','900']],['shippori-mincho-b1',['500','700']],['zen-kaku-gothic-new',['400','500','700']],['cormorant-garamond',['500-italic','600-italic']]];let css='';
  for(const [name,ws] of pk){const base=fs.readdirSync(dir).find(d=>d.includes(name));if(!base)continue;const pkg=path.join(dir,base,'package');
   for(const w of ws){const f=path.join(pkg,w+'.css');if(fs.existsSync(f))css+=fs.readFileSync(f,'utf8').replace(/url\(\.\/files\//g,'url(https://fonts.gstatic.com/fontsource/'+base+'/')}}return css}
 module.exports=async pg=>{await pg.route(/^https:\/\/(thumb|upload)\.wikimedia\.org\//,r=>r.fulfill({status:200,contentType:'image/jpeg',headers:{'access-control-allow-origin':'*','cache-control':'max-age=3600'},body}));

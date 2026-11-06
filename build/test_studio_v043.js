@@ -15,38 +15,38 @@ await pg.evaluate(()=>__studioDebug.showAll(true));
 R.map=await pg.evaluate(()=>{const photos=JSON.parse(document.getElementById('ae-photos').textContent);const recs=JSON.parse(document.getElementById('ae-recordings').textContent);const bad=[],withPhoto=[];
  for(const r of recs){const p=__studioDebug.photoFor(r.id),b=__studioDebug.binomial(r.latin);if(p){withPhoto.push(r.id);if(!b||p.latin!==b||photos[b].file!==p.file)bad.push(r.id)}else if(b&&photos[b])bad.push('missing:'+r.id)
   if(p&&!/^(CC0|Public domain|CC BY \d)/.test(p.license))bad.push('license:'+r.id);if(p&&/SA|NC|ND/.test(p.license))bad.push('license:'+r.id)}
- const tiles=[...document.querySelectorAll('#tileGrid .tile')];return {tiles:tiles.length,withPhoto:withPhoto.length,imgs:tiles.filter(t=>t.querySelector('img')).length,ph:tiles.filter(t=>t.querySelector('.ph')).length,bad,first:tiles.slice(0,3).map(t=>t.dataset.id)}});
+ const tiles=[...document.querySelectorAll('#tileSection .tile')];return {tiles:tiles.length,withPhoto:withPhoto.length,imgs:tiles.filter(t=>t.querySelector('img')).length,ph:tiles.filter(t=>t.querySelector('.ph')).length,bad,first:tiles.slice(0,3).map(t=>t.dataset.id)}});
 ok('tile_count',R.map.tiles===127&&R.map.imgs+R.map.ph===127);ok('photo_mapping',R.map.bad.length===0&&R.map.withPhoto>=30&&R.map.imgs===R.map.withPhoto);
 // 3. タップで再生・もう一度で停止・重ねる
-const t1=R.map.first[0],t2=await pg.evaluate(()=>[...document.querySelectorAll('#tileGrid .tile')].find(t=>t.dataset.group==='landscape').dataset.id);
-await pg.tap('#tileGrid .tile[data-id="'+t1+'"] .tilePlay');await wait(2500);
-R.play1={pressed:await pg.getAttribute('#tileGrid .tile[data-id="'+t1+'"] .tilePlay','aria-pressed'),bio:await peak('bio'),playing:await pg.evaluate(()=>__studioDebug.playing()),auto:await pg.evaluate(()=>document.getElementById('statusBadge').textContent)};
+const t1=R.map.first[0],t2=await pg.evaluate(()=>[...document.querySelectorAll('#tileSection .tile')].find(t=>t.dataset.group==='ambience'&&__studioDebug.engineKind(t.dataset.id)==='field').dataset.id);
+await pg.tap('#tileSection .tile[data-id="'+t1+'"] .tilePlay');await wait(2500);
+R.play1={pressed:await pg.getAttribute('#tileSection .tile[data-id="'+t1+'"] .tilePlay','aria-pressed'),bio:await peak('bio'),playing:await pg.evaluate(()=>__studioDebug.playing()),auto:await pg.evaluate(()=>document.getElementById('statusBadge').textContent)};
 ok('tap_play',R.play1.pressed==='true'&&R.play1.bio>-80&&R.play1.playing.includes(t1));
-await pg.tap('#tileGrid .tile[data-id="'+t2+'"] .tilePlay');await wait(2500);R.layer={playing:await pg.evaluate(()=>__studioDebug.playing()),field:await peak('field')};ok('layer_two',R.layer.playing.length===2&&R.layer.field>-80);
-R.wave=await pg.evaluate(id=>{const c=document.querySelector('#tileGrid .tile[data-id="'+id+'"] .tileWave');const d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let n=0;for(let i=3;i<d.length;i+=4)if(d[i]>0)n++;return {lit:n,cls:c.closest('.tile').className}},t1);ok('playing_wave',R.wave.lit>20&&/\bon\b/.test(R.wave.cls));
-await pg.tap('#tileGrid .tile[data-id="'+t1+'"] .tilePlay');await wait(900);R.stop1={pressed:await pg.getAttribute('#tileGrid .tile[data-id="'+t1+'"] .tilePlay','aria-pressed'),bio:await peak('bio')};ok('tap_stop',R.stop1.pressed==='false'&&R.stop1.bio===-Infinity);
+await pg.tap('#tileSection .tile[data-id="'+t2+'"] .tilePlay');await wait(2500);R.layer={playing:await pg.evaluate(()=>__studioDebug.playing()),field:await peak('field')};ok('layer_two',R.layer.playing.length===2&&R.layer.field>-80);
+R.wave=await pg.evaluate(id=>{const c=document.querySelector('#tileSection .tile[data-id="'+id+'"] .tileWave');const d=c.getContext('2d').getImageData(0,0,c.width,c.height).data;let n=0;for(let i=3;i<d.length;i+=4)if(d[i]>0)n++;return {lit:n,cls:c.closest('.tile').className}},t1);ok('playing_wave',R.wave.lit>20&&/\bon\b/.test(R.wave.cls));
+await pg.tap('#tileSection .tile[data-id="'+t1+'"] .tilePlay');await wait(900);R.stop1={pressed:await pg.getAttribute('#tileSection .tile[data-id="'+t1+'"] .tilePlay','aria-pressed'),bio:await peak('bio')};ok('tap_stop',R.stop1.pressed==='false'&&R.stop1.bio===-Infinity);
 // 4. 長押しで詳細・音量・ループ。キーボード（Enter で再生、i で詳細、Esc で閉じる）
-const tb=await pg.locator('#tileGrid .tile[data-id="'+t1+'"] .tilePlay').boundingBox();await pg.mouse.move(tb.x+30,tb.y+30);await pg.mouse.down();await wait(700);await pg.mouse.up();await wait(200);
+const tb=await pg.locator('#tileSection .tile[data-id="'+t1+'"] .tilePlay').boundingBox();await pg.mouse.move(tb.x+30,tb.y+30);await pg.mouse.down();await wait(700);await pg.mouse.up();await wait(200);
 R.sheet=await pg.evaluate(()=>({open:document.getElementById('tileSheet').open,name:document.getElementById('sheetName').textContent,info:[...document.querySelectorAll('#sheetInfo dt')].map(d=>d.textContent),credit:document.getElementById('sheetPhotoCredit').textContent,playing:__studioDebug.playing()}));
 ok('long_press_sheet',R.sheet.open&&R.sheet.info.some(t=>/ライセンス/.test(t))&&R.sheet.info.some(t=>/録音地/.test(t))&&R.sheet.info.some(t=>/写真のライセンス/.test(t))&&!R.sheet.playing.includes(t1));
 await pg.click('#sheetPlay');await wait(1500);await pg.fill('#sheetVol','20');await pg.dispatchEvent('#sheetVol','input');await pg.uncheck('#sheetLoop');
 R.sheetCtl=await pg.evaluate(id=>__studioDebug.state(id),t1);ok('sheet_controls',R.sheetCtl.on&&R.sheetCtl.vol===20&&R.sheetCtl.loop===false);
 await pg.keyboard.press('Escape');await wait(200);R.sheetClosed=await pg.evaluate(()=>!document.getElementById('tileSheet').open);ok('sheet_close',R.sheetClosed);
 await pg.evaluate(()=>__studioDebug.stopAll());await wait(300);
-const t3=R.map.first[1];await pg.focus('#tileGrid .tile[data-id="'+t3+'"] .tilePlay');await pg.keyboard.press('Enter');await wait(1500);R.kbd={on:await pg.evaluate(id=>__studioDebug.state(id)?.on,t3)};await pg.keyboard.press('i');await wait(200);R.kbd.sheet=await pg.evaluate(()=>document.getElementById('tileSheet').open);await pg.keyboard.press('Escape');
-R.kbd.aria=await pg.evaluate(id=>{const t=document.querySelector('#tileGrid .tile[data-id="'+id+'"]');const lb=t.querySelector('.tileInfo').getAttribute('aria-labelledby').split(' ').map(x=>document.getElementById(x).textContent).join(' ');return {play:t.querySelector('.tilePlay').getAttribute('aria-label'),info:lb}},t3);
+const t3=R.map.first[1];await pg.focus('#tileSection .tile[data-id="'+t3+'"] .tilePlay');await pg.keyboard.press('Enter');await wait(1500);R.kbd={on:await pg.evaluate(id=>__studioDebug.state(id)?.on,t3)};await pg.keyboard.press('i');await wait(200);R.kbd.sheet=await pg.evaluate(()=>document.getElementById('tileSheet').open);await pg.keyboard.press('Escape');
+R.kbd.aria=await pg.evaluate(id=>{const t=document.querySelector('#tileSection .tile[data-id="'+id+'"]');const lb=t.querySelector('.tileInfo').getAttribute('aria-labelledby').split(' ').map(x=>document.getElementById(x).textContent).join(' ');return {play:t.querySelector('.tilePlay').getAttribute('aria-label'),info:lb}},t3);
 ok('keyboard',R.kbd.on&&R.kbd.sheet&&R.kbd.aria.play.length>0&&/^詳細 /.test(R.kbd.aria.info));await pg.evaluate(()=>__studioDebug.stopAll());await wait(300);
 // 5. 商用モード：BY-SA のタイルは対象外になったら止まり、薄く表示される（代用しない）
 const sa=await pg.evaluate(()=>{const recs=JSON.parse(document.getElementById('ae-recordings').textContent);return recs.find(r=>/BY-SA/.test(r.license)).id});
 await pg.evaluate(()=>__rightsDebug.set('all'));await pg.evaluate(id=>__studioDebug.start(id),sa);await wait(1500);const before=await pg.evaluate(id=>__studioDebug.state(id).on,sa);await pg.evaluate(()=>__rightsDebug.set('nosa'));await wait(800);
-R.rights={before,after:await pg.evaluate(id=>__studioDebug.state(id).on,sa),dim:await pg.evaluate(id=>document.querySelector('#tileGrid .tile[data-id="'+id+'"]').classList.contains('blocked'),sa)};ok('rights_stop',R.rights.before&&!R.rights.after&&R.rights.dim);await pg.evaluate(()=>__rightsDebug.set('all'));
+R.rights={before,after:await pg.evaluate(id=>__studioDebug.state(id).on,sa),dim:await pg.evaluate(id=>document.querySelector('#tileSection .tile[data-id="'+id+'"]').classList.contains('blocked'),sa)};ok('rights_stop',R.rights.before&&!R.rights.after&&R.rights.dim);await pg.evaluate(()=>__rightsDebug.set('all'));
 // 6. 自分の音（WAV・AIFF・MP3・M4A・FLAC）と画像
 await pg.setInputFiles('#tileUserFile',['wav','aiff','mp3','m4a','flac'].map(e=>path.join(FX,'user_tone.'+e)));await wait(2500);
-R.user=await pg.evaluate(()=>({ids:__studioDebug.users(),status:document.getElementById('tileStatus').textContent,shown:[...document.querySelectorAll('#tileGrid .tile')].map(t=>t.dataset.id)}));
+R.user=await pg.evaluate(()=>({ids:__studioDebug.users(),status:document.getElementById('tileStatus').textContent,shown:[...document.querySelectorAll('#tileSection .tile')].map(t=>t.dataset.id)}));
 R.formats=Object.fromEntries(['wav','aiff','mp3','m4a','flac'].map(e=>[e,R.user.ids.some(id=>id==='import:user_tone'||id.startsWith('import:user_tone'))]));
 ok('user_import',R.user.ids.length===5&&R.user.shown.length===5);
 const u1=R.user.ids[0];await pg.evaluate(id=>__studioDebug.open(id),u1);await pg.setInputFiles('#tileUserImage',path.join(FX,'photo_fixture.jpg'));await wait(500);
-R.userImg=await pg.evaluate(id=>({img:!!document.querySelector('#tileGrid .tile[data-id="'+CSS.escape(id)+'"] img'),sheet:!!document.querySelector('#sheetPhoto img')}),u1);await pg.keyboard.press('Escape');ok('user_image',R.userImg.img&&R.userImg.sheet);
+R.userImg=await pg.evaluate(id=>({img:!!document.querySelector('#tileSection .tile[data-id="'+CSS.escape(id)+'"] img'),sheet:!!document.querySelector('#sheetPhoto img')}),u1);await pg.keyboard.press('Escape');ok('user_image',R.userImg.img&&R.userImg.sheet);
 await pg.evaluate(id=>__studioDebug.start(id),u1);await wait(1200);R.userPlay=await peak('sampler');ok('user_play_sampler',R.userPlay>-60);await pg.evaluate(()=>__studioDebug.stopAll());await wait(400);
 // 7. マスター EQ：3つのつまみ。全部キルで出音が消え、戻すと鳴る
 R.meq=await pg.evaluate(()=>[...document.querySelectorAll('#mixMasterEq .knob')].map(k=>k.dataset.k+':'+k.getAttribute('aria-valuetext')));ok('master_eq_ui',R.meq.join()==='low:0,mid:0,hi:0');

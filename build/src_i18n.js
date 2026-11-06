@@ -104,7 +104,7 @@ const EXACT={
 '鳴っている音を整える → 切り取る → 重ねて書き出す、の順に並べています。':'Laid out in working order: shape what is playing → cut it → layer and export.','トラックと録音 / TRACKS':'TRACKS & RECORDING',
 'テスト公開中は、すべての機能を無料で使えます。':'During the test release, every feature is free.','プリセット — 保存・読み込み':'Presets — save & load','■ 止める':'■ Stop','● リール':'● Reel','再生中の音':'Now playing',
 '自律演奏中':'Autonomous play on',
-'ポップ・ひまわり':'Pop — sunflower','ポップ・キャンディ':'Pop — candy','ポップ・ラグーン':'Pop — lagoon','ポップ・ジャングル':'Pop — jungle','ポップ・夜':'Pop — night',
+'自然（写真の色）':'Nature (colours from the photo)','雨・川・波・風・森':'Rain, rivers, waves, wind, forest','両生類':'Amphibians','哺乳類':'Mammals','水の生き物':'Water life','自然・紙（図版）':'Nature — paper (plate)','ポップ・ひまわり':'Pop — sunflower','ポップ・キャンディ':'Pop — candy','ポップ・ラグーン':'Pop — lagoon','ポップ・ジャングル':'Pop — jungle','ポップ・夜':'Pop — night',
 'ディジュリドゥ（実録音）':'Didgeridoo (real recording)','パイプオルガンのペダル（実録音）':'Pipe organ pedal (real recording)','ティンパニのロール（実録音）':'Timpani roll (real recording)','ゴングの余韻（実録音）':'Gong decay (real recording)','ピアノの最低音域（実録音）':'Piano, lowest register (real recording)','自然の低音（波の実録音・低域）':'Nature bass (low band of a real wave recording)',
 'フレームドラム（実録音）':'Frame drum (real recording)','カホン（実録音）':'Cajón (real recording)','ダルブッカ（実録音）':'Darbuka (real recording)','スリットドラム（実録音）':'Slit drum (real recording)','コンガ（実録音）':'Conga (real recording)','楽器の読み込みに失敗しました':'Instrument loading failed','自律演奏':'Autonomous play','自律演奏のとき':'During autonomous play',
 // 写真のタイル・マスター EQ・リール作成・トラック・プラン（v0.43）

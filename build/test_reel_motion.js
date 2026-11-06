@@ -6,7 +6,7 @@ const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('conso
 const R={},fail=[];const ok=(k,c)=>{R[k+'_ok']=!!c;if(!c)fail.push(k)};
 await pg.goto('http://localhost:8765/index.html');await pg.evaluate(()=>{try{localStorage.removeItem('ae-rights');localStorage.removeItem('ae-lang')}catch(e){}});await pg.reload();await pg.waitForTimeout(800);
 await pg.evaluate(()=>__studioDebug.setTemplate('abstract'));R.ui=await pg.evaluate(()=>({style:__reelDebug.style(),sel:document.getElementById('reelStyle').value,opts:[...document.querySelectorAll('#reelStyle option')].map(o=>o.value),btn:document.getElementById('reelPreview').textContent}));
-ok('default_motion',R.ui.style==='motion'&&R.ui.sel==='abstract'&&R.ui.opts.join()==='pop-sunny,pop-candy,pop-lagoon,pop-jungle,pop-night,forest,ocean,night,wildlife,minimal,waveform,spectrum,abstract'&&R.ui.btn==='▶ 動きをプレビュー');
+ok('default_motion',R.ui.style==='motion'&&R.ui.sel==='abstract'&&R.ui.opts.join()==='nature,nature-paper,pop-sunny,pop-candy,pop-lagoon,pop-jungle,pop-night,forest,ocean,night,wildlife,minimal,waveform,spectrum,abstract'&&R.ui.btn==='▶ 動きをプレビュー');
 // 画面の縮小版（108×192）を取り、2枚の差（0〜255）と明るさの散らばりを測る
 const snap=()=>pg.evaluate(()=>{const s=document.createElement('canvas');s.width=108;s.height=192;const g=s.getContext('2d');g.drawImage(document.getElementById('reelCanvas'),0,0,108,192);return [...g.getImageData(0,0,108,192).data]});
 const diff=(a,b)=>{let d=0,n=0;for(let i=0;i<a.length;i+=4){d+=Math.abs(a[i]-b[i])+Math.abs(a[i+1]-b[i+1])+Math.abs(a[i+2]-b[i+2]);n+=3}return d/n};

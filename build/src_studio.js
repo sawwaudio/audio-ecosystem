@@ -3,7 +3,7 @@
    本体スクリプト（音声エンジン・音源ライブラリ）の後に読み込む。本体の関数と変数（ctx, master, recordings, loadOne, mixLane など）をそのまま使い、
    音声エンジンと音源の対応は変えない。build/integrate_v043.py が index.html の <script id="ae-studio"> にこのファイルを埋め込む。 */
 (()=>{'use strict';
-const VER='v0.47';
+const VER='v0.48';
 const PHOTOS=(()=>{try{return JSON.parse($('ae-photos').textContent)}catch(e){return {}}})();
 const TIERS=(()=>{try{return JSON.parse($('ae-tiers').textContent)}catch(e){return {plans:[],features:[]}}})();
 const APP_URL=/^https?:$/.test(location.protocol)&&!/^(localhost|127\.)/.test(location.hostname)?location.origin+location.pathname.replace(/index\.html$/,''):'https://sawwaudio.github.io/audio-ecosystem-sounds-1/';
@@ -21,12 +21,24 @@ function binomial(latin){const m=/^([A-Z][a-z]+ [a-z]+)(?:（|$)/.exec(latin||''
 function photoFor(id){const u=userSounds.get(id);if(u)return u.img?{user:true,thumb:u.img,small:u.img,author:L('利用者の画像','User image'),license:'',page:''}:null;
  const r=recordings.find(x=>x.id===id);const b=r&&binomial(r.latin);const p=b&&PHOTOS[b];if(!p)return null;
  return {...p,latin:b,small:/\/960px-/.test(p.thumb)?p.thumb.replace('/960px-','/330px-'):p.thumb}}
-const GROUP_LABEL={birds:['鳥','BIRD'],insects:['虫','INSECT'],animals:['動物','ANIMAL'],landscape:['水・環境','AMBIENCE'],user:['自分の音','MY SOUND']};
-function groupOf(id){if(userSounds.has(id))return 'user';const r=recordings.find(x=>x.id===id);return r?(r.kind==='landscape'?'landscape':r.group):'landscape'}
+// v0.48：生き物は鳥・虫・両生類・哺乳類・水の生き物、それ以外の環境の録音は「環境音」（data/sound_categories.json。台帳の記載から決め、推測しない）
+const CATS=(()=>{try{return JSON.parse($('ae-categories').textContent).categories}catch(e){return {}}})();
+const GROUP_LABEL={birds:['鳥','BIRD'],insects:['虫','INSECT'],amphibians:['両生類','AMPHIBIAN'],mammals:['哺乳類','MAMMAL'],aquatic:['水の生き物','WATER LIFE'],ambience:['環境音','AMBIENCE'],animals:['動物','ANIMAL'],landscape:['水・環境','AMBIENCE'],user:['自分の音','MY SOUND']};
+function groupOf(id){if(userSounds.has(id))return 'user';const c=CATS[id];if(c)return c.cat;const r=recordings.find(x=>x.id===id);return r?(r.kind==='landscape'?'ambience':r.group==='animals'?'mammals':r.group):'ambience'}
 // 統一したプレースホルダー（写真がない音）。色はグループごと、線は同じ型。
-const PH_HUE={birds:225,insects:48,animals:22,landscape:165,user:265};
-const GROUP_COLOR={birds:'#5b8cff',insects:'#ffd447',animals:'#ff8a3d',landscape:'#2fd9a6',user:'#a98bff'};
-function placeholderSVG(id,g){let h=0;for(const ch of id)h=(h*31+ch.charCodeAt(0))>>>0;const hue=PH_HUE[g]??180,rot=h%360,rings=[];
+const PH_HUE={birds:210,insects:42,amphibians:95,mammals:22,aquatic:185,ambience:150,animals:22,landscape:165,user:265};
+const GROUP_COLOR={birds:'#8fb3d6',insects:'#e6c27a',amphibians:'#a9c47f',mammals:'#cf8e6a',aquatic:'#7fbab6',ambience:'#b9b3a3',animals:'#cf8e6a',landscape:'#8ec3a0',user:'#b5a6d6'};
+// 環境音の図：録音の名前から種類（雨・水の流れ・波と岩・風と森・火・嵐・氷）を選び、細い線で描く。音の正体を推測するものではなく、名前の言葉で選ぶだけ
+function ambKind(id){const n=nameOf(id);return /雷|嵐/.test(n)?'storm':/雨/.test(n)?'rain':/氷/.test(n)?'ice':/火|暖炉/.test(n)?'fire':/波|潮|岩|入り江|海岸/.test(n)?'sea':/川|渓流|小川|急流|滝|水|湿原/.test(n)?'water':'wind'}
+function ambSVG(id){const k=ambKind(id),c='hsla(48,40%,82%,.85)',st='fill="none" stroke="'+c+'" stroke-width="2.2" stroke-linecap="round"';let d='';
+ if(k==='rain')for(let i=0;i<9;i++){const x=22+(i%5)*19+(i>4?9:0),y=30+(i>4?26:0)+(i*7)%11;d+='<path d="M'+x+' '+y+'l-5 12" '+st+'/>'}
+ else if(k==='water'||k==='ice')for(let i=0;i<4;i++){const y=40+i*13;d+='<path d="M14 '+y+'q11 -7 23 0t23 0t23 0t23 0" '+st+' opacity="'+(1-i*.18)+'"/>'}
+ else if(k==='sea')d='<path d="M10 74q12 -18 26 -6t26 -4t26 -6t24 8" '+st+'/><path d="M10 88q14 -10 28 -2t28 -2t28 -2t18 4" '+st+' opacity=".6"/><path d="M30 60q8 -14 22 -12" '+st+' opacity=".7"/>'
+ else if(k==='fire')d='<path d="M60 92c-16 -6 -18 -24 -6 -38c2 10 8 12 10 4c6 8 14 18 8 28c-2 4 -6 6 -12 6z" '+st+'/>'
+ else if(k==='storm')d='<path d="M30 52q4 -16 20 -14q6 -12 22 -6q14 0 14 14q8 4 4 12h-58q-10 -2 -2 -6z" '+st+'/><path d="M58 70l-8 14h10l-6 14" '+st+'/>'
+ else d='<path d="M14 50q20 -10 40 0t40 -2" '+st+'/><path d="M24 66q18 -8 36 0t40 0" '+st+' opacity=".7"/><path d="M34 82q14 -6 28 0t26 0" '+st+' opacity=".5"/>';
+ return '<svg viewBox="0 0 120 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="ag-'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="hsl(150,14%,17%)"/><stop offset="1" stop-color="hsl(150,16%,9%)"/></linearGradient></defs><rect width="120" height="120" fill="url(#ag-'+id+')"/>'+d+'</svg>'}
+function placeholderSVG(id,g){if(g==='ambience')return ambSVG(id);let h=0;for(const ch of id)h=(h*31+ch.charCodeAt(0))>>>0;const hue=PH_HUE[g]??180,rot=h%360,rings=[];
  for(let i=0;i<7;i++){const r=14+i*11,wob=2+((h>>(i*3))&7)*.6;let d='';for(let k=0;k<=48;k++){const a=k/48*6.2832,rr=r+Math.sin(a*3+i+rot)*wob;d+=(k?'L':'M')+(60+Math.cos(a)*rr).toFixed(1)+' '+(60+Math.sin(a)*rr).toFixed(1)}rings.push('<path d="'+d+'Z" fill="none" stroke="hsla('+hue+',45%,'+(70-i*5)+'%,'+(0.55-i*.06).toFixed(2)+')" stroke-width="1"/>')}
  return '<svg viewBox="0 0 120 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="120" height="120" fill="hsl('+hue+',30%,9%)"/>'+rings.join('')+'<circle cx="60" cy="60" r="3" fill="hsl('+hue+',60%,75%)"/></svg>'}
 
@@ -100,28 +112,33 @@ function tileStopAll(){for(const id of playingIds())tileStop(id);for(const s of 
 function setTileVol(id,v){const s=tst(id);s.vol=clamp(+v,0,100);if(s.voice)s.voice.out.gain.setTargetAtTime(s.vol/100,ctx.currentTime,.05)}
 function setTilePan(id,v){const s=tst(id);s.pan=clamp(+v,-1,1);if(s.voice&&s.voice.pan.pan)s.voice.pan.pan.setTargetAtTime(s.pan,ctx.currentTime,.05)}
 // 商用モードが変わったら、対象外になった音を止める（代用しない）
-setInterval(()=>{for(const id of playingIds())if(!userSounds.has(id)&&!rightsAllowed(id))tileStop(id,true);renderRightsDim();document.body.classList.toggle('live',autoOn()||playingIds().length>0);if(autoOn()||document.querySelector('#tileGrid .tile.auto'))for(const tile of document.querySelectorAll('#tileGrid .tile'))renderTile(tile.dataset.id);renderCount()},400);
+setInterval(()=>{for(const id of playingIds())if(!userSounds.has(id)&&!rightsAllowed(id))tileStop(id,true);renderRightsDim();document.body.classList.toggle('live',autoOn()||playingIds().length>0);if(autoOn()||document.querySelector('#tileSection .tile.auto'))for(const tile of document.querySelectorAll('#tileSection .tile'))renderTile(tile.dataset.id);renderCount()},400);
 
 // ───────── タイルの画面 ─────────
-const FILTERS=[['all','すべて','All'],['birds','鳥','Birds'],['insects','虫','Insects'],['animals','動物','Animals'],['landscape','水・環境','Water & places'],['japan','日本','Japan'],['photo','写真あり','With photos'],['user','自分の音','My sounds'],['playing','再生中','Playing']];
+const FILTERS=[['all','すべて','All'],['birds','鳥','Birds'],['insects','虫','Insects'],['amphibians','両生類','Amphibians'],['mammals','哺乳類','Mammals'],['aquatic','水の生き物','Water life'],['japan','日本','Japan'],['photo','写真あり','With photos'],['user','自分の音','My sounds'],['playing','再生中','Playing']];
 let tileFilter='all',tileShowAll=false;const TILE_PAGE=12; // 最初は12枚だけ見せる（スクロールせずにリール作成まで届くように）。残りは「すべて表示」
 function tileIds(){const lib=recordings.map(r=>r.id);const order=id=>{const p=photoFor(id)?0:1,r=recordings.find(x=>x.id===id),k=r.kind==='species'?0:r.kind==='mixed'?1:2;return p*10+k};
  const sorted=lib.slice().sort((a,b)=>order(a)-order(b));return [...userSounds.keys(),...sorted]}
-function matches(id){const g=groupOf(id);if(tileFilter==='all')return true;if(tileFilter==='user')return g==='user';if(tileFilter==='playing')return isOn(id);if(tileFilter==='photo')return !!photoFor(id);
+// 生き物の分類の絞り込み（鳥〜水の生き物）は生き物の欄だけに効く。環境音の欄は「日本・写真あり・自分の音・再生中」だけ効く
+const CREATURE_FILTERS=['birds','insects','amphibians','mammals','aquatic'];
+function matches(id){const g=groupOf(id);if(tileFilter==='all')return true;if(g==='ambience'&&CREATURE_FILTERS.includes(tileFilter))return true;if(tileFilter==='user')return g==='user';if(tileFilter==='playing')return isOn(id);if(tileFilter==='photo')return !!photoFor(id);
  if(tileFilter==='japan'){const r=recordings.find(x=>x.id===id),m=wildMeta[id]||{};return !!r&&(r.japanRecording===true||(m.recordedRegions||[]).includes('japan')||m.japanNative===true)}
  return g===tileFilter}
 function subOf(id){const u=userSounds.get(id);if(u)return u.origin==='mic'?L('マイク録音','Mic recording'):u.origin==='bounce'?L('出音の録音','Output recording'):L('読み込んだ音','Imported audio');
  const r=recordings.find(x=>x.id===id);const b=binomial(r.latin);if(b)return b;const m=wildMeta[id]||{};return m.recordedCountry||''}
-function buildTiles(){const grid=$('tileGrid');if(!grid)return;grid.textContent='';
- const ids=tileIds().filter(matches),cols=Math.max(1,(getComputedStyle(grid).gridTemplateColumns||'').split(' ').filter(Boolean).length||2),page=Math.ceil(TILE_PAGE/cols)*cols,cut=tileShowAll?ids.length:Math.min(ids.length,page);/* 列数に合わせて行をそろえる（2列なら12枚、5列なら15枚） */let uid=0;for(const id of ids.slice(0,cut)){uid++;const g=groupOf(id),p=photoFor(id),r=recordings.find(x=>x.id===id);
+function makeTile(id,uid){const g=groupOf(id),p=photoFor(id),r=recordings.find(x=>x.id===id);
   const img=p?el('img',{src:p.small,alt:'',loading:'lazy',decoding:'async',referrerpolicy:'no-referrer'}):el('span',{class:'ph',html:placeholderSVG(id,g)});
   if(p)img.addEventListener('error',()=>{img.replaceWith(el('span',{class:'ph',html:placeholderSVG(id,g)}))},{once:true});
   const tierLetter=r?rightsTierOf(r.license):'U';
-  const play=el('button',{type:'button',class:'tilePlay','aria-pressed':'false','data-id':id},el('span',{class:'tileImg'},img,!p?el('span',{class:'phLabel',text:GROUP_LABEL[g]?GROUP_LABEL[g][1]:''}):null),
+  const play=el('button',{type:'button',class:'tilePlay','aria-pressed':'false','data-id':id},el('span',{class:'tileImg'},img,!p&&g!=='ambience'?el('span',{class:'phLabel',text:GROUP_LABEL[g]?GROUP_LABEL[g][1]:''}):null),
    el('canvas',{class:'tileWave',width:'120',height:'26','aria-hidden':'true'}),el('span',{class:'tileText'},el('span',{class:'tileName',id:'tn-'+uid,text:nameOf(id)}),el('span',{class:'tileSub','data-i18n-skip':/^[A-Z]/.test(subOf(id))?'':false,text:subOf(id)})),
    el('span',{class:'tileTier tier'+tierLetter,'aria-hidden':'true',text:tierLetter}));
   const info=el('button',{type:'button',class:'tileInfo','aria-labelledby':'ti-'+uid+' tn-'+uid,'data-id':id},el('span',{'aria-hidden':'true',text:'i'}),el('span',{id:'ti-'+uid,hidden:true,text:'詳細'}));
-  const tile=el('div',{class:'tile','data-id':id,'data-group':g},play,info);grid.append(tile);bindTile(tile,id);renderTile(id)}
+  const tile=el('div',{class:'tile'+(g==='ambience'?' amb':''),'data-id':id,'data-group':g},play,info);bindTile(tile,id);return tile}
+function buildTiles(){const grid=$('tileGrid'),amb=$('ambGrid');if(!grid)return;grid.textContent='';if(amb)amb.textContent='';
+ const all=tileIds().filter(matches),ids=all.filter(id=>groupOf(id)!=='ambience'),ambIds=all.filter(id=>groupOf(id)==='ambience'),cols=Math.max(1,(getComputedStyle(grid).gridTemplateColumns||'').split(' ').filter(Boolean).length||2),page=Math.ceil(TILE_PAGE/cols)*cols,cut=tileShowAll?ids.length:Math.min(ids.length,page);/* 列数に合わせて行をそろえる（2列なら12枚、5列なら15枚） */
+ let uid=0;for(const id of ids.slice(0,cut)){uid++;grid.append(makeTile(id,uid));renderTile(id)}
+ if(amb){for(const id of ambIds){uid++;amb.append(makeTile(id,uid));renderTile(id)}const box=$('ambSection');if(box)box.hidden=!ambIds.length}
  if(!grid.children.length)grid.append(el('p',{class:'micro',text:tileFilter==='user'?L('まだありません。「＋ 自分の音を追加」から読み込めます。','Nothing yet. Add one with “＋ Add my sound”.'):L('該当する音がありません。','No sounds match.')}));
  if(ids.length>page){const more=el('button',{type:'button',class:'tileMore','aria-expanded':String(tileShowAll),text:tileShowAll?L('少なく表示','Show fewer'):L('すべて表示（'+ids.length+'）','Show all ('+ids.length+')')});
   more.addEventListener('click',()=>{tileShowAll=!tileShowAll;buildTiles();if(!tileShowAll)$('tileSection').scrollIntoView({block:'start'})});grid.append(more)}
@@ -144,7 +161,7 @@ function renderCount(){renderDock();const c=$('tileCount');if(c){const n=onIds()
 function renderRightsDim(){for(const tile of document.querySelectorAll('.tile')){const id=tile.dataset.id;const blocked=!userSounds.has(id)&&!rightsAllowed(id);if(tile.classList.contains('blocked')!==blocked)tile.classList.toggle('blocked',blocked)}}
 // 再生中のタイルに小さな波形（周波数の棒）を描く
 let paintAt=0;function paintTiles(now){requestAnimationFrame(paintTiles);if(now-paintAt<40)return;paintAt=now;
- const ids=autoOn()?[...document.querySelectorAll('#tileGrid .tile.sounding')].map(t=>t.dataset.id):playingIds();let mf=null;
+ const ids=autoOn()?[...document.querySelectorAll('#tileSection .tile.sounding')].map(t=>t.dataset.id):playingIds();let mf=null;
  for(const id of ids){const s=tileState.get(id),v=s&&s.voice;const cv=document.querySelector('.tile[data-id="'+CSS.escape(id)+'"] .tileWave');if(!cv)continue;let f;
   if(v){f=v.fbuf||(v.fbuf=new Uint8Array(v.an.frequencyBinCount));v.an.getByteFrequencyData(f)}else{if(!analyser)continue;if(!mf){mf=new Uint8Array(analyser.frequencyBinCount);analyser.getByteFrequencyData(mf)}f=mf}
   const c=cv.getContext('2d'),W=cv.width,H=cv.height;c.clearRect(0,0,W,H);
@@ -300,10 +317,10 @@ const PAL={forest:{bg:'#06110c',panel:'rgba(10,26,19,.82)',line:'#2a4a37',dim:'#
  night:{bg:'#06050c',panel:'rgba(13,11,24,.84)',line:'#2f2c4e',dim:'#8a84b8',text:'#eeeaff',acc:'#bcaaff',acc2:'#ffd27a',hue:255},
  wildlife:{bg:'#0b0b08',panel:'rgba(20,20,14,.8)',line:'#45422c',dim:'#a39f7e',text:'#f6f2e6',acc:'#f2c464',acc2:'#a6e6b8',hue:42},
  minimal:{bg:'#000000',panel:'rgba(6,6,6,.85)',line:'#2a2a2a',dim:'#8d8d8d',text:'#f4f4f4',acc:'#ffffff',acc2:'#bdbdbd',hue:0}};
-const TEMPLATES={'pop-sunny':['pop','pop:sunny'],'pop-candy':['pop','pop:candy'],'pop-lagoon':['pop','pop:lagoon'],'pop-jungle':['pop','pop:jungle'],'pop-night':['pop','pop:night'],forest:['panels','forest'],ocean:['panels','ocean'],night:['panels','night'],wildlife:['panels','wildlife'],minimal:['minimal','minimal'],waveform:['wave','forest'],spectrum:['analysis',null],abstract:['motion',null]};
+const TEMPLATES={nature:['nature','nature:dark'],'nature-paper':['nature','nature:paper'],'pop-sunny':['pop','pop:sunny'],'pop-candy':['pop','pop:candy'],'pop-lagoon':['pop','pop:lagoon'],'pop-jungle':['pop','pop:jungle'],'pop-night':['pop','pop:night'],forest:['panels','forest'],ocean:['panels','ocean'],night:['panels','night'],wildlife:['panels','wildlife'],minimal:['minimal','minimal'],waveform:['wave','forest'],spectrum:['analysis',null],abstract:['motion',null]};
 let reelTpl='forest',reelPal=PAL.forest,reelImgMode='auto',reelUserImg=null;const imgCache=new Map();
 function canvasImage(url){let e=imgCache.get(url);if(e)return e;e={img:new Image(),ok:false,fail:false};e.img.crossOrigin='anonymous';e.img.referrerPolicy='no-referrer';e.img.onload=()=>{e.ok=true};e.img.onerror=()=>{e.fail=true};e.img.src=url;imgCache.set(url,e);return e}
-function setTemplate(name){if(!TEMPLATES[name])return false;reelTpl=name;const [layout,pal]=TEMPLATES[name];if(pal&&pal.startsWith('pop:')){popPal=POP[pal.slice(4)];popFonts()}else if(pal)reelPal=PAL[pal];const sel=$('reelStyle');if(sel&&sel.value!==name)sel.value=name;reelSetStyle(layout);return true}
+function setTemplate(name){if(!TEMPLATES[name])return false;reelTpl=name;const [layout,pal]=TEMPLATES[name];if(pal&&pal.startsWith('pop:')){popPal=POP[pal.slice(4)];popFonts()}else if(pal&&pal.startsWith('nature:')){natMode=pal.slice(7);natFonts()}else if(pal)reelPal=PAL[pal];const sel=$('reelStyle');if(sel&&sel.value!==name)sel.value=name;reelSetStyle(layout);return true}
 // いま映すもの：最後にタップした音 → 生き物の声 → 環境の音
 function reelSubject(){const ids=playingIds();let id=focusId&&ids.includes(focusId)?focusId:ids.slice(-1)[0];
  if(!id){const now=reelNowPlaying();const b=now.find(n=>n.role==='bio')||now[0];id=b?b.id:null}return id}
@@ -470,7 +487,74 @@ function drawPop(c){const P=popPal,now=performance.now(),t=(now-A.t0)/1000,dt=Ma
  txt(c,({all:L('すべての素材','All sources'),nosa:L('BY-SA を除く','No CC BY-SA'),cc0:L('CC0・PD のみ','CC0 / PD only')}[RIGHTS.mode])+L('　クレジットの全文は説明欄に','  Full credits in caption'),X0,Y1-14,'700 20px '+ROUND,P.ink,'left',W);
  // 11. 印刷のざらつき
  c.save();c.globalAlpha=P.dark?.05:.07;c.globalCompositeOperation='multiply';const pat=c.createPattern(popGrain(),'repeat');c.fillStyle=pat;c.fillRect(0,0,REEL_W,REEL_H);c.restore()}
-window.reelDrawStudio=(c,layout)=>{if(layout==='pop'){drawPop(c);return}if(layout==='wave')drawRidge(c);else if(layout==='minimal')drawMinimal(c);else drawPanels(c)};
+// ───────── リール：自然（v0.48・既定）─────────
+// 生き物の写真が主役。写真を大きく見せ、ゆっくり寄って流す（音で少し明るむ）。色は写真から取る：地の色＝写真の暗い色、
+// 差し色＝写真の中のいちばん鮮やかな色（1色だけ）。音は、写真の下端に生える細い線（周波数）と光の波形、鳴き始めの波紋で表す。
+// 文字は図鑑の1ページのように：通し番号・和名（明朝）・学名（イタリック）・英名・録音地・クレジット。替わる時は1行ずつ静かに浮かぶ。
+// 「紙」は明るい紙の地に写真を図版のように置く版。
+var natMode='dark';const NAT_SERIF='"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif',NAT_SANS='"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",system-ui,sans-serif',NAT_ITAL='"Cormorant Garamond",Georgia,serif';
+const NAT_GROUP={birds:[[24,34,40],[143,179,214]],insects:[[33,32,22],[230,194,122]],amphibians:[[24,32,22],[169,196,127]],mammals:[[36,28,24],[207,142,106]],aquatic:[[16,30,34],[127,186,182]],ambience:[[22,28,26],[185,179,163]],animals:[[36,28,24],[207,142,106]],landscape:[[20,32,30],[142,195,160]],user:[[30,28,38],[181,166,214]]};
+const NS={subj:null,subjAt:-9,prev:null,prevAt:-9,ripples:[],onsets:0,kick:0,lastT:0,wave:null,pal:new Map(),grass:new Float32Array(72)};
+let natFontReq='';function natFonts(extra){if(!document.fonts||!document.fonts.load)return;const t='saww audio ecosystem 鳥 虫 動物 水 環境 録音 No.0123456789 '+(extra||'');if(t===natFontReq)return;natFontReq=t;
+ try{document.fonts.load('600 100px "Shippori Mincho B1"',t).catch(()=>{});document.fonts.load('500 30px "Zen Kaku Gothic New"',t).catch(()=>{});document.fonts.load('italic 600 44px "Cormorant Garamond"','Abcdefghijklmnopqrstuvwxyz').catch(()=>{})}catch(e){}}
+// 写真の色：小さく縮めて、暗い色（地）と鮮やかな色（差し色）を取る。読めない時はグループの色。
+function natPalette(e,g){const key=e&&e.ok?e.img.src:'g:'+g;let p=NS.pal.get(key);if(p)return p;const [d0,a0]=NAT_GROUP[g]||NAT_GROUP.landscape;p={dark:d0,acc:a0};
+ if(e&&e.ok){try{const cv=document.createElement('canvas');cv.width=cv.height=40;const x=cv.getContext('2d');x.drawImage(e.img,0,0,40,40);const d=x.getImageData(0,0,40,40).data,px=[];
+  for(let i=0;i<d.length;i+=4){const r=d[i],g2=d[i+1],b=d[i+2],mx=Math.max(r,g2,b),mn=Math.min(r,g2,b),l=(mx+mn)/510,s2=mx===mn?0:(mx-mn)/(255-Math.abs(mx+mn-255));px.push({r,g:g2,b,l,s:s2})}
+  px.sort((a,b)=>a.l-b.l);const dk=px.slice(0,Math.floor(px.length*.3)),avg=k=>dk.reduce((n,q)=>n+q[k],0)/dk.length;const dark=[avg('r'),avg('g'),avg('b')].map(v=>Math.round(v*.55+8));
+  let best=null;for(const q of px)if(q.l>.32&&q.l<.78){const sc=q.s*(1-Math.abs(q.l-.55));if(!best||sc>best.sc)best={...q,sc}}
+  let acc=a0;if(best&&best.s>.22){const L=(best.r+best.g+best.b)/3,boost=v=>Math.round(clamp(L+(v-L)*1.15+(170-L)*.35,0,255));acc=[boost(best.r),boost(best.g),boost(best.b)]}
+  p={dark,acc};NS.pal.set(key,p)}catch(err){NS.pal.set(key,p)}}else NS.pal.set(key,p);return p}
+const rgb=(a,al)=>al==null?'rgb('+a.join(',')+')':'rgba('+a.join(',')+','+al+')';
+function natIndex(id){const i=recordings.findIndex(r=>r.id===id);return i<0?'—':'No.'+String(i+1).padStart(3,'0')}
+function drawNature(c){const now=performance.now(),t=(now-A.t0)/1000,dt=Math.min(.1,Math.max(0,t-NS.lastT));NS.lastT=t;const ok=analyse();c.setTransform(1,0,0,1,0,0);c.globalAlpha=1;c.globalCompositeOperation='source-over';
+ const paper=natMode==='paper',X0=REEL_SAFE.x0,X1=REEL_SAFE.x1,Y0=REEL_SAFE.y0,Y1=REEL_SAFE.y1,W=X1-X0;
+ const id=reelSubject();if(id!==NS.subj){NS.prev=NS.subj;NS.prevAt=t;NS.subj=id;NS.subjAt=t;if(id)natFonts(nameOf(id)+' '+((wildMeta[id]||{}).en||''))}
+ if(ok&&A.onsets!==NS.onsets){NS.onsets=A.onsets;NS.kick=1;if(NS.ripples.length<6)NS.ripples.push({t,x:540,y:paper?640:600})}NS.kick=Math.max(0,NS.kick-dt*1.6);
+ const g=id?groupOf(id):'landscape',ph=id?subjectPhoto(id):null,pal=natPalette(ph&&ph.e,g),acc=pal.acc,dark=pal.dark;
+ const ink=paper?[31,36,32]:[241,236,224],bg=paper?[243,239,230]:dark,muted=paper?[96,104,96]:[200,198,186];
+ c.fillStyle=rgb(bg);c.fillRect(0,0,REEL_W,REEL_H);
+ // 1. 写真（ゆっくり寄って流す・音で少し明るむ・替わる時は重ねてにじませる）
+ const PX=paper?60:0,PY=paper?250:0,PW=paper?REEL_W-120:REEL_W,PH=paper?780:1200;
+ const draw=(sid,al,born)=>{const p2=sid?subjectPhoto(sid):null;if(!p2||!p2.e.ok)return false;const u=(t-born),z=1.06+.06*((u*.03)%1),dx=Math.sin(u*.05)*20,dy=Math.cos(u*.04)*14;
+  c.save();c.globalAlpha=al;c.beginPath();c.rect(PX,PY,PW,PH);c.clip();c.translate(dx,dy);cover(c,p2.e.img,PX-20,PY-20,PW+40,PH+40,z+.012*NS.kick);c.restore();return true};
+ const fade=clamp((t-NS.subjAt)/1.2,0,1);let shown=false;if(NS.prev&&fade<1)draw(NS.prev,1-fade,NS.prevAt-20);shown=draw(id,fade<1&&NS.prev?fade:1,NS.subjAt);
+ if(ph&&ph.e.ok)notePhoto(ph);
+ if(!shown){c.save();c.beginPath();c.rect(PX,PY,PW,PH);c.clip();const gr=c.createRadialGradient(540,PY+PH*.45,40,540,PY+PH*.45,PH*.8);gr.addColorStop(0,rgb(acc,.28));gr.addColorStop(1,rgb(dark));c.fillStyle=gr;c.fillRect(PX,PY,PW,PH);
+  c.strokeStyle=rgb(acc,.35);c.lineWidth=2;for(let k=1;k<7;k++){c.beginPath();c.arc(540,PY+PH*.45,k*70*(1+.02*Math.sin(t+k)),0,6.2832);c.stroke()}c.restore()}
+ if(NS.kick>0){c.save();c.globalCompositeOperation='screen';c.globalAlpha=.10*NS.kick;c.fillStyle=rgb(acc);c.fillRect(PX,PY,PW,PH);c.restore()}
+ if(!paper){let gr=c.createLinearGradient(0,0,0,420);gr.addColorStop(0,'rgba(0,0,0,.55)');gr.addColorStop(1,'rgba(0,0,0,0)');c.fillStyle=gr;c.fillRect(0,0,REEL_W,420);
+  gr=c.createLinearGradient(0,PH-420,0,PH);gr.addColorStop(0,rgb(bg,0));gr.addColorStop(1,rgb(bg,1));c.fillStyle=gr;c.fillRect(0,PH-420,REEL_W,421)}
+ else{c.strokeStyle=rgb(ink,.85);c.lineWidth=2;c.strokeRect(PX+.5,PY+.5,PW-1,PH-1)}
+ // 2. 鳴き始めの波紋（細い光の輪）
+ for(const r of NS.ripples){const u=(t-r.t)/2.6;if(u>1)continue;c.save();c.beginPath();c.rect(PX,PY,PW,PH);c.clip();c.strokeStyle=rgb(acc,.55*(1-u));c.lineWidth=2.5;c.beginPath();c.arc(r.x,r.y,60+u*520,0,6.2832);c.stroke();c.restore()}NS.ripples=NS.ripples.filter(r=>t-r.t<2.6);
+ // 3. 写真の下端に生える細い線（周波数）と、光の波形
+ const base=paper?PY+PH-24:PH-200,n=NS.grass.length;if(ok&&A.freq){const F=A.freq.length;for(let i=0;i<n;i++){const k=Math.floor(Math.pow(i/n,1.8)*F*.6)+2;NS.grass[i]+=(A.freq[k]/255-NS.grass[i])*.3}}
+ c.save();c.strokeStyle=rgb(paper?[255,255,255]:acc,paper?.85:.75);c.lineWidth=2;c.lineCap='round';for(let i=0;i<n;i++){const x=X0+i/(n-1)*W,h=6+150*NS.grass[i]*NS.grass[i]+4*Math.sin(t*1.3+i*.7);c.beginPath();c.moveTo(x,base);c.lineTo(x+Math.sin(t*.8+i)*3,base-h);c.stroke()}c.restore();
+ if(ok&&A.wave){const wy=base+(paper?0:36);let pk=.02;for(let i=0;i<A.wave.length;i+=8)pk=Math.max(pk,Math.abs(A.wave[i]));const pts=[],m=96,step=Math.floor(A.wave.length/m);for(let i=0;i<=m;i++){let s2=0;for(let k=0;k<step;k++)s2+=A.wave[Math.min(A.wave.length-1,i*step+k)]||0;pts.push([X0+i/m*W,wy+s2/step/pk*26])}
+  const line=(w,al)=>{c.lineWidth=w;c.strokeStyle=rgb(paper?[255,255,255]:acc,al);c.beginPath();pts.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.stroke()};line(8,.12);line(2,.9)}
+ // 4. 上：アプリ名と時間
+ const st=reelState,tc=st&&st.active?((now-st.t0)/1000):t;const top=paper?Y0-20:Y0;const hc=paper?ink:[255,255,255];
+ txt(c,'saww audio ecosystem',X0,top+30,'500 30px '+NAT_SANS,rgb(hc,.92));txt(c,'nature as an instrument.',X0,top+66,'italic 600 28px '+NAT_ITAL,rgb(paper?muted:[255,255,255],.75));
+ txt(c,(st&&st.active?'● ':'')+String(Math.floor(tc/60)).padStart(2,'0')+':'+String(Math.floor(tc%60)).padStart(2,'0'),X1,top+30,'500 28px '+NAT_SANS,st&&st.active?rgb(acc):rgb(hc,.85),'right');
+ // 5. 図鑑の1ページ：番号・和名・学名・英名・録音地・クレジット（替わる時に1行ずつ浮かぶ）
+ let y=paper?PY+PH+56:1110;const rise=k=>{const u=clamp((t-NS.subjAt-.25-k*.12)/.7,0,1),e=1-Math.pow(1-u,3);c.globalAlpha=e;return (1-e)*24};
+ if(id){const r=recordings.find(x=>x.id===id),m=wildMeta[id]||{},en=lang()==='en',gl=(GROUP_LABEL[g]||['',''])[en?1:0];
+  const name=(en?(m.en||nameOf(id)):nameOf(id)).replace(/[（(][^）)]*[）)]/g,'').trim(),latin=r&&binomial(r.latin)||'',sub=en?'':(m.en||'');
+  let o=rise(0);txt(c,natIndex(id)+'　'+gl,X0,y+o,'500 26px '+NAT_SANS,rgb(acc));c.fillStyle=rgb(acc);c.fillRect(X0,y+o+16,56,3);
+  o=rise(1);let fs=104;c.font='600 '+fs+'px '+NAT_SERIF;while(c.measureText(name).width>W&&fs>58){fs-=4;c.font='600 '+fs+'px '+NAT_SERIF}y+=fs+26;txt(c,name,X0,y+o,'600 '+fs+'px '+NAT_SERIF,rgb(ink),'left',W);
+  if(latin&&latin!==name){o=rise(2);y+=58;txt(c,latin,X0,y+o,'italic 600 46px '+NAT_ITAL,rgb(ink,.9),'left',W)}
+  if(sub){o=rise(3);y+=46;txt(c,sub,X0,y+o,'500 30px '+NAT_SANS,rgb(muted),'left',W)}
+  o=rise(4);y+=paper?54:62;c.fillStyle=rgb(ink,.25);c.fillRect(X0,y+o-30,W,1);
+  if(r){const loc=en&&window.__i18n?__i18n.t(r.location||''):(r.location||'');txt(c,(loc||'—')+(r.date?'　'+String(r.date).slice(0,4):''),X0,y+o+8,'500 28px '+NAT_SANS,rgb(ink,.9),'left',W);
+   o=rise(5);txt(c,'"'+(r.title||'')+'" — '+(r.author||'')+' · '+r.license,X0,y+o+48,'400 21px '+NAT_SANS,rgb(muted),'left',W);if(ph&&ph.e.ok)txt(c,ph.credit,X0,y+o+78,'400 21px '+NAT_SANS,rgb(muted),'left',W)}
+  c.globalAlpha=1;const others=reelList().filter(x=>x!==id).slice(0,3).map(x=>(en?((wildMeta[x]||{}).en||nameOf(x)):nameOf(x)).replace(/[（(][^）)]*[）)]/g,'').trim());
+  if(others.length){const yy=Math.min(Y1-56,y+136);c.fillStyle=rgb(acc);c.beginPath();c.arc(X0+7,yy-9,6,0,6.2832);c.fill();txt(c,L('ともに鳴く　','With　')+others.join('、'),X0+24,yy,'500 26px '+NAT_SANS,rgb(ink,.9),'left',W-24)}}
+ else{txt(c,L('写真をタップして、音を重ねる','Tap a photo to layer sounds'),X0,y+120,'600 64px '+NAT_SERIF,rgb(ink),'left',W)}
+ c.globalAlpha=1;txt(c,({all:L('すべての素材','All sources'),nosa:L('BY-SA を除く','No CC BY-SA'),cc0:L('CC0・PD のみ','CC0 / PD only')}[RIGHTS.mode])+L('　クレジットの全文は説明欄に','  Full credits in caption'),X0,Y1-14,'400 20px '+NAT_SANS,rgb(muted),'left',W);
+ // 6. 粒子（ごく薄いフィルムの粒）
+ c.save();c.globalAlpha=paper?.05:.06;c.globalCompositeOperation=paper?'multiply':'overlay';c.fillStyle=c.createPattern(popGrain(),'repeat');c.fillRect(0,0,REEL_W,REEL_H);c.restore()}
+window.reelDrawStudio=(c,layout)=>{if(layout==='nature'){drawNature(c);return}if(layout==='pop'){drawPop(c);return}if(layout==='wave')drawRidge(c);else if(layout==='minimal')drawMinimal(c);else drawPanels(c)};
 window.reelBgDraw=reelBgDraw;
 window.reelPhotoCredits=st=>{const ps=st&&st.photos?[...st.photos.values()]:[];if(!ps.length)return [];return ['','── 写真のクレジット / Photo credits ──',...ps.map(p=>p.latin+': "'+p.file+'" — '+p.author+' · '+p.license+(p.licenseURL?' ('+p.licenseURL+')':'')+' · Wikimedia Commons: '+p.page)]};
 let lastExport=null;
@@ -566,7 +650,7 @@ window.studioActive=()=>playingIds().length>0;
 window.studioSeed=fn=>{realSeed(fn);for(const id of playingIds())noteTile(id,fn);for(const v of trk.voices)noteTile(v.t.src,fn)};
 window.studioNow=()=>playingIds().filter(id=>!userSounds.has(id));
 window.__studioDebug={tiles:()=>tileIds().length,shown:()=>document.querySelectorAll('#tileGrid .tile').length,photos:()=>[...document.querySelectorAll('#tileGrid .tile img')].length,playing:playingIds,start:tileStart,stop:tileStop,toggle:tileToggle,stopAll:tileStopAll,photoFor,binomial,
- state:id=>{const s=tileState.get(id);return s?{vol:s.vol,pan:s.pan,loop:s.loop,on:!!s.voice}:null},isOn,isSounding,member,engineKind,setMember,fieldLevel:id=>fieldConfig.levels[id]||0,stopEverything,dock:()=>({hidden:$('dock').hidden,text:$('dockText').textContent}),setVol:setTileVol,setLoop:(id,v)=>{tst(id).loop=!!v},open:openSheet,close:closeSheet,filter:f=>{tileFilter=f;renderFilters();buildTiles()},showAll:v=>{tileShowAll=!!v;buildTiles();return document.querySelectorAll('#tileGrid .tile').length},
+ state:id=>{const s=tileState.get(id);return s?{vol:s.vol,pan:s.pan,loop:s.loop,on:!!s.voice}:null},isOn,isSounding,member,engineKind,setMember,natPal:id=>{const ph=subjectPhoto(id);return natPalette(ph&&ph.e,groupOf(id))},fieldLevel:id=>fieldConfig.levels[id]||0,stopEverything,dock:()=>({hidden:$('dock').hidden,text:$('dockText').textContent}),setVol:setTileVol,setLoop:(id,v)=>{tst(id).loop=!!v},open:openSheet,close:closeSheet,filter:f=>{tileFilter=f;renderFilters();buildTiles()},showAll:v=>{tileShowAll=!!v;buildTiles();return document.querySelectorAll('#tileGrid .tile').length},
  addUser:(name,buffer,origin)=>{const id=addUserSound(name,buffer,origin||'import');buildTiles();renderTrackSources();return id},importFiles,parseAiff,users:()=>[...userSounds.keys()],
  tracks:()=>tracks.map(t=>({id:t.id,src:t.src,offset:t.offset,vol:t.vol,mute:t.mute,solo:t.solo,dest:t.dest,len:t.buffer?t.buffer.duration:null})),addTrack,trkPlay,trkStop,trkRecord,trkRecStop,trkMixdown,trk:()=>({playing:trk.playing,rec:trk.rec?trk.rec.kind:null,voices:trk.voices.size,len:trackLen()}),encodeWav24,encodeAiff24,
  setTemplate,template:()=>reelTpl,imgMode:v=>{if(v)reelImgMode=v;return reelImgMode},subject:reelSubject,photosUsed:()=>reelState&&reelState.photos?[...reelState.photos.keys()]:[],imgCache:()=>[...imgCache].map(([u,e])=>({u,ok:e.ok,fail:e.fail})),analyse:()=>{analyse();return {peakHz:A.peakHz,rmsDb:A.rmsDb,onsets:A.onsets}},
@@ -575,7 +659,7 @@ function init(){renderFilters();buildTiles();bindSheet();buildMasterEq();renderT
  $('tileStopAll').addEventListener('click',stopEverything);$('tileAddUser').addEventListener('click',()=>$('tileUserFile').click());$('tileUserFile').addEventListener('change',e=>{const fs=[...(e.target.files||[])];e.target.value='';importFiles(fs)});
  $('trkPlay').addEventListener('click',()=>trk.playing?trkStop():trkPlay());$('trkLoop').addEventListener('change',e=>{trk.loop=e.target.checked});$('trkMic').addEventListener('click',()=>trkRecord('mic'));$('trkBounce').addEventListener('click',()=>trkRecord('bounce'));
  $('trkAdd').addEventListener('click',()=>{const v=$('trkAddSrc').value;if(v)addTrack(v)});$('trkWav').addEventListener('click',()=>trkMixdown('wav').catch(e=>trkStatus(e.message)));$('trkAiff').addEventListener('click',()=>trkMixdown('aiff').catch(e=>trkStatus(e.message)));
- setTemplate('pop-sunny');popFonts();
+ setTemplate('nature');natFonts();
  // 言語を切り替えたら、自分で組み立てた文言（L()）を作り直す
  $('langToggle')?.addEventListener('click',()=>setTimeout(()=>{renderFilters();buildTiles();renderTracks();buildPlans();if(sheetId)renderSheet()},0))}
 init();

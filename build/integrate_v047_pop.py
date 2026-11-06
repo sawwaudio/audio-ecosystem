@@ -22,6 +22,8 @@ def once(old, new):
     global t
     if new in t:
         return
+    if t.count(old) == 0:
+        return  # 後の版（v0.48 など）で同じ箇所を書き換え済み
     if t.count(old) != 1:
         die('置き換え対象が %d 件: %r' % (t.count(old), old[:90]))
     t = t.replace(old, new)
@@ -51,12 +53,12 @@ def recolor(css):
 # 本体の CSS（最初の <style>）
 m = re.search(r'<style>(.*?)</style>', t, re.S)
 t = t[:m.start(1)] + recolor(m.group(1)) + t[m.end(1):]
-once('<meta name="theme-color" content="#0c1718">', '<meta name="theme-color" content="#15122b">')
+t = t.replace('<meta name="theme-color" content="#0c1718">', '<meta name="theme-color" content="#15122b">')  # v0.48 で別の色に変えた後は何もしない
 
 # ── 2. 書体（Google Fonts。読めない時は端末の書体で表示する）──
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=M+PLUS+Rounded+1c:wght@500;700;800;900&display=swap">')
-if FONTS not in t:
+if 'fonts.googleapis.com/css2' not in t:  # v0.48 で書体を差し替えた後も重ねない
     i = t.index('<style>')
     t = t[:i] + FONTS + t[i:]
 
@@ -74,8 +76,9 @@ once('<div class="micro tagline">nature as an instrument. · ' + VER + '</div></
 # ── 4. リールのテンプレート「ポップ」5配色（先頭・既定）──
 POP_OPTS = ('<option value="pop-sunny" selected>ポップ・ひまわり</option><option value="pop-candy">ポップ・キャンディ</option>'
             '<option value="pop-lagoon">ポップ・ラグーン</option><option value="pop-jungle">ポップ・ジャングル</option><option value="pop-night">ポップ・夜</option>')
-once('<select id="reelStyle" aria-label="リールのテンプレート"><option value="forest" selected>forest（区画パネル）</option>',
-     '<select id="reelStyle" aria-label="リールのテンプレート">' + POP_OPTS + '<option value="forest">forest（区画パネル）</option>')
+if 'value="pop-sunny"' not in t:
+    once('<select id="reelStyle" aria-label="リールのテンプレート"><option value="forest" selected>forest（区画パネル）</option>',
+         '<select id="reelStyle" aria-label="リールのテンプレート">' + POP_OPTS + '<option value="forest">forest（区画パネル）</option>')
 once("const REEL_STYLES=['motion','analysis','panels','wave','minimal'];", "const REEL_STYLES=['motion','analysis','panels','wave','minimal','pop'];")
 
 # ── 5. スクリプト・CSS・辞書を埋め込み直す ──

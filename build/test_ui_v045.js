@@ -19,25 +19,25 @@ R.help=await pg.evaluate(()=>{const helps=[...document.querySelectorAll('details
  return {count:helps.length,closed:helps.every(d=>!d.open),long}});
 ok('help_folded',R.help.count>=10&&R.help.closed&&R.help.long.length===0);
 // 4. 最初は12枚、「すべて表示」で127枚
-R.tiles={first:await pg.evaluate(()=>document.querySelectorAll('#tileGrid .tile').length),more:await pg.evaluate(()=>document.querySelector('#tileGrid .tileMore')?.textContent)};
-R.tiles.all=await pg.evaluate(()=>__studioDebug.showAll(true));await pg.evaluate(()=>__studioDebug.showAll(false));ok('tiles_paged',R.tiles.first===12&&/127/.test(R.tiles.more)&&R.tiles.all===127);
+R.tiles={first:await pg.evaluate(()=>document.querySelectorAll('#tileGrid .tile').length),more:await pg.evaluate(()=>document.querySelector('#tileSection .tileMore')?.textContent)};
+R.tiles.all=await pg.evaluate(()=>__studioDebug.showAll(true));await pg.evaluate(()=>__studioDebug.showAll(false));R.tiles.amb=await pg.evaluate(()=>document.querySelectorAll('#ambGrid .tile').length);ok('tiles_paged',R.tiles.first===12&&/97/.test(R.tiles.more)&&R.tiles.all===97&&R.tiles.amb===30); // v0.48：生き物97と環境音30（別の欄）
 // 5. タイル＝音場：ループで鳴らす → 自律演奏を始めると参加メンバーへ引き継ぐ（二重に鳴らさない）
-const ids=await pg.evaluate(()=>{const tiles=[...document.querySelectorAll('#tileGrid .tile')].map(t=>t.dataset.id);return {bio:tiles.filter(id=>__studioDebug.engineKind(id)==='bio').slice(0,2)}});
-await pg.evaluate(()=>__studioDebug.showAll(true));const land=await pg.evaluate(()=>[...document.querySelectorAll('#tileGrid .tile')].map(t=>t.dataset.id).find(id=>__studioDebug.engineKind(id)==='field'&&!(__studioDebug.fieldLevel(id)>0)));await pg.evaluate(()=>__studioDebug.showAll(false));
-const [b1,b2]=ids.bio;const tile=id=>'#tileGrid .tile[data-id="'+id+'"] .tilePlay';
+const ids=await pg.evaluate(()=>{const tiles=[...document.querySelectorAll('#tileSection .tile')].map(t=>t.dataset.id);return {bio:tiles.filter(id=>__studioDebug.engineKind(id)==='bio').slice(0,2)}});
+await pg.evaluate(()=>__studioDebug.showAll(true));const land=await pg.evaluate(()=>[...document.querySelectorAll('#tileSection .tile')].map(t=>t.dataset.id).find(id=>__studioDebug.engineKind(id)==='field'&&!(__studioDebug.fieldLevel(id)>0)));await pg.evaluate(()=>__studioDebug.showAll(false));
+const [b1,b2]=ids.bio;const tile=id=>'#tileSection .tile[data-id="'+id+'"] .tilePlay';
 await pg.tap(tile(b1));await wait(1500);R.loop={playing:await pg.evaluate(()=>__studioDebug.playing()),dock:await pg.evaluate(()=>__studioDebug.dock())};ok('loop_tap',R.loop.playing.includes(b1)&&!R.loop.dock.hidden&&/1音を再生中/.test(R.loop.dock.text));
 await pg.click('#play');await wait(2500);
 R.hand={loops:await pg.evaluate(()=>__studioDebug.playing()),enabled:await pg.evaluate(()=>Object.entries(__bioDebug.settings).filter(([,v])=>v.enabled).map(([k])=>k)),on:await pg.evaluate(id=>__studioDebug.isOn(id),b1),pressed:await pg.getAttribute('#play','aria-pressed'),status:await pg.textContent('#tileStatus'),dock:await pg.evaluate(()=>__studioDebug.dock().text)};
 ok('handover',R.hand.loops.length===0&&R.hand.enabled.join()===b1&&R.hand.on&&R.hand.pressed==='true'&&/自律演奏/.test(R.hand.dock));
 // 自律演奏中のタップ＝参加・不参加の切り替え（ループでは鳴らさない）
-await pg.tap(tile(b2));await wait(400);R.join={member:await pg.evaluate(id=>__studioDebug.member(id),b2),loops:await pg.evaluate(()=>__studioDebug.playing()),cls:await pg.evaluate(id=>document.querySelector('#tileGrid .tile[data-id="'+id+'"]').className,b2)};
+await pg.tap(tile(b2));await wait(400);R.join={member:await pg.evaluate(id=>__studioDebug.member(id),b2),loops:await pg.evaluate(()=>__studioDebug.playing()),cls:await pg.evaluate(id=>document.querySelector('#tileSection .tile[data-id="'+id+'"]').className,b2)};
 ok('auto_join',R.join.member&&R.join.loops.length===0&&/\bon\b/.test(R.join.cls)&&/\bauto\b|\bsounding\b/.test(R.join.cls));
 await pg.tap(tile(b2));await wait(400);ok('auto_leave',!(await pg.evaluate(id=>__studioDebug.member(id),b2)));
 // 環境の録音のタイルは環境層のオン／オフ
 await pg.evaluate(()=>__studioDebug.showAll(true));await pg.tap(tile(land));await wait(400);R.field={id:land,level:await pg.evaluate(id=>__studioDebug.fieldLevel(id),land)};
 await pg.tap(tile(land));await wait(300);R.field.off=await pg.evaluate(id=>__studioDebug.fieldLevel(id),land);ok('auto_field',R.field.level>0&&R.field.off===0);await pg.evaluate(()=>__studioDebug.showAll(false));
 // 詳細シート：自律演奏のときの音量・休息（一覧から移した設定）
-await pg.click('#tileGrid .tile[data-id="'+b1+'"] .tileInfo');await wait(300);
+await pg.click('#tileSection .tile[data-id="'+b1+'"] .tileInfo');await wait(300);
 R.sheet={auto:await pg.evaluate(()=>!document.getElementById('sheetAuto').hidden),rest:await pg.evaluate(()=>!document.getElementById('sheetRestRow').hidden)};
 await pg.fill('#sheetRest','40');await pg.dispatchEvent('#sheetRest','input');await pg.fill('#sheetAutoLvl','33');await pg.dispatchEvent('#sheetAutoLvl','input');
 R.sheet.set=await pg.evaluate(id=>({rest:__bioDebug.settings[id].rest,level:__bioDebug.settings[id].level}),b1);await pg.keyboard.press('Escape');

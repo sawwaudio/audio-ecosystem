@@ -1,0 +1,513 @@
+{
+ "note": "写真のタイルの分類（v0.48）。生き物は鳥・虫・両生類・哺乳類・水の生き物、それ以外の環境の録音は環境音。録音台帳の種別・グループ・名前（原典の記載）から決め、種名を推測しない。",
+ "categories": {
+  "blackbird": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "american-field-cricket": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "barking-treefrog": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：ガエル）"
+  },
+  "autumn-insects": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "cicada": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "higurashi": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "niiniizemi": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "tsukutsukuboshi": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "minminzemi": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "japanese-bush-warbler": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "hototogisu": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "tide-rocks": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "rocky-beach": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "kajika-frog": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：ガエル）"
+  },
+  "brown-eared-bulbul": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "autumn-insects-2": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "tree-cricket-europe": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "field-cricket-europe": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "river-esk": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "forest-leaves": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "forest-wind": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "rain-field": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "fire-field": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "gampsocleis-glabra": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "locust": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "tettigonia-viridissima": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "tettigonia-cantans": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "chorthippus-biguttulus": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "chorthippus-brunneus": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "sparrow": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "swallow": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "white-eye": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "kashiwa-insects": {
+   "cat": "insects",
+   "basis": "種を特定しない虫の合唱が主（台帳の名前）"
+  },
+  "bamboo-stream": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "ricefield-frogs": {
+   "cat": "amphibians",
+   "basis": "カエルの合唱が主（台帳の名前）"
+  },
+  "kyoto-rain": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "takayama-river": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "california-stream": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "midwest-woods-wind": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "tokyo-park-cicadas": {
+   "cat": "insects",
+   "basis": "セミの合唱が主（台帳の名前）"
+  },
+  "nakameguro-cicadas": {
+   "cat": "insects",
+   "basis": "セミの合唱が主（台帳の名前）"
+  },
+  "tawny-owl": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "european-nightjar": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "eurasian-wren": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "eurasian-wren-ireland": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "eurasian-wren-alarm": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "song-thrush": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "song-thrush-2": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "nightingale": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "nightingale-russia": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "nightingale-vendee": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "uguisu-yokohama": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "loon-1": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "loon-2": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "loon-3": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "lyrebird": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "lyrebird-healesville": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "woodpecker": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "woodpecker-leipzig": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "woodpecker-illinois": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "scops-owls-crete": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "edge-forest-nl": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "dawn-chorus-ashdown": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "dawn-chorus-brittany": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "dawn-chorus-provence": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "fujinomiya-forest-birds": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "fox": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。キツネ・オオカミ・シカ・テナガザル・ホエザル・ゾウ・コウモリ・サル）"
+  },
+  "wolf": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。キツネ・オオカミ・シカ・テナガザル・ホエザル・ゾウ・コウモリ・サル）"
+  },
+  "roe-deer": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。キツネ・オオカミ・シカ・テナガザル・ホエザル・ゾウ・コウモリ・サル）"
+  },
+  "siamang": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。キツネ・オオカミ・シカ・テナガザル・ホエザル・ゾウ・コウモリ・サル）"
+  },
+  "siamang-belgium": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。キツネ・オオカミ・シカ・テナガザル・ホエザル・ゾウ・コウモリ・サル）"
+  },
+  "howler-belize": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。キツネ・オオカミ・シカ・テナガザル・ホエザル・ゾウ・コウモリ・サル）"
+  },
+  "elephant-zoo": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。キツネ・オオカミ・シカ・テナガザル・ホエザル・ゾウ・コウモリ・サル）"
+  },
+  "sea-lion-valparaiso": {
+   "cat": "aquatic",
+   "basis": "水中・海の生き物（台帳の名前：アシカ）"
+  },
+  "sea-lion-valdivia": {
+   "cat": "aquatic",
+   "basis": "水中・海の生き物（台帳の名前：アシカ）"
+  },
+  "bats-backyard": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。キツネ・オオカミ・シカ・テナガザル・ホエザル・ゾウ・コウモリ・サル）"
+  },
+  "bat-batbox": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。キツネ・オオカミ・シカ・テナガザル・ホエザル・ゾウ・コウモリ・サル）"
+  },
+  "bat-slowed": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。キツネ・オオカミ・シカ・テナガザル・ホエザル・ゾウ・コウモリ・サル）"
+  },
+  "dolphin": {
+   "cat": "aquatic",
+   "basis": "水中・海の生き物（台帳の名前：イルカ）"
+  },
+  "atlantic-spotted-dolphin": {
+   "cat": "aquatic",
+   "basis": "水中・海の生き物（台帳の名前：イルカ）"
+  },
+  "amazon-river-dolphins": {
+   "cat": "aquatic",
+   "basis": "水中・海の生き物（台帳の名前：イルカ）"
+  },
+  "humpback": {
+   "cat": "aquatic",
+   "basis": "水中・海の生き物（台帳の名前：クジラ）"
+  },
+  "treefrog-france": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：ガエル）"
+  },
+  "common-toad": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：ガエル）"
+  },
+  "small-frog-ojai": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：カエル）"
+  },
+  "pacific-treefrog-chorus": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：ガエル）"
+  },
+  "owl-fox-brittany": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。キツネ・オオカミ・シカ・テナガザル・ホエザル・ゾウ・コウモリ・サル）"
+  },
+  "whales-orcas-norway": {
+   "cat": "aquatic",
+   "basis": "水中・海の生き物（台帳の名前：クジラ）"
+  },
+  "snapping-shrimp": {
+   "cat": "aquatic",
+   "basis": "水中・海の生き物（台帳の名前：テッポウエビ）"
+  },
+  "bullfrogs-hk": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：ガエル）"
+  },
+  "peepers-toads-ozarks": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：ピーパー）"
+  },
+  "treefrogs-newyork": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：ガエル）"
+  },
+  "frog-pond-netherlands": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：カエル）"
+  },
+  "lake-frogs-katydids": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：カエル）"
+  },
+  "utah-canyon-frogs": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：カエル）"
+  },
+  "brazil-frog-chorus": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：カエル）"
+  },
+  "amazon-night-jungle": {
+   "cat": "ambience",
+   "basis": "種名の記載がない夜の森の環境録音"
+  },
+  "podlaskie-spring-night": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：カエル）"
+  },
+  "frog-creek-ojai": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：カエル）"
+  },
+  "malaysian-frogs": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：カエル）"
+  },
+  "wetlands-night": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：カエル）"
+  },
+  "amphibians-campsite": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前：両生類）"
+  },
+  "pond-hydrophone-essex": {
+   "cat": "aquatic",
+   "basis": "水中・海の生き物（台帳の名前：水中）"
+  },
+  "reedbed-pondlife": {
+   "cat": "aquatic",
+   "basis": "水中・海の生き物（台帳の名前：水中）"
+  },
+  "garden-pond-hydrophone": {
+   "cat": "aquatic",
+   "basis": "水中・海の生き物（台帳の名前：水中）"
+  },
+  "titi-monkeys-tefe": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。キツネ・オオカミ・シカ・テナガザル・ホエザル・ゾウ・コウモリ・サル）"
+  },
+  "tokyo-cicadas-afternoon": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "crickets-washington": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "night-woods-pennsylvania": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "night-insects-indiana": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "rain-loon-ontario": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "iceland-forest": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "rock-tide-northumberland": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "forest-thunderstorm-hamburg": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "stormy-night": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "yukinoura-bamboo": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "river-cicadas-provence": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "forest-drips-after-storm": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "waves-deadmans-cove": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "winter-fens-kampina": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "yamanushi-river": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "ice-lake-sweden": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "waves-big-lagoon": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "rain-rapids-nz": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "birds-stream-paris": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "waterfall-hexenklamm": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "rain-frogs-guiana": {
+   "cat": "ambience",
+   "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  }
+ }
+}

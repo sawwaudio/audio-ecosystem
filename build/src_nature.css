@@ -1,0 +1,41 @@
+/* v0.48 自然の美しさを保った上質な見た目（docs/VISUAL_STYLE_v0_48.md）。v0.47 の上書きの後に読み込む */
+body{font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;font-weight:400;letter-spacing:.02em}
+button{font-family:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;font-weight:700;border-radius:12px;letter-spacing:.03em}
+.appHead h1.brand,.stepTitle,#sheetName,.planName,.planPrice{font-family:"Shippori Mincho B1","Hiragino Mincho ProN","Yu Mincho",serif;font-weight:700;letter-spacing:.02em}
+.appHead h1.brand{font-size:23px}
+.stepTitle{font-size:22px}
+.tagline,.leadSub,.sheetLatin,.tileSub{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:600;letter-spacing:.01em}
+.tileSub{font-size:12px}
+.sheetLatin{font-size:18px}
+.stepNo,.jump a b{background:none!important;border:1px solid var(--sun);color:var(--sun);font:700 12px "Shippori Mincho B1","Hiragino Mincho ProN",serif}
+.jump a{font-weight:500;background:rgba(241,236,224,.04)}
+section.step{border-width:1px;border-color:rgba(241,236,224,.12)!important}
+section,details{border-radius:16px}
+.lead{color:#cfd2c6;font-size:14px}
+.tile{border-radius:14px;border-width:1px;border-color:rgba(241,236,224,.10)}
+.tile.on{box-shadow:0 0 0 2px var(--g),0 12px 30px -14px var(--g);animation:tileRise .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes tileRise{0%{transform:translateY(3px) scale(.98)}100%{transform:none}}
+.tileName{font-weight:700;letter-spacing:.02em}
+.tileFilters button{font-weight:500}
+.tileFilters button[aria-pressed="true"]{font-weight:700}
+.autoBtn{border-width:1px}
+#tileAddUser{border-style:solid}
+#reelCanvas{border:1px solid rgba(241,236,224,.18);border-radius:16px}
+.dock{border-top:1px solid rgba(230,194,122,.5)}
+#tileStopAll{color:#1b1414}
+.brandMark ellipse:nth-child(4n+1){fill:#e6c27a}.brandMark ellipse:nth-child(4n+2){fill:#d79a8c}.brandMark ellipse:nth-child(4n+3){fill:#8ec3a0}.brandMark ellipse:nth-child(4n){fill:#8fb3d6}
+.brandMark .petals{opacity:.92}
+body.live .brandMark .petals{animation-duration:16s}
+.planCard.plan-pro{box-shadow:none}
+@media (prefers-reduced-motion:reduce){.tile.on{animation:none}}
+@media (max-width:440px){.appHead h1.brand{font-size:19px}}
+/* 環境音の欄（生き物とは別に、雨・川・波・風・森をまとめる） */
+.ambSection{margin-top:16px;padding-top:12px;border-top:1px solid rgba(241,236,224,.10)}
+.ambHead{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.ambTitle{margin:0;font:700 16px "Shippori Mincho B1","Hiragino Mincho ProN",serif;letter-spacing:.04em}
+.ambGrid{display:grid;grid-auto-flow:column;grid-auto-columns:116px;gap:8px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.ambGrid .tile{scroll-snap-align:start}
+.ambGrid .tileName{font-size:11px}
+.ambGrid .tileSub{display:none}
+.ambGrid .tileInfo{width:28px;height:28px;min-height:28px;font-size:12px}
+.tile[data-group="amphibians"]{--g:#a9c47f}.tile[data-group="mammals"]{--g:#cf8e6a}.tile[data-group="aquatic"]{--g:#7fbab6}.tile[data-group="ambience"]{--g:#b9b3a3}

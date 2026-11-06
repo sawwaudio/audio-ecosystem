@@ -6,7 +6,8 @@ const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('conso
 const R={},fail=[];const ok=(k,c)=>{R[k+'_ok']=!!c;if(!c)fail.push(k)};const wait=ms=>pg.waitForTimeout(ms);
 await pg.goto('http://localhost:8765/index.html');await pg.evaluate(()=>{try{localStorage.removeItem('ae-rights');localStorage.removeItem('ae-lang')}catch(e){}});await pg.reload();await wait(900);
 // 1. 既定はポップ（ひまわり）。5配色がテンプレートの先頭
-R.ui=await pg.evaluate(()=>({tpl:__studioDebug.template(),style:__reelDebug.style(),sel:document.getElementById('reelStyle').value,opts:[...document.querySelectorAll('#reelStyle option')].map(o=>o.value).slice(0,5),fonts:!!document.querySelector('link[href*="Dela+Gothic+One"]')}));
+await pg.selectOption('#reelStyle','pop-sunny');await wait(200); // v0.48 から既定は「自然」。ポップは選んで使う
+R.ui=await pg.evaluate(()=>({tpl:__studioDebug.template(),style:__reelDebug.style(),sel:document.getElementById('reelStyle').value,opts:[...document.querySelectorAll('#reelStyle option')].map(o=>o.value).slice(2,7),fonts:!!document.querySelector('link[href*="Dela+Gothic+One"]')}));
 ok('default_pop',R.ui.tpl==='pop-sunny'&&R.ui.style==='pop'&&R.ui.sel==='pop-sunny'&&R.ui.opts.join()==='pop-sunny,pop-candy,pop-lagoon,pop-jungle,pop-night'&&R.ui.fonts);
 // 2. 描く：地の色が配色どおり、音で花びらが動く、描画が速い
 const ids=await pg.evaluate(()=>[...document.querySelectorAll('#tileGrid .tile')].filter(t=>t.querySelector('img')&&t.querySelector('.tileTier').textContent!=='C').map(t=>t.dataset.id).slice(0,2)); // リールの録画は BY-SA を除くので、C 区分ではない写真の音を使う
@@ -23,8 +24,8 @@ R.cost=await pg.evaluate(()=>{const c=document.getElementById('reelCanvas').getC
 R.state=await pg.evaluate(()=>({subject:__studioDebug.subject(),photos:__studioDebug.imgCache().filter(x=>x.ok).length}));ok('subject',ids.includes(R.state.subject)&&R.state.photos>=1);
 // 4. 画面の配色：深い青紫の地・黄色の主ボタン・グループの色のタイル
 R.css=await pg.evaluate(()=>{const g=e=>getComputedStyle(e);const t=document.querySelector('#tileGrid .tile.on');return {bg:g(document.body).backgroundColor,reel:g(document.getElementById('reelRecord')).backgroundColor,tile:t?g(t).borderTopColor:null,group:t?t.dataset.group:null,mark:!!document.querySelector('.brandMark .petals'),live:document.body.classList.contains('live')}});
-const GC={birds:'rgb(91, 140, 255)',insects:'rgb(255, 212, 71)',animals:'rgb(255, 138, 61)',landscape:'rgb(47, 217, 166)'};
-ok('ui_colors',R.css.bg==='rgb(21, 18, 43)'&&R.css.reel==='rgb(255, 212, 71)'&&R.css.tile===GC[R.css.group]&&R.css.mark&&R.css.live);
+const GC={birds:'rgb(143, 179, 214)',insects:'rgb(230, 194, 122)',animals:'rgb(207, 142, 106)',landscape:'rgb(142, 195, 160)'}; // v0.48 の自然の色
+ok('ui_colors',R.css.bg==='rgb(20, 26, 22)'&&R.css.reel==='rgb(230, 194, 122)'&&R.css.tile===GC[R.css.group]&&R.css.mark&&R.css.live); // v0.48 の配色
 // 3. 録画：ポップで書き出せて、写真と録音のクレジットが入る
 await pg.evaluate(()=>__rightsDebug.set('all'));
 const dlP=pg.waitForEvent('download',{timeout:40000,predicate:d=>/\.(mp4|webm)$/.test(d.suggestedFilename())});await pg.evaluate(()=>__reelDebug.start(15));await wait(3200);await pg.click('#reelStop');const dl=await dlP;
@@ -32,7 +33,7 @@ const st=await pg.evaluate(()=>__reelDebug.state());R.rec={file:dl.suggestedFile
 ok('record_pop',/^saww_audio_ecosystem_reel_.+\.(mp4|webm)$/.test(R.rec.file)&&R.rec.frames>=40&&R.rec.style==='pop'&&R.rec.photos.length>=1&&R.rec.credits);
 // 5. 英語表示・はみ出し・エラー
 await pg.click('#langToggle');await wait(400);const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;
-R.en=await pg.evaluate(()=>document.querySelector('#reelStyle option').textContent);ok('english',un.length===0&&R.en==='Pop — sunflower');await pg.click('#langToggle');await wait(200);
+R.en=await pg.evaluate(()=>document.querySelector('#reelStyle option[value="pop-sunny"]').textContent);ok('english',un.length===0&&R.en==='Pop — sunflower');await pg.click('#langToggle');await wait(200);
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 await pg.evaluate(()=>{try{localStorage.removeItem('ae-lang');localStorage.removeItem('ae-rights')}catch(e){}});
 R.errs=errs;ok('no_console_errors',errs.length===0);

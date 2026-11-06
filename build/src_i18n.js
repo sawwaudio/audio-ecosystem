@@ -172,7 +172,10 @@ const EXACT={
 // v0.50 MIDI の相対エンコーダー・ソフトテイクオーバー（ミキサー M5 の残り）
 '動き方':'Mode','絶対値':'Absolute','相対（2の補数）':'Relative (two’s complement)','相対（64が中央）':'Relative (64 = centre)','相対（符号ビット）':'Relative (sign bit)',
 'ソフトテイクオーバー（MIDI のつまみが画面の値を通るまで動かさない）':'Soft takeover (ignore a MIDI knob until it passes the on-screen value)',
-'無限に回るつまみ（エンコーダー・ジョグ）は、一覧の「動き方」で相対の方式を選んでください（機器の説明書に書かれている方式。迷ったら「相対（2の補数）」から試す）。ソフトテイクオーバーを入れると、MIDI のつまみの位置と画面の値がずれている時に、値が急に飛びません。':'For endless knobs (encoders, jog wheels), choose a relative mode under “Mode” in the list (the one given in your device’s manual; if unsure, try “Relative (two’s complement)” first). With soft takeover on, values do not jump when the position of a MIDI knob differs from the on-screen value.'
+'無限に回るつまみ（エンコーダー・ジョグ）は、一覧の「動き方」で相対の方式を選んでください（機器の説明書に書かれている方式。迷ったら「相対（2の補数）」から試す）。ソフトテイクオーバーを入れると、MIDI のつまみの位置と画面の値がずれている時に、値が急に飛びません。':'For endless knobs (encoders, jog wheels), choose a relative mode under “Mode” in the list (the one given in your device’s manual; if unsure, try “Relative (two’s complement)” first). With soft takeover on, values do not jump when the position of a MIDI knob differs from the on-screen value.',
+// v0.51 合成音を鳴らさない（楽器は実録音だけ）
+'合成音を鳴らさない（楽器は実録音だけ）':'Mute synth sounds (instruments from real recordings only)','停止中':'Muted',
+'合成音を止めています。楽器は実録音だけで鳴ります（つまみの値はそのまま。切ると元に戻ります）。':'Synth sounds are muted. Instruments play from real recordings only (slider values are kept; turn this off to restore them).'
 };
 // 合成のみの種（録音データに英名がないもの）
 const EXTRA_NAMES={'サヨナキドリ':'Common nightingale','カッコウ':'Common cuckoo','ミソサザイ':'Eurasian wren','モリフクロウ':'Tawny owl','アマガエル':'Japanese tree frog','シカ':'Sika deer','オオカミ':'Grey wolf','ザトウクジラ':'Humpback whale','イルカ':'Bottlenose dolphin','キツネ':'Red fox',

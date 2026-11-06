@@ -640,6 +640,15 @@ function layerIsReal(k){return !!REAL_DEF[k]||k==='harp'||k==='vibes'}
 function layerIsSynth(k){return !layerIsReal(k)&&['low','music','rhythm'].some(g=>groups[g].some(x=>x[0]===k))}
 function boostCap(){return Math.min(2.2,Math.max(1,synthBoost,instrBoost))}
 window.__boostOf=k=>layerIsReal(k)?instrBoost:layerIsSynth(k)?synthBoost:1;window.__boostCap=boostCap;
+// v0.51 合成音を鳴らさない（docs/LIBRARY_300_PLAN.md 3 の段階2・3の準備）：入れると、合成音（シンセ）の持続音・旋律・打撃と、和音が変わる時の合成の響きを止め、
+// 楽器は実録音だけで鳴らす。つまみの値は変えない（切ると元どおり）。試聴の欄の1音ずつの確認は鳴る。保存はこの端末のブラウザ（localStorage 'saww.synthOff'）だけ。
+// 旧合成環境音（「旧合成音・抽象音を使う」）は別の切り替えのまま。本体は synthMul(k)（index.html の trigger の手前）で __synthMuted を参照する。
+let synthOff=false;try{synthOff=localStorage.getItem('saww.synthOff')==='1'}catch(e){}
+window.__synthMuted=k=>synthOff&&layerIsSynth(k);
+function setSynthOff(v){synthOff=!!v;try{localStorage.setItem('saww.synthOff',synthOff?'1':'0')}catch(e){}renderSynthOff();if(typeof updateLevels==='function')updateLevels()}
+function renderSynthOff(){const c=$('synthOff');if(c)c.checked=synthOff;const sb=$('synthBody');if(sb)sb.classList.toggle('synthMuted',synthOff);
+ const bd=$('synthOffBadge');if(bd)bd.hidden=!synthOff;const n=$('synthOffNote');if(n)n.textContent=synthOff?'合成音を止めています。楽器は実録音だけで鳴ります（つまみの値はそのまま。切ると元に戻ります）。':''}
+window.__synthOff={get:()=>synthOff,set:setSynthOff};
 function realOut(k,pan){const out=G(0),pn=ctx.createStereoPanner?ctx.createStereoPanner():G(1),wet=G(.2);if(pn.pan)pn.pan.value=pan||0;out.connect(pn);pn.connect(mixLane('music'));pn.connect(wet);wet.connect(mixLane('music','wet'));return {out,nodes:[out,pn,wet]}}
 function realPlay(k,meta,t,lvl,pan,rate){const b=instrumentBuffers.get(meta.id);if(!b)return false;
  if(realVoices.size>=12*boostCap()){const old=realVoices.values().next().value;try{old.env.gain.setTargetAtTime(0,ctx.currentTime,.03);old.src.stop(ctx.currentTime+.2)}catch(e){}realVoices.delete(old)}
@@ -718,11 +727,13 @@ function organizeLayers(){const sp=$('synthPanel');if(!sp||$('instrPanel'))retur
  ib.append(boostRow('instrBoost','楽器の密度・重なり',instrBoost,v=>{instrBoost=v}));
  for(const [g,ja] of LAYER_SECS){const ks=keysOf(g,true);if(ks.length)ib.append(layerSub(ja,ks))}
  // 合成音：題名と小見出しを付け直し、つまみ（合成音の密度）を先頭に
- const sum=sp.querySelector(':scope>summary');if(sum)sum.innerHTML=`<span>合成音（シンセ）</span><span class="micro"><span id="synthCount">${nS}</span> · <span>持続音 · 旋律 · 打撃 · 試聴 ▾</span></span>`;
+ const sum=sp.querySelector(':scope>summary');if(sum)sum.innerHTML=`<span>合成音（シンセ）</span><span class="micro"><span id="synthCount">${nS}</span> <span id="synthOffBadge" class="synthOffBadge" hidden>停止中</span> · <span>持続音 · 旋律 · 打撃 · 試聴 ▾</span></span>`;
  const blk=sp.querySelector(':scope>.synthBlock');
  const sb=document.createElement('div');sb.className='layerBody';sb.id='synthBody';sb.append(boostRow('synthBoost','合成音の密度・重なり',synthBoost,v=>{synthBoost=v}));
+ {const r=document.createElement('div');r.className='synthOffRow';r.innerHTML='<label class="sheetCheck"><input id="synthOff" type="checkbox"> 合成音を鳴らさない（楽器は実録音だけ）</label><p class="micro" id="synthOffNote" role="status" aria-live="polite"></p>';
+  r.querySelector('input').addEventListener('change',e=>setSynthOff(e.target.checked));sb.prepend(r)}
  for(const [g,,ja] of LAYER_SECS){const ks=keysOf(g,false);if(ks.length)sb.append(layerSub(ja,ks))}
- (blk||sum).after(sb);
+ (blk||sum).after(sb);renderSynthOff();
  // 元の小見出し（DRONES など。中身は上へ移した）は畳んで隠す。試聴の欄は残す
  for(const g of ['low','music','rhythm']){const d=$(g+'Controls')?.closest('details');if(d&&d!==sp)d.hidden=true}
  // 全体の音量・響き（MASTER ENVIRONMENT）は「全体の音量・活動量・同時発音数」へ移す（合成音だけでなく全部に効くため）

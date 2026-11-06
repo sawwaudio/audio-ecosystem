@@ -78,7 +78,7 @@ header a{color:inherit}
 .planTable th,.planTable td{border-bottom:1px solid #263b3e;padding:6px 4px;text-align:left}
 .planTable .mk,.planTable th:not(:first-child){text-align:center;width:52px}
 .proChip{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:8px;border:1px solid #d6efc8;color:#d6efc8;font:700 9px ui-monospace,monospace;letter-spacing:.08em;vertical-align:middle}</style></head><body><main>
-<header><div><div class="micro">nature as an instrument.</div><h1 class="brand">saww audio ecosystem</h1><div class="micro">v0.43 · SEE IT. TAP IT. HEAR IT. · REELS · MIXER · TRACKS · <a href="#plansSection">FREE / PRO</a></div></div><div class="headTools"><button id="langToggle" type="button" class="langToggle" data-i18n-skip aria-pressed="false">English</button><span class="badge" id="statusBadge">● STANDBY</span></div></header>
+<header><div><div class="micro">nature as an instrument.</div><h1 class="brand">saww audio ecosystem</h1><div class="micro">v0.44 · SEE IT. TAP IT. HEAR IT. · REELS · MIXER · TRACKS · <a href="#plansSection">FREE / PRO</a></div></div><div class="headTools"><button id="langToggle" type="button" class="langToggle" data-i18n-skip aria-pressed="false">English</button><span class="badge" id="statusBadge">● STANDBY</span></div></header>
 <section id="tileSection" aria-labelledby="tileTitle"><div class="between"><h2 id="tileTitle" class="title">SOUNDS — See it. Tap it. Hear it.</h2><span class="micro" id="tileCount" role="status"></span></div><p class="micro">写真をタップすると実録音が鳴り、もう一度タップで止まります。いくつでも重ねられます。長押しか i で音量・ループ・録音情報。写真は学名が一致する種だけに付け、写真のない音は同じ型の図で表します。</p><div class="tileFilters" id="tileFilters" role="group" aria-label="絞り込み"></div><div class="tileGrid" id="tileGrid"></div><div class="buttons three"><button id="tileStopAll" type="button">■ すべて止める</button><button id="tileAddUser" type="button">＋ 自分の音を追加</button><button id="tileToReel" type="button">● リールを作る</button></div><input id="tileUserFile" type="file" accept="audio/*,.wav,.aif,.aiff,.mp3,.m4a,.flac" multiple hidden aria-label="自分の音声ファイルを選択"><input id="tileUserImage" type="file" accept="image/*" hidden aria-label="画像を選択"><p class="micro" id="tileStatus" role="status" aria-live="polite"></p></section>
 <dialog id="tileSheet" aria-labelledby="sheetName"><div class="sheetTop"><button id="sheetClose" type="button" class="sheetClose" aria-label="閉じる">×</button></div><div class="sheetPhoto" id="sheetPhoto"></div><p class="micro" id="sheetPhotoCredit"></p><h3 id="sheetName"></h3><p class="sheetLatin" id="sheetLatin" data-i18n-skip></p><div class="buttons"><button id="sheetPlay" type="button" aria-pressed="false">▶ 再生</button></div><div class="control"><div><label for="sheetVol">音量</label><input id="sheetVol" type="range" min="0" max="100" step="1" value="70"></div><output class="value" id="sheetVolVal">70</output></div><div class="control"><div><label for="sheetPan">定位</label><input id="sheetPan" type="range" min="-100" max="100" step="1" value="0"></div><output class="value" id="sheetPanVal">C</output></div><label class="sheetCheck"><input id="sheetLoop" type="checkbox" checked> ループ（切れ目はクロスフェード）</label><div class="buttons" id="sheetUser" hidden><button id="sheetSetImage" type="button">画像を設定</button><button id="sheetRemoveUser" type="button">この音を削除</button></div><dl class="sheetInfo" id="sheetInfo" data-i18n-skip></dl></dialog>
 <section id="sourceSection"><div class="between"><span class="title">AUDIO SOURCE / 再生音源</span><span class="badge" id="sourceBadge">FLAC</span></div>
@@ -452,6 +452,50 @@ function buildSampler(){const sel=$('smpSource');if(!sel)return;sel.textContent=
  cv.addEventListener('pointermove',e=>{if(smp.drag==null||!e.buttons)return;smpSetRange(smp.drag,xAt(e))});const end=()=>{smp.drag=null};cv.addEventListener('pointerup',end);cv.addEventListener('pointercancel',end);
  cv.addEventListener('keydown',e=>{if(!smp.buf)return;const D=smp.buf.duration,st=D/200,d={ArrowLeft:-st,ArrowRight:st}[e.key];if(d){e.preventDefault();if(e.shiftKey)smpSetRange(smp.start,smp.end+d);else{const w=smp.end-smp.start,a=clamp(smp.start+d,0,D-w);smpSetRange(a,a+w)}}});
  smpRenderSources();smpRenderPads();smpDraw()}
+// ── v0.44 DJ ミキサー M5 第1段階：ミキサー・BEAT FX・チャンネルFX・サンプラーの設定をプリセットに保存（docs/DJ_MIXER_SPEC.md）──
+// 保存するのは設定だけ：サンプラーのパッドは「どの録音の何秒から何秒か」と鳴らし方で、音声データは含めない（読み込み時に元の録音から切り取り直す）。
+// BEAT FX のオン／オフ・押している間は保存しない（読み込んだ瞬間に効果が鳴り出さないように）。商用モードの対象外の録音のパッドは読み込まない（代用しない）。
+const M5_MIX_KEYS=['trim','hi','mid','low','filter','color','fader','mute'];
+function presetM5Block(){const r=v=>Math.round(v*1e4)/1e4;
+ return {mixer:{cfx:mixer.cfx,ch:Object.fromEntries(MIX_CH.map(ch=>[ch,Object.fromEntries(M5_MIX_KEYS.map(k=>[k,k==='mute'?!!mixer.ch[ch][k]:r(mixer.ch[ch][k])]))])),master:{hi:r(mixer.master.hi),mid:r(mixer.master.mid),low:r(mixer.master.low)}},
+  beatFx:{type:fx.type,beats:fx.beats,target:fx.target,bpm:fx.bpm,depth:r(fx.depth),params:{...fx.params}},
+  sampler:{pads:smp.pads.map(p=>p&&{src:{kind:p.src.kind,id:p.src.id},start:r(p.start),end:r(p.end),mode:p.mode,reverse:!!p.reverse,pitch:p.pitch,fade:p.fade,quant:!!p.quant})}}}
+// 読み込み前の検査（不正な値なら何も変えずに拒否）。項目がないプリセット（v0.43 以前）は、いまの設定のまま。
+function presetM5Parse(data){const out={};const num=(v,lo,hi,what)=>{if(typeof v!=='number'||!Number.isFinite(v))throw Error('不正なミキサー設定: '+what);return clamp(v,lo,hi)};
+ if(data.mixer!==undefined){const m=data.mixer;if(!m||typeof m!=='object'||Array.isArray(m))throw Error('不正なミキサー設定');const o={cfx:null,ch:{},master:null};
+  if(m.cfx!==undefined){if(!MIX_CFX.includes(m.cfx))throw Error('不正なミキサー設定: cfx');o.cfx=m.cfx}
+  if(m.ch!==undefined){if(!m.ch||typeof m.ch!=='object')throw Error('不正なミキサー設定');for(const [ch,v] of Object.entries(m.ch)){if(!MIX_CH.includes(ch))continue;if(!v||typeof v!=='object')throw Error('不正なミキサー設定: '+ch);o.ch[ch]={};
+   for(const k of M5_MIX_KEYS){if(v[k]===undefined)continue;if(k==='mute'){if(typeof v[k]!=='boolean')throw Error('不正なミキサー設定: '+ch+'.mute');o.ch[ch][k]=v[k]}else{const c=MIX_CTRL[k];o.ch[ch][k]=num(v[k],c.min,c.max,ch+'.'+k)}}}}
+  if(m.master!==undefined){if(!m.master||typeof m.master!=='object')throw Error('不正なミキサー設定: master');o.master={};for(const k of ['hi','mid','low'])if(m.master[k]!==undefined)o.master[k]=num(m.master[k],0,1,'master.'+k)}
+  out.mixer=o}
+ if(data.beatFx!==undefined){const f=data.beatFx;if(!f||typeof f!=='object')throw Error('不正なエフェクト設定');const o={};
+  if(f.type!==undefined){if(!FX_TYPES.includes(f.type))throw Error('不正なエフェクト設定: type');o.type=f.type}
+  if(f.beats!==undefined){if(!FX_BEATS.includes(f.beats))throw Error('不正なエフェクト設定: beats');o.beats=f.beats}
+  if(f.target!==undefined){if(f.target!=='master'&&!MIX_CH.includes(f.target))throw Error('不正なエフェクト設定: target');o.target=f.target}
+  if(f.bpm!==undefined)o.bpm=Math.round(num(f.bpm,40,200,'bpm'));if(f.depth!==undefined)o.depth=num(f.depth,0,1,'depth');
+  if(f.params!==undefined){if(!f.params||typeof f.params!=='object')throw Error('不正なエフェクト設定: params');o.params={};for(const k of FX_TYPES)if(f.params[k]!==undefined){if(typeof f.params[k]!=='number'||!Number.isFinite(f.params[k]))throw Error('不正なエフェクト設定: '+k);o.params[k]=fxParamClamp(k,f.params[k])}}
+  out.beatFx=o}
+ if(data.sampler!==undefined){const s=data.sampler;if(!s||typeof s!=='object'||!Array.isArray(s.pads)||s.pads.length>SMP_PADS)throw Error('不正なサンプラー設定');
+  out.sampler=s.pads.map((p,i)=>{if(p===null)return null;const bad=()=>{throw Error('不正なサンプラー設定: パッド'+(i+1))};if(!p||typeof p!=='object'||!p.src||!['recording','instrument'].includes(p.src.kind)||typeof p.src.id!=='string')bad();
+   if(typeof p.start!=='number'||typeof p.end!=='number'||!Number.isFinite(p.start)||!Number.isFinite(p.end)||p.start<0||p.end-p.start<.05||p.end-p.start>SMP_MAX+1e-3)bad();if(!SMP_MODE_LABEL[p.mode])bad();
+   return {kind:p.src.kind,id:p.src.id,start:p.start,end:p.end,mode:p.mode,reverse:!!p.reverse,pitch:Math.round(clamp(+p.pitch||0,-12,12)),fade:Math.round(clamp(Number.isFinite(p.fade)?p.fade:10,2,300)),quant:!!p.quant}})}
+ return out}
+let presetM5Pending=null;
+function presetM5Apply(o){const notes=[];
+ if(o.mixer){if(o.mixer.cfx)mixSetCfx(o.mixer.cfx);for(const [ch,v] of Object.entries(o.mixer.ch))for(const [k,x] of Object.entries(v))mixSet(ch,k,x);if(o.mixer.master)for(const [k,x] of Object.entries(o.mixer.master))mixSet('master',k,x)}
+ if(o.beatFx){const f=o.beatFx;if(f.params)for(const [k,x] of Object.entries(f.params)){fx.params[k]=x;if(ctx){const t=ctx.currentTime;for(const e of fxInst.values())if(e.type===k)try{e.param=x;e.setParam(x,t)}catch(er){}}}for(const k of ['type','beats','target','bpm','depth'])if(f[k]!==undefined)fxSet(k,f[k]);fxRender()}
+ if(o.mixer||o.beatFx)notes.push('ミキサー・エフェクトの設定を読み込みました（エフェクトのオン／オフは変えません）。');
+ if(o.sampler){const want=o.sampler.filter(Boolean).length;smpStopAll();for(let i=0;i<SMP_PADS;i++)smp.pads[i]=null;smpRenderPads();if(want){notes.push('サンプラーのパッド'+want+'個を元の録音から読み込みます。');presetM5Pending=presetM5Sampler(o.sampler)}}
+ return notes}
+async function presetM5Sampler(pads){const ep=++smp.epoch;let ok=0,blocked=0,missing=0;smpStatus('読み込み中…');
+ try{await smpEnsureCtx()}catch(e){}
+ for(let i=0;i<pads.length;i++){const p=pads[i];if(!p)continue;const s=smpSources().find(x=>x.kind===p.kind&&x.id===p.id);if(!s){missing++;continue}if(!smpAllowed(s)){blocked++;continue}
+  let b=null;try{b=s.kind==='recording'?await loadOne(s.id):await instrumentBuffer(instrumentSamples.find(x=>x.id===s.id))}catch(e){b=null}if(ep!==smp.epoch)return null;
+  if(!b||p.start>=b.duration){missing++;continue}const end=Math.min(p.end,b.duration,p.start+SMP_MAX),buf=smpSlice(ctx,b,p.start,end);
+  smp.pads[i]={src:s,name:s.name,start:p.start,end,buf,rev:smpReversed(ctx,buf),mode:p.mode,reverse:p.reverse,pitch:p.pitch,fade:p.fade,quant:p.quant,gain:smpGain(s)};ok++}
+ smpRenderPads();const msg=['サンプラーのパッド'+ok+'個を読み込みました。'];if(blocked)msg.push('パッド'+blocked+'個は商用モードの対象外のため読み込みませんでした（代用しません）。');if(missing)msg.push('パッド'+missing+'個は録音が見つからないため読み込みませんでした。');
+ smpStatus(msg.join(''));return {ok,blocked,missing}}
+window.__presetDebug={exportData:()=>exportData(),apply:d=>applyData(d),pending:()=>presetM5Pending,padSum:i=>{const p=smp.pads[i];if(!p)return null;const d=p.buf.getChannelData(0);let s=0;for(let k=0;k<d.length;k++)s+=d[k]*(k%7+1);return s}};
 window.__samplerDebug={state:()=>({src:smp.src?smp.src.kind+':'+smp.src.id:null,dur:smp.buf?smp.buf.duration:0,start:smp.start,end:smp.end,pads:smp.pads.map(p=>p&&{src:p.src.kind+':'+p.src.id,len:p.buf.length,sr:p.buf.sampleRate,mode:p.mode,reverse:p.reverse,pitch:p.pitch,fade:p.fade,quant:p.quant}),playing:[...smp.voices.keys()]}),
  load:async key=>{$('smpSource').value=key;return smpLoad()},setRange:smpSetRange,assign:smpAssign,trigger:smpTrigger,stopAll:smpStopAll,voices:()=>[...smp.voices.entries()].map(([i,v])=>({pad:i,t0:v.t0,end:v.end})),quantTime:smpQuantTime,
  // オフライン描画：本番と同じ smpSlice／smpReversed／smpVoice に試験信号（テスト専用。アプリの音には使わない）を通す。
@@ -616,7 +660,7 @@ $('save').addEventListener('click',()=>{try{localStorage.setItem('audio-ecosyste
 $('restore').addEventListener('click',()=>{try{const old=JSON.parse(localStorage.getItem('audio-ecosystem-v019')||localStorage.getItem('audio-ecosystem-v018')||localStorage.getItem('audio-ecosystem-v017')||localStorage.getItem('audio-ecosystem-v016')||localStorage.getItem('audio-ecosystem-v015')||localStorage.getItem('audio-ecosystem-v013')||localStorage.getItem('audio-ecosystem-v012')||localStorage.getItem('audio-ecosystem-v011')||localStorage.getItem('audio-ecosystem-v09')||localStorage.getItem('a8-preset'));if(!old)throw Error('保存データなし');if(old.format==='audio-ecosystem-preset')applyData(old);for(const k in p)if(Number.isFinite(old.p?.[k]))p[k]=clamp(old.p[k],0,100);chordIndex=clamp(old.chordIndex??old.harm??0,0,chords.length-1);auto=old.auto!==false;quality=old.quality==='eco'?'eco':'high';syncUI();chordUI();updateLevels();if(playing)createDrone();$('message').textContent='プリセットを復元しました（v0.8の設定も読み込み可能）。'}catch(e){$('message').textContent='復元できません: '+e.message}});
 $('reset').addEventListener('click',()=>{p={...defaults};syncUI();updateLevels();$('message').textContent='音量・音色の初期値を復元しました。'});
 // Standalone, validated preset files make the instrument portable when localStorage is blocked.
-function exportData(){return {format:'audio-ecosystem-preset',schema:1,ecosystem:{...ecosystem},engine:'v0.24',sourceMode,field:JSON.parse(JSON.stringify(fieldConfig)),species:JSON.parse(JSON.stringify(speciesSettings)),created:new Date().toISOString(),p:{...p},chordIndex,auto,quality,...(typeof presetRightsBlock==='function'?{rightsMode:RIGHTS.mode,rights:presetRightsBlock()}:{})}}
+function exportData(){return {format:'audio-ecosystem-preset',schema:1,ecosystem:{...ecosystem},engine:'v0.24',sourceMode,field:JSON.parse(JSON.stringify(fieldConfig)),species:JSON.parse(JSON.stringify(speciesSettings)),created:new Date().toISOString(),p:{...p},chordIndex,auto,quality,...(typeof presetRightsBlock==='function'?{rightsMode:RIGHTS.mode,rights:presetRightsBlock()}:{}),...presetM5Block()}}
 function applyData(data){
  if(!data||typeof data!=='object'||data.format!=='audio-ecosystem-preset'||data.schema!==1||!data.p||typeof data.p!=='object')throw Error('対応していないプリセット形式');
  const next={...p};let valid=0;
@@ -625,18 +669,19 @@ function applyData(data){
  if(!Number.isInteger(data.chordIndex)||data.chordIndex<0||data.chordIndex>=chords.length)throw Error('不正な和声番号');
  if(typeof data.auto!=='boolean'||!['high','eco'].includes(data.quality))throw Error('不正な再生設定');
  if(typeof presetRightsCheck==='function')presetRightsCheck(data);
+ const m5=presetM5Parse(data);
  const bioNext={};if(data.species!==undefined){if(!data.species||typeof data.species!=='object'||Array.isArray(data.species))throw Error('不正な生物設定');for(const [id,v] of Object.entries(data.species)){if(!speciesSettings[id])continue;if(!v||!Number.isFinite(v.level)||typeof v.enabled!=='boolean')throw Error('不正な生物設定: '+id);if(v.rest!==undefined&&!Number.isFinite(v.rest))throw Error('不正な休息時間');bioNext[id]={level:clamp(v.level,0,100),enabled:v.enabled,rest:clamp(v.rest??12,1,90)}}}
  const ecoNext={rate:65,overlap:2,realMix:75};if(data.ecosystem!==undefined){if(!data.ecosystem||typeof data.ecosystem!=='object')throw Error('不正な生態系設定');for(const k of Object.keys(ecoNext)){const v=data.ecosystem[k];if(!Number.isFinite(v))throw Error('不正な生態系設定: '+k);ecoNext[k]=k==='overlap'?clamp(Math.round(v),1,16):clamp(v,0,100)}}
  const fieldNextConfig={legacy:false,levels:{...fieldDefaults}};if(data.field!==undefined){if(!data.field||typeof data.field.legacy!=='boolean'||!data.field.levels)throw Error('不正な環境設定');fieldNextConfig.legacy=data.field.legacy;for(const id of Object.keys(fieldDefaults)){const v=data.field.levels[id];if(!Number.isFinite(v))throw Error('不正な環境音量');fieldNextConfig.levels[id]=clamp(v,0,100)}}
  for(const [id,v] of Object.entries(bioNext))Object.assign(speciesSettings[id],v);renderBio();
  stopFieldVoices();Object.assign(fieldConfig,fieldNextConfig);syncFields();Object.assign(ecosystem,ecoNext);resetBioSequence();stopBioVoices();p=next;syncEcosystem();chordIndex=data.chordIndex;auto=data.auto;quality=data.quality;
  syncUI();chordUI();updateLevels();if(playing)createDrone();
- return typeof presetRightsApply==='function'?presetRightsApply(data):[]
+ const notes=typeof presetRightsApply==='function'?presetRightsApply(data):[];notes.push(...presetM5Apply(m5));return notes
 }
 $('exportPreset').addEventListener('click',()=>{try{
  const blob=new Blob([JSON.stringify(exportData(),null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');
  a.href=url;a.download='saww_audio_ecosystem_preset_v019.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),15000);
- const t=exportData().rights?.tiers;presetMessage(['プリセットJSONを書き出しました。',...(t?['ライセンス区分と帰属情報を含みます（A '+t.A+'件・B '+t.B+'件・C '+t.C+'件）。']:[])])
+ const t=exportData().rights?.tiers;presetMessage(['プリセットJSONを書き出しました。',...(t?['ライセンス区分と帰属情報を含みます（A '+t.A+'件・B '+t.B+'件・C '+t.C+'件）。']:[]),'ミキサー・エフェクト・サンプラーの設定を含みます（パッド'+smp.pads.filter(Boolean).length+'個。音声は含めず、読み込み時に元の録音から切り取ります）。'])
  }catch(e){$('message').textContent='書き出し失敗: '+e.message}});
 $('importPreset').addEventListener('click',()=>$('presetFile').click());
 $('presetFile').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{
@@ -1133,6 +1178,7 @@ const RIGHTS_STRICT={all:0,nosa:1,cc0:2};
 function presetSourceIds(){
  const ids=Object.entries(speciesSettings).filter(([id,v])=>v.enabled&&recordings.some(r=>r.id===id)).map(([id])=>id);
  if(!fieldConfig.legacy)for(const [id,l] of Object.entries(fieldConfig.levels))if(l>0&&recordings.some(r=>r.id===id))ids.push(id);
+ if(typeof smp!=='undefined')for(const p of smp.pads)if(p&&p.src.kind==='recording')ids.push(p.src.id);
  return [...new Set(ids)]}
 function presetRightsBlock(){
  const ids=presetSourceIds(),tiers={A:0,B:0,C:0,X:0,U:0};
@@ -1991,7 +2037,7 @@ const EXACT={
 'このブラウザにプリセットを保存しました。':'Preset saved in this browser.','プリセットJSONを書き出しました。':'Preset JSON exported.','プリセットJSONを読み込みました。':'Preset JSON imported.','プリセットを復元しました（v0.8の設定も読み込み可能）。':'Preset restored (v0.8 settings can be loaded too).',
 '音量・音色の初期値を復元しました。':'Volume and tone defaults restored.','保存データなし':'No saved data','対応していないプリセット形式':'Unsupported preset format','既存21音源と5マクロの設定が不足しています':'Settings for the 21 core sources and 5 macros are missing','プリセットJSONを選択':'Choose preset JSON',
 '100KBを超えるファイルは読み込めません':'Files over 100 KB cannot be loaded','20MBまで':'up to 20 MB','はい':'Yes','いいえ':'No','なし':'None',
-'不正な休息時間':'Invalid rest time','不正な再生設定':'Invalid playback setting','不正な和声番号':'Invalid harmony index','不正な環境設定':'Invalid ambience setting','不正な環境音量':'Invalid ambience volume','不正な生態系設定':'Invalid ecosystem setting','不正な生物設定':'Invalid creature setting',
+'不正な休息時間':'Invalid rest time','不正な再生設定':'Invalid playback setting','不正な和声番号':'Invalid harmony index','不正な環境設定':'Invalid ambience setting','不正な環境音量':'Invalid ambience volume','不正な生態系設定':'Invalid ecosystem setting','不正な生物設定':'Invalid creature setting','不正なミキサー設定':'Invalid mixer setting','不正なエフェクト設定':'Invalid effect setting','不正なサンプラー設定':'Invalid sampler setting','ミキサー・エフェクトの設定を読み込みました（エフェクトのオン／オフは変えません）。':'Loaded mixer and effect settings (effect on/off is unchanged).',
 '保存できません':'Cannot save','復元できません':'Cannot restore','書き出し失敗':'Export failed','読み込み失敗':'Load failed','録音を開始できません':'Cannot start recording','不正な音量値':'Invalid volume value',
 '最後の読み込み':'Last loaded','参加中':'Active','読み込み完了':'Loaded',
 // 国・地域（地域フィルターの一覧）
@@ -2011,7 +2057,7 @@ try{const recs=JSON.parse(document.getElementById('ae-recordings').textContent),
  for(const r of recs){const en=meta[r.id]&&meta[r.id].en;if(en){NAMES[r.jp]=en;if(r.latin)LATIN[r.latin]=en}}}catch(e){}
 const RULES=[
  [/^FLAC (\d+)-bit（可逆圧縮）$/,m=>'FLAC '+m[1]+'-bit (lossless)'],
- [/^パッド(\d+)$/,m=>'Pad '+m[1]],[/^パッド(\d+)はまだ空です。$/,m=>'Pad '+m[1]+' is empty.'],[/^パッド(\d+)に割り当てました（([\d.]+)秒）。$/,m=>'Assigned to pad '+m[1]+' ('+m[2]+' s).'],[/^パッド(\d+)の録音は商用モードの対象外のため鳴りません。$/,m=>'Pad '+m[1]+' holds a recording excluded by the commercial mode, so it stays silent.'],
+ [/^パッド(\d+)$/,m=>'Pad '+m[1]],[/^ミキサー・エフェクト・サンプラーの設定を含みます（パッド(\d+)個。音声は含めず、読み込み時に元の録音から切り取ります）。$/,m=>'Includes mixer, effect and sampler settings ('+m[1]+' pad(s); no audio is stored — pads are re-cut from the original recordings on load).'],[/^サンプラーのパッド(\d+)個を元の録音から読み込みます。$/,m=>'Loading '+m[1]+' sampler pad(s) from the original recordings.'],[/^サンプラーのパッド(\d+)個を読み込みました。(?:パッド(\d+)個は商用モードの対象外のため読み込みませんでした（代用しません）。)?(?:パッド(\d+)個は録音が見つからないため読み込みませんでした。)?$/,m=>'Loaded '+m[1]+' sampler pad(s).'+(m[2]?' '+m[2]+' pad(s) were not loaded because commercial mode excludes them (no substitutes).':'')+(m[3]?' '+m[3]+' pad(s) were not loaded because the recording was not found.':'')],[/^パッド(\d+)はまだ空です。$/,m=>'Pad '+m[1]+' is empty.'],[/^パッド(\d+)に割り当てました（([\d.]+)秒）。$/,m=>'Assigned to pad '+m[1]+' ('+m[2]+' s).'],[/^パッド(\d+)の録音は商用モードの対象外のため鳴りません。$/,m=>'Pad '+m[1]+' holds a recording excluded by the commercial mode, so it stays silent.'],
  [/^(.+) を読み込みました（([\d.]+)秒）。波形をなぞって区間を選びます。$/,m=>tr(m[1])+' loaded ('+m[2]+' s). Drag across the waveform to select a region.'],[/^読み込みに失敗しました: (.+)$/,m=>'Loading failed: '+tr(m[1])],[/^(1回|ループ|押す間)( · .+)$/,m=>({'1回':'Once','ループ':'Loop','押す間':'Held'}[m[1]])+m[2]],
  [/^(\d+)録音 \/ 必要な音だけ外部ファイルから読み込み（(.+)）$/,m=>m[1]+' recordings / only the sounds needed are loaded from external files ('+tr(m[2])+')'],
  [/^(生き物|環境音|音楽|サンプラー) (TRIM|HI|MID|LOW|FILTER|FX|ミュート|フェーダー)$/,m=>EXACT[m[1]]+' '+({'ミュート':'mute','フェーダー':'fader'}[m[2]]||m[2])],

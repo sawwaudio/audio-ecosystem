@@ -148,7 +148,7 @@ body.docked main{padding-bottom:92px}
 #reelSection .touchBar{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 12px;align-items:center;margin:0 0 4px}
 #reelSection .touchBar select{width:100%;min-height:44px}
 #reelRecord{background:var(--accent);border-color:var(--accent);color:#152b23}</style></head><body><main>
-<header class="appHead"><div><h1 class="brand">saww audio ecosystem</h1><div class="micro tagline">nature as an instrument. · v0.45</div></div><div class="headTools"><button id="langToggle" type="button" class="langToggle" data-i18n-skip aria-pressed="false">English</button><span class="badge" id="statusBadge">● STANDBY</span></div></header>
+<header class="appHead"><div><h1 class="brand">saww audio ecosystem</h1><div class="micro tagline">nature as an instrument. · v0.46</div></div><div class="headTools"><button id="langToggle" type="button" class="langToggle" data-i18n-skip aria-pressed="false">English</button><span class="badge" id="statusBadge">● STANDBY</span></div></header>
 <nav class="jump" aria-label="ページ内の移動"><a href="#tileSection"><b>01</b>音を選ぶ</a><a href="#reelSection"><b>02</b>リール</a><a href="#playGroup"><b>03</b>演奏</a><a href="#studioGroup"><b>04</b>スタジオ</a><a href="#settingsGroup">設定</a></nav>
 <section id="tileSection" class="step" aria-labelledby="tileTitle"><div class="stepHead"><span class="stepNo" aria-hidden="true">01</span><h2 class="stepTitle" id="tileTitle">音を選ぶ</h2><span class="micro stepMeta" id="tileCount" role="status"></span></div><p class="lead">写真をタップすると鳴ります。<span class="leadSub">See it. Tap it. Hear it.</span></p><div class="tileBar"><button id="play" class="autoBtn" aria-pressed="false">▶ 自律演奏をはじめる</button><button id="tileAddUser" type="button">＋ 自分の音</button></div><div class="tileFilters" id="tileFilters" role="group" aria-label="絞り込み"></div><div class="tileGrid" id="tileGrid"></div><input id="tileUserFile" type="file" accept="audio/*,.wav,.aif,.aiff,.mp3,.m4a,.flac" multiple hidden aria-label="自分の音声ファイルを選択"><input id="tileUserImage" type="file" accept="image/*" hidden aria-label="画像を選択"><p class="micro" id="tileStatus" role="status" aria-live="polite"></p><details class="help"><summary>ⓘ 詳しく</summary><p class="micro">「▶ 自律演奏をはじめる」を押すと、選んでいる写真の生き物が、それぞれ休みを挟みながら鳴き、和音もゆっくり流れます。止めている間は、タップした音がループで鳴り続けます。</p><p class="micro">写真をタップすると実録音が鳴り、もう一度タップで止まります。いくつでも重ねられます。長押しか i で音量・ループ・録音情報。写真は学名が一致する種だけに付け、写真のない音は同じ型の図で表します。</p></details></section>
 <dialog id="tileSheet" aria-labelledby="sheetName"><div class="sheetTop"><button id="sheetClose" type="button" class="sheetClose" aria-label="閉じる">×</button></div><div class="sheetPhoto" id="sheetPhoto"></div><p class="micro" id="sheetPhotoCredit"></p><h3 id="sheetName"></h3><p class="sheetLatin" id="sheetLatin" data-i18n-skip></p><div class="buttons"><button id="sheetPlay" type="button" aria-pressed="false">▶ 再生</button></div><div class="control"><div><label for="sheetVol">音量</label><input id="sheetVol" type="range" min="0" max="100" step="1" value="70"></div><output class="value" id="sheetVolVal">70</output></div><div class="control"><div><label for="sheetPan">定位</label><input id="sheetPan" type="range" min="-100" max="100" step="1" value="0"></div><output class="value" id="sheetPanVal">C</output></div><label class="sheetCheck"><input id="sheetLoop" type="checkbox" checked> ループ（切れ目はクロスフェード）</label><div id="sheetAuto" class="sheetAuto" hidden><p class="micro sheetSub">自律演奏のとき</p><div class="control"><div><label for="sheetAutoLvl">音量</label><input id="sheetAutoLvl" type="range" min="0" max="100" step="1" value="20"></div><output class="value" id="sheetAutoLvlVal">20</output></div><div class="control" id="sheetRestRow"><div><label for="sheetRest">鳴き終わってからの休息（秒）</label><input id="sheetRest" type="range" min="1" max="90" step="1" value="12"></div><output class="value" id="sheetRestVal">12</output></div></div><div class="buttons" id="sheetUser" hidden><button id="sheetSetImage" type="button">画像を設定</button><button id="sheetRemoveUser" type="button">この音を削除</button></div><dl class="sheetInfo" id="sheetInfo" data-i18n-skip></dl></dialog>
@@ -1539,13 +1539,113 @@ $('dbExport').onclick=()=>{const rows=[['No','状態','対象','学名','日本�
 window.__previewDebug={play:previewSpecies,stop:stopPreview,state:()=>({id:previewVoice?.id||null,time:nativePreview.currentTime,paused:nativePreview.paused,error:nativePreview.error?.code||null})};
 window.__bioDebug={ecosystem,history:()=>bioHistory.slice(),candidatePool,chooseBio,resetBioSequence,ecosystemTick:residentTick,residentDue,loadOne,setScene,recordings,signal:()=>{const a=new Float32Array(analyser.fftSize);analyser.getFloatTimeDomainData(a);return {peak:Math.max(...a.map(Math.abs)),rms:Math.sqrt(a.reduce((n,v)=>n+v*v,0)/a.length)}},playSpecies,loadEmbedded,stopBioVoices,settings:speciesSettings,stats:()=>({active:activeBio.size,pending:loadingBio.size,highWater:bioHighWater,pcmBudget:PCM_BUDGET,pcmHighWater,buffers:speciesBuffers.size,pcmBytes:[...speciesBuffers.values()].reduce((n,b)=>n+b.length*b.numberOfChannels*4,0),recordings:recordings.length,profiles:Object.values(speciesDefinitions).flat().length}),decoded:()=>[...speciesBuffers].map(([id,b])=>({id,duration:b.duration,channels:b.numberOfChannels,sampleRate:b.sampleRate,source:bufferSources.get(id)||null}))};
 buildMixer();buildFx();buildSampler();requestAnimationFrame(mixPaint);$('legacyLists').append($('bioSection'),$('fieldSection'));p.insects=55;renderBio();chordUI();syncUI();syncEcosystem();requestAnimationFrame(paint);window.__audioEcosystemDebug={getState:()=>({playing,quality,transientSources,events,voiceLimitHits,sourceHighWater,droneGroups:droneGroups.length,layerCount:Object.entries(groups).filter(([k])=>k!=='master').reduce((n,[,v])=>n+v.length,0),auditionKey,morphCount,weatherMorphs,weather:{...weather},chord:chords[chordIndex].name,audioState:ctx?.state||'none'}),triggerVoice:(k)=>{if(!ctx||!playing)return false;if(!Object.prototype.hasOwnProperty.call(p,k))return false;trigger(k,ctx.currentTime+.04);return true},exportData,applyData,phaseAt:(s)=>Math.floor((s%1800)/300),startRecord,stopRecord,attribution:()=>({used:[...recordUsed.values()],last:lastRecordCredits,library:attributionText(attributionEntries([...recordings.map(r=>({kind:'recording',id:r.id,origin:'embedded'})),...instrumentSamples.map(s=>({kind:'instrument',id:s.id,origin:'embedded'}))]),{scope:'library'})}),recordingState:()=>({recording,recordStopPending,recordFrames,recordWorkletReady}),encodeWav};
+/*<ae-midi>*/
+/* saww audio ecosystem v0.46 — DJ ミキサー M5 第2段階：Web MIDI（docs/DJ_MIXER_SPEC.md）
+   MIDI 機器（DJ コントローラ・キーボード・パッド）のつまみ・フェーダー・パッド・ボタンを、画面の操作部に「学習」で割り当てる。
+   - 割り当てられる操作部：ミキサーのつまみ・フェーダー・MUTE、マスター EQ、チャンネルFXの種類、BEAT FX（効果・拍・オン／オフ・押している間だけ・つまみ）、
+     サンプラー（パッド8個・始点／終点などのスライダー・ボタン）、自律演奏の開始ボタン。
+   - CC（つまみ・フェーダー）とピッチベンドは連続値、ノートはボタン・パッド（押す／離す）。ボタンに CC を割り当てた場合は 64 以上で押す。
+   - 割り当てはこの端末のブラウザ（localStorage 'ae-midi'）にだけ保存する。外部へは送信しない。SysEx は要求しない。
+   - 音源・権利の扱いは変えない（パッドは smpTrigger を通るので、商用モードの対象外の録音は鳴らない）。
+   本体スクリプトの中（buildSampler の後）で実行する。build/src_midi.js と index.html の ae-midi の区間は同じ内容に保つ。 */
+(()=>{'use strict';
+const MIDI_KEY='ae-midi';
+const midi={acc:null,learn:false,pending:null,maps:{},cc:{},lastAt:0,swallow:false};
+window.__midi=midi;
+function midiLoad(){try{const o=JSON.parse(localStorage.getItem(MIDI_KEY)||'null');if(o&&o.v===1&&o.maps&&typeof o.maps==='object')for(const [k,t] of Object.entries(o.maps))if(/^(cc:\d+:\d+|note:\d+:\d+|pb:\d+)$/.test(k)&&midiValidTarget(t))midi.maps[k]=t}catch(e){}}
+function midiSave(){try{localStorage.setItem(MIDI_KEY,JSON.stringify({v:1,maps:midi.maps}))}catch(e){}}
+function midiValidTarget(t){if(!t||typeof t!=='object')return false;
+ if(t.t==='mix')return (t.ch==='master'||MIX_CH.includes(t.ch))&&!!MIX_CTRL[t.k];
+ if(t.t==='range')return typeof t.id==='string'&&/^[\w-]+$/.test(t.id);
+ if(t.t==='pad')return Number.isInteger(t.i)&&t.i>=0&&t.i<SMP_PADS;
+ if(t.t==='hold')return true;
+ if(t.t==='btn')return typeof t.sel==='string'&&/^(#[\w-]+|#(fxTypes|fxBeats|mixCfx) \[data-(type|beats|cfx)="[\w.-]+"\]|#mixGrid \[data-ch="\w+"\] \[data-k="mute"\])$/.test(t.sel);
+ return false}
+const midiCont=t=>t.t==='mix'||t.t==='range';
+// 画面の要素 → 割り当て先
+function midiResolve(el){if(!el||!el.closest||el.closest('#midiPanel'))return null;const studio=el.closest('#studioGroup');
+ const k=el.closest('[data-k]');if(k){const strip=k.closest('#mixGrid [data-ch]');
+  if(strip&&k.dataset.k==='mute')return {t:'btn',sel:'#mixGrid [data-ch="'+strip.dataset.ch+'"] [data-k="mute"]'};
+  if(strip&&MIX_CTRL[k.dataset.k])return {t:'mix',ch:strip.dataset.ch,k:k.dataset.k};
+  if(k.closest('#mixMasterEq')&&MIX_CTRL[k.dataset.k])return {t:'mix',ch:'master',k:k.dataset.k}}
+ const pad=el.closest('#smpPads [data-pad]');if(pad)return {t:'pad',i:+pad.dataset.pad};
+ if(el.closest('#fxHold'))return {t:'hold'};
+ const rg=el.closest('input[type=range]');if(rg&&studio&&rg.id)return {t:'range',id:rg.id};
+ const b=el.closest('button');if(!b||b.disabled)return null;if(b.id==='play')return {t:'btn',sel:'#play'};if(!studio)return null;
+ if(b.dataset.type&&b.closest('#fxTypes'))return {t:'btn',sel:'#fxTypes [data-type="'+b.dataset.type+'"]'};
+ if(b.dataset.beats&&b.closest('#fxBeats'))return {t:'btn',sel:'#fxBeats [data-beats="'+b.dataset.beats+'"]'};
+ if(b.dataset.cfx&&b.closest('#mixCfx'))return {t:'btn',sel:'#mixCfx [data-cfx="'+b.dataset.cfx+'"]'};
+ if(b.id)return {t:'btn',sel:'#'+b.id};return null}
+function midiEl(t){try{if(t.t==='mix')return document.querySelector((t.ch==='master'?'#mixMasterEq':'#mixGrid [data-ch="'+t.ch+'"]')+' [data-k="'+t.k+'"]');
+ if(t.t==='range')return document.getElementById(t.id);if(t.t==='pad')return document.querySelector('#smpPads [data-pad="'+t.i+'"]');if(t.t==='hold')return document.getElementById('fxHold');
+ return document.querySelector(t.sel)}catch(e){return null}}
+function midiTargetLabel(t){const el=midiEl(t);if(!el)return '（見つかりません）';if(t.t==='pad')return 'パッド'+(t.i+1);
+ if(t.t==='range'){const l=document.querySelector('label[for="'+t.id+'"]');return (l&&l.textContent.trim())||t.id}
+ return (el.getAttribute('aria-label')||el.textContent||'').trim().replace(/\s+/g,' ')}
+function midiSrcLabel(key){const [kind,ch,n]=key.split(':');return kind==='cc'?'CC '+n+' · ch'+ch:kind==='note'?'ノート '+n+' · ch'+ch:'ピッチベンド · ch'+ch}
+function midiStatus(s){const el=$('midiStatus');if(el)el.textContent=s}
+// MIDI メッセージ（Uint8Array か配列）を処理する
+function midiMsg(d){if(!d||d.length<2)return;const st=d[0]&0xf0,ch=(d[0]&15)+1;let key,kind,val=0;
+ if(st===0xB0){key='cc:'+ch+':'+d[1];kind='cc';val=(d[2]||0)/127}
+ else if(st===0x90&&(d[2]||0)>0){key='note:'+ch+':'+d[1];kind='on'}
+ else if(st===0x80||st===0x90){key='note:'+ch+':'+d[1];kind='off'}
+ else if(st===0xE0){key='pb:'+ch;kind='cc';val=(((d[2]||0)<<7)|(d[1]||0))/16383}
+ else return;
+ const now=performance.now();if(now-midi.lastAt>90){midi.lastAt=now;const l=$('midiLast');if(l)l.textContent=midiSrcLabel(key)}
+ if(midi.learn&&midi.pending){if(kind==='off')return;const t=midi.pending;
+  if(midiCont(t)&&kind!=='cc'){midiStatus('つまみ・フェーダーには、MIDI のつまみかフェーダー（CC）を動かしてください。');return}
+  for(const [k,v] of Object.entries(midi.maps))if(JSON.stringify(v)===JSON.stringify(t))delete midi.maps[k];
+  midi.maps[key]=t;if(kind==='cc')midi.cc[key]=val;midiSave();midiSetPending(null);midiRender();midiStatus('「'+midiTargetLabel(t)+'」に '+midiSrcLabel(key)+' を割り当てました。');return}
+ const t=midi.maps[key];if(!t)return;
+ if(midiCont(t)){if(kind==='cc')midiApplyCont(t,val);return}
+ if(kind==='cc'){const prev=midi.cc[key]||0;midi.cc[key]=val;if(val>=.5&&prev<.5)midiPress(t,true);else if(val<.5&&prev>=.5)midiPress(t,false);return}
+ midiPress(t,kind==='on')}
+function midiApplyCont(t,r){r=clamp(r,0,1);if(t.t==='mix'){const c=MIX_CTRL[t.k];mixSet(t.ch,t.k,c.min+r*(c.max-c.min));return}
+ const el=midiEl(t);if(!el||el.disabled)return;const mn=+el.min||0,mx=el.max===''?100:+el.max,step=+el.step||1;let v=mn+r*(mx-mn);v=Math.round((v-mn)/step)*step+mn;v=clamp(v,mn,mx);
+ if(+el.value===v)return;el.value=String(v);el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}))}
+function midiPress(t,down){if(t.t==='pad'){smpTrigger(t.i,down);return}
+ if(t.t==='hold'){if(down)fxSet('held',true);else if(fx.held)fxSet('held',false);return}
+ if(!down)return;const el=midiEl(t);if(el&&!el.disabled)el.click()}
+function midiHook(){const acc=midi.acc;if(!acc)return;const names=[];for(const inp of acc.inputs.values()){inp.onmidimessage=e=>midiMsg(e.data);if(inp.state!=='disconnected')names.push(inp.name||inp.id)}
+ midiStatus(names.length?'接続中の MIDI 入力：'+names.join('、'):'MIDI 入力が見つかりません。機器をつないでください。')}
+async function midiConnect(){if(!navigator.requestMIDIAccess){midiStatus('このブラウザは Web MIDI に対応していません。');return}
+ try{midi.acc=await navigator.requestMIDIAccess({sysex:false});midi.acc.onstatechange=midiHook;midiHook()}catch(e){midiStatus('MIDI 機器への接続が許可されませんでした。')}}
+function midiSetPending(t,el){document.querySelectorAll('.midiPending').forEach(x=>x.classList.remove('midiPending'));midi.pending=t;if(t){const e=el||midiEl(t);if(e)e.classList.add('midiPending')}}
+function midiSetLearn(on){midi.learn=!!on;midiSetPending(null);document.body.classList.toggle('midiLearn',midi.learn);const b=$('midiLearn');if(b)b.setAttribute('aria-pressed',String(midi.learn));
+ midiStatus(midi.learn?'割り当てたい操作部（つまみ・フェーダー・パッド・ボタン）を押してください。':'学習を終えました。')}
+function midiPick(e){if(!midi.learn)return;const el=e.target;if(el.closest&&el.closest('#midiPanel'))return;const t=midiResolve(el);
+ if(!t){if(el.closest&&el.closest('#studioGroup')){e.preventDefault();e.stopPropagation();midi.swallow=true;midiStatus('この操作部は割り当てられません。')}return}
+ e.preventDefault();e.stopPropagation();midi.swallow=true;midiSetPending(t,el.closest('[data-k],[data-pad],button,input')||el);
+ midiStatus('「'+midiTargetLabel(t)+'」に割り当てます。MIDI のつまみ・フェーダーかパッド・ボタンを動かしてください。')}
+function midiRender(){const ul=$('midiList');if(!ul)return;ul.textContent='';const keys=Object.keys(midi.maps);
+ if(!keys.length){const li=document.createElement('li');li.className='micro';li.textContent='割り当てはまだありません。';ul.append(li);return}
+ for(const key of keys){const li=document.createElement('li');li.dataset.key=key;const a=document.createElement('span');a.className='src';a.textContent=midiSrcLabel(key);
+  const ar=document.createElement('span');ar.textContent=' → ';const b=document.createElement('span');b.className='dst';b.textContent=midiTargetLabel(midi.maps[key]);
+  const x=document.createElement('button');x.type='button';x.textContent='✕';x.setAttribute('aria-label','割り当てを削除');x.onclick=()=>{delete midi.maps[key];midiSave();midiRender()};li.append(a,ar,b,x);ul.append(li)}}
+function buildMidi(){const sec=$('mixerSection');if(!sec||$('midiPanel'))return;
+ const css=document.createElement('style');css.id='ae-midi-css';css.textContent='#midiPanel{margin-top:12px;border-top:1px solid #263b3e;padding-top:10px}#midiList{list-style:none;margin:6px 0 0;padding:0;font-size:11px}#midiList li{display:flex;flex-wrap:wrap;align-items:center;gap:4px;padding:3px 0;border-bottom:1px solid #1d3033}#midiList .src{color:var(--accent)}#midiList .dst{flex:1;min-width:0;overflow-wrap:anywhere}#midiList button{min-height:28px;padding:2px 9px}#midiLearn[aria-pressed="true"]{background:var(--accent);color:var(--bg)}body.midiLearn #studioGroup :is([data-k],[data-pad],#fxHold,input[type=range],#fxTypes button,#fxBeats button,#mixCfx button),body.midiLearn #play{outline:1px dashed var(--accent);outline-offset:2px}.midiPending{outline:2px solid #e8c36a!important;outline-offset:2px}';document.head.append(css);
+ const p=document.createElement('div');p.id='midiPanel';p.setAttribute('role','group');p.setAttribute('aria-label','MIDI の割り当て');
+ p.innerHTML='<div class="between"><span class="title">MIDI / コントローラ</span><span class="micro"><span>最後の入力</span> <span id="midiLast">—</span></span></div>'+
+  '<div class="buttons"><button id="midiConnect" type="button">MIDI 機器に接続</button><button id="midiLearn" type="button" aria-pressed="false">割り当てを学習</button><button id="midiClear" type="button">割り当てをすべて消す</button></div>'+
+  '<p class="micro" id="midiStatus" role="status" aria-live="polite">MIDI 機器は未接続です。</p><ul id="midiList"></ul>'+
+  '<details class="help"><summary>ⓘ 詳しく</summary><p class="micro">MIDI 機器（DJ コントローラ・キーボード・パッドなど）のつまみ・フェーダー・パッドで、ミキサー・BEAT FX・サンプラーを操作できます。「割り当てを学習」を押し、画面の操作部を押してから、MIDI 機器のつまみやパッドを動かすと割り当てられます。</p><p class="micro">割り当てはこの端末のブラウザにだけ保存され、外部へは送信しません。Web MIDI に対応したブラウザ（パソコンの Chrome・Edge など）で使えます。</p></details>';
+ const fxp=$('fxPanel');if(fxp&&fxp.parentElement===sec)fxp.after(p);else sec.append(p);
+ $('midiConnect').onclick=midiConnect;$('midiLearn').onclick=()=>midiSetLearn(!midi.learn);$('midiClear').onclick=()=>{midi.maps={};midi.cc={};midiSave();midiRender();midiStatus('割り当てをすべて消しました。')};
+ document.addEventListener('pointerdown',midiPick,true);
+ document.addEventListener('click',e=>{if(midi.swallow){midi.swallow=false;e.preventDefault();e.stopPropagation()}},true);
+ document.addEventListener('keydown',e=>{if(!midi.learn)return;if(e.key==='Escape'){midiSetLearn(false);return}if((e.key==='Enter'||e.key===' ')&&document.activeElement&&midiResolve(document.activeElement)){midiPick({target:document.activeElement,preventDefault:()=>e.preventDefault(),stopPropagation:()=>e.stopPropagation()});midi.swallow=false}},true);
+ midiLoad();midiRender();setTimeout(midiRender,0)}
+midi.handle=midiMsg;midi.resolve=midiResolve;midi.render=midiRender;
+buildMidi();
+})();
+/*</ae-midi>*/
 /*<ae-studio>*/
 /* saww audio ecosystem v0.43〜v0.45 — 写真で選ぶ音（See it. Tap it. Hear it.）・マスター EQ・リール作成・マルチトラック・プラン
    v0.45：写真のタイルを「音場」の唯一の入口にした（自律演奏の参加・環境音の層もタイルで切り替える）。下の再生バー。
    本体スクリプト（音声エンジン・音源ライブラリ）の後に読み込む。本体の関数と変数（ctx, master, recordings, loadOne, mixLane など）をそのまま使い、
    音声エンジンと音源の対応は変えない。build/integrate_v043.py が index.html の <script id="ae-studio"> にこのファイルを埋め込む。 */
 (()=>{'use strict';
-const VER='v0.45';
+const VER='v0.46';
 const PHOTOS=(()=>{try{return JSON.parse($('ae-photos').textContent)}catch(e){return {}}})();
 const TIERS=(()=>{try{return JSON.parse($('ae-tiers').textContent)}catch(e){return {plans:[],features:[]}}})();
 const APP_URL=/^https?:$/.test(location.protocol)&&!/^(localhost|127\.)/.test(location.hostname)?location.origin+location.pathname.replace(/index\.html$/,''):'https://sawwaudio.github.io/audio-ecosystem-sounds-1/';
@@ -2213,7 +2313,15 @@ const EXACT={
 '米国北東部・録音者のガレージ':'North-eastern USA, recordist’s garage','兵庫県香美町・JR餘部駅':'JR Amarube Station, Kami, Hyōgo, Japan','JR餘部駅・兵庫県美方郡香美町':'JR Amarube Station, Kami, Mikata District, Hyōgo, Japan',
 '神奈川県川崎市宮前区・東高根森林公園':'Higashi-Takane Forest Park, Miyamae-ku, Kawasaki, Kanagawa, Japan','神奈川県川崎市麻生区':'Asao-ku, Kawasaki, Kanagawa, Japan','神奈川県横浜市青葉区':'Aoba-ku, Yokohama, Kanagawa, Japan','埼玉県志木市':'Shiki, Saitama, Japan',
 '岐阜県・谷汲山華厳寺':'Kegon-ji Temple, Mt. Tanigumi, Gifu, Japan','静岡県伊豆市':'Izu, Shizuoka, Japan','スコットランド・Kagyu Samye Ling近くのEsk川':'River Esk near Kagyu Samye Ling, Scotland','モスクワ州プーシチノ、ロシア':'Pushchino, Moscow Oblast, Russia','インド（詳細不明）':'India (details unknown)',
-'日本':'Japan','ロシア':'Russia','米国':'USA','英国':'UK','スウェーデン':'Sweden','カナダ':'Canada','インド':'India','スコットランド':'Scotland','オランダ':'Netherlands','ドイツ':'Germany','フランス':'France','不明':'unknown'
+'日本':'Japan','ロシア':'Russia','米国':'USA','英国':'UK','スウェーデン':'Sweden','カナダ':'Canada','インド':'India','スコットランド':'Scotland','オランダ':'Netherlands','ドイツ':'Germany','フランス':'France','不明':'unknown',
+// v0.46 Web MIDI（ミキサー M5 第2段階）
+'MIDI / コントローラ':'MIDI / CONTROLLER','MIDI 機器に接続':'Connect MIDI device','割り当てを学習':'Learn mapping','割り当てをすべて消す':'Clear all mappings','MIDI の割り当て':'MIDI mappings','最後の入力':'Last input',
+'MIDI 機器は未接続です。':'No MIDI device connected.','割り当てはまだありません。':'No mappings yet.','割り当てを削除':'Remove mapping','（見つかりません）':'(not found)',
+'このブラウザは Web MIDI に対応していません。':'This browser does not support Web MIDI.','MIDI 機器への接続が許可されませんでした。':'Access to MIDI devices was not allowed.','MIDI 入力が見つかりません。機器をつないでください。':'No MIDI input found. Please connect a device.',
+'割り当てたい操作部（つまみ・フェーダー・パッド・ボタン）を押してください。':'Press the control you want to map (knob, fader, pad or button).','つまみ・フェーダーには、MIDI のつまみかフェーダー（CC）を動かしてください。':'For knobs and faders, move a MIDI knob or fader (CC).',
+'この操作部は割り当てられません。':'This control can’t be mapped.','学習を終えました。':'Learning finished.','割り当てをすべて消しました。':'All mappings cleared.',
+'MIDI 機器（DJ コントローラ・キーボード・パッドなど）のつまみ・フェーダー・パッドで、ミキサー・BEAT FX・サンプラーを操作できます。「割り当てを学習」を押し、画面の操作部を押してから、MIDI 機器のつまみやパッドを動かすと割り当てられます。':'Control the mixer, BEAT FX and sampler with the knobs, faders and pads of a MIDI device (DJ controller, keyboard, pad controller…). Press “Learn mapping”, press a control on screen, then move a knob or hit a pad on your MIDI device to map it.',
+'割り当てはこの端末のブラウザにだけ保存され、外部へは送信しません。Web MIDI に対応したブラウザ（パソコンの Chrome・Edge など）で使えます。':'Mappings are saved only in this browser on this device and are never sent anywhere. Works in browsers that support Web MIDI (e.g. Chrome or Edge on a computer).'
 };
 // 合成のみの種（録音データに英名がないもの）
 const EXTRA_NAMES={'サヨナキドリ':'Common nightingale','カッコウ':'Common cuckoo','ミソサザイ':'Eurasian wren','モリフクロウ':'Tawny owl','アマガエル':'Japanese tree frog','シカ':'Sika deer','オオカミ':'Grey wolf','ザトウクジラ':'Humpback whale','イルカ':'Bottlenose dolphin','キツネ':'Red fox',
@@ -2223,6 +2331,8 @@ const NAMES=Object.assign({},EXTRA_NAMES),LATIN={};
 try{const recs=JSON.parse(document.getElementById('ae-recordings').textContent),meta=JSON.parse(document.getElementById('ae-wildlife-meta').textContent);
  for(const r of recs){const en=meta[r.id]&&meta[r.id].en;if(en){NAMES[r.jp]=en;if(r.latin)LATIN[r.latin]=en}}}catch(e){}
 const RULES=[
+ [/^接続中の MIDI 入力：(.+)$/,m=>'Connected MIDI input: '+m[1].replace(/、/g,', ')],[/^ノート (\d+) · ch(\d+)$/,m=>'Note '+m[1]+' · ch'+m[2]],[/^ピッチベンド · ch(\d+)$/,m=>'Pitch bend · ch'+m[1]],
+ [/^「(.+)」に割り当てます。MIDI のつまみ・フェーダーかパッド・ボタンを動かしてください。$/,m=>'Mapping to “'+tr(m[1])+'”. Move a MIDI knob, fader, pad or button.'],[/^「(.+)」に (.+) を割り当てました。$/,m=>'Mapped '+tr(m[2])+' to “'+tr(m[1])+'”.'],
  [/^FLAC (\d+)-bit（可逆圧縮）$/,m=>'FLAC '+m[1]+'-bit (lossless)'],
  [/^パッド(\d+)$/,m=>'Pad '+m[1]],[/^ミキサー・エフェクト・サンプラーの設定を含みます（パッド(\d+)個。音声は含めず、読み込み時に元の録音から切り取ります）。$/,m=>'Includes mixer, effect and sampler settings ('+m[1]+' pad(s); no audio is stored — pads are re-cut from the original recordings on load).'],[/^サンプラーのパッド(\d+)個を元の録音から読み込みます。$/,m=>'Loading '+m[1]+' sampler pad(s) from the original recordings.'],[/^サンプラーのパッド(\d+)個を読み込みました。(?:パッド(\d+)個は商用モードの対象外のため読み込みませんでした（代用しません）。)?(?:パッド(\d+)個は録音が見つからないため読み込みませんでした。)?$/,m=>'Loaded '+m[1]+' sampler pad(s).'+(m[2]?' '+m[2]+' pad(s) were not loaded because commercial mode excludes them (no substitutes).':'')+(m[3]?' '+m[3]+' pad(s) were not loaded because the recording was not found.':'')],[/^パッド(\d+)はまだ空です。$/,m=>'Pad '+m[1]+' is empty.'],[/^パッド(\d+)に割り当てました（([\d.]+)秒）。$/,m=>'Assigned to pad '+m[1]+' ('+m[2]+' s).'],[/^パッド(\d+)の録音は商用モードの対象外のため鳴りません。$/,m=>'Pad '+m[1]+' holds a recording excluded by the commercial mode, so it stays silent.'],
  [/^(.+) を読み込みました（([\d.]+)秒）。波形をなぞって区間を選びます。$/,m=>tr(m[1])+' loaded ('+m[2]+' s). Drag across the waveform to select a region.'],[/^読み込みに失敗しました: (.+)$/,m=>'Loading failed: '+tr(m[1])],[/^(1回|ループ|押す間)( · .+)$/,m=>({'1回':'Once','ループ':'Loop','押す間':'Held'}[m[1]])+m[2]],

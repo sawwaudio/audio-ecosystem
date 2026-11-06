@@ -158,7 +158,15 @@ const EXACT={
 '米国北東部・録音者のガレージ':'North-eastern USA, recordist’s garage','兵庫県香美町・JR餘部駅':'JR Amarube Station, Kami, Hyōgo, Japan','JR餘部駅・兵庫県美方郡香美町':'JR Amarube Station, Kami, Mikata District, Hyōgo, Japan',
 '神奈川県川崎市宮前区・東高根森林公園':'Higashi-Takane Forest Park, Miyamae-ku, Kawasaki, Kanagawa, Japan','神奈川県川崎市麻生区':'Asao-ku, Kawasaki, Kanagawa, Japan','神奈川県横浜市青葉区':'Aoba-ku, Yokohama, Kanagawa, Japan','埼玉県志木市':'Shiki, Saitama, Japan',
 '岐阜県・谷汲山華厳寺':'Kegon-ji Temple, Mt. Tanigumi, Gifu, Japan','静岡県伊豆市':'Izu, Shizuoka, Japan','スコットランド・Kagyu Samye Ling近くのEsk川':'River Esk near Kagyu Samye Ling, Scotland','モスクワ州プーシチノ、ロシア':'Pushchino, Moscow Oblast, Russia','インド（詳細不明）':'India (details unknown)',
-'日本':'Japan','ロシア':'Russia','米国':'USA','英国':'UK','スウェーデン':'Sweden','カナダ':'Canada','インド':'India','スコットランド':'Scotland','オランダ':'Netherlands','ドイツ':'Germany','フランス':'France','不明':'unknown'
+'日本':'Japan','ロシア':'Russia','米国':'USA','英国':'UK','スウェーデン':'Sweden','カナダ':'Canada','インド':'India','スコットランド':'Scotland','オランダ':'Netherlands','ドイツ':'Germany','フランス':'France','不明':'unknown',
+// v0.46 Web MIDI（ミキサー M5 第2段階）
+'MIDI / コントローラ':'MIDI / CONTROLLER','MIDI 機器に接続':'Connect MIDI device','割り当てを学習':'Learn mapping','割り当てをすべて消す':'Clear all mappings','MIDI の割り当て':'MIDI mappings','最後の入力':'Last input',
+'MIDI 機器は未接続です。':'No MIDI device connected.','割り当てはまだありません。':'No mappings yet.','割り当てを削除':'Remove mapping','（見つかりません）':'(not found)',
+'このブラウザは Web MIDI に対応していません。':'This browser does not support Web MIDI.','MIDI 機器への接続が許可されませんでした。':'Access to MIDI devices was not allowed.','MIDI 入力が見つかりません。機器をつないでください。':'No MIDI input found. Please connect a device.',
+'割り当てたい操作部（つまみ・フェーダー・パッド・ボタン）を押してください。':'Press the control you want to map (knob, fader, pad or button).','つまみ・フェーダーには、MIDI のつまみかフェーダー（CC）を動かしてください。':'For knobs and faders, move a MIDI knob or fader (CC).',
+'この操作部は割り当てられません。':'This control can’t be mapped.','学習を終えました。':'Learning finished.','割り当てをすべて消しました。':'All mappings cleared.',
+'MIDI 機器（DJ コントローラ・キーボード・パッドなど）のつまみ・フェーダー・パッドで、ミキサー・BEAT FX・サンプラーを操作できます。「割り当てを学習」を押し、画面の操作部を押してから、MIDI 機器のつまみやパッドを動かすと割り当てられます。':'Control the mixer, BEAT FX and sampler with the knobs, faders and pads of a MIDI device (DJ controller, keyboard, pad controller…). Press “Learn mapping”, press a control on screen, then move a knob or hit a pad on your MIDI device to map it.',
+'割り当てはこの端末のブラウザにだけ保存され、外部へは送信しません。Web MIDI に対応したブラウザ（パソコンの Chrome・Edge など）で使えます。':'Mappings are saved only in this browser on this device and are never sent anywhere. Works in browsers that support Web MIDI (e.g. Chrome or Edge on a computer).'
 };
 // 合成のみの種（録音データに英名がないもの）
 const EXTRA_NAMES={'サヨナキドリ':'Common nightingale','カッコウ':'Common cuckoo','ミソサザイ':'Eurasian wren','モリフクロウ':'Tawny owl','アマガエル':'Japanese tree frog','シカ':'Sika deer','オオカミ':'Grey wolf','ザトウクジラ':'Humpback whale','イルカ':'Bottlenose dolphin','キツネ':'Red fox',
@@ -168,6 +176,8 @@ const NAMES=Object.assign({},EXTRA_NAMES),LATIN={};
 try{const recs=JSON.parse(document.getElementById('ae-recordings').textContent),meta=JSON.parse(document.getElementById('ae-wildlife-meta').textContent);
  for(const r of recs){const en=meta[r.id]&&meta[r.id].en;if(en){NAMES[r.jp]=en;if(r.latin)LATIN[r.latin]=en}}}catch(e){}
 const RULES=[
+ [/^接続中の MIDI 入力：(.+)$/,m=>'Connected MIDI input: '+m[1].replace(/、/g,', ')],[/^ノート (\d+) · ch(\d+)$/,m=>'Note '+m[1]+' · ch'+m[2]],[/^ピッチベンド · ch(\d+)$/,m=>'Pitch bend · ch'+m[1]],
+ [/^「(.+)」に割り当てます。MIDI のつまみ・フェーダーかパッド・ボタンを動かしてください。$/,m=>'Mapping to “'+tr(m[1])+'”. Move a MIDI knob, fader, pad or button.'],[/^「(.+)」に (.+) を割り当てました。$/,m=>'Mapped '+tr(m[2])+' to “'+tr(m[1])+'”.'],
  [/^FLAC (\d+)-bit（可逆圧縮）$/,m=>'FLAC '+m[1]+'-bit (lossless)'],
  [/^パッド(\d+)$/,m=>'Pad '+m[1]],[/^ミキサー・エフェクト・サンプラーの設定を含みます（パッド(\d+)個。音声は含めず、読み込み時に元の録音から切り取ります）。$/,m=>'Includes mixer, effect and sampler settings ('+m[1]+' pad(s); no audio is stored — pads are re-cut from the original recordings on load).'],[/^サンプラーのパッド(\d+)個を元の録音から読み込みます。$/,m=>'Loading '+m[1]+' sampler pad(s) from the original recordings.'],[/^サンプラーのパッド(\d+)個を読み込みました。(?:パッド(\d+)個は商用モードの対象外のため読み込みませんでした（代用しません）。)?(?:パッド(\d+)個は録音が見つからないため読み込みませんでした。)?$/,m=>'Loaded '+m[1]+' sampler pad(s).'+(m[2]?' '+m[2]+' pad(s) were not loaded because commercial mode excludes them (no substitutes).':'')+(m[3]?' '+m[3]+' pad(s) were not loaded because the recording was not found.':'')],[/^パッド(\d+)はまだ空です。$/,m=>'Pad '+m[1]+' is empty.'],[/^パッド(\d+)に割り当てました（([\d.]+)秒）。$/,m=>'Assigned to pad '+m[1]+' ('+m[2]+' s).'],[/^パッド(\d+)の録音は商用モードの対象外のため鳴りません。$/,m=>'Pad '+m[1]+' holds a recording excluded by the commercial mode, so it stays silent.'],
  [/^(.+) を読み込みました（([\d.]+)秒）。波形をなぞって区間を選びます。$/,m=>tr(m[1])+' loaded ('+m[2]+' s). Drag across the waveform to select a region.'],[/^読み込みに失敗しました: (.+)$/,m=>'Loading failed: '+tr(m[1])],[/^(1回|ループ|押す間)( · .+)$/,m=>({'1回':'Once','ループ':'Loop','押す間':'Held'}[m[1]])+m[2]],

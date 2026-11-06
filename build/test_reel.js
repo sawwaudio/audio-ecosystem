@@ -1,6 +1,6 @@
 // v0.31 リールモード（最小版）の回帰テスト。python3 -m http.server 8765 で配信して実行する。ffprobe があれば書き出した動画の中身も確認する。
 const {chromium}=require('playwright');const fs=require('fs'),cp=require('child_process');(async()=>{const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
-const ctx=await b.newContext({viewport:{width:390,height:900},acceptDownloads:true});const pg=await ctx.newPage();
+const ctx=await b.newContext({viewport:{width:390,height:900},acceptDownloads:true});const pg=await ctx.newPage();await require('./photo_fixture')(pg);
 const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
 const R={},fail=[];const ok=(k,c)=>{R[k]=c;if(!c)fail.push(k)};const JP=/[぀-ヿ一-鿿]/;
 const tmp=require('os').tmpdir()+'/ae_reel_test_'+process.pid;fs.mkdirSync(tmp,{recursive:true});
@@ -22,7 +22,7 @@ R.guardMsg=await msg();ok('guard_msg',R.guardMsg.includes('切り替えられま
 R.now=await pg.evaluate(()=>__reelDebug.now());
 const dl=await dlP;const file=tmp+'/'+dl.suggestedFilename();await dl.saveAs(file);R.file=dl.suggestedFilename();await pg.waitForTimeout(300);
 const st=await pg.evaluate(()=>__reelDebug.state());R.result={...st.result,text:undefined};R.frames=st.frames;
-ok('file_name',/^audio_ecosystem_reel_.+\.(mp4|webm)$/.test(R.file));
+ok('file_name',/^saww_audio_ecosystem_reel_.+\.(mp4|webm)$/.test(R.file));
 const head=fs.readFileSync(file).subarray(0,12);R.size=fs.statSync(file).size;
 ok('file_magic',(head[0]===0x1a&&head[1]===0x45&&head[2]===0xdf&&head[3]===0xa3)||head.subarray(4,8).toString()==='ftyp');
 ok('file_size',R.size>20000);ok('frames_drawn',st.frames>=60);

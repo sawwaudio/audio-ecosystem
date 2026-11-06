@@ -1,6 +1,6 @@
 // 日本語／英語切り替えの回帰テスト。python3 -m http.server 8765 で配信して実行する。
 const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
-const ctx=await b.newContext({viewport:{width:390,height:900}});const pg=await ctx.newPage();
+const ctx=await b.newContext({viewport:{width:390,height:900}});const pg=await ctx.newPage();await require('./photo_fixture')(pg);
 const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
 const R={},fail=[];const ok=(k,c)=>{R[k]=c;if(!c)fail.push(k)};
 const ALLOW=['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'];

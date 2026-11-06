@@ -1,6 +1,6 @@
 // v0.30 プリセットの商用モード・区分・帰属情報の回帰テスト。python3 -m http.server 8765 で配信して実行する。
 const {chromium}=require('playwright');const fs=require('fs');(async()=>{const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
-const ctx=await b.newContext({viewport:{width:390,height:900},acceptDownloads:true});const pg=await ctx.newPage();
+const ctx=await b.newContext({viewport:{width:390,height:900},acceptDownloads:true});const pg=await ctx.newPage();await require('./photo_fixture')(pg);
 const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
 const R={},fail=[];const ok=(k,c)=>{R[k]=c;if(!c)fail.push(k)};const JP=/[぀-ヿ一-鿿]/;
 const tmp=require('os').tmpdir()+'/ae_preset_test_'+process.pid;fs.mkdirSync(tmp,{recursive:true});

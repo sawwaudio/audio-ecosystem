@@ -1,6 +1,6 @@
 // v0.33 合成の模倣音を鳴らさない・タッチ演奏を下へ移動、の回帰テスト。
 const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
-const pg=await b.newPage({viewport:{width:390,height:900}});const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
+const pg=await b.newPage({viewport:{width:390,height:900}});await require('./photo_fixture')(pg);const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
 const R={},fail=[];const ok=(k,c)=>{R[k]=c;if(!c)fail.push(k)};
 await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
 // タッチ演奏は生き物・環境層・リールより下、保存ボタンの手前

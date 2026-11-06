@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 build/shot_*.png
 audio-ecosystem-sounds-1
+shot_*.png

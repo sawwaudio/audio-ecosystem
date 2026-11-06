@@ -1,6 +1,6 @@
 // v0.28 環境層5本（高山の川・森の渓流・米国中西部の森の風・東京のセミ2本）と既定の環境層の回帰テスト。
 const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
-const pg=await b.newPage({viewport:{width:390,height:900}});const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
+const pg=await b.newPage({viewport:{width:390,height:900}});await require('./photo_fixture')(pg);const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
 const R={},fail=[];const ok=(k,c)=>{R[k]=c;if(!c)fail.push(k)};
 const NEW={'takayama-river':45,'california-stream':37,'midwest-woods-wind':45,'tokyo-park-cicadas':45,'nakameguro-cicadas':45};
 await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);

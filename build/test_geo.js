@@ -1,4 +1,4 @@
-const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});const pg=await b.newPage({viewport:{width:390,height:900}});
+const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});const pg=await b.newPage({viewport:{width:390,height:900}});await require('./photo_fixture')(pg);
 const errs=[];pg.on('pageerror',e=>errs.push(e.message));pg.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
 await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(500);
 const cases=[{region:'japan',basis:'native'},{region:'japan',basis:'recorded'},{region:'japan',basis:'endemic'},{region:'japan',basis:'native',habitat:'temperate_forest',time:'night'},{region:'europe',basis:'native'},{region:'europe',basis:'recorded'},{region:'north_america',basis:'recorded'},{region:'south_america',basis:'native'},{region:'oceania',basis:'recorded'},{region:'marine'},{region:'world',habitat:'night_forest'},{region:'world',role:'Drone'},{region:'africa',basis:'native',habitat:'any',time:'any',role:'any'}];

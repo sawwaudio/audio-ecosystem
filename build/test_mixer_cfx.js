@@ -1,7 +1,7 @@
 // v0.41 ミキサー M3（チャンネルごとの空間系）の回帰テスト（docs/DJ_MIXER_SPEC.md）。python3 -m http.server 8765 で配信して実行する。
 // 音の確認は、ページ内の OfflineAudioContext で本番と同じ makeMixLane／applyMixLane に試験信号を通して、サンプル単位で測る。
 const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
-const pg=await b.newPage({viewport:{width:390,height:900}});const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
+const pg=await b.newPage({viewport:{width:390,height:900}});await require('./photo_fixture')(pg);const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
 const R={},fail=[];const ok=(k,c)=>{R[k+'_ok']=!!c;if(!c)fail.push(k)};const T=['space','dub','sweep','crush'];
 await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
 // 画面：各チャンネルに FX つまみ、種類のボタン4つ（既定はリバーブ）

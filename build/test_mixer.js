@@ -1,7 +1,7 @@
 // v0.35 ミキサー M1 の回帰テスト（docs/DJ_MIXER_SPEC.md）。v0.41 でチャンネルごとの FX つまみが加わり、つまみは1チャンネル6個。
 // 周波数特性はページ内の OfflineAudioContext で、ミキサーの1レーン（本番と同じ makeMixLane）にインパルスを通して測る。
 const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
-const pg=await b.newPage({viewport:{width:390,height:900}});const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
+const pg=await b.newPage({viewport:{width:390,height:900}});await require('./photo_fixture')(pg);const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
 const R={},fail=[];const ok=(k,c)=>{R[k+'_ok']=!!c;if(!c)fail.push(k)};
 await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
 // 画面：4チャンネル、タッチ演奏より上

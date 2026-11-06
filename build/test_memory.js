@@ -1,6 +1,6 @@
 // v0.26 音声メモリ対策（環境層のローテーション）の回帰テスト。python3 -m http.server 8765 で配信して実行する（約2分）。
 const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
-const pg=await b.newPage({viewport:{width:390,height:900}});const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
+const pg=await b.newPage({viewport:{width:390,height:900}});await require('./photo_fixture')(pg);const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
 const R={},fail=[];const ok=(k,c)=>{R[k]=c;if(!c)fail.push(k)};const SECS=+(process.env.SECS||110);
 await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
 await pg.click('#play');await pg.waitForTimeout(1500);

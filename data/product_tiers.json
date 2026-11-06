@@ -1,0 +1,25 @@
+{
+ "_note": "v0.43 FREE / PRO の機能区分（docs/PRODUCT_TIERS.md）。料金は米ドル建ての提案価格で未承認。課金は無効（billing: disabled）。テスト公開中はすべての機能を無料で使える。",
+ "currency": "USD",
+ "status": "proposed",
+ "billing": "disabled",
+ "plans": [
+  {"id": "free", "name": "FREE", "tagline": "create & share.", "price": "$0", "period": "forever", "note_ja": "アカウントなしで使えます。", "note_en": "No account needed."},
+  {"id": "pro", "name": "PRO", "tagline": "perform & produce.", "price": "$9.99", "period": "USD / month", "alt": "$99 USD / year", "note_ja": "提案価格（未確定）。いまはテスト公開中のため PRO の機能も無料で使えます。課金はまだ始めていません。", "note_en": "Proposed price (not final). During the public test, PRO features are free. Billing has not started."}
+ ],
+ "features": [
+  {"id": "tiles", "tier": "free", "ja": "写真をタップして実録音を再生・重ねる", "en": "Tap photos to play and layer real recordings"},
+  {"id": "library", "tier": "free", "ja": "実録音ライブラリ（検索・地域・試聴・権利情報）", "en": "Recording library (filters, regions, preview, rights info)"},
+  {"id": "import", "tier": "free", "ja": "自分の音を読み込む（端末の外へ送らない）", "en": "Import your own audio (never uploaded)"},
+  {"id": "reel", "tier": "free", "ja": "リール作成（9:16・1080×1920・15〜60秒・テンプレート）", "en": "Reel creator (9:16, 1080×1920, 15–60 s, templates)"},
+  {"id": "credits", "tier": "free", "ja": "クレジットの自動作成・コピー・共有", "en": "Automatic credits, copy and share"},
+  {"id": "autoplay", "tier": "free", "ja": "自律演奏（自然な鳴き交わし）", "en": "Autonomous play (natural call-and-response)"},
+  {"id": "mixer", "tier": "pro", "ja": "DJ ミキサー（チャンネル EQ・フィルター・マスター EQ）", "en": "DJ mixer (channel EQ, filter, master EQ)"},
+  {"id": "fx", "tier": "pro", "ja": "BEAT FX 10種・チャンネル FX", "en": "10 BEAT FX and channel FX"},
+  {"id": "sampler", "tier": "pro", "ja": "サンプラー（切り取り・8パッド）", "en": "Sampler (slice, 8 pads)"},
+  {"id": "tracks", "tier": "pro", "ja": "マルチトラック（重ね録り・ミュート・ソロ・送り先）", "en": "Multitrack (overdub, mute, solo, routing)"},
+  {"id": "export", "tier": "pro", "ja": "高音質の書き出し（WAV・AIFF 24-bit）", "en": "High-quality export (WAV, AIFF 24-bit)"},
+  {"id": "midi", "tier": "pro", "ja": "MIDI コントローラー（予定）", "en": "MIDI controllers (planned)"},
+  {"id": "projects", "tier": "pro", "ja": "プロジェクトの保存（予定）", "en": "Project saving (planned)"}
+ ]
+}

@@ -2,7 +2,7 @@
 // 音源は別リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置き、本体からは ../audio-ecosystem-sounds-1/ で読む。
 // ローカルでは本体の直下に audio-ecosystem-sounds-1 という名前で音源リポジトリへのリンク（.gitignore 済み）を置いて配信する。
 const {chromium}=require('playwright');(async()=>{const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
-const pg=await b.newPage({viewport:{width:390,height:900}});const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
+const pg=await b.newPage({viewport:{width:390,height:900}});await require('./photo_fixture')(pg);const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
 const R={},fail=[];const ok=(k,c)=>{R[k+'_ok']=!!c;if(!c)fail.push(k)};
 await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
 // 1) 台帳：86本が v0.38 として入り、権利は CC0／CC BY のみ（BY-SA・NC の新規採用なし）

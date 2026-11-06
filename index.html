@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#0c1718"><title>saww audio ecosystem v0.45 — nature as an instrument.</title>
-<style>
-:root{color-scheme:dark;--bg:#0c1718;--panel:#142326;--edge:#31484a;--ink:#e4eee8;--muted:#99b4aa;--accent:#b5d6be}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-monospace,Menlo,SFMono-Regular,monospace;-webkit-font-smoothing:antialiased}main{max-width:790px;margin:0 auto;padding:18px 14px 50px}header{display:flex;justify-content:space-between;gap:12px;align-items:start}h1{font-size:clamp(21px,5vw,28px);margin:5px 0 3px;letter-spacing:.015em}.micro{color:var(--muted);font-size:10px;letter-spacing:.075em;line-height:1.6}.badge{padding:6px 9px;border:1px solid #547569;border-radius:24px;white-space:nowrap;font-size:10px;color:#b8dcc8}section,details{border:1px solid var(--edge);background:var(--panel);border-radius:14px;padding:14px;margin-top:12px}canvas{display:block;width:100%;height:175px;background:#0b1b1e;border:1px solid var(--edge);border-radius:12px;margin-top:14px}button{border:1px solid #56746a;background:#1c3433;color:#e5f3e8;min-height:45px;border-radius:10px;font:700 11px ui-monospace,monospace;padding:9px;cursor:pointer;touch-action:manipulation}button.primary{background:var(--accent);border-color:var(--accent);color:#152b23}button:active{opacity:.72}button:focus-visible,input:focus-visible{outline:2px solid #d6efc8;outline-offset:2px}.buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.harmony{text-align:center}.harmony .name{font-size:28px;color:#d4e8c7;margin:4px 0}.harmony .notes{font-size:12px;color:#a9c6b8}.line{height:5px;border-radius:9px;background:#2b4544;overflow:hidden;margin:12px 0 5px}.line div{height:100%;background:#a3cfb4;width:0}.between{display:flex;justify-content:space-between;align-items:center;gap:10px}.title{font-size:12px;font-weight:700;letter-spacing:.05em}details summary{list-style:none;cursor:pointer;font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:8px}details summary::-webkit-details-marker{display:none}.control{display:grid;grid-template-columns:minmax(0,1fr) 38px;gap:9px;padding:8px 0 3px;border-bottom:1px solid #263b3e}.control:last-child{border:0}.control label{font-size:11px;display:block;margin-bottom:4px}.value{text-align:right;color:#b0cbbb;font-size:11px}input[type=range]{width:100%;accent-color:#b8d6c4;min-height:24px;touch-action:pan-y}.djGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}.mixStrip{display:flex;flex-direction:column;align-items:center;gap:6px;border:1px solid #263b3e;border-radius:10px;padding:8px 2px;background:#10262a;min-width:0}.mixStrip.idle{opacity:.6}.mixName{font-size:10px;font-weight:700;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}.knob{display:flex;flex-direction:column;align-items:center;gap:2px;touch-action:none;cursor:ns-resize;user-select:none;-webkit-user-select:none;border-radius:8px;padding:2px}.knob .lbl{font-size:9px;color:var(--muted);letter-spacing:.06em}.knob .dial{width:34px;height:34px;border-radius:50%;background:#1c3433;border:1px solid #56746a;position:relative}.knob .dial::after{content:"";position:absolute;left:50%;top:3px;width:2px;height:12px;margin-left:-1px;background:#d6efc8;border-radius:2px;transform-origin:50% 14px;transform:rotate(var(--r,0deg))}.knob.moved .dial{border-color:#d6efc8}.knob .val,.fader .val{font-size:9px;color:#b0cbbb;min-height:11px}.knob:focus-visible,.fader:focus-visible{outline:2px solid #d6efc8;outline-offset:1px}.mixMute{min-height:32px;width:100%;font-size:9px;padding:4px}.mixMute.on{background:#e3a073;border-color:#e3a073;color:#152b23}.mixFaderWrap{display:flex;gap:5px;align-items:stretch;height:130px}.mixMeter{width:6px;height:100%;background:#0b1b1e;border:1px solid #263b3e;border-radius:3px;position:relative;overflow:hidden}.mixMeter i{position:absolute;left:0;right:0;bottom:0;height:0;background:#a3cfb4}.mixMeter i.hot{background:#e3a073}.mixMeter.wide{width:auto;flex:1;height:8px}.mixMeter.wide i{top:0;bottom:0;right:auto;height:auto;width:0}.fader{width:30px;height:100%;position:relative;touch-action:none;cursor:ns-resize;display:flex;justify-content:center}.fader::before{content:"";position:absolute;top:4px;bottom:16px;width:4px;background:#263b3e;border-radius:2px}.fader b{position:absolute;left:1px;right:1px;height:12px;bottom:calc(10px + (100% - 32px) * var(--f,1));background:#b8d6c4;border-radius:3px}.fader .val{position:absolute;bottom:0}.mixMasterRow{display:flex;align-items:center;gap:8px;margin-top:10px}.mixMasterRow button{min-height:36px;font-size:10px}.fxPanel{margin-top:12px;border-top:1px solid #263b3e;padding-top:10px}.fxRow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}.fxRow label{font-size:11px}.fxRow select,.fxRow input[type=number]{background:#1c3433;color:var(--ink);border:1px solid #56746a;border-radius:8px;padding:8px;font-size:12px;min-width:0;flex:1 1 120px}.fxRow input[type=number]{flex:0 0 76px}.fxRow button{min-height:38px;flex:0 0 auto}.fxBeats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;margin-top:8px}.fxBeats button{min-height:36px;padding:4px;font-size:11px}.fxBeats button[aria-pressed=true],#fxOn[aria-pressed=true],#fxHold.on{background:var(--accent);border-color:var(--accent);color:var(--bg)}#fxHold{touch-action:none;user-select:none;-webkit-user-select:none}.fxSub{margin-top:8px}.smpPads{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:12px}.smpPads button{min-height:72px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:2px;padding:6px;text-align:left;touch-action:none;user-select:none;-webkit-user-select:none;min-width:0}.smpPads button .no{font-size:10px;color:var(--muted)}.smpPads button .nm{font-size:10px;line-height:1.3;overflow-wrap:anywhere;max-width:100%}.smpPads button .md{font-size:9px;color:#b0cbbb}.smpPads button.empty{opacity:.55}[data-smp-blocked="1"]{opacity:.55}.smpPads button.on{background:var(--accent);border-color:var(--accent);color:var(--bg)}.smpPads button.on .no,.smpPads button.on .md{color:var(--bg)}#smpWave{height:110px;touch-action:none;cursor:crosshair}#samplerSection .fxRow select{flex:1 1 160px}.mixCfx{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin-top:6px}.mixCfx button{min-height:40px;padding:4px 2px;font-size:10px;line-height:1.25;overflow-wrap:anywhere;line-break:strict}.mixCfx button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--bg)}.fxTypes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;margin-top:6px}.fxTypes button{min-height:44px;padding:4px 2px;font-size:10px;line-height:1.25;overflow-wrap:anywhere;line-break:strict}.fxTypes button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--bg)}.auditionGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-bottom:10px}.auditionGrid button{min-height:39px;text-align:left;font-size:10px;font-weight:600}.auditionGrid button.selected{background:#b5d6be;color:#152b23}@media(min-width:620px){.auditionGrid{grid-template-columns:repeat(3,minmax(0,1fr))}}.diagnostics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.diagnostics strong{font-size:13px}.status{font-size:11px;line-height:1.7;color:#abc3b7;min-height:24px;margin:10px 2px}.speciesRow{padding:10px 0;border-bottom:1px solid #29413e}.speciesRow .between{margin-bottom:7px}.speciesRow button{min-height:34px;padding:6px 9px}.speciesRow select{background:#1c3433;color:#d8e8dd;border:1px solid #55736a;border-radius:7px;font-size:10px;padding:7px}.speciesRow input[type=file]{width:100%;font-size:10px;color:#a6c3b5;margin-top:6px}.speciesRow input[type=range]{min-height:18px}.footer{font-size:10px;color:#809b90;line-height:1.7;margin:16px 4px}.pill{font-size:10px;color:#a9c7b9}.phase{font-size:10px;letter-spacing:.06em;color:#afc7b8}@media(max-width:380px){main{padding:10px 8px 35px}section,details{padding:10px}button{font-size:10px;padding:6px}canvas{height:145px}}
-[hidden]{display:none!important}a{overflow-wrap:anywhere}h2{font-size:23px;font-weight:500;margin:7px 0}.mixGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}.mixGrid label{font-size:13px}.mixGrid output{float:right;color:var(--muted)}.mixGrid input{display:block;min-height:32px}.liveLabel{margin-top:20px}#liveSpecies{font-size:14px;min-height:22px;margin:6px 0 16px}#performance>.buttons:first-of-type button{font-size:14px;min-height:52px}#field{height:115px}#realRecordings{margin-top:16px}button{font-size:12px}input[type=range]{min-height:30px}.micro{font-size:11px}.sceneButtons button[aria-pressed=true]{background:var(--accent);color:var(--bg)}.speciesRow .between{flex-wrap:wrap}.speciesRow select{max-width:100%}.speciesRow strong{overflow-wrap:anywhere} @media(max-width:380px){button{font-size:11px}.mixGrid{gap:12px}header .badge{display:none}} #field{height:180px;touch-action:none} .touchBar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0 18px}.touchBar select{background:var(--panel);color:var(--ink);border:1px solid var(--edge);padding:10px;border-radius:8px;font-size:14px}.touchBar label{font-size:13px}.fieldControl small{display:block;color:var(--muted);font-size:11px;line-height:1.6}.fieldControl output{float:right}.legacyToggle{font-size:12px;display:block;padding:12px 0}#count-nature{display:block;margin-top:8px} .resident{padding:18px 0;border-bottom:1px solid var(--line)}.resident h3{margin:0 0 7px;font-size:17px}.resident p{margin:5px 0}.residentState{font-size:12px;margin:9px 0;color:var(--accent)}.resident[data-enabled="true"]{border-left:3px solid var(--accent);padding-left:12px}.resident input[type="file"]{max-width:100%}.resident details{margin-top:10px}.resident .buttons button{min-height:44px}.rightsBadge{display:inline-block;min-width:1.7em;padding:0 .35em;border:1px solid currentColor;border-radius:4px;font-size:11px;font-weight:600;line-height:1.55;text-align:center}.rightsBadge.tier-A{color:#9fd3ae}.rightsBadge.tier-B{color:#d9c98c}.rightsBadge.tier-C{color:#e6a690}.rightsBadge.tier-X{color:#c9c9c9}.rightsLine{font-size:11px;color:var(--muted)}.fieldControl .rightsLine{margin:3px 0 0}.rightsOff{color:#e6a690}#reelCanvas{width:min(100%,216px);height:auto;aspect-ratio:9/16;margin:12px auto 0}[data-rights-blocked="1"]{opacity:.55}#sourceSection .touchBar{margin-top:10px}#sourceSection select{flex:1 1 220px;min-width:0}.auditWrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:10px;border:1px solid var(--edge);border-radius:10px;max-height:420px;overflow-y:auto}.auditWrap table{border-collapse:collapse;font-size:10px;min-width:620px;width:100%}.auditWrap th,.auditWrap td{border-bottom:1px solid #263b3e;padding:6px 7px;text-align:left;vertical-align:top;line-height:1.45}.auditWrap th{color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--panel);z-index:1}.auditWrap td.n{white-space:nowrap}.st{display:inline-block;padding:1px 7px;border-radius:10px;border:1px solid #547569;font-weight:700;white-space:nowrap}.st-A1{background:#b5d6be;color:#152b23;border-color:#b5d6be}.st-A2{color:#d4e8c7;border-color:#b5d6be}.st-B1{color:#e2d29b;border-color:#8a7a4a}.st-C1{color:#eab3a4;border-color:#9a5f50}.auditWrap .sub{color:var(--muted)}
-.geoGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}.geoGrid label{font-size:11px;display:flex;flex-direction:column;gap:4px;min-width:0}.geoGrid select{width:100%;font-size:12px}.geoGrid select:disabled{opacity:.45}.geoList{display:grid;gap:4px;margin-top:6px}.geoItem{font-size:11px;padding:6px 8px;border:1px solid #263b3e;border-radius:8px}.geoItem .micro{font-size:10px}@media(min-width:620px){.geoGrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.st-db-in-app{background:#b5d6be;color:#152b23;border-color:#b5d6be}.st-db-verified{color:#d4e8c7;border-color:#b5d6be}.st-db-partial{color:#e2d29b;border-color:#8a7a4a}.st-db-excluded,.st-db-not-found{color:#eab3a4;border-color:#9a5f50}.st-db-pending-list{color:var(--muted);border-color:var(--edge)}#dbPanel .touchBar{margin-top:10px}
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#15122b"><title>saww audio ecosystem v0.47 — nature as an instrument.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=M+PLUS+Rounded+1c:wght@500;700;800;900&display=swap"><style>
+:root{color-scheme:dark;--bg:#15122b;--panel:#1f1a3d;--edge:#3b3468;--ink:#fff7e8;--muted:#b8aedd;--accent:#ffd447}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-monospace,Menlo,SFMono-Regular,monospace;-webkit-font-smoothing:antialiased}main{max-width:790px;margin:0 auto;padding:18px 14px 50px}header{display:flex;justify-content:space-between;gap:12px;align-items:start}h1{font-size:clamp(21px,5vw,28px);margin:5px 0 3px;letter-spacing:.015em}.micro{color:var(--muted);font-size:10px;letter-spacing:.075em;line-height:1.6}.badge{padding:6px 9px;border:1px solid #5a50a0;border-radius:24px;white-space:nowrap;font-size:10px;color:#e9e3ff}section,details{border:1px solid var(--edge);background:var(--panel);border-radius:14px;padding:14px;margin-top:12px}canvas{display:block;width:100%;height:175px;background:#120f26;border:1px solid var(--edge);border-radius:12px;margin-top:14px}button{border:1px solid #4c4390;background:#2a2452;color:#fff7e8;min-height:45px;border-radius:10px;font:700 11px ui-monospace,monospace;padding:9px;cursor:pointer;touch-action:manipulation}button.primary{background:var(--accent);border-color:var(--accent);color:#1f1a3d}button:active{opacity:.72}button:focus-visible,input:focus-visible{outline:2px solid #ffd447;outline-offset:2px}.buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.harmony{text-align:center}.harmony .name{font-size:28px;color:#ffe58a;margin:4px 0}.harmony .notes{font-size:12px;color:#cfc6f2}.line{height:5px;border-radius:9px;background:#2e2858;overflow:hidden;margin:12px 0 5px}.line div{height:100%;background:#2fd9a6;width:0}.between{display:flex;justify-content:space-between;align-items:center;gap:10px}.title{font-size:12px;font-weight:700;letter-spacing:.05em}details summary{list-style:none;cursor:pointer;font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:8px}details summary::-webkit-details-marker{display:none}.control{display:grid;grid-template-columns:minmax(0,1fr) 38px;gap:9px;padding:8px 0 3px;border-bottom:1px solid #332c5e}.control:last-child{border:0}.control label{font-size:11px;display:block;margin-bottom:4px}.value{text-align:right;color:#cfc6f2;font-size:11px}input[type=range]{width:100%;accent-color:#ffd447;min-height:24px;touch-action:pan-y}.djGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:10px}.mixStrip{display:flex;flex-direction:column;align-items:center;gap:6px;border:1px solid #332c5e;border-radius:10px;padding:8px 2px;background:#191536;min-width:0}.mixStrip.idle{opacity:.6}.mixName{font-size:10px;font-weight:700;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}.knob{display:flex;flex-direction:column;align-items:center;gap:2px;touch-action:none;cursor:ns-resize;user-select:none;-webkit-user-select:none;border-radius:8px;padding:2px}.knob .lbl{font-size:9px;color:var(--muted);letter-spacing:.06em}.knob .dial{width:34px;height:34px;border-radius:50%;background:#2a2452;border:1px solid #4c4390;position:relative}.knob .dial::after{content:"";position:absolute;left:50%;top:3px;width:2px;height:12px;margin-left:-1px;background:#ffd447;border-radius:2px;transform-origin:50% 14px;transform:rotate(var(--r,0deg))}.knob.moved .dial{border-color:#ffd447}.knob .val,.fader .val{font-size:9px;color:#cfc6f2;min-height:11px}.knob:focus-visible,.fader:focus-visible{outline:2px solid #ffd447;outline-offset:1px}.mixMute{min-height:32px;width:100%;font-size:9px;padding:4px}.mixMute.on{background:#e3a073;border-color:#e3a073;color:#1f1a3d}.mixFaderWrap{display:flex;gap:5px;align-items:stretch;height:130px}.mixMeter{width:6px;height:100%;background:#120f26;border:1px solid #332c5e;border-radius:3px;position:relative;overflow:hidden}.mixMeter i{position:absolute;left:0;right:0;bottom:0;height:0;background:#2fd9a6}.mixMeter i.hot{background:#e3a073}.mixMeter.wide{width:auto;flex:1;height:8px}.mixMeter.wide i{top:0;bottom:0;right:auto;height:auto;width:0}.fader{width:30px;height:100%;position:relative;touch-action:none;cursor:ns-resize;display:flex;justify-content:center}.fader::before{content:"";position:absolute;top:4px;bottom:16px;width:4px;background:#332c5e;border-radius:2px}.fader b{position:absolute;left:1px;right:1px;height:12px;bottom:calc(10px + (100% - 32px) * var(--f,1));background:#ffd447;border-radius:3px}.fader .val{position:absolute;bottom:0}.mixMasterRow{display:flex;align-items:center;gap:8px;margin-top:10px}.mixMasterRow button{min-height:36px;font-size:10px}.fxPanel{margin-top:12px;border-top:1px solid #332c5e;padding-top:10px}.fxRow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px}.fxRow label{font-size:11px}.fxRow select,.fxRow input[type=number]{background:#2a2452;color:var(--ink);border:1px solid #4c4390;border-radius:8px;padding:8px;font-size:12px;min-width:0;flex:1 1 120px}.fxRow input[type=number]{flex:0 0 76px}.fxRow button{min-height:38px;flex:0 0 auto}.fxBeats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;margin-top:8px}.fxBeats button{min-height:36px;padding:4px;font-size:11px}.fxBeats button[aria-pressed=true],#fxOn[aria-pressed=true],#fxHold.on{background:var(--accent);border-color:var(--accent);color:var(--bg)}#fxHold{touch-action:none;user-select:none;-webkit-user-select:none}.fxSub{margin-top:8px}.smpPads{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:12px}.smpPads button{min-height:72px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:2px;padding:6px;text-align:left;touch-action:none;user-select:none;-webkit-user-select:none;min-width:0}.smpPads button .no{font-size:10px;color:var(--muted)}.smpPads button .nm{font-size:10px;line-height:1.3;overflow-wrap:anywhere;max-width:100%}.smpPads button .md{font-size:9px;color:#cfc6f2}.smpPads button.empty{opacity:.55}[data-smp-blocked="1"]{opacity:.55}.smpPads button.on{background:var(--accent);border-color:var(--accent);color:var(--bg)}.smpPads button.on .no,.smpPads button.on .md{color:var(--bg)}#smpWave{height:110px;touch-action:none;cursor:crosshair}#samplerSection .fxRow select{flex:1 1 160px}.mixCfx{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin-top:6px}.mixCfx button{min-height:40px;padding:4px 2px;font-size:10px;line-height:1.25;overflow-wrap:anywhere;line-break:strict}.mixCfx button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--bg)}.fxTypes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;margin-top:6px}.fxTypes button{min-height:44px;padding:4px 2px;font-size:10px;line-height:1.25;overflow-wrap:anywhere;line-break:strict}.fxTypes button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--bg)}.auditionGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-bottom:10px}.auditionGrid button{min-height:39px;text-align:left;font-size:10px;font-weight:600}.auditionGrid button.selected{background:#ffd447;color:#1f1a3d}@media(min-width:620px){.auditionGrid{grid-template-columns:repeat(3,minmax(0,1fr))}}.diagnostics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.diagnostics strong{font-size:13px}.status{font-size:11px;line-height:1.7;color:#cfc6f2;min-height:24px;margin:10px 2px}.speciesRow{padding:10px 0;border-bottom:1px solid #2e2858}.speciesRow .between{margin-bottom:7px}.speciesRow button{min-height:34px;padding:6px 9px}.speciesRow select{background:#2a2452;color:#e9e3ff;border:1px solid #4c4390;border-radius:7px;font-size:10px;padding:7px}.speciesRow input[type=file]{width:100%;font-size:10px;color:#cfc6f2;margin-top:6px}.speciesRow input[type=range]{min-height:18px}.footer{font-size:10px;color:#a59bd0;line-height:1.7;margin:16px 4px}.pill{font-size:10px;color:#cfc6f2}.phase{font-size:10px;letter-spacing:.06em;color:#cfc6f2}@media(max-width:380px){main{padding:10px 8px 35px}section,details{padding:10px}button{font-size:10px;padding:6px}canvas{height:145px}}
+[hidden]{display:none!important}a{overflow-wrap:anywhere}h2{font-size:23px;font-weight:500;margin:7px 0}.mixGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}.mixGrid label{font-size:13px}.mixGrid output{float:right;color:var(--muted)}.mixGrid input{display:block;min-height:32px}.liveLabel{margin-top:20px}#liveSpecies{font-size:14px;min-height:22px;margin:6px 0 16px}#performance>.buttons:first-of-type button{font-size:14px;min-height:52px}#field{height:115px}#realRecordings{margin-top:16px}button{font-size:12px}input[type=range]{min-height:30px}.micro{font-size:11px}.sceneButtons button[aria-pressed=true]{background:var(--accent);color:var(--bg)}.speciesRow .between{flex-wrap:wrap}.speciesRow select{max-width:100%}.speciesRow strong{overflow-wrap:anywhere} @media(max-width:380px){button{font-size:11px}.mixGrid{gap:12px}header .badge{display:none}} #field{height:180px;touch-action:none} .touchBar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0 18px}.touchBar select{background:var(--panel);color:var(--ink);border:1px solid var(--edge);padding:10px;border-radius:8px;font-size:14px}.touchBar label{font-size:13px}.fieldControl small{display:block;color:var(--muted);font-size:11px;line-height:1.6}.fieldControl output{float:right}.legacyToggle{font-size:12px;display:block;padding:12px 0}#count-nature{display:block;margin-top:8px} .resident{padding:18px 0;border-bottom:1px solid var(--line)}.resident h3{margin:0 0 7px;font-size:17px}.resident p{margin:5px 0}.residentState{font-size:12px;margin:9px 0;color:var(--accent)}.resident[data-enabled="true"]{border-left:3px solid var(--accent);padding-left:12px}.resident input[type="file"]{max-width:100%}.resident details{margin-top:10px}.resident .buttons button{min-height:44px}.rightsBadge{display:inline-block;min-width:1.7em;padding:0 .35em;border:1px solid currentColor;border-radius:4px;font-size:11px;font-weight:600;line-height:1.55;text-align:center}.rightsBadge.tier-A{color:#2fd9a6}.rightsBadge.tier-B{color:#d9c98c}.rightsBadge.tier-C{color:#e6a690}.rightsBadge.tier-X{color:#c9c9c9}.rightsLine{font-size:11px;color:var(--muted)}.fieldControl .rightsLine{margin:3px 0 0}.rightsOff{color:#e6a690}#reelCanvas{width:min(100%,216px);height:auto;aspect-ratio:9/16;margin:12px auto 0}[data-rights-blocked="1"]{opacity:.55}#sourceSection .touchBar{margin-top:10px}#sourceSection select{flex:1 1 220px;min-width:0}.auditWrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:10px;border:1px solid var(--edge);border-radius:10px;max-height:420px;overflow-y:auto}.auditWrap table{border-collapse:collapse;font-size:10px;min-width:620px;width:100%}.auditWrap th,.auditWrap td{border-bottom:1px solid #332c5e;padding:6px 7px;text-align:left;vertical-align:top;line-height:1.45}.auditWrap th{color:var(--muted);font-weight:600;position:sticky;top:0;background:var(--panel);z-index:1}.auditWrap td.n{white-space:nowrap}.st{display:inline-block;padding:1px 7px;border-radius:10px;border:1px solid #5a50a0;font-weight:700;white-space:nowrap}.st-A1{background:#ffd447;color:#1f1a3d;border-color:#ffd447}.st-A2{color:#ffe58a;border-color:#ffd447}.st-B1{color:#e2d29b;border-color:#8a7a4a}.st-C1{color:#eab3a4;border-color:#9a5f50}.auditWrap .sub{color:var(--muted)}
+.geoGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}.geoGrid label{font-size:11px;display:flex;flex-direction:column;gap:4px;min-width:0}.geoGrid select{width:100%;font-size:12px}.geoGrid select:disabled{opacity:.45}.geoList{display:grid;gap:4px;margin-top:6px}.geoItem{font-size:11px;padding:6px 8px;border:1px solid #332c5e;border-radius:8px}.geoItem .micro{font-size:10px}@media(min-width:620px){.geoGrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.st-db-in-app{background:#ffd447;color:#1f1a3d;border-color:#ffd447}.st-db-verified{color:#ffe58a;border-color:#ffd447}.st-db-partial{color:#e2d29b;border-color:#8a7a4a}.st-db-excluded,.st-db-not-found{color:#eab3a4;border-color:#9a5f50}.st-db-pending-list{color:var(--muted);border-color:var(--edge)}#dbPanel .touchBar{margin-top:10px}
 .headTools{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}header .langToggle{min-height:34px;padding:6px 12px;text-align:center;font-size:11px;letter-spacing:.04em}
 </style><style id="ae-studio-css">header h1.brand{text-transform:none;letter-spacing:.01em;font-weight:600}
 header a{color:inherit}
@@ -12,55 +12,55 @@ header a{color:inherit}
 
 .tileFilters{display:flex;gap:6px;overflow-x:auto;padding:4px 0 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .tileFilters::-webkit-scrollbar{display:none}
-.tileFilters button{min-height:34px;flex:0 0 auto;border-radius:18px;padding:6px 12px;font-size:11px;background:#132a2b}
-.tileFilters button[aria-pressed="true"]{background:#d6efc8;color:#10221b;border-color:#d6efc8}
+.tileFilters button{min-height:34px;flex:0 0 auto;border-radius:18px;padding:6px 12px;font-size:11px;background:#241f48}
+.tileFilters button[aria-pressed="true"]{background:#ffd447;color:#1f1a3d;border-color:#ffd447}
 .tileGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:8px}
 @media(min-width:620px){.tileGrid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}}
-.tile{position:relative;border-radius:12px;overflow:hidden;background:#0b1a1b;border:1px solid #263b3e;transition:border-color .2s,box-shadow .2s,opacity .2s}
-.tile.on{border-color:#d6efc8;box-shadow:0 0 0 2px rgba(214,239,200,.35),0 0 22px rgba(166,230,184,.25)}
+.tile{position:relative;border-radius:12px;overflow:hidden;background:#120f26;border:1px solid #332c5e;transition:border-color .2s,box-shadow .2s,opacity .2s}
+.tile.on{border-color:#ffd447;box-shadow:0 0 0 2px rgba(255,212,71,.35),0 0 22px rgba(47,217,166,.25)}
 .tile.blocked{opacity:.38}
 .tilePlay{display:block;width:100%;padding:0;margin:0;border:0;border-radius:0;background:none;text-align:left;min-height:0;font:inherit;color:inherit;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none;touch-action:manipulation}
-.tileImg{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;background:#0b1a1b}
+.tileImg{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;background:#120f26}
 .tileImg img,.tileImg .ph svg,.sheetPhoto img,.sheetPhoto .ph svg{width:100%;height:100%;object-fit:cover;display:block}
 .tileImg .ph{display:block;width:100%;height:100%}
 .tile.sounding .tileImg img,.tile.sounding .tileImg .ph{animation:tileBreath 4s ease-in-out infinite}
 @keyframes tileBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
 @media (prefers-reduced-motion:reduce){.tile.sounding .tileImg img,.tile.sounding .tileImg .ph{animation:none}}
-.phLabel{position:absolute;left:8px;top:8px;font:600 9px ui-monospace,monospace;letter-spacing:.12em;color:rgba(230,242,234,.75)}
+.phLabel{position:absolute;left:8px;top:8px;font:600 9px ui-monospace,monospace;letter-spacing:.12em;color:rgba(255,247,232,.75)}
 .tileWave{position:absolute;left:6px;right:6px;top:calc(100% - 92px);width:calc(100% - 12px);height:26px;opacity:0;transition:opacity .2s;pointer-events:none}
 .tile.sounding .tileWave{opacity:1}
 .tile .tileImg::after{content:"";position:absolute;inset:auto 0 0 0;height:55%;background:linear-gradient(transparent,rgba(0,0,0,.72));pointer-events:none}
 .tileText{position:absolute;left:0;right:0;bottom:0;padding:6px 8px 7px;display:flex;flex-direction:column;gap:1px;pointer-events:none}
 .tileName{font:600 12px/1.25 system-ui,"Hiragino Sans",sans-serif;color:#fff;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.tileSub{font:italic 10px/1.2 Georgia,serif;color:#d0ddd6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tileTier{position:absolute;left:6px;top:6px;font:700 9px ui-monospace,monospace;padding:2px 5px;border-radius:6px;background:rgba(0,0,0,.55);color:#d6efc8}
+.tileSub{font:italic 10px/1.2 Georgia,serif;color:#e9e3ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tileTier{position:absolute;left:6px;top:6px;font:700 9px ui-monospace,monospace;padding:2px 5px;border-radius:6px;background:rgba(0,0,0,.55);color:#ffd447}
 .tileTier.tierC{color:#eab3a4}.tileTier.tierB{color:#e2d29b}.tileTier.tierU{color:#bcaaff}
 .tile .ph+.phLabel{left:28px}
 .tileInfo{position:absolute;right:4px;top:4px;width:32px;height:32px;min-height:32px;border-radius:50%;padding:0;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.35);font:italic 700 14px Georgia,serif;color:#fff}
 .tile.loading .tileImg{opacity:.6}
 .tile.loading .tileImg::before{content:"";position:absolute;left:50%;top:42%;width:22px;height:22px;margin:-11px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:tileSpin .8s linear infinite;z-index:1}
 @keyframes tileSpin{to{transform:rotate(360deg)}}
-.tilePlay:focus-visible{outline:3px solid #d6efc8;outline-offset:-3px}
-#tileSheet{max-width:min(560px,calc(100vw - 24px));width:100%;max-height:calc(100vh - 40px);border:1px solid var(--edge);border-radius:16px;background:#0e1d1f;color:var(--ink);padding:12px 14px 18px}
+.tilePlay:focus-visible{outline:3px solid #ffd447;outline-offset:-3px}
+#tileSheet{max-width:min(560px,calc(100vw - 24px));width:100%;max-height:calc(100vh - 40px);border:1px solid var(--edge);border-radius:16px;background:#1b1736;color:var(--ink);padding:12px 14px 18px}
 #tileSheet::backdrop{background:rgba(0,0,0,.6)}
 .sheetTop{display:flex;justify-content:flex-end}
 .sheetClose{width:40px;min-height:40px;border-radius:50%;padding:0;font-size:18px}
-.sheetPhoto{aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#0b1a1b;margin-top:4px}
+.sheetPhoto{aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#120f26;margin-top:4px}
 #sheetName{font-size:22px;margin:8px 0 0}
-.sheetLatin{font:italic 15px Georgia,serif;color:#c4d8cf;margin:2px 0 6px}
+.sheetLatin{font:italic 15px Georgia,serif;color:#e9e3ff;margin:2px 0 6px}
 .sheetCheck{display:flex;align-items:center;gap:8px;font-size:12px;margin-top:10px}
-.sheetInfo{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr);gap:4px 10px;font-size:11px;margin-top:14px;border-top:1px solid #263b3e;padding-top:10px}
+.sheetInfo{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr);gap:4px 10px;font-size:11px;margin-top:14px;border-top:1px solid #332c5e;padding-top:10px}
 .sheetInfo dt{color:var(--muted)}.sheetInfo dd{margin:0;overflow-wrap:anywhere}
 .mixMasterRow{flex-wrap:wrap}
-.mixMasterEq{display:flex;gap:4px;border:1px solid #263b3e;border-radius:10px;padding:2px 6px;background:#10262a}
+.mixMasterEq{display:flex;gap:4px;border:1px solid #332c5e;border-radius:10px;padding:2px 6px;background:#191536}
 #reelDone{margin-top:10px}
 #reelDone video{width:100%;max-height:70vh;background:#000;border-radius:12px;display:block}
 .trkList{display:grid;gap:8px;margin-top:10px}
-.trkRow{border:1px solid #263b3e;border-radius:10px;padding:8px;background:#10262a}
+.trkRow{border:1px solid #332c5e;border-radius:10px;padding:8px;background:#191536}
 .trkHead{display:flex;align-items:center;gap:6px}
 .trkHead .trkName{flex:1;min-width:0;font-size:12px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .trkHead button{min-height:34px;width:38px;padding:0;flex:none}
-.trkHead button[aria-pressed="true"]{background:#d6efc8;color:#10221b}
+.trkHead button[aria-pressed="true"]{background:#ffd447;color:#1f1a3d}
 .trkWave{width:100%;height:36px;display:block;margin:6px 0}
 .trkCtls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 10px}
 .trkCtl{display:flex;flex-direction:column;font-size:10px;color:var(--muted);gap:2px;min-width:0}
@@ -68,16 +68,16 @@ header a{color:inherit}
 #plansSection{border:1px solid var(--edge);background:var(--panel);border-radius:14px;padding:12px;margin-top:12px}
 
 .planCards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px}
-.planCard{border:1px solid #31484a;border-radius:12px;padding:12px;background:#0e1f21}
-.planCard.plan-pro{border-color:#d6efc8}
+.planCard{border:1px solid #3b3468;border-radius:12px;padding:12px;background:#1b1736}
+.planCard.plan-pro{border-color:#ffd447}
 .planName{font:700 14px ui-monospace,monospace;letter-spacing:.08em}
 .planTag{font-size:12px;color:var(--muted);margin-top:2px}
 .planPrice{font:600 24px ui-monospace,monospace;margin-top:8px}
 .planNote{margin-top:6px}
 .planTable{width:100%;border-collapse:collapse;margin-top:10px;font-size:11px}
-.planTable th,.planTable td{border-bottom:1px solid #263b3e;padding:6px 4px;text-align:left}
+.planTable th,.planTable td{border-bottom:1px solid #332c5e;padding:6px 4px;text-align:left}
 .planTable .mk,.planTable th:not(:first-child){text-align:center;width:52px}
-.proChip{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:8px;border:1px solid #d6efc8;color:#d6efc8;font:700 9px ui-monospace,monospace;letter-spacing:.08em;vertical-align:middle}
+.proChip{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:8px;border:1px solid #ffd447;color:#ffd447;font:700 9px ui-monospace,monospace;letter-spacing:.08em;vertical-align:middle}
 
 /* ───────── v0.45 画面の並びと見た目（docs/UI_LAYOUT_v0_45.md）───────── */
 html{scroll-behavior:smooth;scroll-padding-top:60px}
@@ -89,11 +89,11 @@ button{font:600 12px/1.3 "Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans 
 .appHead{align-items:center;padding-top:2px}
 .appHead h1.brand{margin:0;font:700 23px/1.15 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif;letter-spacing:-.01em}
 .tagline{margin-top:3px}
-.jump{position:sticky;top:0;z-index:20;display:flex;gap:6px;overflow-x:auto;margin:10px -14px 0;padding:8px 14px;background:linear-gradient(var(--bg) 78%,rgba(12,23,24,0));scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.jump{position:sticky;top:0;z-index:20;display:flex;gap:6px;overflow-x:auto;margin:10px -14px 0;padding:8px 14px;background:linear-gradient(var(--bg) 78%,rgba(21,18,43,0));scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .jump::-webkit-scrollbar{display:none}
-.jump a{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 12px;border-radius:18px;border:1px solid #31484a;background:#112224;color:var(--ink);text-decoration:none;font-size:12px;font-weight:600}
+.jump a{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 12px;border-radius:18px;border:1px solid #3b3468;background:#1b1736;color:var(--ink);text-decoration:none;font-size:12px;font-weight:600}
 .jump a b{font:700 10px ui-monospace,monospace;color:var(--accent);letter-spacing:.06em}
-.jump a:focus-visible{outline:2px solid #d6efc8;outline-offset:2px}
+.jump a:focus-visible{outline:2px solid #ffd447;outline-offset:2px}
 section.step,#plansSection{margin-top:14px;scroll-margin-top:58px}
 .group{margin-top:26px;scroll-margin-top:52px}
 .stepHead{display:flex;align-items:baseline;gap:10px;min-width:0}
@@ -101,58 +101,110 @@ section.step,#plansSection{margin-top:14px;scroll-margin-top:58px}
 .stepTitle{margin:0;font:700 18px/1.3 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif;letter-spacing:.01em;min-width:0}
 .stepMeta{margin-left:auto;text-align:right;flex:none}
 .groupHead{padding:0 2px}
-.lead{margin:6px 0 12px;font-size:13px;line-height:1.6;color:#c6d9cf}
+.lead{margin:6px 0 12px;font-size:13px;line-height:1.6;color:#e9e3ff}
 .leadSub{margin-left:8px;font:italic 12px Georgia,serif;color:var(--muted)}
 .groupLead{margin:6px 2px 0}
 details.help{border:0;background:none;padding:0;margin:10px 0 0;border-radius:0}
 details.help summary{justify-content:flex-start;min-height:32px;font-size:11px;font-weight:600;color:var(--muted)}
 details.help[open] summary{color:var(--ink)}
-details.help p.micro,details.help .micro{font:12px/1.75 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif;letter-spacing:0;color:#b9cec4;margin:6px 0 0}
+details.help p.micro,details.help .micro{font:12px/1.75 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif;letter-spacing:0;color:#d8d0f7;margin:6px 0 0}
 section.sub,details.sub{margin-top:10px}
 .group > details,.group > section{margin-top:10px}
 .subTitle{margin:12px 0 4px}
 /* 01 音を選ぶ */
 .tileBar{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:8px;margin:0 0 8px}
 .tileBar button{min-height:46px}
-.autoBtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#152b23}
-.tile.auto:not(.sounding){box-shadow:0 0 0 2px rgba(214,239,200,.22)}
+.autoBtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1f1a3d}
+.tile.auto:not(.sounding){box-shadow:0 0 0 2px rgba(255,212,71,.22)}
 .tile.auto:not(.sounding) .tileImg img{filter:saturate(.75) brightness(.85)}
 #tileStatus{min-height:16px;margin:8px 0 0}
 /* 詳細シート */
-.sheetAuto{margin-top:12px;border-top:1px solid #263b3e;padding-top:6px}
+.sheetAuto{margin-top:12px;border-top:1px solid #332c5e;padding-top:6px}
 .sheetSub{margin:6px 0 0}
 /* 03 演奏する */
-#performance .harmony{border:1px solid #263b3e;border-radius:12px;padding:12px 12px 8px;background:#10262a}
+#performance .harmony{border:1px solid #332c5e;border-radius:12px;padding:12px 12px 8px;background:#191536}
 .liveRow .liveLabel{margin-top:12px}
 #liveSpecies{margin:4px 0 6px}
 #comboPanel .scenePresets{border:0;background:none;padding:0;margin:0}
-#comboPanel #geoPanel{margin-top:12px;background:#10262a}
+#comboPanel #geoPanel{margin-top:12px;background:#191536}
 .synthBlock{margin-top:12px}
-#synthPanel > details{background:#10262a}
+#synthPanel > details{background:#191536}
 /* 04 スタジオ */
-.captureBlock{margin-top:16px;border-top:1px solid #263b3e;padding-top:12px}
+.captureBlock{margin-top:16px;border-top:1px solid #332c5e;padding-top:12px}
 /* 設定 */
 #presetSection .status{margin:10px 0 0}
 /* 下の再生バー（iPhone では親指の届く位置） */
-.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(12,23,24,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid #31484a}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(21,18,43,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid #3b3468}
 .dockIn{max-width:790px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center}
 .dockInfo{display:flex;align-items:center;gap:8px;min-width:0}
 .dockText{font-size:12px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.dockDot{flex:none;width:8px;height:8px;border-radius:50%;background:#a6e6b8;box-shadow:0 0 8px rgba(166,230,184,.8);animation:dockPulse 1.6s ease-in-out infinite}
+.dockDot{flex:none;width:8px;height:8px;border-radius:50%;background:#2fd9a6;box-shadow:0 0 8px rgba(47,217,166,.8);animation:dockPulse 1.6s ease-in-out infinite}
 @keyframes dockPulse{50%{opacity:.35}}
 @media (prefers-reduced-motion:reduce){.dockDot{animation:none}}
 .dock button{min-height:44px;padding:0 14px}
 body.docked main{padding-bottom:92px}
 .footer{margin-top:28px;text-align:center}
-.tileMore{grid-column:1/-1;min-height:44px;background:#112224;border-style:dashed}
+.tileMore{grid-column:1/-1;min-height:44px;background:#1b1736;border-style:dashed}
 #reelSection .touchBar{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 12px;align-items:center;margin:0 0 4px}
 #reelSection .touchBar select{width:100%;min-height:44px}
-#reelRecord{background:var(--accent);border-color:var(--accent);color:#152b23}</style></head><body><main>
-<header class="appHead"><div><h1 class="brand">saww audio ecosystem</h1><div class="micro tagline">nature as an instrument. · v0.46</div></div><div class="headTools"><button id="langToggle" type="button" class="langToggle" data-i18n-skip aria-pressed="false">English</button><span class="badge" id="statusBadge">● STANDBY</span></div></header>
+#reelRecord{background:var(--accent);border-color:var(--accent);color:#1f1a3d}
+
+/* ───────── v0.47 ポップな見た目（配色・書体・動き）───────── */
+:root{--sun:#ffd447;--pink:#ff4f9a;--mint:#2fd9a6;--sky:#5b8cff;--orange:#ff8a3d;--violet:#a98bff;--paperInk:#1f1a3d}
+body{font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;font-weight:500}
+button{font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Hiragino Sans",system-ui,sans-serif;font-weight:800;border-radius:14px}
+.appHead h1.brand,.stepTitle,#sheetName,.planName{font-family:"Dela Gothic One","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;font-weight:400;letter-spacing:0}
+.appHead h1.brand{font-size:24px}
+.brandRow{display:flex;align-items:center;gap:10px}
+.brandMark{flex:none;width:40px;height:40px}
+.brandMark .petals{transform-origin:20px 20px}
+body.live .brandMark .petals{animation:markSpin 9s linear infinite}
+@keyframes markSpin{to{transform:rotate(360deg)}}
+.stepTitle{font-size:21px}
+.stepNo{font:400 13px "Dela Gothic One",system-ui,sans-serif;min-width:30px;height:30px;border-radius:50%;display:inline-grid;place-items:center;color:var(--paperInk);align-self:center}
+#tileSection .stepNo,.jump a[href="#tileSection"] b{background:var(--sun)}
+#reelSection .stepNo,.jump a[href="#reelSection"] b{background:var(--pink)}
+#performance .stepNo,.jump a[href="#playGroup"] b{background:var(--mint)}
+#studioGroup .stepNo,.jump a[href="#studioGroup"] b{background:var(--sky)}
+.jump a b{color:var(--paperInk);border-radius:10px;padding:2px 6px;font:400 10px "Dela Gothic One",system-ui,sans-serif}
+.jump a{font-weight:800}
+section,details{border-radius:20px}
+section.step{border-width:2px}
+#tileSection{border-color:rgba(255,212,71,.45)}
+#reelSection{border-color:rgba(255,79,154,.45)}
+#performance{border-color:rgba(47,217,166,.45)}
+.lead{color:#e9e3ff}
+.micro{letter-spacing:.03em}
+button.primary,.autoBtn[aria-pressed="true"],#reelRecord{background:var(--sun);border-color:var(--sun);color:var(--paperInk)}
+.autoBtn{background:#2a2452;border:2px solid var(--sun);color:#fff7e8}
+#tileAddUser{border-style:dashed}
+.tileFilters button{border-radius:999px;font-weight:800}
+.tileFilters button[aria-pressed="true"]{background:var(--sun);border-color:var(--sun);color:var(--paperInk)}
+/* 生き物のグループの色：タイルの枠・光・波形 */
+.tile{--g:var(--sun);border-radius:18px;border-width:2px}
+.tile[data-group="birds"]{--g:var(--sky)}.tile[data-group="insects"]{--g:var(--sun)}.tile[data-group="animals"]{--g:var(--orange)}.tile[data-group="landscape"]{--g:var(--mint)}.tile[data-group="user"]{--g:var(--violet)}
+.tile.on{border-color:var(--g);box-shadow:0 0 0 3px var(--g),0 10px 28px -8px var(--g);animation:tilePop .5s cubic-bezier(.3,1.7,.45,1)}
+@keyframes tilePop{0%{transform:scale(.94)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
+.tilePlay:active .tileImg{transform:scale(.95);transition:transform .08s}
+.tile.auto:not(.sounding){box-shadow:0 0 0 2px var(--g)}
+.tileName{font-weight:900}
+.tileInfo{background:rgba(21,18,43,.6)}
+@media (prefers-reduced-motion:reduce){.tile.on{animation:none}body.live .brandMark .petals{animation:none}}
+/* 下のバー */
+.dock{background:rgba(21,18,43,.94);border-top:2px solid var(--sun)}
+.dockDot{background:var(--pink);box-shadow:0 0 10px rgba(255,79,154,.9)}
+#tileStopAll{background:var(--pink);border-color:var(--pink);color:#fff}
+#tileToReel{background:var(--sun);border-color:var(--sun);color:var(--paperInk)}
+#reelCanvas{border-radius:22px;border:3px solid var(--pink)}
+.planCard.plan-pro{border-color:var(--sun);box-shadow:0 0 0 2px rgba(255,212,71,.35)}
+.planPrice{font-family:"Dela Gothic One",system-ui,sans-serif;font-weight:400}
+.proChip{border-color:var(--sun);color:var(--sun)}
+@media (max-width:440px){.appHead h1.brand{font-size:19px}.brandMark{width:34px;height:34px}}</style></head><body><main>
+<header class="appHead"><div class="brandRow"><svg class="brandMark" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><g class="petals"><ellipse cx="20" cy="8.5" rx="4.6" ry="8" fill="#ffd447" transform="rotate(0 20 20)"/><ellipse cx="20" cy="8.5" rx="4.6" ry="8" fill="#ff4f9a" transform="rotate(45 20 20)"/><ellipse cx="20" cy="8.5" rx="4.6" ry="8" fill="#2fd9a6" transform="rotate(90 20 20)"/><ellipse cx="20" cy="8.5" rx="4.6" ry="8" fill="#5b8cff" transform="rotate(135 20 20)"/><ellipse cx="20" cy="8.5" rx="4.6" ry="8" fill="#ffd447" transform="rotate(180 20 20)"/><ellipse cx="20" cy="8.5" rx="4.6" ry="8" fill="#ff4f9a" transform="rotate(225 20 20)"/><ellipse cx="20" cy="8.5" rx="4.6" ry="8" fill="#2fd9a6" transform="rotate(270 20 20)"/><ellipse cx="20" cy="8.5" rx="4.6" ry="8" fill="#5b8cff" transform="rotate(315 20 20)"/></g><circle cx="20" cy="20" r="6.5" fill="#fff7e8" stroke="#15122b" stroke-width="2"/></svg><div><h1 class="brand">saww audio ecosystem</h1><div class="micro tagline">nature as an instrument. · v0.47</div></div></div><div class="headTools"><button id="langToggle" type="button" class="langToggle" data-i18n-skip aria-pressed="false">English</button><span class="badge" id="statusBadge">● STANDBY</span></div></header>
 <nav class="jump" aria-label="ページ内の移動"><a href="#tileSection"><b>01</b>音を選ぶ</a><a href="#reelSection"><b>02</b>リール</a><a href="#playGroup"><b>03</b>演奏</a><a href="#studioGroup"><b>04</b>スタジオ</a><a href="#settingsGroup">設定</a></nav>
 <section id="tileSection" class="step" aria-labelledby="tileTitle"><div class="stepHead"><span class="stepNo" aria-hidden="true">01</span><h2 class="stepTitle" id="tileTitle">音を選ぶ</h2><span class="micro stepMeta" id="tileCount" role="status"></span></div><p class="lead">写真をタップすると鳴ります。<span class="leadSub">See it. Tap it. Hear it.</span></p><div class="tileBar"><button id="play" class="autoBtn" aria-pressed="false">▶ 自律演奏をはじめる</button><button id="tileAddUser" type="button">＋ 自分の音</button></div><div class="tileFilters" id="tileFilters" role="group" aria-label="絞り込み"></div><div class="tileGrid" id="tileGrid"></div><input id="tileUserFile" type="file" accept="audio/*,.wav,.aif,.aiff,.mp3,.m4a,.flac" multiple hidden aria-label="自分の音声ファイルを選択"><input id="tileUserImage" type="file" accept="image/*" hidden aria-label="画像を選択"><p class="micro" id="tileStatus" role="status" aria-live="polite"></p><details class="help"><summary>ⓘ 詳しく</summary><p class="micro">「▶ 自律演奏をはじめる」を押すと、選んでいる写真の生き物が、それぞれ休みを挟みながら鳴き、和音もゆっくり流れます。止めている間は、タップした音がループで鳴り続けます。</p><p class="micro">写真をタップすると実録音が鳴り、もう一度タップで止まります。いくつでも重ねられます。長押しか i で音量・ループ・録音情報。写真は学名が一致する種だけに付け、写真のない音は同じ型の図で表します。</p></details></section>
 <dialog id="tileSheet" aria-labelledby="sheetName"><div class="sheetTop"><button id="sheetClose" type="button" class="sheetClose" aria-label="閉じる">×</button></div><div class="sheetPhoto" id="sheetPhoto"></div><p class="micro" id="sheetPhotoCredit"></p><h3 id="sheetName"></h3><p class="sheetLatin" id="sheetLatin" data-i18n-skip></p><div class="buttons"><button id="sheetPlay" type="button" aria-pressed="false">▶ 再生</button></div><div class="control"><div><label for="sheetVol">音量</label><input id="sheetVol" type="range" min="0" max="100" step="1" value="70"></div><output class="value" id="sheetVolVal">70</output></div><div class="control"><div><label for="sheetPan">定位</label><input id="sheetPan" type="range" min="-100" max="100" step="1" value="0"></div><output class="value" id="sheetPanVal">C</output></div><label class="sheetCheck"><input id="sheetLoop" type="checkbox" checked> ループ（切れ目はクロスフェード）</label><div id="sheetAuto" class="sheetAuto" hidden><p class="micro sheetSub">自律演奏のとき</p><div class="control"><div><label for="sheetAutoLvl">音量</label><input id="sheetAutoLvl" type="range" min="0" max="100" step="1" value="20"></div><output class="value" id="sheetAutoLvlVal">20</output></div><div class="control" id="sheetRestRow"><div><label for="sheetRest">鳴き終わってからの休息（秒）</label><input id="sheetRest" type="range" min="1" max="90" step="1" value="12"></div><output class="value" id="sheetRestVal">12</output></div></div><div class="buttons" id="sheetUser" hidden><button id="sheetSetImage" type="button">画像を設定</button><button id="sheetRemoveUser" type="button">この音を削除</button></div><dl class="sheetInfo" id="sheetInfo" data-i18n-skip></dl></dialog>
-<section id="reelSection" class="step"><div class="stepHead"><span class="stepNo" aria-hidden="true">02</span><h2 class="stepTitle">リールを作る</h2><span class="micro stepMeta" id="reelStatus">READY</span></div><p class="lead">いま鳴っている音を、写真と波形の縦動画（1080×1920）に。</p><div class="touchBar"><label for="reelLength">長さ</label><select id="reelLength" aria-label="リールの長さ"><option value="15">15秒</option><option value="30" selected>30秒</option><option value="45">45秒</option><option value="60">60秒</option></select><label for="reelStyle">テンプレート</label><select id="reelStyle" aria-label="リールのテンプレート"><option value="forest" selected>forest（区画パネル）</option><option value="ocean">ocean（区画パネル）</option><option value="night">night（区画パネル）</option><option value="wildlife">wildlife（区画パネル）</option><option value="minimal">minimal</option><option value="waveform">waveform</option><option value="spectrum">spectrum（分析）</option><option value="abstract">abstract（動き）</option></select><label for="reelImage">画像</label><select id="reelImage" aria-label="リールの画像"><option value="auto" selected>鳴いている生き物の写真</option><option value="mine">自分の画像</option><option value="none">なし</option></select><input id="reelImageFile" type="file" accept="image/*" hidden aria-label="リールに使う画像を選択"></div><div class="buttons"><button id="reelRecord">● リールを録画</button><button id="reelStop">■ 停止して書き出し</button><button id="reelPreview" type="button" aria-pressed="false">▶ 動きをプレビュー</button></div><canvas id="reelCanvas" width="1080" height="1920" aria-label="リール映像のプレビュー"></canvas><div id="reelDone" hidden><video id="reelVideo" controls playsinline muted aria-label="書き出したリールの再生"></video><p class="micro" id="reelDoneInfo" role="status" aria-live="polite"></p><div class="buttons"><button id="reelSave" type="button">export video</button><button id="reelCopy" type="button">copy credits</button><button id="reelShare" type="button">share</button><button id="reelTry" type="button">try saww audio ecosystem</button></div></div><div id="reelCredits" hidden><p class="micro" id="reelCreditsSummary" aria-live="polite"></p><div class="buttons"><button id="reelCreditsSave">↓ クレジット（説明欄用）を保存</button></div><details><summary>帰属表示の内容</summary><pre id="reelCreditsText" class="micro" data-i18n-skip style="white-space:pre-wrap;overflow-wrap:anywhere;max-height:240px;overflow:auto"></pre></details></div><details class="help"><summary>ⓘ 詳しく</summary><p class="micro">いまの演奏を縦長の動画として録画します。上の写真をタップして音を重ねるだけでも作れます。テンプレートの forest・ocean・night・wildlife は、生き物の写真・スペクトラム・ステレオ・レベル・声の輪・スペクトログラム・データ・波形を区画に並べます。写真は学名が一致するライセンス確認済みの実写（CC0・パブリックドメイン・CC BY）だけで、撮影者とライセンスを映像と説明欄の両方に入れます。「自分の画像」を選ぶと端末の画像を使います（外へ送りません）。文字は SNS の画面部品に隠れにくい位置に置きます。リールには CC BY-SA の素材を含めません（録画を始めると商用モードを「BY-SAを除く」に切り替えます）。書き出し形式はブラウザによって MP4 または WebM です（変換はしません）。</p></details></section>
+<section id="reelSection" class="step"><div class="stepHead"><span class="stepNo" aria-hidden="true">02</span><h2 class="stepTitle">リールを作る</h2><span class="micro stepMeta" id="reelStatus">READY</span></div><p class="lead">いま鳴っている音を、写真と波形の縦動画（1080×1920）に。</p><div class="touchBar"><label for="reelLength">長さ</label><select id="reelLength" aria-label="リールの長さ"><option value="15">15秒</option><option value="30" selected>30秒</option><option value="45">45秒</option><option value="60">60秒</option></select><label for="reelStyle">テンプレート</label><select id="reelStyle" aria-label="リールのテンプレート"><option value="pop-sunny" selected>ポップ・ひまわり</option><option value="pop-candy">ポップ・キャンディ</option><option value="pop-lagoon">ポップ・ラグーン</option><option value="pop-jungle">ポップ・ジャングル</option><option value="pop-night">ポップ・夜</option><option value="forest">forest（区画パネル）</option><option value="ocean">ocean（区画パネル）</option><option value="night">night（区画パネル）</option><option value="wildlife">wildlife（区画パネル）</option><option value="minimal">minimal</option><option value="waveform">waveform</option><option value="spectrum">spectrum（分析）</option><option value="abstract">abstract（動き）</option></select><label for="reelImage">画像</label><select id="reelImage" aria-label="リールの画像"><option value="auto" selected>鳴いている生き物の写真</option><option value="mine">自分の画像</option><option value="none">なし</option></select><input id="reelImageFile" type="file" accept="image/*" hidden aria-label="リールに使う画像を選択"></div><div class="buttons"><button id="reelRecord">● リールを録画</button><button id="reelStop">■ 停止して書き出し</button><button id="reelPreview" type="button" aria-pressed="false">▶ 動きをプレビュー</button></div><canvas id="reelCanvas" width="1080" height="1920" aria-label="リール映像のプレビュー"></canvas><div id="reelDone" hidden><video id="reelVideo" controls playsinline muted aria-label="書き出したリールの再生"></video><p class="micro" id="reelDoneInfo" role="status" aria-live="polite"></p><div class="buttons"><button id="reelSave" type="button">export video</button><button id="reelCopy" type="button">copy credits</button><button id="reelShare" type="button">share</button><button id="reelTry" type="button">try saww audio ecosystem</button></div></div><div id="reelCredits" hidden><p class="micro" id="reelCreditsSummary" aria-live="polite"></p><div class="buttons"><button id="reelCreditsSave">↓ クレジット（説明欄用）を保存</button></div><details><summary>帰属表示の内容</summary><pre id="reelCreditsText" class="micro" data-i18n-skip style="white-space:pre-wrap;overflow-wrap:anywhere;max-height:240px;overflow:auto"></pre></details></div><details class="help"><summary>ⓘ 詳しく</summary><p class="micro">いまの演奏を縦長の動画として録画します。上の写真をタップして音を重ねるだけでも作れます。テンプレートの forest・ocean・night・wildlife は、生き物の写真・スペクトラム・ステレオ・レベル・声の輪・スペクトログラム・データ・波形を区画に並べます。写真は学名が一致するライセンス確認済みの実写（CC0・パブリックドメイン・CC BY）だけで、撮影者とライセンスを映像と説明欄の両方に入れます。「自分の画像」を選ぶと端末の画像を使います（外へ送りません）。文字は SNS の画面部品に隠れにくい位置に置きます。リールには CC BY-SA の素材を含めません（録画を始めると商用モードを「BY-SAを除く」に切り替えます）。書き出し形式はブラウザによって MP4 または WebM です（変換はしません）。</p></details></section>
 <div id="playGroup" class="group"><section id="performance" class="step"><div class="stepHead"><span class="stepNo" aria-hidden="true">03</span><h2 class="stepTitle">演奏する</h2><span class="pill stepMeta" id="poolCount"></span></div><p class="lead">自律演奏の和音と、生き物の鳴く量を整えます。</p><div class="harmony"><div class="micro">CURRENT HARMONY</div><div class="name" id="chord">Cmaj9</div><div class="notes" id="notes">C · E · G · B · D</div><div class="between" style="margin-top:13px"><span class="phase" id="phase">01 / ARRIVAL</span><span class="micro" id="elapsed">00:00</span></div><div class="line"><div id="progress"></div></div><div class="micro" style="text-align:right">30-MINUTE EVOLUTION CYCLE</div></div><div class="liveRow"><div class="liveLabel micro">いま鳴っている実録音</div><div id="liveSpecies" role="status" aria-live="polite">待機中</div></div><div class="buttons three"><button id="change">✧ CHANGE HARMONY</button><button id="auto" class="primary">AUTO COMPOSE ON</button><button id="quality">QUALITY: HIGH</button></div><div class="buttons"><button id="reshuffle">↻ 休息のタイミングを変える</button></div><details class="sub"><summary>全体の音量・活動量・同時発音数</summary><div class="mixGrid">
 <label>鳥 <output id="mix-value-birds"></output><input id="mix-birds" type="range" min="0" max="100" aria-label="鳥の混ざり具合"></label>
 <label>虫 <output id="mix-value-insects"></output><input id="mix-insects" type="range" min="0" max="100" aria-label="虫の混ざり具合"></label>
@@ -1402,7 +1454,7 @@ function reelDrawMotion(c){const m=reelMo||(reelMo=reelMoInit()),now=performance
  m.boxes=boxes;m.drawMs.push(performance.now()-T0);if(m.drawMs.length>120)m.drawMs.shift()}
 function reelPreviewLoop(){if(!reelPreviewOn)return;if(!(reelState&&reelState.active))reelDraw();reelPreviewRaf=requestAnimationFrame(reelPreviewLoop)}
 function reelSetPreview(on){reelPreviewOn=!!on;if(reelPreviewOn)reelMo=null;cancelAnimationFrame(reelPreviewRaf);const b=$('reelPreview');if(b){b.textContent=reelPreviewOn?'■ プレビューを止める':'▶ 動きをプレビュー';b.setAttribute('aria-pressed',String(reelPreviewOn))}if(reelPreviewOn)reelPreviewRaf=requestAnimationFrame(reelPreviewLoop)}
-const REEL_STYLES=['motion','analysis','panels','wave','minimal'];
+const REEL_STYLES=['motion','analysis','panels','wave','minimal','pop'];
 function reelSetStyle(v){if(!REEL_STYLES.includes(v))return false;reelStyle=v;reelSpec=null;reelMo=null;reelDraw();return true}
 function reelDraw(){const cv=$('reelCanvas');if(!cv)return;const c=cv.getContext('2d');c.save();try{if(reelStyle==='analysis')reelDrawAnalysis(c);else if(reelStyle==='motion')reelDrawMotion(c);else if(window.reelDrawStudio)reelDrawStudio(c,reelStyle)}finally{c.restore()}const st=reelState;if(st&&st.active)st.frames++}
 function reelLoop(){if(!reelState||!reelState.active)return;reelDraw();const el=(performance.now()-reelState.startedAt)/1000;
@@ -1623,7 +1675,7 @@ function midiRender(){const ul=$('midiList');if(!ul)return;ul.textContent='';con
   const ar=document.createElement('span');ar.textContent=' → ';const b=document.createElement('span');b.className='dst';b.textContent=midiTargetLabel(midi.maps[key]);
   const x=document.createElement('button');x.type='button';x.textContent='✕';x.setAttribute('aria-label','割り当てを削除');x.onclick=()=>{delete midi.maps[key];midiSave();midiRender()};li.append(a,ar,b,x);ul.append(li)}}
 function buildMidi(){const sec=$('mixerSection');if(!sec||$('midiPanel'))return;
- const css=document.createElement('style');css.id='ae-midi-css';css.textContent='#midiPanel{margin-top:12px;border-top:1px solid #263b3e;padding-top:10px}#midiList{list-style:none;margin:6px 0 0;padding:0;font-size:11px}#midiList li{display:flex;flex-wrap:wrap;align-items:center;gap:4px;padding:3px 0;border-bottom:1px solid #1d3033}#midiList .src{color:var(--accent)}#midiList .dst{flex:1;min-width:0;overflow-wrap:anywhere}#midiList button{min-height:28px;padding:2px 9px}#midiLearn[aria-pressed="true"]{background:var(--accent);color:var(--bg)}body.midiLearn #studioGroup :is([data-k],[data-pad],#fxHold,input[type=range],#fxTypes button,#fxBeats button,#mixCfx button),body.midiLearn #play{outline:1px dashed var(--accent);outline-offset:2px}.midiPending{outline:2px solid #e8c36a!important;outline-offset:2px}';document.head.append(css);
+ const css=document.createElement('style');css.id='ae-midi-css';css.textContent='#midiPanel{margin-top:12px;border-top:1px solid #332c5e;padding-top:10px}#midiList{list-style:none;margin:6px 0 0;padding:0;font-size:11px}#midiList li{display:flex;flex-wrap:wrap;align-items:center;gap:4px;padding:3px 0;border-bottom:1px solid #2a2452}#midiList .src{color:var(--accent)}#midiList .dst{flex:1;min-width:0;overflow-wrap:anywhere}#midiList button{min-height:28px;padding:2px 9px}#midiLearn[aria-pressed="true"]{background:var(--accent);color:var(--bg)}body.midiLearn #studioGroup :is([data-k],[data-pad],#fxHold,input[type=range],#fxTypes button,#fxBeats button,#mixCfx button),body.midiLearn #play{outline:1px dashed var(--accent);outline-offset:2px}.midiPending{outline:2px solid #e8c36a!important;outline-offset:2px}';document.head.append(css);
  const p=document.createElement('div');p.id='midiPanel';p.setAttribute('role','group');p.setAttribute('aria-label','MIDI の割り当て');
  p.innerHTML='<div class="between"><span class="title">MIDI / コントローラ</span><span class="micro"><span>最後の入力</span> <span id="midiLast">—</span></span></div>'+
   '<div class="buttons"><button id="midiConnect" type="button">MIDI 機器に接続</button><button id="midiLearn" type="button" aria-pressed="false">割り当てを学習</button><button id="midiClear" type="button">割り当てをすべて消す</button></div>'+
@@ -1645,7 +1697,7 @@ buildMidi();
    本体スクリプト（音声エンジン・音源ライブラリ）の後に読み込む。本体の関数と変数（ctx, master, recordings, loadOne, mixLane など）をそのまま使い、
    音声エンジンと音源の対応は変えない。build/integrate_v043.py が index.html の <script id="ae-studio"> にこのファイルを埋め込む。 */
 (()=>{'use strict';
-const VER='v0.46';
+const VER='v0.47';
 const PHOTOS=(()=>{try{return JSON.parse($('ae-photos').textContent)}catch(e){return {}}})();
 const TIERS=(()=>{try{return JSON.parse($('ae-tiers').textContent)}catch(e){return {plans:[],features:[]}}})();
 const APP_URL=/^https?:$/.test(location.protocol)&&!/^(localhost|127\.)/.test(location.hostname)?location.origin+location.pathname.replace(/index\.html$/,''):'https://sawwaudio.github.io/audio-ecosystem-sounds-1/';
@@ -1666,7 +1718,8 @@ function photoFor(id){const u=userSounds.get(id);if(u)return u.img?{user:true,th
 const GROUP_LABEL={birds:['鳥','BIRD'],insects:['虫','INSECT'],animals:['動物','ANIMAL'],landscape:['水・環境','AMBIENCE'],user:['自分の音','MY SOUND']};
 function groupOf(id){if(userSounds.has(id))return 'user';const r=recordings.find(x=>x.id===id);return r?(r.kind==='landscape'?'landscape':r.group):'landscape'}
 // 統一したプレースホルダー（写真がない音）。色はグループごと、線は同じ型。
-const PH_HUE={birds:150,insects:95,animals:30,landscape:195,user:265};
+const PH_HUE={birds:225,insects:48,animals:22,landscape:165,user:265};
+const GROUP_COLOR={birds:'#5b8cff',insects:'#ffd447',animals:'#ff8a3d',landscape:'#2fd9a6',user:'#a98bff'};
 function placeholderSVG(id,g){let h=0;for(const ch of id)h=(h*31+ch.charCodeAt(0))>>>0;const hue=PH_HUE[g]??180,rot=h%360,rings=[];
  for(let i=0;i<7;i++){const r=14+i*11,wob=2+((h>>(i*3))&7)*.6;let d='';for(let k=0;k<=48;k++){const a=k/48*6.2832,rr=r+Math.sin(a*3+i+rot)*wob;d+=(k?'L':'M')+(60+Math.cos(a)*rr).toFixed(1)+' '+(60+Math.sin(a)*rr).toFixed(1)}rings.push('<path d="'+d+'Z" fill="none" stroke="hsla('+hue+',45%,'+(70-i*5)+'%,'+(0.55-i*.06).toFixed(2)+')" stroke-width="1"/>')}
  return '<svg viewBox="0 0 120 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="120" height="120" fill="hsl('+hue+',30%,9%)"/>'+rings.join('')+'<circle cx="60" cy="60" r="3" fill="hsl('+hue+',60%,75%)"/></svg>'}
@@ -1741,7 +1794,7 @@ function tileStopAll(){for(const id of playingIds())tileStop(id);for(const s of 
 function setTileVol(id,v){const s=tst(id);s.vol=clamp(+v,0,100);if(s.voice)s.voice.out.gain.setTargetAtTime(s.vol/100,ctx.currentTime,.05)}
 function setTilePan(id,v){const s=tst(id);s.pan=clamp(+v,-1,1);if(s.voice&&s.voice.pan.pan)s.voice.pan.pan.setTargetAtTime(s.pan,ctx.currentTime,.05)}
 // 商用モードが変わったら、対象外になった音を止める（代用しない）
-setInterval(()=>{for(const id of playingIds())if(!userSounds.has(id)&&!rightsAllowed(id))tileStop(id,true);renderRightsDim();if(autoOn()||document.querySelector('#tileGrid .tile.auto'))for(const tile of document.querySelectorAll('#tileGrid .tile'))renderTile(tile.dataset.id);renderCount()},400);
+setInterval(()=>{for(const id of playingIds())if(!userSounds.has(id)&&!rightsAllowed(id))tileStop(id,true);renderRightsDim();document.body.classList.toggle('live',autoOn()||playingIds().length>0);if(autoOn()||document.querySelector('#tileGrid .tile.auto'))for(const tile of document.querySelectorAll('#tileGrid .tile'))renderTile(tile.dataset.id);renderCount()},400);
 
 // ───────── タイルの画面 ─────────
 const FILTERS=[['all','すべて','All'],['birds','鳥','Birds'],['insects','虫','Insects'],['animals','動物','Animals'],['landscape','水・環境','Water & places'],['japan','日本','Japan'],['photo','写真あり','With photos'],['user','自分の音','My sounds'],['playing','再生中','Playing']];
@@ -1789,7 +1842,7 @@ let paintAt=0;function paintTiles(now){requestAnimationFrame(paintTiles);if(now-
  for(const id of ids){const s=tileState.get(id),v=s&&s.voice;const cv=document.querySelector('.tile[data-id="'+CSS.escape(id)+'"] .tileWave');if(!cv)continue;let f;
   if(v){f=v.fbuf||(v.fbuf=new Uint8Array(v.an.frequencyBinCount));v.an.getByteFrequencyData(f)}else{if(!analyser)continue;if(!mf){mf=new Uint8Array(analyser.frequencyBinCount);analyser.getByteFrequencyData(mf)}f=mf}
   const c=cv.getContext('2d'),W=cv.width,H=cv.height;c.clearRect(0,0,W,H);
-  const N=20,bw=W/N;c.fillStyle='rgba(214,239,200,.95)';for(let i=0;i<N;i++){const k=Math.floor(Math.pow(i/N,1.6)*f.length*.7)+1,val=f[k]/255,h=Math.max(1.5,val*H);c.fillRect(i*bw+1,(H-h)/2,bw-2,h)}}}
+  const N=20,bw=W/N;c.fillStyle=GROUP_COLOR[groupOf(id)]||'#ffd447';for(let i=0;i<N;i++){const k=Math.floor(Math.pow(i/N,1.6)*f.length*.7)+1,val=f[k]/255,h=Math.max(1.5,val*H);c.fillRect(i*bw+1,(H-h)/2,bw-2,h)}}}
 requestAnimationFrame(paintTiles);
 
 // ───────── 詳細シート（長押し・i ボタン） ─────────
@@ -1941,10 +1994,10 @@ const PAL={forest:{bg:'#06110c',panel:'rgba(10,26,19,.82)',line:'#2a4a37',dim:'#
  night:{bg:'#06050c',panel:'rgba(13,11,24,.84)',line:'#2f2c4e',dim:'#8a84b8',text:'#eeeaff',acc:'#bcaaff',acc2:'#ffd27a',hue:255},
  wildlife:{bg:'#0b0b08',panel:'rgba(20,20,14,.8)',line:'#45422c',dim:'#a39f7e',text:'#f6f2e6',acc:'#f2c464',acc2:'#a6e6b8',hue:42},
  minimal:{bg:'#000000',panel:'rgba(6,6,6,.85)',line:'#2a2a2a',dim:'#8d8d8d',text:'#f4f4f4',acc:'#ffffff',acc2:'#bdbdbd',hue:0}};
-const TEMPLATES={forest:['panels','forest'],ocean:['panels','ocean'],night:['panels','night'],wildlife:['panels','wildlife'],minimal:['minimal','minimal'],waveform:['wave','forest'],spectrum:['analysis',null],abstract:['motion',null]};
+const TEMPLATES={'pop-sunny':['pop','pop:sunny'],'pop-candy':['pop','pop:candy'],'pop-lagoon':['pop','pop:lagoon'],'pop-jungle':['pop','pop:jungle'],'pop-night':['pop','pop:night'],forest:['panels','forest'],ocean:['panels','ocean'],night:['panels','night'],wildlife:['panels','wildlife'],minimal:['minimal','minimal'],waveform:['wave','forest'],spectrum:['analysis',null],abstract:['motion',null]};
 let reelTpl='forest',reelPal=PAL.forest,reelImgMode='auto',reelUserImg=null;const imgCache=new Map();
 function canvasImage(url){let e=imgCache.get(url);if(e)return e;e={img:new Image(),ok:false,fail:false};e.img.crossOrigin='anonymous';e.img.referrerPolicy='no-referrer';e.img.onload=()=>{e.ok=true};e.img.onerror=()=>{e.fail=true};e.img.src=url;imgCache.set(url,e);return e}
-function setTemplate(name){if(!TEMPLATES[name])return false;reelTpl=name;const [layout,pal]=TEMPLATES[name];if(pal)reelPal=PAL[pal];const sel=$('reelStyle');if(sel&&sel.value!==name)sel.value=name;reelSetStyle(layout);return true}
+function setTemplate(name){if(!TEMPLATES[name])return false;reelTpl=name;const [layout,pal]=TEMPLATES[name];if(pal&&pal.startsWith('pop:')){popPal=POP[pal.slice(4)];popFonts()}else if(pal)reelPal=PAL[pal];const sel=$('reelStyle');if(sel&&sel.value!==name)sel.value=name;reelSetStyle(layout);return true}
 // いま映すもの：最後にタップした音 → 生き物の声 → 環境の音
 function reelSubject(){const ids=playingIds();let id=focusId&&ids.includes(focusId)?focusId:ids.slice(-1)[0];
  if(!id){const now=reelNowPlaying();const b=now.find(n=>n.role==='bio')||now[0];id=b?b.id:null}return id}
@@ -2039,7 +2092,79 @@ function nameCard(c,y){const P=reelPal,id=reelSubject(),X=REEL_SAFE.x0,W=REEL_SA
  if(r)txt(c,'REC  '+(r.location||'—'),X,y+130,'24px '+SANS,P.dim,'left',W);if(r)txt(c,'"'+(r.title||'')+'" — '+(r.author||'')+' · '+r.license,X,y+166,'20px '+MONO,P.dim,'left',W);
  if(ph&&ph.e.ok)txt(c,ph.credit,X,y+196,'16px '+MONO,P.dim,'left',W);const list=reelList();if(list.length>1&&y+232<REEL_SAFE.y1-40)txt(c,'+ '+list.filter(x=>x!==id).slice(0,3).map(nameOf).join(' · '),X,y+232,'22px '+SANS,P.acc,'left',W);
  txt(c,({all:'ALL SOURCES',nosa:'NO CC BY-SA',cc0:'CC0 / PD ONLY'}[RIGHTS.mode])+' · FULL CREDITS IN CAPTION',X,REEL_SAFE.y1-14,'18px '+MONO,P.dim,'left',W)}
-window.reelDrawStudio=(c,layout)=>{if(layout==='wave')drawRidge(c);else if(layout==='minimal')drawMinimal(c);else drawPanels(c)};
+// ───────── リール：ポップ（v0.47）─────────
+// 図鑑をリソグラフ（多色の版ずれ印刷）で刷ったような、はっきりした色の見た目。主役は「音で咲く花」：
+// 生き物の写真を丸く切り抜き、その周りの花びら（周波数ごとの強さ）が開閉して回る。名前の文字は音で弾み、
+// 鳴き始め（音の立ち上がり）で紙吹雪、低い音で背景の色の塊が揺れる。鳴いている生き物が替わると写真が弾んで入れ替わる。
+// 文字は SNS の画面部品に隠れにくい範囲（REEL_SAFE）に置く。録音と写真のクレジットは映像の中にも入れる。
+var POP={sunny:{bg:'#FFD447',bg2:'#FFB81F',ink:'#1F1A3D',paper:'#FFF7DB',a:'#FF4F9A',b:'#2E6BFF',c:'#1FBF86',dark:false},
+ candy:{bg:'#FF8AC4',bg2:'#FF5FAE',ink:'#2B1242',paper:'#FFF0F7',a:'#FFE500',b:'#2FD9A6',c:'#6B5CFF',dark:false},
+ lagoon:{bg:'#1F44D9',bg2:'#1733A8',ink:'#FFF7E3',paper:'#FFF7E3',a:'#FFDB3D',b:'#FF5CA6',c:'#5CF0C6',dark:true},
+ jungle:{bg:'#17A866',bg2:'#0E8350',ink:'#0D251A',paper:'#F3FFE6',a:'#FF7A1A',b:'#FFE14D',c:'#FF5CA6',dark:false},
+ night:{bg:'#2B1259',bg2:'#1C0A3E',ink:'#F7F0FF',paper:'#F7F0FF',a:'#B8FF3B',b:'#FF4FD8',c:'#3BE6FF',dark:true}};
+var popPal=POP.sunny;
+const DISPLAY='"Dela Gothic One","Hiragino Sans","Noto Sans JP",system-ui,sans-serif',ROUND='"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Hiragino Sans",system-ui,sans-serif';
+let popFontReq='';
+function popFonts(extra){if(!document.fonts||!document.fonts.load)return;const t='saww audio ecosystem 実録音 いま鳴いている 鳥 虫 動物 水 環境 0123456789 '+(extra||'');if(t===popFontReq)return;popFontReq=t;
+ try{document.fonts.load('400 120px "Dela Gothic One"',t).catch(()=>{});document.fonts.load('800 40px "M PLUS Rounded 1c"',t).catch(()=>{});document.fonts.load('500 30px "M PLUS Rounded 1c"',t).catch(()=>{})}catch(e){}}
+const PS={pet:new Float32Array(28),kick:0,onsets:0,subj:null,subjAt:0,conf:[],grain:null,blobs:[[.18,.2,.34],[.86,.46,.3],[.3,.86,.38]],lastT:0};
+function popGrain(){if(PS.grain)return PS.grain;const g=document.createElement('canvas');g.width=g.height=256;const x=g.getContext('2d'),d=x.createImageData(256,256);let s=7;for(let i=0;i<d.data.length;i+=4){s=(s*16807)%2147483647;const v=s%255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255}x.putImageData(d,0,0);PS.grain=g;return g}
+function rrect(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
+function elastic(u){u=clamp(u,0,1);return u===1?1:1-Math.pow(2,-9*u)*Math.cos(u*Math.PI*3.2)}
+function popName(id){const r=recordings.find(x=>x.id===id),m=wildMeta[id]||{};const en=lang()==='en';const nm=(en?(m.en||(window.__i18n?__i18n.t(nameOf(id)):nameOf(id))):nameOf(id)).replace(/[（(][^）)]*[）)]/g,'').trim();
+ return {r,m,name:nm,sub:en?(r&&binomial(r.latin)||''):(m.en||''),latin:r&&binomial(r.latin)||'',loc:r?(en&&window.__i18n?__i18n.t(r.location||''):(r.location||'')):'',g:groupOf(id)}}
+function drawPop(c){const P=popPal,now=performance.now(),t=(now-A.t0)/1000,dt=Math.min(.1,Math.max(0,t-PS.lastT));PS.lastT=t;const ok=analyse();c.setTransform(1,0,0,1,0,0);c.globalAlpha=1;c.globalCompositeOperation='source-over';
+ const X0=REEL_SAFE.x0,X1=REEL_SAFE.x1,Y0=REEL_SAFE.y0,Y1=REEL_SAFE.y1,W=X1-X0,CX=(X0+X1)/2,CY=Y0+520;
+ const low=ok?band(40,220):0,mid=ok?band(400,2500):0,high=ok?band(3000,9000):0;
+ if(ok&&A.onsets!==PS.onsets){PS.onsets=A.onsets;PS.kick=1;for(let i=0;i<12&&PS.conf.length<90;i++){const a=Math.random()*6.283,sp=260+Math.random()*420;PS.conf.push({x:CX+Math.cos(a)*250,y:CY+Math.sin(a)*250,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-200,r:Math.random()*6.283,vr:(Math.random()-.5)*8,k:Math.floor(Math.random()*3),col:[P.a,P.b,P.c,P.paper][Math.floor(Math.random()*4)],life:1.4+Math.random()*.8})}}
+ PS.kick=Math.max(0,PS.kick-dt*3.2);
+ const id=reelSubject();if(id!==PS.subj){PS.subj=id;PS.subjAt=t;if(id)popFonts(nameOf(id)+' '+((wildMeta[id]||{}).en||''))}
+ // 1. 地の色と、低い音で揺れる色の塊（平らな版の色）
+ c.fillStyle=P.bg;c.fillRect(0,0,REEL_W,REEL_H);
+ PS.blobs.forEach(([bx,by,br],i)=>{const col=[P.bg2,P.a,P.c][i];const R=REEL_W*br*(1+.18*low+.04*Math.sin(t*.7+i*2));const x=REEL_W*bx+60*Math.sin(t*.23+i),y=REEL_H*by+50*Math.cos(t*.19+i*1.7);
+  c.globalAlpha=i===0?1:.22;c.fillStyle=col;c.beginPath();for(let k=0;k<=48;k++){const a=k/48*6.2832,w=1+.08*Math.sin(a*3+t*.9+i)+.05*Math.sin(a*5-t*.6);const px=x+Math.cos(a)*R*w,py=y+Math.sin(a)*R*w;k?c.lineTo(px,py):c.moveTo(px,py)}c.closePath();c.fill()});c.globalAlpha=1;
+ // 2. 上の帯：アプリ名と録画の時間
+ const st=reelState,tc=st&&st.active?((now-st.t0)/1000):t;c.font='800 30px '+ROUND;const nameW=c.measureText('saww audio ecosystem').width+48;rrect(c,X0,Y0,nameW,58,29);c.fillStyle=P.ink;c.fill();txt(c,'saww audio ecosystem',X0+24,Y0+39,'800 30px '+ROUND,P.bg);
+ const tcs=(st&&st.active?'● ':'')+String(Math.floor(tc/60)).padStart(2,'0')+':'+String(Math.floor(tc%60)).padStart(2,'0');c.font='800 28px '+ROUND;const tw=c.measureText(tcs).width+40;rrect(c,X1-tw,Y0,tw,58,29);c.fillStyle=st&&st.active?P.a:P.paper;c.fill();txt(c,tcs,X1-20,Y0+39,'800 28px '+ROUND,'#1F1A3D','right');
+ // 3. 花びら（周波数）。地の上に版ずれの影、その上に3色で
+ const N=PS.pet.length,rot=t*.18+PS.kick*.12,pop=elastic((t-PS.subjAt)/.7),R0=230*(.62+.38*pop)*(1+.05*PS.kick);
+ if(ok&&A.freq){const F=A.freq.length;for(let i=0;i<N;i++){const k=Math.floor(Math.pow((i%(N/2))/(N/2),1.7)*F*.55)+2;const v=A.freq[k]/255;PS.pet[i]+=(v-PS.pet[i])*.25}}else for(let i=0;i<N;i++)PS.pet[i]+=((.18+.08*Math.sin(t*1.3+i))-PS.pet[i])*.05;
+ const petal=(i,len,off)=>{const a=rot+i/N*6.2832,w=6.2832/N*.62;const x0=CX+Math.cos(a)*(R0*.9),y0=CY+Math.sin(a)*(R0*.9),tip=R0+len;c.beginPath();c.moveTo(CX+Math.cos(a-w)*R0*.86+off,CY+Math.sin(a-w)*R0*.86+off);
+  c.quadraticCurveTo(CX+Math.cos(a-w*1.3)*(R0+len*.7)+off,CY+Math.sin(a-w*1.3)*(R0+len*.7)+off,CX+Math.cos(a)*tip+off,CY+Math.sin(a)*tip+off);c.quadraticCurveTo(CX+Math.cos(a+w*1.3)*(R0+len*.7)+off,CY+Math.sin(a+w*1.3)*(R0+len*.7)+off,CX+Math.cos(a+w)*R0*.86+off,CY+Math.sin(a+w)*R0*.86+off);c.closePath()};
+ for(let i=0;i<N;i++){const len=34+175*PS.pet[i]*(.7+.3*pop);petal(i,len,10);c.fillStyle=P.ink;c.globalAlpha=P.dark?.35:.9;c.fill();c.globalAlpha=1;petal(i,len,0);c.fillStyle=[P.a,P.b,P.c][i%3];c.fill()}
+ // 4. 写真（丸く切り抜き、版ずれの色を後ろに）
+ const ph=id?subjectPhoto(id):null;c.fillStyle=P.c;c.beginPath();c.arc(CX+16,CY+16,R0,0,6.2832);c.fill();
+ c.save();c.beginPath();c.arc(CX,CY,R0,0,6.2832);c.clip();c.fillStyle=P.paper;c.fillRect(CX-R0,CY-R0,R0*2,R0*2);
+ if(ph&&ph.e.ok){cover(c,ph.e.img,CX-R0,CY-R0,R0*2,R0*2,1.06+.05*PS.kick);notePhoto(ph)}else{c.strokeStyle=P.ink;c.globalAlpha=.25;c.lineWidth=6;for(let k=1;k<6;k++){c.beginPath();c.arc(CX,CY,R0*k/6*(1+.03*Math.sin(t*2+k)),0,6.2832);c.stroke()}c.globalAlpha=1}
+ c.restore();c.lineWidth=12;c.strokeStyle=P.ink;c.beginPath();c.arc(CX,CY,R0,0,6.2832);c.stroke();
+ // 5. ステッカー：グループ（回転した角丸）と、回る丸い「実録音」
+ if(id){const nm=popName(id),gl=(GROUP_LABEL[nm.g]||['',''])[lang()==='en'?1:0];if(gl){c.save();c.translate(CX-R0*.82,CY-R0*.86);c.rotate(-.14+.04*Math.sin(t*1.7));c.font='900 34px '+ROUND;const w=c.measureText(gl).width+48;rrect(c,-w/2,-32,w,64,18);c.fillStyle=P.b;c.fill();c.lineWidth=6;c.strokeStyle=P.ink;c.stroke();txt(c,gl,0,12,'900 34px '+ROUND,P.dark?P.ink:P.paper,'center');c.restore()}}
+ {c.save();c.translate(CX+R0*.9,CY+R0*.78);c.rotate(t*.35);c.beginPath();c.arc(0,0,84,0,6.2832);c.fillStyle=P.a;c.fill();c.lineWidth=6;c.strokeStyle=P.ink;c.stroke();
+  const ring=L('実録音 ・ 本物の自然の音 ・ ','REAL FIELD RECORDING · ');c.font='800 21px '+ROUND;c.fillStyle=P.ink;c.textAlign='center';const chars=[...ring],n=chars.length;for(let k=0;k<n;k++){c.save();c.rotate(k/n*6.2832);c.fillText(chars[k],0,-56);c.restore()}
+  c.rotate(-t*.35);txt(c,'♪',0,14,'900 44px '+ROUND,P.ink,'center');c.restore()}
+ // 6. 名前（音で弾む文字）と、英名・学名・録音地
+ let y=Y0+520+230+128;if(id){const nm=popName(id);let fs=112;c.font='400 '+fs+'px '+DISPLAY;while(c.measureText(nm.name).width>W&&fs>72){fs-=4;c.font='400 '+fs+'px '+DISPLAY}
+  let lines=[nm.name];if(c.measureText(nm.name).width>W){const cs=[...nm.name],half=cs.length/2;let cut=Math.round(half);const sp=nm.name.split(' ');if(sp.length>1){let acc=0,best=1,bd=1e9;for(let k=1;k<sp.length;k++){acc+=sp[k-1].length+1;if(Math.abs(acc-half)<bd){bd=Math.abs(acc-half);best=k}}lines=[sp.slice(0,best).join(' '),sp.slice(best).join(' ')]}else lines=[cs.slice(0,cut).join(''),cs.slice(cut).join('')];
+   while((Math.max(...lines.map(l=>c.measureText(l).width))>W||fs>92)&&fs>40){fs-=4;c.font='400 '+fs+'px '+DISPLAY}y-=fs*.3}
+  c.textAlign='left';const F=A.freq?A.freq.length:1;let k=0;const total=[...nm.name].length;
+  for(const line of lines){const tw2=c.measureText(line).width;let x=CX-tw2/2;for(const ch of [...line]){const cw=c.measureText(ch).width,v=A.freq?A.freq[Math.floor(Math.pow((k+1)/(total+1),1.6)*F*.4)+2]/255:0,drop=clamp((t-PS.subjAt-k*.05)/.45,0,1),dy=-34*v*v-10*PS.kick+(1-elastic(drop))*-90;
+   c.globalAlpha=drop>0?1:0;c.fillStyle=P.ink;c.fillText(ch,x+5,y+dy+5);c.fillStyle=P.dark?P.a:P.paper;c.fillText(ch,x,y+dy);c.globalAlpha=1;x+=cw;k++}y+=fs*1.02}
+  y+=56-fs*1.02;if(nm.sub)txt(c,nm.sub,CX,y,'800 40px '+ROUND,P.ink,'center',W);y+=46;if(nm.latin&&nm.latin!==nm.sub&&nm.latin!==nm.name)txt(c,nm.latin,CX,y,'italic 32px Georgia,serif',P.ink,'center',W);y+=48;
+  if(nm.loc){c.font='700 28px '+ROUND;const lt=reelFit(c,nm.loc,W-60),lw=c.measureText(lt).width+44;rrect(c,CX-lw/2,y-34,lw,50,25);c.fillStyle=P.paper;c.fill();c.lineWidth=4;c.strokeStyle=P.ink;c.stroke();txt(c,lt,CX,y,'700 28px '+ROUND,'#1F1A3D','center')}}
+ else{txt(c,L('写真をタップして','Tap a photo'),CX,y,'400 84px '+DISPLAY,P.ink,'center',W);txt(c,L('音を重ねよう','to layer sounds'),CX,y+100,'400 84px '+DISPLAY,P.ink,'center',W)}
+ // 7. 声の線（いまの波形を太い線で）
+ const wy=Y1-232;if(ok&&A.wave){c.lineWidth=10;c.lineCap='round';c.lineJoin='round';c.strokeStyle=P.ink;c.beginPath();const n=64,step=Math.floor(A.wave.length/n);let pk=.02;for(let i=0;i<A.wave.length;i+=8)pk=Math.max(pk,Math.abs(A.wave[i]));for(let i=0;i<=n;i++){let s2=0;for(let k=0;k<step;k++)s2+=A.wave[Math.min(A.wave.length-1,i*step+k)]||0;const v=s2/step/pk;const px=X0+i/n*W,py=wy+v*60;i?c.lineTo(px,py):c.moveTo(px,py)}c.stroke()}
+ // 8. いっしょに鳴っている音（小さなステッカー）
+ const others=reelList().filter(x=>x!==id).slice(0,3);let cx2=X0;others.forEach((o,k)=>{const nm=popName(o).name;c.font='800 26px '+ROUND;const lbl=reelFit(c,'+ '+nm,W/3-10),w=c.measureText(lbl).width+36;if(cx2+w>X1)return;rrect(c,cx2,Y1-186,w,48,24);c.fillStyle=[P.a,P.b,P.c][k%3];c.fill();c.lineWidth=4;c.strokeStyle=P.ink;c.stroke();txt(c,lbl,cx2+18,Y1-153,'800 26px '+ROUND,'#1F1A3D');cx2+=w+12});
+ // 9. 紙吹雪（鳴き始めに飛ぶ）
+ for(const q of PS.conf){q.vy+=900*dt;q.x+=q.vx*dt;q.y+=q.vy*dt;q.r+=q.vr*dt;q.life-=dt;c.save();c.globalAlpha=clamp(q.life,0,1);c.translate(q.x,q.y);c.rotate(q.r);c.fillStyle=q.col;
+  if(q.k===0){c.beginPath();c.arc(0,0,11,0,6.2832);c.fill()}else if(q.k===1){c.fillRect(-14,-6,28,12)}else{c.beginPath();c.moveTo(0,-14);c.lineTo(13,10);c.lineTo(-13,10);c.closePath();c.fill()}c.restore()}PS.conf=PS.conf.filter(q=>q.life>0&&q.y<REEL_H+40);
+ // 10. クレジット（録音と写真）
+ if(id){const r=recordings.find(x=>x.id===id);const cr=[r?'"'+(r.title||'')+'" — '+(r.author||'')+' · '+r.license:'',ph&&ph.e.ok?ph.credit:''].filter(Boolean);cr.forEach((s3,k)=>txt(c,s3,X0,Y1-100+k*28,'600 20px '+ROUND,P.ink,'left',W))}
+ txt(c,({all:L('すべての素材','All sources'),nosa:L('BY-SA を除く','No CC BY-SA'),cc0:L('CC0・PD のみ','CC0 / PD only')}[RIGHTS.mode])+L('　クレジットの全文は説明欄に','  Full credits in caption'),X0,Y1-14,'700 20px '+ROUND,P.ink,'left',W);
+ // 11. 印刷のざらつき
+ c.save();c.globalAlpha=P.dark?.05:.07;c.globalCompositeOperation='multiply';const pat=c.createPattern(popGrain(),'repeat');c.fillStyle=pat;c.fillRect(0,0,REEL_W,REEL_H);c.restore()}
+window.reelDrawStudio=(c,layout)=>{if(layout==='pop'){drawPop(c);return}if(layout==='wave')drawRidge(c);else if(layout==='minimal')drawMinimal(c);else drawPanels(c)};
 window.reelBgDraw=reelBgDraw;
 window.reelPhotoCredits=st=>{const ps=st&&st.photos?[...st.photos.values()]:[];if(!ps.length)return [];return ['','── 写真のクレジット / Photo credits ──',...ps.map(p=>p.latin+': "'+p.file+'" — '+p.author+' · '+p.license+(p.licenseURL?' ('+p.licenseURL+')':'')+' · Wikimedia Commons: '+p.page)]};
 let lastExport=null;
@@ -2144,7 +2269,7 @@ function init(){renderFilters();buildTiles();bindSheet();buildMasterEq();renderT
  $('tileStopAll').addEventListener('click',stopEverything);$('tileAddUser').addEventListener('click',()=>$('tileUserFile').click());$('tileUserFile').addEventListener('change',e=>{const fs=[...(e.target.files||[])];e.target.value='';importFiles(fs)});
  $('trkPlay').addEventListener('click',()=>trk.playing?trkStop():trkPlay());$('trkLoop').addEventListener('change',e=>{trk.loop=e.target.checked});$('trkMic').addEventListener('click',()=>trkRecord('mic'));$('trkBounce').addEventListener('click',()=>trkRecord('bounce'));
  $('trkAdd').addEventListener('click',()=>{const v=$('trkAddSrc').value;if(v)addTrack(v)});$('trkWav').addEventListener('click',()=>trkMixdown('wav').catch(e=>trkStatus(e.message)));$('trkAiff').addEventListener('click',()=>trkMixdown('aiff').catch(e=>trkStatus(e.message)));
- setTemplate('forest');
+ setTemplate('pop-sunny');popFonts();
  // 言語を切り替えたら、自分で組み立てた文言（L()）を作り直す
  $('langToggle')?.addEventListener('click',()=>setTimeout(()=>{renderFilters();buildTiles();renderTracks();buildPlans();if(sheetId)renderSheet()},0))}
 init();
@@ -2259,6 +2384,7 @@ const EXACT={
 '鳴っている音を整える → 切り取る → 重ねて書き出す、の順に並べています。':'Laid out in working order: shape what is playing → cut it → layer and export.','トラックと録音 / TRACKS':'TRACKS & RECORDING',
 'テスト公開中は、すべての機能を無料で使えます。':'During the test release, every feature is free.','プリセット — 保存・読み込み':'Presets — save & load','■ 止める':'■ Stop','● リール':'● Reel','再生中の音':'Now playing',
 '自律演奏中':'Autonomous play on',
+'ポップ・ひまわり':'Pop — sunflower','ポップ・キャンディ':'Pop — candy','ポップ・ラグーン':'Pop — lagoon','ポップ・ジャングル':'Pop — jungle','ポップ・夜':'Pop — night',
 'ディジュリドゥ（実録音）':'Didgeridoo (real recording)','パイプオルガンのペダル（実録音）':'Pipe organ pedal (real recording)','ティンパニのロール（実録音）':'Timpani roll (real recording)','ゴングの余韻（実録音）':'Gong decay (real recording)','ピアノの最低音域（実録音）':'Piano, lowest register (real recording)','自然の低音（波の実録音・低域）':'Nature bass (low band of a real wave recording)',
 'フレームドラム（実録音）':'Frame drum (real recording)','カホン（実録音）':'Cajón (real recording)','ダルブッカ（実録音）':'Darbuka (real recording)','スリットドラム（実録音）':'Slit drum (real recording)','コンガ（実録音）':'Conga (real recording)','楽器の読み込みに失敗しました':'Instrument loading failed','自律演奏':'Autonomous play','自律演奏のとき':'During autonomous play',
 // 写真のタイル・マスター EQ・リール作成・トラック・プラン（v0.43）

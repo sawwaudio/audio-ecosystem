@@ -3,7 +3,7 @@
    本体スクリプト（音声エンジン・音源ライブラリ）の後に読み込む。本体の関数と変数（ctx, master, recordings, loadOne, mixLane など）をそのまま使い、
    音声エンジンと音源の対応は変えない。build/integrate_v043.py が index.html の <script id="ae-studio"> にこのファイルを埋め込む。 */
 (()=>{'use strict';
-const VER='v0.45';
+const VER='v0.47';
 const PHOTOS=(()=>{try{return JSON.parse($('ae-photos').textContent)}catch(e){return {}}})();
 const TIERS=(()=>{try{return JSON.parse($('ae-tiers').textContent)}catch(e){return {plans:[],features:[]}}})();
 const APP_URL=/^https?:$/.test(location.protocol)&&!/^(localhost|127\.)/.test(location.hostname)?location.origin+location.pathname.replace(/index\.html$/,''):'https://sawwaudio.github.io/audio-ecosystem-sounds-1/';
@@ -24,7 +24,8 @@ function photoFor(id){const u=userSounds.get(id);if(u)return u.img?{user:true,th
 const GROUP_LABEL={birds:['鳥','BIRD'],insects:['虫','INSECT'],animals:['動物','ANIMAL'],landscape:['水・環境','AMBIENCE'],user:['自分の音','MY SOUND']};
 function groupOf(id){if(userSounds.has(id))return 'user';const r=recordings.find(x=>x.id===id);return r?(r.kind==='landscape'?'landscape':r.group):'landscape'}
 // 統一したプレースホルダー（写真がない音）。色はグループごと、線は同じ型。
-const PH_HUE={birds:150,insects:95,animals:30,landscape:195,user:265};
+const PH_HUE={birds:225,insects:48,animals:22,landscape:165,user:265};
+const GROUP_COLOR={birds:'#5b8cff',insects:'#ffd447',animals:'#ff8a3d',landscape:'#2fd9a6',user:'#a98bff'};
 function placeholderSVG(id,g){let h=0;for(const ch of id)h=(h*31+ch.charCodeAt(0))>>>0;const hue=PH_HUE[g]??180,rot=h%360,rings=[];
  for(let i=0;i<7;i++){const r=14+i*11,wob=2+((h>>(i*3))&7)*.6;let d='';for(let k=0;k<=48;k++){const a=k/48*6.2832,rr=r+Math.sin(a*3+i+rot)*wob;d+=(k?'L':'M')+(60+Math.cos(a)*rr).toFixed(1)+' '+(60+Math.sin(a)*rr).toFixed(1)}rings.push('<path d="'+d+'Z" fill="none" stroke="hsla('+hue+',45%,'+(70-i*5)+'%,'+(0.55-i*.06).toFixed(2)+')" stroke-width="1"/>')}
  return '<svg viewBox="0 0 120 120" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="120" height="120" fill="hsl('+hue+',30%,9%)"/>'+rings.join('')+'<circle cx="60" cy="60" r="3" fill="hsl('+hue+',60%,75%)"/></svg>'}
@@ -99,7 +100,7 @@ function tileStopAll(){for(const id of playingIds())tileStop(id);for(const s of 
 function setTileVol(id,v){const s=tst(id);s.vol=clamp(+v,0,100);if(s.voice)s.voice.out.gain.setTargetAtTime(s.vol/100,ctx.currentTime,.05)}
 function setTilePan(id,v){const s=tst(id);s.pan=clamp(+v,-1,1);if(s.voice&&s.voice.pan.pan)s.voice.pan.pan.setTargetAtTime(s.pan,ctx.currentTime,.05)}
 // 商用モードが変わったら、対象外になった音を止める（代用しない）
-setInterval(()=>{for(const id of playingIds())if(!userSounds.has(id)&&!rightsAllowed(id))tileStop(id,true);renderRightsDim();if(autoOn()||document.querySelector('#tileGrid .tile.auto'))for(const tile of document.querySelectorAll('#tileGrid .tile'))renderTile(tile.dataset.id);renderCount()},400);
+setInterval(()=>{for(const id of playingIds())if(!userSounds.has(id)&&!rightsAllowed(id))tileStop(id,true);renderRightsDim();document.body.classList.toggle('live',autoOn()||playingIds().length>0);if(autoOn()||document.querySelector('#tileGrid .tile.auto'))for(const tile of document.querySelectorAll('#tileGrid .tile'))renderTile(tile.dataset.id);renderCount()},400);
 
 // ───────── タイルの画面 ─────────
 const FILTERS=[['all','すべて','All'],['birds','鳥','Birds'],['insects','虫','Insects'],['animals','動物','Animals'],['landscape','水・環境','Water & places'],['japan','日本','Japan'],['photo','写真あり','With photos'],['user','自分の音','My sounds'],['playing','再生中','Playing']];
@@ -147,7 +148,7 @@ let paintAt=0;function paintTiles(now){requestAnimationFrame(paintTiles);if(now-
  for(const id of ids){const s=tileState.get(id),v=s&&s.voice;const cv=document.querySelector('.tile[data-id="'+CSS.escape(id)+'"] .tileWave');if(!cv)continue;let f;
   if(v){f=v.fbuf||(v.fbuf=new Uint8Array(v.an.frequencyBinCount));v.an.getByteFrequencyData(f)}else{if(!analyser)continue;if(!mf){mf=new Uint8Array(analyser.frequencyBinCount);analyser.getByteFrequencyData(mf)}f=mf}
   const c=cv.getContext('2d'),W=cv.width,H=cv.height;c.clearRect(0,0,W,H);
-  const N=20,bw=W/N;c.fillStyle='rgba(214,239,200,.95)';for(let i=0;i<N;i++){const k=Math.floor(Math.pow(i/N,1.6)*f.length*.7)+1,val=f[k]/255,h=Math.max(1.5,val*H);c.fillRect(i*bw+1,(H-h)/2,bw-2,h)}}}
+  const N=20,bw=W/N;c.fillStyle=GROUP_COLOR[groupOf(id)]||'#ffd447';for(let i=0;i<N;i++){const k=Math.floor(Math.pow(i/N,1.6)*f.length*.7)+1,val=f[k]/255,h=Math.max(1.5,val*H);c.fillRect(i*bw+1,(H-h)/2,bw-2,h)}}}
 requestAnimationFrame(paintTiles);
 
 // ───────── 詳細シート（長押し・i ボタン） ─────────
@@ -299,10 +300,10 @@ const PAL={forest:{bg:'#06110c',panel:'rgba(10,26,19,.82)',line:'#2a4a37',dim:'#
  night:{bg:'#06050c',panel:'rgba(13,11,24,.84)',line:'#2f2c4e',dim:'#8a84b8',text:'#eeeaff',acc:'#bcaaff',acc2:'#ffd27a',hue:255},
  wildlife:{bg:'#0b0b08',panel:'rgba(20,20,14,.8)',line:'#45422c',dim:'#a39f7e',text:'#f6f2e6',acc:'#f2c464',acc2:'#a6e6b8',hue:42},
  minimal:{bg:'#000000',panel:'rgba(6,6,6,.85)',line:'#2a2a2a',dim:'#8d8d8d',text:'#f4f4f4',acc:'#ffffff',acc2:'#bdbdbd',hue:0}};
-const TEMPLATES={forest:['panels','forest'],ocean:['panels','ocean'],night:['panels','night'],wildlife:['panels','wildlife'],minimal:['minimal','minimal'],waveform:['wave','forest'],spectrum:['analysis',null],abstract:['motion',null]};
+const TEMPLATES={'pop-sunny':['pop','pop:sunny'],'pop-candy':['pop','pop:candy'],'pop-lagoon':['pop','pop:lagoon'],'pop-jungle':['pop','pop:jungle'],'pop-night':['pop','pop:night'],forest:['panels','forest'],ocean:['panels','ocean'],night:['panels','night'],wildlife:['panels','wildlife'],minimal:['minimal','minimal'],waveform:['wave','forest'],spectrum:['analysis',null],abstract:['motion',null]};
 let reelTpl='forest',reelPal=PAL.forest,reelImgMode='auto',reelUserImg=null;const imgCache=new Map();
 function canvasImage(url){let e=imgCache.get(url);if(e)return e;e={img:new Image(),ok:false,fail:false};e.img.crossOrigin='anonymous';e.img.referrerPolicy='no-referrer';e.img.onload=()=>{e.ok=true};e.img.onerror=()=>{e.fail=true};e.img.src=url;imgCache.set(url,e);return e}
-function setTemplate(name){if(!TEMPLATES[name])return false;reelTpl=name;const [layout,pal]=TEMPLATES[name];if(pal)reelPal=PAL[pal];const sel=$('reelStyle');if(sel&&sel.value!==name)sel.value=name;reelSetStyle(layout);return true}
+function setTemplate(name){if(!TEMPLATES[name])return false;reelTpl=name;const [layout,pal]=TEMPLATES[name];if(pal&&pal.startsWith('pop:')){popPal=POP[pal.slice(4)];popFonts()}else if(pal)reelPal=PAL[pal];const sel=$('reelStyle');if(sel&&sel.value!==name)sel.value=name;reelSetStyle(layout);return true}
 // いま映すもの：最後にタップした音 → 生き物の声 → 環境の音
 function reelSubject(){const ids=playingIds();let id=focusId&&ids.includes(focusId)?focusId:ids.slice(-1)[0];
  if(!id){const now=reelNowPlaying();const b=now.find(n=>n.role==='bio')||now[0];id=b?b.id:null}return id}
@@ -397,7 +398,79 @@ function nameCard(c,y){const P=reelPal,id=reelSubject(),X=REEL_SAFE.x0,W=REEL_SA
  if(r)txt(c,'REC  '+(r.location||'—'),X,y+130,'24px '+SANS,P.dim,'left',W);if(r)txt(c,'"'+(r.title||'')+'" — '+(r.author||'')+' · '+r.license,X,y+166,'20px '+MONO,P.dim,'left',W);
  if(ph&&ph.e.ok)txt(c,ph.credit,X,y+196,'16px '+MONO,P.dim,'left',W);const list=reelList();if(list.length>1&&y+232<REEL_SAFE.y1-40)txt(c,'+ '+list.filter(x=>x!==id).slice(0,3).map(nameOf).join(' · '),X,y+232,'22px '+SANS,P.acc,'left',W);
  txt(c,({all:'ALL SOURCES',nosa:'NO CC BY-SA',cc0:'CC0 / PD ONLY'}[RIGHTS.mode])+' · FULL CREDITS IN CAPTION',X,REEL_SAFE.y1-14,'18px '+MONO,P.dim,'left',W)}
-window.reelDrawStudio=(c,layout)=>{if(layout==='wave')drawRidge(c);else if(layout==='minimal')drawMinimal(c);else drawPanels(c)};
+// ───────── リール：ポップ（v0.47）─────────
+// 図鑑をリソグラフ（多色の版ずれ印刷）で刷ったような、はっきりした色の見た目。主役は「音で咲く花」：
+// 生き物の写真を丸く切り抜き、その周りの花びら（周波数ごとの強さ）が開閉して回る。名前の文字は音で弾み、
+// 鳴き始め（音の立ち上がり）で紙吹雪、低い音で背景の色の塊が揺れる。鳴いている生き物が替わると写真が弾んで入れ替わる。
+// 文字は SNS の画面部品に隠れにくい範囲（REEL_SAFE）に置く。録音と写真のクレジットは映像の中にも入れる。
+var POP={sunny:{bg:'#FFD447',bg2:'#FFB81F',ink:'#1F1A3D',paper:'#FFF7DB',a:'#FF4F9A',b:'#2E6BFF',c:'#1FBF86',dark:false},
+ candy:{bg:'#FF8AC4',bg2:'#FF5FAE',ink:'#2B1242',paper:'#FFF0F7',a:'#FFE500',b:'#2FD9A6',c:'#6B5CFF',dark:false},
+ lagoon:{bg:'#1F44D9',bg2:'#1733A8',ink:'#FFF7E3',paper:'#FFF7E3',a:'#FFDB3D',b:'#FF5CA6',c:'#5CF0C6',dark:true},
+ jungle:{bg:'#17A866',bg2:'#0E8350',ink:'#0D251A',paper:'#F3FFE6',a:'#FF7A1A',b:'#FFE14D',c:'#FF5CA6',dark:false},
+ night:{bg:'#2B1259',bg2:'#1C0A3E',ink:'#F7F0FF',paper:'#F7F0FF',a:'#B8FF3B',b:'#FF4FD8',c:'#3BE6FF',dark:true}};
+var popPal=POP.sunny;
+const DISPLAY='"Dela Gothic One","Hiragino Sans","Noto Sans JP",system-ui,sans-serif',ROUND='"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Hiragino Sans",system-ui,sans-serif';
+let popFontReq='';
+function popFonts(extra){if(!document.fonts||!document.fonts.load)return;const t='saww audio ecosystem 実録音 いま鳴いている 鳥 虫 動物 水 環境 0123456789 '+(extra||'');if(t===popFontReq)return;popFontReq=t;
+ try{document.fonts.load('400 120px "Dela Gothic One"',t).catch(()=>{});document.fonts.load('800 40px "M PLUS Rounded 1c"',t).catch(()=>{});document.fonts.load('500 30px "M PLUS Rounded 1c"',t).catch(()=>{})}catch(e){}}
+const PS={pet:new Float32Array(28),kick:0,onsets:0,subj:null,subjAt:0,conf:[],grain:null,blobs:[[.18,.2,.34],[.86,.46,.3],[.3,.86,.38]],lastT:0};
+function popGrain(){if(PS.grain)return PS.grain;const g=document.createElement('canvas');g.width=g.height=256;const x=g.getContext('2d'),d=x.createImageData(256,256);let s=7;for(let i=0;i<d.data.length;i+=4){s=(s*16807)%2147483647;const v=s%255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=255}x.putImageData(d,0,0);PS.grain=g;return g}
+function rrect(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
+function elastic(u){u=clamp(u,0,1);return u===1?1:1-Math.pow(2,-9*u)*Math.cos(u*Math.PI*3.2)}
+function popName(id){const r=recordings.find(x=>x.id===id),m=wildMeta[id]||{};const en=lang()==='en';const nm=(en?(m.en||(window.__i18n?__i18n.t(nameOf(id)):nameOf(id))):nameOf(id)).replace(/[（(][^）)]*[）)]/g,'').trim();
+ return {r,m,name:nm,sub:en?(r&&binomial(r.latin)||''):(m.en||''),latin:r&&binomial(r.latin)||'',loc:r?(en&&window.__i18n?__i18n.t(r.location||''):(r.location||'')):'',g:groupOf(id)}}
+function drawPop(c){const P=popPal,now=performance.now(),t=(now-A.t0)/1000,dt=Math.min(.1,Math.max(0,t-PS.lastT));PS.lastT=t;const ok=analyse();c.setTransform(1,0,0,1,0,0);c.globalAlpha=1;c.globalCompositeOperation='source-over';
+ const X0=REEL_SAFE.x0,X1=REEL_SAFE.x1,Y0=REEL_SAFE.y0,Y1=REEL_SAFE.y1,W=X1-X0,CX=(X0+X1)/2,CY=Y0+520;
+ const low=ok?band(40,220):0,mid=ok?band(400,2500):0,high=ok?band(3000,9000):0;
+ if(ok&&A.onsets!==PS.onsets){PS.onsets=A.onsets;PS.kick=1;for(let i=0;i<12&&PS.conf.length<90;i++){const a=Math.random()*6.283,sp=260+Math.random()*420;PS.conf.push({x:CX+Math.cos(a)*250,y:CY+Math.sin(a)*250,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-200,r:Math.random()*6.283,vr:(Math.random()-.5)*8,k:Math.floor(Math.random()*3),col:[P.a,P.b,P.c,P.paper][Math.floor(Math.random()*4)],life:1.4+Math.random()*.8})}}
+ PS.kick=Math.max(0,PS.kick-dt*3.2);
+ const id=reelSubject();if(id!==PS.subj){PS.subj=id;PS.subjAt=t;if(id)popFonts(nameOf(id)+' '+((wildMeta[id]||{}).en||''))}
+ // 1. 地の色と、低い音で揺れる色の塊（平らな版の色）
+ c.fillStyle=P.bg;c.fillRect(0,0,REEL_W,REEL_H);
+ PS.blobs.forEach(([bx,by,br],i)=>{const col=[P.bg2,P.a,P.c][i];const R=REEL_W*br*(1+.18*low+.04*Math.sin(t*.7+i*2));const x=REEL_W*bx+60*Math.sin(t*.23+i),y=REEL_H*by+50*Math.cos(t*.19+i*1.7);
+  c.globalAlpha=i===0?1:.22;c.fillStyle=col;c.beginPath();for(let k=0;k<=48;k++){const a=k/48*6.2832,w=1+.08*Math.sin(a*3+t*.9+i)+.05*Math.sin(a*5-t*.6);const px=x+Math.cos(a)*R*w,py=y+Math.sin(a)*R*w;k?c.lineTo(px,py):c.moveTo(px,py)}c.closePath();c.fill()});c.globalAlpha=1;
+ // 2. 上の帯：アプリ名と録画の時間
+ const st=reelState,tc=st&&st.active?((now-st.t0)/1000):t;c.font='800 30px '+ROUND;const nameW=c.measureText('saww audio ecosystem').width+48;rrect(c,X0,Y0,nameW,58,29);c.fillStyle=P.ink;c.fill();txt(c,'saww audio ecosystem',X0+24,Y0+39,'800 30px '+ROUND,P.bg);
+ const tcs=(st&&st.active?'● ':'')+String(Math.floor(tc/60)).padStart(2,'0')+':'+String(Math.floor(tc%60)).padStart(2,'0');c.font='800 28px '+ROUND;const tw=c.measureText(tcs).width+40;rrect(c,X1-tw,Y0,tw,58,29);c.fillStyle=st&&st.active?P.a:P.paper;c.fill();txt(c,tcs,X1-20,Y0+39,'800 28px '+ROUND,'#1F1A3D','right');
+ // 3. 花びら（周波数）。地の上に版ずれの影、その上に3色で
+ const N=PS.pet.length,rot=t*.18+PS.kick*.12,pop=elastic((t-PS.subjAt)/.7),R0=230*(.62+.38*pop)*(1+.05*PS.kick);
+ if(ok&&A.freq){const F=A.freq.length;for(let i=0;i<N;i++){const k=Math.floor(Math.pow((i%(N/2))/(N/2),1.7)*F*.55)+2;const v=A.freq[k]/255;PS.pet[i]+=(v-PS.pet[i])*.25}}else for(let i=0;i<N;i++)PS.pet[i]+=((.18+.08*Math.sin(t*1.3+i))-PS.pet[i])*.05;
+ const petal=(i,len,off)=>{const a=rot+i/N*6.2832,w=6.2832/N*.62;const x0=CX+Math.cos(a)*(R0*.9),y0=CY+Math.sin(a)*(R0*.9),tip=R0+len;c.beginPath();c.moveTo(CX+Math.cos(a-w)*R0*.86+off,CY+Math.sin(a-w)*R0*.86+off);
+  c.quadraticCurveTo(CX+Math.cos(a-w*1.3)*(R0+len*.7)+off,CY+Math.sin(a-w*1.3)*(R0+len*.7)+off,CX+Math.cos(a)*tip+off,CY+Math.sin(a)*tip+off);c.quadraticCurveTo(CX+Math.cos(a+w*1.3)*(R0+len*.7)+off,CY+Math.sin(a+w*1.3)*(R0+len*.7)+off,CX+Math.cos(a+w)*R0*.86+off,CY+Math.sin(a+w)*R0*.86+off);c.closePath()};
+ for(let i=0;i<N;i++){const len=34+175*PS.pet[i]*(.7+.3*pop);petal(i,len,10);c.fillStyle=P.ink;c.globalAlpha=P.dark?.35:.9;c.fill();c.globalAlpha=1;petal(i,len,0);c.fillStyle=[P.a,P.b,P.c][i%3];c.fill()}
+ // 4. 写真（丸く切り抜き、版ずれの色を後ろに）
+ const ph=id?subjectPhoto(id):null;c.fillStyle=P.c;c.beginPath();c.arc(CX+16,CY+16,R0,0,6.2832);c.fill();
+ c.save();c.beginPath();c.arc(CX,CY,R0,0,6.2832);c.clip();c.fillStyle=P.paper;c.fillRect(CX-R0,CY-R0,R0*2,R0*2);
+ if(ph&&ph.e.ok){cover(c,ph.e.img,CX-R0,CY-R0,R0*2,R0*2,1.06+.05*PS.kick);notePhoto(ph)}else{c.strokeStyle=P.ink;c.globalAlpha=.25;c.lineWidth=6;for(let k=1;k<6;k++){c.beginPath();c.arc(CX,CY,R0*k/6*(1+.03*Math.sin(t*2+k)),0,6.2832);c.stroke()}c.globalAlpha=1}
+ c.restore();c.lineWidth=12;c.strokeStyle=P.ink;c.beginPath();c.arc(CX,CY,R0,0,6.2832);c.stroke();
+ // 5. ステッカー：グループ（回転した角丸）と、回る丸い「実録音」
+ if(id){const nm=popName(id),gl=(GROUP_LABEL[nm.g]||['',''])[lang()==='en'?1:0];if(gl){c.save();c.translate(CX-R0*.82,CY-R0*.86);c.rotate(-.14+.04*Math.sin(t*1.7));c.font='900 34px '+ROUND;const w=c.measureText(gl).width+48;rrect(c,-w/2,-32,w,64,18);c.fillStyle=P.b;c.fill();c.lineWidth=6;c.strokeStyle=P.ink;c.stroke();txt(c,gl,0,12,'900 34px '+ROUND,P.dark?P.ink:P.paper,'center');c.restore()}}
+ {c.save();c.translate(CX+R0*.9,CY+R0*.78);c.rotate(t*.35);c.beginPath();c.arc(0,0,84,0,6.2832);c.fillStyle=P.a;c.fill();c.lineWidth=6;c.strokeStyle=P.ink;c.stroke();
+  const ring=L('実録音 ・ 本物の自然の音 ・ ','REAL FIELD RECORDING · ');c.font='800 21px '+ROUND;c.fillStyle=P.ink;c.textAlign='center';const chars=[...ring],n=chars.length;for(let k=0;k<n;k++){c.save();c.rotate(k/n*6.2832);c.fillText(chars[k],0,-56);c.restore()}
+  c.rotate(-t*.35);txt(c,'♪',0,14,'900 44px '+ROUND,P.ink,'center');c.restore()}
+ // 6. 名前（音で弾む文字）と、英名・学名・録音地
+ let y=Y0+520+230+128;if(id){const nm=popName(id);let fs=112;c.font='400 '+fs+'px '+DISPLAY;while(c.measureText(nm.name).width>W&&fs>72){fs-=4;c.font='400 '+fs+'px '+DISPLAY}
+  let lines=[nm.name];if(c.measureText(nm.name).width>W){const cs=[...nm.name],half=cs.length/2;let cut=Math.round(half);const sp=nm.name.split(' ');if(sp.length>1){let acc=0,best=1,bd=1e9;for(let k=1;k<sp.length;k++){acc+=sp[k-1].length+1;if(Math.abs(acc-half)<bd){bd=Math.abs(acc-half);best=k}}lines=[sp.slice(0,best).join(' '),sp.slice(best).join(' ')]}else lines=[cs.slice(0,cut).join(''),cs.slice(cut).join('')];
+   while((Math.max(...lines.map(l=>c.measureText(l).width))>W||fs>92)&&fs>40){fs-=4;c.font='400 '+fs+'px '+DISPLAY}y-=fs*.3}
+  c.textAlign='left';const F=A.freq?A.freq.length:1;let k=0;const total=[...nm.name].length;
+  for(const line of lines){const tw2=c.measureText(line).width;let x=CX-tw2/2;for(const ch of [...line]){const cw=c.measureText(ch).width,v=A.freq?A.freq[Math.floor(Math.pow((k+1)/(total+1),1.6)*F*.4)+2]/255:0,drop=clamp((t-PS.subjAt-k*.05)/.45,0,1),dy=-34*v*v-10*PS.kick+(1-elastic(drop))*-90;
+   c.globalAlpha=drop>0?1:0;c.fillStyle=P.ink;c.fillText(ch,x+5,y+dy+5);c.fillStyle=P.dark?P.a:P.paper;c.fillText(ch,x,y+dy);c.globalAlpha=1;x+=cw;k++}y+=fs*1.02}
+  y+=56-fs*1.02;if(nm.sub)txt(c,nm.sub,CX,y,'800 40px '+ROUND,P.ink,'center',W);y+=46;if(nm.latin&&nm.latin!==nm.sub&&nm.latin!==nm.name)txt(c,nm.latin,CX,y,'italic 32px Georgia,serif',P.ink,'center',W);y+=48;
+  if(nm.loc){c.font='700 28px '+ROUND;const lt=reelFit(c,nm.loc,W-60),lw=c.measureText(lt).width+44;rrect(c,CX-lw/2,y-34,lw,50,25);c.fillStyle=P.paper;c.fill();c.lineWidth=4;c.strokeStyle=P.ink;c.stroke();txt(c,lt,CX,y,'700 28px '+ROUND,'#1F1A3D','center')}}
+ else{txt(c,L('写真をタップして','Tap a photo'),CX,y,'400 84px '+DISPLAY,P.ink,'center',W);txt(c,L('音を重ねよう','to layer sounds'),CX,y+100,'400 84px '+DISPLAY,P.ink,'center',W)}
+ // 7. 声の線（いまの波形を太い線で）
+ const wy=Y1-232;if(ok&&A.wave){c.lineWidth=10;c.lineCap='round';c.lineJoin='round';c.strokeStyle=P.ink;c.beginPath();const n=64,step=Math.floor(A.wave.length/n);let pk=.02;for(let i=0;i<A.wave.length;i+=8)pk=Math.max(pk,Math.abs(A.wave[i]));for(let i=0;i<=n;i++){let s2=0;for(let k=0;k<step;k++)s2+=A.wave[Math.min(A.wave.length-1,i*step+k)]||0;const v=s2/step/pk;const px=X0+i/n*W,py=wy+v*60;i?c.lineTo(px,py):c.moveTo(px,py)}c.stroke()}
+ // 8. いっしょに鳴っている音（小さなステッカー）
+ const others=reelList().filter(x=>x!==id).slice(0,3);let cx2=X0;others.forEach((o,k)=>{const nm=popName(o).name;c.font='800 26px '+ROUND;const lbl=reelFit(c,'+ '+nm,W/3-10),w=c.measureText(lbl).width+36;if(cx2+w>X1)return;rrect(c,cx2,Y1-186,w,48,24);c.fillStyle=[P.a,P.b,P.c][k%3];c.fill();c.lineWidth=4;c.strokeStyle=P.ink;c.stroke();txt(c,lbl,cx2+18,Y1-153,'800 26px '+ROUND,'#1F1A3D');cx2+=w+12});
+ // 9. 紙吹雪（鳴き始めに飛ぶ）
+ for(const q of PS.conf){q.vy+=900*dt;q.x+=q.vx*dt;q.y+=q.vy*dt;q.r+=q.vr*dt;q.life-=dt;c.save();c.globalAlpha=clamp(q.life,0,1);c.translate(q.x,q.y);c.rotate(q.r);c.fillStyle=q.col;
+  if(q.k===0){c.beginPath();c.arc(0,0,11,0,6.2832);c.fill()}else if(q.k===1){c.fillRect(-14,-6,28,12)}else{c.beginPath();c.moveTo(0,-14);c.lineTo(13,10);c.lineTo(-13,10);c.closePath();c.fill()}c.restore()}PS.conf=PS.conf.filter(q=>q.life>0&&q.y<REEL_H+40);
+ // 10. クレジット（録音と写真）
+ if(id){const r=recordings.find(x=>x.id===id);const cr=[r?'"'+(r.title||'')+'" — '+(r.author||'')+' · '+r.license:'',ph&&ph.e.ok?ph.credit:''].filter(Boolean);cr.forEach((s3,k)=>txt(c,s3,X0,Y1-100+k*28,'600 20px '+ROUND,P.ink,'left',W))}
+ txt(c,({all:L('すべての素材','All sources'),nosa:L('BY-SA を除く','No CC BY-SA'),cc0:L('CC0・PD のみ','CC0 / PD only')}[RIGHTS.mode])+L('　クレジットの全文は説明欄に','  Full credits in caption'),X0,Y1-14,'700 20px '+ROUND,P.ink,'left',W);
+ // 11. 印刷のざらつき
+ c.save();c.globalAlpha=P.dark?.05:.07;c.globalCompositeOperation='multiply';const pat=c.createPattern(popGrain(),'repeat');c.fillStyle=pat;c.fillRect(0,0,REEL_W,REEL_H);c.restore()}
+window.reelDrawStudio=(c,layout)=>{if(layout==='pop'){drawPop(c);return}if(layout==='wave')drawRidge(c);else if(layout==='minimal')drawMinimal(c);else drawPanels(c)};
 window.reelBgDraw=reelBgDraw;
 window.reelPhotoCredits=st=>{const ps=st&&st.photos?[...st.photos.values()]:[];if(!ps.length)return [];return ['','── 写真のクレジット / Photo credits ──',...ps.map(p=>p.latin+': "'+p.file+'" — '+p.author+' · '+p.license+(p.licenseURL?' ('+p.licenseURL+')':'')+' · Wikimedia Commons: '+p.page)]};
 let lastExport=null;
@@ -502,7 +575,7 @@ function init(){renderFilters();buildTiles();bindSheet();buildMasterEq();renderT
  $('tileStopAll').addEventListener('click',stopEverything);$('tileAddUser').addEventListener('click',()=>$('tileUserFile').click());$('tileUserFile').addEventListener('change',e=>{const fs=[...(e.target.files||[])];e.target.value='';importFiles(fs)});
  $('trkPlay').addEventListener('click',()=>trk.playing?trkStop():trkPlay());$('trkLoop').addEventListener('change',e=>{trk.loop=e.target.checked});$('trkMic').addEventListener('click',()=>trkRecord('mic'));$('trkBounce').addEventListener('click',()=>trkRecord('bounce'));
  $('trkAdd').addEventListener('click',()=>{const v=$('trkAddSrc').value;if(v)addTrack(v)});$('trkWav').addEventListener('click',()=>trkMixdown('wav').catch(e=>trkStatus(e.message)));$('trkAiff').addEventListener('click',()=>trkMixdown('aiff').catch(e=>trkStatus(e.message)));
- setTemplate('forest');
+ setTemplate('pop-sunny');popFonts();
  // 言語を切り替えたら、自分で組み立てた文言（L()）を作り直す
  $('langToggle')?.addEventListener('click',()=>setTimeout(()=>{renderFilters();buildTiles();renderTracks();buildPlans();if(sheetId)renderSheet()},0))}
 init();

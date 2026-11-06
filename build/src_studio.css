@@ -4,55 +4,55 @@ header a{color:inherit}
 
 .tileFilters{display:flex;gap:6px;overflow-x:auto;padding:4px 0 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .tileFilters::-webkit-scrollbar{display:none}
-.tileFilters button{min-height:34px;flex:0 0 auto;border-radius:18px;padding:6px 12px;font-size:11px;background:#132a2b}
-.tileFilters button[aria-pressed="true"]{background:#d6efc8;color:#10221b;border-color:#d6efc8}
+.tileFilters button{min-height:34px;flex:0 0 auto;border-radius:18px;padding:6px 12px;font-size:11px;background:#241f48}
+.tileFilters button[aria-pressed="true"]{background:#ffd447;color:#1f1a3d;border-color:#ffd447}
 .tileGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:8px}
 @media(min-width:620px){.tileGrid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}}
-.tile{position:relative;border-radius:12px;overflow:hidden;background:#0b1a1b;border:1px solid #263b3e;transition:border-color .2s,box-shadow .2s,opacity .2s}
-.tile.on{border-color:#d6efc8;box-shadow:0 0 0 2px rgba(214,239,200,.35),0 0 22px rgba(166,230,184,.25)}
+.tile{position:relative;border-radius:12px;overflow:hidden;background:#120f26;border:1px solid #332c5e;transition:border-color .2s,box-shadow .2s,opacity .2s}
+.tile.on{border-color:#ffd447;box-shadow:0 0 0 2px rgba(255,212,71,.35),0 0 22px rgba(47,217,166,.25)}
 .tile.blocked{opacity:.38}
 .tilePlay{display:block;width:100%;padding:0;margin:0;border:0;border-radius:0;background:none;text-align:left;min-height:0;font:inherit;color:inherit;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none;touch-action:manipulation}
-.tileImg{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;background:#0b1a1b}
+.tileImg{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;background:#120f26}
 .tileImg img,.tileImg .ph svg,.sheetPhoto img,.sheetPhoto .ph svg{width:100%;height:100%;object-fit:cover;display:block}
 .tileImg .ph{display:block;width:100%;height:100%}
 .tile.sounding .tileImg img,.tile.sounding .tileImg .ph{animation:tileBreath 4s ease-in-out infinite}
 @keyframes tileBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.045)}}
 @media (prefers-reduced-motion:reduce){.tile.sounding .tileImg img,.tile.sounding .tileImg .ph{animation:none}}
-.phLabel{position:absolute;left:8px;top:8px;font:600 9px ui-monospace,monospace;letter-spacing:.12em;color:rgba(230,242,234,.75)}
+.phLabel{position:absolute;left:8px;top:8px;font:600 9px ui-monospace,monospace;letter-spacing:.12em;color:rgba(255,247,232,.75)}
 .tileWave{position:absolute;left:6px;right:6px;top:calc(100% - 92px);width:calc(100% - 12px);height:26px;opacity:0;transition:opacity .2s;pointer-events:none}
 .tile.sounding .tileWave{opacity:1}
 .tile .tileImg::after{content:"";position:absolute;inset:auto 0 0 0;height:55%;background:linear-gradient(transparent,rgba(0,0,0,.72));pointer-events:none}
 .tileText{position:absolute;left:0;right:0;bottom:0;padding:6px 8px 7px;display:flex;flex-direction:column;gap:1px;pointer-events:none}
 .tileName{font:600 12px/1.25 system-ui,"Hiragino Sans",sans-serif;color:#fff;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.tileSub{font:italic 10px/1.2 Georgia,serif;color:#d0ddd6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tileTier{position:absolute;left:6px;top:6px;font:700 9px ui-monospace,monospace;padding:2px 5px;border-radius:6px;background:rgba(0,0,0,.55);color:#d6efc8}
+.tileSub{font:italic 10px/1.2 Georgia,serif;color:#e9e3ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tileTier{position:absolute;left:6px;top:6px;font:700 9px ui-monospace,monospace;padding:2px 5px;border-radius:6px;background:rgba(0,0,0,.55);color:#ffd447}
 .tileTier.tierC{color:#eab3a4}.tileTier.tierB{color:#e2d29b}.tileTier.tierU{color:#bcaaff}
 .tile .ph+.phLabel{left:28px}
 .tileInfo{position:absolute;right:4px;top:4px;width:32px;height:32px;min-height:32px;border-radius:50%;padding:0;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.35);font:italic 700 14px Georgia,serif;color:#fff}
 .tile.loading .tileImg{opacity:.6}
 .tile.loading .tileImg::before{content:"";position:absolute;left:50%;top:42%;width:22px;height:22px;margin:-11px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:tileSpin .8s linear infinite;z-index:1}
 @keyframes tileSpin{to{transform:rotate(360deg)}}
-.tilePlay:focus-visible{outline:3px solid #d6efc8;outline-offset:-3px}
-#tileSheet{max-width:min(560px,calc(100vw - 24px));width:100%;max-height:calc(100vh - 40px);border:1px solid var(--edge);border-radius:16px;background:#0e1d1f;color:var(--ink);padding:12px 14px 18px}
+.tilePlay:focus-visible{outline:3px solid #ffd447;outline-offset:-3px}
+#tileSheet{max-width:min(560px,calc(100vw - 24px));width:100%;max-height:calc(100vh - 40px);border:1px solid var(--edge);border-radius:16px;background:#1b1736;color:var(--ink);padding:12px 14px 18px}
 #tileSheet::backdrop{background:rgba(0,0,0,.6)}
 .sheetTop{display:flex;justify-content:flex-end}
 .sheetClose{width:40px;min-height:40px;border-radius:50%;padding:0;font-size:18px}
-.sheetPhoto{aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#0b1a1b;margin-top:4px}
+.sheetPhoto{aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#120f26;margin-top:4px}
 #sheetName{font-size:22px;margin:8px 0 0}
-.sheetLatin{font:italic 15px Georgia,serif;color:#c4d8cf;margin:2px 0 6px}
+.sheetLatin{font:italic 15px Georgia,serif;color:#e9e3ff;margin:2px 0 6px}
 .sheetCheck{display:flex;align-items:center;gap:8px;font-size:12px;margin-top:10px}
-.sheetInfo{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr);gap:4px 10px;font-size:11px;margin-top:14px;border-top:1px solid #263b3e;padding-top:10px}
+.sheetInfo{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr);gap:4px 10px;font-size:11px;margin-top:14px;border-top:1px solid #332c5e;padding-top:10px}
 .sheetInfo dt{color:var(--muted)}.sheetInfo dd{margin:0;overflow-wrap:anywhere}
 .mixMasterRow{flex-wrap:wrap}
-.mixMasterEq{display:flex;gap:4px;border:1px solid #263b3e;border-radius:10px;padding:2px 6px;background:#10262a}
+.mixMasterEq{display:flex;gap:4px;border:1px solid #332c5e;border-radius:10px;padding:2px 6px;background:#191536}
 #reelDone{margin-top:10px}
 #reelDone video{width:100%;max-height:70vh;background:#000;border-radius:12px;display:block}
 .trkList{display:grid;gap:8px;margin-top:10px}
-.trkRow{border:1px solid #263b3e;border-radius:10px;padding:8px;background:#10262a}
+.trkRow{border:1px solid #332c5e;border-radius:10px;padding:8px;background:#191536}
 .trkHead{display:flex;align-items:center;gap:6px}
 .trkHead .trkName{flex:1;min-width:0;font-size:12px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .trkHead button{min-height:34px;width:38px;padding:0;flex:none}
-.trkHead button[aria-pressed="true"]{background:#d6efc8;color:#10221b}
+.trkHead button[aria-pressed="true"]{background:#ffd447;color:#1f1a3d}
 .trkWave{width:100%;height:36px;display:block;margin:6px 0}
 .trkCtls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 10px}
 .trkCtl{display:flex;flex-direction:column;font-size:10px;color:var(--muted);gap:2px;min-width:0}
@@ -60,16 +60,16 @@ header a{color:inherit}
 #plansSection{border:1px solid var(--edge);background:var(--panel);border-radius:14px;padding:12px;margin-top:12px}
 
 .planCards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:8px}
-.planCard{border:1px solid #31484a;border-radius:12px;padding:12px;background:#0e1f21}
-.planCard.plan-pro{border-color:#d6efc8}
+.planCard{border:1px solid #3b3468;border-radius:12px;padding:12px;background:#1b1736}
+.planCard.plan-pro{border-color:#ffd447}
 .planName{font:700 14px ui-monospace,monospace;letter-spacing:.08em}
 .planTag{font-size:12px;color:var(--muted);margin-top:2px}
 .planPrice{font:600 24px ui-monospace,monospace;margin-top:8px}
 .planNote{margin-top:6px}
 .planTable{width:100%;border-collapse:collapse;margin-top:10px;font-size:11px}
-.planTable th,.planTable td{border-bottom:1px solid #263b3e;padding:6px 4px;text-align:left}
+.planTable th,.planTable td{border-bottom:1px solid #332c5e;padding:6px 4px;text-align:left}
 .planTable .mk,.planTable th:not(:first-child){text-align:center;width:52px}
-.proChip{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:8px;border:1px solid #d6efc8;color:#d6efc8;font:700 9px ui-monospace,monospace;letter-spacing:.08em;vertical-align:middle}
+.proChip{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:8px;border:1px solid #ffd447;color:#ffd447;font:700 9px ui-monospace,monospace;letter-spacing:.08em;vertical-align:middle}
 
 /* ───────── v0.45 画面の並びと見た目（docs/UI_LAYOUT_v0_45.md）───────── */
 html{scroll-behavior:smooth;scroll-padding-top:60px}
@@ -81,11 +81,11 @@ button{font:600 12px/1.3 "Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans 
 .appHead{align-items:center;padding-top:2px}
 .appHead h1.brand{margin:0;font:700 23px/1.15 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif;letter-spacing:-.01em}
 .tagline{margin-top:3px}
-.jump{position:sticky;top:0;z-index:20;display:flex;gap:6px;overflow-x:auto;margin:10px -14px 0;padding:8px 14px;background:linear-gradient(var(--bg) 78%,rgba(12,23,24,0));scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.jump{position:sticky;top:0;z-index:20;display:flex;gap:6px;overflow-x:auto;margin:10px -14px 0;padding:8px 14px;background:linear-gradient(var(--bg) 78%,rgba(21,18,43,0));scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .jump::-webkit-scrollbar{display:none}
-.jump a{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 12px;border-radius:18px;border:1px solid #31484a;background:#112224;color:var(--ink);text-decoration:none;font-size:12px;font-weight:600}
+.jump a{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 12px;border-radius:18px;border:1px solid #3b3468;background:#1b1736;color:var(--ink);text-decoration:none;font-size:12px;font-weight:600}
 .jump a b{font:700 10px ui-monospace,monospace;color:var(--accent);letter-spacing:.06em}
-.jump a:focus-visible{outline:2px solid #d6efc8;outline-offset:2px}
+.jump a:focus-visible{outline:2px solid #ffd447;outline-offset:2px}
 section.step,#plansSection{margin-top:14px;scroll-margin-top:58px}
 .group{margin-top:26px;scroll-margin-top:52px}
 .stepHead{display:flex;align-items:baseline;gap:10px;min-width:0}
@@ -93,50 +93,102 @@ section.step,#plansSection{margin-top:14px;scroll-margin-top:58px}
 .stepTitle{margin:0;font:700 18px/1.3 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif;letter-spacing:.01em;min-width:0}
 .stepMeta{margin-left:auto;text-align:right;flex:none}
 .groupHead{padding:0 2px}
-.lead{margin:6px 0 12px;font-size:13px;line-height:1.6;color:#c6d9cf}
+.lead{margin:6px 0 12px;font-size:13px;line-height:1.6;color:#e9e3ff}
 .leadSub{margin-left:8px;font:italic 12px Georgia,serif;color:var(--muted)}
 .groupLead{margin:6px 2px 0}
 details.help{border:0;background:none;padding:0;margin:10px 0 0;border-radius:0}
 details.help summary{justify-content:flex-start;min-height:32px;font-size:11px;font-weight:600;color:var(--muted)}
 details.help[open] summary{color:var(--ink)}
-details.help p.micro,details.help .micro{font:12px/1.75 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif;letter-spacing:0;color:#b9cec4;margin:6px 0 0}
+details.help p.micro,details.help .micro{font:12px/1.75 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif;letter-spacing:0;color:#d8d0f7;margin:6px 0 0}
 section.sub,details.sub{margin-top:10px}
 .group > details,.group > section{margin-top:10px}
 .subTitle{margin:12px 0 4px}
 /* 01 音を選ぶ */
 .tileBar{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:8px;margin:0 0 8px}
 .tileBar button{min-height:46px}
-.autoBtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#152b23}
-.tile.auto:not(.sounding){box-shadow:0 0 0 2px rgba(214,239,200,.22)}
+.autoBtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1f1a3d}
+.tile.auto:not(.sounding){box-shadow:0 0 0 2px rgba(255,212,71,.22)}
 .tile.auto:not(.sounding) .tileImg img{filter:saturate(.75) brightness(.85)}
 #tileStatus{min-height:16px;margin:8px 0 0}
 /* 詳細シート */
-.sheetAuto{margin-top:12px;border-top:1px solid #263b3e;padding-top:6px}
+.sheetAuto{margin-top:12px;border-top:1px solid #332c5e;padding-top:6px}
 .sheetSub{margin:6px 0 0}
 /* 03 演奏する */
-#performance .harmony{border:1px solid #263b3e;border-radius:12px;padding:12px 12px 8px;background:#10262a}
+#performance .harmony{border:1px solid #332c5e;border-radius:12px;padding:12px 12px 8px;background:#191536}
 .liveRow .liveLabel{margin-top:12px}
 #liveSpecies{margin:4px 0 6px}
 #comboPanel .scenePresets{border:0;background:none;padding:0;margin:0}
-#comboPanel #geoPanel{margin-top:12px;background:#10262a}
+#comboPanel #geoPanel{margin-top:12px;background:#191536}
 .synthBlock{margin-top:12px}
-#synthPanel > details{background:#10262a}
+#synthPanel > details{background:#191536}
 /* 04 スタジオ */
-.captureBlock{margin-top:16px;border-top:1px solid #263b3e;padding-top:12px}
+.captureBlock{margin-top:16px;border-top:1px solid #332c5e;padding-top:12px}
 /* 設定 */
 #presetSection .status{margin:10px 0 0}
 /* 下の再生バー（iPhone では親指の届く位置） */
-.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(12,23,24,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid #31484a}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(21,18,43,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-top:1px solid #3b3468}
 .dockIn{max-width:790px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px;align-items:center}
 .dockInfo{display:flex;align-items:center;gap:8px;min-width:0}
 .dockText{font-size:12px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.dockDot{flex:none;width:8px;height:8px;border-radius:50%;background:#a6e6b8;box-shadow:0 0 8px rgba(166,230,184,.8);animation:dockPulse 1.6s ease-in-out infinite}
+.dockDot{flex:none;width:8px;height:8px;border-radius:50%;background:#2fd9a6;box-shadow:0 0 8px rgba(47,217,166,.8);animation:dockPulse 1.6s ease-in-out infinite}
 @keyframes dockPulse{50%{opacity:.35}}
 @media (prefers-reduced-motion:reduce){.dockDot{animation:none}}
 .dock button{min-height:44px;padding:0 14px}
 body.docked main{padding-bottom:92px}
 .footer{margin-top:28px;text-align:center}
-.tileMore{grid-column:1/-1;min-height:44px;background:#112224;border-style:dashed}
+.tileMore{grid-column:1/-1;min-height:44px;background:#1b1736;border-style:dashed}
 #reelSection .touchBar{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 12px;align-items:center;margin:0 0 4px}
 #reelSection .touchBar select{width:100%;min-height:44px}
-#reelRecord{background:var(--accent);border-color:var(--accent);color:#152b23}
+#reelRecord{background:var(--accent);border-color:var(--accent);color:#1f1a3d}
+
+/* ───────── v0.47 ポップな見た目（配色・書体・動き）───────── */
+:root{--sun:#ffd447;--pink:#ff4f9a;--mint:#2fd9a6;--sky:#5b8cff;--orange:#ff8a3d;--violet:#a98bff;--paperInk:#1f1a3d}
+body{font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;font-weight:500}
+button{font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Hiragino Sans",system-ui,sans-serif;font-weight:800;border-radius:14px}
+.appHead h1.brand,.stepTitle,#sheetName,.planName{font-family:"Dela Gothic One","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;font-weight:400;letter-spacing:0}
+.appHead h1.brand{font-size:24px}
+.brandRow{display:flex;align-items:center;gap:10px}
+.brandMark{flex:none;width:40px;height:40px}
+.brandMark .petals{transform-origin:20px 20px}
+body.live .brandMark .petals{animation:markSpin 9s linear infinite}
+@keyframes markSpin{to{transform:rotate(360deg)}}
+.stepTitle{font-size:21px}
+.stepNo{font:400 13px "Dela Gothic One",system-ui,sans-serif;min-width:30px;height:30px;border-radius:50%;display:inline-grid;place-items:center;color:var(--paperInk);align-self:center}
+#tileSection .stepNo,.jump a[href="#tileSection"] b{background:var(--sun)}
+#reelSection .stepNo,.jump a[href="#reelSection"] b{background:var(--pink)}
+#performance .stepNo,.jump a[href="#playGroup"] b{background:var(--mint)}
+#studioGroup .stepNo,.jump a[href="#studioGroup"] b{background:var(--sky)}
+.jump a b{color:var(--paperInk);border-radius:10px;padding:2px 6px;font:400 10px "Dela Gothic One",system-ui,sans-serif}
+.jump a{font-weight:800}
+section,details{border-radius:20px}
+section.step{border-width:2px}
+#tileSection{border-color:rgba(255,212,71,.45)}
+#reelSection{border-color:rgba(255,79,154,.45)}
+#performance{border-color:rgba(47,217,166,.45)}
+.lead{color:#e9e3ff}
+.micro{letter-spacing:.03em}
+button.primary,.autoBtn[aria-pressed="true"],#reelRecord{background:var(--sun);border-color:var(--sun);color:var(--paperInk)}
+.autoBtn{background:#2a2452;border:2px solid var(--sun);color:#fff7e8}
+#tileAddUser{border-style:dashed}
+.tileFilters button{border-radius:999px;font-weight:800}
+.tileFilters button[aria-pressed="true"]{background:var(--sun);border-color:var(--sun);color:var(--paperInk)}
+/* 生き物のグループの色：タイルの枠・光・波形 */
+.tile{--g:var(--sun);border-radius:18px;border-width:2px}
+.tile[data-group="birds"]{--g:var(--sky)}.tile[data-group="insects"]{--g:var(--sun)}.tile[data-group="animals"]{--g:var(--orange)}.tile[data-group="landscape"]{--g:var(--mint)}.tile[data-group="user"]{--g:var(--violet)}
+.tile.on{border-color:var(--g);box-shadow:0 0 0 3px var(--g),0 10px 28px -8px var(--g);animation:tilePop .5s cubic-bezier(.3,1.7,.45,1)}
+@keyframes tilePop{0%{transform:scale(.94)}60%{transform:scale(1.04)}100%{transform:scale(1)}}
+.tilePlay:active .tileImg{transform:scale(.95);transition:transform .08s}
+.tile.auto:not(.sounding){box-shadow:0 0 0 2px var(--g)}
+.tileName{font-weight:900}
+.tileInfo{background:rgba(21,18,43,.6)}
+@media (prefers-reduced-motion:reduce){.tile.on{animation:none}body.live .brandMark .petals{animation:none}}
+/* 下のバー */
+.dock{background:rgba(21,18,43,.94);border-top:2px solid var(--sun)}
+.dockDot{background:var(--pink);box-shadow:0 0 10px rgba(255,79,154,.9)}
+#tileStopAll{background:var(--pink);border-color:var(--pink);color:#fff}
+#tileToReel{background:var(--sun);border-color:var(--sun);color:var(--paperInk)}
+#reelCanvas{border-radius:22px;border:3px solid var(--pink)}
+.planCard.plan-pro{border-color:var(--sun);box-shadow:0 0 0 2px rgba(255,212,71,.35)}
+.planPrice{font-family:"Dela Gothic One",system-ui,sans-serif;font-weight:400}
+.proChip{border-color:var(--sun);color:var(--sun)}
+@media (max-width:440px){.appHead h1.brand{font-size:19px}.brandMark{width:34px;height:34px}}

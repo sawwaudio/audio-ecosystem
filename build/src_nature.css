@@ -111,3 +111,18 @@ body.live .brandMark .petals{animation-duration:16s}
 .billMsg{color:#efd9a0}.planStatus{font-weight:700;color:#efd9a0}
 details.proLocked>summary{opacity:.6}
 .proLockNote{margin:6px 0 0;color:#efd9a0}
+/* v0.59 定期購入の内容（購入ボタンの前）と特定商取引法に基づく表記へのリンク */
+.subTerms{margin:4px 0 12px;padding:12px 14px;border:1px solid rgba(241,236,224,.16);border-radius:12px;background:rgba(0,0,0,.18)}
+.subTermsTitle{margin:0 0 8px;font-size:15px;font-weight:700;color:#f1ece0}
+.subTermsList{margin:0;display:grid;grid-template-columns:minmax(6.5em,30%) 1fr;gap:6px 12px;font-size:13px;line-height:1.65}
+.subTermsList dt{color:#b8b6aa;font-weight:600}.subTermsList dd{margin:0;color:#e4e2d6;overflow-wrap:anywhere}
+.subTermsList dd.missing{color:#e9a07f}
+@media (max-width:480px){.subTermsList{grid-template-columns:1fr;gap:0}.subTermsList dd{margin-bottom:8px}}
+.subAgree{display:flex;gap:8px;align-items:flex-start;margin:6px 0 10px;font-size:14px;line-height:1.5}
+.subAgree input{width:20px;height:20px;flex:none;margin-top:1px}
+.planAccount .btnLink.primary.disabled{opacity:.45;filter:saturate(.6)}
+.subAgreeHint:empty{display:none}.subAgreeHint{color:#e9a07f}
+.legalLink{color:#e6c27a}.planLegal{margin-top:10px}
+.subTermsPreview{margin-top:10px}
+/* v0.59 イメージ写真の印（録音の場所・生き物そのものではない） */
+.sceneMark{position:absolute;left:8px;top:8px;z-index:1;padding:1px 6px;border-radius:999px;background:rgba(10,14,12,.55);color:rgba(241,236,224,.82);font:600 9px/1.6 "Zen Kaku Gothic New",system-ui,sans-serif;letter-spacing:.06em;pointer-events:none;backdrop-filter:blur(2px)}

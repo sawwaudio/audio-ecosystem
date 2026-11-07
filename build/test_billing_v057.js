@@ -19,7 +19,7 @@ globalThis.fetch=async(url,init={})=>{const u=new URL(url);if(u.host==='resend.m
  return Response.json({id:'cus_1',email:'buyer@example.com'})};
 const sigHdr=async body=>{const t=T(),k=await subtle.importKey('raw',enc.encode('whsec_t'),{name:'HMAC',hash:'SHA-256'},false,['sign']);const s=new Uint8Array(await subtle.sign('HMAC',k,enc.encode(t+'.'+body)));return 't='+t+',v1='+[...s].map(x=>x.toString(16).padStart(2,'0')).join('')};
 const hook=async ev=>{const body=JSON.stringify(ev);return worker.fetch(new Request('https://billing.test/stripe/webhook',{method:'POST',headers:{'Stripe-Signature':await sigHdr(body)},body}),env)};
-const CFG={status:'live',apiBase:'https://billing.test',publicKey:pub,paymentLink:'https://buy.stripe.com/test_x',portalLink:'https://billing.stripe.com/p/login/test_x'};
+const CFG={status:'live',apiBase:'https://billing.test',publicKey:pub,paymentLink:'https://buy.stripe.com/test_x',portalLink:'https://billing.stripe.com/p/login/test_x',legal:{ready:true,missing:[],monthly:980}}; // v0.59：特商法の表記が埋まっていないと課金は始まらない
 const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
 const errs=[];const newPage=async(cx)=>{const pg=await cx.newPage();await require('./photo_fixture')(pg);pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error'&&!/Failed to load resource/.test(m.text()))errs.push('CONSOLE '+m.text())});
  await pg.route('https://billing.test/**',async route=>{const rq=route.request();const res=await worker.fetch(new Request(rq.url(),{method:rq.method(),headers:rq.headers(),body:['GET','HEAD'].includes(rq.method())?undefined:rq.postData()}),env);

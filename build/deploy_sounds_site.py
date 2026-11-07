@@ -36,6 +36,7 @@ for kind in ('recordings', 'instruments'):
 t = t[:s] + json.dumps(m, ensure_ascii=False, separators=(',', ':')) + t[e:]
 open(os.path.join(out_dir, 'index.html'), 'w', encoding='utf-8').write(t)
 # v0.53：端末への保存（Service Worker）。ページと同じ場所に置く
-if os.path.exists(os.path.join(ROOT, 'sw.js')):
-    shutil.copyfile(os.path.join(ROOT, 'sw.js'), os.path.join(out_dir, 'sw.js'))
+for f in ('sw.js', 'legal.html'):  # v0.59：特定商取引法に基づく表記（legal.html）も同じ場所に置く
+    if os.path.exists(os.path.join(ROOT, f)):
+        shutil.copyfile(os.path.join(ROOT, f), os.path.join(out_dir, f))
 print('index.html', len(t.encode()), 'bytes · rewritten paths', n, '· copied to the sounds repo', len(copied))

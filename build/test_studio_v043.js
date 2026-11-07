@@ -10,10 +10,10 @@ await pg.goto('http://localhost:8765/index.html');await wait(900);
 // 1. 名称・画面の順番
 R.brand=await pg.evaluate(()=>({title:document.title,h1:document.querySelector('header h1').textContent,tiles:document.getElementById('tileSection').getBoundingClientRect().top<document.getElementById('sourceSection').getBoundingClientRect().top}));
 ok('brand',R.brand.h1==='saww audio ecosystem'&&/^saww audio ecosystem v0\.\d+/.test(R.brand.title)&&R.brand.tiles);
-// 2. 写真と音の対応（学名の完全一致だけ）。v0.45 から最初は12枚だけ見せるので、すべて表示してから数える
+// 2. 写真と音の対応（学名の完全一致。v0.59 からは、種の写真がない録音にイメージ写真）。v0.45 から最初は12枚だけ見せるので、すべて表示してから数える
 await pg.evaluate(()=>__studioDebug.showAll(true));
-R.map=await pg.evaluate(()=>{const photos=JSON.parse(document.getElementById('ae-photos').textContent);const recs=JSON.parse(document.getElementById('ae-recordings').textContent);const bad=[],withPhoto=[];
- for(const r of recs){const p=__studioDebug.photoFor(r.id),b=__studioDebug.binomial(r.latin);if(p){withPhoto.push(r.id);if(!b||p.latin!==b||photos[b].file!==p.file)bad.push(r.id)}else if(b&&photos[b])bad.push('missing:'+r.id)
+R.map=await pg.evaluate(()=>{const photos=JSON.parse(document.getElementById('ae-photos').textContent);const recs=JSON.parse(document.getElementById('ae-recordings').textContent);const sc=JSON.parse(document.getElementById('ae-scenes')?.textContent||'{"map":{}}');const bad=[],withPhoto=[]; // v0.59：種の写真がない録音にはイメージ写真（ae-scenes）
+ for(const r of recs){const p=__studioDebug.photoFor(r.id),b=__studioDebug.binomial(r.latin);if(p){withPhoto.push(r.id);if(p.scene){if(sc.map[r.id]!==p.scene||(b&&photos[b]))bad.push('scene:'+r.id)}else if(!b||p.latin!==b||photos[b].file!==p.file)bad.push(r.id)}else if(b&&photos[b])bad.push('missing:'+r.id)
   if(p&&!/^(CC0|Public domain|CC BY \d)/.test(p.license))bad.push('license:'+r.id);if(p&&/SA|NC|ND/.test(p.license))bad.push('license:'+r.id)}
  const tiles=[...document.querySelectorAll('#tileSection .tile')];return {tiles:tiles.length,withPhoto:withPhoto.length,imgs:tiles.filter(t=>t.querySelector('img')).length,ph:tiles.filter(t=>t.querySelector('.ph')).length,bad,first:tiles.slice(0,3).map(t=>t.dataset.id)}});
 ok('tile_count',R.map.tiles===127&&R.map.imgs+R.map.ph===127);ok('photo_mapping',R.map.bad.length===0&&R.map.withPhoto>=30&&R.map.imgs===R.map.withPhoto);

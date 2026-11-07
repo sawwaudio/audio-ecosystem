@@ -11,7 +11,9 @@
    "price": "$0",
    "period": "forever",
    "note_ja": "アカウントなしで使えます。",
-   "note_en": "No account needed."
+   "note_en": "No account needed.",
+   "live_ja": "アカウントなしで使えます。",
+   "live_en": "No account needed."
   },
   {
    "id": "pro",
@@ -21,7 +23,9 @@
    "period": "USD / month",
    "alt": "$99 USD / year",
    "note_ja": "提案価格（未確定）。いまはテスト公開中のため PRO の機能も無料で使えます。課金はまだ始めていません。",
-   "note_en": "Proposed price (not final). During the public test, PRO features are free. Billing has not started."
+   "note_en": "Proposed price (not final). During the public test, PRO features are free. Billing has not started.",
+   "live_ja": "月額・自動更新。いつでも解約でき、次の更新日までは PRO のまま使えます。",
+   "live_en": "Monthly, renews automatically. Cancel any time; PRO stays on until the next renewal date."
   }
  ],
  "features": [
@@ -126,5 +130,13 @@
    "kalimba",
    "frameDrum"
   ]
+ },
+ "checkout": {
+  "_note": "v0.56 課金（Stripe の支払いリンク・月額）。status を live にし、apiBase（課金の確認サーバーの URL）と publicKey（server/keygen.mjs の公開鍵）を入れると、無料版と PRO の区別が始まる。それまではテスト公開（全部使える）。秘密の鍵・Stripe の鍵はここに入れない。",
+  "status": "test",
+  "paymentLink": "https://buy.stripe.com/7sY00jfWlfNp9SX8inbZe07",
+  "portalLink": "",
+  "apiBase": "",
+  "publicKey": null
  }
 }

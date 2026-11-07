@@ -3,7 +3,7 @@
    本体スクリプト（音声エンジン・音源ライブラリ）の後に読み込む。本体の関数と変数（ctx, master, recordings, loadOne, mixLane など）をそのまま使い、
    音声エンジンと音源の対応は変えない。build/integrate_v043.py が index.html の <script id="ae-studio"> にこのファイルを埋め込む。 */
 (()=>{'use strict';
-const VER='v0.56';
+const VER='v0.57';
 const PHOTOS=(()=>{try{return JSON.parse($('ae-photos').textContent)}catch(e){return {}}})();
 const TIERS=(()=>{try{return JSON.parse($('ae-tiers').textContent)}catch(e){return {plans:[],features:[]}}})();
 const APP_URL=/^https?:$/.test(location.protocol)&&!/^(localhost|127\.)/.test(location.hostname)?location.origin+location.pathname.replace(/index\.html$/,''):'https://sawwaudio.github.io/audio-ecosystem-sounds-1/';
@@ -605,18 +605,69 @@ function bindReel(){const sel=$('reelStyle');if(sel){sel.addEventListener('chang
  $('reelTry').addEventListener('click',async()=>{const ok=await copyText(APP_URL);$('reelDoneInfo').textContent=ok?L('アプリのリンクをコピーしました：','App link copied: ')+APP_URL:APP_URL});
  $('tileToReel').addEventListener('click',()=>{const sec=$('reelSection');sec.scrollIntoView({behavior:'smooth',block:'start'});if(!reelPreviewOn)reelSetPreview(true)})}
 
-// ───────── プラン（FREE / PRO）。課金は無効。表示と権限の定義だけ ─────────
-// 料金は提案価格（未承認）。実際の決済・アクセス制御はサーバー側（Stripe と署名付きの権利情報）で行う設計で、この画面だけで機能を制限しない（docs/PRODUCT_TIERS.md）。
-const ENTITLEMENT={plan:'beta',enforce:false};
-window.sawwEntitlement={get plan(){return ENTITLEMENT.plan},enforce:false,allows:f=>true,tierOf:f=>(TIERS.features.find(x=>x.id===f)||{}).tier||'free'};
+// ───────── プラン（FREE / PRO）と課金（v0.56）─────────
+// オーナー要望（2026-11-07 16:31）「無料版と有料版で区別するシステム」。決済は Stripe の支払いリンク（月額）。
+// 有料かどうかは課金の確認サーバー（server/worker.js、Cloudflare Workers）が判断し、署名付きの「PRO の証明」（ES256 の JWT）を出す。
+// アプリは data/product_tiers.json の checkout.publicKey でその署名を確かめるだけ（秘密の鍵・Stripe の鍵はアプリに入れない）。証明は端末に残り、電波がなくても期限まで PRO。
+// checkout.status が 'live' で apiBase と publicKey がそろうまでは、従来どおりテスト公開（plan 'beta'＝全部使える）。
+// 自動テストだけは localhost で localStorage 'saww.billingTest' から設定を差し替えられる（公開サイトでは効かない）。
+const BILL=Object.assign({status:'test',paymentLink:'',portalLink:'',apiBase:'',publicKey:null},TIERS.checkout||{});
+try{if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){const o=JSON.parse(localStorage.getItem('saww.billingTest')||'null');if(o)Object.assign(BILL,o)}}catch(e){}
+const LIVE=BILL.status==='live'&&!!BILL.apiBase&&!!BILL.publicKey;
+const ENTITLEMENT={plan:LIVE?'free':'beta',enforce:LIVE,exp:0,pe:0};
+window.sawwEntitlement={get plan(){return ENTITLEMENT.plan},get enforce(){return ENTITLEMENT.enforce},allows:f=>ENTITLEMENT.plan!=='free'||(TIERS.features.find(x=>x.id===f)||{}).tier!=='pro',tierOf:f=>(TIERS.features.find(x=>x.id===f)||{}).tier||'free'};
+const PRO_KEY='saww.pro';let billMsg='';
+const b64uBytes=s=>Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')+'==='.slice((s.length+3)%4)),c=>c.charCodeAt(0));
+async function verifyPro(tok){try{const [h,pl,sg]=String(tok||'').split('.');if(!h||!pl||!sg||!crypto.subtle)return null;
+ const key=await crypto.subtle.importKey('jwk',{kty:'EC',crv:'P-256',x:BILL.publicKey.x,y:BILL.publicKey.y},{name:'ECDSA',namedCurve:'P-256'},false,['verify']);
+ if(!(await crypto.subtle.verify({name:'ECDSA',hash:'SHA-256'},key,b64uBytes(sg),new TextEncoder().encode(h+'.'+pl))))return null;
+ const d=JSON.parse(new TextDecoder().decode(b64uBytes(pl)));return d&&d.plan==='pro'?d:null}catch(e){return null}}
+function setPlan(plan,d){ENTITLEMENT.plan=plan;ENTITLEMENT.exp=d?d.exp:0;ENTITLEMENT.pe=d?d.pe:0;applyInstrTier();applyProLocks();renderAccount()}
+async function adoptToken(tok){const d=await verifyPro(tok);if(!d||d.exp<Date.now()/1000)return false;try{localStorage.setItem(PRO_KEY,tok)}catch(e){}setPlan('pro',d);return true}
+async function refreshPro(tok){try{const r=await fetch(BILL.apiBase.replace(/\/$/,'')+'/refresh',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:tok})});
+ const j=await r.json();if(j.plan==='pro'&&j.token)return adoptToken(j.token);if(j.plan==='free'||r.status===401){try{localStorage.removeItem(PRO_KEY)}catch(e){}setPlan('free');billMsg=L('PRO の期間が終わりました。','Your PRO period has ended.');renderAccount()}}catch(e){/* 電波がない時は証明の期限まで使う */}return false}
+async function initBilling(){if(!LIVE){applyProLocks();renderAccount();return}
+ const m=location.hash.match(/^#saww-(pro|billing)=([A-Za-z0-9._-]+)$/);
+ if(m){history.replaceState(null,'',location.pathname+location.search);
+  if(m[1]==='pro'){billMsg=(await adoptToken(m[2]))?L('PRO になりました。ありがとうございます。領収書は Stripe からメールで届きます。','You are now PRO. Thank you — Stripe emails your receipt.'):L('PRO の証明を確かめられませんでした。','The PRO proof could not be verified.')}
+  else billMsg={pending:L('お支払いの確認がまだ終わっていません。少し待ってから「ログイン用のリンクを送る」をお使いください。','Payment is not confirmed yet. Please wait a moment, then use “Send sign-in link”.'),link:L('ログイン用のリンクが古いか、使用済みです。もう一度送ってください。','The sign-in link has expired or was used. Please request a new one.'),inactive:L('有効な PRO の契約が見つかりませんでした。','No active PRO subscription was found.'),error:L('お支払いの確認でエラーが起きました。','An error occurred while confirming the payment.')}[m[2]]||''}
+ let tok=null;try{tok=localStorage.getItem(PRO_KEY)}catch(e){}
+ if(ENTITLEMENT.plan!=='pro'&&tok){const d=await verifyPro(tok);const t=Date.now()/1000;
+  if(d&&d.exp>t){setPlan('pro',d);if(d.exp-t<10*86400||t-d.iat>3*86400)refreshPro(tok)}else if(d)await refreshPro(tok);else{try{localStorage.removeItem(PRO_KEY)}catch(e){}}}
+ applyProLocks();renderAccount()}
+// 無料のあいだ、PRO の欄（data-tier="pro"：ミキサー・サンプラー・トラックなど）は開けない
+function applyProLocks(){const lock=ENTITLEMENT.plan==='free';for(const n of document.querySelectorAll('[data-tier="pro"]')){n.classList.toggle('proLocked',lock);if(lock&&n.tagName==='DETAILS'&&n.open)n.open=false;
+  let note=n.querySelector(':scope > .proLockNote');if(lock&&!note){note=el('p',{class:'micro proLockNote',text:L('PRO で使えます。','Available with PRO.')});const s=n.querySelector(':scope > summary');(s||n).after(note)}if(note)note.hidden=!lock}}
+document.addEventListener('toggle',e=>{const n=e.target;if(n.matches&&n.matches('details.proLocked')&&n.open){n.open=false;const a=$('planAccount');if(a)a.scrollIntoView({behavior:'smooth',block:'center'})}},true);
+window.__billingDebug={live:LIVE,state:()=>({plan:ENTITLEMENT.plan,enforce:ENTITLEMENT.enforce,exp:ENTITLEMENT.exp,pe:ENTITLEMENT.pe}),refresh:()=>{let t=null;try{t=localStorage.getItem(PRO_KEY)}catch(e){}return t?refreshPro(t):false},verify:verifyPro};
+function deviceRef(){let id='';try{id=localStorage.getItem('saww.ref')||''}catch(e){}if(!/^[a-z0-9]{12,40}$/.test(id)){id=[...crypto.getRandomValues(new Uint8Array(12))].map(x=>x.toString(36).padStart(2,'0')).join('').slice(0,20);try{localStorage.setItem('saww.ref',id)}catch(e){}}return id}
+function renderAccount(){const box=$('planAccount');if(!box)return;box.textContent='';
+ if(!LIVE){box.append(el('p',{class:'micro',text:L('課金はまだ始めていません。テスト公開中は、すべての機能を無料で使えます。','Billing has not started. During the public test, every feature is free.')}));return}
+ if(billMsg)box.append(el('p',{class:'billMsg',role:'status',text:billMsg}));
+ if(ENTITLEMENT.plan==='pro'){const d=ENTITLEMENT.pe?new Date(ENTITLEMENT.pe*1000):null,ds=d?d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'):'';
+  box.append(el('p',{class:'planStatus',text:L('PRO をご利用中です'+(ds?'（次の更新日：'+ds+'）':'')+'。','You are on PRO'+(ds?' (next renewal: '+ds+')':'')+'.')}));
+  const row=el('div',{class:'buttons'});if(BILL.portalLink)row.append(el('a',{class:'btnLink',id:'billPortal',href:BILL.portalLink,target:'_blank',rel:'noopener',text:L('支払い・領収書・解約の管理','Payments, receipts & cancellation')}));
+  const out=el('button',{type:'button',id:'billLogout',text:L('この端末からログアウト','Sign out on this device')});out.addEventListener('click',()=>{try{localStorage.removeItem(PRO_KEY)}catch(e){}billMsg='';setPlan('free')});row.append(out);box.append(row);return}
+ const buy=el('a',{class:'btnLink primary',id:'billBuy',href:BILL.paymentLink+(BILL.paymentLink.includes('?')?'&':'?')+'client_reference_id='+deviceRef(),rel:'noopener',text:L('PRO にする（月額）','Get PRO (monthly)')});
+ box.append(el('div',{class:'buttons'},buy),el('p',{class:'micro',text:L('お支払いは Stripe の画面で行います（このアプリはカード情報を扱いません）。毎月自動で更新され、いつでも解約できます。解約しても次の更新日までは PRO のままです。領収書は毎月 Stripe からメールで届きます。','You pay on Stripe’s page (this app never handles card details). The plan renews monthly and you can cancel any time; PRO stays on until the next renewal date. Stripe emails a receipt every month.')}));
+ const form=el('form',{class:'billLogin',id:'billLogin'});const inp=el('input',{type:'email',id:'billEmail',autocomplete:'email',placeholder:L('購入したメールアドレス','Email used for purchase'),required:''});
+ const send=el('button',{type:'submit',text:L('ログイン用のリンクを送る','Send sign-in link')});const st=el('p',{class:'micro',id:'billLoginStatus',role:'status'});
+ form.append(el('label',{for:'billEmail',class:'micro',text:L('購入済みの方（ほかの端末でも使えます）','Already purchased? (works on other devices too)')}),el('div',{class:'billRow'},inp,send),st);
+ form.addEventListener('submit',async e=>{e.preventDefault();send.disabled=true;st.textContent=L('送っています…','Sending…');
+  try{const r=await fetch(BILL.apiBase.replace(/\/$/,'')+'/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:inp.value})});
+   st.textContent=r.ok?L('購入に使ったアドレスであれば、ログイン用のリンクをメールで送りました（20分間有効）。届かない時は迷惑メールもご確認ください。','If that address has a PRO purchase, we emailed a sign-in link (valid for 20 minutes). Check your spam folder too.'):L('メールアドレスを確かめてください。','Please check the email address.')}
+  catch(err){st.textContent=L('送れませんでした。電波を確かめてください。','Could not send. Please check your connection.')}send.disabled=false});
+ box.append(form)}
 function buildPlans(){const box=$('plansBody');if(!box)return;box.textContent='';
- const cards=el('div',{class:'planCards'});for(const p of TIERS.plans){cards.append(el('div',{class:'planCard plan-'+p.id},el('div',{class:'planName',text:p.name}),el('div',{class:'planTag',text:p.tagline}),el('div',{class:'planPrice',text:p.price},el('span',{class:'micro',text:' '+p.period})),p.alt?el('div',{class:'micro',text:p.alt}):null,p.note_ja?el('div',{class:'micro planNote',text:L(p.note_ja,p.note_en)}):null))}
+ const cards=el('div',{class:'planCards'});for(const p of TIERS.plans){cards.append(el('div',{class:'planCard plan-'+p.id},el('div',{class:'planName',text:p.name}),el('div',{class:'planTag',text:p.tagline}),el('div',{class:'planPrice',text:p.price},el('span',{class:'micro',text:' '+p.period})),p.alt?el('div',{class:'micro',text:p.alt}):null,p.note_ja?el('div',{class:'micro planNote',text:LIVE&&p.live_ja?L(p.live_ja,p.live_en):L(p.note_ja,p.note_en)}):null))}
+ if(LIVE){const lead=document.querySelector('#plansSection .lead');if(lead)lead.textContent=L('無料のままでも、写真で選ぶ・自律演奏・リール作りが使えます。PRO にすると、すべての楽器とスタジオ（ミキサー・サンプラー・トラック）が使えます。','FREE covers picking sounds, autonomous play and reels. PRO unlocks every instrument and the studio (mixer, sampler, tracks).')}
  box.append(cards);const tb=el('table',{class:'planTable'});tb.append(el('thead',{},el('tr',{},el('th',{text:L('機能','Feature')}),el('th',{text:'FREE'}),el('th',{text:'PRO'}))));const body=el('tbody');
  for(const f of TIERS.features)body.append(el('tr',{},el('td',{text:L(f.ja,f.en)}),el('td',{class:'mk',text:f.tier==='free'?'✓':'—'}),el('td',{class:'mk',text:'✓'})));tb.append(body);
  // v0.53：比較表は畳む（料金のカードだけで用が足りる人が多く、表が画面の真ん中を大きく取っていたため）
  const cmp=el('details',{class:'help planCompare',id:'planCompare'},el('summary',{text:'機能を比べる（FREE / PRO）'}));cmp.append(tb);box.append(cmp);
  // v0.55：無料版の見え方を試す（課金は無効。端末に記憶。楽器の制限だけを確かめる）
- const pv=el('label',{class:'sheetCheck planPreview'});const cb=el('input',{type:'checkbox',id:'planPreview'});cb.checked=ENTITLEMENT.plan==='free';cb.addEventListener('change',()=>setPlanPreview(cb.checked));pv.append(cb,document.createTextNode(' 無料版の見え方を試す（楽器の制限）'));box.append(pv)
+ box.append(el('div',{class:'planAccount',id:'planAccount'}));
+ if(!LIVE){const pv=el('label',{class:'sheetCheck planPreview'});const cb=el('input',{type:'checkbox',id:'planPreview'});cb.checked=ENTITLEMENT.plan==='free';cb.addEventListener('change',()=>setPlanPreview(cb.checked));pv.append(cb,document.createTextNode(' 無料版の見え方を試す（楽器の制限）'));box.append(pv)}renderAccount();
  for(const n of document.querySelectorAll('[data-tier="pro"]')){const host=n.querySelector('summary > span, .title')||n;if(!host.querySelector('.proChip'))host.append(el('span',{class:'proChip',text:'PRO',title:'PRO'}))}}
 
 // ───────── v0.55 無料版で鳴らせる楽器（data/product_tiers.json の instruments.free）─────────
@@ -624,7 +675,7 @@ function buildPlans(){const box=$('plansBody');if(!box)return;box.textContent=''
 // 「無料版の見え方を試す」（プランの欄、端末に記憶）を入れた時だけ plan が 'free' になり、PRO の楽器はつまみが止まり、自律演奏・プリセット・MIDI でも鳴らない。
 // 判定はここだけ（window.__instrAllowed）。本体の trigger() と、持続音（realLoopTick）・ときどき鳴らす音（realLayerHit）が見る。
 const FREE_INSTR=new Set(((TIERS.instruments||{}).free)||[]);
-try{if(localStorage.getItem('saww.planPreview')==='free')ENTITLEMENT.plan='free'}catch(e){}
+try{if(!LIVE&&localStorage.getItem('saww.planPreview')==='free')ENTITLEMENT.plan='free'}catch(e){}
 function instrTier(k){return isRealLayer(k)||k==='harp'||k==='vibes'?(FREE_INSTR.has(k)?'free':'pro'):'free'}
 function instrAllowed(k){return instrTier(k)==='free'||ENTITLEMENT.plan!=='free'}
 window.__instrAllowed=instrAllowed;
@@ -636,7 +687,7 @@ function applyInstrTier(){for(const row of document.querySelectorAll('#instrBody
  // 鳴っている途中の使えない楽器は、すぐ消す（余韻を残さない）
  if(ctx)for(const v of [...realVoices])if(!instrAllowed(v.k)){try{v.env.gain.setTargetAtTime(0,ctx.currentTime,.05);v.src.stop(ctx.currentTime+.3)}catch(e){}realVoices.delete(v)}
  const cb=$('planPreview');if(cb)cb.checked=ENTITLEMENT.plan==='free'}
-function setPlanPreview(on){ENTITLEMENT.plan=on?'free':'beta';try{localStorage.setItem('saww.planPreview',on?'free':'beta')}catch(e){}applyInstrTier()}
+function setPlanPreview(on){if(LIVE)return;ENTITLEMENT.plan=on?'free':'beta';try{localStorage.setItem('saww.planPreview',on?'free':'beta')}catch(e){}applyInstrTier();applyProLocks()}
 
 // ───────── 実録音の楽器層（v0.45）─────────
 // 低音ドローン：ディジュリドゥ・パイプオルガンのペダル（持続音を切れ目なくつなぐ）、自然の低音（CC0 の波の録音の低域だけ）、
@@ -798,7 +849,7 @@ function bindNet(){const box=$('netPanel');if(!box)return;
  $('sourceMode')?.addEventListener('change',()=>setTimeout(renderNet,0));
  $('netClear').addEventListener('click',async()=>{try{await caches.delete(MEDIA_CACHE)}catch(e){}renderNet()});
  registerSW();renderNet();setInterval(()=>{if(!document.hidden&&box.getBoundingClientRect().top<innerHeight)renderNet()},8000)}
-function init(){organizeLayers();bindNet();applyInstrTier();renderFilters();buildTiles();bindSheet();buildMasterEq();renderTracks();renderTrackSources();buildPlans();bindReel();
+function init(){organizeLayers();bindNet();applyInstrTier();initBilling();renderFilters();buildTiles();bindSheet();buildMasterEq();renderTracks();renderTrackSources();buildPlans();bindReel();
  $('tileStopAll').addEventListener('click',stopEverything);
  $('dockList')?.addEventListener('click',()=>{dockPanelOpen=!dockPanelOpen;renderDockPanel(true)});$('dockPanelClose')?.addEventListener('click',()=>{dockPanelOpen=false;renderDockPanel()});
  $('tabCreatures')?.addEventListener('click',()=>setTab('creatures'));$('tabAmbience')?.addEventListener('click',()=>setTab('ambience'));$('tileAddUser').addEventListener('click',()=>$('tileUserFile').click());$('tileUserFile').addEventListener('change',e=>{const fs=[...(e.target.files||[])];e.target.value='';importFiles(fs)});

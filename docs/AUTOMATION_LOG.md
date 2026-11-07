@@ -238,6 +238,19 @@ C. **合成音の置き換えの準備**（LIBRARY_300_PLAN 3）：**【v0.51（
   - 次の候補：C ③（VCSL の楽器一覧の調査）、C ①（置き換え先の対応表。オーナー判断）、B（学名・和名の照合）、A（UI の実機確認）、M2「自律演奏のテンポに合わせる」の設計、M5 の MIDI 出力（機器のランプ）。
 （ここに追記）
 
+## 2026-11-07 v0.57（チャット）
+- 同じ時間に自動実行が v0.56（サンプラーの区間の拡大表示）を作っていたため、こちらは v0.57 にした（自動実行の v0.56 のパッチを先に当てた）。
+- オーナー要望（16:31）：Stripe の支払いリンク（月額）を使い、無料版と有料版を区別する仕組みと、領収書の自動メールを作る。
+  - 課金の確認サーバー：server/worker.js（Cloudflare Workers）。Webhook で有料会員を記録し、署名付きの PRO の証明を発行する。
+  - アプリ：公開鍵で証明を確かめる。購入・ログイン・顧客ポータルの欄を足した。無料版は PRO の楽器と PRO の欄が使えない。
+  - 領収書：Stripe の自動メール（設定の手順は server/README.md）。
+  - 今の状態：checkout.status は 'test' のまま（全部使える）。オーナーが Stripe・Cloudflare・Resend を設定した後、Claude が 'live' にする。
+- **自動実行への注意**：
+  - data/product_tiers.json の checkout（status・apiBase・publicKey・portalLink）は、オーナーの指示なしに変えない。
+  - 鍵・secret はリポジトリに書かない。
+  - server/worker.js を変えたら、server/test_worker.mjs と build/test_billing_v057.js を通す。
+- テスト：新規 server/test_worker.mjs・build/test_billing_v057.js を含め全35本＋サーバー1本が合格（リール系は単独実行）。
+
 ## 2026-11-07 v0.55（チャット）
 - 自動実行の v0.54 のパッチを当ててから作業した。
 - オーナー要望（14:17〜）：ディジュリドゥがすごく良い／伝統楽器を中心に追加（特に口琴など倍音が豊かな楽器）／無料版では出せる楽器を限る。

@@ -60,7 +60,7 @@ await pg.click('#langToggle');await pg.waitForTimeout(300);
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 const fs=require('fs'),path=require('path'),html=fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8'),src=fs.readFileSync(path.join(__dirname,'src_i18n.js'),'utf8');
 const m=html.match(/<script id="ae-i18n">([\s\S]*?)<\/script>/);ok('i18n_source_match',!!m&&m[1].trim()===src.trim());
-ok('version',html.includes('nature as an instrument. · v0.56<'));
+ok('version',/nature as an instrument\. · v0\.(5[6-9]|[6-9]\d)</.test(html)); // v0.57 以降も通るように
 await pg.evaluate(()=>{try{localStorage.removeItem('ae-lang');localStorage.removeItem('ae-rights')}catch(e){}});
 R.errs=errs;ok('no_console_errors',errs.length===0);
 console.log(JSON.stringify(R,null,1));console.log(fail.length?'FAIL: '+fail.join(', '):'ALL PASS');await b.close();process.exit(fail.length?1:0)})().catch(e=>{console.error(e);process.exit(1)});

@@ -101,3 +101,13 @@ body.live .brandMark .petals{animation-duration:16s}
 #instrBody .control.locked input{cursor:not-allowed}
 .instrTierNote{margin:8px 0 0}
 .planPreview{display:flex;align-items:center;gap:6px;margin-top:10px}
+
+/* v0.56 課金：購入・ログイン・PRO の欄の鍵 */
+.planAccount{margin-top:14px;padding:12px;border:1px solid rgba(230,194,122,.28);border-radius:14px;background:rgba(230,194,122,.05)}
+.planAccount .btnLink{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:12px;border:1px solid rgba(241,236,224,.2);color:#e4e2d6;text-decoration:none}
+.planAccount .btnLink.primary{background:#e6c27a;color:#141a16;border-color:#e6c27a;font-weight:700}
+.billLogin{margin-top:12px;display:grid;gap:6px}
+.billRow{display:flex;gap:8px;flex-wrap:wrap}.billRow input{flex:1 1 180px;min-height:44px;border-radius:10px;border:1px solid rgba(241,236,224,.2);background:rgba(0,0,0,.2);color:#f1ece0;padding:0 12px;font-size:16px}
+.billMsg{color:#efd9a0}.planStatus{font-weight:700;color:#efd9a0}
+details.proLocked>summary{opacity:.6}
+.proLockNote{margin:6px 0 0;color:#efd9a0}

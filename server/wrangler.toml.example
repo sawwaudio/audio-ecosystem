@@ -1,0 +1,15 @@
+# 課金の確認サーバー（Cloudflare Workers）の設定。wrangler.toml という名前で写して使う。
+# 秘密の値（Stripe の鍵など）はここに書かない。`npx wrangler secret put 名前` で入れる（server/README.md）。
+name = "saww-billing"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+
+[vars]
+APP_URL = "https://sawwaudio.github.io/audio-ecosystem-sounds-1/"
+ALLOWED_ORIGINS = "https://sawwaudio.github.io"
+# PRO として認める Stripe の価格 ID（price_…）。空なら有効な定期購読はすべて PRO
+PRICE_IDS = ""
+
+[[kv_namespaces]]
+binding = "SAWW_KV"
+id = "ここに npx wrangler kv namespace create SAWW_KV で出た id"

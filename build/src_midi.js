@@ -8,17 +8,20 @@
    v0.50（M5 の残り）：相対値を送るつまみ（無限に回るエンコーダー・ジョグ）は、割り当てごとに「動き方」を選ぶ（絶対値／相対：2の補数・64が中央・符号ビット）。
      ソフトテイクオーバー（入れた時だけ）：MIDI のつまみが画面の値に近づくか通り過ぎるまで値を変えない（つまみの位置のずれで値が飛ばない）。画面で値を変えたら、また拾い直す。
      保存は {v:1,maps,modes?,soft?}（modes・soft は既定でない時だけ書く。v0.46 の保存データもそのまま読める）。
+   v0.60（M5 の残り：MIDI 出力）：「機器のランプを光らせる」（既定は切）を入れると、ノートか CC を割り当てたパッド・ボタンの状態を、
+     同じ名前の MIDI 出力（入力と同じ機器）へ送る（ノートはベロシティ 127＝点灯／0＝消灯、CC は 127／0）。点灯の条件：パッド＝録音が割り当て済み、
+     ボタン＝押された状態（aria-pressed）、押している間だけ＝押している間。送るのは状態が変わった時だけ（0.15 秒ごとに確かめる）。入力と名前の合わない出力（音源など）には送らない。
    本体スクリプトの中（buildSampler の後）で実行する。build/src_midi.js と index.html の ae-midi の区間は同じ内容に保つ。 */
 (()=>{'use strict';
 const MIDI_KEY='ae-midi';
-const midi={acc:null,learn:false,pending:null,maps:{},cc:{},lastAt:0,swallow:false,modes:{},soft:false,prev:{},picked:{},lastSet:{}};
+const midi={acc:null,learn:false,pending:null,maps:{},cc:{},lastAt:0,swallow:false,modes:{},soft:false,prev:{},picked:{},lastSet:{},out:false,sent:{},outs:[]};
 const MIDI_MODES={abs:'絶対値',rel2c:'相対（2の補数）',relbin:'相対（64が中央）',relsign:'相対（符号ビット）'};
 window.__midi=midi;
 function midiLoad(){try{const o=JSON.parse(localStorage.getItem(MIDI_KEY)||'null');if(o&&o.v===1&&o.maps&&typeof o.maps==='object')for(const [k,t] of Object.entries(o.maps))if(/^(cc:\d+:\d+|note:\d+:\d+|pb:\d+)$/.test(k)&&midiValidTarget(t))midi.maps[k]=t;
   if(o&&o.v===1&&o.modes&&typeof o.modes==='object')for(const [k,m] of Object.entries(o.modes))if(midi.maps[k]&&midiCont(midi.maps[k])&&/^cc:/.test(k)&&MIDI_MODES[m]&&m!=='abs')midi.modes[k]=m;
-  if(o&&o.v===1&&o.soft===true)midi.soft=true}catch(e){}}
+  if(o&&o.v===1&&o.soft===true)midi.soft=true;if(o&&o.v===1&&o.out===true)midi.out=true}catch(e){}}
 function midiSave(){try{const o={v:1,maps:midi.maps};for(const k of Object.keys(midi.modes))if(!midi.maps[k]||midi.modes[k]==='abs')delete midi.modes[k];
- if(Object.keys(midi.modes).length)o.modes=midi.modes;if(midi.soft)o.soft=true;localStorage.setItem(MIDI_KEY,JSON.stringify(o))}catch(e){}}
+ if(Object.keys(midi.modes).length)o.modes=midi.modes;if(midi.soft)o.soft=true;if(midi.out)o.out=true;localStorage.setItem(MIDI_KEY,JSON.stringify(o))}catch(e){}}
 const midiCont=t=>t.t==='mix'||t.t==='range';
 function midiValidTarget(t){if(!t||typeof t!=='object')return false;
  if(t.t==='mix')return (t.ch==='master'||MIX_CH.includes(t.ch))&&!!MIX_CTRL[t.k];
@@ -87,6 +90,7 @@ function midiPress(t,down){if(t.t==='pad'){smpTrigger(t.i,down);return}
  if(t.t==='hold'){if(down)fxSet('held',true);else if(fx.held)fxSet('held',false);return}
  if(!down)return;const el=midiEl(t);if(el&&!el.disabled)el.click()}
 function midiHook(){const acc=midi.acc;if(!acc)return;const names=[];for(const inp of acc.inputs.values()){inp.onmidimessage=e=>midiMsg(e.data);if(inp.state!=='disconnected')names.push(inp.name||inp.id)}
+ midiOutsFind(names);
  midiStatus(names.length?'接続中の MIDI 入力：'+names.join('、'):'MIDI 入力が見つかりません。機器をつないでください。')}
 async function midiConnect(){if(!navigator.requestMIDIAccess){midiStatus('このブラウザは Web MIDI に対応していません。');return}
  try{midi.acc=await navigator.requestMIDIAccess({sysex:false});midi.acc.onstatechange=midiHook;midiHook()}catch(e){midiStatus('MIDI 機器への接続が許可されませんでした。')}}
@@ -111,15 +115,30 @@ function buildMidi(){const sec=$('mixerSection');if(!sec||$('midiPanel'))return;
  const p=document.createElement('div');p.id='midiPanel';p.setAttribute('role','group');p.setAttribute('aria-label','MIDI の割り当て');
  p.innerHTML='<div class="between"><span class="title">MIDI / コントローラ</span><span class="micro"><span>最後の入力</span> <span id="midiLast">—</span></span></div>'+
   '<div class="buttons"><button id="midiConnect" type="button">MIDI 機器に接続</button><button id="midiLearn" type="button" aria-pressed="false">割り当てを学習</button><button id="midiClear" type="button">割り当てをすべて消す</button></div>'+
-  '<p class="micro" id="midiStatus" role="status" aria-live="polite">MIDI 機器は未接続です。</p><label class="micro midiSoftRow"><input id="midiSoft" type="checkbox"> ソフトテイクオーバー（MIDI のつまみが画面の値を通るまで動かさない）</label><ul id="midiList"></ul>'+
-  '<details class="help"><summary>ⓘ 詳しく</summary><p class="micro">MIDI 機器（DJ コントローラ・キーボード・パッドなど）のつまみ・フェーダー・パッドで、ミキサー・BEAT FX・サンプラーを操作できます。「割り当てを学習」を押し、画面の操作部を押してから、MIDI 機器のつまみやパッドを動かすと割り当てられます。</p><p class="micro">割り当てはこの端末のブラウザにだけ保存され、外部へは送信しません。Web MIDI に対応したブラウザ（パソコンの Chrome・Edge など）で使えます。</p><p class="micro">無限に回るつまみ（エンコーダー・ジョグ）は、一覧の「動き方」で相対の方式を選んでください（機器の説明書に書かれている方式。迷ったら「相対（2の補数）」から試す）。ソフトテイクオーバーを入れると、MIDI のつまみの位置と画面の値がずれている時に、値が急に飛びません。</p></details>';
+  '<p class="micro" id="midiStatus" role="status" aria-live="polite">MIDI 機器は未接続です。</p><label class="micro midiSoftRow"><input id="midiSoft" type="checkbox"> ソフトテイクオーバー（MIDI のつまみが画面の値を通るまで動かさない）</label><label class="micro midiSoftRow"><input id="midiOut" type="checkbox"> 機器のランプを光らせる（割り当てたパッド・ボタンの状態を同じ機器へ送る）</label><ul id="midiList"></ul>'+
+  '<details class="help"><summary>ⓘ 詳しく</summary><p class="micro">MIDI 機器（DJ コントローラ・キーボード・パッドなど）のつまみ・フェーダー・パッドで、ミキサー・BEAT FX・サンプラーを操作できます。「割り当てを学習」を押し、画面の操作部を押してから、MIDI 機器のつまみやパッドを動かすと割り当てられます。</p><p class="micro">割り当てはこの端末のブラウザにだけ保存され、外部へは送信しません。Web MIDI に対応したブラウザ（パソコンの Chrome・Edge など）で使えます。</p><p class="micro">無限に回るつまみ（エンコーダー・ジョグ）は、一覧の「動き方」で相対の方式を選んでください（機器の説明書に書かれている方式。迷ったら「相対（2の補数）」から試す）。ソフトテイクオーバーを入れると、MIDI のつまみの位置と画面の値がずれている時に、値が急に飛びません。</p><p class="micro">「機器のランプを光らせる」を入れると、割り当てたパッド・ボタンの状態（録音の割り当て済み・オン）を、つないだ機器（入力と同じ名前の MIDI 出力）へ送ります。ランプの付き方は機器によって異なり、光らない機器もあります。</p></details>';
  const fxp=$('fxPanel');if(fxp&&fxp.parentElement===sec)fxp.after(p);else sec.append(p);
- $('midiConnect').onclick=midiConnect;$('midiLearn').onclick=()=>midiSetLearn(!midi.learn);$('midiSoft').checked=midi.soft;$('midiSoft').onchange=()=>{midi.soft=$('midiSoft').checked;midi.picked={};midiSave()};
- $('midiClear').onclick=()=>{midi.maps={};midi.cc={};midi.modes={};midi.picked={};midi.prev={};midi.lastSet={};midiSave();midiRender();midiStatus('割り当てをすべて消しました。')};
+ $('midiConnect').onclick=midiConnect;$('midiLearn').onclick=()=>midiSetLearn(!midi.learn);$('midiSoft').checked=midi.soft;$('midiOut').checked=midi.out;$('midiOut').onchange=()=>{midi.out=$('midiOut').checked;if(midi.out){midi.sent={};midiOutRefresh(true)}else midiOutAllOff();midiSave()};$('midiSoft').onchange=()=>{midi.soft=$('midiSoft').checked;midi.picked={};midiSave()};
+ $('midiClear').onclick=()=>{midiOutAllOff();midi.maps={};midi.cc={};midi.modes={};midi.picked={};midi.prev={};midi.lastSet={};midiSave();midiRender();midiStatus('割り当てをすべて消しました。')};
  document.addEventListener('pointerdown',midiPick,true);
  document.addEventListener('click',e=>{if(midi.swallow){midi.swallow=false;e.preventDefault();e.stopPropagation()}},true);
  document.addEventListener('keydown',e=>{if(!midi.learn)return;if(e.key==='Escape'){midiSetLearn(false);return}if((e.key==='Enter'||e.key===' ')&&document.activeElement&&midiResolve(document.activeElement)){midiPick({target:document.activeElement,preventDefault:()=>e.preventDefault(),stopPropagation:()=>e.stopPropagation()});midi.swallow=false}},true);
- midiLoad();$('midiSoft').checked=midi.soft;midiRender();setTimeout(midiRender,0)}
+ midiLoad();$('midiSoft').checked=midi.soft;$('midiOut').checked=midi.out;midiRender();setTimeout(midiRender,0)}
+// v0.60 MIDI 出力（機器のランプ）
+const midiNorm=s=>String(s||'').toLowerCase().replace(/\s+/g,' ').trim();
+function midiOutsFind(inNames){const acc=midi.acc;midi.outs=[];if(!acc||!acc.outputs)return;const ins=(inNames||[]).map(midiNorm).filter(Boolean);
+ for(const o of acc.outputs.values()){if(o.state==='disconnected'||typeof o.send!=='function')continue;const n=midiNorm(o.name);if(n&&ins.some(i=>i===n||i.includes(n)||n.includes(i)))midi.outs.push(o)}
+ midi.sent={};midiOutRefresh()}
+function midiLit(t){if(t.t==='pad')return !!(smp.pads[t.i]);if(t.t==='hold')return !!fx.held;const el=midiEl(t);if(!el)return false;
+ return el.getAttribute('aria-pressed')==='true'||el.classList.contains('on')}
+function midiOutMsg(key,on){const [kind,ch,n]=key.split(':');const c=(+ch-1)&15;if(kind==='note')return [0x90|c,(+n)&127,on?127:0];if(kind==='cc')return [0xB0|c,(+n)&127,on?127:0];return null}
+function midiOutRefresh(force){if(!midi.out||!midi.outs.length)return 0;let n=0;
+ for(const [key,t] of Object.entries(midi.maps)){if(midiCont(t))continue;const on=midiLit(t);if(!force&&midi.sent[key]===on)continue;const m=midiOutMsg(key,on);if(!m)continue;
+  for(const o of midi.outs){try{o.send(m);n++}catch(e){}}midi.sent[key]=on}
+ for(const k of Object.keys(midi.sent))if(!midi.maps[k])delete midi.sent[k];return n}
+function midiOutAllOff(){if(!midi.outs.length)return;for(const key of Object.keys(midi.sent)){const m=midiOutMsg(key,false);if(m)for(const o of midi.outs){try{o.send(m)}catch(e){}}}midi.sent={}}
+setInterval(()=>{if(midi.out&&midi.outs.length)midiOutRefresh()},150);
+midi.outRefresh=midiOutRefresh;midi.lit=midiLit;
 midi.handle=midiMsg;midi.resolve=midiResolve;midi.render=midiRender;midi.relTicks=midiRelTicks;
 buildMidi();
 })();

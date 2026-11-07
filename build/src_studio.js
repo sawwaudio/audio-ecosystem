@@ -3,7 +3,7 @@
    本体スクリプト（音声エンジン・音源ライブラリ）の後に読み込む。本体の関数と変数（ctx, master, recordings, loadOne, mixLane など）をそのまま使い、
    音声エンジンと音源の対応は変えない。build/integrate_v043.py が index.html の <script id="ae-studio"> にこのファイルを埋め込む。 */
 (()=>{'use strict';
-const VER='v0.59';
+const VER='v0.60';
 const PHOTOS=(()=>{try{return JSON.parse($('ae-photos').textContent)}catch(e){return {}}})();
 // v0.59 イメージ写真（data/scene_photos.json → ae-scenes）：種を特定できない生き物と環境音に、雰囲気の合う実写を「イメージ」として付ける（録音の場所・個体そのものではない）
 const SCENES=(()=>{try{return JSON.parse($('ae-scenes').textContent)}catch(e){return {images:{},map:{}}}})();

@@ -175,6 +175,9 @@ const EXACT={
 '動き方':'Mode','絶対値':'Absolute','相対（2の補数）':'Relative (two’s complement)','相対（64が中央）':'Relative (64 = centre)','相対（符号ビット）':'Relative (sign bit)',
 'ソフトテイクオーバー（MIDI のつまみが画面の値を通るまで動かさない）':'Soft takeover (ignore a MIDI knob until it passes the on-screen value)',
 '無限に回るつまみ（エンコーダー・ジョグ）は、一覧の「動き方」で相対の方式を選んでください（機器の説明書に書かれている方式。迷ったら「相対（2の補数）」から試す）。ソフトテイクオーバーを入れると、MIDI のつまみの位置と画面の値がずれている時に、値が急に飛びません。':'For endless knobs (encoders, jog wheels), choose a relative mode under “Mode” in the list (the one given in your device’s manual; if unsure, try “Relative (two’s complement)” first). With soft takeover on, values do not jump when the position of a MIDI knob differs from the on-screen value.',
+// v0.60 MIDI 出力（機器のランプ。ミキサー M5 の残り）
+'機器のランプを光らせる（割り当てたパッド・ボタンの状態を同じ機器へ送る）':'Light the controller’s LEDs (send the state of mapped pads and buttons back to the same device)',
+'「機器のランプを光らせる」を入れると、割り当てたパッド・ボタンの状態（録音の割り当て済み・オン）を、つないだ機器（入力と同じ名前の MIDI 出力）へ送ります。ランプの付き方は機器によって異なり、光らない機器もあります。':'With “Light the controller’s LEDs” on, the state of mapped pads and buttons (recording assigned / on) is sent to the connected device (the MIDI output with the same name as the input). How the LEDs respond depends on the device, and some devices won’t light at all.',
 // v0.51 合成音を鳴らさない（楽器は実録音だけ）
 '合成音を鳴らさない（楽器は実録音だけ）':'Mute synth sounds (instruments from real recordings only)','停止中':'Muted',
 '合成音を止めています。楽器は実録音だけで鳴ります（つまみの値はそのまま。切ると元に戻ります）。':'Synth sounds are muted. Instruments play from real recordings only (slider values are kept; turn this off to restore them).',

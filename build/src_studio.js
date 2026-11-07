@@ -3,7 +3,7 @@
    本体スクリプト（音声エンジン・音源ライブラリ）の後に読み込む。本体の関数と変数（ctx, master, recordings, loadOne, mixLane など）をそのまま使い、
    音声エンジンと音源の対応は変えない。build/integrate_v043.py が index.html の <script id="ae-studio"> にこのファイルを埋め込む。 */
 (()=>{'use strict';
-const VER='v0.54';
+const VER='v0.55';
 const PHOTOS=(()=>{try{return JSON.parse($('ae-photos').textContent)}catch(e){return {}}})();
 const TIERS=(()=>{try{return JSON.parse($('ae-tiers').textContent)}catch(e){return {plans:[],features:[]}}})();
 const APP_URL=/^https?:$/.test(location.protocol)&&!/^(localhost|127\.)/.test(location.hostname)?location.origin+location.pathname.replace(/index\.html$/,''):'https://sawwaudio.github.io/audio-ecosystem-sounds-1/';
@@ -614,8 +614,29 @@ function buildPlans(){const box=$('plansBody');if(!box)return;box.textContent=''
  box.append(cards);const tb=el('table',{class:'planTable'});tb.append(el('thead',{},el('tr',{},el('th',{text:L('機能','Feature')}),el('th',{text:'FREE'}),el('th',{text:'PRO'}))));const body=el('tbody');
  for(const f of TIERS.features)body.append(el('tr',{},el('td',{text:L(f.ja,f.en)}),el('td',{class:'mk',text:f.tier==='free'?'✓':'—'}),el('td',{class:'mk',text:'✓'})));tb.append(body);
  // v0.53：比較表は畳む（料金のカードだけで用が足りる人が多く、表が画面の真ん中を大きく取っていたため）
- const cmp=el('details',{class:'help planCompare',id:'planCompare'},el('summary',{text:'機能を比べる（FREE / PRO）'}));cmp.append(tb);box.append(cmp)
+ const cmp=el('details',{class:'help planCompare',id:'planCompare'},el('summary',{text:'機能を比べる（FREE / PRO）'}));cmp.append(tb);box.append(cmp);
+ // v0.55：無料版の見え方を試す（課金は無効。端末に記憶。楽器の制限だけを確かめる）
+ const pv=el('label',{class:'sheetCheck planPreview'});const cb=el('input',{type:'checkbox',id:'planPreview'});cb.checked=ENTITLEMENT.plan==='free';cb.addEventListener('change',()=>setPlanPreview(cb.checked));pv.append(cb,document.createTextNode(' 無料版の見え方を試す（楽器の制限）'));box.append(pv)
  for(const n of document.querySelectorAll('[data-tier="pro"]')){const host=n.querySelector('summary > span, .title')||n;if(!host.querySelector('.proChip'))host.append(el('span',{class:'proChip',text:'PRO',title:'PRO'}))}}
+
+// ───────── v0.55 無料版で鳴らせる楽器（data/product_tiers.json の instruments.free）─────────
+// オーナー要望（2026-11-07「無料版では出せる楽器を限る」）。課金は無効なので、テスト公開中（plan 'beta'）は全部鳴る。
+// 「無料版の見え方を試す」（プランの欄、端末に記憶）を入れた時だけ plan が 'free' になり、PRO の楽器はつまみが止まり、自律演奏・プリセット・MIDI でも鳴らない。
+// 判定はここだけ（window.__instrAllowed）。本体の trigger() と、持続音（realLoopTick）・ときどき鳴らす音（realLayerHit）が見る。
+const FREE_INSTR=new Set(((TIERS.instruments||{}).free)||[]);
+try{if(localStorage.getItem('saww.planPreview')==='free')ENTITLEMENT.plan='free'}catch(e){}
+function instrTier(k){return isRealLayer(k)||k==='harp'||k==='vibes'?(FREE_INSTR.has(k)?'free':'pro'):'free'}
+function instrAllowed(k){return instrTier(k)==='free'||ENTITLEMENT.plan!=='free'}
+window.__instrAllowed=instrAllowed;
+function applyInstrTier(){for(const row of document.querySelectorAll('#instrBody .control[data-layer]')){const k=row.dataset.layer,pro=instrTier(k)==='pro',ok=instrAllowed(k),inp=row.querySelector('input');
+  const lab=row.querySelector('label');if(lab&&pro&&!lab.querySelector('.proChip'))lab.append(el('span',{class:'proChip',text:'PRO',title:'PRO'}));
+  row.classList.toggle('locked',!ok);if(inp){inp.disabled=!ok;if(!ok&&p[k]>0){p[k]=0;inp.value=0;inp.dispatchEvent(new Event('input'))}}}
+ const n=document.querySelectorAll('#instrBody .control[data-layer]').length,nf=[...FREE_INSTR].filter(k=>$('param-'+k)).length,note=$('instrTierNote');
+ if(note)note.textContent=ENTITLEMENT.plan==='free'?L('無料版：'+nf+'種の楽器が鳴ります（PRO の印の楽器は PRO で）。','Free: '+nf+' instruments play (instruments marked PRO need PRO).'):L('テスト公開中は全部の楽器が鳴ります。PRO の印は、正式公開後に PRO で使える楽器です。','During the public test every instrument plays. Instruments marked PRO will need PRO after launch.');
+ // 鳴っている途中の使えない楽器は、すぐ消す（余韻を残さない）
+ if(ctx)for(const v of [...realVoices])if(!instrAllowed(v.k)){try{v.env.gain.setTargetAtTime(0,ctx.currentTime,.05);v.src.stop(ctx.currentTime+.3)}catch(e){}realVoices.delete(v)}
+ const cb=$('planPreview');if(cb)cb.checked=ENTITLEMENT.plan==='free'}
+function setPlanPreview(on){ENTITLEMENT.plan=on?'free':'beta';try{localStorage.setItem('saww.planPreview',on?'free':'beta')}catch(e){}applyInstrTier()}
 
 // ───────── 実録音の楽器層（v0.45）─────────
 // 低音ドローン：ディジュリドゥ・パイプオルガンのペダル（持続音を切れ目なくつなぐ）、自然の低音（CC0 の波の録音の低域だけ）、
@@ -628,14 +649,17 @@ var REAL_DEF={didge:{mode:'loop',base:.3},organPedal:{mode:'loop',base:.27},natu
  frameDrum:{mode:'hit',base:.3},cajon:{mode:'hit',base:.26},darbuka:{mode:'hit',base:.32},slitDrum:{mode:'hit',base:.24},conga:{mode:'hit',base:.3},
  // v0.49 旋律（build/import_vcsl_v049.py）：いまの和音の音を range（midi）の中へオクターブで移し、1〜phrase 音の短いフレーズにする
  kalimba:{mode:'melody',base:.36,range:[69,86],phrase:3},marimba:{mode:'melody',base:.3,range:[62,93],phrase:4},
- tubularBells:{mode:'melody',base:.2,range:[60,77],phrase:1},glockenspiel:{mode:'melody',base:.16,range:[79,101],phrase:2}};
+ tubularBells:{mode:'melody',base:.2,range:[60,77],phrase:1},glockenspiel:{mode:'melody',base:.16,range:[79,101],phrase:2},
+ // v0.55 伝統楽器（build/import_vcsl_v055.py）。ムビラ・バラフォン・ダン・チャンは平均律でない実測の音高のまま、いまの和音の音へ速度で合わせる
+ mbira:{mode:'melody',base:.32,range:[57,78],phrase:4},balafon:{mode:'melody',base:.42,range:[59,90],phrase:4},danTranh:{mode:'melody',base:.3,range:[59,75],phrase:3},
+ bowedPsaltery:{mode:'melody',base:.18,range:[70,90],phrase:1},handBells:{mode:'event',base:.3},didgePhrase:{mode:'event',base:.13}};
 function isRealLayer(k){return !!(REAL_DEF&&REAL_DEF[k])}
 function isRealLoop(k){return isRealLayer(k)&&REAL_DEF[k].mode==='loop'}
 function realSamples(k){return instrumentSamples.filter(x=>x.kind===k)}
 function realLevel(k){return auditionKey===k?Math.max(.55,p[k]/100):p[k]/100}
 // 和音の根音に合わせる：候補の中から移調が最小のサンプルと速度
 function realPick(k){const list=realSamples(k);if(!list.length)return null;if(!list[0].pitched)return {meta:list[Math.floor(Math.random()*list.length)],rate:1};
- const root=chords[chordIndex].root;let best=null;for(const m of list){const d0=((root-m.midi)%12+12)%12,d=d0>6?d0-12:d0;if(!best||Math.abs(d)<Math.abs(best.d))best={meta:m,d}}return {meta:best.meta,rate:2**(best.d/12)}}
+ const root=chords[chordIndex].root;let best=null;for(const m of [...list].sort(()=>Math.random()-.5)){const d0=((root-m.midi)%12+12)%12,d=d0>6?d0-12:d0;if(!best||Math.abs(d)<Math.abs(best.d))best={meta:m,d}}return {meta:best.meta,rate:2**(best.d/12)}}
 const realVoices=new Set();
 // v0.49 密度（重なり）：合成音・楽器（実録音）それぞれの倍率。本体の tick() が層ごとに __boostOf(key) を掛け、同時発音の上限は __boostCap() 倍
 let synthBoost=1,instrBoost=1;
@@ -671,7 +695,7 @@ function realPlay(k,meta,t,lvl,pan,rate){const b=instrumentBuffers.get(meta.id);
  const fade=d.mode==='hit'?.05:Math.min(3,dur*.2);env.gain.setValueAtTime(0,t);env.gain.linearRampToValueAtTime(amp,t+(d.mode==='hit'?.003:.02));env.gain.setValueAtTime(amp,Math.max(t+.03,t+dur-fade));env.gain.linearRampToValueAtTime(0,t+dur);
  src.start(t);src.stop(t+dur+.05);const v={k,src,env};realVoices.add(v);src.onended=()=>{realVoices.delete(v);detach(src,env,...nodes)};instrumentUse.set(meta.id,performance.now());noteRecUse('instrument',meta.id);point(k);return true}
 // 本体の trigger() から呼ばれる（打撃・ときどき鳴らす低音）。読み込み前なら読み込んでから鳴らす（1.5秒以内に間に合った時だけ）。
-function realLayerHit(k,t,gesture){const d=REAL_DEF[k];if(!ctx||d.mode==='loop')return false;if(p[k]===0&&auditionKey!==k)return false;
+function realLayerHit(k,t,gesture){const d=REAL_DEF[k];if(!ctx||d.mode==='loop'||!instrAllowed(k))return false;if(p[k]===0&&auditionKey!==k)return false;
  const lvl=realLevel(k),go=(when)=>{if(d.mode==='hit'){const beat=60/((typeof fx!=='undefined'&&fx.bpm)||84)/2,n=1+Math.floor(Math.random()*4);let at=when;
    for(let i=0;i<n;i++){const pk=realPick(k);if(pk&&!realPlay(k,pk.meta,at,lvl*(i===0?1:R(.45,.85)),R(-.35,.35),2**(R(-.25,.25)/12)))break;at+=beat*(Math.random()<.3?2:1)}}
   else if(d.mode==='melody'){const beat=60/((typeof fx!=='undefined'&&fx.bpm)||84)/2,n=1+Math.floor(Math.random()*d.phrase),pan=R(-.5,.5);let at=when;
@@ -684,7 +708,7 @@ function realLayerHit(k,t,gesture){const d=REAL_DEF[k];if(!ctx||d.mode==='loop')
 // 持続音（ディジュリドゥ・オルガンのペダル・自然の低音）。本体の tick() から100ミリ秒ごとに呼ばれる。
 const realLoops=new Map();
 function realLoopTick(){if(!ctx)return;const t=ctx.currentTime;for(const [k,d] of Object.entries(REAL_DEF)){if(d.mode!=='loop')continue;
- const want=playing&&(auditionKey?auditionKey===k:p[k]>0)&&(!d.rec||rightsAllowed(d.rec));let v=realLoops.get(k);
+ const want=playing&&(auditionKey?auditionKey===k:p[k]>0)&&(!d.rec||rightsAllowed(d.rec))&&instrAllowed(k);let v=realLoops.get(k);
  if(want&&!v)v=realLoopStart(k);else if(!want&&v){realLoopStop(k);v=null}
  if(v)v.out.gain.setTargetAtTime(realLevel(k)*d.base,t,.8)}}
 function realLoopStart(k){const d=REAL_DEF[k],{out,nodes}=realOut(k,0),v={k,out,nodes,srcs:new Set(),timer:0,alive:true,head:out};
@@ -724,7 +748,7 @@ window.__studioDebug={tiles:()=>tileIds().length,shown:()=>document.querySelecto
 // 振り分けは自動：本体の groups の low / music / rhythm のうち、実録音（REAL_DEF・ハープ・ヴィブラフォン）は「楽器」、それ以外は「合成音」。
 // 毎日の自動作業で楽器を足すときは groups の該当する群（低音＝low・旋律＝music・打楽器＝rhythm）と REAL_DEF に足せば、ここで正しい欄に入る。
 const LAYER_SECS=[['low','低音','持続音'],['music','旋律','旋律'],['rhythm','打楽器','打撃']];
-const shortLabel=s=>s.replace(/（実録音）|（合成）|^実録音/g,'').replace('（波の実録音・低域）','（波・低域）');
+const shortLabel=s=>s.replace(/（実録音）|（合成）|^実録音/g,'').replace('（波の実録音・低域）','（波・低域）').replace('・実録音）','）');
 function boostRow(id,label,val,set){const row=document.createElement('div');row.className='control boostRow';
  row.innerHTML=`<div><label for="${id}">${label}</label><input type="range" id="${id}" min="50" max="400" step="10" value="${Math.round(val*100)}"></div><span class="value" id="${id}V">${Math.round(val*100)}%</span>`;
  const inp=row.querySelector('input');inp.addEventListener('input',()=>{const v=Number(inp.value)/100;set(v);$(id+'V').textContent=inp.value+'%';try{localStorage.setItem('saww.boost',JSON.stringify({s:synthBoost,i:instrBoost}))}catch(e){}});
@@ -738,7 +762,7 @@ function organizeLayers(){const sp=$('synthPanel');if(!sp||$('instrPanel'))retur
  const nI=LAYER_SECS.reduce((n,[g])=>n+keysOf(g,true).length,0),nS=LAYER_SECS.reduce((n,[g])=>n+keysOf(g,false).length,0);
  ip.innerHTML=`<summary><span>楽器（実録音）</span><span class="micro"><span id="instrCount">${nI}</span> · <span>低音 · 旋律 · 打楽器 ▾</span></span></summary><div class="layerBody" id="instrBody"></div>`;
  sp.before(ip);const ib=ip.querySelector('#instrBody');
- ib.append(boostRow('instrBoost','楽器の密度・重なり',instrBoost,v=>{instrBoost=v}));
+ ib.append(boostRow('instrBoost','楽器の密度・重なり',instrBoost,v=>{instrBoost=v}));ib.append(el('p',{class:'micro instrTierNote',id:'instrTierNote'}));
  for(const [g,ja] of LAYER_SECS){const ks=keysOf(g,true);if(ks.length)ib.append(layerSub(ja,ks))}
  // 合成音：題名と小見出しを付け直し、つまみ（合成音の密度）を先頭に
  const sum=sp.querySelector(':scope>summary');if(sum)sum.innerHTML=`<span>合成音（シンセ）</span><span class="micro"><span id="synthCount">${nS}</span> <span id="synthOffBadge" class="synthOffBadge" hidden>停止中</span> · <span>持続音 · 旋律 · 打撃 · 試聴 ▾</span></span>`;
@@ -774,7 +798,7 @@ function bindNet(){const box=$('netPanel');if(!box)return;
  $('sourceMode')?.addEventListener('change',()=>setTimeout(renderNet,0));
  $('netClear').addEventListener('click',async()=>{try{await caches.delete(MEDIA_CACHE)}catch(e){}renderNet()});
  registerSW();renderNet();setInterval(()=>{if(!document.hidden&&box.getBoundingClientRect().top<innerHeight)renderNet()},8000)}
-function init(){organizeLayers();bindNet();renderFilters();buildTiles();bindSheet();buildMasterEq();renderTracks();renderTrackSources();buildPlans();bindReel();
+function init(){organizeLayers();bindNet();applyInstrTier();renderFilters();buildTiles();bindSheet();buildMasterEq();renderTracks();renderTrackSources();buildPlans();bindReel();
  $('tileStopAll').addEventListener('click',stopEverything);
  $('dockList')?.addEventListener('click',()=>{dockPanelOpen=!dockPanelOpen;renderDockPanel(true)});$('dockPanelClose')?.addEventListener('click',()=>{dockPanelOpen=false;renderDockPanel()});
  $('tabCreatures')?.addEventListener('click',()=>setTab('creatures'));$('tabAmbience')?.addEventListener('click',()=>setTab('ambience'));$('tileAddUser').addEventListener('click',()=>$('tileUserFile').click());$('tileUserFile').addEventListener('change',e=>{const fs=[...(e.target.files||[])];e.target.value='';importFiles(fs)});

@@ -7,7 +7,7 @@ const R={},fail=[];const ok=(k,c)=>{R[k+'_ok']=!!c;if(!c)fail.push(k)};
 await pg.goto('http://localhost:8765/index.html');await pg.evaluate(()=>{try{localStorage.removeItem('ae-rights');localStorage.removeItem('ae-lang')}catch(e){}});await pg.reload();await pg.waitForTimeout(800);
 // 1) 画面：サンプラー欄（ミキサーの下・タッチ演奏の上）、パッド8個、録音の選択肢（自然録音＋楽器）
 R.ui=await pg.evaluate(()=>{const y=id=>document.getElementById(id).getBoundingClientRect().top+scrollY;return {pads:document.querySelectorAll('#smpPads button').length,opts:document.querySelectorAll('#smpSource option').length,recs:__bioDebug.recordings.length,mixer:y('mixerSection'),smp:y('samplerSection'),touch:y('touchSection'),idle:document.querySelector('#mixGrid [data-ch="sampler"]').classList.contains('idle'),status:document.getElementById('smpStatus').textContent}});
-ok('ui',R.ui.pads===8&&R.ui.opts===R.ui.recs+72&&R.ui.mixer<R.ui.smp&&R.ui.idle&&R.ui.status==='録音を選んで「読み込む」を押してください。');
+ok('ui',R.ui.pads===8&&R.ui.opts===R.ui.recs+104&&R.ui.mixer<R.ui.smp&&R.ui.idle&&R.ui.status==='録音を選んで「読み込む」を押してください。');
 // 2) オフライン描画（48kHz・試験信号＝0.1秒周期ののこぎり波）
 const render=o=>pg.evaluate(o=>__samplerDebug.render(o),o);const maxAbs=a=>a.reduce((m,v)=>Math.max(m,Math.abs(v)),0);
 // 切り取り：0.25〜0.5秒 → 12000サンプル、元の 12000 サンプル目からと完全一致

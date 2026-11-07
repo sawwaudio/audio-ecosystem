@@ -109,8 +109,10 @@ once("if(sampleVoices.size>=8){", "if(sampleVoices.size>=8*" + CAP + "){")
 #    鳴らし方は src_studio.js の REAL_DEF（mode:'melody'：いまの和音の音を楽器の音域へ移して短いフレーズ）。初期値は 0（選んだ人だけ鳴る）。
 NEW_MEL = [('kalimba', 'カリンバ（実録音）', 7, 19), ('marimba', 'マリンバ（実録音）', 6, 17), ('tubularBells', 'チューブラーベル（実録音）', 16, 42),
            ('glockenspiel', 'グロッケンシュピール（実録音）', 9, 24)]
-once('["vibes", "実録音ヴィブラフォン", 0]]', '["vibes", "実録音ヴィブラフォン", 0], ' + ', '.join('["%s", "%s", 0]' % (k, l) for k, l, _, _ in NEW_MEL) + ']')
-once("['avalanche',65,155]];", "['avalanche',65,155]," + ','.join("['%s',%d,%d]" % (k, a, b) for k, _, a, b in NEW_MEL) + "];")
+if '["kalimba",' not in t:  # 後の版（v0.55）がこの後ろに層を足すので、入っていれば何もしない
+    once('["vibes", "実録音ヴィブラフォン", 0]]', '["vibes", "実録音ヴィブラフォン", 0], ' + ', '.join('["%s", "%s", 0]' % (k, l) for k, l, _, _ in NEW_MEL) + ']')
+if "['kalimba'," not in t:
+    once("['avalanche',65,155]];", "['avalanche',65,155]," + ','.join("['%s',%d,%d]" % (k, a, b) for k, _, a, b in NEW_MEL) + "];")
 OPT = "'harp','didge','organPedal','timpaniRoll','gong','pianoLow','natureLow','frameDrum','cajon','darbuka','slitDrum','conga'"
 if OPT + ",'kalimba'" not in t:
     assert t.count(OPT + "]") == 2, '任意の層の一覧'

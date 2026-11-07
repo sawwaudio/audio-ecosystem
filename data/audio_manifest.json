@@ -9001,6 +9001,1158 @@
     "gain": 13.574980969913007,
     "lossless": false
    }
+  },
+  "mbira-1": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_MBira4_pluck_Main_B2_13_50_100_rr3.flac",
+    "bytes": 393669,
+    "sha256": "d0ba46e772815d4cc9cb1ced1a790b9ab9cdbc437ece0a40beb1ab3351211778",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 4.513667,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_MBira4_pluck_Main_B2_13_50_100_rr3.flac",
+      "bytes": 393669,
+      "sha256": "d0ba46e772815d4cc9cb1ced1a790b9ab9cdbc437ece0a40beb1ab3351211778",
+      "frames": 216656
+     }
+    ],
+    "gain": 13.059394899276265,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "baf75eaba86d2943aa796f009089d2ca964211a815d711cc2451e5c62080470f"
+   },
+   "compat": {
+    "path": "instruments/compat/mbira-1.mp3",
+    "bytes": 73186,
+    "sha256": "6a58fb0208c53d9a46fa4d96bb433006d34ba26d3599f8ab49bc8a21eb5c787b",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 15.273536118560866,
+    "lossless": false
+   }
+  },
+  "mbira-2": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_MBira4_pluck_Main_Ds3_15_50_100_rr1.flac",
+    "bytes": 369848,
+    "sha256": "feaadd1702b171cab90bdea8de4b01f2b312a74975bdd15c9f607b860e60dacd",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 5.193667,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_MBira4_pluck_Main_Ds3_15_50_100_rr1.flac",
+      "bytes": 369848,
+      "sha256": "feaadd1702b171cab90bdea8de4b01f2b312a74975bdd15c9f607b860e60dacd",
+      "frames": 249296
+     }
+    ],
+    "gain": 7.255898046697177,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "c7f6b8d096d9d68d7150dcfb5d087d1841b5d2674013863c56acba7ab0a4ef6c"
+   },
+   "compat": {
+    "path": "instruments/compat/mbira-2.mp3",
+    "bytes": 84053,
+    "sha256": "dd3c0b147cce2992f5f4d8539351dcdc42b7ed661141aae0cac5a80cfeb122c4",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 11.62184443074041,
+    "lossless": false
+   }
+  },
+  "mbira-3": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_MBira4_pluck_Main_Fs3_11_50_100_rr2.flac",
+    "bytes": 357764,
+    "sha256": "e7b562232128a9eb4be86e5399677d9ed7ecc9e937c6174ad0d955532c126376",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 4.626396,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_MBira4_pluck_Main_Fs3_11_50_100_rr2.flac",
+      "bytes": 357764,
+      "sha256": "e7b562232128a9eb4be86e5399677d9ed7ecc9e937c6174ad0d955532c126376",
+      "frames": 222067
+     }
+    ],
+    "gain": 12.540119718740712,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "457988df99fb493bd01c09ccd5ccfee3ba611424d1c713465d26231c7021e69e"
+   },
+   "compat": {
+    "path": "instruments/compat/mbira-3.mp3",
+    "bytes": 75276,
+    "sha256": "b5d85f0870d1306b32bcbe6f4825f1876561f9cf7166d782fdd95e3c0a2c2143",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 21.997053944919468,
+    "lossless": false
+   }
+  },
+  "mbira-4": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_MBira4_pluck_Main_Gs3_7_50_100_rr2.flac",
+    "bytes": 345742,
+    "sha256": "8ce91f14e514eedd241f74ea270775851a4dc6260c569bfb5a0a044d416b6453",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 3.742,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_MBira4_pluck_Main_Gs3_7_50_100_rr2.flac",
+      "bytes": 345742,
+      "sha256": "8ce91f14e514eedd241f74ea270775851a4dc6260c569bfb5a0a044d416b6453",
+      "frames": 179616
+     }
+    ],
+    "gain": 9.248493116867335,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "5232db8c311a072c65952ecc99b94c15dca6238e760e389902a3d0abd8f6cdfa"
+   },
+   "compat": {
+    "path": "instruments/compat/mbira-4.mp3",
+    "bytes": 61066,
+    "sha256": "144cbfa6d0537501e7c4b708c527bf426c15bd8682c2d6a351d14a92eddf9684",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 12.355184879962648,
+    "lossless": false
+   }
+  },
+  "mbira-5": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_MBira4_pluck_Main_B3_16_50_100_rr2.flac",
+    "bytes": 368186,
+    "sha256": "f312de10c301e62502f36cdfc744caebbeca5279e2f3d8be596028d732c9618a",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 4.159479,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_MBira4_pluck_Main_B3_16_50_100_rr2.flac",
+      "bytes": 368186,
+      "sha256": "f312de10c301e62502f36cdfc744caebbeca5279e2f3d8be596028d732c9618a",
+      "frames": 199655
+     }
+    ],
+    "gain": 5.060475440059996,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "45f8f7d81a3c1f35066469d5747cebe10f623d6f6d624e75ed21dfc41fe60e10"
+   },
+   "compat": {
+    "path": "instruments/compat/mbira-5.mp3",
+    "bytes": 67753,
+    "sha256": "bb5a2aef146fb6bfaec2a4dc50cff919751b859079197558bf564291aa224570",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 7.334972556644207,
+    "lossless": false
+   }
+  },
+  "mbira-6": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_MBira4_pluck_Main_Cs4_17_50_100_rr1.flac",
+    "bytes": 437841,
+    "sha256": "ae552409c035be98d1dc99e1091b3c3dca945ae5f2b44c9f49b82491092a926a",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 4.778292,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_MBira4_pluck_Main_Cs4_17_50_100_rr1.flac",
+      "bytes": 437841,
+      "sha256": "ae552409c035be98d1dc99e1091b3c3dca945ae5f2b44c9f49b82491092a926a",
+      "frames": 229358
+     }
+    ],
+    "gain": 6.913485282636966,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "bef915b690cf976dd8d76b9074d089ad29d58e6abc0ac8e4dbbbcdcc21befff5"
+   },
+   "compat": {
+    "path": "instruments/compat/mbira-6.mp3",
+    "bytes": 77366,
+    "sha256": "4f519a6faf91ffe375348936c84450a28b261ab18612b3d50f7609218f996c89",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 12.283606710357871,
+    "lossless": false
+   }
+  },
+  "mbira-7": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_MBira4_pluck_Main_E4_19_50_100_rr2.flac",
+    "bytes": 302983,
+    "sha256": "b9af366bd307647a3c1a13f2b1ffe51b4aaa5bd5a910b24082457bab0cbaffc5",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 3.339083,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_MBira4_pluck_Main_E4_19_50_100_rr2.flac",
+      "bytes": 302983,
+      "sha256": "b9af366bd307647a3c1a13f2b1ffe51b4aaa5bd5a910b24082457bab0cbaffc5",
+      "frames": 160276
+     }
+    ],
+    "gain": 5.621612217955681,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "286d10151e6c1e681a1680e70861da72a97122370dee8eb785401d4423617d40"
+   },
+   "compat": {
+    "path": "instruments/compat/mbira-7.mp3",
+    "bytes": 54378,
+    "sha256": "f2067fe7a899899eeae529a3fd9e222fd97cf6a010310e6ae804c17e8d692476",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 9.024652472223861,
+    "lossless": false
+   }
+  },
+  "balafon-1": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_EthnicXylo_tradM_Cs3_vl2_rr1_Mid.flac",
+    "bytes": 36232,
+    "sha256": "e3b080c90dba89e3856a7c4344e71257d9c24221abcefcae4f21b5f9f794b199",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 1.04746,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_EthnicXylo_tradM_Cs3_vl2_rr1_Mid.flac",
+      "bytes": 36232,
+      "sha256": "e3b080c90dba89e3856a7c4344e71257d9c24221abcefcae4f21b5f9f794b199",
+      "frames": 46193
+     }
+    ],
+    "gain": 8.02291317611063,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "c7877ca431a2772a99f9e6e87d5a9a1e4e817720a48ac7f915d22bec3bf48af5"
+   },
+   "compat": {
+    "path": "instruments/compat/balafon-1.mp3",
+    "bytes": 18016,
+    "sha256": "d08c937c435fcfa9699be9fc8e83a7a2c6030d0bd945c4d466357f527ca13d05",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 25.8503095096977,
+    "lossless": false
+   }
+  },
+  "balafon-2": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_EthnicXylo_tradM_F3_vl2_rr1_Mid.flac",
+    "bytes": 35865,
+    "sha256": "8ee6fd366a0ad15ec035a61ba9c5da91408e1b8f179a5caaddd02b816fc5730c",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 1.058005,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_EthnicXylo_tradM_F3_vl2_rr1_Mid.flac",
+      "bytes": 35865,
+      "sha256": "8ee6fd366a0ad15ec035a61ba9c5da91408e1b8f179a5caaddd02b816fc5730c",
+      "frames": 46658
+     }
+    ],
+    "gain": 7.478553402321702,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "ce0f5bb9971d50024eb850e8df8a823ea51ea80bdafccbef57e9efb07d6478b0"
+   },
+   "compat": {
+    "path": "instruments/compat/balafon-2.mp3",
+    "bytes": 18016,
+    "sha256": "7ce4fe73ab14c334acb15ad9c53efded4ccc38f821237f237ae3ad66eb9d7327",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 11.128276574232297,
+    "lossless": false
+   }
+  },
+  "balafon-3": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_EthnicXylo_tradM_C4_vl2_rr1_Mid.flac",
+    "bytes": 31192,
+    "sha256": "741829c264f3c1bb7eb04a3e1d134473f2e0e543fd93716602885c4bc0867079",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 0.908776,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_EthnicXylo_tradM_C4_vl2_rr1_Mid.flac",
+      "bytes": 31192,
+      "sha256": "741829c264f3c1bb7eb04a3e1d134473f2e0e543fd93716602885c4bc0867079",
+      "frames": 40077
+     }
+    ],
+    "gain": 11.883432179087162,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "264496bc5a61626531a6fe7f6d947dfa5a251cb02a1d8be52c1a1957987f7c72"
+   },
+   "compat": {
+    "path": "instruments/compat/balafon-3.mp3",
+    "bytes": 15508,
+    "sha256": "720f2530504ef1b28549d06dd9a9223d68e629075350546ee088b029539e6efb",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 17.504772805665297,
+    "lossless": false
+   }
+  },
+  "balafon-4": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_EthnicXylo_tradM_F4_vl2_rr1_Mid.flac",
+    "bytes": 31465,
+    "sha256": "49f1454d4e7f5e078b61f8b3e6d3185a0bbaac7e42b3b4352d2065e43a2a7feb",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 0.845737,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_EthnicXylo_tradM_F4_vl2_rr1_Mid.flac",
+      "bytes": 31465,
+      "sha256": "49f1454d4e7f5e078b61f8b3e6d3185a0bbaac7e42b3b4352d2065e43a2a7feb",
+      "frames": 37297
+     }
+    ],
+    "gain": 11.823544471921135,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "9482bd34925401dd1e3d2f84e44da507d5f53bcd67c7da403a4140f7d383bed6"
+   },
+   "compat": {
+    "path": "instruments/compat/balafon-4.mp3",
+    "bytes": 14672,
+    "sha256": "dbf36fc19de5c0b80bfa4364fa6b5d558c8470606f299e3611a5279402418735",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 19.108322325959,
+    "lossless": false
+   }
+  },
+  "balafon-5": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_EthnicXylo_tradM_C5_vl2_rr1_Mid.flac",
+    "bytes": 32001,
+    "sha256": "8e9db52dabb0cf6fee314548add60e7b6a279a6bbd60d48486eb084de07c4b11",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 0.782018,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_EthnicXylo_tradM_C5_vl2_rr1_Mid.flac",
+      "bytes": 32001,
+      "sha256": "8e9db52dabb0cf6fee314548add60e7b6a279a6bbd60d48486eb084de07c4b11",
+      "frames": 34487
+     }
+    ],
+    "gain": 4.863163539087491,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "1d58e19337227565d95eaa843b59db4b9cb9082bc7fc35bd7b7d17e0371e1651"
+   },
+   "compat": {
+    "path": "instruments/compat/balafon-5.mp3",
+    "bytes": 13418,
+    "sha256": "20ac89822aabdbc093fe421daa182e416e0b35c34795b52213fb140d5973acf0",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 6.707131055366529,
+    "lossless": false
+   }
+  },
+  "balafon-6": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_EthnicXylo_tradM_F5_vl2_rr1_Mid.flac",
+    "bytes": 33409,
+    "sha256": "98c32eeb904ad25f62b9f1e19361ed7d459e8fd0658f2f6c61423be4bdda3ebb",
+    "format": "flac",
+    "codec": "FLAC 16-bit（可逆圧縮）",
+    "bitDepth": 16,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 0.867596,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_EthnicXylo_tradM_F5_vl2_rr1_Mid.flac",
+      "bytes": 33409,
+      "sha256": "98c32eeb904ad25f62b9f1e19361ed7d459e8fd0658f2f6c61423be4bdda3ebb",
+      "frames": 38261
+     }
+    ],
+    "gain": 5.034611671213506,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "89968495ac00855fa4d3d81953045aad7828185611aee9f178e171bc5bc1d79c"
+   },
+   "compat": {
+    "path": "instruments/compat/balafon-6.mp3",
+    "bytes": 15090,
+    "sha256": "144adeaa8269f7d27242d356cd721a6e4111ce46a527dce704466844f0b04929",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 7.203311598256518,
+    "lossless": false
+   }
+  },
+  "danTranh-1": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_Cs3_mf_1.flac",
+    "bytes": 112999,
+    "sha256": "1ad88f333451930f3b0b032141dd29729f72c81d7a760a83abdd82f7550c4e50",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 6.042041,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_Cs3_mf_1.flac",
+      "bytes": 112999,
+      "sha256": "1ad88f333451930f3b0b032141dd29729f72c81d7a760a83abdd82f7550c4e50",
+      "frames": 266454
+     }
+    ],
+    "gain": 11.112864205029565,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "fc2de266207755c25892d9016da4d430272aa6612c8eb4c024e72c9e7d9fee13"
+   },
+   "compat": {
+    "path": "instruments/compat/danTranh-1.mp3",
+    "bytes": 97846,
+    "sha256": "eaaf0647958ddf19f8b6f88a2400ae548b8417e3cfd585f7e45194f5cf1ccaeb",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 11.724721903024662,
+    "lossless": false
+   }
+  },
+  "danTranh-2": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_Ds3_mf_1.flac",
+    "bytes": 136734,
+    "sha256": "6fbe2ddc4398cb8d3af25726f5d90ec5f21bc325b80ec07646489b2cf0231e62",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 5.904218,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_Ds3_mf_1.flac",
+      "bytes": 136734,
+      "sha256": "6fbe2ddc4398cb8d3af25726f5d90ec5f21bc325b80ec07646489b2cf0231e62",
+      "frames": 260376
+     }
+    ],
+    "gain": 11.220195186889967,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "87fbd3dc89b917dfea27cd738248583eb55a2eeaa431a150779411bead6ce3d7"
+   },
+   "compat": {
+    "path": "instruments/compat/danTranh-2.mp3",
+    "bytes": 95756,
+    "sha256": "c77369c7e23e63629cb02b6a46d818fbda2c0b30fd51c3c40aff477f807df181",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 11.74254049556997,
+    "lossless": false
+   }
+  },
+  "danTranh-3": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_Fs3_mf_1.flac",
+    "bytes": 108533,
+    "sha256": "417bffd8bed9e68ef9a876794cd466afaf27f3956a0ff42c5524f5b9d4134966",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 5.727324,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_Fs3_mf_1.flac",
+      "bytes": 108533,
+      "sha256": "417bffd8bed9e68ef9a876794cd466afaf27f3956a0ff42c5524f5b9d4134966",
+      "frames": 252575
+     }
+    ],
+    "gain": 11.222411486245411,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "2770556b7f3c5dd0b83b509c90447c6e8c06a920767d34c093e1aa71c9245fa7"
+   },
+   "compat": {
+    "path": "instruments/compat/danTranh-3.mp3",
+    "bytes": 92831,
+    "sha256": "863195c68e44d6a022db3423cf95ffdc16dbf0cc71eae399fa6c5c68b9c5fab8",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 11.831844355145174,
+    "lossless": false
+   }
+  },
+  "danTranh-4": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_Gs3_mf_1.flac",
+    "bytes": 109399,
+    "sha256": "5edbded17a7078d1f217cb4fc481ebe35e5dd5277fed03328f2127090fa9e012",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 5.952449,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_Gs3_mf_1.flac",
+      "bytes": 109399,
+      "sha256": "5edbded17a7078d1f217cb4fc481ebe35e5dd5277fed03328f2127090fa9e012",
+      "frames": 262503
+     }
+    ],
+    "gain": 11.220165242893374,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "b23a6a169ee361f26cb1da20e6602345ed5aee3369f287b53cf0b580710fabbf"
+   },
+   "compat": {
+    "path": "instruments/compat/danTranh-4.mp3",
+    "bytes": 96174,
+    "sha256": "7ba00503451eac7a428a21a9cfe60771a9dac4d5547732ce9c11c569b11393e3",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 11.89550278978931,
+    "lossless": false
+   }
+  },
+  "danTranh-5": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_B3_mf_1.flac",
+    "bytes": 116011,
+    "sha256": "0291854b8917841accab054e0f21edc8fd3a011d9f7396c833164abf35be1022",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 6.352902,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_B3_mf_1.flac",
+      "bytes": 116011,
+      "sha256": "0291854b8917841accab054e0f21edc8fd3a011d9f7396c833164abf35be1022",
+      "frames": 280163
+     }
+    ],
+    "gain": 11.220195186889967,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "417ee61a7139e47f3d46f487ef0c08cea1052d6bdcbcb1a116f6b7c95204f5fb"
+   },
+   "compat": {
+    "path": "instruments/compat/danTranh-5.mp3",
+    "bytes": 102862,
+    "sha256": "45b06232155cd68dbc245bea9a0699dc9dfd1c68e179758d855985020cb6f6a3",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 11.825725935965108,
+    "lossless": false
+   }
+  },
+  "danTranh-6": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_Cs4_mf_1.flac",
+    "bytes": 109526,
+    "sha256": "6d5ff91307ece1ee469c4fece4e7aea62bcd28f82e09a45cacb5864f5f659557",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 5.872698,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_Cs4_mf_1.flac",
+      "bytes": 109526,
+      "sha256": "6d5ff91307ece1ee469c4fece4e7aea62bcd28f82e09a45cacb5864f5f659557",
+      "frames": 258986
+     }
+    ],
+    "gain": 11.220165242893374,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "02092fe2816cfb771e06b200d71d046e1695a3c1351d4e393b0f33b4b616f247"
+   },
+   "compat": {
+    "path": "instruments/compat/danTranh-6.mp3",
+    "bytes": 94920,
+    "sha256": "df7248a2f9f4f48331bc653532066f6971770d6723b9a28cabfe7ab973c1a7c8",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 11.859904795606496,
+    "lossless": false
+   }
+  },
+  "bowedPsaltery-1": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_BowedPsaltery_C4_Main_LongBow_rr1.flac",
+    "bytes": 933923,
+    "sha256": "b51f38f97a2974987acd11f409f09a2cc8c17dbe43741a679b8f76ff2c542676",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 8.414739,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_BowedPsaltery_C4_Main_LongBow_rr1.flac",
+      "bytes": 933923,
+      "sha256": "b51f38f97a2974987acd11f409f09a2cc8c17dbe43741a679b8f76ff2c542676",
+      "frames": 371090
+     }
+    ],
+    "gain": 13.381721931254573,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "4c903a485ae930a65429900531ba1be183d09e3842aace2e3cc6f0bdd6ce20d7"
+   },
+   "compat": {
+    "path": "instruments/compat/bowedPsaltery-1.mp3",
+    "bytes": 135880,
+    "sha256": "fcb026d7fc9d4f6591f4146b24c8fcd3faee36e086290438bbd7b188b974cafe",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 14.077692596054694,
+    "lossless": false
+   }
+  },
+  "bowedPsaltery-2": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_BowedPsaltery_E4_Main_LongBow_rr2.flac",
+    "bytes": 923430,
+    "sha256": "353397453d7706179d42301177b4af40f7264d1a9672d20b5123ddcbbcc09b7b",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 7.697415,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_BowedPsaltery_E4_Main_LongBow_rr2.flac",
+      "bytes": 923430,
+      "sha256": "353397453d7706179d42301177b4af40f7264d1a9672d20b5123ddcbbcc09b7b",
+      "frames": 339456
+     }
+    ],
+    "gain": 10.235520727363498,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "b0dd57477a269d454216ba5ff9e1f7dcf8c36b7366a9d1570a597f69204cca78"
+   },
+   "compat": {
+    "path": "instruments/compat/bowedPsaltery-2.mp3",
+    "bytes": 124177,
+    "sha256": "12b909cb2c56341942283f17ea0605152143643e22f5c743a309abb0420a55cb",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 10.769212919801918,
+    "lossless": false
+   }
+  },
+  "bowedPsaltery-3": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_BowedPsaltery_Gs4_Main_LongBow_rr1.flac",
+    "bytes": 785417,
+    "sha256": "ce4044a2e4084c73fade7bdc78d3cb5e107065396e8519dd56d0a8d72b77b947",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 6.747211,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_BowedPsaltery_Gs4_Main_LongBow_rr1.flac",
+      "bytes": 785417,
+      "sha256": "ce4044a2e4084c73fade7bdc78d3cb5e107065396e8519dd56d0a8d72b77b947",
+      "frames": 297552
+     }
+    ],
+    "gain": 11.595191242357151,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "df829238cf3379e0ce9d9ff794eadb776b92084f4c199e3ed765f3e2caf87b2a"
+   },
+   "compat": {
+    "path": "instruments/compat/bowedPsaltery-3.mp3",
+    "bytes": 109131,
+    "sha256": "d1625d46022aa0af73c0bdd472c368e4f3affc96ce31fff532dacc215e969429",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 12.216410022556879,
+    "lossless": false
+   }
+  },
+  "bowedPsaltery-4": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_BowedPsaltery_C5_Main_LongBow_rr1.flac",
+    "bytes": 759521,
+    "sha256": "e610966f11c9aac6fd1c9cc0f8358657f4addb3bfc0d90ea131d0ee34d39be8a",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 6.526712,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_BowedPsaltery_C5_Main_LongBow_rr1.flac",
+      "bytes": 759521,
+      "sha256": "e610966f11c9aac6fd1c9cc0f8358657f4addb3bfc0d90ea131d0ee34d39be8a",
+      "frames": 287828
+     }
+    ],
+    "gain": 12.75759134448021,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "70681dc1e2ce02e7cdb1bf89df819f4b2128db0c3d70b621830331aabfb15fab"
+   },
+   "compat": {
+    "path": "instruments/compat/bowedPsaltery-4.mp3",
+    "bytes": 105369,
+    "sha256": "44bce0aafae5917c7ccae9a09b065a5cbd563dc741723c95948ea04a0fd889f8",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 13.42804440146638,
+    "lossless": false
+   }
+  },
+  "bowedPsaltery-5": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_BowedPsaltery_E5_Main_LongBow_rr2.flac",
+    "bytes": 636114,
+    "sha256": "9f2f6da0b363763f2c240a43310e70060f74f0f4574babb7bf51bc545f2f51e4",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 5.383991,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_BowedPsaltery_E5_Main_LongBow_rr2.flac",
+      "bytes": 636114,
+      "sha256": "9f2f6da0b363763f2c240a43310e70060f74f0f4574babb7bf51bc545f2f51e4",
+      "frames": 237434
+     }
+    ],
+    "gain": 4.948664544419675,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "e345e07b6902d47e18dd781ab08092848245d8f92fc9c3d263e8369eef2d16c3"
+   },
+   "compat": {
+    "path": "instruments/compat/bowedPsaltery-5.mp3",
+    "bytes": 87397,
+    "sha256": "aae708cb6bb5dc5cd9edde5eb42cd7f5a8c86a1ab88e9e9d81dbeaabc802ccd9",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 5.209855899823226,
+    "lossless": false
+   }
+  },
+  "handBells-1": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_HB_1.flac",
+    "bytes": 193102,
+    "sha256": "c9d2a86e4c05f3eaddb1f07868b57b52da47d3254b2594139bd6aa9843442c77",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 2.998322,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_HB_1.flac",
+      "bytes": 193102,
+      "sha256": "c9d2a86e4c05f3eaddb1f07868b57b52da47d3254b2594139bd6aa9843442c77",
+      "frames": 132226
+     }
+    ],
+    "gain": 5.084133559594075,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "d39ba8151877b3a4e2b52d5dde78cd787abacfe81c5c046c7deda9c3a6b55769"
+   },
+   "compat": {
+    "path": "instruments/compat/handBells-1.mp3",
+    "bytes": 48945,
+    "sha256": "2d85bc74a362ed44188145d4a665d10cc26d118645499238f0fa4c76fcc39679",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 6.772438974449868,
+    "lossless": false
+   }
+  },
+  "handBells-2": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_HB_2.flac",
+    "bytes": 113159,
+    "sha256": "9a57610b07d8b5ca9a1eb312f21e091df8b0f7b4267416e9d9e3d8a74a9b906f",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 1.269433,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_HB_2.flac",
+      "bytes": 113159,
+      "sha256": "9a57610b07d8b5ca9a1eb312f21e091df8b0f7b4267416e9d9e3d8a74a9b906f",
+      "frames": 55982
+     }
+    ],
+    "gain": 4.248678927006531,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "a294458262fd7845866ff00e6e327eeaca84261964a924e601ce6721db8e5bf9"
+   },
+   "compat": {
+    "path": "instruments/compat/handBells-2.mp3",
+    "bytes": 21359,
+    "sha256": "a49577dce42dcd55adfd8f9fda67070058deaeec1b9cd86d486c45f9548af6cd",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 6.168718127944438,
+    "lossless": false
+   }
+  },
+  "handBells-3": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_HB_3.flac",
+    "bytes": 149752,
+    "sha256": "b1f30a8f95c14a0e2b9548627d235ff3140cc391a192538c9144a70c9a3ebf1d",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 2.242857,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_HB_3.flac",
+      "bytes": 149752,
+      "sha256": "b1f30a8f95c14a0e2b9548627d235ff3140cc391a192538c9144a70c9a3ebf1d",
+      "frames": 98910
+     }
+    ],
+    "gain": 22.810825443565758,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "c857e85adadf249af6f11ef1c3954000d3ceaf686845ba6073f5d17f6251c837"
+   },
+   "compat": {
+    "path": "instruments/compat/handBells-3.mp3",
+    "bytes": 36824,
+    "sha256": "c5f18763be70f008c78b3ca2db2c682ca57213f0f6fd51d3e4cf4f0451dd4b78",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 38.61581931601924,
+    "lossless": false
+   }
+  },
+  "didgePhrase-1": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_Didgeridoo1_Phrase1_Main.flac",
+    "bytes": 1681703,
+    "sha256": "b9b6702ac24401fd848670fa25370d989a1b7210e8380484c1cf36f030a7de16",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 11.674989,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_Didgeridoo1_Phrase1_Main.flac",
+      "bytes": 1681703,
+      "sha256": "b9b6702ac24401fd848670fa25370d989a1b7210e8380484c1cf36f030a7de16",
+      "frames": 514867
+     }
+    ],
+    "gain": 7.5197577328022565,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "073629995c59eae4af038e9c94bee69f2c4bfebe3eeec9f62542b05b5f46121e"
+   },
+   "compat": {
+    "path": "instruments/compat/didgePhrase-1.mp3",
+    "bytes": 187707,
+    "sha256": "490a4c50ee0f198cc575c2412abe6b540238b9d05e20282d41a69ffeb3d21c13",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 7.916021968406129,
+    "lossless": false
+   }
+  },
+  "didgePhrase-2": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_Didgeridoo1_Phrase3_Main.flac",
+    "bytes": 2143167,
+    "sha256": "5501d398d718a9ae19ade8b19d25a5fe02f826c9eb777e601295eddcafb9ad17",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 15.265102,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_Didgeridoo1_Phrase3_Main.flac",
+      "bytes": 2143167,
+      "sha256": "5501d398d718a9ae19ade8b19d25a5fe02f826c9eb777e601295eddcafb9ad17",
+      "frames": 673191
+     }
+    ],
+    "gain": 10.477017506964598,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "9892cc9e94d5c04783642218cfdf677fba22aec074d4dd3abf864a39447fb026"
+   },
+   "compat": {
+    "path": "instruments/compat/didgePhrase-2.mp3",
+    "bytes": 245386,
+    "sha256": "045943341c71e02d516371a66a834ddfdc4dd102f2ca24328e23ad0ac1fe43b3",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 11.028642758887631,
+    "lossless": false
+   }
+  },
+  "didgePhrase-3": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_Didgeridoo1_Phrase5_Main.flac",
+    "bytes": 1519411,
+    "sha256": "3f0446f63b8e4b58b4cdad2c4678d4a3fda32468c771fb65c9b39c1ccc21d5b5",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 10.599977,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_Didgeridoo1_Phrase5_Main.flac",
+      "bytes": 1519411,
+      "sha256": "3f0446f63b8e4b58b4cdad2c4678d4a3fda32468c771fb65c9b39c1ccc21d5b5",
+      "frames": 467459
+     }
+    ],
+    "gain": 2.2960115644614434,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "11a0d25234eb215b1f28154b2a8e85d5362a8522190840536d0b15e55c9e132e"
+   },
+   "compat": {
+    "path": "instruments/compat/didgePhrase-3.mp3",
+    "bytes": 170571,
+    "sha256": "d5c387e79eab061455e6f0051d953cf5db254cacdd969864bd8aaddfd3914b0f",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 2.4166666841024527,
+    "lossless": false
+   }
+  },
+  "didgePhrase-4": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_Didgeridoo1_Phrase6_Main.flac",
+    "bytes": 1828327,
+    "sha256": "56ee863cad7702f2dbfc8bf17b11bfee6f75a9bc2057a853ef1369d99dfa49b6",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 13.058027,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_Didgeridoo1_Phrase6_Main.flac",
+      "bytes": 1828327,
+      "sha256": "56ee863cad7702f2dbfc8bf17b11bfee6f75a9bc2057a853ef1369d99dfa49b6",
+      "frames": 575859
+     }
+    ],
+    "gain": 3.976405241172008,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "b45526b8b4d61f52552f59d5ab0c0a6d12a5913dc2fbf0aa535578bffe74c8b0"
+   },
+   "compat": {
+    "path": "instruments/compat/didgePhrase-4.mp3",
+    "bytes": 209859,
+    "sha256": "be4605ee06c86f25384b72d48e57b96d0d1487b72637dbe9fa40e4cbb36ef74e",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 4.18581307696132,
+    "lossless": false
+   }
+  },
+  "didgePhrase-5": {
+   "pcm": {
+    "path": "instruments/pcm/vcsl_Didgeridoo1_Phrase8_Main.flac",
+    "bytes": 1714758,
+    "sha256": "309b543f4a484664ff6feb765b36dd6d5d13ff4d7cee37d4cdd1fe687e9a66ec",
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 12.708254,
+    "parts": [
+     {
+      "path": "instruments/pcm/vcsl_Didgeridoo1_Phrase8_Main.flac",
+      "bytes": 1714758,
+      "sha256": "309b543f4a484664ff6feb765b36dd6d5d13ff4d7cee37d4cdd1fe687e9a66ec",
+      "frames": 560434
+     }
+    ],
+    "gain": 12.98610828403064,
+    "lossless": true,
+    "provenance": "VCSL原本WAV（固定コミット取得・SHA-256記録・無加工） 配信はFLAC（可逆圧縮。復号すると原本PCMとビット単位で同一）。",
+    "pcmDataSha256": "78d9025c340ba3d8e5ef3b604682108e92502d04a3d68ec590beb42094fb7b41"
+   },
+   "compat": {
+    "path": "instruments/compat/didgePhrase-5.mp3",
+    "bytes": 204426,
+    "sha256": "e195a54d831d1c427b9408d309ff45d3221e9a1f3fd68e69722e51a0463b4f57",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "gain": 13.67060865545016,
+    "lossless": false
+   }
   }
  }
 }

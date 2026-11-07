@@ -57,8 +57,9 @@ const errs=[];const watch=pg=>{pg.on('pageerror',e=>errs.push('PAGEERR '+e.messa
  await cx.setOffline(true);await pg.reload();await pg.waitForTimeout(1200);await pg.click('#play');await pg.waitForTimeout(1500);
  R.off={title:await pg.title(),load:await pg.evaluate(async()=>{try{const b=await __bioDebug.loadOne('takayama-river');return 'ok'}catch(e){return 'ng '+e.message}}),
   key:await pg.evaluate(()=>(__sourceDebug.log().slice(-1)[0]||{}).key)};
- ok('offline_reload',/v0\.53/.test(R.off.title)&&R.off.load==='ok'&&R.off.key==='lite');
- await cx.setOffline(false);await pg.evaluate(()=>__studioDebug.stopEverything());if(await pg.evaluate(()=>document.getElementById('play').getAttribute('aria-pressed')==='true'))await pg.click('#play');await pg.waitForTimeout(2500);await pg.click('#netClear');await pg.waitForTimeout(800);
+ ok('offline_reload',/v0\.\d+/.test(R.off.title)&&R.off.load==='ok'&&R.off.key==='lite');
+ await cx.setOffline(false);await pg.reload();await pg.waitForTimeout(1200); // 鳴らしていない状態で消す（鳴っていると読み込んだ音がまた保存される）
+await pg.evaluate(()=>document.getElementById('netPanel').scrollIntoView());await pg.click('#netClear');await pg.waitForTimeout(800);
  R.sw.cleared=await pg.evaluate(async()=>(await caches.has('saww-media-1'))?(await (await caches.open('saww-media-1')).keys()).length:0);ok('sw_clear',R.sw.cleared===0);
  await cx.close()}
 R.errs=errs;ok('no_console_errors',errs.length===0);

@@ -94,3 +94,10 @@ body.live .brandMark .petals{animation-duration:16s}
 .tile .tileTier{display:none}.tile.blocked .tileTier{display:block}
 .planCompare{margin-top:10px}
 #devPanel>summary{opacity:.85}
+
+/* v0.55 無料版で鳴らせる楽器・PRO の印 */
+#instrBody label .proChip{margin-left:6px;font-size:10px;vertical-align:1px}
+#instrBody .control.locked{opacity:.45}
+#instrBody .control.locked input{cursor:not-allowed}
+.instrTierNote{margin:8px 0 0}
+.planPreview{display:flex;align-items:center;gap:6px;margin-top:10px}

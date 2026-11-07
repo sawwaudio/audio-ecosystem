@@ -16,7 +16,7 @@ const dclick=sel=>pg.evaluate(s=>document.querySelector(s).click(),sel),setOut=v
 const has=(arr,m)=>arr.some(x=>x.length===3&&x[0]===m[0]&&x[1]===m[1]&&x[2]===m[2]);
 await pg.goto('http://localhost:8765/index.html');await pg.evaluate(()=>{try{localStorage.removeItem('ae-midi');localStorage.removeItem('ae-lang')}catch(e){}});await pg.reload();await wait(900);
 await pg.evaluate(()=>{document.getElementById('mixerSection').open=true;document.getElementById('samplerSection').open=true});
-R.ver=await pg.evaluate(()=>document.querySelector('.tagline').textContent);ok('version',/v0\.60/.test(R.ver));
+R.ver=await pg.evaluate(()=>document.querySelector('.tagline').textContent);ok('version',+(/v0\.(\d+)/.exec(R.ver)||[0,0])[1]>=60);
 ok('checkbox_default_off',await pg.evaluate(()=>{const c=document.getElementById('midiOut');return !!c&&!c.checked&&__midi.out===false}));
 // 割り当て（学習は test_midi で確かめ済みなので、ここでは直接入れる）：ノート36→FX オン／オフ、37→パッド1、38→押している間だけ、CC20→生き物の MUTE、CC7→生き物のフェーダー（連続値：ランプは送らない）
 await pg.evaluate(()=>{Object.assign(__midi.maps,{'note:1:36':{t:'btn',sel:'#fxOn'},'note:1:37':{t:'pad',i:0},'note:1:38':{t:'hold'},'cc:1:20':{t:'btn',sel:'#mixGrid [data-ch="bio"] [data-k="mute"]'},'cc:2:7':{t:'mix',ch:'bio',k:'fader'}});__midi.render()});

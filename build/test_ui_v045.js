@@ -6,10 +6,10 @@ const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('conso
 const R={},fail=[];const ok=(k,c)=>{R[k+'_ok']=!!c;if(!c)fail.push(k)};const wait=ms=>pg.waitForTimeout(ms);
 await pg.goto('http://localhost:8765/index.html');await pg.evaluate(()=>{try{localStorage.removeItem('ae-rights');localStorage.removeItem('ae-lang')}catch(e){}});await pg.reload();await wait(900);
 
-// 1. 並び順：01 音を選ぶ → 02 リール → 03 演奏する（タッチ演奏・シンセの層）→ 04 スタジオ → プラン → 設定と権利
-R.order=await pg.evaluate(()=>{const y=id=>Math.round(document.getElementById(id).getBoundingClientRect().top+scrollY);return ['tileSection','reelSection','performance','instrPanel','synthPanel','mixerSection','samplerSection','tracksSection','plansSection','rightsPanel','presetSection','sourceSection'].map(id=>[id,y(id)])});
+// 1. 並び順：01 音を選ぶ → 02 演奏する（タッチ演奏・シンセの層）→ 03 リール（v0.61 で3番目へ）→ 04 スタジオ → プラン → 設定と権利
+R.order=await pg.evaluate(()=>{const y=id=>Math.round(document.getElementById(id).getBoundingClientRect().top+scrollY);return ['tileSection','performance','instrPanel','synthPanel','reelSection','mixerSection','samplerSection','tracksSection','plansSection','rightsPanel','presetSection','sourceSection'].map(id=>[id,y(id)])});
 ok('order',R.order.every((x,i,a)=>i===0||a[i-1][1]<x[1]));
-R.nav=await pg.evaluate(()=>[...document.querySelectorAll('.jump a')].map(a=>a.getAttribute('href')));ok('nav',R.nav.join()==='#tileSection,#reelSection,#playGroup,#studioGroup,#settingsGroup');
+R.nav=await pg.evaluate(()=>[...document.querySelectorAll('.jump a')].map(a=>a.getAttribute('href')));ok('nav',R.nav.join()==='#tileSection,#playGroup,#reelSection,#studioGroup,#settingsGroup');
 // 2. 重複をなくした：生き物の一覧（この音場に加える）・環境音の一覧は画面に出ない（処理は動く）
 R.legacy=await pg.evaluate(()=>({hidden:document.getElementById('legacyLists').hidden,bio:!!document.querySelector('#legacyLists #bioSection'),field:!!document.querySelector('#legacyLists #fieldSection'),visibleAdd:[...document.querySelectorAll('button')].filter(b=>b.offsetParent&&/この音場に加える|この音場に参加|この録音を聴く/.test(b.textContent)).length}));
 ok('no_duplicate_add',R.legacy.hidden&&R.legacy.bio&&R.legacy.field&&R.legacy.visibleAdd===0);

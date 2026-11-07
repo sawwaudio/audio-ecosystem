@@ -27,6 +27,7 @@ await pg.evaluate(()=>__previewDebug.play('tsukutsukuboshi'));await pg.waitForTi
 R.preview=await pg.evaluate(()=>({...__previewDebug.state(),src:document.getElementById('previewPlayer').currentSrc,msg:document.getElementById('previewStatus').textContent}));
 await pg.evaluate(()=>__previewDebug.stop());
 // switch to compat & original
+await pg.evaluate(()=>{const d=document.getElementById('devPanel');if(d)d.open=true}); // v0.53：確認・開発用の欄は畳んである
 for(const mode of ['compat','original','pcm']){await pg.selectOption('#sourceMode',mode);R['mode_'+mode]=await pg.evaluate(async()=>{await __bioDebug.playSpecies('blackbird',true);return {d:__bioDebug.decoded().find(x=>x.id==='blackbird'),last:document.getElementById('sourceLast').textContent}})}
 R.memory=await pg.evaluate(()=>__sourceDebug.memory());
 // audit + verify subset

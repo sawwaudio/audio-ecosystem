@@ -8,6 +8,7 @@ await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
 R.defaults=await pg.evaluate(()=>[...document.querySelectorAll('#fieldControls input')].filter(i=>+i.value>0).map(i=>i.id.replace('field-','')));
 ok('default_beds',R.defaults.sort().join()==='forest-leaves,takayama-river');
 await pg.click('#play');await pg.waitForTimeout(2500);
+await pg.evaluate(()=>{const d=document.getElementById('devPanel');if(d)d.open=true}); // v0.53：確認・開発用の欄は畳んである
 for(const mode of ['pcm','compat']){await pg.selectOption('#sourceMode',mode);for(const [id,sec] of Object.entries(NEW)){const d=await pg.evaluate(async id=>{try{const buf=await __bioDebug.loadOne(id);return {ok:true,dur:buf.duration,ch:buf.numberOfChannels}}catch(e){return {ok:false,e:e.message}}},id);R[mode+':'+id]=d;ok(mode+'_'+id,d.ok&&Math.abs(d.dur-sec)<0.3&&d.ch===(mode==='pcm'?2:1))}}
 await pg.selectOption('#sourceMode','pcm');
 // 販売・リール用（BY-SAを除く）でも既定の環境層が鳴る

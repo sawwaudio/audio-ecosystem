@@ -49,6 +49,19 @@
     "gain": 1.3794616472892451,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/blackbird.mp3",
+    "bytes": 402119,
+    "sha256": "9d50b2e194229942d77ca51aa1cea4330e529ce39a1f32d5e7685f88c67a77f0",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 31.294694,
+    "lossless": false,
+    "gain": 1.3794616472892451,
+    "provenance": "配信用 FLAC（blackbird.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "american-field-cricket": {
@@ -98,6 +111,19 @@
     "gain": 2.414916231041813,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/american-field-cricket.mp3",
+    "bytes": 214490,
+    "sha256": "722442641acd2ba9372979f89e1b49c1d6da7e4c4dd329ab2c111c6c1fd4a694",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 10.501224,
+    "lossless": false,
+    "gain": 2.414916231041813,
+    "provenance": "配信用 FLAC（american-field-cricket.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "barking-treefrog": {
@@ -147,6 +173,19 @@
     "gain": 0.7681404447748367,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0112>0dBFSのため係数0.988850で格納し再生ゲインで相殺。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/barking-treefrog.mp3",
+    "bytes": 553359,
+    "sha256": "f9f18ff762fe775ceab7eff13b172530e478c7f797c0ab5b0e7b87ab01ff8a01",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 43.049796,
+    "lossless": false,
+    "gain": 0.7681404447748367,
+    "provenance": "配信用 FLAC（barking-treefrog.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "autumn-insects": {
@@ -196,6 +235,19 @@
     "gain": 0.7535715733579947,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0021>0dBFSのため係数0.997844で格納し再生ゲインで相殺。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/autumn-insects.mp3",
+    "bytes": 83565,
+    "sha256": "1ad9d17a47a99862b5d2d9f931c5fccf8d131e825f107a85e8fd5479390780c1",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 16000,
+    "channels": 1,
+    "duration": 16.092,
+    "lossless": false,
+    "gain": 0.7535715733579947,
+    "provenance": "配信用 FLAC（autumn-insects.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "cicada": {
@@ -245,6 +297,19 @@
     "gain": 0.9508490028438619,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/cicada.mp3",
+    "bytes": 1113369,
+    "sha256": "6ef82453c9f2f73ced31ec9da7f3d4140b5e0ec77da6394cc526963217ff9b47",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 92.917551,
+    "lossless": false,
+    "gain": 0.9508490028438619,
+    "provenance": "配信用 FLAC（cicada.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "higurashi": {
@@ -294,6 +359,19 @@
     "gain": 2.3836349172354674,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/higurashi.mp3",
+    "bytes": 1216553,
+    "sha256": "eecf1397b69056de15f90a4fae2089ec8c5a914604e008aa28002942f4a3669d",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 96.313469,
+    "lossless": false,
+    "gain": 2.3836349172354674,
+    "provenance": "配信用 FLAC（higurashi.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "niiniizemi": {
@@ -343,6 +421,19 @@
     "gain": 2.539791544500989,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/niiniizemi.mp3",
+    "bytes": 582077,
+    "sha256": "3c4194b99e8bb8f925da9eecf6729b8182bb559ba31d8b43c634b4ce08f16804",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 37.590204,
+    "lossless": false,
+    "gain": 2.539791544500989,
+    "provenance": "配信用 FLAC（niiniizemi.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "tsukutsukuboshi": {
@@ -392,6 +483,19 @@
     "gain": 1.4829558057205214,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/tsukutsukuboshi.mp3",
+    "bytes": 483114,
+    "sha256": "59d78bd5f601cae7797cc9c9f2a874a92a1d5ddff14b3dafbdce13017783a865",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 39.131429,
+    "lossless": false,
+    "gain": 1.4829558057205214,
+    "provenance": "配信用 FLAC（tsukutsukuboshi.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "minminzemi": {
@@ -441,6 +545,19 @@
     "gain": 1.4231717753983586,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/minminzemi.mp3",
+    "bytes": 145776,
+    "sha256": "f01aab96a1c3543c7d4d3c7e5cc350e67db288470e6550f7735a4f7a5ff91ecb",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 11025,
+    "channels": 1,
+    "duration": 35.996735,
+    "lossless": false,
+    "gain": 1.4231717753983586,
+    "provenance": "配信用 FLAC（minminzemi.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、11024Hz→11025Hz。"
    }
   },
   "japanese-bush-warbler": {
@@ -490,6 +607,19 @@
     "gain": 0.5189058330748547,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/japanese-bush-warbler.mp3",
+    "bytes": 14872,
+    "sha256": "ca0342b550d87fe52cc9df1b8990beef8d099349270699bf3fd4c5c1deab2ba3",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 11025,
+    "channels": 1,
+    "duration": 4.127347,
+    "lossless": false,
+    "gain": 0.5189058330748547,
+    "provenance": "配信用 FLAC（japanese-bush-warbler.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、11024Hz→11025Hz。"
    }
   },
   "hototogisu": {
@@ -539,6 +669,19 @@
     "gain": 1.0463800405554917,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/hototogisu.mp3",
+    "bytes": 23661,
+    "sha256": "1b43d727cf670f5bcb675ac4907e16059e8298bf8b6b4d5d785e56e51ca64adf",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 8000,
+    "channels": 1,
+    "duration": 6.84,
+    "lossless": false,
+    "gain": 1.0463800405554917,
+    "provenance": "配信用 FLAC（hototogisu.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、7812Hz→8000Hz。"
    }
   },
   "tide-rocks": {
@@ -588,6 +731,19 @@
     "gain": 1.4019136457261914,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/tide-rocks.mp3",
+    "bytes": 839524,
+    "sha256": "6ed6f421f64e94031c5a3ef0436e36f8a6e747403dd643cb8290a08d820c2e38",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 30.432653,
+    "lossless": false,
+    "gain": 1.4019136457261914,
+    "provenance": "配信用 FLAC（tide-rocks.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "rocky-beach": {
@@ -637,6 +793,19 @@
     "gain": 11.371018997350557,
     "lossless": false,
     "provenance": "opus原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/rocky-beach.mp3",
+    "bytes": 69981,
+    "sha256": "3c710686547b4935ffa9f58b461fc726803a14fa3db6711d3403eced6378478f",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 1,
+    "duration": 9.984,
+    "lossless": false,
+    "gain": 11.371018997350557,
+    "provenance": "配信用 FLAC（rocky-beach.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "kajika-frog": {
@@ -686,6 +855,19 @@
     "gain": 3.6805520278635093,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/kajika-frog.mp3",
+    "bytes": 311382,
+    "sha256": "7095ebecc34485dccec3870ecad29394e69c79d7d6f49e5a89d7ac20a8f67f85",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 23.013878,
+    "lossless": false,
+    "gain": 3.6805520278635093,
+    "provenance": "配信用 FLAC（kajika-frog.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "brown-eared-bulbul": {
@@ -735,6 +917,19 @@
     "gain": 2.0026716209809035,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/brown-eared-bulbul.mp3",
+    "bytes": 56349,
+    "sha256": "943f2ef043f8db953e070c0eeb9958c8b8e2478c3d190662d2629d5ec2cdb8bf",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 1,
+    "duration": 5.448,
+    "lossless": false,
+    "gain": 2.0026716209809035,
+    "provenance": "配信用 FLAC（brown-eared-bulbul.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "autumn-insects-2": {
@@ -784,6 +979,19 @@
     "gain": 0.7826771662691607,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0386>0dBFSのため係数0.962761で格納し再生ゲインで相殺。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/autumn-insects-2.mp3",
+    "bytes": 44973,
+    "sha256": "fd529431de38ca1bdb717a4b8e7be8e4023856ff23af848bc0ae680720c483c0",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 16000,
+    "channels": 1,
+    "duration": 9.072,
+    "lossless": false,
+    "gain": 0.7826771662691607,
+    "provenance": "配信用 FLAC（autumn-insects-2.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "tree-cricket-europe": {
@@ -833,6 +1041,19 @@
     "gain": 0.6020242760149697,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/tree-cricket-europe.mp3",
+    "bytes": 580961,
+    "sha256": "25569657a218c364626ef514cb552e359aa68c90d3dddc78aebc2d1b282a97ec",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 25.6,
+    "lossless": false,
+    "gain": 0.6020242760149697,
+    "provenance": "配信用 FLAC（tree-cricket-europe.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "field-cricket-europe": {
@@ -882,6 +1103,19 @@
     "gain": 0.5199574068211846,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 復号ピーク1.0944>0dBFSのため係数0.913672で格納し再生ゲインで相殺。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/field-cricket-europe.mp3",
+    "bytes": 819951,
+    "sha256": "dfca30014d2372aff7cf731dcd5934509a046b5a5e9c37f34ea972d9a6e9e0a4",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 32.20898,
+    "lossless": false,
+    "gain": 0.5199574068211846,
+    "provenance": "配信用 FLAC（field-cricket-europe.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "river-esk": {
@@ -931,6 +1165,19 @@
     "gain": 0.8421781756511812,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/river-esk.mp3",
+    "bytes": 520781,
+    "sha256": "6242a97684609c94256eda4d27f8985cf8b1e488c06a08b156cfc9d2ffedb0ea",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 27.689796,
+    "lossless": false,
+    "gain": 0.8421781756511812,
+    "provenance": "配信用 FLAC（river-esk.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "forest-leaves": {
@@ -980,6 +1227,19 @@
     "gain": 0.39127861823564736,
     "lossless": true,
     "provenance": "FLAC原本の可逆復号（ビット完全） 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/forest-leaves.mp3",
+    "bytes": 478237,
+    "sha256": "fe9cc99d0873af6a865d06a7e604400c09add4ea5c5a4d58785cb59575ea22d2",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 18.050612,
+    "lossless": false,
+    "gain": 0.39127861823564736,
+    "provenance": "配信用 FLAC（forest-leaves.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "forest-wind": {
@@ -1029,6 +1289,19 @@
     "gain": 2.8551222497724,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/forest-wind.mp3",
+    "bytes": 1025709,
+    "sha256": "efa7cd170eaa0816a287169e3b4c283e76cf6de45c822505e46d9c8db679c5d4",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 60.504,
+    "lossless": false,
+    "gain": 2.8551222497724,
+    "provenance": "配信用 FLAC（forest-wind.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "rain-field": {
@@ -1078,6 +1351,19 @@
     "gain": 1.1275076060918223,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/rain-field.mp3",
+    "bytes": 63462,
+    "sha256": "8905fbc2edf8c4d9fbffac568a9805abb20769c48069f07a6ec043e2bac68dc3",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 10.370612,
+    "lossless": false,
+    "gain": 1.1275076060918223,
+    "provenance": "配信用 FLAC（rain-field.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "fire-field": {
@@ -1127,6 +1413,19 @@
     "gain": 2.0060333455401604,
     "lossless": false,
     "provenance": "vorbis原本の復号PCM。原本と同等の情報量で、非圧縮マスターではない。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/fire-field.mp3",
+    "bytes": 329569,
+    "sha256": "01f71bda3f003826403d4e0ae54291eecdc0a8a50b78de848e6694be58616022",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.521633,
+    "lossless": false,
+    "gain": 2.0060333455401604,
+    "provenance": "配信用 FLAC（fire-field.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "gampsocleis-glabra": {
@@ -1300,6 +1599,19 @@
     "gain": 5.49643929115026,
     "lossless": true,
     "provenance": "原本WAV（24-bit・96000Hz）のサンプルをそのまま切り出した抜粋（10秒〜55秒）。ビット完全。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/kashiwa-insects.mp3",
+    "bytes": 1036845,
+    "sha256": "9ae685e661713360c0f20e130f34773ea5830fa65d36ef2e136dcad0caf50ef8",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 45.024,
+    "lossless": false,
+    "gain": 5.49643929115026,
+    "provenance": "配信用 FLAC（kashiwa-insects.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "bamboo-stream": {
@@ -1338,6 +1650,19 @@
     "gain": 7.850067010999555,
     "lossless": true,
     "provenance": "原本WAV（24-bit・48000Hz）のサンプルをそのまま切り出した抜粋（106秒〜151秒）。ビット完全。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/bamboo-stream.mp3",
+    "bytes": 943821,
+    "sha256": "1695e5ce891494aece135c898d0e308492db30db3c0239146cb7afa6f7e1718e",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 45.024,
+    "lossless": false,
+    "gain": 7.850067010999555,
+    "provenance": "配信用 FLAC（bamboo-stream.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "ricefield-frogs": {
@@ -1376,6 +1701,19 @@
     "gain": 0.32518655168680016,
     "lossless": true,
     "provenance": "原本WAV（24-bit・48000Hz）のサンプルをそのまま切り出した抜粋（98秒〜143秒）。ビット完全。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/ricefield-frogs.mp3",
+    "bytes": 1472781,
+    "sha256": "14281001b98740302434f604f004d9dc0ecdc0ea33ff1d42ee1d6ddefb26f248",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 45.024,
+    "lossless": false,
+    "gain": 0.32518655168680016,
+    "provenance": "配信用 FLAC（ricefield-frogs.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "kyoto-rain": {
@@ -1414,6 +1752,19 @@
     "gain": 0.5299640106453238,
     "lossless": true,
     "provenance": "原本WAV（24-bit・48000Hz）のサンプルをそのまま切り出した抜粋（480秒〜525秒）。ビット完全。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/kyoto-rain.mp3",
+    "bytes": 875085,
+    "sha256": "c97747ad27dccc6bcc7b88621fe3b16d6e2154ff38afa26a48ea7bed7462ce9b",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 45.024,
+    "lossless": false,
+    "gain": 0.5299640106453238,
+    "provenance": "配信用 FLAC（kyoto-rain.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "takayama-river": {
@@ -1452,6 +1803,19 @@
     "gain": 0.7258795649502465,
     "lossless": true,
     "provenance": "原本（96000Hz）からサンプル単位でそのまま切り出し（再量子化・リサンプルなし）した抜粋（53秒〜98秒）。ビット完全。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/takayama-river.mp3",
+    "bytes": 558909,
+    "sha256": "6abfe78e0d575ddfa3ae4a2f04af30702d497cc27c24aa0942bfca6a473377a1",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 45.024,
+    "lossless": false,
+    "gain": 0.7258795649502465,
+    "provenance": "配信用 FLAC（takayama-river.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "california-stream": {
@@ -1490,6 +1854,19 @@
     "gain": 0.5843316044447049,
     "lossless": true,
     "provenance": "原本（48000Hz）からサンプル単位でそのまま切り出し（再量子化・リサンプルなし）した抜粋（1秒〜38秒）。ビット完全。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/california-stream.mp3",
+    "bytes": 840813,
+    "sha256": "e7d75a41d601a1f63efb6c798cb61695279c4c2509ffe314e6f5803a485c43e0",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 37.032,
+    "lossless": false,
+    "gain": 0.5843316044447049,
+    "provenance": "配信用 FLAC（california-stream.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "midwest-woods-wind": {
@@ -1528,6 +1905,19 @@
     "gain": 3.012077138415515,
     "lossless": true,
     "provenance": "原本（96096Hz）からサンプル単位でそのまま切り出し（再量子化・リサンプルなし）した抜粋（227秒〜272秒）。ビット完全。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/midwest-woods-wind.mp3",
+    "bytes": 935661,
+    "sha256": "22f3ed1f246912f4248e0768f7cb12188e9fc4b5d890bc2fb13db6860d12c393",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 45.024,
+    "lossless": false,
+    "gain": 3.012077138415515,
+    "provenance": "配信用 FLAC（midwest-woods-wind.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96096Hz→48000Hz。"
    }
   },
   "tokyo-park-cicadas": {
@@ -1566,6 +1956,19 @@
     "gain": 1.9679504616941388,
     "lossless": false,
     "provenance": "原本（48000Hz）から24-bitへ変換して切り出し（原本はpcm_f32le 32-bit。リサンプルなし）した抜粋（3秒〜48秒）。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/tokyo-park-cicadas.mp3",
+    "bytes": 1089069,
+    "sha256": "e76f771a4c246766869db527f116666eaf6dbd27b1c8270744eb27fc6bf2d548",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 45.024,
+    "lossless": false,
+    "gain": 1.9679504616941388,
+    "provenance": "配信用 FLAC（tokyo-park-cicadas.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "nakameguro-cicadas": {
@@ -1604,6 +2007,19 @@
     "gain": 0.37514650785699644,
     "lossless": false,
     "provenance": "原本（96000Hz）から24-bitへ変換して切り出し（原本はpcm_s32be 32-bit。リサンプルなし）した抜粋（158秒〜203秒）。原本全長はオーナーのMacに保管。 配信はFLAC（可逆圧縮。復号するとこのPCMとビット単位で同一）。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/nakameguro-cicadas.mp3",
+    "bytes": 1104045,
+    "sha256": "13408a14fbd27a8ff5b626d23dab2f859a97f88e6982a1e52298b1a8e2b9f056",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 45.024,
+    "lossless": false,
+    "gain": 0.37514650785699644,
+    "provenance": "配信用 FLAC（nakameguro-cicadas.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "tawny-owl": {
@@ -1642,6 +2058,19 @@
     "gain": 0.9805933382653269,
     "lossless": true,
     "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（11.25秒〜36.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/tawny-owl.mp3",
+    "bytes": 490619,
+    "sha256": "560345ccbcdfbdac225f3bae2c35d17f1cc74e0c9d13d8d4ce852096722b1f4b",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 25.051429,
+    "lossless": false,
+    "gain": 0.9805933382653269,
+    "provenance": "配信用 FLAC（tawny-owl.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "european-nightjar": {
@@ -1680,6 +2109,19 @@
     "gain": 0.39483337740607705,
     "lossless": true,
     "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/european-nightjar.mp3",
+    "bytes": 293797,
+    "sha256": "c75c000513f18040197dff24260624a61ad17fa5f00467ee15651a1a876d0a85",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 18.155102,
+    "lossless": false,
+    "gain": 0.39483337740607705,
+    "provenance": "配信用 FLAC（european-nightjar.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "eurasian-wren": {
@@ -1718,6 +2160,19 @@
     "gain": 2.651295135103241,
     "lossless": true,
     "provenance": "原本（44100Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（51.5秒〜76.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/eurasian-wren.mp3",
+    "bytes": 547088,
+    "sha256": "2226e691985440c44c2e77e911f8d1fa262a1a1dd6160384fb6225d7185afb9c",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 25.051429,
+    "lossless": false,
+    "gain": 2.651295135103241,
+    "provenance": "配信用 FLAC（eurasian-wren.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "eurasian-wren-ireland": {
@@ -1756,6 +2211,19 @@
     "gain": 0.959945695320249,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（26.75秒〜51.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/eurasian-wren-ireland.mp3",
+    "bytes": 536301,
+    "sha256": "271fcc0203306885f4096f86668a27639307c8c683a4450ab95b8006c3faa65d",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 0.959945695320249,
+    "provenance": "配信用 FLAC（eurasian-wren-ireland.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "eurasian-wren-alarm": {
@@ -1794,6 +2262,19 @@
     "gain": 3.4306162348948686,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（5.5秒〜30.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/eurasian-wren-alarm.mp3",
+    "bytes": 160005,
+    "sha256": "d0240f8cb465781d36e5d8f763986634857c57173eb034238ec2de0c095f1936",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 1,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 3.4306162348948686,
+    "provenance": "配信用 FLAC（eurasian-wren-alarm.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "song-thrush": {
@@ -1832,6 +2313,19 @@
     "gain": 4.419437379243675,
     "lossless": false,
     "provenance": "原本（44100Hz・32-bit・1ch）から切り出し（pcm_f32le 32-bit → 24-bit 整数に変換）した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/song-thrush.mp3",
+    "bytes": 265856,
+    "sha256": "f6174e85e78e0eac904a44d1ab77daccb4c2562e0b54af5bad8f3f5e5e900531",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.051429,
+    "lossless": false,
+    "gain": 4.419437379243675,
+    "provenance": "配信用 FLAC（song-thrush.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "song-thrush-2": {
@@ -1870,6 +2364,19 @@
     "gain": 1.7464803039239878,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（22秒〜47秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/song-thrush-2.mp3",
+    "bytes": 634701,
+    "sha256": "23a9b9432281139c9a49fe654bb3be58901a6b3db7d3626052e9f1ee5b8affff",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 1.7464803039239878,
+    "provenance": "配信用 FLAC（song-thrush-2.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "nightingale": {
@@ -1908,6 +2415,19 @@
     "gain": 1.6686635617374463,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（14秒〜39秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/nightingale.mp3",
+    "bytes": 196845,
+    "sha256": "af1063be6ae447b447aa7176cec6bf33410087f2caf7794d2b4a0a9ffc2ce03d",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 1,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 1.6686635617374463,
+    "provenance": "配信用 FLAC（nightingale.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "nightingale-russia": {
@@ -1946,6 +2466,19 @@
     "gain": 1.2450608098902896,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（41秒〜66秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/nightingale-russia.mp3",
+    "bytes": 587661,
+    "sha256": "e642d4757bc2868d955d3e7fdbc5dae07e4f0f5f4f72286b13b5ab37a25ea44a",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 1.2450608098902896,
+    "provenance": "配信用 FLAC（nightingale-russia.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "nightingale-vendee": {
@@ -1984,6 +2517,19 @@
     "gain": 1.9410075630964647,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（399.25秒〜424.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/nightingale-vendee.mp3",
+    "bytes": 578157,
+    "sha256": "e00a13b4b727fa90e55333d2654383149ede3fbb4c62f09b7ca0c6e69de6e74e",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 1.9410075630964647,
+    "provenance": "配信用 FLAC（nightingale-vendee.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "uguisu-yokohama": {
@@ -2022,6 +2568,19 @@
     "gain": 1.3682562700167429,
     "lossless": true,
     "provenance": "原本（48000Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/uguisu-yokohama.mp3",
+    "bytes": 424845,
+    "sha256": "32d3fd49d05558022fc0130139952a3d069d9818a510380138d00bf46fce86e4",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 1.3682562700167429,
+    "provenance": "配信用 FLAC（uguisu-yokohama.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "loon-1": {
@@ -2060,6 +2619,19 @@
     "gain": 1.5587394709029576,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（6.25秒〜31.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/loon-1.mp3",
+    "bytes": 480909,
+    "sha256": "462edea87b14da04f823008c2c9620db85973fe40b14daa230e2808bd2b2cec3",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 1.5587394709029576,
+    "provenance": "配信用 FLAC（loon-1.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "loon-2": {
@@ -2098,6 +2670,19 @@
     "gain": 2.0654038638249665,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（37.75秒〜62.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/loon-2.mp3",
+    "bytes": 507117,
+    "sha256": "3ea82d862032d83b3c1e17a0a3ef50ee126efc3b8ca47e283180238fe890af5d",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 2.0654038638249665,
+    "provenance": "配信用 FLAC（loon-2.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "loon-3": {
@@ -2136,6 +2721,19 @@
     "gain": 2.532538851845595,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（67秒〜92秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/loon-3.mp3",
+    "bytes": 404157,
+    "sha256": "79489e392cf74c61411948818fa5f7fda33a6cdf7e33c9b149c82f2f6b68c049",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 2.532538851845595,
+    "provenance": "配信用 FLAC（loon-3.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "lyrebird": {
@@ -2174,6 +2772,19 @@
     "gain": 1.564760650772027,
     "lossless": true,
     "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/lyrebird.mp3",
+    "bytes": 783918,
+    "sha256": "2cb3d255c0e3dc179c0a1eb79541506a04bed259f203cf4a2a5f74c751e654b3",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 28.499592,
+    "lossless": false,
+    "gain": 1.564760650772027,
+    "provenance": "配信用 FLAC（lyrebird.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "lyrebird-healesville": {
@@ -2212,6 +2823,19 @@
     "gain": 0.45276417384306167,
     "lossless": true,
     "provenance": "原本（48000Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/lyrebird-healesville.mp3",
+    "bytes": 318429,
+    "sha256": "3b1bcfa542fae93fe38092ea8202e3fd2063b80d4a05fd96eaac6ad363139eb1",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 0.45276417384306167,
+    "provenance": "配信用 FLAC（lyrebird-healesville.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "woodpecker": {
@@ -2250,6 +2874,19 @@
     "gain": 2.473572335015398,
     "lossless": true,
     "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（4.75秒〜29.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/woodpecker.mp3",
+    "bytes": 529400,
+    "sha256": "b92df0432250ebb0bdf346f649b6a4a209469c6042d730592d6ab303b3c85f62",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 25.051429,
+    "lossless": false,
+    "gain": 2.473572335015398,
+    "provenance": "配信用 FLAC（woodpecker.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "woodpecker-leipzig": {
@@ -2288,6 +2925,19 @@
     "gain": 9.705668046851567,
     "lossless": false,
     "provenance": "原本（192000Hz・24-bit・2ch）から切り出し（192000Hz → 96000Hz に変換（soxr））した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/woodpecker-leipzig.mp3",
+    "bytes": 404925,
+    "sha256": "795f2a4bbfd9718082e9a5fc64ab66e52e293ce2d94dcdd20d7d4f3b2dd20548",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 9.705668046851567,
+    "provenance": "配信用 FLAC（woodpecker-leipzig.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "woodpecker-illinois": {
@@ -2326,6 +2976,19 @@
     "gain": 1.765999780917603,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（9.25秒〜34.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/woodpecker-illinois.mp3",
+    "bytes": 273285,
+    "sha256": "138c6f20fdcbfd21951dc84eb8970d4e570b9af2852037dacca28614939708a6",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 1,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 1.765999780917603,
+    "provenance": "配信用 FLAC（woodpecker-illinois.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "scops-owls-crete": {
@@ -2364,6 +3027,19 @@
     "gain": 2.098890876623805,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（27秒〜52秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/scops-owls-crete.mp3",
+    "bytes": 574221,
+    "sha256": "f55d88465c9a21e0c45f9fc6bb235feb71f1481f0b8123bfd1dfccb7b076f1fd",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 2.098890876623805,
+    "provenance": "配信用 FLAC（scops-owls-crete.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "edge-forest-nl": {
@@ -2402,6 +3078,19 @@
     "gain": 1.2314899780681492,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/edge-forest-nl.mp3",
+    "bytes": 498093,
+    "sha256": "ddeaad18550a1a02e8f7f94728a46f3e8979e378ddddca9b0c0742d6e4b0bab9",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 1.2314899780681492,
+    "provenance": "配信用 FLAC（edge-forest-nl.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "dawn-chorus-ashdown": {
@@ -2440,6 +3129,19 @@
     "gain": 3.147914373173224,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（250秒〜290秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/dawn-chorus-ashdown.mp3",
+    "bytes": 844989,
+    "sha256": "729b8882fdc73047d835740569f6d3b52fdfb57a33fba01d68110c91ba9f6439",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 3.147914373173224,
+    "provenance": "配信用 FLAC（dawn-chorus-ashdown.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "dawn-chorus-brittany": {
@@ -2478,6 +3180,19 @@
     "gain": 8.87286373960286,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（128秒〜168秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/dawn-chorus-brittany.mp3",
+    "bytes": 856173,
+    "sha256": "a64242f9eb7e5bafbf7b77fe99ce6700f8031e2b03ef6df54c6e6bad6a277447",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 8.87286373960286,
+    "provenance": "配信用 FLAC（dawn-chorus-brittany.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "dawn-chorus-provence": {
@@ -2516,6 +3231,19 @@
     "gain": 0.8452308300291811,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（42.75秒〜82.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/dawn-chorus-provence.mp3",
+    "bytes": 921069,
+    "sha256": "e6f4270907cac55f1554a5706f0f83050915ac4aa01a4ef8f078c361958ace82",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 0.8452308300291811,
+    "provenance": "配信用 FLAC（dawn-chorus-provence.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "fujinomiya-forest-birds": {
@@ -2554,6 +3282,19 @@
     "gain": 5.875732067564736,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（11.5秒〜51.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/fujinomiya-forest-birds.mp3",
+    "bytes": 816621,
+    "sha256": "475a0400c80ddde702faa13f751ae93011bed1dfa582966f96aae5a8467f70b2",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 5.875732067564736,
+    "provenance": "配信用 FLAC（fujinomiya-forest-birds.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "fox": {
@@ -2592,6 +3333,19 @@
     "gain": 1.3011599230875086,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/fox.mp3",
+    "bytes": 528141,
+    "sha256": "feaf7d5b518141c571b27de99b85a72a62968d90da7d11d21e8d3e23a893ec69",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 1.3011599230875086,
+    "provenance": "配信用 FLAC（fox.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "wolf": {
@@ -2630,6 +3384,19 @@
     "gain": 0.8566741560474473,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（13.5秒〜38.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/wolf.mp3",
+    "bytes": 585933,
+    "sha256": "e9ed913ac644755a3cb6617c333a9bb2e59236ccf5718110175265d102b361ab",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 0.8566741560474473,
+    "provenance": "配信用 FLAC（wolf.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "roe-deer": {
@@ -2668,6 +3435,19 @@
     "gain": 5.1271770372573044,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（47.5秒〜72.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/roe-deer.mp3",
+    "bytes": 535149,
+    "sha256": "e351f31b7d947a22fc76828c429baeebe56d412dd244a46217094bd2cb91f4f3",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 5.1271770372573044,
+    "provenance": "配信用 FLAC（roe-deer.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "siamang": {
@@ -2706,6 +3486,19 @@
     "gain": 0.5637110319379253,
     "lossless": true,
     "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（9.25秒〜34.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/siamang.mp3",
+    "bytes": 508196,
+    "sha256": "cbfbfd45a9cb2cc645c53b2ca34cfb8d12a1276c94c9743996f4000a6872cfe4",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 25.051429,
+    "lossless": false,
+    "gain": 0.5637110319379253,
+    "provenance": "配信用 FLAC（siamang.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "siamang-belgium": {
@@ -2744,6 +3537,19 @@
     "gain": 1.6425900825900364,
     "lossless": true,
     "provenance": "原本（48000Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（3.25秒〜28.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/siamang-belgium.mp3",
+    "bytes": 291117,
+    "sha256": "bc6c03326d0b44f3e87a1a66611488b7e8d4d9e95e022cd4bf9977fa9788dac5",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 1.6425900825900364,
+    "provenance": "配信用 FLAC（siamang-belgium.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "howler-belize": {
@@ -2782,6 +3588,19 @@
     "gain": 0.48969694972804556,
     "lossless": true,
     "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（18.25秒〜43.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/howler-belize.mp3",
+    "bytes": 558159,
+    "sha256": "a8f39d67f084f38eb5b1f39122c0984b5b0bbe374921479df2b5d3774223dcc2",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 25.051429,
+    "lossless": false,
+    "gain": 0.48969694972804556,
+    "provenance": "配信用 FLAC（howler-belize.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "elephant-zoo": {
@@ -2820,6 +3639,19 @@
     "gain": 0.6545660130416229,
     "lossless": true,
     "provenance": "原本（48000Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/elephant-zoo.mp3",
+    "bytes": 100485,
+    "sha256": "ebce9ced14bf86552273db6037a31dfd81cd06f2c5ef0bf17e9079af0af124b1",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 7.824,
+    "lossless": false,
+    "gain": 0.6545660130416229,
+    "provenance": "配信用 FLAC（elephant-zoo.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "sea-lion-valparaiso": {
@@ -2858,6 +3690,19 @@
     "gain": 1.1105210711559046,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（242.5秒〜267.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/sea-lion-valparaiso.mp3",
+    "bytes": 501837,
+    "sha256": "071e282d50c173e570767dc71e7bf540d70dfc731049d556cabed30b14bfb8b8",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 1.1105210711559046,
+    "provenance": "配信用 FLAC（sea-lion-valparaiso.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "sea-lion-valdivia": {
@@ -2896,6 +3741,19 @@
     "gain": 0.7856741093398858,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/sea-lion-valdivia.mp3",
+    "bytes": 75333,
+    "sha256": "deea040f86ee68ffe84f47e0ae219c297ec031a91a8db8f234e34ef6d52c71dd",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 3.6,
+    "lossless": false,
+    "gain": 0.7856741093398858,
+    "provenance": "配信用 FLAC（sea-lion-valdivia.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "bats-backyard": {
@@ -2934,6 +3792,19 @@
     "gain": 4.3936322750129095,
     "lossless": true,
     "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/bats-backyard.mp3",
+    "bytes": 587853,
+    "sha256": "051ebac18c41c2d95dc2c91de6b5fcd3bf0fe2d220ea45af125fbf473595db93",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 19.722449,
+    "lossless": false,
+    "gain": 4.3936322750129095,
+    "provenance": "配信用 FLAC（bats-backyard.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "bat-batbox": {
@@ -2972,6 +3843,19 @@
     "gain": 1.793765541343942,
     "lossless": true,
     "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（18.75秒〜43.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/bat-batbox.mp3",
+    "bytes": 522889,
+    "sha256": "f44aa18e402d8dbe98bc910abee80511d21c9f92834abdab4f748771d17c9ce0",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 25.051429,
+    "lossless": false,
+    "gain": 1.793765541343942,
+    "provenance": "配信用 FLAC（bat-batbox.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "bat-slowed": {
@@ -3010,6 +3894,19 @@
     "gain": 2.4720383704059445,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（11.25秒〜36.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/bat-slowed.mp3",
+    "bytes": 167661,
+    "sha256": "0fef94b7a865f0573365729c9336048a01b83a282713666809804b3952a110fb",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 2.4720383704059445,
+    "provenance": "配信用 FLAC（bat-slowed.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "dolphin": {
@@ -3048,6 +3945,19 @@
     "gain": 2.135284784308149,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（15.75秒〜40.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/dolphin.mp3",
+    "bytes": 338829,
+    "sha256": "bdbccd60c9a965e96e78d4092dc215004a98eeff3745d10f8538ba3d9a194729",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 1,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 2.135284784308149,
+    "provenance": "配信用 FLAC（dolphin.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "atlantic-spotted-dolphin": {
@@ -3086,6 +3996,19 @@
     "gain": 0.788966430765915,
     "lossless": true,
     "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（83.75秒〜108.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/atlantic-spotted-dolphin.mp3",
+    "bytes": 499899,
+    "sha256": "1480d5cfff15ce926cd456751fb852052b130627cafbe851e2e3724518275da9",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 25.051429,
+    "lossless": false,
+    "gain": 0.788966430765915,
+    "provenance": "配信用 FLAC（atlantic-spotted-dolphin.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "amazon-river-dolphins": {
@@ -3124,6 +4047,19 @@
     "gain": 0.9810373947747865,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（37.5秒〜62.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/amazon-river-dolphins.mp3",
+    "bytes": 476637,
+    "sha256": "07f137e3508160d4eee58ad98d8188e1e0805956358629e696695eb947ddab00",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 0.9810373947747865,
+    "provenance": "配信用 FLAC（amazon-river-dolphins.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "humpback": {
@@ -3162,6 +4098,19 @@
     "gain": 1.3721761600565765,
     "lossless": true,
     "provenance": "原本（32000Hz・16-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（300.75秒〜325.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/humpback.mp3",
+    "bytes": 223389,
+    "sha256": "20d820342434df9a092e8ade057965d9e2f8bf81fbb12a22aac2b33c14d9e7db",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 32000,
+    "channels": 1,
+    "duration": 25.056,
+    "lossless": false,
+    "gain": 1.3721761600565765,
+    "provenance": "配信用 FLAC（humpback.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "treefrog-france": {
@@ -3200,6 +4149,19 @@
     "gain": 1.6834542839901439,
     "lossless": true,
     "provenance": "原本（44100Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/treefrog-france.mp3",
+    "bytes": 579189,
+    "sha256": "5f12d685f659d42355fcf2d683284300c1524f987c840c7ef20e5663835033e6",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 25.051429,
+    "lossless": false,
+    "gain": 1.6834542839901439,
+    "provenance": "配信用 FLAC（treefrog-france.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "common-toad": {
@@ -3238,6 +4200,19 @@
     "gain": 1.2319493660502165,
     "lossless": true,
     "provenance": "原本（48000Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/common-toad.mp3",
+    "bytes": 222813,
+    "sha256": "076d9c2a08299dacae2536ae9858b89792ddc9701e53bd66f3b25354113a96d8",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 11.376,
+    "lossless": false,
+    "gain": 1.2319493660502165,
+    "provenance": "配信用 FLAC（common-toad.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "small-frog-ojai": {
@@ -3276,6 +4251,19 @@
     "gain": 5.241016779714913,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/small-frog-ojai.mp3",
+    "bytes": 35709,
+    "sha256": "e26407de7a8171eb33717c4282977e0343bbd647bd7f6da9938993db5cd20406",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 1,
+    "duration": 3.456,
+    "lossless": false,
+    "gain": 5.241016779714913,
+    "provenance": "配信用 FLAC（small-frog-ojai.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "pacific-treefrog-chorus": {
@@ -3314,6 +4302,19 @@
     "gain": 0.7467361869369024,
     "lossless": false,
     "provenance": "原本（44100Hz・32-bit・2ch）から切り出し（pcm_s32le 32-bit → 24-bit 整数に変換）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/pacific-treefrog-chorus.mp3",
+    "bytes": 1094239,
+    "sha256": "5c0f43b3ff3e8ee7253f8d8ff2fbc957f241cf85d25642437787a0b3b36df04b",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 40.045714,
+    "lossless": false,
+    "gain": 0.7467361869369024,
+    "provenance": "配信用 FLAC（pacific-treefrog-chorus.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "owl-fox-brittany": {
@@ -3352,6 +4353,19 @@
     "gain": 3.1796025901988045,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（109.5秒〜134.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/owl-fox-brittany.mp3",
+    "bytes": 517101,
+    "sha256": "12a495f6a2f21990e319614508ac493bfedf4413ffc19a09d05d23294bd13eb5",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 3.1796025901988045,
+    "provenance": "配信用 FLAC（owl-fox-brittany.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "whales-orcas-norway": {
@@ -3390,6 +4404,19 @@
     "gain": 0.8673407428302089,
     "lossless": false,
     "provenance": "原本（48000Hz・32-bit・2ch）から切り出し（pcm_s32le 32-bit → 24-bit 整数に変換）した抜粋（214.25秒〜239.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/whales-orcas-norway.mp3",
+    "bytes": 526221,
+    "sha256": "d5e43565fe4659b2125986419b922e55d587acb9d2a4ebb1d9c26adf4477a3ca",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 0.8673407428302089,
+    "provenance": "配信用 FLAC（whales-orcas-norway.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "snapping-shrimp": {
@@ -3428,6 +4455,19 @@
     "gain": 3.4083097587891173,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（4.5秒〜44.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/snapping-shrimp.mp3",
+    "bytes": 1338381,
+    "sha256": "dee02a8e603afdd46da5acb14200e2cb21bd4ef5f1e3722b4cbf2bcb4ba32992",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 3.4083097587891173,
+    "provenance": "配信用 FLAC（snapping-shrimp.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "bullfrogs-hk": {
@@ -3466,6 +4506,19 @@
     "gain": 0.8487638192622114,
     "lossless": true,
     "provenance": "原本（44100Hz・16-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（5.75秒〜30.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/bullfrogs-hk.mp3",
+    "bytes": 259609,
+    "sha256": "838dc3679e55caadacf36e8029e2fe368c10cc7247ec9eeb6263d9829f888ac0",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 25.051429,
+    "lossless": false,
+    "gain": 0.8487638192622114,
+    "provenance": "配信用 FLAC（bullfrogs-hk.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "peepers-toads-ozarks": {
@@ -3504,6 +4557,19 @@
     "gain": 3.499116265257452,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（29.75秒〜69.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/peepers-toads-ozarks.mp3",
+    "bytes": 881181,
+    "sha256": "547fb5fbde72841d2348f12e299b42ff164f1b12942073f697d27b001395d8b7",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 3.499116265257452,
+    "provenance": "配信用 FLAC（peepers-toads-ozarks.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "treefrogs-newyork": {
@@ -3542,6 +4608,19 @@
     "gain": 0.9104892432546376,
     "lossless": true,
     "provenance": "原本（48000Hz・16-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/treefrogs-newyork.mp3",
+    "bytes": 966189,
+    "sha256": "f1f1877b5bfefef48b3bd94adf9c2b5084363de03e461735725194e0b53039bc",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 0.9104892432546376,
+    "provenance": "配信用 FLAC（treefrogs-newyork.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "frog-pond-netherlands": {
@@ -3580,6 +4659,19 @@
     "gain": 7.2937752702517225,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/frog-pond-netherlands.mp3",
+    "bytes": 867837,
+    "sha256": "33689ca330b28cf47053d2f88e55c6e82923dcd775b239a78a51bf0cbac2a13f",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 35.496,
+    "lossless": false,
+    "gain": 7.2937752702517225,
+    "provenance": "配信用 FLAC（frog-pond-netherlands.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "lake-frogs-katydids": {
@@ -3618,6 +4710,19 @@
     "gain": 5.167083785225003,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/lake-frogs-katydids.mp3",
+    "bytes": 1104717,
+    "sha256": "dd90d467a2a3aeebadef02013e2f5a790c592ff14aa0e3e6a0b79cb7960e8887",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 5.167083785225003,
+    "provenance": "配信用 FLAC（lake-frogs-katydids.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "utah-canyon-frogs": {
@@ -3656,6 +4761,19 @@
     "gain": 10.585176306498576,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（19.25秒〜59.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/utah-canyon-frogs.mp3",
+    "bytes": 809565,
+    "sha256": "f2e9f11aac48be9cbe0fa41f7a7db10eb63465bdc107746bd1e53a8c82e48405",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 10.585176306498576,
+    "provenance": "配信用 FLAC（utah-canyon-frogs.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "brazil-frog-chorus": {
@@ -3694,6 +4812,19 @@
     "gain": 6.446910895159815,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（37.25秒〜77.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/brazil-frog-chorus.mp3",
+    "bytes": 943245,
+    "sha256": "439f05993b074839cefb590b2afcd3d7eafdf40bdba410e71ff6e9ead51106e9",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 6.446910895159815,
+    "provenance": "配信用 FLAC（brazil-frog-chorus.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "amazon-night-jungle": {
@@ -3732,6 +4863,19 @@
     "gain": 1.1050780654770866,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/amazon-night-jungle.mp3",
+    "bytes": 935085,
+    "sha256": "f72c0da7d95aaed4a516e577fbe2c2d0bbbed2fb098a70a0371de439e03ae5d5",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 41.064,
+    "lossless": false,
+    "gain": 1.1050780654770866,
+    "provenance": "配信用 FLAC（amazon-night-jungle.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "podlaskie-spring-night": {
@@ -3770,6 +4914,19 @@
     "gain": 0.5710137036693917,
     "lossless": false,
     "provenance": "原本（192000Hz・32-bit・2ch）から切り出し（pcm_f32le 32-bit → 24-bit 整数に変換・192000Hz → 96000Hz に変換（soxr））した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/podlaskie-spring-night.mp3",
+    "bytes": 987213,
+    "sha256": "668da8043a3731007c296354585dd531da0da60f4098b6eed85a4dcd9173d27f",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 0.5710137036693917,
+    "provenance": "配信用 FLAC（podlaskie-spring-night.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "frog-creek-ojai": {
@@ -3808,6 +4965,19 @@
     "gain": 9.332675162887847,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（94.5秒〜134.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/frog-creek-ojai.mp3",
+    "bytes": 822285,
+    "sha256": "0ea2e298fbe6c2cb99b124ad9d9fbad82083a8e3a42d3d4b2370c318b9af1005",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 9.332675162887847,
+    "provenance": "配信用 FLAC（frog-creek-ojai.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "malaysian-frogs": {
@@ -3846,6 +5016,19 @@
     "gain": 1.476701165924238,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（34.25秒〜74.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/malaysian-frogs.mp3",
+    "bytes": 554925,
+    "sha256": "03dc886e769c5a28446637a77ffcacf2e298f0a11b5fb84f365dbe4bc8495066",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 1.476701165924238,
+    "provenance": "配信用 FLAC（malaysian-frogs.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "wetlands-night": {
@@ -3884,6 +5067,19 @@
     "gain": 1.0300973270042695,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（36.5秒〜76.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/wetlands-night.mp3",
+    "bytes": 877005,
+    "sha256": "334f8011b72e88fd68d6c5037b5662cf4febc310ff885db5d9a6de943a7e941f",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 1.0300973270042695,
+    "provenance": "配信用 FLAC（wetlands-night.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "amphibians-campsite": {
@@ -3922,6 +5118,19 @@
     "gain": 9.714836362304576,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（91.25秒〜131.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/amphibians-campsite.mp3",
+    "bytes": 823629,
+    "sha256": "4feadef73917e112dc900a871f5125a1139e3ae35686b6368b256a1367d7542c",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 9.714836362304576,
+    "provenance": "配信用 FLAC（amphibians-campsite.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "pond-hydrophone-essex": {
@@ -3960,6 +5169,19 @@
     "gain": 11.148640820819738,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（16.75秒〜56.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/pond-hydrophone-essex.mp3",
+    "bytes": 440205,
+    "sha256": "c6dbb587f0c2becc088c4f730273e560e5d619623996642bb35e85dc7ee97442",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 1,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 11.148640820819738,
+    "provenance": "配信用 FLAC（pond-hydrophone-essex.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "reedbed-pondlife": {
@@ -3998,6 +5220,19 @@
     "gain": 1.6705214953711434,
     "lossless": false,
     "provenance": "原本（96000Hz・32-bit・2ch）から切り出し（pcm_f32le 32-bit → 24-bit 整数に変換）した抜粋（313.25秒〜353.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/reedbed-pondlife.mp3",
+    "bytes": 861069,
+    "sha256": "d0c60616c80e070c13b370303f045925c7d6838912457b58e07aedaf9e8252f7",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 1.6705214953711434,
+    "provenance": "配信用 FLAC（reedbed-pondlife.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "garden-pond-hydrophone": {
@@ -4036,6 +5271,19 @@
     "gain": 9.418866824839085,
     "lossless": true,
     "provenance": "原本（44100Hz・24-bit・1ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/garden-pond-hydrophone.mp3",
+    "bytes": 544773,
+    "sha256": "9b8d53bfc188c301196e08074c8b13fe9c17c9c2fe3a4c2a2784d6d0906bff02",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 40.045714,
+    "lossless": false,
+    "gain": 9.418866824839085,
+    "provenance": "配信用 FLAC（garden-pond-hydrophone.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "titi-monkeys-tefe": {
@@ -4074,6 +5322,19 @@
     "gain": 0.4697937899488795,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜27秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/titi-monkeys-tefe.mp3",
+    "bytes": 616173,
+    "sha256": "84140406d53978446779e19a65dbab88bdc8b671566035060ef9128f8558a9ec",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 25.032,
+    "lossless": false,
+    "gain": 0.4697937899488795,
+    "provenance": "配信用 FLAC（titi-monkeys-tefe.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "tokyo-cicadas-afternoon": {
@@ -4112,6 +5373,19 @@
     "gain": 7.2372829866009845,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・6ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/tokyo-cicadas-afternoon.mp3",
+    "bytes": 519213,
+    "sha256": "8603a9902803c480f35bb4736a25cb0bf5e8efb329728643e0a2a249fb5dc7c8",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 23.112,
+    "lossless": false,
+    "gain": 7.2372829866009845,
+    "provenance": "配信用 FLAC（tokyo-cicadas-afternoon.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "crickets-washington": {
@@ -4150,6 +5424,19 @@
     "gain": 9.01174330248616,
     "lossless": true,
     "provenance": "原本（44100Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（108秒〜148秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/crickets-washington.mp3",
+    "bytes": 799681,
+    "sha256": "bd3c8e74422935586ed9d2c3b129d87192c3b859debd54a1c9ae5af35d6f97d3",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 40.045714,
+    "lossless": false,
+    "gain": 9.01174330248616,
+    "provenance": "配信用 FLAC（crickets-washington.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "night-woods-pennsylvania": {
@@ -4188,6 +5475,19 @@
     "gain": 3.4942869548662228,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/night-woods-pennsylvania.mp3",
+    "bytes": 888813,
+    "sha256": "3830124a5f05e2801973e6c3af443d0a120b9a8329cb15d1fbfd84ba9a024bf7",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 3.4942869548662228,
+    "provenance": "配信用 FLAC（night-woods-pennsylvania.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "night-insects-indiana": {
@@ -4226,6 +5526,19 @@
     "gain": 0.7776218668567774,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/night-insects-indiana.mp3",
+    "bytes": 1022253,
+    "sha256": "299bf2ec6be23ff496813fe29ceca1441e04f0731421ce2c938649be826a83e4",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 0.7776218668567774,
+    "provenance": "配信用 FLAC（night-insects-indiana.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "rain-loon-ontario": {
@@ -4264,6 +5577,19 @@
     "gain": 0.5946676814166719,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（116秒〜156秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/rain-loon-ontario.mp3",
+    "bytes": 852525,
+    "sha256": "f47419f5c9103bfcffa9bd678e3033c7750133a7129aa12e7c0ecb8948f6a5f2",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 0.5946676814166719,
+    "provenance": "配信用 FLAC（rain-loon-ontario.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "iceland-forest": {
@@ -4302,6 +5628,19 @@
     "gain": 8.481847118551167,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・4ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（159秒〜199秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/iceland-forest.mp3",
+    "bytes": 832269,
+    "sha256": "cf465f9198197658fb4adc19e4fca6d36177bfe24de142d3736bdc6e43cb49f0",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 8.481847118551167,
+    "provenance": "配信用 FLAC（iceland-forest.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "rock-tide-northumberland": {
@@ -4340,6 +5679,19 @@
     "gain": 0.4870093109316256,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（391秒〜431秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/rock-tide-northumberland.mp3",
+    "bytes": 840621,
+    "sha256": "9cc5a3f521f9352d2667668a4bd980ce0beb5a16b89277f1b61147a85d9d817a",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 0.4870093109316256,
+    "provenance": "配信用 FLAC（rock-tide-northumberland.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "forest-thunderstorm-hamburg": {
@@ -4378,6 +5730,19 @@
     "gain": 1.1232702063057116,
     "lossless": true,
     "provenance": "原本（44100Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（62秒〜102秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/forest-thunderstorm-hamburg.mp3",
+    "bytes": 801698,
+    "sha256": "518038ebc6aa6a4c61165aa95085635413e00783ce18d832c37eaed0f551834d",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 40.045714,
+    "lossless": false,
+    "gain": 1.1232702063057116,
+    "provenance": "配信用 FLAC（forest-thunderstorm-hamburg.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "stormy-night": {
@@ -4416,6 +5781,19 @@
     "gain": 1.1997362140091992,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/stormy-night.mp3",
+    "bytes": 850797,
+    "sha256": "a802d2821e071bbfc8b5a1dbc91b99ed754f0ba35efa0e3bfbcb9cb81ea00a2a",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 41.616,
+    "lossless": false,
+    "gain": 1.1997362140091992,
+    "provenance": "配信用 FLAC（stormy-night.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "yukinoura-bamboo": {
@@ -4454,6 +5832,19 @@
     "gain": 1.6609994858780863,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（162秒〜202秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yukinoura-bamboo.mp3",
+    "bytes": 859437,
+    "sha256": "0aa0a5ee1c9195de67ceb621470d9883cdcd6979f442fed3b6654a88a904fe3f",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 1.6609994858780863,
+    "provenance": "配信用 FLAC（yukinoura-bamboo.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "river-cicadas-provence": {
@@ -4492,6 +5883,19 @@
     "gain": 0.34378736165398993,
     "lossless": false,
     "provenance": "原本（48000Hz・32-bit・2ch）から切り出し（pcm_f32le 32-bit → 24-bit 整数に変換）した抜粋（全長）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/river-cicadas-provence.mp3",
+    "bytes": 630141,
+    "sha256": "4732f1fe0dea8f381ff9ee09ce33f55acc7def8c8a66e943410f3f7e23629675",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 30.48,
+    "lossless": false,
+    "gain": 0.34378736165398993,
+    "provenance": "配信用 FLAC（river-cicadas-provence.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "forest-drips-after-storm": {
@@ -4530,6 +5934,19 @@
     "gain": 5.168910276300199,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（316秒〜356秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/forest-drips-after-storm.mp3",
+    "bytes": 880653,
+    "sha256": "e1b908e2d5f79916cb2814aeff9a5c03fb86d5682116b7298adb1a409917d5b3",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 5.168910276300199,
+    "provenance": "配信用 FLAC（forest-drips-after-storm.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "waves-deadmans-cove": {
@@ -4568,6 +5985,19 @@
     "gain": 0.5101651648774976,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（138秒〜178秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/waves-deadmans-cove.mp3",
+    "bytes": 843789,
+    "sha256": "de7c3bc127dd264b5dfcef14324a9ca8bae5d3dbd7c0876c4f52a80da8d90860",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 0.5101651648774976,
+    "provenance": "配信用 FLAC（waves-deadmans-cove.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "winter-fens-kampina": {
@@ -4606,6 +6036,19 @@
     "gain": 1.4577848124282808,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/winter-fens-kampina.mp3",
+    "bytes": 846477,
+    "sha256": "9ae6e42cd9d9c548e0dd7dc7be929ba541f224c0602758f807840432afda42f3",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 1.4577848124282808,
+    "provenance": "配信用 FLAC（winter-fens-kampina.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "yamanushi-river": {
@@ -4644,6 +6087,19 @@
     "gain": 0.8097256749653841,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（35秒〜75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yamanushi-river.mp3",
+    "bytes": 748365,
+    "sha256": "fe7914892ea09203c8bf0783962bc809823e67bfca0712d9b2e65408fbdc66b0",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 0.8097256749653841,
+    "provenance": "配信用 FLAC（yamanushi-river.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "ice-lake-sweden": {
@@ -4682,6 +6138,19 @@
     "gain": 3.777219200646733,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（128秒〜168秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/ice-lake-sweden.mp3",
+    "bytes": 819741,
+    "sha256": "13d75a11a74115c4d818294878b4f7960edd0e103190792d161a96a70b69c954",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 3.777219200646733,
+    "provenance": "配信用 FLAC（ice-lake-sweden.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "waves-big-lagoon": {
@@ -4720,6 +6189,19 @@
     "gain": 0.8612098734750547,
     "lossless": false,
     "provenance": "原本（44100Hz・32-bit・2ch）から切り出し（pcm_s32le 32-bit → 24-bit 整数に変換）した抜粋（34秒〜74秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/waves-big-lagoon.mp3",
+    "bytes": 818567,
+    "sha256": "eb4c1d434875597706e6116555c26a6c6e02e8dfe326f3db1e213980a173fb51",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 40.045714,
+    "lossless": false,
+    "gain": 0.8612098734750547,
+    "provenance": "配信用 FLAC（waves-big-lagoon.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "rain-rapids-nz": {
@@ -4758,6 +6240,19 @@
     "gain": 1.9043194547626252,
     "lossless": false,
     "provenance": "原本（48000Hz・32-bit・2ch）から切り出し（pcm_f32le 32-bit → 24-bit 整数に変換）した抜粋（45秒〜85秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/rain-rapids-nz.mp3",
+    "bytes": 848877,
+    "sha256": "77e73beef7058aeaee865511b6121fdd21245d5a196099372cfcbcb040155cdd",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 1.9043194547626252,
+    "provenance": "配信用 FLAC（rain-rapids-nz.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "birds-stream-paris": {
@@ -4796,6 +6291,19 @@
     "gain": 7.08370977153294,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（275秒〜315秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/birds-stream-paris.mp3",
+    "bytes": 850845,
+    "sha256": "93ee876e01c393ecf35f4e88a15bffe89627a2bc682949fd6209cbbbb2b6b651",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 7.08370977153294,
+    "provenance": "配信用 FLAC（birds-stream-paris.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   },
   "waterfall-hexenklamm": {
@@ -4834,6 +6342,19 @@
     "gain": 1.5490017952984236,
     "lossless": true,
     "provenance": "原本（96000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（329秒〜369秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/waterfall-hexenklamm.mp3",
+    "bytes": 840333,
+    "sha256": "05c73890a2f6d595329a6a8490e969d5826dff4e36e3ee942173c06da0f61b92",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 1.5490017952984236,
+    "provenance": "配信用 FLAC（waterfall-hexenklamm.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま、96000Hz→48000Hz。"
    }
   },
   "rain-frogs-guiana": {
@@ -4872,6 +6393,19 @@
     "gain": 1.0314936294351558,
     "lossless": true,
     "provenance": "原本（48000Hz・24-bit・2ch）から原本のサンプルをそのまま切り出し（ビット完全）した抜粋（2秒〜42秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/rain-frogs-guiana.mp3",
+    "bytes": 907821,
+    "sha256": "9b8adb0cede039ae253812db8a926e341e73a09763539785627c78707aa8dc1d",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 40.032,
+    "lossless": false,
+    "gain": 1.0314936294351558,
+    "provenance": "配信用 FLAC（rain-frogs-guiana.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
   }
  },

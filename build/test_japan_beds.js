@@ -6,6 +6,7 @@ await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
 R.controls=await pg.evaluate(()=>[...document.querySelectorAll('#fieldControls input')].map(i=>i.id));ok('field_controls',R.controls.length===31&&NEW.every(id=>R.controls.includes('field-'+id)));
 await pg.click('#play');await pg.waitForTimeout(3000);
 // PCM・互換MP3の両方で4本を1本ずつデコード
+await pg.evaluate(()=>{const d=document.getElementById('devPanel');if(d)d.open=true}); // v0.53：確認・開発用の欄は畳んである
 for(const mode of ['pcm','compat']){await pg.selectOption('#sourceMode',mode);for(const id of NEW){const d=await pg.evaluate(async id=>{try{const buf=await __bioDebug.loadOne(id);return {ok:true,dur:buf.duration,ch:buf.numberOfChannels}}catch(e){return {ok:false,e:e.message}}},id);R[mode+':'+id]=d;ok(mode+'_'+id,d.ok&&Math.abs(d.dur-45)<0.2&&d.ch===(mode==='pcm'?2:1))}}
 await pg.selectOption('#sourceMode','pcm');
 // 地域フィルター：日本で録音 → 4本の環境層が鳴る（他地域の環境層は鳴らない）

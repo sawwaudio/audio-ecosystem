@@ -9,7 +9,7 @@ const wait=ms=>pg.waitForTimeout(ms);const peak=async ch=>pg.evaluate(async ch=>
 await pg.goto('http://localhost:8765/index.html');await wait(900);
 // 1. 名称・画面の順番
 R.brand=await pg.evaluate(()=>({title:document.title,h1:document.querySelector('header h1').textContent,tiles:document.getElementById('tileSection').getBoundingClientRect().top<document.getElementById('sourceSection').getBoundingClientRect().top}));
-ok('brand',R.brand.h1==='saww audio ecosystem'&&/^saww audio ecosystem v0\.4\d/.test(R.brand.title)&&R.brand.tiles);
+ok('brand',R.brand.h1==='saww audio ecosystem'&&/^saww audio ecosystem v0\.\d+/.test(R.brand.title)&&R.brand.tiles);
 // 2. 写真と音の対応（学名の完全一致だけ）。v0.45 から最初は12枚だけ見せるので、すべて表示してから数える
 await pg.evaluate(()=>__studioDebug.showAll(true));
 R.map=await pg.evaluate(()=>{const photos=JSON.parse(document.getElementById('ae-photos').textContent);const recs=JSON.parse(document.getElementById('ae-recordings').textContent);const bad=[],withPhoto=[];

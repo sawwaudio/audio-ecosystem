@@ -6,6 +6,7 @@ const R={},fail=[];const ok=(k,c)=>{R[k]=c;if(!c)fail.push(k)};
 await pg.goto('http://localhost:8765/index.html');await pg.evaluate(()=>{try{localStorage.removeItem('ae-rights')}catch(e){}});await pg.reload();await pg.waitForTimeout(800);
 const tierOf=await pg.evaluate(()=>Object.fromEntries(JSON.parse(document.getElementById('ae-recordings').textContent).map(r=>[r.id,__rightsDebug.tierOf(r.license)])));
 const beds=await pg.evaluate(()=>JSON.parse(document.getElementById('ae-recordings').textContent).filter(r=>r.fieldBed).map(r=>r.id));
+await pg.evaluate(()=>{const d=document.getElementById('devPanel');if(d)d.open=true}); // v0.53：確認・開発用の欄は畳んである
 await pg.click('#auditPanel summary');await pg.waitForTimeout(300);
 const check=async mode=>{const bs=await pg.evaluate(()=>__rightsDebug.badges());const bad=bs.filter(x=>x.where!=='audit'||tierOf[x.id]).filter(x=>{const t=tierOf[x.id];if(!t)return x.where!=='audit';const allowed=mode==='all'||(mode==='nosa'?t!=='C':t==='A');return x.tier!==t||x.blocked===allowed});return {n:bs.length,bad,fields:bs.filter(x=>x.where==='field').length,audit:bs.filter(x=>x.where==='audit').length,res:bs.filter(x=>x.where==='resident').length}};
 let c=await check('all');R.all={n:c.n,fields:c.fields,audit:c.audit,res:c.res,bad:c.bad.length};

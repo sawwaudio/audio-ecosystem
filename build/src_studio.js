@@ -3,7 +3,7 @@
    本体スクリプト（音声エンジン・音源ライブラリ）の後に読み込む。本体の関数と変数（ctx, master, recordings, loadOne, mixLane など）をそのまま使い、
    音声エンジンと音源の対応は変えない。build/integrate_v043.py が index.html の <script id="ae-studio"> にこのファイルを埋め込む。 */
 (()=>{'use strict';
-const VER='v0.49';
+const VER='v0.53';
 const PHOTOS=(()=>{try{return JSON.parse($('ae-photos').textContent)}catch(e){return {}}})();
 const TIERS=(()=>{try{return JSON.parse($('ae-tiers').textContent)}catch(e){return {plans:[],features:[]}}})();
 const APP_URL=/^https?:$/.test(location.protocol)&&!/^(localhost|127\.)/.test(location.hostname)?location.origin+location.pathname.replace(/index\.html$/,''):'https://sawwaudio.github.io/audio-ecosystem-sounds-1/';
@@ -156,7 +156,7 @@ function makeTile(id,uid){const g=groupOf(id),p=photoFor(id),r=recordings.find(x
    el('span',{class:'tileTier tier'+tierLetter,'aria-hidden':'true',text:tierLetter}));
   const info=el('button',{type:'button',class:'tileInfo','aria-labelledby':'ti-'+uid+' tn-'+uid,'data-id':id},el('span',{'aria-hidden':'true',text:'i'}),el('span',{id:'ti-'+uid,hidden:true,text:'詳細'}));
   const tile=el('div',{class:'tile'+(g==='ambience'?' amb':''),'data-id':id,'data-group':g},play,info);bindTile(tile,id);return tile}
-function buildTiles(){const grid=$('tileGrid'),amb=$('ambGrid');if(!grid)return;grid.textContent='';if(amb)amb.textContent='';
+function buildTiles(){renderFilters();const grid=$('tileGrid'),amb=$('ambGrid');if(!grid)return;grid.textContent='';if(amb)amb.textContent='';
  const all=tileIds().filter(matches),ids=all.filter(id=>groupOf(id)!=='ambience'),ambIds=all.filter(id=>groupOf(id)==='ambience'),cols=Math.max(1,(getComputedStyle(grid).gridTemplateColumns||'').split(' ').filter(Boolean).length||2),page=Math.ceil(TILE_PAGE/cols)*cols,cut=tileShowAll?ids.length:Math.min(ids.length,page);/* 列数に合わせて行をそろえる（2列なら12枚、5列なら15枚） */
  let uid=0;for(const id of ids.slice(0,cut)){uid++;grid.append(makeTile(id,uid));renderTile(id)}
  if(amb){for(const id of ambIds){uid++;amb.append(makeTile(id,uid));renderTile(id)}}renderTabs(ids.length,ambIds.length)
@@ -247,7 +247,9 @@ async function importFiles(files){if(!files||!files.length)return;await smpEnsur
   catch(e){status(f.name+': '+(e.message||e.name))}}
  if(ok){tileFilter='user';renderFilters();buildTiles();renderTrackSources();status(L(ok+'件の音を読み込みました。タップで鳴ります（端末の外へは送信しません）。',ok+' sound(s) loaded. Tap to play (never uploaded).'))}}
 
-function renderFilters(){const box=$('tileFilters');if(!box)return;box.textContent='';for(const [k,ja,en] of FILTERS){const b=el('button',{type:'button','aria-pressed':String(tileFilter===k),text:L(ja,en),'data-f':k});b.addEventListener('click',()=>{tileFilter=k;tileShowAll=false;renderFilters();buildTiles()});box.append(b)}}
+// v0.53：見せる絞り込みは分類と「日本」だけ。「再生中」は下のバーの「♪ 一覧」と重なり、「写真あり」は使われないため外した。「自分の音」は読み込んだ音がある時だけ
+const FILTERS_SHOWN=k=>!['photo','playing'].includes(k)&&(k!=='user'||userSounds.size>0);
+function renderFilters(){const box=$('tileFilters');if(!box)return;box.textContent='';if(!FILTERS_SHOWN(tileFilter))tileFilter='all';for(const [k,ja,en] of FILTERS.filter(([k])=>FILTERS_SHOWN(k))){const b=el('button',{type:'button','aria-pressed':String(tileFilter===k),text:L(ja,en),'data-f':k});b.addEventListener('click',()=>{tileFilter=k;tileShowAll=false;renderFilters();buildTiles()});box.append(b)}}
 
 // ───────── マスター EQ（全体のロー・ミドル・ハイ） ─────────
 function buildMasterEq(){const box=$('mixMasterEq');if(!box)return;box.textContent='';
@@ -610,7 +612,9 @@ window.sawwEntitlement={get plan(){return ENTITLEMENT.plan},enforce:false,allows
 function buildPlans(){const box=$('plansBody');if(!box)return;box.textContent='';
  const cards=el('div',{class:'planCards'});for(const p of TIERS.plans){cards.append(el('div',{class:'planCard plan-'+p.id},el('div',{class:'planName',text:p.name}),el('div',{class:'planTag',text:p.tagline}),el('div',{class:'planPrice',text:p.price},el('span',{class:'micro',text:' '+p.period})),p.alt?el('div',{class:'micro',text:p.alt}):null,p.note_ja?el('div',{class:'micro planNote',text:L(p.note_ja,p.note_en)}):null))}
  box.append(cards);const tb=el('table',{class:'planTable'});tb.append(el('thead',{},el('tr',{},el('th',{text:L('機能','Feature')}),el('th',{text:'FREE'}),el('th',{text:'PRO'}))));const body=el('tbody');
- for(const f of TIERS.features)body.append(el('tr',{},el('td',{text:L(f.ja,f.en)}),el('td',{class:'mk',text:f.tier==='free'?'✓':'—'}),el('td',{class:'mk',text:'✓'})));tb.append(body);box.append(tb)
+ for(const f of TIERS.features)body.append(el('tr',{},el('td',{text:L(f.ja,f.en)}),el('td',{class:'mk',text:f.tier==='free'?'✓':'—'}),el('td',{class:'mk',text:'✓'})));tb.append(body);
+ // v0.53：比較表は畳む（料金のカードだけで用が足りる人が多く、表が画面の真ん中を大きく取っていたため）
+ const cmp=el('details',{class:'help planCompare',id:'planCompare'},el('summary',{text:'機能を比べる（FREE / PRO）'}));cmp.append(tb);box.append(cmp)
  for(const n of document.querySelectorAll('[data-tier="pro"]')){const host=n.querySelector('summary > span, .title')||n;if(!host.querySelector('.proChip'))host.append(el('span',{class:'proChip',text:'PRO',title:'PRO'}))}}
 
 // ───────── 実録音の楽器層（v0.45）─────────
@@ -749,7 +753,28 @@ function organizeLayers(){const sp=$('synthPanel');if(!sp||$('instrPanel'))retur
  // 全体の音量・響き（MASTER ENVIRONMENT）は「全体の音量・活動量・同時発音数」へ移す（合成音だけでなく全部に効くため）
  const mixAll=[...document.querySelectorAll('#performance details.sub>summary')].find(s=>s.textContent.trim().startsWith('全体の音量'));
  if(blk&&mixAll){const t=blk.querySelector('.title');if(t)t.textContent='全体の音・響き・変化';const m=blk.querySelector('.between .micro');if(m)m.textContent='';blk.classList.add('masterBlock');mixAll.parentElement.append(blk)}}
-function init(){organizeLayers();renderFilters();buildTiles();bindSheet();buildMasterEq();renderTracks();renderTrackSources();buildPlans();bindReel();
+// ───────── v0.53 音質と通信（軽量／高音質）・端末への保存 ─────────
+// オーナー要望（2026-11-07「ちょっと重すぎ。ネットが弱いとすごい重い」）。既定は軽量（MP3）。一度鳴らした音は Service Worker（sw.js）が端末に保存する。
+// 自動テスト（navigator.webdriver）では写真・書体の差し替えと競合するため登録しない（?sw=1 で強制。test_net_v053.js が使う）
+const MEDIA_CACHE='saww-media-1';let swState='off';
+function registerSW(){if(!('serviceWorker' in navigator)||!/^https?:$/.test(location.protocol)){swState='unsupported';return}
+ if(navigator.webdriver&&!/[?&]sw=1/.test(location.search)){swState='test';return}
+ navigator.serviceWorker.register('sw.js').then(()=>{swState='on';renderNet()}).catch(()=>{swState='failed';renderNet()})}
+async function cacheInfo(){if(!('caches' in window))return null;try{if(!(await caches.has(MEDIA_CACHE)))return {n:0,bytes:0};const c=await caches.open(MEDIA_CACHE),ks=await c.keys();let bytes=0;
+ for(const k of ks){const r=await c.match(k);bytes+=Number(r&&r.headers.get('content-length'))||0}return {n:ks.length,bytes}}catch(e){return null}}
+async function renderNet(){const box=$('netPanel');if(!box)return;const mode=window.__sourceDebug?__sourceDebug.mode:'lite';
+ for(const b of box.querySelectorAll('[data-q]')){const on=b.dataset.q===mode;b.setAttribute('aria-checked',String(on));b.classList.toggle('on',on)}
+ $('netBadge').textContent=mode==='lite'?L('軽量','Light'):mode==='pcm'?L('高音質','High quality'):mode==='original'?L('原本ファイル','Original files'):L('互換MP3','Compat MP3');
+ const ci=await cacheInfo();const st=$('netStatus');if(!st)return;
+ if(swState==='unsupported'||!ci){st.textContent=L('このブラウザでは端末への保存を使えません。','This browser cannot keep sounds on the device.');$('netClear').hidden=true;return}
+ $('netClear').hidden=!ci.n;st.textContent=ci.n?L('この端末に保存済み：'+ci.n+'個 · '+(ci.bytes/1048576).toFixed(1)+'MB（次からは通信なしで鳴ります）','Kept on this device: '+ci.n+' files · '+(ci.bytes/1048576).toFixed(1)+' MB (play without network next time)')
+  :L('一度鳴らした音は、この端末に保存されます。','Sounds you play are kept on this device.')}
+function bindNet(){const box=$('netPanel');if(!box)return;
+ for(const b of box.querySelectorAll('[data-q]'))b.addEventListener('click',()=>{window.__sourceDebug&&__sourceDebug.setSourceMode(b.dataset.q);renderNet()});
+ $('sourceMode')?.addEventListener('change',()=>setTimeout(renderNet,0));
+ $('netClear').addEventListener('click',async()=>{try{await caches.delete(MEDIA_CACHE)}catch(e){}renderNet()});
+ registerSW();renderNet();setInterval(()=>{if(!document.hidden&&box.getBoundingClientRect().top<innerHeight)renderNet()},8000)}
+function init(){organizeLayers();bindNet();renderFilters();buildTiles();bindSheet();buildMasterEq();renderTracks();renderTrackSources();buildPlans();bindReel();
  $('tileStopAll').addEventListener('click',stopEverything);
  $('dockList')?.addEventListener('click',()=>{dockPanelOpen=!dockPanelOpen;renderDockPanel(true)});$('dockPanelClose')?.addEventListener('click',()=>{dockPanelOpen=false;renderDockPanel()});
  $('tabCreatures')?.addEventListener('click',()=>setTab('creatures'));$('tabAmbience')?.addEventListener('click',()=>setTab('ambience'));$('tileAddUser').addEventListener('click',()=>$('tileUserFile').click());$('tileUserFile').addEventListener('change',e=>{const fs=[...(e.target.files||[])];e.target.value='';importFiles(fs)});

@@ -81,3 +81,16 @@ body.live .brandMark .petals{animation-duration:16s}
 .boostRow{background:rgba(230,194,122,.07);border:1px solid rgba(230,194,122,.22);border-radius:12px;padding:8px 10px;margin-top:4px}
 .boostRow label{color:#efd9a0}
 .masterBlock{margin-top:16px;padding-top:10px;border-top:1px solid rgba(241,236,224,.1)}
+
+/* v0.51 合成音を鳴らさない（自動実行で index.html にだけ入っていたものをソースへ）*/
+.synthOffRow{margin:6px 0 8px}.synthOffRow .micro:empty{display:none}#synthBody.synthMuted .layerSub{opacity:.42}.synthOffBadge{color:#efd9a0;border:1px solid rgba(230,194,122,.4);border-radius:8px;padding:0 6px}
+
+/* v0.53 音質と通信・重複を減らす */
+.segRow{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 6px}
+.segRow button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;padding:10px 12px;border-radius:12px;border:1px solid rgba(241,236,224,.16);background:rgba(241,236,224,.04);color:#e4e2d6}
+.segRow button small{font-size:11px;color:#98a395;font-weight:400}
+.segRow button.on{border-color:rgba(230,194,122,.7);background:rgba(230,194,122,.12);color:#efd9a0}
+#netPanel{margin-bottom:12px}
+.tile .tileTier{display:none}.tile.blocked .tileTier{display:block}
+.planCompare{margin-top:10px}
+#devPanel>summary{opacity:.85}

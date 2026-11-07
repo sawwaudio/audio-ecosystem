@@ -17,6 +17,7 @@ await pg.click('#play');await pg.waitForTimeout(6000);
 ok('autoplay_running',await pg.evaluate(()=>__audioEcosystemDebug.getState().audioState==='running'));
 ok('pause_label_en',(await pg.textContent('#play')).includes('Pause'));
 await pg.evaluate(()=>{document.getElementById('comboPanel').open=true;document.getElementById('geoPanel').open=true});await pg.selectOption('#geoRegion','japan');await pg.waitForTimeout(400);
+await pg.evaluate(()=>{const d=document.getElementById('devPanel');if(d)d.open=true}); // v0.53：確認・開発用の欄は畳んである
 for(const m of ['compat','pcm']){await pg.selectOption('#sourceMode',m);await pg.evaluate(async()=>__bioDebug.playSpecies('blackbird',true))}
 await pg.waitForTimeout(800);
 un=(await pg.evaluate(()=>__i18n.untranslated())).filter(x=>!ALLOW.includes(x));R.untranslated_dynamic=un;ok('dynamic_all_en',un.length===0);

@@ -21,8 +21,8 @@ ok('lowpass',R.filter.lp6k<-15&&Math.abs(R.filter.lp100)<1.5);ok('highpass',R.fi
 const half=await resp({fader:.5}),trim=await resp({trim:-6}),zero=await resp({fader:0}),muted=await resp({mute:true});
 R.levels={fader_half:+at(half,1000).toFixed(2),trim_m6:+at(trim,1000).toFixed(2),fader0:at(zero,1000),mute:at(muted,1000)};
 ok('fader_curve',Math.abs(R.levels.fader_half+12.04)<.2);ok('trim',Math.abs(R.levels.trim_m6+6)<.2);ok('fader_zero',R.levels.fader0<-150&&R.levels.mute<-150);
-// 実演奏：全レーンがあり、ミュートでそのチャンネルの音が消える
-await pg.click('#play');await pg.waitForTimeout(9000);
+// 実演奏：全レーンがあり、ミュートでそのチャンネルの音が消える（v0.58：初期設定では環境音なしのため、以前の初期の環境層を入れる）
+await require('./legacy_defaults')(pg,{field:true});await pg.click('#play');await pg.waitForTimeout(9000);
 R.lanes=await pg.evaluate(()=>__mixerDebug.lanes());ok('lanes',['bio','field','music','sampler'].every(c=>R.lanes[c]&&R.lanes[c].includes('dry')&&R.lanes[c].includes('wet'))&&R.lanes.music.includes('direct'));
 const peaks=async()=>pg.evaluate(async()=>{const o={};for(const ch of ['field','music','master']){let m=-Infinity;for(let i=0;i<20;i++){m=Math.max(m,__mixerDebug.peakDb(ch));await new Promise(r=>setTimeout(r,50))}o[ch]=m}return o});
 R.before=await peaks();ok('field_sounds',R.before.field>-80);ok('master_sounds',R.before.master>-80);

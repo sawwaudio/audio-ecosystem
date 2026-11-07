@@ -14,8 +14,8 @@ ok('default_off',R.ui0.inBody&&R.ui0.first&&!R.ui0.checked&&!R.ui0.get&&R.ui0.ba
 R.target=await pg.evaluate(()=>{__synthOff.set(true);const r=Object.fromEntries(['sub','organDrone','bowed','organ','bowl','piano','bells','heart','kick','stones','harp','vibes','kalimba','didge','natureLow','frameDrum','birds','water'].map(k=>[k,__synthMuted(k)]));__synthOff.set(false);return r});
 ok('targets',['sub','organDrone','bowed','organ','bowl','piano','bells','heart','kick','stones'].every(k=>R.target[k])&&['harp','vibes','kalimba','didge','natureLow','frameDrum','birds','water'].every(k=>!R.target[k]));
 
-// 3. 切の時は従来どおり合成音が鳴る（持続音も）
-await pg.click('#play');await wait(1500);
+// 3. 切の時は従来どおり合成音が鳴る（持続音も）。v0.58：初期設定では合成音が 0 のため、以前の初期値を入れる
+await require('./legacy_defaults')(pg,{layers:true});await pg.click('#play');await wait(1500);
 const before={};for(const k of ['bells','piano','kick'])before[k]=await ev(k);for(const k of ['bells','piano','kick'])await fire(k);await wait(200);
 R.offFire={};for(const k of ['bells','piano','kick'])R.offFire[k]=(await ev(k))-before[k];
 R.droneOff=await drone();
@@ -44,7 +44,7 @@ await pg.waitForFunction(()=>!__audioEcosystemDebug.getState().auditionKey,null,
 
 // 5. 読み直しても残る。切ると元に戻る
 await pg.reload();await wait(900);R.reload=await pg.evaluate(()=>({checked:document.getElementById('synthOff').checked,get:__synthOff.get(),badge:!document.getElementById('synthOffBadge').hidden}));ok('reload',R.reload.checked&&R.reload.get&&R.reload.badge);
-await pg.click('#play');await wait(1200);R.droneReload=await drone();
+await require('./legacy_defaults')(pg,{layers:true});await pg.click('#play');await wait(1200);R.droneReload=await drone();
 await pg.evaluate(()=>{document.getElementById('synthPanel').open=true});await pg.click('#synthOff');await wait(200);
 const b5=await ev('bells');await fire('bells');await wait(200);R.backFire=(await ev('bells'))-b5;await pg.click('#change');await wait(400);R.droneBack=await drone();
 R.back=await pg.evaluate(()=>({saved:localStorage.getItem('saww.synthOff'),badge:document.getElementById('synthOffBadge').hidden,note:document.getElementById('synthOffNote').textContent}));

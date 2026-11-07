@@ -6,6 +6,7 @@ const ctx=await b.newContext({viewport:{width:390,height:900},acceptDownloads:tr
 const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
 const R={},fail=[];const ok=(k,c)=>{R[k]=c;if(!c)fail.push(k)};
 await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
+await require('./legacy_defaults')(pg,{species:['cicada','tsukutsukuboshi']}); // v0.58：初期の生き物は鳥4種（CC0）。帰属表示が必要なセミ2種をテストで入れる
 await pg.click('#play');await pg.waitForTimeout(4000);
 ok('autoplay_running',await pg.evaluate(()=>__audioEcosystemDebug.getState().audioState==='running'));
 // 録音開始 → 実録音を2種強制発音 → 停止・書き出し

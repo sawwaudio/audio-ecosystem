@@ -771,10 +771,13 @@ function realPlay(k,meta,t,lvl,pan,rate){const b=instrumentBuffers.get(meta.id);
  const d=REAL_DEF[k],{out,nodes}=realOut(k,pan),src=ctx.createBufferSource(),env=G(0),dur=b.duration/rate,amp=d.base*lvl*(instrumentGains.get(meta.id)||1);
  src.buffer=b;src.playbackRate.value=rate;src.connect(env);env.connect(out);out.gain.value=1;
  const fade=d.mode==='hit'?.05:Math.min(3,dur*.2);env.gain.setValueAtTime(0,t);env.gain.linearRampToValueAtTime(amp,t+(d.mode==='hit'?.003:.02));env.gain.setValueAtTime(amp,Math.max(t+.03,t+dur-fade));env.gain.linearRampToValueAtTime(0,t+dur);
- src.start(t);src.stop(t+dur+.05);const v={k,src,env};realVoices.add(v);src.onended=()=>{realVoices.delete(v);detach(src,env,...nodes)};instrumentUse.set(meta.id,performance.now());noteRecUse('instrument',meta.id);point(k);return true}
+ src.start(t);src.stop(t+dur+.05);const v={k,src,env,t};realVoices.add(v);src.onended=()=>{realVoices.delete(v);detach(src,env,...nodes)};instrumentUse.set(meta.id,performance.now());noteRecUse('instrument',meta.id);point(k);return true}
 // 本体の trigger() から呼ばれる（打撃・ときどき鳴らす低音）。読み込み前なら読み込んでから鳴らす（1.5秒以内に間に合った時だけ）。
+// v0.62：BEAT FX の「自律演奏の楽器を拍に合わせる」がオンなら、フレーズの最初の音を BEAT FX のテンポの次の8分の拍（音声の時刻0からの格子。サンプラーの「拍に合わせて鳴らす」と同じ格子）へ遅らせる。
+// フレーズの中の音の間隔は8分の整数倍なので、全部の音が拍に乗る。手で鳴らした音（gesture）はすぐ鳴らす。
+function realGridSnap(w,gesture){if(gesture||typeof fx==='undefined'||!fx.grid)return w;const b=60/(Math.max(40,Math.min(200,+fx.bpm||90)))/2;return Math.ceil((w-1e-4)/b)*b}
 function realLayerHit(k,t,gesture){const d=REAL_DEF[k];if(!ctx||d.mode==='loop'||!instrAllowed(k))return false;if(p[k]===0&&auditionKey!==k)return false;
- const lvl=realLevel(k),go=(when)=>{if(d.mode==='hit'){const beat=60/((typeof fx!=='undefined'&&fx.bpm)||84)/2,n=1+Math.floor(Math.random()*4);let at=when;
+ const lvl=realLevel(k),go=(when)=>{when=realGridSnap(when,gesture);if(d.mode==='hit'){const beat=60/((typeof fx!=='undefined'&&fx.bpm)||84)/2,n=1+Math.floor(Math.random()*4);let at=when;
    for(let i=0;i<n;i++){const pk=realPick(k);if(pk&&!realPlay(k,pk.meta,at,lvl*(i===0?1:R(.45,.85)),R(-.35,.35),2**(R(-.25,.25)/12)))break;at+=beat*(Math.random()<.3?2:1)}}
   else if(d.mode==='melody'){const beat=60/((typeof fx!=='undefined'&&fx.bpm)||84)/2,n=1+Math.floor(Math.random()*d.phrase),pan=R(-.5,.5);let at=when;
    for(let i=0;i<n;i++){let m=69+12*Math.log2(randomPitch()/440);while(m<d.range[0])m+=12;while(m>d.range[1])m-=12;const meta=nearestSample(k,m);
@@ -809,7 +812,7 @@ function realLoopStopAll(){for(const k of [...realLoops.keys()])realLoopStop(k);
 function realSeed(fn){for(const [k,v] of realLoops){const d=REAL_DEF[k];if(d.rec)fn('recording',d.rec);else for(const m of realSamples(k))if(instrumentBuffers.has(m.id))fn('instrument',m.id)}}
 // 本体（別の即時関数）から呼ぶ入口
 window.__real={is:isRealLayer,isLoop:isRealLoop,hit:realLayerHit,tick:realLoopTick,stopAll:realLoopStopAll};
-window.__realDebug={def:REAL_DEF,loops:()=>[...realLoops.keys()],voices:()=>[...realVoices].map(v=>v.k),hit:(k,t)=>realLayerHit(k,t??ctx.currentTime+.05),pick:realPick,samples:k=>realSamples(k).map(m=>m.id),stopAll:realLoopStopAll};
+window.__realDebug={def:REAL_DEF,loops:()=>[...realLoops.keys()],voices:()=>[...realVoices].map(v=>v.k),starts:()=>[...realVoices].map(v=>({k:v.k,t:v.t})),snap:realGridSnap,hit:(k,t)=>realLayerHit(k,t??ctx.currentTime+.05),pick:realPick,samples:k=>realSamples(k).map(m=>m.id),stopAll:realLoopStopAll};
 
 // ───────── 本体との接続 ─────────
 window.studioActive=()=>playingIds().length>0;

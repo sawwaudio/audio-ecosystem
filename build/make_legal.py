@@ -20,8 +20,13 @@ def load():
     if not pr.get('monthly'):
         missing.append('price')
     m = pr.get('monthly')
-    price = (f'PRO：月額 {m:,}円（{"税込" if pr.get("taxIncluded", True) else "税別"}）。毎月同じ金額です。1年間（12回）の目安：{m * 12:,}円。'
-             if m else None)
+    tax = '税込' if pr.get('taxIncluded', True) else '税別'
+    if m and pr.get('currency', 'JPY') == 'USD':
+        price = f'PRO：月額 {m:.2f} 米ドル（US${m:.2f}・{tax}）。毎月同じ金額です。1年間（12回）の目安：{m * 12:.2f} 米ドル。'
+    elif m:
+        price = f'PRO：月額 {m:,}円（{tax}）。毎月同じ金額です。1年間（12回）の目安：{m * 12:,}円。'
+    else:
+        price = None
     v = lambda k: (REQUEST if d.get(k) == 'request' else d.get(k)) or None
     rows = [
         ('販売事業者', v('seller')),
@@ -99,7 +104,7 @@ def build():
     d, rows, terms, missing = load()
     open(P('legal.html'), 'w', encoding='utf-8').write(page(d, rows, missing))
     return {'ready': not missing, 'missing': missing, 'url': 'legal.html', 'updated': d.get('updated'),
-            'terms': [[k, val] for k, val in terms], 'monthly': d['price'].get('monthly'),
+            'terms': [[k, val] for k, val in terms], 'monthly': d['price'].get('monthly'), 'currency': d['price'].get('currency', 'JPY'),
             'taxIncluded': d['price'].get('taxIncluded', True)}
 
 

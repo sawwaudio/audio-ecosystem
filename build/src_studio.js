@@ -3,7 +3,7 @@
    本体スクリプト（音声エンジン・音源ライブラリ）の後に読み込む。本体の関数と変数（ctx, master, recordings, loadOne, mixLane など）をそのまま使い、
    音声エンジンと音源の対応は変えない。build/integrate_v043.py が index.html の <script id="ae-studio"> にこのファイルを埋め込む。 */
 (()=>{'use strict';
-const VER='v0.63';
+const VER='v0.64';
 const PHOTOS=(()=>{try{return JSON.parse($('ae-photos').textContent)}catch(e){return {}}})();
 // v0.59 イメージ写真（data/scene_photos.json → ae-scenes）：種を特定できない生き物と環境音に、雰囲気の合う実写を「イメージ」として付ける（録音の場所・個体そのものではない）
 const SCENES=(()=>{try{return JSON.parse($('ae-scenes').textContent)}catch(e){return {images:{},map:{}}}})();
@@ -686,8 +686,9 @@ function renderAccount(){const box=$('planAccount');if(!box)return;box.textConte
  box.append(form)}
 function buildPlans(){const box=$('plansBody');if(!box)return;box.textContent='';
  const cards=el('div',{class:'planCards'});
- if(LEGAL.monthly){const meta=document.querySelector('#plansSection .stepMeta');if(meta)meta.textContent='JPY'}
- for(const p0 of TIERS.plans){const p=p0.id==='pro'&&LEGAL.monthly?Object.assign({},p0,{price:'¥'+Number(LEGAL.monthly).toLocaleString('ja-JP'),period:LEGAL.taxIncluded===false?L('/ 月（税別）','/ month (excl. tax)'):L('/ 月（税込）','/ month (tax incl.)'),alt:null}):p0;cards.append(el('div',{class:'planCard plan-'+p.id},el('div',{class:'planName',text:p.name}),el('div',{class:'planTag',text:p.tagline}),el('div',{class:'planPrice',text:p.price},el('span',{class:'micro',text:' '+p.period})),p.alt?el('div',{class:'micro',text:p.alt}):null,p.note_ja?el('div',{class:'micro planNote',text:LIVE&&p.live_ja?L(p.live_ja,p.live_en):L(p.note_ja,p.note_en)}):null))}
+ const usd=LEGAL.currency==='USD',priceText=LEGAL.monthly?(usd?'$'+Number(LEGAL.monthly).toFixed(2):'¥'+Number(LEGAL.monthly).toLocaleString('ja-JP')):'';
+ if(LEGAL.monthly){const meta=document.querySelector('#plansSection .stepMeta');if(meta)meta.textContent=usd?'USD':'JPY'}
+ for(const p0 of TIERS.plans){const p=p0.id==='pro'&&LEGAL.monthly?Object.assign({},p0,{price:priceText,period:(usd?'USD ':'')+(LEGAL.taxIncluded===false?L('/ 月（税別）','/ month (excl. tax)'):L('/ 月（税込）','/ month (tax incl.)')),alt:null}):p0;cards.append(el('div',{class:'planCard plan-'+p.id},el('div',{class:'planName',text:p.name}),el('div',{class:'planTag',text:p.tagline}),el('div',{class:'planPrice',text:p.price},el('span',{class:'micro',text:' '+p.period})),p.alt?el('div',{class:'micro',text:p.alt}):null,p.note_ja?el('div',{class:'micro planNote',text:LIVE&&p.live_ja?L(p.live_ja,p.live_en):L(p.note_ja,p.note_en)}):null))}
  if(LIVE){const lead=document.querySelector('#plansSection .lead');if(lead)lead.textContent=L('無料のままでも、写真で選ぶ・自律演奏・リール作りが使えます。PRO にすると、すべての楽器とスタジオ（ミキサー・サンプラー・トラック）が使えます。','FREE covers picking sounds, autonomous play and reels. PRO unlocks every instrument and the studio (mixer, sampler, tracks).')}
  box.append(cards);const tb=el('table',{class:'planTable'});tb.append(el('thead',{},el('tr',{},el('th',{text:L('機能','Feature')}),el('th',{text:'FREE'}),el('th',{text:'PRO'}))));const body=el('tbody');
  for(const f of TIERS.features)body.append(el('tr',{},el('td',{text:L(f.ja,f.en)}),el('td',{class:'mk',text:f.tier==='free'?'✓':'—'}),el('td',{class:'mk',text:'✓'})));tb.append(body);

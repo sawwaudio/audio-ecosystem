@@ -85,7 +85,7 @@ if(OUT)for(const tpl of ['minimal','waveform','wildlife']){await pg.selectOption
 await pg.evaluate(()=>__studioDebug.stopAll());await pg.evaluate(()=>__rightsDebug.set('all'));
 // 10. プラン：FREE / PRO（USD・提案価格・課金なし）・PRO の印
 R.plans=await pg.evaluate(()=>({cards:[...document.querySelectorAll('.planCard')].map(c=>c.querySelector('.planName').textContent+' '+c.querySelector('.planPrice').textContent),alt:document.querySelector('.plan-pro > .micro:not(.planNote)')?.textContent,rows:document.querySelectorAll('.planTable tbody tr').length,chips:[...document.querySelectorAll('[data-tier="pro"]')].filter(n=>n.querySelector('.proChip')).length,ent:__studioDebug.entitlement().enforce,pay:!!document.querySelector('#plansSection input:not(#planPreview), #plansSection form, script[src*="stripe"]') /* v0.55：無料版の見え方を試すチェックは支払いの入力ではない */}));
-ok('plans',R.plans.cards.join('|')==='FREE $0 forever|PRO $9.99 USD / month'&&R.plans.alt==='$99 USD / year'&&R.plans.rows>=10&&R.plans.chips===3&&R.plans.ent===false&&!R.plans.pay);
+ok('plans',R.plans.cards.join('|')==='FREE $0 forever|PRO $9.99 USD / 月（税込）'&&!R.plans.alt&&R.plans.rows>=10&&R.plans.chips===3&&R.plans.ent===false&&!R.plans.pay);
 // 11. 英語表示・画面幅
 await pg.click('#langToggle');await wait(500);R.en=await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return {un:__i18n.untranslated().filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x)&&!/^@?(aria-label=)?(mic|bounce|import):|マイク録音|出音の録音|user_tone/.test(x)),filter:document.querySelector('#tileFilters button').textContent,h2:document.getElementById('tileTitle').textContent}});
 ok('english',R.en.un.length===0&&R.en.filter==='All');await pg.click('#langToggle');await wait(300);

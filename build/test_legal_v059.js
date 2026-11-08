@@ -29,7 +29,7 @@ const overflow=pg=>pg.evaluate(()=>document.documentElement.scrollWidth-innerWid
  R.gate=await pg2.evaluate(()=>({live:__billingDebug.live,plan:__billingDebug.state().plan,buy:!!document.getElementById('billBuy')}));ok('gate_until_legal_ready',!R.gate.live&&R.gate.plan==='beta'&&!R.gate.buy);await cx2.close()}
 
 // 3. 販売中（特商法が埋まった想定）：購入ボタンの上に内容、確認のチェックを入れるまで押せない
-const LEGAL_OK={ready:true,missing:[],monthly:980,taxIncluded:true,terms:[['内容','saww audio ecosystem PRO の月額の定期購読'],['価格','PRO：月額 980円（税込）。毎月同じ金額です。'],['契約期間・自動更新','1か月ごとの自動更新'],['お支払いの時期と方法','毎月'],['提供の時期','すぐ'],['解約の方法','いつでも'],['返品・返金','返金なし'],['動作環境','最新のブラウザ']]};
+const LEGAL_OK={ready:true,missing:[],monthly:980,currency:'JPY',taxIncluded:true,terms:[['内容','saww audio ecosystem PRO の月額の定期購読'],['価格','PRO：月額 980円（税込）。毎月同じ金額です。'],['契約期間・自動更新','1か月ごとの自動更新'],['お支払いの時期と方法','毎月'],['提供の時期','すぐ'],['解約の方法','いつでも'],['返品・返金','返金なし'],['動作環境','最新のブラウザ']]};
 const cx=await b.newContext({viewport:{width:390,height:844}});const pg=await newPage(cx,{status:'live',apiBase:'https://billing.test',publicKey:{kty:'EC',crv:'P-256',x:'x',y:'y'},paymentLink:'https://buy.stripe.com/test_x',legal:LEGAL_OK});
 R.live=await pg.evaluate(()=>{const t=document.getElementById('subTerms'),b=document.getElementById('billBuy'),a=document.getElementById('subAgree');
  return {live:__billingDebug.live,terms:!!t,before:!!(t&&b&&(t.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING)),agreeBefore:!!(a&&b&&(a.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING)),

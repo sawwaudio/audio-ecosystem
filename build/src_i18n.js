@@ -84,6 +84,7 @@ const EXACT={
 '実録音がまだない生き物（自分の録音を読み込めます）':'Creatures without a recording yet (you can import your own)','実録音未収録 · 自律演奏では鳴りません（自分の録音を読み込むと鳴ります）':'No recording yet · silent in autonomous play (import your own recording to hear it)','実録音なし':'No recording','タッチで演奏 / TOUCH PLAY':'TOUCH PLAY',
 // リールモード（v0.31）
 'REEL / 縦動画 1080×1920':'REEL / VERTICAL VIDEO 1080×1920','長さ':'Length','リールの長さ':'Reel length','● リールを録画':'● Record reel','■ 停止して書き出し':'■ Stop & export','リール映像のプレビュー':'Reel video preview',
+'最後にクレジットを映す':'Show credits at the end',
 // リールの見た目（v0.37）
 '見た目':'Look','リールの見た目':'Reel look','動き（リール向け）':'Motion (for reels)','分析（スペクトログラム）':'Analysis (spectrogram)','▶ 動きをプレビュー':'▶ Preview motion','■ プレビューを止める':'■ Stop preview',
 'いまの演奏を縦長の動画として録画します。見た目は「動き」（音に反応する光の輪・立ちのぼる音の霧・光の粒・鳴き始めた生き物の名前と録音地のカード）か「分析」（スペクトログラム・波形）から選べます。文字は SNS の画面部品に隠れにくい位置に置きます。リールには CC BY-SA の素材を含めません（録画を始めると商用モードを「BY-SAを除く」に切り替えます）。書き出し形式はブラウザによって MP4 または WebM です（変換はしません）。':'Records the current performance as a vertical video. Choose the look: “Motion” (a ring of light that reacts to the sound, rising sound mist, drifting light particles, and cards with the name and recording location of each creature as it starts to call) or “Analysis” (spectrogram and waveform). Text is placed where social-app buttons are unlikely to cover it. Reels never include CC BY-SA sources (starting a recording switches commercial mode to “Exclude BY-SA”). The file is MP4 or WebM depending on the browser (no conversion).',

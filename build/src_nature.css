@@ -126,3 +126,12 @@ details.proLocked>summary{opacity:.6}
 .subTermsPreview{margin-top:10px}
 /* v0.59 イメージ写真の印（録音の場所・生き物そのものではない） */
 .sceneMark{position:absolute;left:8px;top:8px;z-index:1;padding:1px 6px;border-radius:999px;background:rgba(10,14,12,.55);color:rgba(241,236,224,.82);font:600 9px/1.6 "Zen Kaku Gothic New",system-ui,sans-serif;letter-spacing:.06em;pointer-events:none;backdrop-filter:blur(2px)}
+/* v0.63 無料版で鳴らせない生き物（PRO の印・鍵） */
+.tileChips{position:absolute;left:8px;top:8px;z-index:1;display:flex;gap:4px;pointer-events:none}
+.tileChips:empty{display:none}
+.tileChips .sceneMark{position:static}
+.tileProChip{font:700 9px/1.6 "Zen Kaku Gothic New",system-ui,sans-serif;letter-spacing:.08em;padding:1px 6px;border-radius:999px;background:rgba(230,194,122,.92);color:#1b2420}
+.tile.locked .tileImg>img,.tile.locked .tileImg>.ph{filter:grayscale(.7) brightness(.62)}
+.tileImg:has(.tileProChip) .phLabel{display:none}
+.tile.locked .tilePlay{cursor:not-allowed}
+.recTierNote{margin:6px 0 2px}

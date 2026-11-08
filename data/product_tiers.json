@@ -66,6 +66,18 @@
    "en": "Autonomous play (natural call-and-response)"
   },
   {
+   "id": "creatures_free",
+   "tier": "free",
+   "ja": "生き物の声：分類ごとに4種（鳥・虫・両生類・哺乳類・水の生き物、計20種）。環境音（川・雨・波・風）はすべて",
+   "en": "Creature voices: 4 per group (birds, insects, amphibians, mammals, water life — 20 in all). All ambience (rivers, rain, waves, wind)"
+  },
+  {
+   "id": "creatures_all",
+   "tier": "pro",
+   "ja": "すべての生き物の声（97録音）",
+   "en": "Every creature voice (97 recordings)"
+  },
+  {
    "id": "instruments_free",
    "tier": "free",
    "ja": "楽器（実録音）6種：ディジュリドゥ・自然の低音・パイプオルガンのペダル・ハープ・カリンバ・フレームドラム、合成音はすべて",
@@ -138,5 +150,41 @@
   "portalLink": "",
   "apiBase": "",
   "publicKey": null
+ },
+ "recordings": {
+  "_note": "v0.63 無料版で鳴らせる生き物の声（オーナー要望 2026-11-08 10:34「無料版は生き物の声を出せすぎ。各分類3〜4種に絞り、残りは PRO」）。分類（data/sound_categories.json の birds・insects・amphibians・mammals・aquatic）ごとに4種。ここにない生き物の録音は PRO。環境音（ambience）と自分で読み込んだ音は無料版でも全部鳴る。選び方：CC0・CC BY（商用モード「BY-SAを除く」でも鳴る）、写真がある・日本の録音を優先。鳥4種は初期設定（v0.58）と同じ。",
+  "perCategory": 4,
+  "free": {
+   "birds": [
+    "uguisu-yokohama",
+    "song-thrush",
+    "eurasian-wren",
+    "nightingale-russia"
+   ],
+   "insects": [
+    "cicada",
+    "higurashi",
+    "kashiwa-insects",
+    "crickets-washington"
+   ],
+   "amphibians": [
+    "common-toad",
+    "ricefield-frogs",
+    "pacific-treefrog-chorus",
+    "malaysian-frogs"
+   ],
+   "mammals": [
+    "roe-deer",
+    "wolf",
+    "siamang-belgium",
+    "bat-batbox"
+   ],
+   "aquatic": [
+    "atlantic-spotted-dolphin",
+    "humpback",
+    "dolphin",
+    "garden-pond-hydrophone"
+   ]
+  }
  }
 }

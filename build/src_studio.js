@@ -3,7 +3,7 @@
    本体スクリプト（音声エンジン・音源ライブラリ）の後に読み込む。本体の関数と変数（ctx, master, recordings, loadOne, mixLane など）をそのまま使い、
    音声エンジンと音源の対応は変えない。build/integrate_v043.py が index.html の <script id="ae-studio"> にこのファイルを埋め込む。 */
 (()=>{'use strict';
-const VER='v0.61';
+const VER='v0.63';
 const PHOTOS=(()=>{try{return JSON.parse($('ae-photos').textContent)}catch(e){return {}}})();
 // v0.59 イメージ写真（data/scene_photos.json → ae-scenes）：種を特定できない生き物と環境音に、雰囲気の合う実写を「イメージ」として付ける（録音の場所・個体そのものではない）
 const SCENES=(()=>{try{return JSON.parse($('ae-scenes').textContent)}catch(e){return {images:{},map:{}}}})();
@@ -73,6 +73,7 @@ function noteTile(id,fn){fn('recording',id);for(const k of creditKeysOf(id)){con
 async function bufferOf(id){const u=userSounds.get(id);if(u)return u.buffer;return loadOne(id)}
 async function tileStart(id){const s=tst(id);if(s.voice||s.loading)return;
  if(!userSounds.has(id)&&!rightsAllowed(id)){status(L('この録音は商用モードの対象外のため鳴らしません（代用しません）。','This recording is excluded by the commercial mode, so it will not play (no substitute).'));return}
+ if(!recAllowed(id)){status(L('この生き物は PRO で鳴らせます（無料版は分類ごとに4種まで）。','This creature plays with PRO (the free version has 4 per group).'));return}
  if(playingIds().length>=TILE_MAX){status(L('同時に鳴らせるのは12までです。どれかを止めてください。','Up to 12 sounds can play at once. Stop one first.'));return}
  s.loading=true;renderTile(id);
  try{await smpEnsureCtx();const b=await bufferOf(id);if(!b)throw Error('no buffer');if(!s.loading)return;
@@ -98,7 +99,7 @@ const REC=new Map(recordings.map(r=>[r.id,r]));
 function engineKind(id){if(userSounds.has(id))return null;const r=REC.get(id);if(!r)return null;if(r.fieldBed)return 'field';if(r.kind!=='landscape'&&speciesSettings[id])return 'bio';return null}
 function member(id){const k=engineKind(id);if(k==='bio')return !!speciesSettings[id].enabled;if(k==='field')return !fieldConfig.legacy&&(fieldConfig.levels[id]||0)>0;return false}
 const autoOn=()=>playing;
-function isOn(id){const s=tileState.get(id);return !!(s&&(s.voice||s.loading))||(autoOn()&&member(id)&&rightsAllowed(id))}
+function isOn(id){const s=tileState.get(id);return !!(s&&(s.voice||s.loading))||(autoOn()&&member(id)&&rightsAllowed(id)&&recAllowed(id))}
 function isSounding(id){const s=tileState.get(id);if(s&&s.voice)return true;if(!autoOn())return false;if(activeBio.has(id))return true;for(const v of fieldVoices)if(v.id===id)return true;return false}
 const lastFieldLevel=new Map();
 function fieldLevelFor(id){return lastFieldLevel.get(id)||fieldDefaults[id]||45}
@@ -115,6 +116,7 @@ document.addEventListener('click',e=>{if(e.target&&e.target.closest&&e.target.cl
 function tileToggle(id){const s=tst(id);if(s.voice||s.loading){tileStop(id);return}
  if(autoOn()&&engineKind(id)){
   if(!rightsAllowed(id)){status(L('この録音は商用モードの対象外のため鳴らしません（代用しません）。','This recording is excluded by the commercial mode, so it will not play (no substitute).'));return}
+  if(!recAllowed(id)&&!member(id)){status(L('この生き物は PRO で鳴らせます（無料版は分類ごとに4種まで）。','This creature plays with PRO (the free version has 4 per group).'));return}
   const on=!member(id);setMember(id,on);if(on)focusId=id;status(nameOf(id)+(on?' を自律演奏に加えました':' を自律演奏から外しました'));renderTile(id);renderCount();return}
  tileStart(id)}
 // v0.49：下のバーの「鳴っている音」：鳴っている音をまとめて見て、音量・休みを変えたり、✕ で外したりする
@@ -139,12 +141,12 @@ function tileStopAll(){for(const id of playingIds())tileStop(id);for(const s of 
 function setTileVol(id,v){const s=tst(id);s.vol=clamp(+v,0,100);if(s.voice)s.voice.out.gain.setTargetAtTime(s.vol/100,ctx.currentTime,.05)}
 function setTilePan(id,v){const s=tst(id);s.pan=clamp(+v,-1,1);if(s.voice&&s.voice.pan.pan)s.voice.pan.pan.setTargetAtTime(s.pan,ctx.currentTime,.05)}
 // 商用モードが変わったら、対象外になった音を止める（代用しない）
-setInterval(()=>{for(const id of playingIds())if(!userSounds.has(id)&&!rightsAllowed(id))tileStop(id,true);renderRightsDim();document.body.classList.toggle('live',autoOn()||playingIds().length>0);if(autoOn()||document.querySelector('#tileSection .tile.auto'))for(const tile of document.querySelectorAll('#tileSection .tile'))renderTile(tile.dataset.id);renderCount()},400);
+setInterval(()=>{for(const id of playingIds())if(!userSounds.has(id)&&(!rightsAllowed(id)||!recAllowed(id)))tileStop(id,true);renderRightsDim();document.body.classList.toggle('live',autoOn()||playingIds().length>0);if(autoOn()||document.querySelector('#tileSection .tile.auto'))for(const tile of document.querySelectorAll('#tileSection .tile'))renderTile(tile.dataset.id);renderCount()},400);
 
 // ───────── タイルの画面 ─────────
 const FILTERS=[['all','すべて','All'],['birds','鳥','Birds'],['insects','虫','Insects'],['amphibians','両生類','Amphibians'],['mammals','哺乳類','Mammals'],['aquatic','水の生き物','Water life'],['japan','日本','Japan'],['photo','写真あり','With photos'],['user','自分の音','My sounds'],['playing','再生中','Playing']];
 let tileFilter='all',tileShowAll=false,soundTab='creatures';const TILE_PAGE=12; // 最初は12枚だけ見せる（スクロールせずにリール作成まで届くように）。残りは「すべて表示」
-function tileIds(){const lib=recordings.map(r=>r.id);const order=id=>{const ph=photoFor(id),p=ph?(ph.scene?.5:0):1,r=recordings.find(x=>x.id===id),k=r.kind==='species'?0:r.kind==='mixed'?1:2;return p*10+k};
+function tileIds(){const lib=recordings.map(r=>r.id);const order=id=>{const ph=photoFor(id),p=ph?(ph.scene?.5:0):1,r=recordings.find(x=>x.id===id),k=r.kind==='species'?0:r.kind==='mixed'?1:2;return (ENTITLEMENT.plan==='free'&&!recAllowed(id)?100:0)+p*10+k};
  const sorted=lib.slice().sort((a,b)=>order(a)-order(b));return [...userSounds.keys(),...sorted]}
 // 生き物の分類の絞り込み（鳥〜水の生き物）は生き物の欄だけに効く。環境音の欄は「日本・写真あり・自分の音・再生中」だけ効く
 const CREATURE_FILTERS=['birds','insects','amphibians','mammals','aquatic'];
@@ -157,7 +159,7 @@ function makeTile(id,uid){const g=groupOf(id),p=photoFor(id),r=recordings.find(x
   const img=p?el('img',{src:p.small,alt:'',loading:'lazy',decoding:'async',referrerpolicy:'no-referrer'}):el('span',{class:'ph',html:placeholderSVG(id,g)});
   if(p)img.addEventListener('error',()=>{const m=img.parentNode&&img.parentNode.querySelector('.sceneMark');if(m)m.remove();img.replaceWith(el('span',{class:'ph',html:placeholderSVG(id,g)}))},{once:true});
   const tierLetter=r?rightsTierOf(r.license):'U';
-  const play=el('button',{type:'button',class:'tilePlay','aria-pressed':'false','data-id':id},el('span',{class:'tileImg'},img,!p&&g!=='ambience'?el('span',{class:'phLabel',text:GROUP_LABEL[g]?GROUP_LABEL[g][1]:''}):null,p&&p.scene?el('span',{class:'sceneMark',text:L('イメージ','MOOD')}):null),
+  const play=el('button',{type:'button',class:'tilePlay','aria-pressed':'false','data-id':id},el('span',{class:'tileImg'},img,!p&&g!=='ambience'?el('span',{class:'phLabel',text:GROUP_LABEL[g]?GROUP_LABEL[g][1]:''}):null,el('span',{class:'tileChips'},recTier(id)==='pro'?el('span',{class:'proChip tileProChip',text:'PRO',title:L('PRO で鳴らせる生き物','Plays with PRO')}):null,p&&p.scene?el('span',{class:'sceneMark',text:L('イメージ','MOOD')}):null)),
    el('canvas',{class:'tileWave',width:'120',height:'26','aria-hidden':'true'}),el('span',{class:'tileText'},el('span',{class:'tileName',id:'tn-'+uid,text:nameOf(id)}),el('span',{class:'tileSub','data-i18n-skip':/^[A-Z]/.test(subOf(id))?'':false,text:subOf(id)})),
    el('span',{class:'tileTier tier'+tierLetter,'aria-hidden':'true',text:tierLetter}));
   const info=el('button',{type:'button',class:'tileInfo','aria-labelledby':'ti-'+uid+' tn-'+uid,'data-id':id},el('span',{'aria-hidden':'true',text:'i'}),el('span',{id:'ti-'+uid,hidden:true,text:'詳細'}));
@@ -169,7 +171,7 @@ function buildTiles(){renderFilters();const grid=$('tileGrid'),amb=$('ambGrid');
  if(!grid.children.length)grid.append(el('p',{class:'micro',text:tileFilter==='user'?L('まだありません。「＋ 自分の音を追加」から読み込めます。','Nothing yet. Add one with “＋ Add my sound”.'):L('該当する音がありません。','No sounds match.')}));
  if(ids.length>page){const more=el('button',{type:'button',class:'tileMore','aria-expanded':String(tileShowAll),text:tileShowAll?L('少なく表示','Show fewer'):L('すべて表示（'+ids.length+'）','Show all ('+ids.length+')')});
   more.addEventListener('click',()=>{tileShowAll=!tileShowAll;buildTiles();if(!tileShowAll)$('tileSection').scrollIntoView({block:'start'})});grid.append(more)}
- renderCount();renderRightsDim()}
+ renderCount();renderRightsDim();markRecLocks();renderRecNote()}
 function renderTabs(nc,na){const a=$('tabCreatures'),b=$('tabAmbience');if(!a)return;const on=soundTab==='ambience';a.setAttribute('aria-selected',String(!on));b.setAttribute('aria-selected',String(on));
  $('creaturePane').hidden=on;$('ambSection').hidden=!on;const pc=onIds().filter(id=>groupOf(id)!=='ambience').length,pa=onIds().filter(id=>groupOf(id)==='ambience').length;
  const ca=$('tabCreaturesN'),cb=$('tabAmbienceN');if(ca)ca.textContent=pc?L(pc+'音',pc+' on'):'';if(cb)cb.textContent=pa?L(pa+'音',pa+' on'):''}
@@ -706,6 +708,23 @@ try{if(!LIVE&&localStorage.getItem('saww.planPreview')==='free')ENTITLEMENT.plan
 function instrTier(k){return isRealLayer(k)||k==='harp'||k==='vibes'?(FREE_INSTR.has(k)?'free':'pro'):'free'}
 function instrAllowed(k){return instrTier(k)==='free'||ENTITLEMENT.plan!=='free'}
 window.__instrAllowed=instrAllowed;
+// ───────── v0.63 無料版で鳴らせる生き物の声（data/product_tiers.json の recordings.free：分類ごとに4種）─────────
+// オーナー要望（2026-11-08「無料版は生き物の声を出せすぎ。各分類3〜4種に絞り、残りは PRO」）。環境音と自分の音は無料版でも全部鳴る。
+// 判定はここだけ（window.__recAllowed）。タイル・自律演奏の候補（本体の candidatePool）・playSpecies・試聴が見る。
+const FREE_REC=new Set(Object.values(((TIERS.recordings||{}).free)||{}).flat());
+function recTier(id){if(userSounds.has(id))return 'free';const g=groupOf(id);if(g==='ambience'||g==='user')return 'free';return FREE_REC.has(id)?'free':'pro'}
+function recAllowed(id){return recTier(id)==='free'||ENTITLEMENT.plan!=='free'}
+window.__recAllowed=recAllowed;
+let recTierPlan=null;
+function markRecLocks(){for(const tile of document.querySelectorAll('.tile[data-id]')){const lk=!recAllowed(tile.dataset.id);if(tile.classList.contains('locked')!==lk)tile.classList.toggle('locked',lk)}}
+function applyRecTier(){const free=ENTITLEMENT.plan==='free',changed=recTierPlan!==null&&recTierPlan!==ENTITLEMENT.plan;recTierPlan=ENTITLEMENT.plan;
+ if(changed&&typeof buildTiles==='function')buildTiles();markRecLocks();
+ renderRecNote();
+ // 使えなくなった生き物は止める（自律演奏の参加中の声もフェードアウト）
+ if(free){for(const id of playingIds())if(!recAllowed(id))tileStop(id,true);if(typeof activeBio!=='undefined'&&typeof fadeResident==='function')for(const id of [...activeBio.keys()])if(!recAllowed(id))fadeResident(id)}}
+function renderRecNote(){const free=ENTITLEMENT.plan==='free';if(!$('recTierNote')&&$('tileGrid'))$('tileGrid').before(el('p',{class:'micro recTierNote',id:'recTierNote',role:'note'}));
+ const nc=FREE_REC.size,note=$('recTierNote');if(note)note.textContent=free?L('無料版：生き物は分類ごとに4種（計'+nc+'種）と、環境音すべてが鳴ります。PRO の印は PRO で。','Free: 4 creatures per group ('+nc+' in all) and every ambience play. Those marked PRO need PRO.'):L('テスト公開中は全部の生き物が鳴ります。PRO の印は、正式公開後に PRO で鳴らせる生き物です。','During the public test every creature plays. Those marked PRO will need PRO after launch.');
+}
 function applyInstrTier(){for(const row of document.querySelectorAll('#instrBody .control[data-layer]')){const k=row.dataset.layer,pro=instrTier(k)==='pro',ok=instrAllowed(k),inp=row.querySelector('input');
   const lab=row.querySelector('label');if(lab&&pro&&!lab.querySelector('.proChip'))lab.append(el('span',{class:'proChip',text:'PRO',title:'PRO'}));
   row.classList.toggle('locked',!ok);if(inp){inp.disabled=!ok;if(!ok&&p[k]>0){p[k]=0;inp.value=0;inp.dispatchEvent(new Event('input'))}}}
@@ -713,7 +732,7 @@ function applyInstrTier(){for(const row of document.querySelectorAll('#instrBody
  if(note)note.textContent=ENTITLEMENT.plan==='free'?L('無料版：'+nf+'種の楽器が鳴ります（PRO の印の楽器は PRO で）。','Free: '+nf+' instruments play (instruments marked PRO need PRO).'):L('テスト公開中は全部の楽器が鳴ります。PRO の印は、正式公開後に PRO で使える楽器です。','During the public test every instrument plays. Instruments marked PRO will need PRO after launch.');
  // 鳴っている途中の使えない楽器は、すぐ消す（余韻を残さない）
  if(ctx)for(const v of [...realVoices])if(!instrAllowed(v.k)){try{v.env.gain.setTargetAtTime(0,ctx.currentTime,.05);v.src.stop(ctx.currentTime+.3)}catch(e){}realVoices.delete(v)}
- const cb=$('planPreview');if(cb)cb.checked=ENTITLEMENT.plan==='free'}
+ const cb=$('planPreview');if(cb)cb.checked=ENTITLEMENT.plan==='free';applyRecTier()}
 function setPlanPreview(on){if(LIVE)return;ENTITLEMENT.plan=on?'free':'beta';try{localStorage.setItem('saww.planPreview',on?'free':'beta')}catch(e){}applyInstrTier();applyProLocks()}
 
 // ───────── 実録音の楽器層（v0.45）─────────

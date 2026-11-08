@@ -245,6 +245,7 @@ const RULES=[
  [/^(\d+)録音 \/ 必要な音だけ外部ファイルから読み込み（(.+)）$/,m=>m[1]+' recordings / only the sounds needed are loaded from external files ('+tr(m[2])+')'],
  [/^(生き物|環境音|音楽|サンプラー) (TRIM|HI|MID|LOW|FILTER|FX|ミュート|フェーダー)$/,m=>EXACT[m[1]]+' '+({'ミュート':'mute','フェーダー':'fader'}[m[2]]||m[2])],
  [/^オン：(.+) · (\S+)拍（([\d.]+)秒）→ (.+)$/,m=>'On: '+tr(m[1])+' · '+m[2]+' beat ('+m[3]+' s) → '+tr(m[4])],
+ [/^録画中にタブが裏に回っていました（約(\d+)秒）。その間も映像を描き続けましたが、端末によっては動きが少なくなります。仕上がりを確認してください。$/,m=>'The tab was in the background for about '+m[1]+' s while recording. Drawing continued, but motion may be reduced on some devices. Please check the result.'],
  [/^リールに BY-SA を含めないため、商用モードを「(.+)」に切り替えました。$/,m=>'Switched commercial mode to “'+tr(m[1])+'” so the reel contains no BY-SA.'],[/^リールを録画中。(\d+)秒で自動書き出しします。$/,m=>'Recording reel. It will export automatically after '+m[1]+' s.'],
  [/^リール動画を書き出しました（(MP4|WEBM|MKV)・([\d.]+) MB）。$/,m=>'Reel video exported ('+m[1]+', '+m[2]+' MB).'],[/^このリールのクレジット：素材(\d+)件（帰属表示が必要 (\d+)件）$/,m=>'Credits for this reel: '+m[1]+' source(s) ('+m[2]+' require attribution)'],
  [/^BY-SA の素材が(\d+)件含まれています。このリールは公開しないでください。$/,m=>m[1]+' BY-SA source(s) are included. Do not publish this reel.'],[/^リールを録画できません: (.+)$/,m=>'Can’t record a reel: '+tr(m[1])],[/^リールの書き出しに失敗しました: (.+)$/,m=>'Reel export failed: '+tr(m[1])],

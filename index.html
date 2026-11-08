@@ -1735,8 +1735,17 @@ function reelDrawVisual(c,style){const v=vxState(performance.now()),E=v.sm,t=v.t
 const REEL_STYLES=['motion','analysis','panels','wave','minimal','pop','nature','organic','particles','geometry'];
 function reelSetStyle(v){if(!REEL_STYLES.includes(v))return false;reelStyle=v;reelSpec=null;reelMo=null;reelDraw();return true}
 function reelDraw(){const cv=$('reelCanvas');if(!cv)return;const c=cv.getContext('2d');c.save();try{if(reelStyle==='analysis')reelDrawAnalysis(c);else if(reelStyle==='motion')reelDrawMotion(c);else if(VX_STYLES.includes(reelStyle))reelDrawVisual(c,reelStyle);else if(window.reelDrawStudio)reelDrawStudio(c,reelStyle)}finally{c.restore()}const st=reelState;if(st&&st.active)st.frames++}
-function reelLoop(){if(!reelState||!reelState.active)return;reelDraw();const el=(performance.now()-reelState.startedAt)/1000;
- const s=$('reelStatus');const txt='● REC '+Math.floor(el)+' / '+reelState.sec+' SEC';if(s.textContent!==txt)s.textContent=txt;reelState.raf=requestAnimationFrame(reelLoop)}
+function reelFrame(){const st=reelState;if(!st||!st.active)return;reelDraw();const el=(performance.now()-st.startedAt)/1000;
+ const s=$('reelStatus');const txt='● REC '+Math.floor(el)+' / '+st.sec+' SEC';if(s.textContent!==txt)s.textContent=txt}
+function reelLoop(){if(!reelState||!reelState.active)return;reelState.lastRaf=performance.now();reelFrame();reelState.raf=requestAnimationFrame(reelLoop)}
+// v0.65 タブが裏に回った時の描画停止の対策（バックログ 2④）：requestAnimationFrame は裏のタブで止まり、映像が固まったまま音だけが進む。
+// 録画中は Worker の時計（裏でも間引かれにくい）で 1/REEL_FPS 秒ごとに知らせ、rAF が 250 ミリ秒以上来ていない時だけ代わりに描く。
+// Worker が使えない環境は setInterval（裏では1秒に1回程度に間引かれる）で代用する。裏に回っていた時間は書き出しの案内に出す。
+function reelTickStart(st){const ms=Math.round(1000/REEL_FPS),tick=()=>{if(reelState!==st||!st.active)return;if(document.hidden||performance.now()-(st.lastRaf||st.startedAt)>250){st.tickFrames++;reelFrame()}};
+ try{const url=URL.createObjectURL(new Blob(['let h=0;onmessage=e=>{clearInterval(h);if(e.data>0)h=setInterval(()=>postMessage(0),e.data)}'],{type:'text/javascript'}));const w=new Worker(url);URL.revokeObjectURL(url);w.onmessage=tick;w.postMessage(ms);st.tick={kind:'worker',stop:()=>{try{w.postMessage(0);w.terminate()}catch(e){}}}}
+ catch(e){const h=setInterval(tick,ms);st.tick={kind:'interval',stop:()=>clearInterval(h)}}}
+function reelHiddenUpdate(){const st=reelState;if(!st||!st.active)return;const now=performance.now();if(document.hidden){if(st.hiddenAt==null){st.hiddenAt=now;st.hiddenCount++}}else if(st.hiddenAt!=null){st.hiddenMs+=now-st.hiddenAt;st.hiddenAt=null}}
+document.addEventListener('visibilitychange',reelHiddenUpdate);
 // v0.32 キャプション案（日英）：説明欄用 .txt の先頭に入れる。聞こえた実録音の名前と録音地（録音台帳の location＝原本の記載のまま。分布ではない）を最大4件。
 // 合成音も鳴るため「実録音だけ」とは書かない。投稿するかどうか・文面の編集はオーナーが行う（自動投稿はしない）。
 function reelCaption(entries){
@@ -1764,13 +1773,13 @@ async function reelStart(sec,opts={}){
  reelSpec=null;reelMo=null;if(opts.style)reelSetStyle(opts.style);reelDraw();
  const stream=new MediaStream([...cv.captureStream(REEL_FPS).getVideoTracks(),...dest.stream.getAudioTracks()]);
  const rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:opts.videoBitsPerSecond||8000000,audioBitsPerSecond:192000});
- reelVX=null;reelState={active:true,style:reelStyle,calm:reelCalm,finalizing:false,rec,dest,stream,chunks:[],used:new Map(),mime,sec,startedAt:performance.now(),frames:0,timer:null,raf:0};
+ reelVX=null;reelState={active:true,style:reelStyle,calm:reelCalm,finalizing:false,rec,dest,stream,chunks:[],used:new Map(),mime,sec,startedAt:performance.now(),frames:0,timer:null,raf:0,lastRaf:0,tick:null,tickFrames:0,hiddenMs:0,hiddenAt:null,hiddenCount:0};
  for(const id of activeBio.keys())reelNote('recording',id);for(const v of fieldVoices)reelNote('recording',v.id);for(const v of sampleVoices)reelNote('instrument',v.sid);if(window.studioSeed)studioSeed(reelNote);
  rec.ondataavailable=e=>{if(e.data&&e.data.size)reelState.chunks.push(e.data)};rec.onstop=()=>reelFinalize();
- rec.start(1000);reelState.timer=setTimeout(reelStop,sec*1000);reelState.raf=requestAnimationFrame(reelLoop);
+ rec.start(1000);reelState.timer=setTimeout(reelStop,sec*1000);reelState.raf=requestAnimationFrame(reelLoop);reelTickStart(reelState);reelHiddenUpdate();
  $('reelRecord').disabled=true;$('reelCredits').hidden=true;
  reelMsg([...notes,'リールを録画中。'+sec+'秒で自動書き出しします。'])}
-function reelStop(){const st=reelState;if(!st||!st.active)return;st.active=false;st.finalizing=true;clearTimeout(st.timer);cancelAnimationFrame(st.raf);
+function reelStop(){const st=reelState;if(!st||!st.active)return;reelHiddenUpdate();if(st.hiddenAt!=null){st.hiddenMs+=performance.now()-st.hiddenAt;st.hiddenAt=null}st.active=false;st.finalizing=true;clearTimeout(st.timer);cancelAnimationFrame(st.raf);if(st.tick)st.tick.stop();
  st.duration=(performance.now()-st.startedAt)/1000;$('reelStatus').textContent='ENCODING…';try{st.rec.stop()}catch(e){reelFinalize()}}
 function reelFinalize(){const st=reelState;if(!st||!st.finalizing)return;st.finalizing=false;
  try{st.stream.getTracks().forEach(t=>t.stop())}catch(e){}try{master._output.disconnect(st.dest)}catch(e){}
@@ -1779,10 +1788,10 @@ function reelFinalize(){const st=reelState;if(!st||!st.finalizing)return;st.fina
   const text=['リール動画 / Reel video: '+name+' ('+REEL_W+'×'+REEL_H+', '+st.duration.toFixed(1)+' s, '+type+')','',...caption,'',attributionText(entries,{date:now}),...(window.reelPhotoCredits?reelPhotoCredits(st):[])].join('\r\n');
   const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);
   const req=entries.filter(e=>!e.imported&&needsAttribution(e.license)).length,sa=entries.filter(e=>!e.imported&&rightsTierOf(e.license)==='C').length;
-  st.result={name,type,style:st.style,calm:st.calm,size:blob.size,duration:st.duration,frames:st.frames,entries:entries.map(e=>({id:e.id,kind:e.kind,license:e.license,imported:!!e.imported})),text,caption:caption.join('\n'),sa};if(window.reelAfterExport)try{reelAfterExport(st,blob)}catch(e){}
+  st.result={name,type,style:st.style,calm:st.calm,size:blob.size,duration:st.duration,frames:st.frames,tickFrames:st.tickFrames,tickKind:st.tick?st.tick.kind:null,hiddenSec:st.hiddenMs/1000,hiddenCount:st.hiddenCount,entries:entries.map(e=>({id:e.id,kind:e.kind,license:e.license,imported:!!e.imported})),text,caption:caption.join('\n'),sa};if(window.reelAfterExport)try{reelAfterExport(st,blob)}catch(e){}
   $('reelCreditsSummary').textContent='このリールのクレジット：素材'+entries.length+'件（帰属表示が必要 '+req+'件）';$('reelCreditsText').textContent=text;$('reelCredits').hidden=false;
   $('reelStatus').textContent=st.duration.toFixed(1)+' SEC · SAVED';
-  reelMsg(['リール動画を書き出しました（'+ext.toUpperCase()+'・'+(blob.size/1024/1024).toFixed(1)+' MB）。',...(sa?['BY-SA の素材が'+sa+'件含まれています。このリールは公開しないでください。']:[])])}
+  reelMsg(['リール動画を書き出しました（'+ext.toUpperCase()+'・'+(blob.size/1024/1024).toFixed(1)+' MB）。',...(sa?['BY-SA の素材が'+sa+'件含まれています。このリールは公開しないでください。']:[]),...(st.hiddenMs>=500?['録画中にタブが裏に回っていました（約'+Math.max(1,Math.round(st.hiddenMs/1000))+'秒）。その間も映像を描き続けましたが、端末によっては動きが少なくなります。仕上がりを確認してください。']:[])])}
  catch(e){$('reelStatus').textContent='EXPORT FAILED';reelMsg(['リールの書き出しに失敗しました: '+e.message]);st.result={error:e.message}}
  finally{$('reelRecord').disabled=false}}
 $('reelStyle').addEventListener('change',e=>reelSetStyle(e.target.value));
@@ -1801,7 +1810,7 @@ $('reelStop').addEventListener('click',reelStop);
 $('reelCreditsSave').addEventListener('click',()=>{const r=reelState&&reelState.result;if(r&&r.text)saveText(r.name.replace(/\.(mp4|webm|mkv)$/,'')+'_credits.txt',r.text)});
 reelDraw();
 window.__visualDebug={state:()=>reelVX?{hits:reelVX.hits||0,maxWin:reelVX.maxWin||0,calm:reelCalm,on:+(reelVX.on||0).toFixed(3)}:null,setCalm:v=>{reelCalm=!!v},styles:()=>VX_STYLES.slice()};
-window.__reelDebug={style:()=>reelStyle,setStyle:reelSetStyle,preview:reelSetPreview,motion:()=>reelMo?{cardEvents:reelMo.cardEvents||0,strongRips:reelMo.strongRips||0,onsets:reelMo.onsets,cards:[...reelMo.cards.keys()],parts:reelMo.parts.length,rips:reelMo.rips.length,boxes:reelMo.boxes,drawMs:reelMo.drawMs.slice(),env:{...reelMo.env},hue:reelMo.hue}:null,start:(s,o)=>reelStart(s,o),stop:reelStop,mime:reelMime,now:()=>reelNowPlaying().map(n=>({id:n.id,role:n.role,location:n.r.location})),state:()=>reelState?{active:reelState.active,finalizing:reelState.finalizing,frames:reelState.frames,used:[...reelState.used.keys()],result:reelState.result||null}:null};
+window.__reelDebug={style:()=>reelStyle,setStyle:reelSetStyle,preview:reelSetPreview,motion:()=>reelMo?{cardEvents:reelMo.cardEvents||0,strongRips:reelMo.strongRips||0,onsets:reelMo.onsets,cards:[...reelMo.cards.keys()],parts:reelMo.parts.length,rips:reelMo.rips.length,boxes:reelMo.boxes,drawMs:reelMo.drawMs.slice(),env:{...reelMo.env},hue:reelMo.hue}:null,start:(s,o)=>reelStart(s,o),stop:reelStop,mime:reelMime,now:()=>reelNowPlaying().map(n=>({id:n.id,role:n.role,location:n.r.location})),state:()=>reelState?{active:reelState.active,finalizing:reelState.finalizing,frames:reelState.frames,tick:reelState.tick?reelState.tick.kind:null,tickFrames:reelState.tickFrames||0,hiddenMs:reelState.hiddenMs||0,used:[...reelState.used.keys()],result:reelState.result||null}:null};
 
 // v0.24 GEOGRAPHIC / HABITAT FILTER — drives both the visible list and the autonomous species pool.
 const wildMeta=JSON.parse($('ae-wildlife-meta').textContent);
@@ -3257,6 +3266,7 @@ const RULES=[
  [/^(\d+)録音 \/ 必要な音だけ外部ファイルから読み込み（(.+)）$/,m=>m[1]+' recordings / only the sounds needed are loaded from external files ('+tr(m[2])+')'],
  [/^(生き物|環境音|音楽|サンプラー) (TRIM|HI|MID|LOW|FILTER|FX|ミュート|フェーダー)$/,m=>EXACT[m[1]]+' '+({'ミュート':'mute','フェーダー':'fader'}[m[2]]||m[2])],
  [/^オン：(.+) · (\S+)拍（([\d.]+)秒）→ (.+)$/,m=>'On: '+tr(m[1])+' · '+m[2]+' beat ('+m[3]+' s) → '+tr(m[4])],
+ [/^録画中にタブが裏に回っていました（約(\d+)秒）。その間も映像を描き続けましたが、端末によっては動きが少なくなります。仕上がりを確認してください。$/,m=>'The tab was in the background for about '+m[1]+' s while recording. Drawing continued, but motion may be reduced on some devices. Please check the result.'],
  [/^リールに BY-SA を含めないため、商用モードを「(.+)」に切り替えました。$/,m=>'Switched commercial mode to “'+tr(m[1])+'” so the reel contains no BY-SA.'],[/^リールを録画中。(\d+)秒で自動書き出しします。$/,m=>'Recording reel. It will export automatically after '+m[1]+' s.'],
  [/^リール動画を書き出しました（(MP4|WEBM|MKV)・([\d.]+) MB）。$/,m=>'Reel video exported ('+m[1]+', '+m[2]+' MB).'],[/^このリールのクレジット：素材(\d+)件（帰属表示が必要 (\d+)件）$/,m=>'Credits for this reel: '+m[1]+' source(s) ('+m[2]+' require attribution)'],
  [/^BY-SA の素材が(\d+)件含まれています。このリールは公開しないでください。$/,m=>m[1]+' BY-SA source(s) are included. Do not publish this reel.'],[/^リールを録画できません: (.+)$/,m=>'Can’t record a reel: '+tr(m[1])],[/^リールの書き出しに失敗しました: (.+)$/,m=>'Reel export failed: '+tr(m[1])],

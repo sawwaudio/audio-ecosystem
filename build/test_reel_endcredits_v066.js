@@ -1,0 +1,21 @@
+// リールの最後の帰属テロップ（3①）。http.server 8765 で実行。
+const {chromium}=require('playwright');const fs=require('fs');(async()=>{const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
+const cx=await b.newContext({viewport:{width:390,height:900},acceptDownloads:true});const pg=await cx.newPage();await require('./photo_fixture')(pg);
+const errs=[];pg.on('pageerror',e=>errs.push(e.message));pg.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
+await pg.addInitScript(()=>{const P=CanvasRenderingContext2D.prototype,f=P.fillText;window.__h=0;P.fillText=function(s,...a){if(String(s).startsWith('音のクレジット'))window.__h++;return f.call(this,s,...a)}});
+const R={},fail=[];const ok=(k,c)=>{R[k]=c;if(!c)fail.push(k)};const E=()=>pg.evaluate(()=>__reelDebug.end()),W=t=>pg.waitForTimeout(t);
+const rec=async(sec,stopAt)=>{const dl=pg.waitForEvent('download',{timeout:40000});await pg.evaluate(s=>{window.__h=0;__reelDebug.start(s)},sec);await W(stopAt);await pg.click('#reelStop');await W(300);R.st=await pg.evaluate(()=>document.getElementById('reelStatus').textContent);await dl;await W(400);return pg.evaluate(()=>__reelDebug.state().result)};
+await pg.goto('http://localhost:8765/index.html');await pg.evaluate(()=>{try{localStorage.clear()}catch(e){}});await pg.reload();await W(800);
+ok('toggle_on',await pg.evaluate(()=>document.getElementById('reelEndCredits').checked));await pg.click('#play');await W(2500);
+const dl=pg.waitForEvent('download',{timeout:40000});await pg.evaluate(()=>{window.__h=0;__reelDebug.start(6)});await W(1000);
+const by=await pg.evaluate(()=>{const r=JSON.parse(document.getElementById('ae-recordings').textContent).find(x=>/^CC BY\b/.test(x.license||'')&&!/BY-SA/.test(x.license));__reelDebug.note('recording',r.id);return r});
+await W(1500);ok('not_early',await pg.evaluate(()=>window.__h===0));await dl;await W(400);let e=await E(),r=await pg.evaluate(()=>__reelDebug.state().result);R.e1={...e,endLines:e.endLines.slice(0,4)};
+ok('end_sec',e.endSec===2);ok('frames',e.endFrames>=25&&e.endFrames<=110&&await pg.evaluate(()=>window.__h>=25));ok('used',r.entries.some(x=>x.id===by.id));
+ok('by_line',e.endLines.some(l=>l.startsWith(by.jp))&&e.endLines.includes('"'+by.title+'" — '+by.author+' · '+by.license));ok('caption',/Credits & Attribution/.test(r.text));
+r=await rec(30,2000);e=await E();ok('st_credits',/· CREDITS$/.test(R.st));ok('stop',e.endSec===4&&r.duration>5.5&&r.duration<7.5&&e.endFrames>=50);R.d2=r.duration;
+await pg.evaluate(()=>{document.getElementById('reelEndCredits').checked=false});r=await rec(30,2000);e=await E();R.d3=r.duration;
+ok('off',e.endSec===0&&e.endFrames===0&&r.duration<3.5&&await pg.evaluate(()=>window.__h===0));await pg.evaluate(()=>{document.getElementById('reelEndCredits').checked=true});
+await pg.evaluate(()=>__i18n.set('en'));await W(300);ok('en',await pg.evaluate(()=>document.getElementById('reelEndCredits').parentElement.textContent.trim())==='Show credits at the end');await pg.evaluate(()=>__i18n.set('ja'));
+const ln="'最後にクレジットを映す':'Show credits at the end',\n";ok('parity',fs.readFileSync(__dirname+'/src_i18n.js','utf8').includes(ln)&&fs.readFileSync(__dirname+'/../index.html','utf8').includes(ln));
+ok('no_overflow',await pg.evaluate(()=>document.documentElement.scrollWidth<=390));ok('no_errors',errs.length===0);R.errs=errs;
+console.log(JSON.stringify(R));console.log(fail.length?'FAIL: '+fail.join(', '):'ALL PASS');await b.close();process.exit(fail.length?1:0)})();

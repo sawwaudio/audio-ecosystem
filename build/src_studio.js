@@ -482,7 +482,7 @@ function drawPop(c){const P=popPal,now=performance.now(),t=(now-A.t0)/1000,dt=Ma
  PS.blobs.forEach(([bx,by,br],i)=>{const col=[P.bg2,P.a,P.c][i];const R=REEL_W*br*(1+.18*low+.04*Math.sin(t*.7+i*2));const x=REEL_W*bx+60*Math.sin(t*.23+i),y=REEL_H*by+50*Math.cos(t*.19+i*1.7);
   c.globalAlpha=i===0?1:.22;c.fillStyle=col;c.beginPath();for(let k=0;k<=48;k++){const a=k/48*6.2832,w=1+.08*Math.sin(a*3+t*.9+i)+.05*Math.sin(a*5-t*.6);const px=x+Math.cos(a)*R*w,py=y+Math.sin(a)*R*w;k?c.lineTo(px,py):c.moveTo(px,py)}c.closePath();c.fill()});c.globalAlpha=1;
  // 2. 上の帯：アプリ名と録画の時間
- const st=reelState,tc=st&&st.active?((now-st.t0)/1000):t;c.font='800 30px '+ROUND;const nameW=c.measureText('saww audio ecosystem').width+48;rrect(c,X0,Y0,nameW,58,29);c.fillStyle=P.ink;c.fill();txt(c,'saww audio ecosystem',X0+24,Y0+39,'800 30px '+ROUND,P.bg);
+ const st=reelState,tc=st&&st.active?((now-st.startedAt)/1000):t;c.font='800 30px '+ROUND;const nameW=c.measureText('saww audio ecosystem').width+48;rrect(c,X0,Y0,nameW,58,29);c.fillStyle=P.ink;c.fill();txt(c,'saww audio ecosystem',X0+24,Y0+39,'800 30px '+ROUND,P.bg);
  const tcs=(st&&st.active?'● ':'')+String(Math.floor(tc/60)).padStart(2,'0')+':'+String(Math.floor(tc%60)).padStart(2,'0');c.font='800 28px '+ROUND;const tw=c.measureText(tcs).width+40;rrect(c,X1-tw,Y0,tw,58,29);c.fillStyle=st&&st.active?P.a:P.paper;c.fill();txt(c,tcs,X1-20,Y0+39,'800 28px '+ROUND,'#1F1A3D','right');
  // 3. 花びら（周波数）。地の上に版ずれの影、その上に3色で
  const N=PS.pet.length,rot=t*.18+PS.kick*.12,pop=elastic((t-PS.subjAt)/.7),R0=230*(.62+.38*pop)*(1+.05*PS.kick);
@@ -569,7 +569,7 @@ function drawNature(c){const now=performance.now(),t=(now-A.t0)/1000,dt=Math.min
  if(ok&&A.wave){const wy=base+(paper?0:36);let pk=.02;for(let i=0;i<A.wave.length;i+=8)pk=Math.max(pk,Math.abs(A.wave[i]));const pts=[],m=96,step=Math.floor(A.wave.length/m);for(let i=0;i<=m;i++){let s2=0;for(let k=0;k<step;k++)s2+=A.wave[Math.min(A.wave.length-1,i*step+k)]||0;pts.push([X0+i/m*W,wy+s2/step/pk*26])}
   const line=(w,al)=>{c.lineWidth=w;c.strokeStyle=rgb(paper?[255,255,255]:acc,al);c.beginPath();pts.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.stroke()};line(8,.12);line(2,.9)}
  // 4. 上：アプリ名と時間
- const st=reelState,tc=st&&st.active?((now-st.t0)/1000):t;const top=paper?Y0-20:Y0;const hc=paper?ink:[255,255,255];
+ const st=reelState,tc=st&&st.active?((now-st.startedAt)/1000):t;const top=paper?Y0-20:Y0;const hc=paper?ink:[255,255,255];
  // ロゴ（v0.49。ヘッダーと同じ画像。丸く切り抜く）。読み込み前は文字だけ
  const lg=document.querySelector('img.brandLogo'),le=lg&&lg.src?canvasImage(lg.src):null,LX=le&&le.ok?X0+92:X0;
  if(le&&le.ok){c.save();c.beginPath();c.arc(X0+38,top+34,38,0,Math.PI*2);c.clip();c.drawImage(le.img,X0,top-4,76,76);c.restore();c.lineWidth=1.5;c.strokeStyle=rgb(hc,.35);c.beginPath();c.arc(X0+38,top+34,38,0,Math.PI*2);c.stroke()}

@@ -85,6 +85,7 @@ const EXACT={
 // リールモード（v0.31）
 'REEL / 縦動画 1080×1920':'REEL / VERTICAL VIDEO 1080×1920','長さ':'Length','リールの長さ':'Reel length','● リールを録画':'● Record reel','■ 停止して書き出し':'■ Stop & export','リール映像のプレビュー':'Reel video preview',
 '最後にクレジットを映す':'Show credits at the end',
+'商用モードが「すべての素材」のため、CC BY-SA の素材も録音に入ります。':'Commercial mode is “All sources”, so CC BY-SA material will be included in the recording.',
 // リールの見た目（v0.37）
 '見た目':'Look','リールの見た目':'Reel look','動き（リール向け）':'Motion (for reels)','分析（スペクトログラム）':'Analysis (spectrogram)','▶ 動きをプレビュー':'▶ Preview motion','■ プレビューを止める':'■ Stop preview',
 'いまの演奏を縦長の動画として録画します。見た目は「動き」（音に反応する光の輪・立ちのぼる音の霧・光の粒・鳴き始めた生き物の名前と録音地のカード）か「分析」（スペクトログラム・波形）から選べます。文字は SNS の画面部品に隠れにくい位置に置きます。リールには CC BY-SA の素材を含めません（録画を始めると商用モードを「BY-SAを除く」に切り替えます）。書き出し形式はブラウザによって MP4 または WebM です（変換はしません）。':'Records the current performance as a vertical video. Choose the look: “Motion” (a ring of light that reacts to the sound, rising sound mist, drifting light particles, and cards with the name and recording location of each creature as it starts to call) or “Analysis” (spectrogram and waveform). Text is placed where social-app buttons are unlikely to cover it. Reels never include CC BY-SA sources (starting a recording switches commercial mode to “Exclude BY-SA”). The file is MP4 or WebM depending on the browser (no conversion).',
@@ -249,6 +250,7 @@ const RULES=[
  [/^録画中にタブが裏に回っていました（約(\d+)秒）。その間も映像を描き続けましたが、端末によっては動きが少なくなります。仕上がりを確認してください。$/,m=>'The tab was in the background for about '+m[1]+' s while recording. Drawing continued, but motion may be reduced on some devices. Please check the result.'],
  [/^リールに BY-SA を含めないため、商用モードを「(.+)」に切り替えました。$/,m=>'Switched commercial mode to “'+tr(m[1])+'” so the reel contains no BY-SA.'],[/^リールを録画中。(\d+)秒で自動書き出しします。$/,m=>'Recording reel. It will export automatically after '+m[1]+' s.'],
  [/^リール動画を書き出しました（(MP4|WEBM|MKV)・([\d.]+) MB）。$/,m=>'Reel video exported ('+m[1]+', '+m[2]+' MB).'],[/^このリールのクレジット：素材(\d+)件（帰属表示が必要 (\d+)件）$/,m=>'Credits for this reel: '+m[1]+' source(s) ('+m[2]+' require attribution)'],
+ [/^BY-SA の素材が(\d+)件含まれています。販売物やリール動画には使わないでください（使う場合は商用モードを「BY-SAを除く」にして録り直してください）。$/,m=>m[1]+' BY-SA source(s) are included. Don’t use this in products for sale or in reels (to use it, switch commercial mode to “Excluding BY-SA” and record again).'],
  [/^BY-SA の素材が(\d+)件含まれています。このリールは公開しないでください。$/,m=>m[1]+' BY-SA source(s) are included. Do not publish this reel.'],[/^リールを録画できません: (.+)$/,m=>'Can’t record a reel: '+tr(m[1])],[/^リールの書き出しに失敗しました: (.+)$/,m=>'Reel export failed: '+tr(m[1])],
  [/^ライセンス区分と帰属情報を含みます（A (\d+)件・B (\d+)件・C (\d+)件）。$/,m=>'Includes license tiers and attribution info (A '+m[1]+' · B '+m[2]+' · C '+m[3]+').'],[/^プリセットの商用モード（(.+)）を適用しました。$/,m=>'Applied the preset’s commercial mode ('+tr(m[1])+').'],
  [/^いまの商用モード（(.+)）の方がプリセット（(.+)）より厳しいため、いまの設定のままにしました。$/,m=>'Your current commercial mode ('+tr(m[1])+') is stricter than the preset’s ('+tr(m[2])+'), so it was kept.'],[/^このプリセットの素材のうち(\d+)件は商用モードの対象外のため鳴りません（代用しません）。$/,m=>m[1]+' source(s) in this preset are excluded by commercial mode and will not play (no substitutes).'],

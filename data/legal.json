@@ -1,12 +1,12 @@
 {
-  "_note": "v0.59 特定商取引法に基づく表記と定期購入の表示（オーナー要望 2026-11-07 18:37）。build/make_legal.py が legal.html（公開ページ）と index.html の ae-legal を作る。null の項目は「記入待ち」と表示し、すべて埋まるまで課金（checkout.status=live）は始まらない。address・phone は値を入れるか、個人事業主で省略する時は \"request\"（「請求があれば遅滞なく開示します」と表示）。Claude は推測で埋めない（オーナーが決める）。2026-11-08 オーナー記入：販売事業者・責任者・月額 9.99 米ドル、住所と電話は請求時に開示（実際の住所・電話はリポジトリに保存しない）。メールはドメインを取得してから。",
-  "updated": "2026-11-08",
+  "_note": "v0.59 特定商取引法に基づく表記と定期購入の表示（オーナー要望 2026-11-07 18:37）。build/make_legal.py が legal.html（公開ページ）と index.html の ae-legal を作る。null の項目は「記入待ち」と表示し、すべて埋まるまで課金（checkout.status=live）は始まらない。address・phone は値を入れるか、個人事業主で省略する時は \"request\"（「請求があれば遅滞なく開示します」と表示）。Claude は推測で埋めない（オーナーが決める）。2026-11-08 オーナー記入：販売事業者・責任者・月額 9.99 米ドル、住所と電話は請求時に開示（実際の住所・電話はリポジトリに保存しない）。メールはドメインを取得してから。 2026-11-09 オーナー記入：メールアドレス info@saw-saww-official.com（受信確認済み）。",
+  "updated": "2026-11-09",
   "seller": "篠崎颯太（屋号：saw）",
   "tradeName": "saww audio ecosystem",
   "manager": "篠崎颯太",
   "address": "request",
   "phone": "request",
-  "email": null,
+  "email": "info@saw-saww-official.com",
   "hours": null,
   "price": {
     "monthly": 9.99,

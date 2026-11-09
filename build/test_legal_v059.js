@@ -20,12 +20,12 @@ const overflow=pg=>pg.evaluate(()=>document.documentElement.scrollWidth-innerWid
  ok('legal_missing_marked',R.page.missing===need&&R.page.notice===(need>0));ok('legal_subscription_box',/月額の定期購読/.test(R.page.box)&&/解約/.test(R.page.box));
  ok('legal_390',(await overflow(pg))<=0);if(SHOT)await pg.screenshot({path:SHOT+'/legal_390.png',fullPage:true});await cx.close()}
 
-// 2. 販売を始める前（いまの設定）：プランの欄にリンクと内容の案。LIVE にしても特商法が記入待ちなら課金は始まらない
+// 2. 販売を始める前（いまの設定：checkout.status=test）：プランの欄にリンクと内容の案。LIVE にしても特商法が記入待ちなら課金は始まらない
 {const cx=await b.newContext({viewport:{width:390,height:844}});const pg=await newPage(cx,null);
  R.pre=await pg.evaluate(()=>({live:__billingDebug.live,ready:__billingDebug.legal.ready,link:document.querySelector('#plansBody .planLegal a')?.getAttribute('href'),pv:!!document.querySelector('#subTermsPreview #subTerms'),dts:[...document.querySelectorAll('#subTerms dt')].map(x=>x.textContent),buy:!!document.getElementById('billBuy')}));
  ok('pre_link_preview',!R.pre.live&&R.pre.link==='legal.html'&&R.pre.pv&&TERMS.every(k=>R.pre.dts.includes(k))&&!R.pre.buy);
  await cx.close();
- const cx2=await b.newContext({viewport:{width:390,height:844}});const pg2=await newPage(cx2,{status:'live',apiBase:'https://billing.test',publicKey:{kty:'EC',crv:'P-256',x:'x',y:'y'},paymentLink:'https://buy.stripe.com/test_x'});
+ const cx2=await b.newContext({viewport:{width:390,height:844}});const pg2=await newPage(cx2,{status:'live',apiBase:'https://billing.test',publicKey:{kty:'EC',crv:'P-256',x:'x',y:'y'},paymentLink:'https://buy.stripe.com/test_x',legal:{ready:false,missing:['email']}}); // 表記が埋まっていない状態を作る（2026-11-09 以降、本物の表記は埋まっている）
  R.gate=await pg2.evaluate(()=>({live:__billingDebug.live,plan:__billingDebug.state().plan,buy:!!document.getElementById('billBuy')}));ok('gate_until_legal_ready',!R.gate.live&&R.gate.plan==='beta'&&!R.gate.buy);await cx2.close()}
 
 // 3. 販売中（特商法が埋まった想定）：購入ボタンの上に内容、確認のチェックを入れるまで押せない

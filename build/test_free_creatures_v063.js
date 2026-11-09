@@ -1,4 +1,4 @@
-// v0.63 の回帰テスト：無料版で鳴らせる生き物の声は分類ごとに4種（data/product_tiers.json の recordings.free）。残りは PRO。
+// v0.63 の回帰テスト：無料版で鳴らせる生き物の声は分類ごとに6種（v0.67。v0.63 は4種）（data/product_tiers.json の recordings.free）。残りは PRO。
 // テスト公開中（plan 'beta'）は全部鳴る。「無料版の見え方を試す」（localStorage saww.planPreview='free'）で無料版の動きを確かめる。
 // python3 -m http.server 8765 で配信して実行する（音源リポジトリへのリンクが必要）。
 const {chromium}=require('playwright');const fs=require('fs'),path=require('path');(async()=>{
@@ -11,9 +11,9 @@ const recs=JSON.parse(/<script type="application\/json" id="ae-recordings">([\s\
 const FREE=T.recordings.free,ALL_FREE=Object.values(FREE).flat(),GROUPS=['birds','insects','amphibians','mammals','aquatic'];
 const PRO_BIRD='tawny-owl',PRO_INSECT='niiniizemi',FREE_BIRD='uguisu-yokohama';
 
-// 1. データ：5分類×4種、録音と分類が合う、CC0・CC BY（BY-SA を除くでも鳴る）、初期設定の鳥4種を含む
+// 1. データ：5分類×6種（v0.67 で4種→6種）、録音と分類が合う、CC0・CC BY（BY-SA を除くでも鳴る）、初期設定の鳥4種を含む
 R.counts=GROUPS.map(g=>(FREE[g]||[]).length);
-ok('data_counts',R.counts.every(n=>n===4)&&ALL_FREE.length===20&&new Set(ALL_FREE).size===20);
+ok('data_counts',R.counts.every(n=>n===6)&&ALL_FREE.length===30&&new Set(ALL_FREE).size===30);
 ok('data_match',GROUPS.every(g=>FREE[g].every(id=>recs.some(r=>r.id===id)&&CATS[id]&&CATS[id].cat===g)));
 ok('data_license',ALL_FREE.every(id=>{const l=recs.find(r=>r.id===id).license;return !/BY-SA|NC|ND/.test(l)}));
 ok('default_birds_free',['uguisu-yokohama','song-thrush','eurasian-wren','nightingale-russia'].every(id=>FREE.birds.includes(id)));
@@ -41,7 +41,7 @@ await cx.close();
 R.free=await tiles(pg);
 ok('free_locked',R.free.filter(t=>t.locked).length===R.free.length-ALL_FREE.length&&R.free.filter(t=>!t.locked).every(t=>ALL_FREE.includes(t.id)));
 ok('free_first',R.free.slice(0,ALL_FREE.length).every(t=>!t.locked));
-R.freeNote=await pg.textContent('#recTierNote');ok('free_note',/無料版：生き物は分類ごとに4種（計20種）/.test(R.freeNote));
+R.freeNote=await pg.textContent('#recTierNote');ok('free_note',/無料版：生き物は分類ごとに6種（計30種）/.test(R.freeNote));
 await pg.evaluate(id=>document.querySelector('.tile[data-id="'+id+'"] .tilePlay').click(),PRO_BIRD);await pg.waitForTimeout(800);
 R.proTap={on:await pg.evaluate(id=>document.querySelector('.tile[data-id="'+id+'"]').classList.contains('on'),PRO_BIRD),status:await pg.textContent('#tileStatus')};
 ok('pro_tap_blocked',!R.proTap.on&&/PRO で鳴らせます/.test(R.proTap.status));
@@ -63,7 +63,7 @@ await cx.close();
 await pg.click('#langToggle');await pg.waitForTimeout(600);
 R.en={note:await pg.textContent('#recTierNote'),chip:await pg.evaluate(()=>document.querySelector('.tileProChip')?.textContent)};
 await pg.evaluate(id=>document.querySelector('.tile[data-id="'+id+'"] .tilePlay').click(),PRO_BIRD);await pg.waitForTimeout(500);R.en.status=await pg.textContent('#tileStatus');
-ok('english',/^Free: 4 creatures per group \(20 in all\)/.test(R.en.note)&&R.en.chip==='PRO'&&/plays with PRO/.test(R.en.status));
+ok('english',/^Free: 6 creatures per group \(30 in all\)/.test(R.en.note)&&R.en.chip==='PRO'&&/plays with PRO/.test(R.en.status));
 R.over=await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth);ok('no_overflow',R.over<=0);
 await cx.close();
 

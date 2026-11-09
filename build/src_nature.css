@@ -137,3 +137,47 @@ details.proLocked>summary{opacity:.6}
 .recTierNote{margin:6px 0 2px}
 
 .siteFrame{display:block;width:100%;height:min(72vh,640px);min-height:420px;border:1px solid var(--line);border-radius:12px;background:var(--card)}.siteOpen{display:inline-block;padding:8px 14px;border-radius:999px;border:1px solid var(--line);color:inherit;text-decoration:none}#siteSection .stepNo,.jump a[href="#siteSection"] b{background:var(--mint)}
+
+.keyRow{display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:12px}.keyRow label{font-size:.8rem;color:var(--sub,#9fb2a8);letter-spacing:.08em}.keyRow select{min-width:0}
+
+.vhSelect{position:absolute!important;width:1px!important;height:1px!important;min-height:0!important;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;opacity:0}
+#reelSection{position:relative}
+.reelStage{display:flex;justify-content:center;margin:4px 0 16px}
+.reelStage #reelCanvas{margin:0;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.reelLbl{font-size:.74rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.reelPick{margin:0 0 14px}.reelPickHead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0 2px 6px}.reelHint{opacity:.7}
+.tplGroups{display:flex;gap:14px;overflow-x:auto;max-width:100%;padding:4px 2px 10px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.tplGroup{flex:none;scroll-snap-align:start}.tplGroupName{margin:0 0 6px 6px;opacity:.7}.tplRow{display:flex;gap:2px}
+.tplChip{flex:none;display:flex;flex-direction:column;align-items:center;gap:6px;width:62px;min-height:0;padding:6px 4px;border-radius:12px;border:1px solid transparent;background:none;color:var(--ink);font:inherit;font-size:.72rem;line-height:1.2;cursor:pointer;box-shadow:none}
+.tplChip:hover{background:rgba(241,236,224,.05)}
+.tplChip[aria-pressed="true"]{border-color:rgba(230,194,122,.55);background:rgba(230,194,122,.08)}
+.tplChip[aria-pressed="true"] .tplThumb{box-shadow:0 0 0 2px var(--accent)}
+.tplChip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tplThumb{display:block;width:44px;height:78px;border-radius:9px;border:1px solid rgba(241,236,224,.14);background:#0c1718;transition:box-shadow .15s}
+.tplName{max-width:60px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.t-organic{background:radial-gradient(circle at 35% 38%,hsla(205,70%,62%,.9),transparent 42%),radial-gradient(circle at 66% 60%,hsla(170,70%,55%,.75),transparent 44%),radial-gradient(circle at 48% 50%,transparent 15px,hsla(210,50%,80%,.7) 16px,transparent 17.5px),#0b1b1e}
+.t-particles{background:radial-gradient(circle,#f4e3a1 1.4px,transparent 2.2px) 0 0/9px 11px,radial-gradient(circle,#8fd3ff 1.2px,transparent 2px) 4px 5px/9px 11px,radial-gradient(circle at 50% 50%,hsla(190,60%,40%,.6),transparent 60%),#0b1418}
+.t-geometry{background:repeating-conic-gradient(from 0deg at 50% 46%,hsla(205,60%,72%,.6) 0 2deg,transparent 2deg 30deg),radial-gradient(circle at 50% 46%,transparent 12px,hsla(205,60%,75%,.75) 13px,transparent 14.5px),#0b1418}
+.t-abstract{background:repeating-radial-gradient(circle at 50% 40%,hsla(160,40%,62%,.5) 0 1px,transparent 1px 7px),linear-gradient(#1d3a33,#0c1718)}
+.t-nature{background:radial-gradient(ellipse at 50% 30%,#6f9a63,transparent 60%),linear-gradient(170deg,#3d6b4f,#14261d 70%)}
+.t-nature-paper{background:linear-gradient(transparent 62%,#b9a98a 62% 63.5%,transparent 63.5%),radial-gradient(ellipse at 50% 34%,#c7b48c 0 30%,transparent 31%),linear-gradient(#f1e8d5,#e3d6bb)}
+.t-pop-sunny{background:radial-gradient(circle at 50% 38%,#fff3b0 0 13px,#f39c1e 13.5px 15px,transparent 15.5px),#ffd23f}
+.t-pop-candy{background:radial-gradient(circle at 50% 38%,#fff 0 12px,transparent 12.5px),linear-gradient(160deg,#ffb3d9,#ff7ab8)}
+.t-pop-lagoon{background:radial-gradient(circle at 50% 38%,#e9fbff 0 12px,transparent 12.5px),linear-gradient(160deg,#6be0e8,#1f9fb8)}
+.t-pop-jungle{background:radial-gradient(circle at 50% 38%,#e8ffd8 0 12px,transparent 12.5px),linear-gradient(160deg,#7ed36b,#2f8a45)}
+.t-pop-night{background:radial-gradient(circle at 62% 30%,#ffe27a 0 6px,transparent 6.5px),linear-gradient(160deg,#2b3373,#151a3d)}
+.t-forest,.t-ocean,.t-night,.t-wildlife{background-image:linear-gradient(90deg,transparent 48%,rgba(241,236,224,.25) 48% 52%,transparent 52%),linear-gradient(transparent 32%,rgba(241,236,224,.25) 32% 34%,transparent 34% 64%,rgba(241,236,224,.25) 64% 66%,transparent 66%)}
+.t-forest{background-color:#1f3b2c}.t-ocean{background-color:#12324a}.t-night{background-color:#161b36}.t-wildlife{background-color:#3a2e1c}
+.t-minimal{background:linear-gradient(transparent 49%,#cfd8d2 49% 51%,transparent 51%) 50% 50%/70% 100% no-repeat,#0f1513}
+.t-waveform{background:linear-gradient(#0c1718,#0c1718) top/100% 38% no-repeat,linear-gradient(#0c1718,#0c1718) bottom/100% 38% no-repeat,repeating-linear-gradient(90deg,#9fd1b8 0 2px,transparent 2px 5px),#0c1718}
+.t-spectrum{background:repeating-linear-gradient(90deg,rgba(12,23,24,.9) 0 1px,transparent 1px 4px),linear-gradient(0deg,#1b3f4a,#d36c3f 65%,#f2d27a)}
+.reelOpts{display:grid;gap:12px;margin:0 0 14px}
+.seg{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.seg .reelLbl{margin-right:4px;min-width:3.2em}
+.seg button{min-height:38px;min-width:56px;padding:6px 12px;border-radius:999px;font-size:.85rem}
+.seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1b2420;font-weight:700}
+.reelOptRow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:center}.reelOptRow .reelLbl{min-width:3.2em}.reelOptRow select{width:100%;min-height:42px}
+.reelCalm{display:flex;align-items:center;gap:8px}
+.reelBtns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 6px}.reelBtns #reelRecord{grid-column:1/-1;min-height:52px;font-size:1rem}
+@media (prefers-reduced-motion:reduce){.tplThumb{transition:none}}
+
+.keyRow select,.reelOptRow select{-webkit-appearance:none;appearance:none;background:var(--panel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23a9b3a6' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 12px center;color:var(--ink);border:1px solid var(--edge);border-radius:999px;padding:6px 32px 6px 14px;min-height:40px;font:inherit;font-size:.9rem}.keyRow select:focus-visible,.reelOptRow select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}

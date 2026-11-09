@@ -73,7 +73,7 @@ function noteTile(id,fn){fn('recording',id);for(const k of creditKeysOf(id)){con
 async function bufferOf(id){const u=userSounds.get(id);if(u)return u.buffer;return loadOne(id)}
 async function tileStart(id){const s=tst(id);if(s.voice||s.loading)return;
  if(!userSounds.has(id)&&!rightsAllowed(id)){status(L('この録音は商用モードの対象外のため鳴らしません（代用しません）。','This recording is excluded by the commercial mode, so it will not play (no substitute).'));return}
- if(!recAllowed(id)){status(L('この生き物は PRO で鳴らせます（無料版は分類ごとに4種まで）。','This creature plays with PRO (the free version has 4 per group).'));return}
+ if(!recAllowed(id)){status(L('この生き物は PRO で鳴らせます（無料版は分類ごとに6種まで）。','This creature plays with PRO (the free version has 6 per group).'));return}
  if(playingIds().length>=TILE_MAX){status(L('同時に鳴らせるのは12までです。どれかを止めてください。','Up to 12 sounds can play at once. Stop one first.'));return}
  s.loading=true;renderTile(id);
  try{await smpEnsureCtx();const b=await bufferOf(id);if(!b)throw Error('no buffer');if(!s.loading)return;
@@ -116,7 +116,7 @@ document.addEventListener('click',e=>{if(e.target&&e.target.closest&&e.target.cl
 function tileToggle(id){const s=tst(id);if(s.voice||s.loading){tileStop(id);return}
  if(autoOn()&&engineKind(id)){
   if(!rightsAllowed(id)){status(L('この録音は商用モードの対象外のため鳴らしません（代用しません）。','This recording is excluded by the commercial mode, so it will not play (no substitute).'));return}
-  if(!recAllowed(id)&&!member(id)){status(L('この生き物は PRO で鳴らせます（無料版は分類ごとに4種まで）。','This creature plays with PRO (the free version has 4 per group).'));return}
+  if(!recAllowed(id)&&!member(id)){status(L('この生き物は PRO で鳴らせます（無料版は分類ごとに6種まで）。','This creature plays with PRO (the free version has 6 per group).'));return}
   const on=!member(id);setMember(id,on);if(on)focusId=id;status(nameOf(id)+(on?' を自律演奏に加えました':' を自律演奏から外しました'));renderTile(id);renderCount();return}
  tileStart(id)}
 // v0.49：下のバーの「鳴っている音」：鳴っている音をまとめて見て、音量・休みを変えたり、✕ で外したりする
@@ -709,7 +709,7 @@ try{if(!LIVE&&localStorage.getItem('saww.planPreview')==='free')ENTITLEMENT.plan
 function instrTier(k){return isRealLayer(k)||k==='harp'||k==='vibes'?(FREE_INSTR.has(k)?'free':'pro'):'free'}
 function instrAllowed(k){return instrTier(k)==='free'||ENTITLEMENT.plan!=='free'}
 window.__instrAllowed=instrAllowed;
-// ───────── v0.63 無料版で鳴らせる生き物の声（data/product_tiers.json の recordings.free：分類ごとに4種）─────────
+// ───────── v0.63 無料版で鳴らせる生き物の声（data/product_tiers.json の recordings.free：分類ごとに6種）─────────
 // オーナー要望（2026-11-08「無料版は生き物の声を出せすぎ。各分類3〜4種に絞り、残りは PRO」）。環境音と自分の音は無料版でも全部鳴る。
 // 判定はここだけ（window.__recAllowed）。タイル・自律演奏の候補（本体の candidatePool）・playSpecies・試聴が見る。
 const FREE_REC=new Set(Object.values(((TIERS.recordings||{}).free)||{}).flat());
@@ -724,7 +724,7 @@ function applyRecTier(){const free=ENTITLEMENT.plan==='free',changed=recTierPlan
  // 使えなくなった生き物は止める（自律演奏の参加中の声もフェードアウト）
  if(free){for(const id of playingIds())if(!recAllowed(id))tileStop(id,true);if(typeof activeBio!=='undefined'&&typeof fadeResident==='function')for(const id of [...activeBio.keys()])if(!recAllowed(id))fadeResident(id)}}
 function renderRecNote(){const free=ENTITLEMENT.plan==='free';if(!$('recTierNote')&&$('tileGrid'))$('tileGrid').before(el('p',{class:'micro recTierNote',id:'recTierNote',role:'note'}));
- const nc=FREE_REC.size,note=$('recTierNote');if(note)note.textContent=free?L('無料版：生き物は分類ごとに4種（計'+nc+'種）と、環境音すべてが鳴ります。PRO の印は PRO で。','Free: 4 creatures per group ('+nc+' in all) and every ambience play. Those marked PRO need PRO.'):L('テスト公開中は全部の生き物が鳴ります。PRO の印は、正式公開後に PRO で鳴らせる生き物です。','During the public test every creature plays. Those marked PRO will need PRO after launch.');
+ const nc=FREE_REC.size,note=$('recTierNote');if(note)note.textContent=free?L('無料版：生き物は分類ごとに'+(TIERS.recordings&&TIERS.recordings.perCategory||6)+'種（計'+nc+'種）と、環境音すべてが鳴ります。PRO の印は PRO で。','Free: '+(TIERS.recordings&&TIERS.recordings.perCategory||6)+' creatures per group ('+nc+' in all) and every ambience play. Those marked PRO need PRO.'):L('テスト公開中は全部の生き物が鳴ります。PRO の印は、正式公開後に PRO で鳴らせる生き物です。','During the public test every creature plays. Those marked PRO will need PRO after launch.');
 }
 function applyInstrTier(){for(const row of document.querySelectorAll('#instrBody .control[data-layer]')){const k=row.dataset.layer,pro=instrTier(k)==='pro',ok=instrAllowed(k),inp=row.querySelector('input');
   const lab=row.querySelector('label');if(lab&&pro&&!lab.querySelector('.proChip'))lab.append(el('span',{class:'proChip',text:'PRO',title:'PRO'}));

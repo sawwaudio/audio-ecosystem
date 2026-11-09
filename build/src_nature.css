@@ -135,3 +135,5 @@ details.proLocked>summary{opacity:.6}
 .tileImg:has(.tileProChip) .phLabel{display:none}
 .tile.locked .tilePlay{cursor:not-allowed}
 .recTierNote{margin:6px 0 2px}
+
+.siteFrame{display:block;width:100%;height:min(72vh,640px);min-height:420px;border:1px solid var(--line);border-radius:12px;background:var(--card)}.siteOpen{display:inline-block;padding:8px 14px;border-radius:999px;border:1px solid var(--line);color:inherit;text-decoration:none}#siteSection .stepNo,.jump a[href="#siteSection"] b{background:var(--mint)}

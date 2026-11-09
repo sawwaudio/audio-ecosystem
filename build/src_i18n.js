@@ -176,6 +176,11 @@ const EXACT={
 'ソフトテイクオーバー（MIDI のつまみが画面の値を通るまで動かさない）':'Soft takeover (ignore a MIDI knob until it passes the on-screen value)',
 '無限に回るつまみ（エンコーダー・ジョグ）は、一覧の「動き方」で相対の方式を選んでください（機器の説明書に書かれている方式。迷ったら「相対（2の補数）」から試す）。ソフトテイクオーバーを入れると、MIDI のつまみの位置と画面の値がずれている時に、値が急に飛びません。':'For endless knobs (encoders, jog wheels), choose a relative mode under “Mode” in the list (the one given in your device’s manual; if unsure, try “Relative (two’s complement)” first). With soft takeover on, values do not jump when the position of a MIDI knob differs from the on-screen value.',
 // v0.63 無料版で鳴らせる生き物（分類ごとに4種）
+'公式サイトを下に表示します。表示されない時は、下のボタンから開いてください。':'The official site is shown below. If it does not appear, open it with the button.',
+'公式サイトを開く':'Open the official site',
+'公式サイト':'Official site',
+'サイト':'Site',
+'saww 公式サイト':'saww official site',
 'この生き物は PRO で鳴らせます（無料版は分類ごとに4種まで）。':'This creature plays with PRO (the free version has 4 per group).',
 // v0.60 MIDI 出力（機器のランプ。ミキサー M5 の残り）
 '機器のランプを光らせる（割り当てたパッド・ボタンの状態を同じ機器へ送る）':'Light the controller’s LEDs (send the state of mapped pads and buttons back to the same device)',

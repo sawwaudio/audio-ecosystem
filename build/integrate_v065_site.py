@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""v0.65：並びを変える（オーナー要望 2026-11-09 17:27「リールは04番に持ってくる、05にサイトを表示する」）。
-並び：01 音を選ぶ → 02 演奏する → 03 スタジオ → 04 リールを作る → 05 公式サイト（https://saw-saww-official.com/）→ プラン → 設定と権利。
+"""v0.65：並びを変える（オーナー要望 2026-11-09 17:27「リールは04番に持ってくる、05にサイトを表示する」→ 18:15「公式サイトは一番後ろにする」）。
+並び：01 音を選ぶ → 02 演奏する → 03 スタジオ → 04 リールを作る → プラン → 設定と権利 → 05 公式サイト（https://saw-saww-official.com/）→ フッター。
 - 公式サイトは枠（iframe）で表示し、開けない時のために「公式サイトを開く」のボタンも出す。
   サイト側が枠への表示を許していないと、枠は空のままになる。その時は下のボタンで開く。
-v0.64 の index.html の上で動く（v0.61 の並べ替えは、この版で済んでいるため、再度は実行しない）。何度実行しても同じ結果になる。
+何度実行しても同じ結果になる。v0.64 の index.html の上で動く（v0.61 の並べ替えは済んでいるため、chain は実行しない）。
 使い方：python3 build/integrate_v065_site.py
 """
 import os, re, sys
@@ -12,6 +12,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 P = lambda *a: os.path.join(ROOT, *a)
 VER = 'v0.65'
 SITE_URL = 'https://saw-saww-official.com/'
+FOOT = '<div class="footer">saww audio ecosystem'
 
 
 def die(m):
@@ -49,34 +50,53 @@ I18N = {
     'サイト': 'Site',
     'saww 公式サイト': 'saww official site',
 }
+NAV_OLD = '<a href="#siteSection"><b>05</b>サイト</a>'
+NAV_SETTINGS = '<a href="#settingsGroup">設定</a></nav>'
 
 # ── index.html ──
 t = open(P('index.html'), encoding='utf-8').read()
 t = re.sub(r'<title>saww audio ecosystem v0\.\d+', '<title>saww audio ecosystem ' + VER, t)
 t = re.sub(r'nature as an instrument\. · v0\.\d+', 'nature as an instrument. · ' + VER, t)
 
-if 'id="siteSection"' not in t:
-    a = t.find('<section id="reelSection"')
-    s = t.find('<div id="studioGroup"')
-    p = t.find('<section id="plansSection"')
-    if min(a, s, p) < 0:
-        die('欄が見つかりません')
-    if not (a < s < p):
-        die('並びが想定と違います（リール → スタジオ の順を期待）')
+# 1. いったん外す（置き場所を直すため）
+i = t.find('<section id="siteSection"')
+if i >= 0:
+    e = t.find('</section>', i) + len('</section>')
+    t = t[:i] + t[e:]
+
+# 2. 演奏 → スタジオ → リール（スタジオがリールより前なら、もう直っている）
+a = t.find('<section id="reelSection"')
+s = t.find('<div id="studioGroup"')
+p = t.find('<section id="plansSection"')
+if min(a, s, p) < 0:
+    die('欄が見つかりません')
+if s < a:
+    pass
+elif a < s < p:
     reel, studio = t[a:s], t[s:p]
     if not reel.rstrip().endswith('</section>') or not studio.rstrip().endswith('</div>'):
         die('欄の境目')
-    t = t[:a] + studio + reel + SITE + t[p:]
+    t = t[:a] + studio + reel + t[p:]
+else:
+    die('並びが想定と違います')
 
-# 番号：スタジオ 03・リール 04（2回目以降は、すでに直っているので何もしない）
+# 3. 番号：スタジオ 03・リール 04（2回目以降は、すでに直っているので何もしない）
 t = t.replace('<span class="stepNo" aria-hidden="true">04</span><h2 class="stepTitle">スタジオ',
               '<span class="stepNo" aria-hidden="true">03</span><h2 class="stepTitle">スタジオ')
 t = t.replace('<span class="stepNo" aria-hidden="true">03</span><h2 class="stepTitle">リールを作る',
               '<span class="stepNo" aria-hidden="true">04</span><h2 class="stepTitle">リールを作る')
-if '<a href="#siteSection">' not in t:
-    t = rep(t, '<a href="#reelSection"><b>03</b>リール</a><a href="#studioGroup"><b>04</b>スタジオ</a>',
-            '<a href="#studioGroup"><b>03</b>スタジオ</a><a href="#reelSection"><b>04</b>リール</a>'
-            f'<a href="#siteSection"><b>05</b>サイト</a>')
+
+# 4. 公式サイトを、フッターの直前（いちばん後ろ）に置く
+f = t.find(FOOT)
+if f < 0:
+    die('フッターが見つかりません')
+t = t[:f] + SITE + t[f:]
+
+# 5. ページ内の移動：…リール → …設定 → 公式サイト
+t = t.replace(NAV_OLD, '')
+t = rep(t, '<a href="#reelSection"><b>04</b>リール</a>', '<a href="#reelSection"><b>04</b>リール</a>')
+t = rep(t, NAV_SETTINGS, '<a href="#settingsGroup">設定</a>' + NAV_OLD + '</nav>')
+
 if '.siteFrame{' not in t:
     t = rep(t, '</style></head><body>', CSS + '</style></head><body>')
 for ja, en in I18N.items():

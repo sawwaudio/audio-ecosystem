@@ -181,6 +181,10 @@ const EXACT={
 '公式サイト':'Official site',
 'サイト':'Site',
 'saww 公式サイト':'saww official site',
+'organic（有機）':'organic',
+'particles（粒子）':'particles',
+'geometry（幾何）':'geometry',
+'光の点滅を抑える':'Reduce flashing',
 'この生き物は PRO で鳴らせます（無料版は分類ごとに4種まで）。':'This creature plays with PRO (the free version has 4 per group).',
 // v0.60 MIDI 出力（機器のランプ。ミキサー M5 の残り）
 '機器のランプを光らせる（割り当てたパッド・ボタンの状態を同じ機器へ送る）':'Light the controller’s LEDs (send the state of mapped pads and buttons back to the same device)',

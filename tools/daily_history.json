@@ -98,5 +98,15 @@
   "license": "CC0 1.0",
   "author": "sound pro",
   "file": "saww_2026-11-22_tokyo-cicadas-afternoon.mp4"
+ },
+ {
+  "date": "2026-11-23",
+  "id": "wetlands-night",
+  "cat": "amphibians",
+  "style": "flow",
+  "hue": 200,
+  "license": "CC0 1.0",
+  "author": "RealSquink",
+  "file": "saww_2026-11-23_wetlands-night.mp4"
  }
 ]

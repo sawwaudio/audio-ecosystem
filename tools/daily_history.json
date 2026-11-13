@@ -78,5 +78,15 @@
   "license": "CC BY 4.0",
   "author": "Benboncan",
   "file": "saww_2026-11-20_tawny-owl.mp4"
+ },
+ {
+  "date": "2026-11-21",
+  "id": "humpback",
+  "cat": "aquatic",
+  "style": "geometry",
+  "hue": 163,
+  "license": "CC BY 4.0",
+  "author": "MBARI_MARS",
+  "file": "saww_2026-11-21_humpback.mp4"
  }
 ]

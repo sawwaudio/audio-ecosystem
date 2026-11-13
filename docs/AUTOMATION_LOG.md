@@ -334,6 +334,15 @@ C. **合成音の置き換えの準備**（LIBRARY_300_PLAN 3）：**【v0.51（
   - テスト：新規 build/test_tuning_samples_v071.js ALL PASS。build/test_*.js 50本（test_parity を除く）を実行：49本は終了コード0、test_tuning_v070.js の1項目（real_melody_semitone）がコードの文字列の確認で不合格 → 今回の変更で該当行が `const f0=randomPitch();let m=sampleMidi(f0);` になったためテストの確認文字列を更新し、単独で再実行して ALL PASS（動作の確認項目は変えていない）。test_semi_v069 は公開版を 8766 番で配信して合格。
   - プッシュ：クラウドは従来どおり 403 の見込み（結果は返答とパッチの保存先を参照）。パッチは v0.70 の後の差分だけ：claude/patches/20261113-2230_v0_71_tuning_samples.patch。**適用順：latest（f58b111）→ 20261113-1433 → 20261113-2120 → 今回**。
   - 未検証：楽器サンプルの実際の音高（440Hz・平均律かどうか）は未計測、耳・実機。
+- 2026-11-14 02:25 JST（自動実行）B：学名・和名の照合「日本のセミ5種」（画面の版表記は変えていない・v0.71 のまま）
+  - 実行場所：Mac（接続フォルダ）は device_bash で使えたが、git push は従来どおり「Cowork blocked this request」の 403（`git push --dry-run` で確認）。接続フォルダの clone は main が v0.34 のまま・オーナーの未コミットの変更あり・ファイル削除が許可されていないため作業ツリーには触れず（fetch 後に残った .git/objects/maintenance.lock は .git/stale-maintenance-lock-4 に名前を変えた）、作業・テストはクラウドの読み取りクローンで行った。
+  - 正本の取得：origin/latest は b78529e（tools/make_credits.py。f58b111 の次）。プロジェクトの未反映パッチ 20261113-1433 → 2120 → 2230 は、接続フォルダにあった sae-v071.bundle（work＝7e28223、b78529e の上に10コミット）から取り込んだ。10コミットの件名・作者・日時がパッチと同じで、最終のハッシュがパッチの index 行と一致（index.html 6e068a2・build/src_i18n.js a852065・docs/AUTOMATION_LOG.md be4d948・build/src_studio.js be753c8・test_tuning_samples_v071.js d1f18fc・test_tuning_v070.js b509d2f・RD_REPORT_v0_71 c01c6c2）。その状態で build/test_*.js 50本（test_parity を除く）を実行：すべて終了コード0。
+  - 実装：バックログ B（a の 3④・1① はオーナー判断の材料がそろい済みで、判断待ち）。テーマ「日本のセミ5種」：アブラゼミ・ヒグラシ・ニイニイゼミ・ツクツクボウシ・ミンミンゼミの和名と学名を、環境省 生物多様性センター「身近な生きもの調査」手引き p.16-17「セミのぬけがらの見分け方」（https://www.biodic.go.jp/mijika/tebiki2/pdf/1617.pdf）と照合：5種とも台帳の jp・latin と一致。data/recording_licenses.json の該当5行に nameJa・nameJaSource（典拠・URL・照合日・典拠の学名）を追加。学名は GBIF Backbone（species/match API）で照合し latinCheck に記録：4種は ACCEPTED（完全一致）。**ミンミンゼミ（台帳・手引きとも Oncotympana maculaticollis）は GBIF では Hyalessa maculaticollis (Motschulsky, 1866) の異名**（照合は綴りの近い O. maculaticolle に FUZZY で一致）。画面・アプリの学名は変えていない。録音の行の追加はしていない。台帳はアプリが読み込まないファイルのため、画面の変化はない。
+  - テスト：新規 build/test_names_b_v072.js ALL PASS（典拠のない和名なし・和名と jp の一致・典拠の学名と latin の一致・GBIF の照合項目・ミンミンゼミの異名の記録・アプリの録音一覧と台帳の一致・390px で横はみ出しなし・エラー0）。コミット後に build/test_*.js 51本（test_parity を除く）を実行：すべて終了コード0（test_geo・test_v024 は結果表示のみ）。test_parity は従来どおり比較側の v0.23 旧ファイル（リポジトリ外）がなく実行しない。test_semi_v069 は公開版を 8766 番で配信して実行。
+  - 未検証：手引きの PDF は16〜17ページの抜き出しで、発行年・版は取得した本文に無かった。GBIF の結果は 2026-11-13 時点（分類は改訂されうる）。
+  - オーナー判断の材料：ミンミンゼミの学名の表示を Hyalessa maculaticollis にするか（GBIF・近年の文献は Hyalessa、環境省の手引きは Oncotympana）。案：表示は「Hyalessa maculaticollis（Oncotympana maculaticollis とも）」。
+  - **プッシュできず**：クラウドは 403（git プロキシ：許可リポジトリ外）、Mac も 403。回避はしていない。今回の2コミットだけをプロジェクトの claude/patches/20261114-0225_b_cicada_names.patch に保存。**適用順：本体の latest（b78529e）→ 20261113-1433 → 20261113-2120 → 20261113-2230 → 今回**（2230 までの代わりに接続フォルダの sae-v071.bundle の work ブランチ 7e28223 を使ってもよい）。
+  - 次の候補：B の続き（日本の鳥：ウグイス・ホトトギス・ヒヨドリ・スズメ・ツバメ）、c（オンボーディング）、d（長時間再生）。
 （ここに追記）
 
 ## 2026-11-08 v0.64（チャット）

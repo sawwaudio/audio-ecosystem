@@ -158,5 +158,55 @@
   "license": "CC BY 4.0",
   "author": "Σ64",
   "file": "saww_2026-11-28_higurashi.mp4"
+ },
+ {
+  "date": "2026-11-29",
+  "id": "frog-creek-ojai",
+  "cat": "amphibians",
+  "style": "flow",
+  "hue": 201,
+  "license": "CC0 1.0",
+  "author": "clif_creates",
+  "file": "saww_2026-11-29_frog-creek-ojai.mp4"
+ },
+ {
+  "date": "2026-11-30",
+  "id": "owl-fox-brittany",
+  "cat": "mammals",
+  "style": "geometry",
+  "hue": 245,
+  "license": "CC0 1.0",
+  "author": "bruno.auzet",
+  "file": "saww_2026-11-30_owl-fox-brittany.mp4"
+ },
+ {
+  "date": "2026-12-01",
+  "id": "waves-big-lagoon",
+  "cat": "ambience",
+  "style": "contour",
+  "hue": 277,
+  "license": "CC0 1.0",
+  "author": "CVLTIV8R",
+  "file": "saww_2026-12-01_waves-big-lagoon.mp4"
+ },
+ {
+  "date": "2026-12-02",
+  "id": "nightingale-russia",
+  "cat": "birds",
+  "style": "flow",
+  "hue": 166,
+  "license": "CC0 1.0",
+  "author": "smand",
+  "file": "saww_2026-12-02_nightingale-russia.mp4"
+ },
+ {
+  "date": "2026-12-03",
+  "id": "snapping-shrimp",
+  "cat": "aquatic",
+  "style": "geometry",
+  "hue": 173,
+  "license": "CC BY 4.0",
+  "author": "nathanwolek",
+  "file": "saww_2026-12-03_snapping-shrimp.mp4"
  }
 ]

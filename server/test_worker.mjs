@@ -80,4 +80,17 @@ subs.sub_3 = { id: 'sub_3', customer: 'cus_3', status: 'trialing', current_perio
 const e4 = JSON.stringify({ id: 'evt_4', type: 'customer.subscription.updated', data: { object: subs.sub_3 } });
 await call('POST', '/stripe/webhook', e4, { 'Stripe-Signature': await sigHdr(e4) });
 ok('old_api_period', JSON.parse(kv.get('cus:cus_3')).pe === subs.sub_3.current_period_end);
+
+// v0.68 server/growth の入口：USAGE_DB が無い時は 503 で、課金の入口はそのまま動く
+{
+  const r1 = await call('POST', '/api/usage/events', '{}', { 'Content-Type': 'application/json', Origin: 'https://sawwaudio.github.io' });
+  ok('growth_usage_503_without_db', r1.status === 503);
+  const r2 = await call('GET', '/api/public/pricing');
+  ok('growth_public_catalog', r2.status === 200 && Array.isArray(await r2.json()));
+  const r3 = await call('GET', '/api/nothing');
+  ok('growth_unknown_api_404', r3.status === 404);
+  const r4 = await call('GET', '/');
+  ok('root_still_ok', r4.status === 200 && (await r4.json()).service === 'saww-billing');
+}
+console.log(JSON.stringify(R)); console.log(fail.length ? 'FAIL: ' + fail.join(', ') : 'ALL PASS'); process.exit(fail.length ? 1 : 0);
 console.log(JSON.stringify(R, null, 1)); console.log(fail.length ? 'FAIL: ' + fail.join(', ') : 'ALL PASS'); process.exit(fail.length ? 1 : 0);

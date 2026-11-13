@@ -110,3 +110,14 @@ npx wrangler deploy                         # https://saww-billing.<名前>.work
 | wrangler.toml.example | 設定のひな形 |
 
 アプリとの通しのテストは build/test_billing_v057.js（支払い → PRO、電波なしでも PRO、改ざんの拒否、ほかの端末でのログイン、解約で FREE、ログアウト）。
+
+## 6. 利用の記録と Readdy の連携（v0.68・server/growth）
+ChatGPT 側で作った候補コード（2026-11-11〜13）を取り込んだもの。課金の入口とは別で、D1（USAGE_DB）が無ければ 503 を返すだけ。
+- `POST /api/usage/events`：アプリからの利用イベント（app_open・reels_exported など）。Origin が https://sawwaudio.github.io の時だけ受ける。個人を特定しない（ブラウザーごとの乱数）。
+- `GET /api/public/{features|sounds|presets|media|releases|pricing}`：Readdy の公式サイトが読む公開カタログ（growth/catalog.json）。
+- `POST /api/integrations/readdy/demo-jobs`：Readdy からのデモ生成の依頼（Bearer READDY_DEMO_KEY・Idempotency-Key・1日12件まで）。`GET …/{id}` で状態。
+- `POST /api/operator/demo/claim` / `finish`：描く機械（オーナーの Mac など）が列から仕事を取る・返す（Bearer RENDER_SERVICE_KEY・15分のリース）。
+- Webhook の中で `billing_fact` に、署名を確かめた Stripe の出来事（checkout_completed・subscription_activated・subscription_renewed・subscription_canceled）を記録する。
+- `growth/operator/subscriptions.mjs`：読み取り専用の Stripe 鍵（STRIPE_REPORT_KEY）で PRO の契約者数と月額の総額を取る。手元で実行する（Worker では動かさない）。
+- テスト：`cd server/growth && node --test`（9件）、`cd server/growth/operator && node --test`（4件）、`node server/test_worker.mjs`（課金 + 入口4件）。
+- 未実装：管理者の承認・却下の画面、Durable Objects、操作履歴、Origin/CSRF の強化。候補コードの ZIP には入っていなかった（設計書で言及のみ）。

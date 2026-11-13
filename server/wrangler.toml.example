@@ -13,3 +13,11 @@ PRICE_IDS = ""
 [[kv_namespaces]]
 binding = "SAWW_KV"
 id = "ここに npx wrangler kv namespace create SAWW_KV で出た id"
+
+# v0.68 利用の記録・Readdy のデモ生成の列（server/growth）。D1 を使う。無ければ /api/usage/events などは 503 を返すだけ。
+# 作り方：npx wrangler d1 create saww-usage → 出た database_id を下に。表は npx wrangler d1 execute saww-usage --remote --file=growth/schema.sql
+# 秘密：READDY_DEMO_KEY（Readdy からの依頼用）・RENDER_SERVICE_KEY（描く機械用）は npx wrangler secret put で入れる
+# [[d1_databases]]
+# binding = "USAGE_DB"
+# database_name = "saww-usage"
+# database_id = "ここに npx wrangler d1 create saww-usage で出た id"

@@ -1,0 +1,52 @@
+{
+  "features": [
+    {
+      "id": "tiles",
+      "ja": "写真をタップして実録音を再生・重ねる",
+      "en": "Tap photos to play and layer real recordings",
+      "tier": "free"
+    }
+  ],
+  "sounds": [
+    {
+      "id": "rain-field",
+      "title": "雨の実録音",
+      "author": "ジダネ",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Rain.ogg",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/rain-field.mp3"
+    }
+  ],
+  "presets": [
+    {
+      "id": "organic",
+      "kind": "reel-visual",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "particles",
+      "kind": "reel-visual",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "geometry",
+      "kind": "reel-visual",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    }
+  ],
+  "media": [],
+  "releases": [
+    {
+      "revision": "5ce629d",
+      "date": "2026-11-10",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/"
+    }
+  ],
+  "pricing": [
+    {
+      "currency": "USD",
+      "monthly": 9.99,
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#plansSection"
+    }
+  ]
+}

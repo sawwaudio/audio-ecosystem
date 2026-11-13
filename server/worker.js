@@ -17,6 +17,8 @@
 //           MAGIC_SECRET（長い乱数）、RESEND_API_KEY、MAIL_FROM（例 "saww audio ecosystem <login@example.com>"）
 //   任意: PRICE_IDS（PRO として認める Stripe の価格 ID。カンマ区切り。空なら有効な定期購読はすべて PRO）、STRIPE_API・RESEND_API（テスト用の差し替え）
 
+import { growthRoute } from './growth/routes.mjs';
+import { billingFact } from './growth/billing-facts.mjs';
 const ACTIVE = new Set(['active', 'trialing', 'past_due']);  // past_due は Stripe の再請求の間も使えるようにする（期限＋猶予まで）
 const GRACE = 3 * 86400, MAX_TOKEN = 40 * 86400, MAGIC_TTL = 20 * 60, REFRESH_WINDOW = 60 * 86400;
 const enc = new TextEncoder(), dec = new TextDecoder();
@@ -129,15 +131,17 @@ async function webhook(req, env) {
   if (!(await verifyStripeSignature(body, req.headers.get('Stripe-Signature'), env.STRIPE_WEBHOOK_SECRET))) return json({ error: 'bad signature' }, 400);
   const ev = JSON.parse(body), o = ev.data && ev.data.object;
   if (await env.SAWW_KV.get('ev:' + ev.id)) return json({ ok: true, dup: true });
+  let fact = null;
   if (ev.type === 'checkout.session.completed' && o.mode === 'subscription' && o.subscription) {
     const sub = await stripe(env, '/v1/subscriptions/' + o.subscription);
-    await saveSub(env, sub, (o.customer_details && o.customer_details.email) || o.customer_email);
+    fact = await saveSub(env, sub, (o.customer_details && o.customer_details.email) || o.customer_email);
   } else if (/^customer\.subscription\.(created|updated|deleted|paused|resumed)$/.test(ev.type)) {
-    await saveSub(env, o);
+    fact = await saveSub(env, o);
   } else if (ev.type === 'invoice.paid' && (o.subscription || (o.parent && o.parent.subscription_details))) {
     const sid = o.subscription || o.parent.subscription_details.subscription;
-    await saveSub(env, await stripe(env, '/v1/subscriptions/' + sid), o.customer_email);
+    fact = await saveSub(env, await stripe(env, '/v1/subscriptions/' + sid), o.customer_email);
   }
+  try { await billingFact(env, ev, !!(fact && fact.pro)); } catch (e) { /* 集計の失敗で課金を止めない */ }
   await env.SAWW_KV.put('ev:' + ev.id, '1', { expirationTtl: 7 * 86400 });
   return json({ ok: true });
 }
@@ -198,10 +202,13 @@ async function refresh(req, env) {
   return json({ ok: true, plan: 'pro', token: await issue(env, rec) }, 200, cors(env, req));
 }
 
+// v0.68：利用の記録・Readdy のデモ生成の列・公開カタログ（server/growth）。USAGE_DB（D1）が無ければ 503 を返すだけで、課金には影響しない。
+
 export default {
   async fetch(req, env) {
     const { pathname } = new URL(req.url);
     try {
+      if (pathname.startsWith('/api/')) { const r = await growthRoute(req, env); if (r) return r; }
       if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors(env, req) });
       if (pathname === '/stripe/webhook' && req.method === 'POST') return await webhook(req, env);
       if (pathname === '/activate' && req.method === 'GET') return await activate(req, env);

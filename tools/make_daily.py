@@ -40,18 +40,22 @@ for d in range(a.days):
     run(['ffmpeg', '-v', 'error', '-y', '-ss', str(ss), '-t', str(a.sec), '-i', src(i), '-af', f'loudnorm=I=-18:TP=-1.5,afade=t=in:d=0.6,afade=t=out:st={a.sec-1.0}:d=1.0', '-ar', '48000', '-ac', '2', wav])
     base = os.path.join(od, 'base.mp4')
     if not os.path.exists(base): run(['node', os.path.join(ROOT, 'tools', 'render_visual.js'), '--audio', wav, '--app', a.app, '--out', base, '--size', '1080x1920', '--plan', f'{style}:{a.sec}', '--hue', str(hue)])
-    fs = ['drawbox=x=0:y=150:w=iw:h=400:color=black@0.28:t=fill', 'drawbox=x=0:y=1500:w=iw:h=420:color=black@0.45:t=fill']; tn = [0]
+    fs = ['drawbox=x=0:y=150:w=iw:h=460:color=black@0.28:t=fill', 'drawbox=x=0:y=1500:w=iw:h=420:color=black@0.45:t=fill']; tn = [0]
     def dt(txt, f, sz, x, y, alpha, col='0xf1ece0'):
         p = os.path.join(od, f't{tn[0]}.txt'); tn[0] += 1; open(p, 'w', encoding='utf-8').write(txt)
         fs.append(f"drawtext=fontfile={f}:textfile={p}:fontsize={sz}:fontcolor={col}:x={x}:y={y}:alpha='{alpha}':shadowcolor=black@0.7:shadowx=0:shadowy=2")
     cut = lambda s, n: s if len(s) <= n else s[:n - 1] + '…'
     E = a.sec - .3; jp = r['jp']; sz = 62 if len(jp) <= 14 else 48 if len(jp) <= 19 else 38
     dt('20 SECONDS IN NATURE', R, 34, '(w-text_w)/2', 200, al(.4, 5.2), '0xa9c1b6'); dt('Close your eyes.', B, 66, '(w-text_w)/2', 270, al(.4, 5.2))
+    import textwrap
     main, sub = (en.split(': ', 1) + [''])[:2] if len(en) > 30 and ': ' in en else (en, '')
-    ez = 58 if len(main) <= 22 else 46 if len(main) <= 30 else 36
-    dt(cut(main, 46), B, ez, '(w-text_w)/2', 235, al(5.6, 14.2))
-    if sub: dt(cut(sub, 52), R, 32, '(w-text_w)/2', 320, al(5.6, 14.2))
-    dt(cut(jp, 30), R, 30, '(w-text_w)/2', 380 if sub else 330, al(5.6, 14.2), '0xa9c1b6')
+    main = re.sub(r'\s*\([^)]*\)\s*$', '', main) if len(main) > 34 and main.endswith(')') else main  # 長い時は末尾の（地名）を落とす（説明欄に残る）
+    lines = textwrap.wrap(main, 26)[:2]; ez = 56 if max(len(x) for x in lines) <= 20 else 46
+    y = 215
+    for ln in lines: dt(ln, B, ez, '(w-text_w)/2', y, al(5.6, 14.2)); y += ez + 14
+    if sub:
+        for ln in textwrap.wrap(sub, 40)[:2]: dt(ln, R, 32, '(w-text_w)/2', y + 6, al(5.6, 14.2)); y += 44
+    dt(cut(jp, 30), R, 30, '(w-text_w)/2', y + 12, al(5.6, 14.2), '0xa9c1b6')
     loc = r.get('location') or ''
     dt('Play this sound yourself.', B, 58, '(w-text_w)/2', 220, al(14.6, E)); dt('saww audio ecosystem', B, 50, '(w-text_w)/2', 315, al(14.6, E)); dt(URL, R, 32, '(w-text_w)/2', 400, al(14.6, E), '0xa9c1b6')
     dt(cut(f'Recording: {r["author"]} · {r["license"]}', 52), R, 30, 60, 1560, al(.4, E), '0xdfe9e3'); dt('Real field recording · full credits in caption', R, 24, 60, 1610, al(.4, E), '0xa9c1b6')

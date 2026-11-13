@@ -88,5 +88,15 @@
   "license": "CC BY 4.0",
   "author": "MBARI_MARS",
   "file": "saww_2026-11-21_humpback.mp4"
+ },
+ {
+  "date": "2026-11-22",
+  "id": "tokyo-cicadas-afternoon",
+  "cat": "insects",
+  "style": "contour",
+  "hue": 164,
+  "license": "CC0 1.0",
+  "author": "sound pro",
+  "file": "saww_2026-11-22_tokyo-cicadas-afternoon.mp4"
  }
 ]

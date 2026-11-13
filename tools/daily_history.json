@@ -8,5 +8,65 @@
   "license": "CC0 1.0",
   "author": "tomasloos",
   "file": "saww_2026-11-14_bamboo-stream.mp4"
+ },
+ {
+  "date": "2026-11-15",
+  "id": "edge-forest-nl",
+  "cat": "birds",
+  "style": "flow",
+  "hue": 284,
+  "license": "CC BY 4.0",
+  "author": "klankbeeld",
+  "file": "saww_2026-11-15_edge-forest-nl.mp4"
+ },
+ {
+  "date": "2026-11-16",
+  "id": "reedbed-pondlife",
+  "cat": "aquatic",
+  "style": "geometry",
+  "hue": 175,
+  "license": "CC BY 4.0",
+  "author": "Mark_Taylor_Echophora_",
+  "file": "saww_2026-11-16_reedbed-pondlife.mp4"
+ },
+ {
+  "date": "2026-11-17",
+  "id": "crickets-washington",
+  "cat": "insects",
+  "style": "contour",
+  "hue": 221,
+  "license": "CC0 1.0",
+  "author": "ES335-001",
+  "file": "saww_2026-11-17_crickets-washington.mp4"
+ },
+ {
+  "date": "2026-11-18",
+  "id": "amphibians-campsite",
+  "cat": "amphibians",
+  "style": "flow",
+  "hue": 219,
+  "license": "CC BY 4.0",
+  "author": "kevp888",
+  "file": "saww_2026-11-18_amphibians-campsite.mp4"
+ },
+ {
+  "date": "2026-11-19",
+  "id": "siamang",
+  "cat": "mammals",
+  "style": "geometry",
+  "hue": 231,
+  "license": "CC BY 4.0",
+  "author": "RTB45",
+  "file": "saww_2026-11-19_siamang.mp4"
+ },
+ {
+  "date": "2026-11-20",
+  "id": "midwest-woods-wind",
+  "cat": "ambience",
+  "style": "contour",
+  "hue": 240,
+  "license": "CC0 1.0",
+  "author": "kvgarlic",
+  "file": "saww_2026-11-20_midwest-woods-wind.mp4"
  }
 ]

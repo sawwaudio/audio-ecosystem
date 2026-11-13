@@ -254,7 +254,22 @@
   "previewGain": 1.0057788525983735,
   "previewRms": 0.09492288529872894,
   "previewPeak": 0.6462653279304504,
-  "rightsTier": "B"
+  "rightsTier": "B",
+  "nameJa": "アブラゼミ",
+  "nameJaSource": {
+   "title": "環境省自然環境局 生物多様性センター「身近な生きもの調査」手引き p.16-17「セミのぬけがらの見分け方」",
+   "url": "https://www.biodic.go.jp/mijika/tebiki2/pdf/1617.pdf",
+   "checked": "2026-11-13",
+   "latinInSource": "Graptopsaltria nigrofuscata"
+  },
+  "latinCheck": {
+   "source": "GBIF Backbone Taxonomy（species/match API）",
+   "query": "Graptopsaltria nigrofuscata",
+   "status": "ACCEPTED",
+   "matchedName": "Graptopsaltria nigrofuscata (Motschulsky, 1866)",
+   "usageKey": 8357478,
+   "checked": "2026-11-13"
+  }
  },
  {
   "id": "higurashi",
@@ -305,7 +320,22 @@
   "previewGain": 1.5175213110264612,
   "previewRms": 0.027282247319817543,
   "previewPeak": 0.42833006381988525,
-  "rightsTier": "B"
+  "rightsTier": "B",
+  "nameJa": "ヒグラシ",
+  "nameJaSource": {
+   "title": "環境省自然環境局 生物多様性センター「身近な生きもの調査」手引き p.16-17「セミのぬけがらの見分け方」",
+   "url": "https://www.biodic.go.jp/mijika/tebiki2/pdf/1617.pdf",
+   "checked": "2026-11-13",
+   "latinInSource": "Tanna japonensis"
+  },
+  "latinCheck": {
+   "source": "GBIF Backbone Taxonomy（species/match API）",
+   "query": "Tanna japonensis",
+   "status": "ACCEPTED",
+   "matchedName": "Tanna japonensis (Distant, 1892)",
+   "usageKey": 7782400,
+   "checked": "2026-11-13"
+  }
  },
  {
   "id": "niiniizemi",
@@ -356,7 +386,22 @@
   "previewGain": 2.3276619273622075,
   "previewRms": 0.05009360983967781,
   "previewPeak": 0.2792501747608185,
-  "rightsTier": "B"
+  "rightsTier": "B",
+  "nameJa": "ニイニイゼミ",
+  "nameJaSource": {
+   "title": "環境省自然環境局 生物多様性センター「身近な生きもの調査」手引き p.16-17「セミのぬけがらの見分け方」",
+   "url": "https://www.biodic.go.jp/mijika/tebiki2/pdf/1617.pdf",
+   "checked": "2026-11-13",
+   "latinInSource": "Platypleura kaempferi"
+  },
+  "latinCheck": {
+   "source": "GBIF Backbone Taxonomy（species/match API）",
+   "query": "Platypleura kaempferi",
+   "status": "ACCEPTED",
+   "matchedName": "Platypleura kaempferi (Fabricius, 1794)",
+   "usageKey": 5867595,
+   "checked": "2026-11-13"
+  }
  },
  {
   "id": "tsukutsukuboshi",
@@ -407,7 +452,22 @@
   "previewGain": 0.9320886669655338,
   "previewRms": 0.05289849638938904,
   "previewPeak": 0.6973585486412048,
-  "rightsTier": "B"
+  "rightsTier": "B",
+  "nameJa": "ツクツクボウシ",
+  "nameJaSource": {
+   "title": "環境省自然環境局 生物多様性センター「身近な生きもの調査」手引き p.16-17「セミのぬけがらの見分け方」",
+   "url": "https://www.biodic.go.jp/mijika/tebiki2/pdf/1617.pdf",
+   "checked": "2026-11-13",
+   "latinInSource": "Meimuna opalifera"
+  },
+  "latinCheck": {
+   "source": "GBIF Backbone Taxonomy（species/match API）",
+   "query": "Meimuna opalifera",
+   "status": "ACCEPTED",
+   "matchedName": "Meimuna opalifera (Walker, 1850)",
+   "usageKey": 8538327,
+   "checked": "2026-11-13"
+  }
  },
  {
   "id": "minminzemi",
@@ -458,7 +518,24 @@
   "previewGain": 2.285333861434276,
   "previewRms": 0.0620354525744915,
   "previewPeak": 0.2844223380088806,
-  "rightsTier": "C"
+  "rightsTier": "C",
+  "nameJa": "ミンミンゼミ",
+  "nameJaSource": {
+   "title": "環境省自然環境局 生物多様性センター「身近な生きもの調査」手引き p.16-17「セミのぬけがらの見分け方」",
+   "url": "https://www.biodic.go.jp/mijika/tebiki2/pdf/1617.pdf",
+   "checked": "2026-11-13",
+   "latinInSource": "Oncotympana maculaticollis"
+  },
+  "latinCheck": {
+   "source": "GBIF Backbone Taxonomy（species/match API）",
+   "query": "Oncotympana maculaticollis",
+   "status": "SYNONYM",
+   "matchedName": "Oncotympana maculaticolle (Motschulsky, 1866)",
+   "usageKey": 8015248,
+   "checked": "2026-11-13",
+   "acceptedName": "Hyalessa maculaticollis (Motschulsky, 1866)",
+   "note": "台帳・環境省の手引きは Oncotympana maculaticollis。GBIF では Hyalessa maculaticollis の異名（照合は綴りの近い maculaticolle に一致＝FUZZY）。画面の学名は変えていない（オーナー判断）。"
+  }
  },
  {
   "id": "japanese-bush-warbler",

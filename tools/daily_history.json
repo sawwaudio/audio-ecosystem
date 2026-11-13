@@ -128,5 +128,35 @@
   "license": "CC BY 4.0",
   "author": "kzarkses",
   "file": "saww_2026-11-25_yamanushi-river.mp4"
+ },
+ {
+  "date": "2026-11-26",
+  "id": "eurasian-wren-alarm",
+  "cat": "birds",
+  "style": "flow",
+  "hue": 274,
+  "license": "CC BY 4.0",
+  "author": "klankbeeld",
+  "file": "saww_2026-11-26_eurasian-wren-alarm.mp4"
+ },
+ {
+  "date": "2026-11-27",
+  "id": "garden-pond-hydrophone",
+  "cat": "aquatic",
+  "style": "geometry",
+  "hue": 193,
+  "license": "CC0 1.0",
+  "author": "odilonmarcenaro",
+  "file": "saww_2026-11-27_garden-pond-hydrophone.mp4"
+ },
+ {
+  "date": "2026-11-28",
+  "id": "higurashi",
+  "cat": "insects",
+  "style": "contour",
+  "hue": 227,
+  "license": "CC BY 4.0",
+  "author": "Σ64",
+  "file": "saww_2026-11-28_higurashi.mp4"
  }
 ]

@@ -108,5 +108,15 @@
   "license": "CC0 1.0",
   "author": "RealSquink",
   "file": "saww_2026-11-23_wetlands-night.mp4"
+ },
+ {
+  "date": "2026-11-24",
+  "id": "wolf",
+  "cat": "mammals",
+  "style": "geometry",
+  "hue": 273,
+  "license": "CC BY 4.0",
+  "author": "Sacha.Julien",
+  "file": "saww_2026-11-24_wolf.mp4"
  }
 ]

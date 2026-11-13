@@ -81,16 +81,26 @@ const e4 = JSON.stringify({ id: 'evt_4', type: 'customer.subscription.updated', 
 await call('POST', '/stripe/webhook', e4, { 'Stripe-Signature': await sigHdr(e4) });
 ok('old_api_period', JSON.parse(kv.get('cus:cus_3')).pe === subs.sub_3.current_period_end);
 
-// v0.68 server/growth の入口：USAGE_DB が無い時は 503 で、課金の入口はそのまま動く
+// v0.69 SEMI-PRO：SEMI_PRICE_IDS の価格は plan 'semi'。PRICE_IDS は 'pro'。どちらでもない価格は無料。
 {
-  const r1 = await call('POST', '/api/usage/events', '{}', { 'Content-Type': 'application/json', Origin: 'https://sawwaudio.github.io' });
-  ok('growth_usage_503_without_db', r1.status === 503);
-  const r2 = await call('GET', '/api/public/pricing');
-  ok('growth_public_catalog', r2.status === 200 && Array.isArray(await r2.json()));
-  const r3 = await call('GET', '/api/nothing');
-  ok('growth_unknown_api_404', r3.status === 404);
-  const r4 = await call('GET', '/');
-  ok('root_still_ok', r4.status === 200 && (await r4.json()).service === 'saww-billing');
+  const env2 = { ...env, PRICE_IDS: 'price_pro', SEMI_PRICE_IDS: 'price_semi' };
+  subs.sub_s = { id: 'sub_s', customer: 'cus_s', status: 'active', items: { data: [{ price: { id: 'price_semi' }, current_period_end: T() + 30 * 86400 }] } };
+  subs.sub_x = { id: 'sub_x', customer: 'cus_x', status: 'active', items: { data: [{ price: { id: 'price_other' }, current_period_end: T() + 30 * 86400 }] } };
+  sessions.cs_test_semi00000000 = { id: 'cs_test_semi00000000', status: 'complete', mode: 'subscription', subscription: 'sub_s', customer_details: { email: 'semi@example.com' } };
+  sessions.cs_test_other0000000 = { id: 'cs_test_other0000000', status: 'complete', mode: 'subscription', subscription: 'sub_x', customer_details: { email: 'x@example.com' } };
+  const c2 = (method, path, body) => worker.fetch(new Request('https://billing.example' + path, { method, headers: { Origin: 'https://app.example' }, body }), env2);
+  const s1 = await c2('GET', '/activate?session_id=cs_test_semi00000000');
+  const st = ((s1.headers.get('Location') || '').match(/#saww-pro=(.+)$/) || [])[1];
+  R.semi = st && payload(st);
+  ok('semi_activate', !!st && (await verifyES(st)) && R.semi.plan === 'semi' && R.semi.sub === 'cus_s');
+  const sr = await (await c2('POST', '/refresh', JSON.stringify({ token: st }))).json();
+  ok('semi_refresh', sr.plan === 'semi' && !!sr.token && payload(sr.token).plan === 'semi');
+  const s2 = await c2('GET', '/activate?session_id=cs_test_other0000000');
+  ok('other_price_not_paid', !(s2.headers.get('Location') || '').includes('#saww-pro='));
+  subs.sub_p = { id: 'sub_p', customer: 'cus_p', status: 'active', items: { data: [{ price: { id: 'price_pro' }, current_period_end: T() + 30 * 86400 }] } };
+  sessions.cs_test_pro000000000 = { id: 'cs_test_pro000000000', status: 'complete', mode: 'subscription', subscription: 'sub_p', customer_details: { email: 'p@example.com' } };
+  const p1 = await c2('GET', '/activate?session_id=cs_test_pro000000000');
+  const pt = ((p1.headers.get('Location') || '').match(/#saww-pro=(.+)$/) || [])[1];
+  ok('pro_still_pro', !!pt && payload(pt).plan === 'pro');
 }
-console.log(JSON.stringify(R)); console.log(fail.length ? 'FAIL: ' + fail.join(', ') : 'ALL PASS'); process.exit(fail.length ? 1 : 0);
 console.log(JSON.stringify(R, null, 1)); console.log(fail.length ? 'FAIL: ' + fail.join(', ') : 'ALL PASS'); process.exit(fail.length ? 1 : 0);

@@ -1,3 +1,5 @@
+import {billingFact} from './growth/billing-facts.mjs';
+import {growthRoute} from './growth/routes.mjs';
 // saww audio ecosystem — 課金の確認サーバー（Cloudflare Workers）v0.57
 // オーナー要望（2026-11-07 16:31）「無料版と有料版で区別するシステム」。Stripe の支払いリンク（月額）を使う。
 // 役目：Stripe の知らせ（Webhook）で「誰が有料会員か」を記録し、有料の人に署名付きの「PRO の証明」（ES256 の JWT）を発行する。
@@ -17,10 +19,8 @@
 //           MAGIC_SECRET（長い乱数）、RESEND_API_KEY、MAIL_FROM（例 "saww audio ecosystem <login@example.com>"）
 //   任意: PRICE_IDS（PRO として認める Stripe の価格 ID。カンマ区切り。空なら有効な定期購読はすべて PRO）、STRIPE_API・RESEND_API（テスト用の差し替え）
 
-import { growthRoute } from './growth/routes.mjs';
-import { billingFact } from './growth/billing-facts.mjs';
 const ACTIVE = new Set(['active', 'trialing', 'past_due']);  // past_due は Stripe の再請求の間も使えるようにする（期限＋猶予まで）
-const GRACE = 3 * 86400, MAX_TOKEN = 40 * 86400, MAGIC_TTL = 20 * 60, REFRESH_WINDOW = 60 * 86400;
+const MAX_TOKEN = 40 * 86400, MAGIC_TTL = 20 * 60, REFRESH_WINDOW = 60 * 86400;
 const enc = new TextEncoder(), dec = new TextDecoder();
 const b64u = buf => btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 const unb64u = s => Uint8Array.from(atob(s.replace(/-/g, '+').replace(/_/g, '/') + '==='.slice((s.length + 3) % 4)), c => c.charCodeAt(0));
@@ -54,7 +54,7 @@ async function privKey(env) {
   const key = await crypto.subtle.importKey('jwk', jwk, { name: 'ECDSA', namedCurve: 'P-256' }, false, ['sign']);
   const pub = { kty: jwk.kty, crv: jwk.crv, x: jwk.x, y: jwk.y };
   const vkey = await crypto.subtle.importKey('jwk', pub, { name: 'ECDSA', namedCurve: 'P-256' }, false, ['verify']);
-  keyCache = { src: env.ENT_PRIVATE_JWK, key, vkey, kid: jwk.kid || 'saww-1' };
+  keyCache = { src: env.ENT_PRIVATE_JWK, key, vkey, pub, kid: jwk.kid || 'saww-1' };
   return keyCache;
 }
 export async function signToken(env, payload) {
@@ -84,15 +84,21 @@ function periodEnd(sub) {
   const ends = ((sub.items && sub.items.data) || []).map(i => i.current_period_end).filter(Boolean);
   return ends.length ? Math.max(...ends) : 0;
 }
-function priceOk(env, sub) {
-  const want = String(env.PRICE_IDS || '').split(',').map(s => s.trim()).filter(Boolean);
-  if (!want.length) return true;
-  return ((sub.items && sub.items.data) || []).some(i => i.price && want.includes(i.price.id));
+// v0.69 SEMI-PRO（月額 US$5）：SEMI_PRICE_IDS の価格の定期購読は plan 'semi'（サンプラーと録音・書き出し以外が使える）。PRICE_IDS は PRO。
+const ids = v => String(v || '').split(',').map(s => s.trim()).filter(Boolean);
+function planOf(env, sub) {
+  const items = ((sub.items && sub.items.data) || []).map(i => i.price && i.price.id);
+  const pro = ids(env.PRICE_IDS), semi = ids(env.SEMI_PRICE_IDS);
+  if (!pro.length && !semi.length) return 'pro';
+  if (items.some(id => pro.includes(id))) return 'pro';
+  if (items.some(id => semi.includes(id))) return 'semi';
+  return null;
 }
+function priceOk(env, sub) { return !!planOf(env, sub); }
 async function saveSub(env, sub, email) {
   const cus = typeof sub.customer === 'string' ? sub.customer : sub.customer && sub.customer.id;
   if (!cus) return null;
-  const rec = { cus, sub: sub.id, status: sub.status, pe: periodEnd(sub), pro: priceOk(env, sub), at: now() };
+  const rec = { cus, sub: sub.id, status: sub.status, pe: periodEnd(sub), pro: priceOk(env, sub), plan: planOf(env, sub) || 'pro', at: now() };
   const old = JSON.parse((await env.SAWW_KV.get('cus:' + cus)) || 'null');
   rec.email = normEmail(email || (old && old.email) || (sub.customer && sub.customer.email) || '');
   if (!rec.email) { try { rec.email = normEmail((await stripe(env, '/v1/customers/' + cus)).email); } catch (e) {} }
@@ -100,15 +106,15 @@ async function saveSub(env, sub, email) {
   if (rec.email) await env.SAWW_KV.put('email:' + rec.email, cus);
   return rec;
 }
-const isPro = rec => !!rec && rec.pro && ACTIVE.has(rec.status) && rec.pe + GRACE > now();
+const isPro = rec => !!rec && rec.pro && ACTIVE.has(rec.status) && rec.pe > now();
 async function issue(env, rec) {
   const t = now();
-  return signToken(env, { sub: rec.cus, plan: 'pro', st: rec.status, pe: rec.pe, iat: t, exp: Math.min(rec.pe + GRACE, t + MAX_TOKEN) });
+  return signToken(env, { sub: rec.cus, plan: rec.plan === 'semi' ? 'semi' : 'pro', st: rec.status, pe: rec.pe, iat: t, exp: Math.min(rec.pe, t + MAX_TOKEN) });
 }
 // KV の記録が古い（12時間以上）時は Stripe に聞き直す
 async function freshRec(env, cus) {
   let rec = JSON.parse((await env.SAWW_KV.get('cus:' + cus)) || 'null');
-  if (rec && now() - rec.at < 12 * 3600) return rec;
+  if (rec && rec.pe > now() && now() - rec.at < 12 * 3600) return rec;
   try {
     const list = await stripe(env, '/v1/subscriptions?status=all&limit=10&customer=' + encodeURIComponent(cus));
     const subs = (list.data || []).sort((a, b) => (ACTIVE.has(b.status) - ACTIVE.has(a.status)) || (periodEnd(b) - periodEnd(a)));
@@ -131,17 +137,36 @@ async function webhook(req, env) {
   if (!(await verifyStripeSignature(body, req.headers.get('Stripe-Signature'), env.STRIPE_WEBHOOK_SECRET))) return json({ error: 'bad signature' }, 400);
   const ev = JSON.parse(body), o = ev.data && ev.data.object;
   if (await env.SAWW_KV.get('ev:' + ev.id)) return json({ ok: true, dup: true });
-  let fact = null;
+  let eligible=false;
   if (ev.type === 'checkout.session.completed' && o.mode === 'subscription' && o.subscription) {
     const sub = await stripe(env, '/v1/subscriptions/' + o.subscription);
-    fact = await saveSub(env, sub, (o.customer_details && o.customer_details.email) || o.customer_email);
+    eligible=priceOk(env,sub);
+    await saveSub(env, sub, (o.customer_details && o.customer_details.email) || o.customer_email);
   } else if (/^customer\.subscription\.(created|updated|deleted|paused|resumed)$/.test(ev.type)) {
-    fact = await saveSub(env, o);
+    const rec = await saveSub(env, o);
+    eligible=rec?.pro===true;
+    const previous = ev.data.previous_attributes || {};
+    if (ev.type === 'customer.subscription.updated' && previous.cancel_at_period_end === false &&
+        o.cancel_at_period_end === true && rec && rec.pro) {
+      if (!okEmail(rec.email)) throw new Error('missing cancellation recipient');
+      const end = new Date((o.cancel_at || rec.pe) * 1000).toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' });
+      const result = await fetch((env.RESEND_API || 'https://api.resend.com') + '/emails', {
+        method: 'POST',
+        headers: { Authorization: 'Bearer ' + env.RESEND_API_KEY, 'Content-Type': 'application/json',
+          'Idempotency-Key': 'cancel-' + ev.id },
+        body: JSON.stringify({ from: env.MAIL_FROM, to: [rec.email],
+          subject: (ev.livemode === false ? '【テスト】' : '') + 'saww audio ecosystem ' + (rec.plan === 'semi' ? 'SEMI-PRO' : 'PRO') + ' 解約受付',
+          text: '月額 ' + (rec.plan === 'semi' ? 'SEMI-PRO' : 'PRO') + ' の自動更新停止を受け付けました。' + end + '（日本時間）までご利用いただけます。' })
+      });
+      if (!result.ok) throw new Error('cancellation email delivery request failed');
+    }
   } else if (ev.type === 'invoice.paid' && (o.subscription || (o.parent && o.parent.subscription_details))) {
     const sid = o.subscription || o.parent.subscription_details.subscription;
-    fact = await saveSub(env, await stripe(env, '/v1/subscriptions/' + sid), o.customer_email);
+    const sub=await stripe(env, '/v1/subscriptions/' + sid);
+    eligible=priceOk(env,sub);
+    await saveSub(env,sub,o.customer_email);
   }
-  try { await billingFact(env, ev, !!(fact && fact.pro)); } catch (e) { /* 集計の失敗で課金を止めない */ }
+  await billingFact(env,ev,eligible);
   await env.SAWW_KV.put('ev:' + ev.id, '1', { expirationTtl: 7 * 86400 });
   return json({ ok: true });
 }
@@ -199,22 +224,25 @@ async function refresh(req, env) {
   if (!pl || !pl.sub || pl.exp + REFRESH_WINDOW < now()) return json({ ok: false, plan: 'free', error: 'token' }, 401, cors(env, req));
   const rec = await freshRec(env, pl.sub);
   if (!isPro(rec)) return json({ ok: true, plan: 'free', status: rec ? rec.status : 'none' }, 200, cors(env, req));
-  return json({ ok: true, plan: 'pro', token: await issue(env, rec) }, 200, cors(env, req));
+  return json({ ok: true, plan: rec.plan === 'semi' ? 'semi' : 'pro', token: await issue(env, rec) }, 200, cors(env, req));
 }
-
-// v0.68：利用の記録・Readdy のデモ生成の列・公開カタログ（server/growth）。USAGE_DB（D1）が無ければ 503 を返すだけで、課金には影響しない。
 
 export default {
   async fetch(req, env) {
     const { pathname } = new URL(req.url);
     try {
-      if (pathname.startsWith('/api/')) { const r = await growthRoute(req, env); if (r) return r; }
+      const growth = await growthRoute(req, env);
+      if (growth) return growth;
       if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors(env, req) });
       if (pathname === '/stripe/webhook' && req.method === 'POST') return await webhook(req, env);
       if (pathname === '/activate' && req.method === 'GET') return await activate(req, env);
       if (pathname === '/login' && req.method === 'POST') return await login(req, env);
       if (pathname === '/magic' && req.method === 'GET') return await magic(req, env);
       if (pathname === '/refresh' && req.method === 'POST') return await refresh(req, env);
+      if (pathname === '/public-key' && req.method === 'GET') {
+        const { pub, kid } = await privKey(env);
+        return json({ ...pub, kid });
+      }
       if (pathname === '/' ) return json({ ok: true, service: 'saww-billing' });
       return json({ error: 'not found' }, 404);
     } catch (e) {

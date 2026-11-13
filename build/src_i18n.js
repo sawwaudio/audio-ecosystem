@@ -192,6 +192,7 @@ const EXACT={
 'マイナー（暗い）':'Minor (dark)',
 'キー（調）':'Key',
 '明るさ（メジャー・マイナー）':'Major or minor',
+'基準 A4':'Reference A4','基準周波数（A4）':'Reference pitch (A4)','音律':'Tuning','5-limit 純正律':'5-limit just intonation','12平均律':'12-tone equal temperament',
 '有機':'Organic',
 '粒子':'Particles',
 '幾何':'Geometry',

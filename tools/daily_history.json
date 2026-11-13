@@ -68,5 +68,15 @@
   "license": "CC0 1.0",
   "author": "kvgarlic",
   "file": "saww_2026-11-20_midwest-woods-wind.mp4"
+ },
+ {
+  "date": "2026-11-20",
+  "id": "tawny-owl",
+  "cat": "birds",
+  "style": "flow",
+  "hue": 232,
+  "license": "CC BY 4.0",
+  "author": "Benboncan",
+  "file": "saww_2026-11-20_tawny-owl.mp4"
  }
 ]

@@ -52,7 +52,7 @@ await pg.selectOption('#tuneRef','432');await pg.selectOption('#tuneSystem','ji5
 await pg.evaluate(()=>{const el=document.getElementById('param-harp');el.value='70';el.dispatchEvent(new Event('input'))});
 const smp=[];for(let i=0;i<8&&smp.length<4;i++){await pg.evaluate(()=>__audioEcosystemDebug.triggerVoice('harp'));await W(700);const sl=await pg.evaluate(()=>saeTuning.debug.sampleLast());if(sl&&sl.kind==='harp')smp.push(sl.midi)}
 R.harpMidi=smp;ok('harp_integer_midi',smp.length>0&&smp.every(Number.isInteger));
-const html=fs.readFileSync(__dirname+'/../index.html','utf8');ok('real_melody_semitone',html.includes('let m=sampleMidi(randomPitch());')&&!/Math\.log2\([^)]*\/440\)/.test(html));
+const html=fs.readFileSync(__dirname+'/../index.html','utf8');ok('real_melody_semitone',html.includes('const f0=randomPitch();let m=sampleMidi(f0);')&&!/Math\.log2\([^)]*\/440\)/.test(html));
 await pg.click('#play');await W(400);
 // 8. プリセット
 const pr=await pg.evaluate(()=>{const D=__audioEcosystemDebug,out={};const d=D.exportData();out.exported=d.tuning;

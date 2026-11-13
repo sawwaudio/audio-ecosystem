@@ -14,7 +14,8 @@ CATS = ['ambience', 'birds', 'aquatic', 'insects', 'amphibians', 'mammals']
 CAT_JA = {'ambience': '環境音', 'birds': '鳥', 'aquatic': '水の生き物', 'insects': '虫', 'amphibians': '両生類', 'mammals': '哺乳類'}
 STYLES = ['contour', 'flow', 'geometry']
 ap = argparse.ArgumentParser(); ap.add_argument('--app', required=True); ap.add_argument('--out', required=True)
-ap.add_argument('--start', required=True); ap.add_argument('--days', type=int, default=7); ap.add_argument('--sec', type=float, default=20)
+ap.add_argument('--start', required=True); ap.add_argument('--days', type=int, default=7); ap.add_argument('--sec', type=float, default=20); ap.add_argument('--mix', default='didge', choices=['didge', 'field'])
+ap.add_argument('--look', default='specimen', choices=['specimen', 'full'])  # specimen＝黒地の中央に音で育つ形を一つ（2026-11-14 参考リール）
 a = ap.parse_args()
 h = open(a.app, encoding='utf-8').read(); appdir = os.path.dirname(os.path.abspath(a.app))
 blk = lambda i: json.loads(re.search(r'id="%s">(.*?)</script>' % i, h, re.S).group(1))
@@ -37,10 +38,29 @@ for d in range(a.days):
     hue = 150 + int(hashlib.sha1(i.encode()).hexdigest(), 16) % 150; date = (day0 + datetime.timedelta(days=d)).isoformat()
     od = os.path.join(a.out, f'{date}_{i}'); os.makedirs(od, exist_ok=True); en = (meta.get(i) or {}).get('en') or ''
     dur = float(r['embeddedDuration']); ss = max(0, min(2.0, dur - a.sec - .2)); wav = os.path.join(od, 'audio.wav')
-    run(['ffmpeg', '-v', 'error', '-y', '-ss', str(ss), '-t', str(a.sec), '-i', src(i), '-af', f'loudnorm=I=-18:TP=-1.5,afade=t=in:d=0.6,afade=t=out:st={a.sec-1.0}:d=1.0', '-ar', '48000', '-ac', '2', wav])
+    # 音：ディジュリドゥが中心（VCSL・CC0）。下にパイプオルガンのペダル（C1 を半音上げて C#1。ディジュリドゥの基音 約69Hz = C#2 の1オクターブ下）。
+    # その上に、この回の実録音（自然の音）を少し小さく重ねる。2026-11-14 オーナー指示「リールはディジュリドゥの音中心に低音入れたほうがいい」。
+    if a.mix == 'didge':
+        P = lambda n: os.path.join(appdir, n)
+        phr = ['vcsl_Didgeridoo1_Phrase1_Main.flac', 'vcsl_Didgeridoo1_Phrase3_Main.flac', 'vcsl_Didgeridoo1_Phrase5_Main.flac', 'vcsl_Didgeridoo1_Phrase8_Main.flac']
+        sus = ['vcsl_Didgeridoo1_Sus2_Main.flac', 'vcsl_Didgeridoo1_Sus3_Main.flac', 'vcsl_Didgeridoo1_Sus8_Main.flac']
+        d1 = P('instruments/pcm/' + phr[k % 4]); d2 = P('instruments/pcm/' + sus[k % 3]); d3 = P('instruments/pcm/' + phr[(k + 1) % 4]); org = P('instruments/pcm/vcsl_NT5_PedalQuiet_C1_rr1.flac')
+        semi = 2 ** (1 / 12)
+        fc = (f'[0:a]aresample=48000,aformat=channel_layouts=stereo[a0];[1:a]aresample=48000,aformat=channel_layouts=stereo[a1];[2:a]aresample=48000,aformat=channel_layouts=stereo[a2];'
+              f'[a0][a1]acrossfade=d=2:c1=tri:c2=tri[x01];[x01][a2]acrossfade=d=2:c1=tri:c2=tri,loudnorm=I=-17:TP=-2,apad,atrim=0:{a.sec}[didge];'
+              f'[3:a]asetrate={44100*semi:.1f},aresample=48000,aformat=channel_layouts=stereo[o1];[4:a]asetrate={44100*semi:.1f},aresample=48000,aformat=channel_layouts=stereo[o2];'
+              f'[o1][o2]acrossfade=d=3:c1=tri:c2=tri,lowpass=f=220,loudnorm=I=-24:TP=-6,apad,atrim=0:{a.sec}[bass];'
+              f'[5:a]aresample=48000,aformat=channel_layouts=stereo,highpass=f=140,loudnorm=I=-25:TP=-4,apad,atrim=0:{a.sec}[field];'
+              f'[didge][bass][field]amix=inputs=3:normalize=0:duration=longest,atrim=0:{a.sec},loudnorm=I=-15:TP=-1.5,afade=t=in:d=0.6,afade=t=out:st={a.sec-1.0}:d=1.0[out]')
+        run(['ffmpeg', '-v', 'error', '-y', '-i', d1, '-i', d2, '-i', d3, '-i', org, '-i', org, '-ss', str(ss), '-t', str(a.sec + 1), '-i', src(i), '-filter_complex', fc, '-map', '[out]', '-ar', '48000', '-ac', '2', wav])
+    else:
+        run(['ffmpeg', '-v', 'error', '-y', '-ss', str(ss), '-t', str(a.sec), '-i', src(i), '-af', f'loudnorm=I=-18:TP=-1.5,afade=t=in:d=0.6,afade=t=out:st={a.sec-1.0}:d=1.0', '-ar', '48000', '-ac', '2', wav])
     base = os.path.join(od, 'base.mp4')
     if not os.path.exists(base): run(['node', os.path.join(ROOT, 'tools', 'render_visual.js'), '--audio', wav, '--app', a.app, '--out', base, '--size', '1080x1920', '--plan', f'{style}:{a.sec}', '--hue', str(hue)])
-    fs = ['drawbox=x=0:y=150:w=iw:h=460:color=black@0.28:t=fill', 'drawbox=x=0:y=1500:w=iw:h=420:color=black@0.45:t=fill']; tn = [0]
+    fs = [] if a.look == 'specimen' else ['drawbox=x=0:y=150:w=iw:h=460:color=black@0.28:t=fill', 'drawbox=x=0:y=1500:w=iw:h=420:color=black@0.45:t=fill']; tn = [0]
+    mask = os.path.join(od, 'mask.mp4')
+    if a.look == 'specimen' and not os.path.exists(mask):
+        run([sys.executable, os.path.join(ROOT, 'tools', 'specimen_mask.py'), '--audio', wav, '--out', mask, '--sec', str(a.sec), '--seed', str(int(hashlib.sha1(i.encode()).hexdigest(), 16) % 9973), '--rim', os.path.join(od, 'rim.mp4')])
     def dt(txt, f, sz, x, y, alpha, col='0xf1ece0'):
         p = os.path.join(od, f't{tn[0]}.txt'); tn[0] += 1; open(p, 'w', encoding='utf-8').write(txt)
         fs.append(f"drawtext=fontfile={f}:textfile={p}:fontsize={sz}:fontcolor={col}:x={x}:y={y}:alpha='{alpha}':shadowcolor=black@0.7:shadowx=0:shadowy=2")
@@ -58,29 +78,41 @@ for d in range(a.days):
     dt(cut(jp, 30), R, 30, '(w-text_w)/2', y + 12, al(5.6, 14.2), '0xa9c1b6')
     loc = r.get('location') or ''
     dt('Play this sound yourself.', B, 58, '(w-text_w)/2', 220, al(14.6, E)); dt('saww audio ecosystem', B, 50, '(w-text_w)/2', 315, al(14.6, E)); dt(URL, R, 32, '(w-text_w)/2', 400, al(14.6, E), '0xa9c1b6')
-    dt(cut(f'Recording: {r["author"]} · {r["license"]}', 52), R, 30, 60, 1560, al(.4, E), '0xdfe9e3'); dt('Real field recording · full credits in caption', R, 24, 60, 1610, al(.4, E), '0xa9c1b6')
-    vf = os.path.join(od, 'vf.txt'); open(vf, 'w').write(','.join(fs) + ',format=yuv420p')
-    out = os.path.join(od, f'saww_{date}_{i}.mp4')
-    run(['ffmpeg', '-v', 'error', '-y', '-i', base, '-filter_script:v', vf, '-c:v', 'libx264', '-preset', 'medium', '-crf', '22', '-maxrate', '10M', '-bufsize', '20M', '-c:a', 'copy', '-movflags', '+faststart', out])
+    dt(cut(f'Recording: {r["author"]} · {r["license"]}', 52), R, 30, 60, 1560, al(.4, E), '0xdfe9e3'); dt('Didgeridoo & organ pedal: VCSL (Versilian Studios) · CC0 1.0' if a.mix == 'didge' else 'Real field recording · full credits in caption', R, 24, 60, 1610, al(.4, E), '0xa9c1b6')
+    vf = os.path.join(od, 'vf.txt'); out = os.path.join(od, f'saww_{date}_{i}.mp4')
+    enc = ['-c:v', 'libx264', '-preset', 'medium', '-crf', '22', '-maxrate', '10M', '-bufsize', '20M', '-movflags', '+faststart', out]
+    if a.look == 'specimen':
+        open(vf, 'w').write(f'[0:v]eq=contrast=1.12:brightness=0.03,format=yuva420p[b];[1:v]scale=1080:1920:flags=bicubic,format=gray[m];[b][m]alphamerge[bm];'
+                            f'[4:v]scale=1080:1920:flags=bicubic,gblur=sigma=1.1,format=gray[rm];[5:v]format=yuva420p[rc];[rc][rm]alphamerge[rg];'
+                            f'[2:v][bm]overlay=shortest=1[x];[x][rg]overlay=shortest=1,' + ','.join(fs) + ',format=yuv420p[v]')
+        run(['ffmpeg', '-v', 'error', '-y', '-i', base, '-i', mask, '-f', 'lavfi', '-i', f'color=black:s=1080x1920:r=30:d={a.sec}', '-i', wav,
+             '-i', os.path.join(od, 'rim.mp4'), '-f', 'lavfi', '-i', f'color=0xf3e6d2:s=1080x1920:r=30:d={a.sec}',
+             '-filter_complex_script', vf, '-map', '[v]', '-map', '3:a', '-c:a', 'aac', '-b:a', '192k'] + enc)
+    else:
+        open(vf, 'w').write(','.join(fs) + ',format=yuv420p')
+        run(['ffmpeg', '-v', 'error', '-y', '-i', base, '-filter_script:v', vf, '-c:a', 'copy'] + enc)
     name_en = en or r.get('latin') or r['jp']
     cap = f"""[YouTube Shorts title]
 {cut(en, 60)} | 20 seconds in nature #Shorts
 
 [Caption — Instagram and YouTube]
-Close your eyes. 20 seconds of a real field recording: {en}.
+Close your eyes. Didgeridoo and deep organ bass over a real field recording: {en}.
 The visual is drawn from the sound itself — its low end, its highs, its onsets.
 
 Play this sound yourself, layer it, and turn it into video. All features are free until Dec 31, 2026 (JST):
 https://{URL}/
 
-目を閉じて、20秒。{jp}の実録音です。映像は、この音そのものから描いています。
+目を閉じて、20秒。ディジュリドゥと低いオルガンの音に、{jp}の実録音を重ねました。映像は、この音そのものから描いています。
 自分で鳴らして、重ねて、映像にできます（2026年12月31日まで全機能を無料開放中）。
 
 — Recording credit / 録音クレジット —
 {r.get('title') or en} — {r['author']} / {r['license']} {r.get('licenseURL') or ''}
 Source / 出典: {r.get('url') or ''}
 Location / 録音地: {loc or '記載なし'}
-Changes / 加工: excerpt ({ss:.1f}–{ss+a.sec:.1f} s), loudness adjusted, fades, visual added / 抜粋・音量の調整・両端のフェード・映像の追加
+Changes / 加工: excerpt ({ss:.1f}–{ss+a.sec:.1f} s), loudness adjusted, fades, mixed with didgeridoo and organ pedal, visual added / 抜粋・音量の調整・両端のフェード・ディジュリドゥとオルガンのペダルとのミックス・映像の追加
+
+Didgeridoo & organ pedal / ディジュリドゥ・オルガンのペダル: Versilian Community Sample Library (VCSL) — Versilian Studios LLC / VCSL contributors / CC0 1.0 https://github.com/sgossner/VCSL (pitch-shifted, crossfaded / 音程の調整・つなぎ)
+All credits / 全クレジット: https://sawwaudio.github.io/audio-ecosystem-sounds-1/credits.html
 
 #saww #sawwaudioecosystem #natureasaninstrument #fieldrecording #soundscape #naturesounds #audiovisual #自然音 #フィールドレコーディング
 """

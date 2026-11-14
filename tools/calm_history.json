@@ -7,5 +7,77 @@
   "license": "CC BY 4.0",
   "author": "harrietniamh",
   "file": "saww_calm_2026-11-15_tokyo-park-cicadas.mp4"
+ },
+ {
+  "date": "2026-11-16",
+  "id": "podlaskie-spring-night",
+  "series": "calm",
+  "pattern": "calm-bokeh",
+  "version": 1,
+  "visual": "bokeh",
+  "palette": "night",
+  "license": "CC BY 4.0",
+  "author": "TenderMicrophones.pl",
+  "file": "saww_calm_2026-11-16_podlaskie-spring-night.mp4"
+ },
+ {
+  "date": "2026-11-17",
+  "id": "kyoto-rain",
+  "series": "calm",
+  "pattern": "calm-bokeh",
+  "version": 1,
+  "visual": "bokeh",
+  "palette": "rain",
+  "license": "CC BY 4.0",
+  "author": "LG",
+  "file": "saww_calm_2026-11-17_kyoto-rain.mp4"
+ },
+ {
+  "date": "2026-11-18",
+  "id": "peepers-toads-ozarks",
+  "series": "calm",
+  "pattern": "calm-bokeh",
+  "version": 1,
+  "visual": "bokeh",
+  "palette": "night",
+  "license": "CC BY 4.0",
+  "author": "NickTayloe",
+  "file": "saww_calm_2026-11-18_peepers-toads-ozarks.mp4"
+ },
+ {
+  "date": "2026-11-19",
+  "id": "takayama-river",
+  "series": "calm",
+  "pattern": "calm-bokeh",
+  "version": 1,
+  "visual": "bokeh",
+  "palette": "water",
+  "license": "CC BY 4.0",
+  "author": "kzarkses",
+  "file": "saww_calm_2026-11-19_takayama-river.mp4"
+ },
+ {
+  "date": "2026-11-20",
+  "id": "waves-big-lagoon",
+  "series": "calm",
+  "pattern": "calm-bokeh",
+  "version": 1,
+  "visual": "bokeh",
+  "palette": "water",
+  "license": "CC0 1.0",
+  "author": "CVLTIV8R",
+  "file": "saww_calm_2026-11-20_waves-big-lagoon.mp4"
+ },
+ {
+  "date": "2026-11-21",
+  "id": "nakameguro-cicadas",
+  "series": "calm",
+  "pattern": "calm-bokeh",
+  "version": 1,
+  "visual": "bokeh",
+  "palette": "water",
+  "license": "CC BY 4.0",
+  "author": "naotokui",
+  "file": "saww_calm_2026-11-21_nakameguro-cicadas.mp4"
  }
 ]

@@ -4,49 +4,845 @@
       "id": "tiles",
       "ja": "写真をタップして実録音を再生・重ねる",
       "en": "Tap photos to play and layer real recordings",
-      "tier": "free"
+      "tier": "free",
+      "plans": [
+        "free",
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "library",
+      "ja": "実録音ライブラリ（検索・地域・試聴・権利情報）",
+      "en": "Recording library (filters, regions, preview, rights info)",
+      "tier": "free",
+      "plans": [
+        "free",
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "import",
+      "ja": "自分の音を読み込む（端末の外へ送らない）",
+      "en": "Import your own audio (never uploaded)",
+      "tier": "free",
+      "plans": [
+        "free",
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "reel",
+      "ja": "リール作成（9:16・1080×1920・15〜60秒・テンプレート）",
+      "en": "Reel creator (9:16, 1080×1920, 15–60 s, templates)",
+      "tier": "free",
+      "plans": [
+        "free",
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "credits",
+      "ja": "クレジットの自動作成・コピー・共有",
+      "en": "Automatic credits, copy and share",
+      "tier": "free",
+      "plans": [
+        "free",
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "autoplay",
+      "ja": "自律演奏（自然な鳴き交わし）",
+      "en": "Autonomous play (natural call-and-response)",
+      "tier": "free",
+      "plans": [
+        "free",
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "creatures_free",
+      "ja": "生き物の声25録音（鳥・虫・両生類・哺乳類・水の生き物から各5録音）と環境音10録音",
+      "en": "25 wildlife recordings (5 each from birds, insects, amphibians, mammals and aquatic life) and 10 ambience recordings",
+      "tier": "free",
+      "plans": [
+        "free",
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "creatures_all",
+      "ja": "すべての生き物の声（97録音）",
+      "en": "Every creature voice (97 recordings)",
+      "tier": "pro",
+      "plans": [
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "instruments_free",
+      "ja": "楽器（実録音）6種：ディジュリドゥ・自然の低音・パイプオルガンのペダル・ハープ・カリンバ・フレームドラム、合成音はすべて",
+      "en": "6 real-recorded instruments (didgeridoo, nature low, pipe organ pedal, harp, kalimba, frame drum) and all synth sounds",
+      "tier": "free",
+      "plans": [
+        "free",
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "instruments_all",
+      "ja": "すべての楽器（実録音）：ムビラ・バラフォン・ダン・チャン・弓で弾くプサルテリーなどの伝統楽器を含む",
+      "en": "All real-recorded instruments, including traditional ones such as mbira, balafon, đàn tranh and bowed psaltery",
+      "tier": "pro",
+      "plans": [
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "mixer",
+      "ja": "DJ ミキサー（チャンネル EQ・フィルター・マスター EQ）",
+      "en": "DJ mixer (channel EQ, filter, master EQ)",
+      "tier": "pro",
+      "plans": [
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "fx",
+      "ja": "BEAT FX 10種・チャンネル FX",
+      "en": "10 BEAT FX and channel FX",
+      "tier": "pro",
+      "plans": [
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "sampler",
+      "ja": "サンプラー（切り取り・8パッド）",
+      "en": "Sampler (slice, 8 pads)",
+      "tier": "pro",
+      "plans": [
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "tracks",
+      "ja": "マルチトラック（重ね録り・ミュート・ソロ・送り先）",
+      "en": "Multitrack (overdub, mute, solo, routing)",
+      "tier": "pro",
+      "plans": [
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "export",
+      "ja": "高音質の書き出し（WAV・AIFF 24-bit）",
+      "en": "High-quality export (WAV, AIFF 24-bit)",
+      "tier": "pro",
+      "plans": [
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "midi",
+      "ja": "MIDI コントローラー（予定）",
+      "en": "MIDI controllers (planned)",
+      "tier": "pro",
+      "plans": [
+        "semi",
+        "pro"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "projects",
+      "ja": "プロジェクトの保存（予定）",
+      "en": "Project saving (planned)",
+      "tier": "pro",
+      "plans": [
+        "semi",
+        "pro"
+      ],
+      "status": "planned"
+    },
+    {
+      "id": "reel_visuals",
+      "ja": "リールの映像テンプレート18種（自然の写真の色・流体・等高線・万華鏡・Bio Motion・有機・粒子など）。映像は音から描く",
+      "en": "18 reel visual templates (nature photo colours, flow, contour, kaleidoscope, Bio Motion, organic, particles…), drawn from the sound",
+      "tier": "free",
+      "plans": [
+        "free",
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "rights",
+      "ja": "商用モード：CC0・パブリックドメイン・CC BY だけで鳴らす／BY-SA を含む書き出しは警告。リールは BY-SA を含めず、帰属表示を映像とクレジットに残す",
+      "en": "Commercial mode: play only CC0 / public domain / CC BY; warns when an export contains BY-SA. Reels never include BY-SA and carry attribution on screen and in the credits",
+      "tier": "free",
+      "plans": [
+        "free",
+        "semi",
+        "pro"
+      ],
+      "status": "available"
+    },
+    {
+      "id": "tuning",
+      "ja": "432Hz・5-limit 純正律の音律エンジン（基準 A4 と音律を選べる、和音の各音の周波数を表示、書き出しのクレジットに音律を記録）",
+      "en": "Tuning engine: A4 = 432 Hz and 5-limit just intonation (choose reference and temperament, see each note’s frequency, tuning recorded in export credits)",
+      "tier": "free",
+      "plans": [
+        "free",
+        "semi",
+        "pro"
+      ],
+      "status": "coming_soon"
     }
   ],
   "sounds": [
     {
+      "id": "uguisu-yokohama",
+      "title_ja": "ウグイス（横浜・街なか）",
+      "title_en": "Japanese bush warbler (Yokohama, city)",
+      "group": "birds",
+      "author": "warukunai",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/warukunai/sounds/524526/",
+      "location": "神奈川県横浜市（投稿者の自宅付近）",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/uguisu-yokohama.mp3"
+    },
+    {
+      "id": "song-thrush",
+      "title_ja": "ウタツグミ",
+      "title_en": "Song thrush",
+      "group": "birds",
+      "author": "Artemis_R_Swann",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/Artemis_R_Swann/sounds/517477/",
+      "location": "英国イングランド・ケンブリッジ",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/song-thrush.mp3"
+    },
+    {
+      "id": "eurasian-wren",
+      "title_ja": "ミソサザイ（さえずり）",
+      "title_en": "Eurasian wren (song)",
+      "group": "birds",
+      "author": "Sacha.Julien",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/Sacha.Julien/sounds/734533/",
+      "location": "フランス・イゼール県 Claix（Peuil の自然地区）",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/eurasian-wren.mp3"
+    },
+    {
+      "id": "nightingale-russia",
+      "title_ja": "ナイチンゲール（ロシア北西部・種名記載なし）",
+      "title_en": "Nightingale (NW Russia, species not stated)",
+      "group": "birds",
+      "author": "smand",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/smand/sounds/521035/",
+      "location": "ロシア・レニングラード州キンギセップ地区 Pustomerzhskoe",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/nightingale-russia.mp3"
+    },
+    {
+      "id": "tawny-owl",
+      "title_ja": "モリフクロウ",
+      "title_en": "Tawny owl",
+      "group": "birds",
+      "author": "Benboncan",
+      "license": "CC BY 4.0",
+      "source": "https://freesound.org/people/Benboncan/sounds/63220/",
+      "location": "英国ウェールズ・グウィネズ州 Penrhyndeudraeth",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/tawny-owl.mp3"
+    },
+    {
+      "id": "cicada",
+      "title_ja": "アブラゼミ",
+      "title_en": "Large brown cicada",
+      "group": "insects",
+      "author": "Cory / ISAKA Yoji",
+      "license": "CC BY 2.1 JP",
+      "source": "https://commons.wikimedia.org/wiki/File:Aburazemi_07z7315.ogg",
+      "location": "神奈川県川崎市宮前区・東高根森林公園",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/cicada.mp3"
+    },
+    {
+      "id": "higurashi",
+      "title_ja": "ヒグラシ",
+      "title_en": "Evening cicada",
+      "group": "insects",
+      "author": "Σ64",
+      "license": "CC BY 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Tanna_japonensis_v01.ogg",
+      "location": "神奈川県川崎市麻生区",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/higurashi.mp3"
+    },
+    {
+      "id": "kashiwa-insects",
+      "title_ja": "虫の合唱（千葉・柏）",
+      "title_en": "Insect chorus (Kashiwa, Chiba)",
+      "group": "landscape",
+      "author": "RutgerMuller",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/RutgerMuller/sounds/365257/",
+      "location": "千葉県柏市（畑と小さな林）",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/kashiwa-insects.mp3"
+    },
+    {
+      "id": "crickets-washington",
+      "title_ja": "夜のコオロギ（ワシントン州ナチェス）",
+      "title_en": "Crickets at night (Naches, Washington)",
+      "group": "insects",
+      "author": "ES335-001",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/ES335-001/sounds/440574/",
+      "location": "米国ワシントン州 Naches 近くの Nile Valley",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/crickets-washington.mp3"
+    },
+    {
+      "id": "tsukutsukuboshi",
+      "title_ja": "ツクツクボウシ",
+      "title_en": "Meimuna opalifera cicada",
+      "group": "insects",
+      "author": "Σ64",
+      "license": "CC BY 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Meimuna_opalifera_v01.ogg",
+      "location": "神奈川県川崎市麻生区",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/tsukutsukuboshi.mp3"
+    },
+    {
+      "id": "common-toad",
+      "title_ja": "ヨーロッパヒキガエル",
+      "title_en": "Common toad",
+      "group": "animals",
+      "author": "Breviceps",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/Breviceps/sounds/462863/",
+      "location": "原典に記載なし（ヒキガエルの道路横断を助ける活動中、バケツの中）",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/common-toad.mp3"
+    },
+    {
+      "id": "ricefield-frogs",
+      "title_ja": "夜の水田のカエルの合唱（和歌山）",
+      "title_en": "Night frog chorus in a rice paddy (Wakayama)",
+      "group": "landscape",
+      "author": "Robin_Dupuy",
+      "license": "CC BY 4.0",
+      "source": "https://freesound.org/people/Robin_Dupuy/sounds/853181/",
+      "location": "和歌山県・高野山近くの富貴地区の水田",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/ricefield-frogs.mp3"
+    },
+    {
+      "id": "pacific-treefrog-chorus",
+      "title_ja": "タイヘイヨウアマガエル類の合唱（カリフォルニア・ペトロリア）",
+      "title_en": "Pacific tree frog chorus (Petrolia, California)",
+      "group": "animals",
+      "author": "CVLTIV8R",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/CVLTIV8R/sounds/852657/",
+      "location": "米国カリフォルニア州 Petrolia の小さな池",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/pacific-treefrog-chorus.mp3"
+    },
+    {
+      "id": "malaysian-frogs",
+      "title_ja": "カエルの群れ（マレーシア・メルシン）",
+      "title_en": "Frogs in the evening (Mersing, Malaysia)",
+      "group": "animals",
+      "author": "ikbenraar",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/ikbenraar/sounds/819667/",
+      "location": "マレーシア・ジョホール州 Mersing",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/malaysian-frogs.mp3"
+    },
+    {
+      "id": "treefrog-france",
+      "title_ja": "アマガエル類（フランス南西部・種名記載なし）",
+      "title_en": "Tree frog (SW France, species not stated)",
+      "group": "animals",
+      "author": "reinsamba",
+      "license": "CC BY 4.0",
+      "source": "https://freesound.org/people/reinsamba/sounds/15689/",
+      "location": "フランス・ロット＝エ＝ガロンヌ県 Saint-Sernin",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/treefrog-france.mp3"
+    },
+    {
+      "id": "roe-deer",
+      "title_ja": "ノロジカの鳴き交わし（ブルターニュ）",
+      "title_en": "Roe deer calls (Brittany)",
+      "group": "animals",
+      "author": "bruno.auzet",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/bruno.auzet/sounds/850406/",
+      "location": "フランス・モルビアン県 Saint-Dolay",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/roe-deer.mp3"
+    },
+    {
+      "id": "wolf",
+      "title_ja": "オオカミ（群れの遠吠え・ヴェルコール）",
+      "title_en": "Wolf pack howling (Vercors)",
+      "group": "animals",
+      "author": "Sacha.Julien",
+      "license": "CC BY 4.0",
+      "source": "https://freesound.org/people/Sacha.Julien/sounds/762242/",
+      "location": "フランス・ヴェルコールの森",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/wolf.mp3"
+    },
+    {
+      "id": "siamang-belgium",
+      "title_ja": "フクロテナガザル（ベルギーの動物園）",
+      "title_en": "Siamangs (zoo, Belgium)",
+      "group": "animals",
+      "author": "ikbenraar",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/ikbenraar/sounds/819670/",
+      "location": "ベルギー・エノー州 Brugelette（動物園）",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/siamang-belgium.mp3"
+    },
+    {
+      "id": "bat-batbox",
+      "title_ja": "コウモリのエコーロケーション（バットディテクター・フランス）",
+      "title_en": "Bat echolocation via bat detector (France)",
+      "group": "animals",
+      "author": "Sacha.Julien",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/Sacha.Julien/sounds/724581/",
+      "location": "フランス・ドローム県 Eurre の自然保護区（Livron-sur-Drôme）",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/bat-batbox.mp3"
+    },
+    {
+      "id": "fox",
+      "title_ja": "キツネ（夜の鳴き声）",
+      "title_en": "Fox cry at night",
+      "group": "animals",
+      "author": "Simon Spiers",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/Simon%20Spiers/sounds/431302/",
+      "location": "原典に記載なし（寝室の窓のすぐ外）",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/fox.mp3"
+    },
+    {
+      "id": "atlantic-spotted-dolphin",
+      "title_ja": "タイセイヨウマダライルカ",
+      "title_en": "Atlantic spotted dolphin",
+      "group": "animals",
+      "author": "geraldfiebig",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/geraldfiebig/sounds/385796/",
+      "location": "スペイン・カナリア諸島ラ・ゴメラ島 Valle Gran Rey 沖",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/atlantic-spotted-dolphin.mp3"
+    },
+    {
+      "id": "humpback",
+      "title_ja": "ザトウクジラの歌（モントレー湾・深海）",
+      "title_en": "Humpback whale song (Monterey Bay, deep water)",
+      "group": "animals",
+      "author": "MBARI_MARS",
+      "license": "CC BY 4.0",
+      "source": "https://freesound.org/people/MBARI_MARS/sounds/496870/",
+      "location": "米国カリフォルニア州サンタクルーズ沖の深海（36.71, −122.186）",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/humpback.mp3"
+    },
+    {
+      "id": "dolphin",
+      "title_ja": "イルカの声（カリブ海・水中・種名記載なし）",
+      "title_en": "Dolphins underwater (Caribbean, species not stated)",
+      "group": "animals",
+      "author": "felix.blume",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/felix.blume/sounds/161691/",
+      "location": "メキシコ・キンタナロー州 プンタ・アレン近くの沖",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/dolphin.mp3"
+    },
+    {
+      "id": "garden-pond-hydrophone",
+      "title_ja": "庭の池の水中音（英国デヴォン）",
+      "title_en": "Garden pond hydrophone (Devon, UK)",
+      "group": "animals",
+      "author": "odilonmarcenaro",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/odilonmarcenaro/sounds/271673/",
+      "location": "英国イングランド・デヴォン Crediton",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/garden-pond-hydrophone.mp3"
+    },
+    {
+      "id": "snapping-shrimp",
+      "title_ja": "テッポウエビ類のはじける音（フロリダ・水中）",
+      "title_en": "Snapping shrimp (Florida, underwater)",
+      "group": "animals",
+      "author": "nathanwolek",
+      "license": "CC BY 4.0",
+      "source": "https://freesound.org/people/nathanwolek/sounds/737242/",
+      "location": "米国フロリダ州 New Smyrna Beach（キャナベラル国立海岸）",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/snapping-shrimp.mp3"
+    },
+    {
+      "id": "takayama-river",
+      "title_ja": "高山の川（日本）",
+      "title_en": "River at Takayama (Japan)",
+      "group": "landscape",
+      "author": "kzarkses",
+      "license": "CC BY 4.0",
+      "source": "https://freesound.org/people/kzarkses/sounds/746927/",
+      "location": "日本・高山（作品名とタグ。県名などの記載なし）",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/takayama-river.mp3"
+    },
+    {
+      "id": "california-stream",
+      "title_ja": "森の渓流（カリフォルニア）",
+      "title_en": "Forest stream (California)",
+      "group": "landscape",
+      "author": "ultraaccel",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/ultraaccel/sounds/617253/",
+      "location": "米国カリフォルニア州の森（滝の下流）",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/california-stream.mp3"
+    },
+    {
+      "id": "kyoto-rain",
+      "title_ja": "京都の夜の雨（庭）",
+      "title_en": "Rainy night in a Kyoto garden",
+      "group": "landscape",
+      "author": "LG",
+      "license": "CC BY 4.0",
+      "source": "https://freesound.org/people/LG/sounds/462729/",
+      "location": "京都府京都市（庭）",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/kyoto-rain.mp3"
+    },
+    {
       "id": "rain-field",
-      "title": "雨の実録音",
+      "title_ja": "雨の実録音",
+      "title_en": "該当なし",
+      "group": "landscape",
       "author": "ジダネ",
       "license": "Public domain",
       "source": "https://commons.wikimedia.org/wiki/File:Rain.ogg",
+      "location": "録音場所不明",
+      "plan": "free",
       "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/rain-field.mp3"
+    },
+    {
+      "id": "rocky-beach",
+      "title_ja": "岩浜の小さな波",
+      "title_en": "該当なし",
+      "group": "landscape",
+      "author": "mnalis",
+      "license": "CC BY 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Small_sea_waves_at_rocky_beach.opus",
+      "location": "原本に記載なし",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/rocky-beach.mp3"
+    },
+    {
+      "id": "waves-big-lagoon",
+      "title_ja": "海岸に打ち寄せる波（カリフォルニア・ビッグラグーン）",
+      "title_en": "Ocean waves at Big Lagoon (Redwood Coast, California)",
+      "group": "landscape",
+      "author": "CVLTIV8R",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/CVLTIV8R/sounds/803679/",
+      "location": "米国カリフォルニア州北部 ビッグラグーン（レッドウッド海岸）",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/waves-big-lagoon.mp3"
+    },
+    {
+      "id": "midwest-woods-wind",
+      "title_ja": "晩夏の森の風と葉（米国中西部）",
+      "title_en": "Late-summer woods, leaves and wind (US Midwest)",
+      "group": "landscape",
+      "author": "kvgarlic",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/kvgarlic/sounds/669113/",
+      "location": "米国中西部の森",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/midwest-woods-wind.mp3"
+    },
+    {
+      "id": "bamboo-stream",
+      "title_ja": "竹林の風と小川・鳥",
+      "title_en": "Wind in bamboo, a small stream and birds (Japan)",
+      "group": "landscape",
+      "author": "tomasloos",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/tomasloos/sounds/843520/",
+      "location": "日本（地名の記載なし）",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/bamboo-stream.mp3"
+    },
+    {
+      "id": "tide-rocks",
+      "title_ja": "引き潮・岩を伝う水",
+      "title_en": "該当なし",
+      "group": "landscape",
+      "author": "earthcalling",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Water_over_rocks_as_tide_recedes.ogg",
+      "location": "原本に記載なし",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/tide-rocks.mp3"
+    },
+    {
+      "id": "forest-thunderstorm-hamburg",
+      "title_ja": "森の雷雨（ドイツ・ハンブルク近郊）",
+      "title_en": "Thunderstorm in the forest (near Hamburg)",
+      "group": "landscape",
+      "author": "pulswelle",
+      "license": "CC0 1.0",
+      "source": "https://freesound.org/people/pulswelle/sounds/280214/",
+      "location": "ドイツ・ハンブルク近郊",
+      "plan": "free",
+      "preview": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/audio/lite/forest-thunderstorm-hamburg.mp3"
     }
   ],
   "presets": [
     {
-      "id": "organic",
+      "id": "nature",
       "kind": "reel-visual",
+      "label": "自然（写真の色）",
       "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
     },
     {
-      "id": "particles",
+      "id": "nature-paper",
       "kind": "reel-visual",
+      "label": "自然・紙（図版）",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "flow",
+      "kind": "reel-visual",
+      "label": "flow（流体）",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "contour",
+      "kind": "reel-visual",
+      "label": "contour（等高線）",
       "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
     },
     {
       "id": "geometry",
       "kind": "reel-visual",
+      "label": "geometry（万華鏡）",
       "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "forest",
+      "kind": "reel-visual",
+      "label": "forest（区画パネル）",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "ocean",
+      "kind": "reel-visual",
+      "label": "ocean（区画パネル）",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "night",
+      "kind": "reel-visual",
+      "label": "night（区画パネル）",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "wildlife",
+      "kind": "reel-visual",
+      "label": "wildlife（区画パネル）",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "minimal",
+      "kind": "reel-visual",
+      "label": "minimal",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "waveform",
+      "kind": "reel-visual",
+      "label": "waveform",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "spectrum",
+      "kind": "reel-visual",
+      "label": "spectrum（分析）",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "abstract",
+      "kind": "reel-visual",
+      "label": "abstract（動き）",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "cell-pulse",
+      "kind": "reel-visual",
+      "label": "Bio Motion · cell-pulse",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "micro-swim",
+      "kind": "reel-visual",
+      "label": "Bio Motion · micro-swim",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "mycelium",
+      "kind": "reel-visual",
+      "label": "Bio Motion · mycelium",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "organic",
+      "kind": "reel-visual",
+      "label": "organic（有機）",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "particles",
+      "kind": "reel-visual",
+      "label": "particles（粒子）",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+    },
+    {
+      "id": "rain-and-rock",
+      "kind": "demo-job",
+      "label": "雨と岩の浜の実録音を重ねた7秒のリール（Readdy のデモ生成）",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/"
     }
   ],
-  "media": [],
+  "media": [
+    {
+      "kind": "youtube-channel",
+      "url": "https://www.youtube.com/channel/UC9A_TfS5zFRcjjVLEmRkmmw",
+      "series": [
+        "20 seconds in nature",
+        "CALM"
+      ]
+    },
+    {
+      "kind": "credits",
+      "url": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/credits.html",
+      "ja": "実録音のクレジット一覧"
+    },
+    {
+      "kind": "legal",
+      "url": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/legal.html",
+      "ja": "特定商取引法に基づく表記"
+    }
+  ],
   "releases": [
     {
-      "revision": "5ce629d",
-      "date": "2026-11-10",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/"
+      "version": "v0.66",
+      "date": "2026-11-13",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/",
+      "ja": "公開中の版。リールの映像テンプレート・帰属表示のテロップ・BY-SA の書き出し警告・スマートフォンの入力欄・表示言語の既定を英語に・SEMI-PRO の仕組み（支払いリンクを入れるまで画面には出ない）"
+    },
+    {
+      "version": "v0.71",
+      "date": "2026-11-13",
+      "status": "coming_soon",
+      "ja": "432Hz・純正律の音律エンジンと、楽器サンプルを音律に合わせる切り替え（未公開）"
     }
   ],
   "pricing": [
     {
+      "id": "free",
+      "name": "FREE",
+      "tagline": "create & share.",
+      "currency": "USD",
+      "monthly": 0.0,
+      "note_ja": "アカウントなしで使えます。",
+      "note_en": "No account needed.",
+      "checkout": "none",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#plansSection"
+    },
+    {
+      "id": "semi",
+      "name": "SEMI-PRO",
+      "tagline": "perform.",
+      "currency": "USD",
+      "monthly": 5.0,
+      "note_ja": "サンプラーと録音・書き出し以外の PRO の機能。",
+      "note_en": "Everything in PRO except the sampler and recording/export.",
+      "checkout": "coming_soon",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#plansSection"
+    },
+    {
+      "id": "pro",
+      "name": "PRO",
+      "tagline": "perform & produce.",
       "currency": "USD",
       "monthly": 9.99,
+      "note_ja": "月額・自動更新。いつでも解約でき、次の更新日まで PRO のまま使えます。",
+      "note_en": "Monthly, renews automatically. Cancel any time; PRO stays on until the next renewal date.",
+      "checkout": "live",
       "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#plansSection"
+    },
+    {
+      "id": "open-access",
+      "name": "Free access period",
+      "until": "2026-12-31T23:59:59+09:00",
+      "note_ja": "2026年12月31日（日本時間）まで全機能を無料開放中",
+      "note_en": "All features are free until Dec 31, 2026 (Japan time)",
+      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/"
     }
   ]
 }

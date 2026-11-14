@@ -1,0 +1,76 @@
+{
+ "made": "2026-11-14",
+ "note": "brush.py の配分。make_reel.py --plan で作る。公開の予約は手で（または巡回で）。",
+ "slots": [
+  {
+   "date": "2026-11-20",
+   "time": "21:00",
+   "pattern": "specimen"
+  },
+  {
+   "date": "2026-11-20",
+   "time": "23:00",
+   "pattern": "calm-bokeh"
+  },
+  {
+   "date": "2026-11-21",
+   "time": "21:00",
+   "pattern": "specimen"
+  },
+  {
+   "date": "2026-11-21",
+   "time": "23:00",
+   "pattern": "meadow"
+  },
+  {
+   "date": "2026-11-22",
+   "time": "21:00",
+   "pattern": "specimen"
+  },
+  {
+   "date": "2026-11-22",
+   "time": "23:00",
+   "pattern": "komorebi"
+  },
+  {
+   "date": "2026-11-23",
+   "time": "21:00",
+   "pattern": "saiun"
+  },
+  {
+   "date": "2026-11-23",
+   "time": "23:00",
+   "pattern": "calm-bokeh"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "21:00",
+   "pattern": "meadow"
+  },
+  {
+   "date": "2026-11-24",
+   "time": "23:00",
+   "pattern": "komorebi"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "21:00",
+   "pattern": "saiun"
+  },
+  {
+   "date": "2026-11-25",
+   "time": "23:00",
+   "pattern": "calm-bokeh"
+  },
+  {
+   "date": "2026-11-26",
+   "time": "21:00",
+   "pattern": "meadow"
+  },
+  {
+   "date": "2026-11-26",
+   "time": "23:00",
+   "pattern": "komorebi"
+  }
+ ]
+}

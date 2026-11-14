@@ -7,7 +7,7 @@ import json, os, collections
 P = os.path.join(os.path.dirname(__file__), 'youtube.json'); rows = json.load(open(P, encoding='utf-8'))
 def sec(r): return r['watch_hours'] * 3600 / r['views'] if r.get('views') else None
 print(f'動画 {len(rows)} 本')
-for key in ['series', 'look', 'mix', 'style', 'category', 'palette']:
+for key in ['pattern', 'series', 'look', 'mix', 'style', 'category', 'palette']:
     g = collections.defaultdict(list)
     for r in rows:
         if r.get(key) is not None and r.get('stayed_pct') is not None: g[r[key]].append(r)

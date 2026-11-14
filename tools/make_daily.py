@@ -16,6 +16,7 @@ STYLES = ['contour', 'flow', 'geometry']
 ap = argparse.ArgumentParser(); ap.add_argument('--app', required=True); ap.add_argument('--out', required=True)
 ap.add_argument('--start', required=True); ap.add_argument('--days', type=int, default=7); ap.add_argument('--sec', type=float, default=20); ap.add_argument('--mix', default='didge', choices=['didge', 'field'])
 ap.add_argument('--look', default='specimen', choices=['specimen', 'full'])  # specimen＝黒地の中央に音で育つ形を一つ（2026-11-14 参考リール）
+ap.add_argument('--pattern', default=''); ap.add_argument('--version', type=int, default=1)  # 2026-11-14 パターン化（tools/make_reel.py から渡す）
 a = ap.parse_args()
 h = open(a.app, encoding='utf-8').read(); appdir = os.path.dirname(os.path.abspath(a.app))
 blk = lambda i: json.loads(re.search(r'id="%s">(.*?)</script>' % i, h, re.S).group(1))
@@ -119,6 +120,6 @@ All credits / 全クレジット: https://sawwaudio.github.io/audio-ecosystem-so
     open(os.path.join(od, 'caption.txt'), 'w', encoding='utf-8').write(cap)
     for f in os.listdir(od):
         if re.match(r't\d+\.txt|vf\.txt', f): os.remove(os.path.join(od, f))
-    hist.append({'date': date, 'id': i, 'cat': c, 'style': style, 'hue': hue, 'license': r['license'], 'author': r['author'], 'file': os.path.basename(out)})
+    hist.append({'date': date, 'id': i, 'pattern': a.pattern or ('specimen' if a.look == 'specimen' else 'full'), 'version': a.version, 'mix': a.mix, 'cat': c, 'style': style, 'hue': hue, 'license': r['license'], 'author': r['author'], 'file': os.path.basename(out)})
     json.dump(hist, open(HP, 'w', encoding='utf-8'), ensure_ascii=False, indent=1); made.append(out); print('made', out, flush=True)
 print(len(made), '本')

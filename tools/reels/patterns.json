@@ -1,0 +1,122 @@
+{
+ "_note": "リールのパターン台帳（2026-11-14 オーナー指示「1種類に統合せず、参考動画ごとのパターンを作る。動画全体を磨き続ける」）。1パターン＝1つの参考動画（の型）。params は現在の版。knobs は磨く時に1回に1つだけ動かすつまみ（step・min・max）。history は過去の版。版を変えるのは tools/perf/brush.py（--apply）か手で。status：active（配信する）・trial（試し中）・paused（止める）。",
+ "patterns": [
+  {
+   "id": "specimen",
+   "name_ja": "標本",
+   "reference": "2026-11-14 オーナー共有の参考リール5本の共通点：黒い背景の中央に、音で育って呼吸する有機的な形を一つだけ置く。縁が光り、音の立ち上がりで粒が散る。（5本それぞれの型には、まだ分けていない。参考動画のリンクがあれば specimen-a〜e に分ける）",
+   "series": "20 seconds in nature",
+   "maker": "daily",
+   "status": "active",
+   "version": 1,
+   "sec": 20,
+   "args": {"look": "specimen", "mix": "didge"},
+   "params": {},
+   "knobs": [],
+   "history": []
+  },
+  {
+   "id": "full",
+   "name_ja": "全面シェーダー（旧）",
+   "reference": "公開アプリのリール映像（flow・contour・geometry のシェーダー）を全面に。1本目のショート（AS4w0xio9y8・竹林と小川）はこれ。",
+   "series": "20 seconds in nature",
+   "maker": "daily",
+   "status": "paused",
+   "version": 1,
+   "sec": 20,
+   "args": {"look": "full", "mix": "field"},
+   "params": {},
+   "knobs": [],
+   "history": []
+  },
+  {
+   "id": "calm-bokeh",
+   "name_ja": "水面のぼけた光",
+   "reference": "参考リールの実写の柔らかい光（水面・夜の灯り）のぼけ。光の粒がゆっくり漂う。色は録音の場所・時間帯（雨・水・夜・夜明け・森）から選ぶ。",
+   "series": "CALM",
+   "maker": "calm",
+   "status": "active",
+   "version": 1,
+   "sec": 30,
+   "args": {"visual": "bokeh", "kicker": "BREATHE  ·  {sec} SECONDS", "prefer": "rain,river,stream,water,night"},
+   "params": {"title_in": 2.0, "title_out": 11.5, "title_y": 820},
+   "knobs": [
+    {"key": "title_in", "step": -0.8, "min": 0.4, "max": 4.0, "why": "最初の数秒で何の音か分かるか（継続率）"},
+    {"key": "sec", "step": -5, "min": 15, "max": 40, "why": "短いほど最後まで見られるか（視聴秒数÷長さ）"},
+    {"key": "title_y", "step": -180, "min": 300, "max": 1100, "why": "文字の位置（中央と上）"}
+   ],
+   "history": []
+  },
+  {
+   "id": "meadow",
+   "name_ja": "花畑",
+   "reference": "参考リールの実写の花畑：画面の下に浅いピントの花、上に淡い空と日の光。風で揺れる。実写素材は使わず、音から描く。",
+   "series": "CALM",
+   "maker": "calm",
+   "status": "trial",
+   "version": 1,
+   "sec": 30,
+   "args": {"visual": "meadow", "kicker": "A MEADOW  ·  {sec} SECONDS", "prefer": "meadow,grassland,field,insect,cricket,bird,skylark"},
+   "params": {"palette": "spring", "sway": 1.0, "focus": 0.55, "flowers": 110, "title_in": 2.0, "title_out": 11.5, "title_y": 640},
+   "knobs": [
+    {"key": "title_in", "step": -0.8, "min": 0.4, "max": 4.0, "why": "最初の数秒で何の音か分かるか"},
+    {"key": "sway", "step": 0.4, "min": 0.4, "max": 2.2, "why": "動きの量（スワイプされにくさ）"},
+    {"key": "focus", "step": 0.15, "min": 0.25, "max": 0.9, "why": "ピントの位置（手前の花か奥か）"},
+    {"key": "sec", "step": -5, "min": 15, "max": 40, "why": "長さ"}
+   ],
+   "history": []
+  },
+  {
+   "id": "komorebi",
+   "name_ja": "木漏れ日",
+   "reference": "参考リールの実写の木漏れ日：葉の重なりの隙間からの光の筋と、地面でゆらぐ光の斑点。",
+   "series": "CALM",
+   "maker": "calm",
+   "status": "trial",
+   "version": 1,
+   "sec": 30,
+   "args": {"visual": "komorebi", "kicker": "UNDER THE TREES  ·  {sec} SECONDS", "prefer": "forest,woods,wood,tree,bamboo,leaves,wind"},
+   "params": {"density": 0.68, "rays": 1.0, "sway": 1.0, "angle": 62, "title_in": 2.0, "title_out": 11.5, "title_y": 820},
+   "knobs": [
+    {"key": "title_in", "step": -0.8, "min": 0.4, "max": 4.0, "why": "最初の数秒で何の音か分かるか"},
+    {"key": "rays", "step": 0.4, "min": 0.4, "max": 2.0, "why": "光の筋の強さ（画面の明るさ）"},
+    {"key": "density", "step": -0.04, "min": 0.56, "max": 0.76, "why": "葉の隙間の量"},
+    {"key": "sec", "step": -5, "min": 15, "max": 40, "why": "長さ"}
+   ],
+   "history": []
+  },
+  {
+   "id": "saiun",
+   "name_ja": "彩雲",
+   "reference": "参考リールの実写の彩雲：太陽の近くの薄い雲の縁が虹色に淡く色づき、ゆっくり流れる。",
+   "series": "CALM",
+   "maker": "calm",
+   "status": "trial",
+   "version": 1,
+   "sec": 30,
+   "args": {"visual": "saiun", "kicker": "AN IRIDESCENT SKY  ·  {sec} SECONDS", "prefer": "wind,coast,sea,wave,open,dawn,skylark"},
+   "params": {"cover": 0.45, "iris": 1.0, "drift": 1.0, "title_in": 2.0, "title_out": 11.5, "title_y": 1000},
+   "knobs": [
+    {"key": "title_in", "step": -0.8, "min": 0.4, "max": 4.0, "why": "最初の数秒で何の音か分かるか"},
+    {"key": "iris", "step": 0.35, "min": 0.4, "max": 2.0, "why": "虹色の強さ"},
+    {"key": "cover", "step": -0.06, "min": 0.3, "max": 0.6, "why": "雲の量"},
+    {"key": "sec", "step": -5, "min": 15, "max": 40, "why": "長さ"}
+   ],
+   "history": []
+  },
+  {
+   "id": "theme",
+   "name_ja": "テーマ（複数の録音＋楽器）",
+   "reference": "日本の夏・海などのテーマで、複数の実録音と VCSL の楽器（C# に合わせる）を重ねる。映像は標本と同じ。",
+   "series": "theme",
+   "maker": "theme",
+   "status": "active",
+   "version": 1,
+   "sec": 24,
+   "args": {},
+   "params": {},
+   "knobs": [],
+   "history": []
+  }
+ ]
+}

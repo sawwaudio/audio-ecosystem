@@ -833,7 +833,26 @@
   "previewGain": 2.392055137608219,
   "previewRms": 0.014910344034433365,
   "previewPeak": 0.2717328667640686,
-  "rightsTier": "C"
+  "rightsTier": "C",
+  "nameJa": "カジカガエル",
+  "nameJaSource": {
+   "title": "国立科学博物館「両生類日本固有種目録（2018年2月版）」",
+   "url": "https://www.kahaku.go.jp/research/activities/project/hotspot_japan/endemic_list/download/JEND_amphibians1802.pdf",
+   "checked": "2026-11-15",
+   "latinInSource": "Buergeria buergeri",
+   "entry": "カジカガエル Buergeria buergeri 無尾目 Anura アオガエル科 Rhacophoridae（分布：本州、四国、九州）",
+   "note": "日本固有種の目録で、日本爬虫両棲類学会の「日本産爬虫両生類標準和名リスト」ではない（学会のページは本文を取得できず未照合）。目録の分布（本州・四国・九州）は種の分布で、この録音の録音地ではない（録音地は原本に記載なし）。"
+  },
+  "latinCheck": {
+   "source": "GBIF Backbone Taxonomy（species/match API）",
+   "query": "Buergeria buergeri",
+   "status": "ACCEPTED",
+   "matchType": "EXACT",
+   "matchedName": "Buergeria buergeri (Temminck & Schlegel, 1838)",
+   "usageKey": 5217233,
+   "family": "Rhacophoridae",
+   "checked": "2026-11-15"
+  }
  },
  {
   "id": "brown-eared-bulbul",
@@ -1407,7 +1426,18 @@
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
   "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
-  "rightsTier": "C"
+  "rightsTier": "C",
+  "latinCheck": {
+   "source": "GBIF Backbone Taxonomy（species/match API）",
+   "query": "Locusta migratoria",
+   "status": "ACCEPTED",
+   "matchType": "EXACT",
+   "matchedName": "Locusta migratoria (Linnaeus, 1758)",
+   "usageKey": 1713418,
+   "family": "Acrididae",
+   "checked": "2026-11-15",
+   "note": "学名のみ照合。和名「トノサマバッタ」の典拠は未取得のため nameJa は付けていない。"
+  }
  },
  {
   "id": "tettigonia-viridissima",

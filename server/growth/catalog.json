@@ -227,7 +227,7 @@
         "semi",
         "pro"
       ],
-      "status": "coming_soon"
+      "status": "available"
     }
   ],
   "sounds": [
@@ -657,115 +657,115 @@
       "id": "nature",
       "kind": "reel-visual",
       "label": "自然（写真の色）",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "nature-paper",
       "kind": "reel-visual",
       "label": "自然・紙（図版）",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "flow",
       "kind": "reel-visual",
       "label": "flow（流体）",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "contour",
       "kind": "reel-visual",
       "label": "contour（等高線）",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "geometry",
       "kind": "reel-visual",
       "label": "geometry（万華鏡）",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "forest",
       "kind": "reel-visual",
       "label": "forest（区画パネル）",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "ocean",
       "kind": "reel-visual",
       "label": "ocean（区画パネル）",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "night",
       "kind": "reel-visual",
       "label": "night（区画パネル）",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "wildlife",
       "kind": "reel-visual",
       "label": "wildlife（区画パネル）",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "minimal",
       "kind": "reel-visual",
       "label": "minimal",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "waveform",
       "kind": "reel-visual",
       "label": "waveform",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "spectrum",
       "kind": "reel-visual",
       "label": "spectrum（分析）",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "abstract",
       "kind": "reel-visual",
       "label": "abstract（動き）",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "cell-pulse",
       "kind": "reel-visual",
       "label": "Bio Motion · cell-pulse",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "micro-swim",
       "kind": "reel-visual",
       "label": "Bio Motion · micro-swim",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "mycelium",
       "kind": "reel-visual",
       "label": "Bio Motion · mycelium",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "organic",
       "kind": "reel-visual",
       "label": "organic（有機）",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "particles",
       "kind": "reel-visual",
       "label": "particles（粒子）",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#reelSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#reelSection"
     },
     {
       "id": "rain-and-rock",
       "kind": "demo-job",
       "label": "雨と岩の浜の実録音を重ねた7秒のリール（Readdy のデモ生成）",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/"
     }
   ],
   "media": [
@@ -779,27 +779,21 @@
     },
     {
       "kind": "credits",
-      "url": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/credits.html",
+      "url": "https://sawwaudio.github.io/audio-ecosystem/credits.html",
       "ja": "実録音のクレジット一覧"
     },
     {
       "kind": "legal",
-      "url": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/legal.html",
+      "url": "https://sawwaudio.github.io/audio-ecosystem/legal.html",
       "ja": "特定商取引法に基づく表記"
     }
   ],
   "releases": [
     {
-      "version": "v0.66",
-      "date": "2026-11-13",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/",
-      "ja": "公開中の版。リールの映像テンプレート・帰属表示のテロップ・BY-SA の書き出し警告・スマートフォンの入力欄・表示言語の既定を英語に・SEMI-PRO の仕組み（支払いリンクを入れるまで画面には出ない）"
-    },
-    {
-      "version": "v0.71",
-      "date": "2026-11-13",
-      "status": "coming_soon",
-      "ja": "432Hz・純正律の音律エンジンと、楽器サンプルを音律に合わせる切り替え（未公開）"
+      "version": "v0.72",
+      "date": "2026-11-15",
+      "app": "https://sawwaudio.github.io/audio-ecosystem/",
+      "ja": "本体に統合：432Hz・純正律の音律エンジン、キー、リールのテンプレート（見入れる映像・Bio Motion）、配信用の画面、課金（FREE・PRO 月額／年額、SEMI-PRO は準備中）、年末の全機能無料開放"
     }
   ],
   "pricing": [
@@ -812,7 +806,7 @@
       "note_ja": "アカウントなしで使えます。",
       "note_en": "No account needed.",
       "checkout": "none",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#plansSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#plansSection"
     },
     {
       "id": "semi",
@@ -823,7 +817,7 @@
       "note_ja": "サンプラーと録音・書き出し以外の PRO の機能。",
       "note_en": "Everything in PRO except the sampler and recording/export.",
       "checkout": "coming_soon",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#plansSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#plansSection"
     },
     {
       "id": "pro",
@@ -834,7 +828,7 @@
       "note_ja": "月額・自動更新。いつでも解約でき、次の更新日まで PRO のまま使えます。",
       "note_en": "Monthly, renews automatically. Cancel any time; PRO stays on until the next renewal date.",
       "checkout": "live",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/#plansSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#plansSection"
     },
     {
       "id": "open-access",
@@ -842,7 +836,7 @@
       "until": "2026-12-31T23:59:59+09:00",
       "note_ja": "2026年12月31日（日本時間）まで全機能を無料開放中",
       "note_en": "All features are free until Dec 31, 2026 (Japan time)",
-      "app": "https://sawwaudio.github.io/audio-ecosystem-sounds-1/"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/"
     }
   ]
 }

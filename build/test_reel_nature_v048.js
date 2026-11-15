@@ -7,7 +7,7 @@ const R={},fail=[];const ok=(k,c)=>{R[k+'_ok']=!!c;if(!c)fail.push(k)};const wai
 await pg.goto('http://localhost:8765/index.html');await pg.evaluate(()=>{try{localStorage.removeItem('ae-rights');localStorage.removeItem('ae-lang')}catch(e){}});await pg.reload();await wait(900);
 // 1. 既定は「自然」。書体は明朝・ゴシック・イタリック
 R.ui=await pg.evaluate(()=>({tpl:__studioDebug.template(),style:__reelDebug.style(),opts:[...document.querySelectorAll('#reelStyle option')].map(o=>o.value).slice(0,3),fonts:(document.querySelector('link[href*="fonts.googleapis.com/css2"]')||{}).href||'',bodyFont:getComputedStyle(document.body).fontFamily,title:getComputedStyle(document.querySelector('.stepTitle')).fontFamily}));
-ok('default_nature',R.ui.tpl==='nature'&&R.ui.style==='nature'&&R.ui.opts.join()==='nature,nature-paper,pop-sunny'&&/Shippori\+Mincho\+B1/.test(R.ui.fonts)&&/Zen Kaku Gothic New/.test(R.ui.bodyFont)&&/Shippori Mincho B1/.test(R.ui.title));
+ok('default_nature',R.ui.tpl==='nature'&&R.ui.style==='nature'&&R.ui.opts.join()==='nature,nature-paper,flow'&&/Shippori\+Mincho\+B1/.test(R.ui.fonts)&&/Zen Kaku Gothic New/.test(R.ui.bodyFont)&&/Shippori Mincho B1/.test(R.ui.title));
 // 1b. 生き物と環境音を分ける：分類の絞り込み・環境音の欄・分類の台帳
 R.cat=await pg.evaluate(()=>{const c=JSON.parse(document.getElementById('ae-categories').textContent).categories,n={};for(const v of Object.values(c))n[v.cat]=(n[v.cat]||0)+1;
  return {n,total:Object.keys(c).length,filters:[...document.querySelectorAll('#tileFilters button')].map(b=>b.dataset.f).join(),amb:[...document.querySelectorAll('#ambGrid .tile')].map(t=>t.dataset.group),gridAmb:document.querySelectorAll('#tileGrid .tile[data-group="ambience"]').length,basis:Object.values(c).every(v=>v.basis)}});

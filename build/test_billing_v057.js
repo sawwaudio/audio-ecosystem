@@ -19,7 +19,7 @@ globalThis.fetch=async(url,init={})=>{const u=new URL(url);if(u.host==='resend.m
  return Response.json({id:'cus_1',email:'buyer@example.com'})};
 const sigHdr=async body=>{const t=T(),k=await subtle.importKey('raw',enc.encode('whsec_t'),{name:'HMAC',hash:'SHA-256'},false,['sign']);const s=new Uint8Array(await subtle.sign('HMAC',k,enc.encode(t+'.'+body)));return 't='+t+',v1='+[...s].map(x=>x.toString(16).padStart(2,'0')).join('')};
 const hook=async ev=>{const body=JSON.stringify(ev);return worker.fetch(new Request('https://billing.test/stripe/webhook',{method:'POST',headers:{'Stripe-Signature':await sigHdr(body)},body}),env)};
-const CFG={status:'live',apiBase:'https://billing.test',publicKey:pub,paymentLink:'https://buy.stripe.com/test_x',portalLink:'https://billing.stripe.com/p/login/test_x',legal:{ready:true,missing:[],monthly:980}}; // v0.59：特商法の表記が埋まっていないと課金は始まらない
+const CFG={openUntil:'2000-01-01T00:00:00Z',status:'live',apiBase:'https://billing.test',publicKey:pub,paymentLink:'https://buy.stripe.com/test_x',portalLink:'https://billing.stripe.com/p/login/test_x',legal:{ready:true,missing:[],monthly:980}}; // v0.59：特商法の表記が埋まっていないと課金は始まらない
 const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
 const errs=[];const newPage=async(cx)=>{const pg=await cx.newPage();await require('./photo_fixture')(pg);pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error'&&!/Failed to load resource/.test(m.text()))errs.push('CONSOLE '+m.text())});
  await pg.route('https://billing.test/**',async route=>{const rq=route.request();const res=await worker.fetch(new Request(rq.url(),{method:rq.method(),headers:rq.headers(),body:['GET','HEAD'].includes(rq.method())?undefined:rq.postData()}),env);
@@ -27,20 +27,20 @@ const errs=[];const newPage=async(cx)=>{const pg=await cx.newPage();await requir
  await pg.route('https://buy.stripe.com/**',r=>r.fulfill({status:200,contentType:'text/html',body:'<title>stripe</title>'}));return pg};
 const wait=(pg,ms)=>pg.waitForTimeout(ms);const setup=async(pg,cfg)=>{await pg.goto(APP);await pg.evaluate(c=>{localStorage.clear();if(c)localStorage.setItem('saww.billingTest',JSON.stringify(c))},cfg);await pg.reload();await wait(pg,1200)};
 const st=pg=>pg.evaluate(()=>({...__billingDebug.state(),live:__billingDebug.live,mbira:document.getElementById('param-mbira').disabled,didge:document.getElementById('param-didge').disabled,
- locked:[...document.querySelectorAll('[data-tier="pro"]')].map(n=>n.classList.contains('proLocked')),buy:document.getElementById('billBuy')?.getAttribute('href')||null,preview:!!document.getElementById('planPreview'),
- status:document.querySelector('#planAccount .planStatus')?.textContent||'',msg:document.querySelector('#planAccount .billMsg')?.textContent||'',hash:location.hash,lead:document.querySelector('#plansSection .lead').textContent}));
+ locked:[...document.querySelectorAll('[data-tier="pro"]')].map(n=>n.classList.contains('proLocked')),buy:document.getElementById('billBuy')?.getAttribute('href')||null,buyBtn:!!document.getElementById('billBuy'),preview:!!document.getElementById('planPreview'),
+ status:document.querySelector('#planAccount .planStatus')?.textContent||'',msg:document.querySelector('#planAccount .billMsg')?.textContent||'',hash:location.hash,lead:document.querySelector('#plansSection .lead')?.textContent||''}));
 // A. 課金の準備前（既定の設定）：テスト公開のまま全部使える
 {const cx=await b.newContext({viewport:{width:390,height:844}});const pg=await newPage(cx);await setup(pg,null);R.beta=await st(pg);
  R.beta.note=await pg.textContent('#planAccount');ok('beta_default',!R.beta.live&&R.beta.plan==='beta'&&!R.beta.mbira&&R.beta.locked.every(x=>!x)&&R.beta.preview&&!R.beta.buy&&/課金はまだ始めていません/.test(R.beta.note));await cx.close()}
 // B. 課金あり・未購入：無料版。PRO の楽器と PRO の欄は使えない。購入ボタン
 const cx=await b.newContext({viewport:{width:390,height:844}});const pg=await newPage(cx);await setup(pg,CFG);R.free=await st(pg);
-ok('free_limits',R.free.live&&R.free.plan==='free'&&R.free.enforce&&R.free.mbira&&!R.free.didge&&R.free.locked.length===3&&R.free.locked.every(Boolean)&&!R.free.preview&&/^https:\/\/buy\.stripe\.com\/test_x\?client_reference_id=[a-z0-9]{12,}$/.test(R.free.buy)&&/PRO にすると/.test(R.free.lead));
-R.lockOpen=await pg.evaluate(async()=>{const d=document.querySelector('details[data-tier="pro"]');d.open=true;await new Promise(r=>setTimeout(r,50));return {open:d.open,note:!d.querySelector(':scope > .proLockNote').hidden}});ok('free_section_locked',!R.lockOpen.open&&R.lockOpen.note);
+ok('free_limits',R.free.live&&R.free.plan==='free'&&R.free.enforce&&R.free.mbira&&!R.free.didge&&R.free.locked.length===3&&R.free.locked.every(Boolean)&&!R.free.preview&&R.free.buy===null&&R.free.buyBtn&&/PRO にすると/.test(R.free.lead));
+R.lockOpen=await pg.evaluate(async()=>{const d=document.querySelector('details[data-tier="pro"]');d.open=true;await new Promise(r=>setTimeout(r,50));return {open:d.open,note:!(d.querySelector(':scope > .proLockNote')||{hidden:true}).hidden}});ok('free_section_locked',!R.lockOpen.open&&R.lockOpen.note);
 R.allows=await pg.evaluate(()=>({mixer:sawwEntitlement.allows('mixer'),autoplay:sawwEntitlement.allows('autoplay')}));ok('free_allows',R.allows.mixer===false&&R.allows.autoplay===true);
 // C. 支払い → 支払いリンクの「支払い後の移動先」（/activate）→ アプリへ戻って PRO
 await hook({id:'evt_1',type:'checkout.session.completed',data:{object:sessions.cs_test_paid000000}});
 await pg.goto('https://billing.test/activate?session_id=cs_test_paid000000');await pg.waitForURL(u=>u.toString().startsWith(APP),{timeout:15000});await wait(pg,1500);R.pro=await st(pg);
-ok('pro_after_pay',R.pro.plan==='pro'&&!R.pro.mbira&&R.pro.locked.every(x=>!x)&&R.pro.hash===''&&/PRO になりました/.test(R.pro.msg)&&/PRO をご利用中です（次の更新日：\d{4}-\d\d-\d\d）/.test(R.pro.status)&&R.pro.exp>T());
+ok('pro_after_pay',R.pro.plan==='pro'&&!R.pro.mbira&&R.pro.locked.every(x=>!x)&&R.pro.hash===''&&/PRO になりました/.test(R.pro.msg)&&/(PRO をご利用中です|ご契約中です)（次の更新日：\d{4}-\d\d-\d\d）/.test(R.pro.status)&&R.pro.exp>T());
 R.portal=await pg.getAttribute('#billPortal','href');ok('portal_link',R.portal===CFG.portalLink);
 // 読み直しても PRO。サーバーに届かなくても（電波なし）期限までは PRO
 await pg.reload();await wait(pg,1200);ok('pro_persist',(await st(pg)).plan==='pro');

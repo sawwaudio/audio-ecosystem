@@ -5,6 +5,8 @@ const cx=await b.newContext({viewport:{width:390,height:844},acceptDownloads:tru
 const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
 const R={},fail=[];const ok=(k,c)=>{R[k+'_ok']=!!c;if(!c)fail.push(k)};const wait=ms=>pg.waitForTimeout(ms);
 await pg.goto('http://localhost:8765/index.html');await pg.evaluate(()=>{try{localStorage.removeItem('ae-rights');localStorage.removeItem('ae-lang')}catch(e){}});await pg.reload();await wait(900);
+// 2026-11-10 公開版：ポップの5テンプレートは選択肢から外した（描画のコードは残す）。このテストは残したコードを確かめるため、選択肢を足してから選ぶ
+await pg.evaluate(()=>{const s=document.getElementById('reelStyle');[['pop-sunny','ポップ・ひまわり'],['pop-candy','ポップ・キャンディ'],['pop-lagoon','ポップ・ラグーン'],['pop-jungle','ポップ・ジャングル'],['pop-night','ポップ・夜']].forEach(([v,t],i)=>{if(!s.querySelector('option[value="'+v+'"]')){const o=new Option(t,v);s.add(o,s.options[2+i]||null)}})});
 // 1. 既定はポップ（ひまわり）。5配色がテンプレートの先頭
 await pg.selectOption('#reelStyle','pop-sunny');await wait(200); // v0.48 から既定は「自然」。ポップは選んで使う
 R.ui=await pg.evaluate(()=>({tpl:__studioDebug.template(),style:__reelDebug.style(),sel:document.getElementById('reelStyle').value,opts:[...document.querySelectorAll('#reelStyle option')].map(o=>o.value).slice(2,7),fonts:!!document.querySelector('link[href*="Dela+Gothic+One"]')}));

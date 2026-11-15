@@ -20,7 +20,7 @@ ok('chips_match_select',chips.chips===chips.opts&&chips.pressed.length===1);
 await pg.click('.tplChip[data-tpl="geometry"]');await pg.waitForTimeout(400);
 R.r1=await pg.evaluate(()=>({sel:document.getElementById('reelStyle').value,style:__reelDebug.style(),pressed:[...document.querySelectorAll('.tplChip[aria-pressed=true]')].map(c=>c.dataset.tpl)}));
 ok('chip_selects',R.r1.sel==='geometry'&&R.r1.style==='geometry'&&R.r1.pressed.join()==='geometry');
-await pg.selectOption('#reelStyle','pop-candy');await pg.waitForTimeout(300);ok('select_syncs_chip',(await pg.evaluate(()=>[...document.querySelectorAll('.tplChip[aria-pressed=true]')].map(c=>c.dataset.tpl).join()))==='pop-candy');
+await pg.selectOption('#reelStyle','flow');await pg.waitForTimeout(300);ok('select_syncs_chip',(await pg.evaluate(()=>[...document.querySelectorAll('.tplChip[aria-pressed=true]')].map(c=>c.dataset.tpl).join()))==='flow');
 await pg.click('.seg [data-len="45"]');R.len=await pg.evaluate(()=>({v:document.getElementById('reelLength').value,p:[...document.querySelectorAll('.seg [aria-pressed=true]')].map(b=>b.dataset.len).join()}));ok('length_buttons',R.len.v==='45'&&R.len.p==='45');
 ok('record_wide',await pg.evaluate(()=>{const r=document.getElementById('reelRecord').getBoundingClientRect(),p=document.getElementById('reelPreview').getBoundingClientRect();return r.width>p.width*1.6}));
 // 3. 英語表示・はみ出し

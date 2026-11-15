@@ -39,7 +39,7 @@ await pg.goto('http://localhost:8765/index.html?lang=en');await pg.waitForTimeou
 await pg.evaluate(()=>__i18n.set('ja'));
 // 既存機能の維持（25レイヤー・8音色・15楽器）
 const st=await pg.evaluate(()=>({layers:__audioEcosystemDebug.getState().layerCount,voices:document.querySelectorAll('#touchVoice option').length,audition:document.querySelectorAll('#auditionButtons button').length,real:document.querySelectorAll('#realButtons button').length,instr:__sourceDebug.instruments()}));
-R.state=st;ok('layers44',st.layers===44);ok('voices14',st.voices===14);ok('audition44',st.audition===44); // v0.55：伝統楽器6種を追加（v0.49 は旋律4種） // v0.45：フルート・ハーモニクスを外し、実録音の低音6・打撃5を追加
+R.state=st;ok('layers44',st.layers===44);ok('voices14',st.voices===14);ok('audition44',st.audition===0); // 2026-11-10 公開版：楽器の試聴ボタンを外し、音量操作に統一（オーナー） // v0.55：伝統楽器6種を追加（v0.49 は旋律4種） // v0.45：フルート・ハーモニクスを外し、実録音の低音6・打撃5を追加
 ok('overflow_ja',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 // 一覧（＋区切り）の末尾に地名付きの名前が来ても全体を訳す（v0.26で修正した不具合）
 R.listTr=await pg.evaluate(()=>__i18n.t('ホトトギス ＋ 秋の虫の合唱 II（兵庫） ＋ ヒヨドリ（伊豆）'));ok('list_tail_name',R.listTr==='Lesser cuckoo + Autumn insect chorus II + Brown-eared bulbul');

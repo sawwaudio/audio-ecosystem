@@ -5,7 +5,8 @@ main = "worker.js"
 compatibility_date = "2026-11-01"
 
 [vars]
-APP_URL = "https://sawwaudio.github.io/audio-ecosystem-sounds-1/"
+# 2026-11-15 本体に統合（旧 URL は本体へ転送）
+APP_URL = "https://sawwaudio.github.io/audio-ecosystem/"
 ALLOWED_ORIGINS = "https://sawwaudio.github.io"
 # PRO として認める Stripe の価格 ID（price_…）。空なら有効な定期購読はすべて PRO
 PRICE_IDS = ""

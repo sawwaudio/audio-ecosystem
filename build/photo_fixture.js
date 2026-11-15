@@ -7,7 +7,10 @@ const fs=require('fs'),path=require('path');const body=fs.readFileSync(process.e
 function fontCss(dir){const pk=[['dela-gothic-one',['400']],['m-plus-rounded-1c',['500','700','800','900']],['shippori-mincho-b1',['500','700']],['zen-kaku-gothic-new',['400','500','700']],['cormorant-garamond',['500-italic','600-italic']]];let css='';
  for(const [name,ws] of pk){const base=fs.readdirSync(dir).find(d=>d.includes(name));if(!base)continue;const pkg=path.join(dir,base,'package');
   for(const w of ws){const f=path.join(pkg,w+'.css');if(fs.existsSync(f))css+=fs.readFileSync(f,'utf8').replace(/url\(\.\/files\//g,'url(https://fonts.gstatic.com/fontsource/'+base+'/')}}return css}
-module.exports=async pg=>{await pg.route(/^https:\/\/(thumb|upload)\.wikimedia\.org\//,r=>r.fulfill({status:200,contentType:'image/jpeg',headers:{'access-control-allow-origin':'*','cache-control':'max-age=3600'},body}));
+// 2026-11-15 本体に統合（課金は公開中＝live）。従来のテストは「テスト公開（plan 'beta'）・日本語表示」を前提にしているため、
+// テストが自分で決めていなければ、localhost だけで効く saww.billingTest を {status:'test'} に、表示言語を日本語にする。
+// 公開中の課金・年末の無料開放・SEMI-PRO の動きは test_semi_v069.js・test_live_v072.js が自分で設定して確かめる。
+module.exports=async pg=>{await pg.addInitScript(()=>{try{if(!localStorage.getItem('saww.billingTest'))localStorage.setItem('saww.billingTest','{"status":"test"}');if(!localStorage.getItem('ae-lang'))localStorage.setItem('ae-lang','ja')}catch(e){}});await pg.route(/^https:\/\/(thumb|upload)\.wikimedia\.org\//,r=>r.fulfill({status:200,contentType:'image/jpeg',headers:{'access-control-allow-origin':'*','cache-control':'max-age=3600'},body}));
  const dir=process.env.AE_FONT_DIR,css=dir?fontCss(dir):'';
  await pg.route(/^https:\/\/fonts\.googleapis\.com\//,r=>r.fulfill({status:200,contentType:'text/css',headers:{'access-control-allow-origin':'*'},body:css}));
  await pg.route(/^https:\/\/fonts\.gstatic\.com\//,r=>{const m=/fontsource\/([^/]+)\/(.+)$/.exec(r.request().url());const f=dir&&m?path.join(dir,m[1],'package','files',m[2]):null;

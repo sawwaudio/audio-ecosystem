@@ -38,9 +38,7 @@ await pg.evaluate(()=>{const el=document.getElementById('param-kalimba');el.valu
 let seen=false;for(let i=0;i<60&&!seen;i++){if(i%15===0)await pg.evaluate(()=>__realDebug.hit('kalimba'));await wait(100);seen=await pg.evaluate(()=>__realDebug.voices().includes('kalimba'))}R.realPlays=seen;ok('real_plays',seen);
 await pg.evaluate(()=>{const el=document.getElementById('param-kalimba');el.value=0;el.dispatchEvent(new Event('input'))});
 R.vals=await pg.evaluate(()=>['sub','bells','kick','kalimba'].map(k=>document.getElementById('param-'+k).value).join());ok('values_kept',R.vals===vals0);
-// 試聴の欄では1音ずつ聴ける
-const b4=await ev('bells');await pg.evaluate(()=>{document.getElementById('auditionPanel').open=true});await pg.click('#auditionButtons button[data-sound="bells"]');await wait(500);R.audition=(await ev('bells'))-b4;ok('audition',R.audition>=1);
-await pg.waitForFunction(()=>!__audioEcosystemDebug.getState().auditionKey,null,{timeout:12000});
+// 試聴の欄は 2026-11-10 公開版で外した（楽器の試聴ボタンを削除して音量操作に統一・オーナー）
 
 // 5. 読み直しても残る。切ると元に戻る
 await pg.reload();await wait(900);R.reload=await pg.evaluate(()=>({checked:document.getElementById('synthOff').checked,get:__synthOff.get(),badge:!document.getElementById('synthOffBadge').hidden}));ok('reload',R.reload.checked&&R.reload.get&&R.reload.badge);

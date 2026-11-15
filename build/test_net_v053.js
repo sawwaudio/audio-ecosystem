@@ -53,7 +53,8 @@ const errs=[];const watch=pg=>{pg.on('pageerror',e=>errs.push('PAGEERR '+e.messa
  await pg.click('#play');await pg.waitForTimeout(1500);await pg.evaluate(async()=>{await __bioDebug.loadOne('takayama-river');await __bioDebug.loadOne('blackbird')});await pg.waitForTimeout(1500);
  R.sw.cached=await pg.evaluate(async()=>{const c=await caches.open('saww-media-1');return (await c.keys()).map(k=>k.url.split('/').pop())});
  await pg.evaluate(()=>document.getElementById('netPanel').scrollIntoView());await pg.waitForTimeout(8500);R.sw.status=await pg.textContent('#netStatus');
- ok('sw_cache',R.sw.controlled&&R.sw.cached.includes('takayama-river.mp3')&&R.sw.cached.includes('blackbird.mp3')&&/保存済み：\d+個/.test(R.sw.status));
+ // 2026-11-16 自動実行：v0.72 で英語が既定の表示になったため、保存の表示は日本語・英語のどちらでも合格にする（以前は日本語の文言だけを見ていて、変更前の main でも失敗していた）。
+ ok('sw_cache',R.sw.controlled&&R.sw.cached.includes('takayama-river.mp3')&&R.sw.cached.includes('blackbird.mp3')&&/保存済み：\d+個|Kept on this device: \d+ files/.test(R.sw.status));
  await cx.setOffline(true);await pg.reload();await pg.waitForTimeout(1200);await pg.click('#play');await pg.waitForTimeout(1500);
  R.off={title:await pg.title(),load:await pg.evaluate(async()=>{try{const b=await __bioDebug.loadOne('takayama-river');return 'ok'}catch(e){return 'ng '+e.message}}),
   key:await pg.evaluate(()=>(__sourceDebug.log().slice(-1)[0]||{}).key)};

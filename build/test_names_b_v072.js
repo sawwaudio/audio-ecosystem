@@ -10,7 +10,7 @@ const IDS={cicada:'アブラゼミ',higurashi:'ヒグラシ',niiniizemi:'ニイ�
 // 1. 典拠のない和名を書かない
 const withJa=led.filter(r=>'nameJa' in r);R.withJa=withJa.map(r=>r.id);
 ok('ja_only_with_source',withJa.every(r=>r.nameJaSource&&/^https:\/\//.test(r.nameJaSource.url)&&r.nameJaSource.title&&r.nameJaSource.checked));
-ok('ja_set_exact',withJa.length===5&&Object.keys(IDS).every(id=>by[id]&&by[id].nameJa===IDS[id]));
+ok('ja_set_exact',withJa.length>=5&&Object.keys(IDS).every(id=>by[id]&&by[id].nameJa===IDS[id]));// 2026-11-14 v0.73 で日本の鳥（test_names_birds_v073.js）が加わったため件数は5以上
 // 2. 和名は jp と一致、典拠の学名は台帳の latin と一致
 ok('ja_matches_jp',Object.keys(IDS).every(id=>by[id].jp===by[id].nameJa));
 ok('source_latin',Object.keys(IDS).every(id=>by[id].nameJaSource.latinInSource===by[id].latin));

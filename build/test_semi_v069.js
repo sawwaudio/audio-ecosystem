@@ -1,7 +1,7 @@
-// v0.69 SEMI-PRO（月額 US$5）の回帰テスト。公開版（../audio-ecosystem-sounds-1/index.html）を http://localhost:8766/audio-ecosystem-sounds-1/ で配信して実行する。
+// v0.69 SEMI-PRO（月額 US$5）の回帰テスト。2026-11-15 本体に統合：python3 -m http.server 8765 で本体を配信して実行する。
 // localhost だけで効く saww.billingTest で、課金の設定・公開鍵・SEMI-PRO の支払いリンクを差し替える。証明（ES256）はテストの鍵で署名する。
 const {chromium}=require('playwright');const {webcrypto:wc}=require('crypto');(async()=>{
-const APP='http://localhost:8766/audio-ecosystem-sounds-1/index.html?lang=ja';const R={},fail=[];const ok=(k,c)=>{R[k]=!!c;if(!c)fail.push(k)};const errs=[];
+const APP='http://localhost:8765/index.html?lang=ja';const R={},fail=[];const ok=(k,c)=>{R[k]=!!c;if(!c)fail.push(k)};const errs=[];
 const kp=await wc.subtle.generateKey({name:'ECDSA',namedCurve:'P-256'},true,['sign','verify']);const pub=await wc.subtle.exportKey('jwk',kp.publicKey);
 const b64u=b=>Buffer.from(b).toString('base64url');
 const token=async(plan,days=30)=>{const t=Math.floor(Date.parse('2027-02-01T00:00:00Z')/1000),h=b64u(JSON.stringify({alg:'ES256',typ:'JWT',kid:'test'})),p=b64u(JSON.stringify({sub:'cus_t',plan,st:'active',pe:t+days*86400,iat:t,exp:t+days*86400}));

@@ -1,0 +1,42 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>saww audio ecosystem · 音の診断</title>
+<style>:root{--bg:#141a16;--fg:#f1ece0;--sub:#a9b3a6;--line:#2f3c35;--ok:#8ec3a0;--ng:#d79a8c;--acc:#e6c27a}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,"Hiragino Sans",system-ui,sans-serif}main{max-width:640px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:1.2rem;margin:0 0 4px}p{margin:.4em 0}.sub{color:var(--sub);font-size:.88rem}button{min-height:48px;padding:10px 16px;border-radius:12px;border:1px solid var(--line);background:#1b2420;color:var(--fg);font:inherit;font-size:1rem}
+button.primary{background:var(--acc);color:#1b2420;border-color:var(--acc);font-weight:700;width:100%}.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+ol{padding-left:20px}li{margin:6px 0}.ok{color:var(--ok)}.ng{color:var(--ng)}pre{background:#0e1512;border:1px solid var(--line);border-radius:10px;padding:10px;font-size:.78rem;white-space:pre-wrap;overflow-wrap:anywhere;max-height:40vh;overflow:auto}
+.meter{height:10px;background:#0e1512;border-radius:5px;overflow:hidden;border:1px solid var(--line)}.meter i{display:block;height:100%;width:0;background:var(--ok)}</style></head><body><main>
+<h1>音の診断（iPhone・Safari 用）</h1>
+<p class="sub">アプリで音が出ない時に、どこで止まっているかを調べます。結果は端末の中だけに残り、送信されません。「結果をコピー」で貼り付けて送ってください。</p>
+<div class="row"><button class="primary" id="start">▶ 診断をはじめる（音が鳴ります）</button></div>
+<div class="row"><button id="bg">画面を切り替えて戻った後に押す</button><button id="copy">結果をコピー</button><button id="save">結果を保存（JSON）</button></div>
+<div class="meter"><i id="lvl"></i></div>
+<ol id="steps"></ol><pre id="log"></pre>
+<script>
+const L=[],S=$('steps'),LOG=$('log');function $(i){return document.getElementById(i)}
+const info={ua:navigator.userAgent,at:new Date().toISOString(),page:location.href,standalone:!!navigator.standalone,dpr:devicePixelRatio,lang:navigator.language};
+function step(name,ok,detail){const li=document.createElement('li');li.className=ok?'ok':'ng';li.textContent=(ok?'✓ ':'✗ ')+name+(detail?' — '+detail:'');S.append(li);L.push({t:+(performance.now()/1000).toFixed(2),name,ok,detail});LOG.textContent=JSON.stringify({info,steps:L},null,1)}
+let ctx,an,src,raf,maxLvl=0;
+async function run(){S.innerHTML='';L.length=0;maxLvl=0;
+ try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return step('AudioContext',false,'このブラウザーにはありません');
+  ctx=new AC({latencyHint:'interactive'});step('AudioContext を作る',true,'sampleRate '+ctx.sampleRate+' · state '+ctx.state);
+  await ctx.resume();step('resume（ユーザー操作の中）',ctx.state==='running','state '+ctx.state);
+  if(typeof ctx.audioWorklet==='undefined')step('AudioWorklet',false,'ありません（録音は旧方式）');else step('AudioWorklet',true);
+  // 1. 合成音（300Hz）
+  an=ctx.createAnalyser();an.fftSize=1024;const g=ctx.createGain();g.gain.value=.25;const o=ctx.createOscillator();o.frequency.value=300;o.connect(g).connect(an).connect(ctx.destination);o.start();
+  const buf=new Float32Array(an.fftSize);const lvl=()=>{an.getFloatTimeDomainData(buf);let s=0;for(const v of buf)s+=v*v;const r=Math.sqrt(s/buf.length);maxLvl=Math.max(maxLvl,r);$('lvl').style.width=Math.min(100,r*400)+'%';raf=requestAnimationFrame(lvl)};lvl();
+  await new Promise(r=>setTimeout(r,1200));o.stop();step('合成音が出力に届く（内部の計測）',maxLvl>0.02,'最大 RMS '+maxLvl.toFixed(3)+'（スピーカーから聞こえたかは耳で確認）');
+  // 2. 実録音を取って鳴らす（FLAC → 互換 MP3）
+  const base=new URL('./',location.href).href;let dec=null,used='';
+  for(const [k,u] of [['flac','audio/pcm/uguisu-yokohama.flac'],['mp3','audio/lite/uguisu-yokohama.mp3']]){try{const t0=performance.now();const ab=await (await fetch(base+u,{cache:'force-cache'})).arrayBuffer();dec=await ctx.decodeAudioData(ab.slice(0));used=k;step('実録音を取り込む・復号（'+k+'）',true,(ab.byteLength/1024|0)+' KB · '+(performance.now()-t0|0)+' ms · '+dec.duration.toFixed(1)+' s');break}catch(e){step('実録音を取り込む・復号（'+k+'）',false,String(e.message||e).slice(0,80))}}
+  if(dec){maxLvl=0;src=ctx.createBufferSource();src.buffer=dec;const g2=ctx.createGain();g2.gain.value=1;src.connect(g2).connect(an);src.start(0,2);await new Promise(r=>setTimeout(r,2500));src.stop();step('実録音が出力に届く（'+used+'）',maxLvl>0.005,'最大 RMS '+maxLvl.toFixed(3))}
+  // 3. 2つ同時
+  if(dec){maxLvl=0;const a=ctx.createBufferSource(),b=ctx.createBufferSource();a.buffer=dec;b.buffer=dec;const g3=ctx.createGain();g3.gain.value=.6;a.connect(g3);b.connect(g3);g3.connect(an);a.start(0,2);b.start(0,8);await new Promise(r=>setTimeout(r,2000));a.stop();b.stop();step('2つ同時に鳴らす',maxLvl>0.005,'最大 RMS '+maxLvl.toFixed(3))}
+  step('出力先',true,(ctx.destination.maxChannelCount||'?')+' ch · baseLatency '+(ctx.baseLatency||0).toFixed(3)+' s');
+  step('消音スイッチ・音量',true,'iPhone の横の消音スイッチが入っていると Safari の音は出ません。音量ボタンも確認してください');
+ }catch(e){step('途中で止まりました',false,String(e.message||e))}}
+$('start').addEventListener('click',run);
+$('bg').addEventListener('click',async()=>{if(!ctx)return step('復帰',false,'先に診断をはじめてください');const before=ctx.state;try{await ctx.resume()}catch(e){}step('画面の切り替えから戻った後',ctx.state==='running','前 '+before+' → 後 '+ctx.state);maxLvl=0;const o=ctx.createOscillator();o.frequency.value=440;const g=ctx.createGain();g.gain.value=.2;o.connect(g).connect(an);o.start();await new Promise(r=>setTimeout(r,800));o.stop();step('復帰後に音が出力に届く',maxLvl>0.02,'最大 RMS '+maxLvl.toFixed(3))});
+document.addEventListener('visibilitychange',()=>{if(ctx)L.push({t:+(performance.now()/1000).toFixed(2),name:'visibility',ok:true,detail:document.visibilityState+' · '+ctx.state});LOG.textContent=JSON.stringify({info,steps:L},null,1)});
+$('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(LOG.textContent);$('copy').textContent='コピーしました'}catch(e){$('copy').textContent='長押しして選択してください'}});
+$('save').addEventListener('click',()=>{const b=new Blob([LOG.textContent],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='saww-audio-diag.json';document.body.append(a);a.click();a.remove()});
+</script></main></body></html>

@@ -1,4 +1,4 @@
-// v0.63 の回帰テスト：無料版で鳴らせる生き物の声は分類ごとに6種（v0.67。v0.63 は4種）（data/product_tiers.json の recordings.free）。残りは PRO。
+// v0.63 の回帰テスト：無料版で鳴らせる生き物の声は分類ごとに5録音・環境音は10録音（2026-11-10 公開版。v0.67 は6種、v0.63 は4種）（data/product_tiers.json の recordings.free）。残りは PRO。
 // テスト公開中（plan 'beta'）は全部鳴る。「無料版の見え方を試す」（localStorage saww.planPreview='free'）で無料版の動きを確かめる。
 // python3 -m http.server 8765 で配信して実行する（音源リポジトリへのリンクが必要）。
 const {chromium}=require('playwright');const fs=require('fs'),path=require('path');(async()=>{
@@ -9,11 +9,11 @@ const CATS=JSON.parse(fs.readFileSync(path.join(__dirname,'..','data','sound_cat
 const html=fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8');
 const recs=JSON.parse(/<script type="application\/json" id="ae-recordings">([\s\S]*?)<\/script>/.exec(html)[1]);
 const FREE=T.recordings.free,ALL_FREE=Object.values(FREE).flat(),GROUPS=['birds','insects','amphibians','mammals','aquatic'];
-const PRO_BIRD='tawny-owl',PRO_INSECT='niiniizemi',FREE_BIRD='uguisu-yokohama';
+const PRO_BIRD='blackbird',PRO_INSECT='niiniizemi',FREE_BIRD='uguisu-yokohama';
 
-// 1. データ：5分類×6種（v0.67 で4種→6種）、録音と分類が合う、CC0・CC BY（BY-SA を除くでも鳴る）、初期設定の鳥4種を含む
+// 1. データ：5分類×5録音＋環境音10録音、録音と分類が合う、CC0・CC BY（BY-SA を除くでも鳴る）、初期設定の鳥4種を含む
 R.counts=GROUPS.map(g=>(FREE[g]||[]).length);
-ok('data_counts',R.counts.every(n=>n===6)&&ALL_FREE.length===30&&new Set(ALL_FREE).size===30);
+ok('data_counts',R.counts.every(n=>n===5)&&ALL_FREE.length===25&&new Set(ALL_FREE).size===25&&(T.recordings.freeAmbience||[]).length===10);
 ok('data_match',GROUPS.every(g=>FREE[g].every(id=>recs.some(r=>r.id===id)&&CATS[id]&&CATS[id].cat===g)));
 ok('data_license',ALL_FREE.every(id=>{const l=recs.find(r=>r.id===id).license;return !/BY-SA|NC|ND/.test(l)}));
 ok('default_birds_free',['uguisu-yokohama','song-thrush','eurasian-wren','nightingale-russia'].every(id=>FREE.birds.includes(id)));
@@ -33,7 +33,8 @@ R.beta=await tiles(pg);
 ok('beta_chips',R.beta.length>=90&&R.beta.filter(t=>t.pro).length===R.beta.length-ALL_FREE.length&&R.beta.filter(t=>!t.pro).every(t=>ALL_FREE.includes(t.id)));
 ok('beta_unlocked',R.beta.every(t=>!t.locked)&&await pg.evaluate(id=>__recAllowed(id),PRO_BIRD));
 R.betaNote=await pg.textContent('#recTierNote');ok('beta_note',/テスト公開中は全部の生き物が鳴ります/.test(R.betaNote));
-ok('amb_no_chip',await pg.evaluate(()=>[...document.querySelectorAll('#ambGrid .tile')].length>0&&![...document.querySelectorAll('#ambGrid .tile')].some(t=>t.querySelector('.tileProChip'))));
+R.amb=await pg.evaluate(()=>[...document.querySelectorAll('#ambGrid .tile[data-id]')].map(t=>({id:t.dataset.id,pro:!!t.querySelector('.tileProChip')})));
+ok('amb_no_chip',R.amb.length>0&&R.amb.every(t=>t.pro===!(T.recordings.freeAmbience||[]).includes(t.id)));   // 無料の環境音10録音には印がない（残りの環境音は PRO）
 await cx.close();
 
 // 3. 無料版：PRO の生き物は鍵・鳴らない・案内。無料の生き物を先に並べる
@@ -41,7 +42,7 @@ await cx.close();
 R.free=await tiles(pg);
 ok('free_locked',R.free.filter(t=>t.locked).length===R.free.length-ALL_FREE.length&&R.free.filter(t=>!t.locked).every(t=>ALL_FREE.includes(t.id)));
 ok('free_first',R.free.slice(0,ALL_FREE.length).every(t=>!t.locked));
-R.freeNote=await pg.textContent('#recTierNote');ok('free_note',/無料版：生き物は分類ごとに6種（計30種）/.test(R.freeNote));
+R.freeNote=await pg.textContent('#recTierNote');ok('free_note',/生き物の声25録音（各分類5録音）と環境音10録音/.test(R.freeNote));
 await pg.evaluate(id=>document.querySelector('.tile[data-id="'+id+'"] .tilePlay').click(),PRO_BIRD);await pg.waitForTimeout(800);
 R.proTap={on:await pg.evaluate(id=>document.querySelector('.tile[data-id="'+id+'"]').classList.contains('on'),PRO_BIRD),status:await pg.textContent('#tileStatus')};
 ok('pro_tap_blocked',!R.proTap.on&&/PRO で鳴らせます/.test(R.proTap.status));
@@ -63,7 +64,7 @@ await cx.close();
 await pg.click('#langToggle');await pg.waitForTimeout(600);
 R.en={note:await pg.textContent('#recTierNote'),chip:await pg.evaluate(()=>document.querySelector('.tileProChip')?.textContent)};
 await pg.evaluate(id=>document.querySelector('.tile[data-id="'+id+'"] .tilePlay').click(),PRO_BIRD);await pg.waitForTimeout(500);R.en.status=await pg.textContent('#tileStatus');
-ok('english',/^Free: 6 creatures per group \(30 in all\)/.test(R.en.note)&&R.en.chip==='PRO'&&/plays with PRO/.test(R.en.status));
+ok('english',/^FREE includes 25 wildlife recordings \(5 per group\) and 10 ambience/.test(R.en.note)&&R.en.chip==='PRO'&&/available with PRO/.test(R.en.status));
 R.over=await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth);ok('no_overflow',R.over<=0);
 await cx.close();
 

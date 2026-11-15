@@ -17,7 +17,7 @@ const overflow=pg=>pg.evaluate(()=>document.documentElement.scrollWidth-innerWid
  R.page=await pg.evaluate(()=>({title:document.title,h1:document.querySelector('h1').textContent,heads:[...document.querySelectorAll('th')].map(x=>x.textContent),missing:[...document.querySelectorAll('td.missing')].length,notice:!!document.querySelector('.notice'),box:document.querySelector('.box').textContent,back:document.querySelector('a[href="./"]')?.textContent}));
  ok('legal_page',/^特定商取引法に基づく表記/.test(R.page.title)&&R.page.h1==='特定商取引法に基づく表記'&&HEADS.every(h=>R.page.heads.includes(h)));
  const need=['seller','manager','address','phone','email'].filter(k=>!legalJson[k]).length+(legalJson.price.monthly?0:1);
- ok('legal_missing_marked',R.page.missing===need&&R.page.notice===(need>0));ok('legal_subscription_box',/月額の定期購読/.test(R.page.box)&&/解約/.test(R.page.box));
+ ok('legal_missing_marked',R.page.missing===need&&R.page.notice===(need>0));ok('legal_subscription_box',/月額(または年額)?の定期購読/.test(R.page.box)&&/解約/.test(R.page.box));
  ok('legal_390',(await overflow(pg))<=0);if(SHOT)await pg.screenshot({path:SHOT+'/legal_390.png',fullPage:true});await cx.close()}
 
 // 2. 販売を始める前（いまの設定：checkout.status=test）：プランの欄にリンクと内容の案。LIVE にしても特商法が記入待ちなら課金は始まらない
@@ -25,12 +25,12 @@ const overflow=pg=>pg.evaluate(()=>document.documentElement.scrollWidth-innerWid
  R.pre=await pg.evaluate(()=>({live:__billingDebug.live,ready:__billingDebug.legal.ready,link:document.querySelector('#plansBody .planLegal a')?.getAttribute('href'),pv:!!document.querySelector('#subTermsPreview #subTerms'),dts:[...document.querySelectorAll('#subTerms dt')].map(x=>x.textContent),buy:!!document.getElementById('billBuy')}));
  ok('pre_link_preview',!R.pre.live&&R.pre.link==='legal.html'&&R.pre.pv&&TERMS.every(k=>R.pre.dts.includes(k))&&!R.pre.buy);
  await cx.close();
- const cx2=await b.newContext({viewport:{width:390,height:844}});const pg2=await newPage(cx2,{status:'live',apiBase:'https://billing.test',publicKey:{kty:'EC',crv:'P-256',x:'x',y:'y'},paymentLink:'https://buy.stripe.com/test_x',legal:{ready:false,missing:['email']}}); // 表記が埋まっていない状態を作る（2026-11-09 以降、本物の表記は埋まっている）
+ const cx2=await b.newContext({viewport:{width:390,height:844}});const pg2=await newPage(cx2,{openUntil:'2000-01-01T00:00:00Z',status:'live',apiBase:'https://billing.test',publicKey:{kty:'EC',crv:'P-256',x:'x',y:'y'},paymentLink:'https://buy.stripe.com/test_x',legal:{ready:false,missing:['email']}}); // 表記が埋まっていない状態を作る（2026-11-09 以降、本物の表記は埋まっている）
  R.gate=await pg2.evaluate(()=>({live:__billingDebug.live,plan:__billingDebug.state().plan,buy:!!document.getElementById('billBuy')}));ok('gate_until_legal_ready',!R.gate.live&&R.gate.plan==='beta'&&!R.gate.buy);await cx2.close()}
 
 // 3. 販売中（特商法が埋まった想定）：購入ボタンの上に内容、確認のチェックを入れるまで押せない
 const LEGAL_OK={ready:true,missing:[],monthly:980,currency:'JPY',taxIncluded:true,terms:[['内容','saww audio ecosystem PRO の月額の定期購読'],['価格','PRO：月額 980円（税込）。毎月同じ金額です。'],['契約期間・自動更新','1か月ごとの自動更新'],['お支払いの時期と方法','毎月'],['提供の時期','すぐ'],['解約の方法','いつでも'],['返品・返金','返金なし'],['動作環境','最新のブラウザ']]};
-const cx=await b.newContext({viewport:{width:390,height:844}});const pg=await newPage(cx,{status:'live',apiBase:'https://billing.test',publicKey:{kty:'EC',crv:'P-256',x:'x',y:'y'},paymentLink:'https://buy.stripe.com/test_x',legal:LEGAL_OK});
+const cx=await b.newContext({viewport:{width:390,height:844}});const pg=await newPage(cx,{openUntil:'2000-01-01T00:00:00Z',status:'live',apiBase:'https://billing.test',publicKey:{kty:'EC',crv:'P-256',x:'x',y:'y'},paymentLink:'https://buy.stripe.com/test_x',legal:LEGAL_OK});
 R.live=await pg.evaluate(()=>{const t=document.getElementById('subTerms'),b=document.getElementById('billBuy'),a=document.getElementById('subAgree');
  return {live:__billingDebug.live,terms:!!t,before:!!(t&&b&&(t.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING)),agreeBefore:!!(a&&b&&(a.compareDocumentPosition(b)&Node.DOCUMENT_POSITION_FOLLOWING)),
   dis:b.getAttribute('aria-disabled'),cls:b.classList.contains('disabled'),checked:a.checked,price:document.querySelector('.plan-pro .planPrice')?.textContent,meta:document.querySelector('#plansSection .stepMeta').textContent,dd:[...t.querySelectorAll('dd')].map(x=>x.textContent)}});

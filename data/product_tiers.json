@@ -16,16 +16,27 @@
    "live_en": "No account needed."
   },
   {
+   "id": "semi",
+   "name": "SEMI-PRO",
+   "tagline": "perform.",
+   "price": "$5",
+   "period": "USD / month",
+   "note_ja": "サンプラーと録音・書き出し以外の PRO の機能。",
+   "note_en": "Everything in PRO except the sampler and recording/export.",
+   "live_ja": "いつでも解約でき、次の更新日までは SEMI-PRO のまま使えます。",
+   "live_en": "Cancel any time; SEMI-PRO stays on until the next renewal date."
+  },
+  {
    "id": "pro",
    "name": "PRO",
    "tagline": "perform & produce.",
    "price": "$9.99",
    "period": "USD / month",
-   "alt": "$99 USD / year",
+   "alt": null,
    "note_ja": "提案価格（未確定）。いまはテスト公開中のため PRO の機能も無料で使えます。課金はまだ始めていません。",
    "note_en": "Proposed price (not final). During the public test, PRO features are free. Billing has not started.",
-   "live_ja": "月額・自動更新。いつでも解約でき、次の更新日までは PRO のまま使えます。",
-   "live_en": "Monthly, renews automatically. Cancel any time; PRO stays on until the next renewal date."
+   "live_ja": "いつでも解約でき、次の更新日までは PRO のまま使えます。",
+   "live_en": "Cancel any time; PRO stays on until the next renewal date."
   }
  ],
  "features": [
@@ -68,8 +79,8 @@
   {
    "id": "creatures_free",
    "tier": "free",
-   "ja": "生き物の声：分類ごとに6種（鳥・虫・両生類・哺乳類・水の生き物、計30種）。環境音（川・雨・波・風）はすべて",
-   "en": "Creature voices: 6 per group (birds, insects, amphibians, mammals, water life — 30 in all). All ambience (rivers, rain, waves, wind)"
+   "ja": "生き物の声25録音（鳥・虫・両生類・哺乳類・水の生き物から各5録音）と環境音10録音",
+   "en": "25 wildlife recordings (5 each from birds, insects, amphibians, mammals and aquatic life) and 10 ambience recordings"
   },
   {
    "id": "creatures_all",
@@ -145,56 +156,76 @@
  },
  "checkout": {
   "_note": "v0.56 課金（Stripe の支払いリンク・月額）。status を live にし、apiBase（課金の確認サーバーの URL）と publicKey（server/keygen.mjs の公開鍵）を入れると、無料版と PRO の区別が始まる。それまではテスト公開（全部使える）。秘密の鍵・Stripe の鍵はここに入れない。",
-  "status": "test",
+  "status": "live",
   "paymentLink": "https://buy.stripe.com/7sY00jfWlfNp9SX8inbZe07",
-  "portalLink": "",
-  "apiBase": "",
-  "publicKey": null
+  "portalLink": "https://billing.stripe.com/p/login/fZu7sLcK9dFhfdhcyDbZe00",
+  "apiBase": "https://saww-billing.7j7dv7drmy.workers.dev",
+  "publicKey": {
+   "kty": "EC",
+   "crv": "P-256",
+   "x": "nxJCQg21F3z8NC753XmMW475iST7O79DXblufFPvakI",
+   "y": "7_1kds9TKcgR6VrmGAwqhbKVcKNotGBW_Jo1QUytqj4",
+   "kid": "saww-2026-11-08"
+  },
+  "annualPaymentLink": "https://buy.stripe.com/aFa5kDdOd1Wz3uz9mrbZe08",
+  "semiPaymentLink": ""
  },
  "recordings": {
-  "_note": "v0.63 無料版で鳴らせる生き物の声（オーナー要望 2026-11-08 10:34「無料版は生き物の声を出せすぎ。各分類3〜4種に絞り、残りは PRO」）。分類（data/sound_categories.json の birds・insects・amphibians・mammals・aquatic）ごとに4種。ここにない生き物の録音は PRO。環境音（ambience）と自分で読み込んだ音は無料版でも全部鳴る。選び方：CC0・CC BY（商用モード「BY-SAを除く」でも鳴る）、写真がある・日本の録音を優先。鳥4種は初期設定（v0.58）と同じ。 2026-11-09 オーナー要望「無料版で選べる音もう少し増やす」で分類ごとに6種（計30種）へ。追加は CC0・CC BY のみ：ホトトギス・富士宮の森の鳥・ツクツクボウシ・秋の虫（スズムシ等）・オランダの池のカエル・ニューヨークのアマガエル類・キツネ・アマゾンのサル・ノルウェーのクジラとシャチ・アマゾンのカワイルカ。",
-  "perCategory": 6,
+  "_note": "生き物の声は5分類から各5録音、環境音は10録音。自分の音も無料。",
+  "perCategory": 5,
   "free": {
    "birds": [
     "uguisu-yokohama",
     "song-thrush",
     "eurasian-wren",
     "nightingale-russia",
-    "hototogisu",
-    "fujinomiya-forest-birds"
+    "tawny-owl"
    ],
    "insects": [
     "cicada",
     "higurashi",
     "kashiwa-insects",
     "crickets-washington",
-    "tsukutsukuboshi",
-    "autumn-insects"
+    "tsukutsukuboshi"
    ],
    "amphibians": [
     "common-toad",
     "ricefield-frogs",
     "pacific-treefrog-chorus",
     "malaysian-frogs",
-    "frog-pond-netherlands",
-    "treefrogs-newyork"
+    "treefrog-france"
    ],
    "mammals": [
     "roe-deer",
     "wolf",
     "siamang-belgium",
     "bat-batbox",
-    "fox",
-    "titi-monkeys-tefe"
+    "fox"
    ],
    "aquatic": [
     "atlantic-spotted-dolphin",
     "humpback",
     "dolphin",
     "garden-pond-hydrophone",
-    "whales-orcas-norway",
-    "amazon-river-dolphins"
+    "snapping-shrimp"
    ]
-  }
- }
+  },
+  "freeAmbience": [
+   "takayama-river",
+   "california-stream",
+   "kyoto-rain",
+   "rain-field",
+   "rocky-beach",
+   "waves-big-lagoon",
+   "midwest-woods-wind",
+   "bamboo-stream",
+   "tide-rocks",
+   "forest-thunderstorm-hamburg"
+  ]
+ },
+ "semiLocked": [
+  "sampler",
+  "export"
+ ],
+ "_semiNote": "v0.69 SEMI-PRO（月額 US$5・オーナー指示 2026-11-13 21:10）：サンプラーと録音・書き出し（トラックのマイク録音・出音の録音・WAV/AIFF の書き出し・LIVE CAPTURE）以外が使える。checkout.semiPaymentLink を入れると購入欄に出る。"
 }

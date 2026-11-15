@@ -1,5 +1,11 @@
 {
- "note": "YouTube Live の ?live=auto で5分ごとに出す画面の重み。動画の数値（tools/perf の集計、公開24時間の視聴継続率）から更新する。0で出さない。2026-11-16 初期値：数値がまだ少ないので等しく、等高線（YouTubeで最初に伸びた見た目）を少し多めに。",
+ "note": "YouTube Live の ?live=auto で5分ごとに出す画面の重み。動画の数値（tools/perf の集計、公開24時間の視聴継続率）から更新する。0で出さない。2026-11-16 初期値：数値がまだ少ないので等しく、等高線（YouTubeで最初に伸びた見た目）を少し多めに。 2026-11-16 オーナー指示で「鳴いている生き物（creature）」と「落ち着いた（calm）」を追加し、多めに出す。",
  "updated": "2026-11-16",
- "weights": {"contour": 1.5, "flow": 1, "geometry": 1}
+ "weights": {
+  "contour": 1.5,
+  "flow": 1,
+  "geometry": 1,
+  "creature": 2.5,
+  "calm": 2
+ }
 }

@@ -586,7 +586,32 @@
   "previewGain": 1.7559267975674762,
   "previewRms": 0.17261594533920288,
   "previewPeak": 0.3701748847961426,
-  "rightsTier": "B"
+  "rightsTier": "B",
+  "nameJa": "ウグイス",
+  "nameJaSource": {
+   "title": "日本鳥学会『日本鳥類目録 改訂第7版』（2012、Part A）",
+   "url": "https://ornithology.jp/materials/checklist/osj_checklist_7ed.pdf",
+   "checked": "2026-11-14",
+   "latinInSource": "Cettia diphone",
+   "entry": "464. Cettia diphone（p.279）",
+   "note": "第8版（2024年12月刊）は本文を取得できず未照合（日本鳥学会の報道発表のみ確認）。 第7版の学名は Cettia diphone。台帳の Horornis diphone は GBIF の受理名で、Cettia diphone は GBIF ではその異名（同じ種）。画面の学名は変えていない。"
+  },
+  "latinCheck": {
+   "source": "GBIF Backbone Taxonomy（species/match API）",
+   "query": "Horornis diphone",
+   "status": "ACCEPTED",
+   "matchType": "EXACT",
+   "matchedName": "Horornis diphone (Kittlitz, 1830)",
+   "usageKey": 8351644,
+   "checked": "2026-11-14",
+   "sourceNameCheck": {
+    "query": "Cettia diphone",
+    "status": "SYNONYM",
+    "usageKey": 2493005,
+    "acceptedUsageKey": 8351644,
+    "acceptedName": "Horornis diphone (Kittlitz, 1830)"
+   }
+  }
  },
  {
   "id": "hototogisu",
@@ -637,7 +662,25 @@
   "previewGain": 1.0586383575888825,
   "previewRms": 0.08591441065073013,
   "previewPeak": 0.6139962673187256,
-  "rightsTier": "B"
+  "rightsTier": "B",
+  "nameJa": "ホトトギス",
+  "nameJaSource": {
+   "title": "日本鳥学会『日本鳥類目録 改訂第7版』（2012、Part A）",
+   "url": "https://ornithology.jp/materials/checklist/osj_checklist_7ed.pdf",
+   "checked": "2026-11-14",
+   "latinInSource": "Cuculus poliocephalus",
+   "entry": "185. Cuculus poliocephalus（p.106）",
+   "note": "第8版（2024年12月刊）は本文を取得できず未照合（日本鳥学会の報道発表のみ確認）。"
+  },
+  "latinCheck": {
+   "source": "GBIF Backbone Taxonomy（species/match API）",
+   "query": "Cuculus poliocephalus",
+   "status": "ACCEPTED",
+   "matchType": "EXACT",
+   "matchedName": "Cuculus poliocephalus Latham, 1790",
+   "usageKey": 5231927,
+   "checked": "2026-11-14"
+  }
  },
  {
   "id": "tide-rocks",
@@ -841,7 +884,25 @@
   "previewGain": 1.8128577328835265,
   "previewRms": 0.035310808569192886,
   "previewPeak": 0.35854992270469666,
-  "rightsTier": "B"
+  "rightsTier": "B",
+  "nameJa": "ヒヨドリ",
+  "nameJaSource": {
+   "title": "日本鳥学会『日本鳥類目録 改訂第7版』（2012、Part A）",
+   "url": "https://ornithology.jp/materials/checklist/osj_checklist_7ed.pdf",
+   "checked": "2026-11-14",
+   "latinInSource": "Hypsipetes amaurotis",
+   "entry": "463. Hypsipetes amaurotis（p.276）",
+   "note": "第8版（2024年12月刊）は本文を取得できず未照合（日本鳥学会の報道発表のみ確認）。"
+  },
+  "latinCheck": {
+   "source": "GBIF Backbone Taxonomy（species/match API）",
+   "query": "Hypsipetes amaurotis",
+   "status": "ACCEPTED",
+   "matchType": "EXACT",
+   "matchedName": "Hypsipetes amaurotis (Temminck, 1830)",
+   "usageKey": 7342055,
+   "checked": "2026-11-14"
+  }
  },
  {
   "id": "autumn-insects-2",
@@ -1566,7 +1627,25 @@
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
   "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
-  "rightsTier": "C"
+  "rightsTier": "C",
+  "nameJa": "スズメ",
+  "nameJaSource": {
+   "title": "日本鳥学会『日本鳥類目録 改訂第7版』（2012、Part A）",
+   "url": "https://ornithology.jp/materials/checklist/osj_checklist_7ed.pdf",
+   "checked": "2026-11-14",
+   "latinInSource": "Passer montanus",
+   "entry": "569. Passer montanus（p.343）",
+   "note": "第8版（2024年12月刊）は本文を取得できず未照合（日本鳥学会の報道発表のみ確認）。"
+  },
+  "latinCheck": {
+   "source": "GBIF Backbone Taxonomy（species/match API）",
+   "query": "Passer montanus",
+   "status": "ACCEPTED",
+   "matchType": "EXACT",
+   "matchedName": "Passer montanus (Linnaeus, 1758)",
+   "usageKey": 5231198,
+   "checked": "2026-11-14"
+  }
  },
  {
   "id": "swallow",
@@ -1610,7 +1689,25 @@
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
   "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
-  "rightsTier": "C"
+  "rightsTier": "C",
+  "nameJa": "ツバメ",
+  "nameJaSource": {
+   "title": "日本鳥学会『日本鳥類目録 改訂第7版』（2012、Part A）",
+   "url": "https://ornithology.jp/materials/checklist/osj_checklist_7ed.pdf",
+   "checked": "2026-11-14",
+   "latinInSource": "Hirundo rustica",
+   "entry": "457. Hirundo rustica（p.272）",
+   "note": "第8版（2024年12月刊）は本文を取得できず未照合（日本鳥学会の報道発表のみ確認）。"
+  },
+  "latinCheck": {
+   "source": "GBIF Backbone Taxonomy（species/match API）",
+   "query": "Hirundo rustica",
+   "status": "ACCEPTED",
+   "matchType": "EXACT",
+   "matchedName": "Hirundo rustica Linnaeus, 1758",
+   "usageKey": 9515886,
+   "checked": "2026-11-14"
+  }
  },
  {
   "id": "white-eye",
@@ -2661,7 +2758,32 @@
   "previewRms": 0.0442982314176609,
   "previewPeak": 0.5766046047210693,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
-  "rightsTier": "A"
+  "rightsTier": "A",
+  "nameJa": "ウグイス",
+  "nameJaSource": {
+   "title": "日本鳥学会『日本鳥類目録 改訂第7版』（2012、Part A）",
+   "url": "https://ornithology.jp/materials/checklist/osj_checklist_7ed.pdf",
+   "checked": "2026-11-14",
+   "latinInSource": "Cettia diphone",
+   "entry": "464. Cettia diphone（p.279）",
+   "note": "第8版（2024年12月刊）は本文を取得できず未照合（日本鳥学会の報道発表のみ確認）。 第7版の学名は Cettia diphone。台帳の Horornis diphone は GBIF の受理名で、Cettia diphone は GBIF ではその異名（同じ種）。画面の学名は変えていない。"
+  },
+  "latinCheck": {
+   "source": "GBIF Backbone Taxonomy（species/match API）",
+   "query": "Horornis diphone",
+   "status": "ACCEPTED",
+   "matchType": "EXACT",
+   "matchedName": "Horornis diphone (Kittlitz, 1830)",
+   "usageKey": 8351644,
+   "checked": "2026-11-14",
+   "sourceNameCheck": {
+    "query": "Cettia diphone",
+    "status": "SYNONYM",
+    "usageKey": 2493005,
+    "acceptedUsageKey": 8351644,
+    "acceptedName": "Horornis diphone (Kittlitz, 1830)"
+   }
+  }
  },
  {
   "id": "loon-1",

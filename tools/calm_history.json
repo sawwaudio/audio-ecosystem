@@ -1,1 +1,50 @@
-[]
+[
+ {
+  "date": "2026-11-17",
+  "id": "kyoto-rain",
+  "series": "calm",
+  "pattern": "calm-bokeh",
+  "version": 1,
+  "visual": "bokeh",
+  "palette": "rain",
+  "title_style": "desc",
+  "use": "FOR SLEEP",
+  "loop": 1.5,
+  "sec": 30,
+  "license": "CC BY 4.0",
+  "author": "LG",
+  "file": "saww_calm_2026-11-17_kyoto-rain.mp4"
+ },
+ {
+  "date": "2026-11-18",
+  "id": "takayama-river",
+  "series": "calm",
+  "pattern": "calm-bokeh",
+  "version": 1,
+  "visual": "bokeh",
+  "palette": "water",
+  "title_style": "use",
+  "use": "FOR FOCUS",
+  "loop": 1.5,
+  "sec": 30,
+  "license": "CC BY 4.0",
+  "author": "kzarkses",
+  "file": "saww_calm_2026-11-18_takayama-river.mp4"
+ },
+ {
+  "date": "2026-11-19",
+  "id": "podlaskie-spring-night",
+  "series": "calm",
+  "pattern": "calm-bokeh",
+  "version": 1,
+  "visual": "bokeh",
+  "palette": "night",
+  "title_style": "desc",
+  "use": "FOR SLEEP",
+  "loop": 1.5,
+  "sec": 30,
+  "license": "CC BY 4.0",
+  "author": "TenderMicrophones.pl",
+  "file": "saww_calm_2026-11-19_podlaskie-spring-night.mp4"
+ }
+]

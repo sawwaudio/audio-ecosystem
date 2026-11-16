@@ -8,7 +8,7 @@ import argparse, subprocess, wave
 import numpy as np
 ap = argparse.ArgumentParser(); ap.add_argument('--audio', required=True); ap.add_argument('--out', required=True)
 ap.add_argument('--sec', type=float, default=30); ap.add_argument('--fps', type=int, default=30); ap.add_argument('--seed', type=int, default=0)
-ap.add_argument('--palette', default='forest')
+ap.add_argument('--palette', default='forest'); ap.add_argument('--nofade', action='store_true', help='始まり・終わりの暗転なし（ループ用）')
 a = ap.parse_args()
 # 背景（上・下）と光の色。どれも彩度を抑えた自然の色
 PAL = {
@@ -57,7 +57,7 @@ for f in range(N):
         d = np.hypot(xx[y0:y1, x0:x1] - cx, yy[y0:y1, x0:x1] - cy) / r
         disc = np.clip(1 - d, 0, 1) ** 1.8 if m < F else np.clip(1.15 - d, 0, 1) ** .6 * (1 + .35 * np.exp(-((d - .92) / .07) ** 2))   # ぼけた円（縁が少し明るいレンズのぼけ）
         img[y0:y1, x0:x1] += disc[..., None] * cols[o['c'][m]] * br
-    fade = min(1, t / 1.5, (a.sec - t) / 1.5)
+    fade = 1 if a.nofade else min(1, t / 1.5, (a.sec - t) / 1.5)
     img = 1 - np.exp(-img * 1.5)                     # 白飛びしないトーンカーブ
     lum = img.mean(2, keepdims=True); img = lum + (img - lum) * 1.35   # 色を少し濃く
     img *= vig

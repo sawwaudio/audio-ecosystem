@@ -9,13 +9,14 @@
 import argparse, datetime, hashlib, json, os, re, subprocess, sys, textwrap
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 B = '/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc'; R = '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'; L = '/usr/share/fonts/opentype/noto/NotoSansCJK-Light.ttc'
-URL = 'sawwaudio.github.io/audio-ecosystem-sounds-1'
+URL = 'sawwaudio.github.io/audio-ecosystem'
 ap = argparse.ArgumentParser(); ap.add_argument('--app', required=True); ap.add_argument('--out', required=True)
 ap.add_argument('--start', required=True); ap.add_argument('--days', type=int, default=7); ap.add_argument('--sec', type=float, default=30)
 ap.add_argument('--ids', nargs='*', help='録音IDを直接指定（順番どおり）')
 # 2026-11-14 パターン化：映像（bokeh＝従来のぼけた光／meadow・komorebi・saiun＝tools/pattern_visual.py）、パラメーター、文字、録音の好みを patterns.json から渡す（tools/make_reel.py）
 ap.add_argument('--visual', default='bokeh', choices=['bokeh', 'meadow', 'komorebi', 'saiun']); ap.add_argument('--params', default='{}')
 ap.add_argument('--pattern', default='calm-bokeh'); ap.add_argument('--version', type=int, default=1); ap.add_argument('--kicker', default='BREATHE  ·  30 SECONDS')
+ap.add_argument('--loop', type=float, default=1.5, help='終わりを始まりへ溶かす秒数（0で無効）。出だしから音と光が出る'); ap.add_argument('--title-style', default='auto', choices=['auto', 'use', 'desc'], help='タイトル：use＝用途（睡眠・集中など）／desc＝説明。auto は tools/perf/prefs.json の重みか交互')
 ap.add_argument('--prefer', default='', help='録音の好み（カンマ区切りの語。名前・生息環境に含む録音を優先）'); ap.add_argument('--dry', action='store_true', help='録音の選択だけ表示')
 a = ap.parse_args()
 if not os.path.exists(L): L = R
@@ -40,6 +41,15 @@ def palette(i):
     if 'dawn' in t or '夜明け' in t or '朝' in t: return 'dawn'
     if any(k in t for k in ('wave', 'ocean', 'sea', 'river', 'stream', 'creek', 'water', 'lake', 'pond', 'coast', '川', '海', '波')): return 'water'
     return 'forest'
+# 2026-11-16 用途（オーナー「集中とか睡眠とか用途がわかったほうが聞いてもらえる？」）。色＝録音の場所・時間帯から決め、推測で効能はうたわない（「眠る前に」などの場面の提案だけ）
+USE = {'rain': ('FOR SLEEP', 'to fall asleep', '眠る前に'), 'night': ('FOR SLEEP', 'to fall asleep', '眠る前に'), 'water': ('FOR FOCUS', 'to focus', '集中したいときに'),
+       'forest': ('TO UNWIND', 'to unwind', 'ひと息つきたいときに'), 'dawn': ('SLOW MORNING', 'for a slow morning', '朝のはじまりに')}
+PP = os.path.join(ROOT, 'tools', 'perf', 'prefs.json'); PREFS = json.load(open(PP, encoding='utf-8')) if os.path.exists(PP) else {}
+def title_style(k):
+    if a.title_style != 'auto': return a.title_style
+    w = (PREFS.get('title_style') or {}); wu, wd = float(w.get('use', 1)), float(w.get('desc', 1))
+    r = int(hashlib.sha1(f'ts{k}'.encode()).hexdigest(), 16) % 1000 / 1000
+    return 'use' if r < wu / (wu + wd) else 'desc'
 ok = lambda i: allowed(recs[i]) and (recs[i].get('embeddedDuration') or 0) >= a.sec + 1 and src(i) and os.path.exists(src(i)) and (meta.get(i) or {}).get('en')
 pool = sorted(i for i in recs if ok(i) and i not in used and calm_ok(i))
 PREF = [k.strip().lower() for k in a.prefer.split(',') if k.strip()]
@@ -66,14 +76,19 @@ for d in range(a.days):
     r = recs[i]; m = meta.get(i) or {}; en = m['en']; jp = r['jp']; pal = palette(i); last = pal
     if a.dry: print(a.pattern, i, en, pal); continue
     date = (day0 + datetime.timedelta(days=d)).isoformat(); od = os.path.join(a.out, f'{date}_calm_{i}'); os.makedirs(od, exist_ok=True)
-    dur = float(r['embeddedDuration']); ss = max(0, min(3.0, dur - a.sec - .2)); wav = os.path.join(od, 'audio.wav')
-    run(['ffmpeg', '-v', 'error', '-y', '-ss', str(ss), '-t', str(a.sec), '-i', src(i), '-af',
-         f'highpass=f=35,loudnorm=I=-17:TP=-2,afade=t=in:d=2.5,afade=t=out:st={a.sec-3}:d=3', '-ar', '48000', '-ac', '2', wav])
+    XF = a.loop; SL = a.sec + XF; dur = float(r['embeddedDuration']); ss = max(0, min(3.0, dur - SL - .2)); wav = os.path.join(od, 'audio.wav')
+    run(['ffmpeg', '-v', 'error', '-y', '-ss', str(ss), '-t', str(SL), '-i', src(i), '-af',
+         (f'highpass=f=35,loudnorm=I=-17:TP=-2' + ('' if XF else f',afade=t=in:d=2.5,afade=t=out:st={a.sec-3}:d=3')), '-ar', '48000', '-ac', '2', wav])
     base = os.path.join(od, 'base.mp4')
     if not os.path.exists(base):
         seed = str(int(hashlib.sha1(i.encode()).hexdigest(), 16) % 9973)
-        if a.visual == 'bokeh': run([sys.executable, os.path.join(ROOT, 'tools', 'calm_visual.py'), '--audio', wav, '--out', base, '--sec', str(a.sec), '--palette', pal, '--seed', seed])
-        else: run([sys.executable, os.path.join(ROOT, 'tools', 'pattern_visual.py'), '--mode', a.visual, '--audio', wav, '--out', base, '--sec', str(a.sec), '--seed', seed, '--params', a.params])
+        if a.visual == 'bokeh': run([sys.executable, os.path.join(ROOT, 'tools', 'calm_visual.py'), '--audio', wav, '--out', base, '--sec', str(SL), '--palette', pal, '--seed', seed] + (['--nofade'] if XF else []))
+        else: run([sys.executable, os.path.join(ROOT, 'tools', 'pattern_visual.py'), '--mode', a.visual, '--audio', wav, '--out', base, '--sec', str(SL), '--seed', seed, '--params', (json.dumps({**json.loads(a.params), 'fade_in': 0, 'fade_out': 0}) if XF else a.params)])
+    if XF:   # 終わりを始まりへ溶かす（繰り返し再生で継ぎ目が出ない）。出だしは元の XF 秒目から＝最初から音と光がある
+        loopf = os.path.join(od, 'loop.mkv'); run([sys.executable, os.path.join(ROOT, 'tools', 'loopify.py'), '--video', base, '--audio', wav, '--out', loopf, '--sec', str(SL), '--xf', str(XF)])
+        vsrc, asrc = loopf, loopf
+    else: vsrc, asrc = base, wav
+    ts = title_style(len(hist)); UK, UEN, UJA = USE.get(pal, USE['forest'])
     fs = []; tn = [0]
     def dt(txt, f, sz, x, y, alpha, col='0xf3efe6'):
         p = os.path.join(od, f't{tn[0]}.txt'); tn[0] += 1; open(p, 'w', encoding='utf-8').write(txt)
@@ -82,9 +97,9 @@ for d in range(a.days):
     S = a.sec; E = S - .4
     main = re.sub(r'\s*\([^)]*\)\s*$', '', en) if len(en) > 30 else en
     lines = textwrap.wrap(main, 24)[:2]; y = 820
-    TP = json.loads(a.params); ti = float(TP.get('title_in', 2.0)); to = float(TP.get('title_out', 11.5)); ci = float(TP.get('cta_in', S - 7.5)); ty = int(TP.get('title_y', 820))  # 文字の出入り（磨く対象）
+    TP = json.loads(a.params); ti = float(TP.get('title_in', .3 if XF else 2.0)); to = float(TP.get('title_out', 11.5)); ci = float(TP.get('cta_in', S - 7.5)); ty = int(TP.get('title_y', 820))  # 文字の出入り（磨く対象）
     to = min(to, ci - .6)   # 短い版でも題名とおしまいの文字が重ならない
-    y = ty; dt(a.kicker.format(sec=int(round(S))), R, 28, '(w-text_w)/2', y - 70, al(ti, to), '0xd9d2bf')
+    y = ty; dt((f'{UK}  ·  {int(round(S))} SEC' if ts == 'use' else a.kicker.format(sec=int(round(S)))), R, 28, '(w-text_w)/2', y - 70, al(ti, to), '0xd9d2bf')
     for ln in lines: dt(ln, L, 58, '(w-text_w)/2', y, al(ti + .4, to)); y += 74
     dt(cut(jp, 26), L, 32, '(w-text_w)/2', y + 10, al(ti + .8, to), '0xd9d2bf')
     loc = r.get('location') or ''
@@ -92,10 +107,10 @@ for d in range(a.days):
     dt(cut(f'Recording: {r["author"]} · {r["license"]}', 52), R, 26, '(w-text_w)/2', 1700, al(1.0, E), '0xcfc8b5')
     vf = os.path.join(od, 'vf.txt'); open(vf, 'w').write(','.join(fs) + ',format=yuv420p')
     out = os.path.join(od, f'saww_calm_{date}_{i}.mp4')
-    run(['ffmpeg', '-v', 'error', '-y', '-i', base, '-i', wav, '-filter_script:v', vf, '-map', '0:v', '-map', '1:a', '-c:v', 'libx264', '-preset', 'medium', '-crf', '20',
+    run(['ffmpeg', '-v', 'error', '-y', '-i', vsrc, '-i', asrc, '-filter_script:v', vf, '-map', '0:v', '-map', '1:a', '-c:v', 'libx264', '-preset', 'medium', '-crf', '20',
          '-maxrate', '10M', '-bufsize', '20M', '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', out])
     cap = f"""[YouTube Shorts title]
-{cut(main, 62)} — 30 seconds to breathe #Shorts
+{(cut(main, 56) + ' — ' + str(int(round(S))) + ' seconds ' + UEN) if ts == 'use' else (cut(main, 62) + ' | real nature sound, ' + str(int(round(S))) + ' sec')} #Shorts
 
 [Caption — Instagram and YouTube]
 30 seconds of {en}. A real field recording — nothing added.
@@ -104,20 +119,20 @@ Put your phone down for a moment and just listen.
 Make your own soundscape from real nature recordings (free until Dec 31, 2026 JST):
 https://{URL}/
 
-{jp}の30秒。実際の録音だけで、何も足していません。少しだけ手を止めて、聴いてみてください。
+{(UJA + '。') if ts == 'use' else ''}{jp}の{int(round(S))}秒。実際の録音だけで、何も足していません。少しだけ手を止めて、聴いてみてください。
 
 — Recording credit / 録音クレジット —
 {r.get('title') or en} — {r['author']} / {r['license']} {r.get('licenseURL') or ''}
 Source / 出典: {r.get('url') or ''}
 Location / 録音地: {loc or '記載なし'}
-Changes / 加工: excerpt ({ss:.1f}–{ss+S:.1f} s), loudness adjusted, fades, visual added / 抜粋・音量の調整・フェード・映像の追加
-All credits / 全クレジット: https://sawwaudio.github.io/audio-ecosystem-sounds-1/credits.html
+Changes / 加工: excerpt ({ss:.1f}–{ss+SL:.1f} s), loudness adjusted, {'end crossfaded into the start for a seamless loop' if XF else 'fades'}, visual added / 抜粋・音量の調整・{'終わりと始まりをつなぐクロスフェード' if XF else 'フェード'}・映像の追加
+All credits / 全クレジット: https://sawwaudio.github.io/audio-ecosystem/credits.html
 
 #naturesounds #relaxingsounds #calm #fieldrecording #soundscape #mindfulness #saww #自然音 #癒し
 """
     open(os.path.join(od, 'caption.txt'), 'w', encoding='utf-8').write(cap)
     for f in os.listdir(od):
-        if re.match(r't\d+\.txt|vf\.txt', f): os.remove(os.path.join(od, f))
-    hist.append({'date': date, 'id': i, 'series': 'calm', 'pattern': a.pattern, 'version': a.version, 'visual': a.visual, 'palette': pal, 'license': r['license'], 'author': r['author'], 'file': os.path.basename(out)})
+        if re.match(r't\d+\.txt|vf\.txt|loop\.mkv', f): os.remove(os.path.join(od, f))
+    hist.append({'date': date, 'id': i, 'series': 'calm', 'pattern': a.pattern, 'version': a.version, 'visual': a.visual, 'palette': pal, 'title_style': ts, 'use': UK, 'loop': XF, 'sec': S, 'license': r['license'], 'author': r['author'], 'file': os.path.basename(out)})
     json.dump(hist, open(HP, 'w', encoding='utf-8'), ensure_ascii=False, indent=1); made.append(out); print('made', out, flush=True)
 print(len(made), '本')

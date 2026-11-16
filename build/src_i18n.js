@@ -8,6 +8,8 @@
 const KEY='ae-lang',JP=/[぀-ヿ㐀-鿿]/;
 const EXACT={
 'saww audio ecosystem は毎日、自動でアップデートされます。':'saww audio ecosystem updates automatically every day.',
+// 初回ガイド（2026-11-16 自動実行）
+'はじめての方へ':'New here?','写真をタップすると、その生き物の実録音が鳴ります（もう一度タップで止まります）。':'Tap a photo to hear that creature’s real recording (tap again to stop).','「▶ 自律演奏をはじめる」を押すと、選んだ音が休みを挟みながら鳴き続けます。':'Press “▶ Start autonomous play” and the sounds you chose keep calling, with natural pauses.','写真の長押しか i で、音量と録音の情報（録音地・ライセンス）を見られます。':'Long-press a photo or tap i for volume and recording details (location, license).','わかった':'Got it',
 // ヘッダー・タッチ演奏
 'タッチで演奏':'Touch to play','自律演奏に重ねる':'Layer over autonomous play','タッチ音を止める':'Stop touch sounds','左右：音程・定位 / 上下：強さ':'Left–right: pitch & pan / Up–down: intensity',
 'タッチ演奏面。左右で音程と定位、上下で強さ。キーボードの矢印とEnterでも演奏できます':'Touch performance surface. Left–right sets pitch and pan, up–down sets intensity. Arrow keys and Enter also play.',

@@ -23,7 +23,8 @@ const html=fs.readFileSync(__dirname+'/../index.html','utf8');
  ok('chips_match_select',R.chips.every(v=>opts.includes(v))&&opts.every(v=>R.chips.includes(v))&&!R.chips.some(v=>v.startsWith('pop-')));
  await pg.click('.tplChip[data-tpl="flow"]');await pg.waitForTimeout(300);ok('chip_flow',await pg.evaluate(()=>document.getElementById('reelStyle').value)==='flow');
  ok('live_button',await pg.evaluate(()=>!!document.getElementById('liveOpenBtn')&&!!window.__liveDebug));
- await pg.evaluate(()=>__liveDebug.open('contour'));await pg.waitForTimeout(800);R.live=await pg.evaluate(()=>__liveDebug.state());await pg.evaluate(()=>__liveDebug.close());
+ await pg.evaluate(()=>__liveDebug.open('contour'));await pg.waitForFunction(()=>__liveDebug.state().frames>3,null,{timeout:5000}).catch(()=>{});R.live=await pg.evaluate(()=>__liveDebug.state());await pg.evaluate(()=>__liveDebug.close());
+ // 2026-11-16 自動実行：ソフトウェア描画では 800ms で3フレームに届かないことがあり（変更前の main でも5回中3回失敗）、最大5秒まで描画を待つ形に。
  ok('live_draws',R.live.on&&R.live.frames>3);
  ok('no_audition',await pg.evaluate(()=>document.querySelectorAll('#auditionButtons button').length===0));
  await cx.close()}

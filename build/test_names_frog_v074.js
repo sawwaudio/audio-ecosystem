@@ -17,7 +17,8 @@ ok('range_not_location',/録音地ではない/.test(k.nameJaSource.note)&&k.loc
 const g=c=>c&&/GBIF/.test(c.source)&&c.status==='ACCEPTED'&&c.matchType==='EXACT'&&Number.isInteger(c.usageKey)&&c.checked;
 ok('gbif_kajika',g(k.latinCheck)&&k.latinCheck.query===k.latin&&k.latinCheck.matchedName.startsWith(k.latin+' '));
 ok('gbif_locust',g(l.latinCheck)&&l.latinCheck.query===l.latin&&l.latinCheck.matchedName.startsWith(l.latin+' '));
-ok('locust_no_ja',!('nameJa' in l)&&/典拠は未取得/.test(l.latinCheck.note));
+// 2026-11-16 自動実行：トノサマバッタの和名の典拠を照合して nameJa を付けたため、典拠の記録があることを確かめる形に変更（詳しくは test_names_locust_v077.js）。
+ok('locust_no_ja',('nameJa' in l)?(l.nameJa===l.jp&&l.nameJaSource&&l.nameJaSource.latinInSource===l.latin):/典拠は未取得/.test(l.latinCheck.note));
 const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});const errs=[];
 const cx=await b.newContext({viewport:{width:390,height:900}});const pg=await cx.newPage();await require('./photo_fixture')(pg);
 pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});

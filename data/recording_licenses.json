@@ -1427,6 +1427,31 @@
   "embeddedChannels": 1,
   "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
   "rightsTier": "C",
+  "nameJa": "トノサマバッタ",
+  "nameJaSource": {
+   "title": "林野庁 東北森林管理局「朝日庄内いきもの図鑑」昆虫（バッタ目・カマキリ目・ハサミムシ目）",
+   "url": "https://www.rinya.maff.go.jp/tohoku/syo/asahi/shasinkan/batta.html",
+   "checked": "2026-11-16",
+   "latinInSource": "Locusta migratoria",
+   "entry": "トノサマバッタ Locusta migratoria <殿様飛蝗> バッタ科",
+   "corroboration": [
+    {
+     "title": "日本大百科全書（ニッポニカ）「トノサマバッタ」（小学館、コトバンク掲載）",
+     "url": "https://kotobank.jp/word/%E3%81%A8%E3%81%AE%E3%81%95%E3%81%BE%E3%81%B0%E3%81%A4%E3%81%9F-3160908",
+     "latinInSource": "Locusta migratoria",
+     "entry": "昆虫綱直翅目バッタ科",
+     "checked": "2026-11-16"
+    },
+    {
+     "title": "改訂新版 世界大百科事典「トノサマバッタ」（平凡社、コトバンク掲載）",
+     "url": "https://kotobank.jp/word/%E3%81%A8%E3%81%AE%E3%81%95%E3%81%BE%E3%81%B0%E3%81%A4%E3%81%9F-3160908",
+     "latinInSource": "Locusta migratoria",
+     "entry": "直翅目バッタ科",
+     "checked": "2026-11-16"
+    }
+   ],
+   "note": "国の機関（東北森林管理局、2008年）が公開する地域の図鑑で、標準和名の目録ではない。九州大学「日本産昆虫目録データベース（MOKUROKU）」と日本直翅類学会の目録は検索結果・本文を取得できず未照合。図鑑は朝日庄内の森林で見られる生きものの紹介で、この録音の録音地ではない（録音地は不明・北西ヨーロッパの音源集由来）。どの典拠にも命名者・年の記載はなく、命名者・年は GBIF の照合結果（latinCheck）による。"
+  },
   "latinCheck": {
    "source": "GBIF Backbone Taxonomy（species/match API）",
    "query": "Locusta migratoria",
@@ -1436,7 +1461,7 @@
    "usageKey": 1713418,
    "family": "Acrididae",
    "checked": "2026-11-15",
-   "note": "学名のみ照合。和名「トノサマバッタ」の典拠は未取得のため nameJa は付けていない。"
+   "note": "学名を GBIF で照合（一致）。和名「トノサマバッタ」の典拠は 2026-11-16 の照合で nameJaSource に記録。"
   }
  },
  {

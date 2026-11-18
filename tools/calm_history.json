@@ -1,1 +1,18 @@
-[]
+[
+ {
+  "date": "2026-11-19",
+  "id": "kyoto-rain",
+  "series": "calm",
+  "pattern": "calm-bokeh",
+  "version": 1,
+  "visual": "bokeh",
+  "palette": "rain",
+  "title_style": "desc",
+  "use": "FOR SLEEP",
+  "loop": 1.5,
+  "sec": 30,
+  "license": "CC BY 4.0",
+  "author": "LG",
+  "file": "saww_calm_2026-11-19_kyoto-rain.mp4"
+ }
+]

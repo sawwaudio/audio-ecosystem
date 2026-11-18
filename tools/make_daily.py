@@ -115,9 +115,10 @@ for d in range(a.days):
         open(vf, 'w').write(','.join(fs) + ',format=yuv420p')
         run(['ffmpeg', '-v', 'error', '-y', '-i', base, '-filter_script:v', vf, '-c:a', 'copy'] + enc)
     name_en = en or r.get('latin') or r['jp']
+    GN = sum(1 for x in hist if x.get('hook') == 'guess') + 1   # シリーズ番号
     if GQ:
         head = f"""[YouTube Shorts title]
-What's making this sound? 🔊 Answer at the end | これ、何の音？ #Shorts
+What's making this sound? #{GN} 🔊 Answer at the end | これ、何の音？ #Shorts
 
 [Caption — Instagram and YouTube]
 What's making this sound? Guess before the answer appears — then tell us if you got it right.

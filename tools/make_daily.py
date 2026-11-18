@@ -97,7 +97,7 @@ for d in range(a.days):
     for ln in lines: dt(ln, B, ez, '(w-text_w)/2', y, al(T0, T1)); y += ez + 14
     if sub:
         for ln in textwrap.wrap(sub, 40)[:2]: dt(ln, R, 32, '(w-text_w)/2', y + 6, al(T0, T1)); y += 44
-    dt(cut(jp, 30), R, 30, '(w-text_w)/2', y + 12, al(T0, T1), '0xa9c1b6')
+    dt(cut(re.sub(r'\s*（[^）]*）\s*$', '', jp) or jp, 30), R, 30, '(w-text_w)/2', y + 12, al(T0, T1), '0xa9c1b6')   # 画面では末尾の（場所・注記）を省く（説明欄に残る）
     loc = r.get('location') or ''
     TE = a.sec - 3.4 if GQ else 14.6
     dt('Play this sound yourself.', B, 58, '(w-text_w)/2', 220, al(TE, E)); dt('saww audio ecosystem', B, 50, '(w-text_w)/2', 315, al(TE, E)); dt(URL, R, 32, '(w-text_w)/2', 400, al(TE, E), '0xa9c1b6')

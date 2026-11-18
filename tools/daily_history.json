@@ -223,5 +223,21 @@
   "license": "CC0 1.0",
   "author": "felix.blume",
   "file": "saww_2026-11-30_sea-lion-valparaiso.mp4"
+ },
+ {
+  "date": "2026-12-02",
+  "id": "night-woods-pennsylvania",
+  "pattern": "guess",
+  "hook": "guess",
+  "look": "full",
+  "sec": 15,
+  "version": 1,
+  "mix": "field",
+  "cat": "insects",
+  "style": "contour",
+  "hue": 212,
+  "license": "CC0 1.0",
+  "author": "widgetstudios",
+  "file": "saww_2026-12-02_night-woods-pennsylvania.mp4"
  }
 ]

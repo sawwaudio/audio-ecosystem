@@ -15,7 +15,7 @@ CAT_JA = {'ambience': '環境音', 'birds': '鳥', 'aquatic': '水の生き物',
 STYLES = ['contour', 'flow', 'geometry']
 ap = argparse.ArgumentParser(); ap.add_argument('--app', required=True); ap.add_argument('--out', required=True)
 ap.add_argument('--start', required=True); ap.add_argument('--days', type=int, default=7); ap.add_argument('--sec', type=float, default=20); ap.add_argument('--mix', default='didge', choices=['didge', 'field'])
-ap.add_argument('--look', default='specimen', choices=['specimen', 'full'])  # specimen＝黒地の中央に音で育つ形を一つ（2026-11-14 参考リール）
+ap.add_argument('--look', default='auto', choices=['auto', 'specimen', 'full'])  # auto＝1本ごとに tools/perf/prefs.json の look の重みで選ぶ（2026-11-18 いろいろな映像を出して最適化）  # specimen＝黒地の中央に音で育つ形を一つ（2026-11-14 参考リール）
 ap.add_argument('--pattern', default=''); ap.add_argument('--version', type=int, default=1)  # 2026-11-14 パターン化（tools/make_reel.py から渡す）
 a = ap.parse_args()
 h = open(a.app, encoding='utf-8').read(); appdir = os.path.dirname(os.path.abspath(a.app))
@@ -32,9 +32,19 @@ pool = {c: sorted(i for i, r in recs.items() if cat.get(i, {}).get('cat') == c a
 al = lambda s, e: f"if(lt(t,{s}),0,if(lt(t,{s+0.6}),(t-{s})/0.6,if(lt(t,{e-0.6}),1,if(lt(t,{e}),({e}-t)/0.6,0))))"
 def run(cmd): subprocess.run(cmd, check=True)
 day0 = datetime.date.fromisoformat(a.start); n0 = len(hist); made = []
+PP = os.path.join(ROOT, 'tools', 'perf', 'prefs.json'); PREFS = json.load(open(PP, encoding='utf-8')) if os.path.exists(PP) else {}
+LOOKS = ['specimen', 'full']
+def look_for(k):
+    if LOOK0 != 'auto': return LOOK0
+    w = PREFS.get('look') or {}; ws = [float(w.get(v, 1)) for v in LOOKS]; prev = (hist[-1].get('pattern') if hist else '')
+    if prev in LOOKS: ws[LOOKS.index(prev)] *= .35
+    r = int(hashlib.sha1(f'look{k}'.encode()).hexdigest(), 16) % 10000 / 10000 * sum(ws)
+    return LOOKS[0] if r < ws[0] else LOOKS[1]
+LOOK0 = a.look
 for d in range(a.days):
     k = n0 + d; c = next((CATS[(k + j) % len(CATS)] for j in range(len(CATS)) if pool[CATS[(k + j) % len(CATS)]]), None)
     if not c: print('使える録音がもうありません'); break
+    a.look = look_for(n0 + d)
     i = pool[c].pop(int(hashlib.sha1(f'{k}'.encode()).hexdigest(), 16) % len(pool[c])); r = recs[i]; style = STYLES[k % 3]
     hue = 150 + int(hashlib.sha1(i.encode()).hexdigest(), 16) % 150; date = (day0 + datetime.timedelta(days=d)).isoformat()
     od = os.path.join(a.out, f'{date}_{i}'); os.makedirs(od, exist_ok=True); en = (meta.get(i) or {}).get('en') or ''

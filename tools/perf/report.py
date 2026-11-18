@@ -7,7 +7,7 @@ import json, os, collections
 P = os.path.join(os.path.dirname(__file__), 'youtube.json'); rows = json.load(open(P, encoding='utf-8'))
 def sec(r): return r['watch_hours'] * 3600 / r['views'] if r.get('views') else None
 print(f'動画 {len(rows)} 本')
-for key in ['pattern', 'series', 'look', 'mix', 'style', 'category', 'palette']:
+for key in ['pattern', 'series', 'look', 'visual', 'title_style', 'mix', 'style', 'category', 'palette']:
     g = collections.defaultdict(list)
     for r in rows:
         if r.get(key) is not None and r.get('stayed_pct') is not None: g[r[key]].append(r)
@@ -20,14 +20,17 @@ for key in ['pattern', 'series', 'look', 'mix', 'style', 'category', 'palette']:
 
 # 2026-11-16 タイトルの付け方（use＝用途／desc＝説明）の重みを tools/perf/prefs.json に書く。make_calm.py の --title-style auto が読む。
 # 3本未満は等しく（1:1）。差があれば継続率の比で重みを付け、負けている方も最低 0.25 は残して試し続ける。
-g = collections.defaultdict(list)
-for r in rows:
-    if r.get('title_style') and r.get('stayed_pct') is not None: g[r['title_style']].append(r['stayed_pct'])
-W = {'use': 1.0, 'desc': 1.0}
-if all(len(g.get(k, [])) >= 3 for k in W):
-    m = {k: sum(g[k]) / len(g[k]) for k in W}; top = max(m.values()) or 1
-    W = {k: round(max(.25, (m[k] / top) ** 3), 3) for k in W}
+# 2026-11-18 映像（visual：bokeh／meadow／komorebi／saiun）も同じ方法で重みを付ける。make_calm.py の --visual auto が読む。
+def weights(key, opts):
+    g = collections.defaultdict(list)
+    for r in rows:
+        if r.get(key) and r.get('stayed_pct') is not None: g[r[key]].append(r['stayed_pct'])
+    W = {k: 1.0 for k in opts}
+    if all(len(g.get(k, [])) >= 3 for k in W):
+        m = {k: sum(g[k]) / len(g[k]) for k in W}; top = max(m.values()) or 1
+        W = {k: round(max(.25, (m[k] / top) ** 3), 3) for k in W}
+    print(f'\n[{key}] 次の配分', W, {k: len(v) for k, v in g.items()}); return W
 PP = os.path.join(os.path.dirname(__file__), 'prefs.json'); prefs = json.load(open(PP, encoding='utf-8')) if os.path.exists(PP) else {}
-prefs['title_style'] = W; prefs['updated'] = __import__('datetime').date.today().isoformat()
+prefs['title_style'] = weights('title_style', ['use', 'desc']); prefs['visual'] = weights('visual', ['bokeh', 'meadow', 'komorebi', 'saiun']); prefs['look'] = weights('look', ['specimen', 'full'])
+prefs['updated'] = __import__('datetime').date.today().isoformat()
 json.dump(prefs, open(PP, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
-print('\n[title_style] 次の配分', W, {k: len(v) for k, v in g.items()})

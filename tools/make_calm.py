@@ -14,7 +14,7 @@ ap = argparse.ArgumentParser(); ap.add_argument('--app', required=True); ap.add_
 ap.add_argument('--start', required=True); ap.add_argument('--days', type=int, default=7); ap.add_argument('--sec', type=float, default=30)
 ap.add_argument('--ids', nargs='*', help='録音IDを直接指定（順番どおり）')
 # 2026-11-14 パターン化：映像（bokeh＝従来のぼけた光／meadow・komorebi・saiun＝tools/pattern_visual.py）、パラメーター、文字、録音の好みを patterns.json から渡す（tools/make_reel.py）
-ap.add_argument('--visual', default='bokeh', choices=['bokeh', 'meadow', 'komorebi', 'saiun']); ap.add_argument('--params', default='{}')
+ap.add_argument('--visual', default='auto', choices=['auto', 'bokeh', 'meadow', 'komorebi', 'saiun'], help='auto＝1本ごとに映像を変え、tools/perf/prefs.json の visual の重みで選ぶ（2026-11-18 オーナー「いろいろな映像を出して最適化」）'); ap.add_argument('--params', default='{}')
 ap.add_argument('--pattern', default='calm-bokeh'); ap.add_argument('--version', type=int, default=1); ap.add_argument('--kicker', default='BREATHE  ·  30 SECONDS')
 ap.add_argument('--loop', type=float, default=1.5, help='終わりを始まりへ溶かす秒数（0で無効）。出だしから音と光が出る'); ap.add_argument('--title-style', default='auto', choices=['auto', 'use', 'desc'], help='タイトル：use＝用途（睡眠・集中など）／desc＝説明。auto は tools/perf/prefs.json の重みか交互')
 ap.add_argument('--prefer', default='', help='録音の好み（カンマ区切りの語。名前・生息環境に含む録音を優先）'); ap.add_argument('--dry', action='store_true', help='録音の選択だけ表示')
@@ -50,6 +50,17 @@ def title_style(k):
     w = (PREFS.get('title_style') or {}); wu, wd = float(w.get('use', 1)), float(w.get('desc', 1))
     r = int(hashlib.sha1(f'ts{k}'.encode()).hexdigest(), 16) % 1000 / 1000
     return 'use' if r < wu / (wu + wd) else 'desc'
+VIS = ['bokeh', 'meadow', 'komorebi', 'saiun']
+FIT = {'rain': ['bokeh'], 'night': ['bokeh'], 'water': ['bokeh', 'komorebi', 'saiun'], 'forest': ['bokeh', 'komorebi', 'meadow'], 'dawn': ['bokeh', 'saiun', 'meadow']}   # 夜・雨に昼の空や花畑は合わない
+def visual_for(k, prev, pal='forest'):
+    if a.visual != 'auto': return a.visual
+    w = PREFS.get('visual') or {}; fit = FIT.get(pal, VIS); ws = [float(w.get(v, 1)) if v in fit else 0.0 for v in VIS]
+    if prev in VIS and sum(x > 0 for x in ws) > 1: ws[VIS.index(prev)] *= .15   # 同じ映像が続きにくい
+    r = int(hashlib.sha1(f'vis{k}'.encode()).hexdigest(), 16) % 10000 / 10000 * sum(ws)
+    for v, x in zip(VIS, ws):
+        r -= x
+        if r < 0: return v
+    return VIS[-1]
 ok = lambda i: allowed(recs[i]) and (recs[i].get('embeddedDuration') or 0) >= a.sec + 1 and src(i) and os.path.exists(src(i)) and (meta.get(i) or {}).get('en')
 pool = sorted(i for i in recs if ok(i) and i not in used and calm_ok(i))
 PREF = [k.strip().lower() for k in a.prefer.split(',') if k.strip()]
@@ -80,10 +91,11 @@ for d in range(a.days):
     run(['ffmpeg', '-v', 'error', '-y', '-ss', str(ss), '-t', str(SL), '-i', src(i), '-af',
          (f'highpass=f=35,loudnorm=I=-17:TP=-2' + ('' if XF else f',afade=t=in:d=2.5,afade=t=out:st={a.sec-3}:d=3')), '-ar', '48000', '-ac', '2', wav])
     base = os.path.join(od, 'base.mp4')
+    vis = visual_for(len(hist), hist[-1].get('visual') if hist else '', pal)
     if not os.path.exists(base):
         seed = str(int(hashlib.sha1(i.encode()).hexdigest(), 16) % 9973)
-        if a.visual == 'bokeh': run([sys.executable, os.path.join(ROOT, 'tools', 'calm_visual.py'), '--audio', wav, '--out', base, '--sec', str(SL), '--palette', pal, '--seed', seed] + (['--nofade'] if XF else []))
-        else: run([sys.executable, os.path.join(ROOT, 'tools', 'pattern_visual.py'), '--mode', a.visual, '--audio', wav, '--out', base, '--sec', str(SL), '--seed', seed, '--params', (json.dumps({**json.loads(a.params), 'fade_in': 0, 'fade_out': 0}) if XF else a.params)])
+        if vis == 'bokeh': run([sys.executable, os.path.join(ROOT, 'tools', 'calm_visual.py'), '--audio', wav, '--out', base, '--sec', str(SL), '--palette', pal, '--seed', seed] + (['--nofade'] if XF else []))
+        else: run([sys.executable, os.path.join(ROOT, 'tools', 'pattern_visual.py'), '--mode', vis, '--audio', wav, '--out', base, '--sec', str(SL), '--seed', seed, '--params', (json.dumps({**json.loads(a.params), 'fade_in': 0, 'fade_out': 0}) if XF else a.params)])
     if XF:   # 終わりを始まりへ溶かす（繰り返し再生で継ぎ目が出ない）。出だしは元の XF 秒目から＝最初から音と光がある
         loopf = os.path.join(od, 'loop.mkv'); run([sys.executable, os.path.join(ROOT, 'tools', 'loopify.py'), '--video', base, '--audio', wav, '--out', loopf, '--sec', str(SL), '--xf', str(XF)])
         vsrc, asrc = loopf, loopf
@@ -133,6 +145,6 @@ All credits / 全クレジット: https://sawwaudio.github.io/audio-ecosystem/cr
     open(os.path.join(od, 'caption.txt'), 'w', encoding='utf-8').write(cap)
     for f in os.listdir(od):
         if re.match(r't\d+\.txt|vf\.txt|loop\.mkv', f): os.remove(os.path.join(od, f))
-    hist.append({'date': date, 'id': i, 'series': 'calm', 'pattern': a.pattern, 'version': a.version, 'visual': a.visual, 'palette': pal, 'title_style': ts, 'use': UK, 'loop': XF, 'sec': S, 'license': r['license'], 'author': r['author'], 'file': os.path.basename(out)})
+    hist.append({'date': date, 'id': i, 'series': 'calm', 'pattern': (f'calm-{vis}' if a.pattern == 'calm-bokeh' else a.pattern), 'version': a.version, 'visual': vis, 'palette': pal, 'title_style': ts, 'use': UK, 'loop': XF, 'sec': S, 'license': r['license'], 'author': r['author'], 'file': os.path.basename(out)})
     json.dump(hist, open(HP, 'w', encoding='utf-8'), ensure_ascii=False, indent=1); made.append(out); print('made', out, flush=True)
 print(len(made), '本')

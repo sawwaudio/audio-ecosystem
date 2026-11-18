@@ -7,6 +7,7 @@ const {chromium}=require('playwright');const fs=require('fs'),cp=require('child_
 const arg=(k,d)=>{const i=process.argv.indexOf('--'+k);return i>0?process.argv[i+1]:d};
 const AUDIO=arg('audio'),APP=arg('app'),OUT=arg('out'),[W,H]=arg('size','1080x1920').split('x').map(Number),FPS=+arg('fps',30),HUE=+arg('hue',200);
 const [GW,GH]=arg('gl',W<H?'720x1280':'1280x720').split('x').map(Number);
+const HOOK=process.argv.includes('--hook');   // 2026-11-19 出だしの暗転なし（最初のフレームから見える）
 const PLAN=arg('plan','contour:10').split(',').map(s=>{const [m,d]=s.split(':');return {m,d:+d}});
 if(!AUDIO||!APP||!OUT){console.error('--audio --app --out は必須');process.exit(2)}
 const MODE={flow:0,contour:1,geometry:2};
@@ -45,7 +46,7 @@ window.frame=(f,mode,hue,fade)=>{gl.viewport(0,0,${GW},${GH});gl.uniform2f(U.R,$
  const ff=cp.spawn('ffmpeg',['-v','error','-y','-f','image2pipe','-framerate',String(FPS),'-c:v','mjpeg','-i','-','-i',AUDIO,'-t',String(NF/FPS),'-map','0:v','-map','1:a','-c:v','libx264','-preset','veryfast','-crf','17','-pix_fmt','yuv420p','-c:a','aac','-b:a','192k','-ar','48000','-movflags','+faststart',OUT],{stdio:['pipe','inherit','inherit']});
  const t0=Date.now();
  for(let f=0;f<NF;f++){const t=f/FPS;let acc=0,seg=PLAN[PLAN.length-1],ph=0;for(const p of PLAN){if(t<acc+p.d){seg=p;ph=t-acc;break}acc+=p.d}
-  const fade=Math.max(0,Math.min(1,ph/.5,(seg.d-ph)/.5,(TOTAL-t)/.7+.0,t/.5));
+  const fade=HOOK&&t<seg.d?Math.max(0,Math.min(1,(seg.d-ph)/.5,(TOTAL-t)/.7+.0)):Math.max(0,Math.min(1,ph/.5,(seg.d-ph)/.5,(TOTAL-t)/.7+.0,t/.5));
   const url=await pg.evaluate(([F,mode,hue,fade])=>window.frame(F,mode,hue,fade),[feats[f],MODE[seg.m]??1,(HUE%360)/360,fade]);
   if(!ff.stdin.write(Buffer.from(url.slice(url.indexOf(',')+1),'base64')))await new Promise(r=>ff.stdin.once('drain',r));
   if(f%60===0)process.stderr.write(`\r${f}/${NF} コマ（${((Date.now()-t0)/1000).toFixed(0)}秒）`)}

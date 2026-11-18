@@ -16,8 +16,12 @@ STYLES = ['contour', 'flow', 'geometry']
 ap = argparse.ArgumentParser(); ap.add_argument('--app', required=True); ap.add_argument('--out', required=True)
 ap.add_argument('--start', required=True); ap.add_argument('--days', type=int, default=7); ap.add_argument('--sec', type=float, default=20); ap.add_argument('--mix', default='didge', choices=['didge', 'field'])
 ap.add_argument('--look', default='auto', choices=['auto', 'specimen', 'full'])  # auto＝1本ごとに tools/perf/prefs.json の look の重みで選ぶ（2026-11-18 いろいろな映像を出して最適化）  # specimen＝黒地の中央に音で育つ形を一つ（2026-11-14 参考リール）
+ap.add_argument('--hook', default='none', choices=['none', 'guess'], help='guess＝「これ、何の音？」クイズ型（自然音だけ・出だしから音・答えは後半・15秒）。2026-11-19 伸ばす施策')
 ap.add_argument('--pattern', default=''); ap.add_argument('--version', type=int, default=1)  # 2026-11-14 パターン化（tools/make_reel.py から渡す）
 a = ap.parse_args()
+if a.hook == 'guess':
+    a.mix = 'field'; a.look = 'full'
+    if a.sec == 20: a.sec = 15
 h = open(a.app, encoding='utf-8').read(); appdir = os.path.dirname(os.path.abspath(a.app))
 blk = lambda i: json.loads(re.search(r'id="%s">(.*?)</script>' % i, h, re.S).group(1))
 recs = {r['id']: r for r in blk('ae-recordings')}; cat = blk('ae-categories')['categories']; man = blk('ae-audio-manifest')['recordings']; meta = blk('ae-wildlife-meta')
@@ -44,7 +48,7 @@ LOOK0 = a.look
 for d in range(a.days):
     k = n0 + d; c = next((CATS[(k + j) % len(CATS)] for j in range(len(CATS)) if pool[CATS[(k + j) % len(CATS)]]), None)
     if not c: print('使える録音がもうありません'); break
-    a.look = look_for(n0 + d)
+    if a.hook != 'guess': a.look = look_for(n0 + d)
     i = pool[c].pop(int(hashlib.sha1(f'{k}'.encode()).hexdigest(), 16) % len(pool[c])); r = recs[i]; style = STYLES[k % 3]
     hue = 150 + int(hashlib.sha1(i.encode()).hexdigest(), 16) % 150; date = (day0 + datetime.timedelta(days=d)).isoformat()
     od = os.path.join(a.out, f'{date}_{i}'); os.makedirs(od, exist_ok=True); en = (meta.get(i) or {}).get('en') or ''
@@ -65,9 +69,9 @@ for d in range(a.days):
               f'[didge][bass][field]amix=inputs=3:normalize=0:duration=longest,atrim=0:{a.sec},loudnorm=I=-15:TP=-1.5,afade=t=in:d=0.6,afade=t=out:st={a.sec-1.0}:d=1.0[out]')
         run(['ffmpeg', '-v', 'error', '-y', '-i', d1, '-i', d2, '-i', d3, '-i', org, '-i', org, '-ss', str(ss), '-t', str(a.sec + 1), '-i', src(i), '-filter_complex', fc, '-map', '[out]', '-ar', '48000', '-ac', '2', wav])
     else:
-        run(['ffmpeg', '-v', 'error', '-y', '-ss', str(ss), '-t', str(a.sec), '-i', src(i), '-af', f'loudnorm=I=-18:TP=-1.5,afade=t=in:d=0.6,afade=t=out:st={a.sec-1.0}:d=1.0', '-ar', '48000', '-ac', '2', wav])
+        run(['ffmpeg', '-v', 'error', '-y', '-ss', str(ss), '-t', str(a.sec), '-i', src(i), '-af', (f'loudnorm=I=-15:TP=-1.5,afade=t=in:d=0.04,afade=t=out:st={a.sec-0.8}:d=0.8' if a.hook == 'guess' else f'loudnorm=I=-18:TP=-1.5,afade=t=in:d=0.6,afade=t=out:st={a.sec-1.0}:d=1.0'), '-ar', '48000', '-ac', '2', wav])
     base = os.path.join(od, 'base.mp4')
-    if not os.path.exists(base): run(['node', os.path.join(ROOT, 'tools', 'render_visual.js'), '--audio', wav, '--app', a.app, '--out', base, '--size', '1080x1920', '--plan', f'{style}:{a.sec}', '--hue', str(hue)])
+    if not os.path.exists(base): run(['node', os.path.join(ROOT, 'tools', 'render_visual.js'), '--audio', wav, '--app', a.app, '--out', base, '--size', '1080x1920', '--plan', f'{style}:{a.sec}', '--hue', str(hue)] + (['--hook'] if a.hook == 'guess' else []))
     fs = [] if a.look == 'specimen' else ['drawbox=x=0:y=150:w=iw:h=460:color=black@0.28:t=fill', 'drawbox=x=0:y=1500:w=iw:h=420:color=black@0.45:t=fill']; tn = [0]
     mask = os.path.join(od, 'mask.mp4')
     if a.look == 'specimen' and not os.path.exists(mask):
@@ -77,18 +81,26 @@ for d in range(a.days):
         fs.append(f"drawtext=fontfile={f}:textfile={p}:fontsize={sz}:fontcolor={col}:x={x}:y={y}:alpha='{alpha}':shadowcolor=black@0.7:shadowx=0:shadowy=2")
     cut = lambda s, n: s if len(s) <= n else s[:n - 1] + '…'
     E = a.sec - .3; jp = r['jp']; sz = 62 if len(jp) <= 14 else 48 if len(jp) <= 19 else 38
-    dt('20 SECONDS IN NATURE', R, 34, '(w-text_w)/2', 200, al(.4, 5.2), '0xa9c1b6'); dt('Close your eyes.', B, 66, '(w-text_w)/2', 270, al(.4, 5.2))
     import textwrap
+    GQ = a.hook == 'guess'; RV = round(a.sec * .6, 1)   # 答えを出す時刻
+    if GQ:   # 2026-11-19 クイズ型：最初の0秒から問い。答えは後半（最後まで見る理由）。名前は出さない
+        dt('SOUND ON', R, 34, '(w-text_w)/2', 190, al(-0.6, RV - .3), '0xa9c1b6'); dt("What's making this sound?", B, 62, '(w-text_w)/2', 250, al(-0.6, RV - .3)); dt('これ、何の音？', B, 58, '(w-text_w)/2', 335, al(-0.6, RV - .3))
+        dt('Answer in a few seconds', R, 30, '(w-text_w)/2', 420, al(1.5, RV - .3), '0xa9c1b6')
+    else:
+        dt('20 SECONDS IN NATURE', R, 34, '(w-text_w)/2', 200, al(.4, 5.2), '0xa9c1b6'); dt('Close your eyes.', B, 66, '(w-text_w)/2', 270, al(.4, 5.2))
     main, sub = (en.split(': ', 1) + [''])[:2] if len(en) > 30 and ': ' in en else (en, '')
     main = re.sub(r'\s*\([^)]*\)\s*$', '', main) if len(main) > 34 and main.endswith(')') else main  # 長い時は末尾の（地名）を落とす（説明欄に残る）
     lines = textwrap.wrap(main, 26)[:2]; ez = 56 if max(len(x) for x in lines) <= 20 else 46
     y = 215
-    for ln in lines: dt(ln, B, ez, '(w-text_w)/2', y, al(5.6, 14.2)); y += ez + 14
+    T0, T1 = (RV, a.sec - 3.6) if GQ else (5.6, 14.2)
+    if GQ: dt("It's", R, 36, '(w-text_w)/2', y - 60, al(T0, T1), '0xa9c1b6')
+    for ln in lines: dt(ln, B, ez, '(w-text_w)/2', y, al(T0, T1)); y += ez + 14
     if sub:
-        for ln in textwrap.wrap(sub, 40)[:2]: dt(ln, R, 32, '(w-text_w)/2', y + 6, al(5.6, 14.2)); y += 44
-    dt(cut(jp, 30), R, 30, '(w-text_w)/2', y + 12, al(5.6, 14.2), '0xa9c1b6')
+        for ln in textwrap.wrap(sub, 40)[:2]: dt(ln, R, 32, '(w-text_w)/2', y + 6, al(T0, T1)); y += 44
+    dt(cut(jp, 30), R, 30, '(w-text_w)/2', y + 12, al(T0, T1), '0xa9c1b6')
     loc = r.get('location') or ''
-    dt('Play this sound yourself.', B, 58, '(w-text_w)/2', 220, al(14.6, E)); dt('saww audio ecosystem', B, 50, '(w-text_w)/2', 315, al(14.6, E)); dt(URL, R, 32, '(w-text_w)/2', 400, al(14.6, E), '0xa9c1b6')
+    TE = a.sec - 3.4 if GQ else 14.6
+    dt('Play this sound yourself.', B, 58, '(w-text_w)/2', 220, al(TE, E)); dt('saww audio ecosystem', B, 50, '(w-text_w)/2', 315, al(TE, E)); dt(URL, R, 32, '(w-text_w)/2', 400, al(TE, E), '0xa9c1b6')
     dt(cut(f'Recording: {r["author"]} · {r["license"]}', 52), R, 30, 60, 1560, al(.4, E), '0xdfe9e3'); dt('Didgeridoo & organ pedal: VCSL (Versilian Studios) · CC0 1.0' if a.mix == 'didge' else 'Real field recording · full credits in caption', R, 24, 60, 1610, al(.4, E), '0xa9c1b6')
     vf = os.path.join(od, 'vf.txt'); out = os.path.join(od, f'saww_{date}_{i}.mp4')
     enc = ['-c:v', 'libx264', '-preset', 'medium', '-crf', '22', '-maxrate', '10M', '-bufsize', '20M', '-movflags', '+faststart', out]
@@ -103,26 +115,34 @@ for d in range(a.days):
         open(vf, 'w').write(','.join(fs) + ',format=yuv420p')
         run(['ffmpeg', '-v', 'error', '-y', '-i', base, '-filter_script:v', vf, '-c:a', 'copy'] + enc)
     name_en = en or r.get('latin') or r['jp']
-    cap = f"""[YouTube Shorts title]
+    if GQ:
+        head = f"""[YouTube Shorts title]
+What's making this sound? 🔊 Answer at the end | これ、何の音？ #Shorts
+
+[Caption — Instagram and YouTube]
+What's making this sound? Guess before the answer appears — then tell us if you got it right.
+A real field recording, nothing added. The visual is drawn from the sound itself.
+"""
+    else:
+        head = f"""[YouTube Shorts title]
 {cut(en, 60)} | 20 seconds in nature #Shorts
 
 [Caption — Instagram and YouTube]
-Close your eyes. Didgeridoo and deep organ bass over a real field recording: {en}.
+Close your eyes. {'Didgeridoo and deep organ bass over a real field recording' if a.mix == 'didge' else 'A real field recording, nothing added'}: {en}.
 The visual is drawn from the sound itself — its low end, its highs, its onsets.
-
+"""
+    cap = head + f"""
 Play this sound yourself, layer it, and turn it into video. All features are free until Dec 31, 2026 (JST):
 https://{URL}/
 
-目を閉じて、20秒。ディジュリドゥと低いオルガンの音に、{jp}の実録音を重ねました。映像は、この音そのものから描いています。
+{('これ、何の音？ 答えが出る前に当ててみてください（答えは動画の後半と、この下のクレジットに）。実際の録音だけで、何も足していません。映像は、この音そのものから描いています。' if GQ else (f'目を閉じて、{int(a.sec)}秒。ディジュリドゥと低いオルガンの音に、{jp}の実録音を重ねました。映像は、この音そのものから描いています。' if a.mix == 'didge' else f'目を閉じて、{int(a.sec)}秒。{jp}の実録音だけで、何も足していません。映像は、この音そのものから描いています。'))}
 自分で鳴らして、重ねて、映像にできます（2026年12月31日まで全機能を無料開放中）。
 
 — Recording credit / 録音クレジット —
 {r.get('title') or en} — {r['author']} / {r['license']} {r.get('licenseURL') or ''}
 Source / 出典: {r.get('url') or ''}
 Location / 録音地: {loc or '記載なし'}
-Changes / 加工: excerpt ({ss:.1f}–{ss+a.sec:.1f} s), loudness adjusted, fades, mixed with didgeridoo and organ pedal, visual added / 抜粋・音量の調整・両端のフェード・ディジュリドゥとオルガンのペダルとのミックス・映像の追加
-
-Didgeridoo & organ pedal / ディジュリドゥ・オルガンのペダル: Versilian Community Sample Library (VCSL) — Versilian Studios LLC / VCSL contributors / CC0 1.0 https://github.com/sgossner/VCSL (pitch-shifted, crossfaded / 音程の調整・つなぎ)
+Changes / 加工: excerpt ({ss:.1f}–{ss+a.sec:.1f} s), {('loudness adjusted, fades, mixed with didgeridoo and organ pedal, visual added / 抜粋・音量の調整・両端のフェード・ディジュリドゥとオルガンのペダルとのミックス・映像の追加' + chr(10) + chr(10) + 'Didgeridoo & organ pedal / ディジュリドゥ・オルガンのペダル: Versilian Community Sample Library (VCSL) — Versilian Studios LLC / VCSL contributors / CC0 1.0 https://github.com/sgossner/VCSL (pitch-shifted, crossfaded / 音程の調整・つなぎ)') if a.mix == 'didge' else 'loudness adjusted, fades, visual added / 抜粋・音量の調整・フェード・映像の追加'}
 All credits / 全クレジット: https://sawwaudio.github.io/audio-ecosystem/credits.html
 
 #saww #sawwaudioecosystem #natureasaninstrument #fieldrecording #soundscape #naturesounds #audiovisual #自然音 #フィールドレコーディング
@@ -130,6 +150,6 @@ All credits / 全クレジット: https://sawwaudio.github.io/audio-ecosystem/cr
     open(os.path.join(od, 'caption.txt'), 'w', encoding='utf-8').write(cap)
     for f in os.listdir(od):
         if re.match(r't\d+\.txt|vf\.txt', f): os.remove(os.path.join(od, f))
-    hist.append({'date': date, 'id': i, 'pattern': a.pattern or ('specimen' if a.look == 'specimen' else 'full'), 'version': a.version, 'mix': a.mix, 'cat': c, 'style': style, 'hue': hue, 'license': r['license'], 'author': r['author'], 'file': os.path.basename(out)})
+    hist.append({'date': date, 'id': i, 'pattern': a.pattern or ('guess' if a.hook == 'guess' else 'specimen' if a.look == 'specimen' else 'full'), 'hook': a.hook, 'look': a.look, 'sec': a.sec, 'version': a.version, 'mix': a.mix, 'cat': c, 'style': style, 'hue': hue, 'license': r['license'], 'author': r['author'], 'file': os.path.basename(out)})
     json.dump(hist, open(HP, 'w', encoding='utf-8'), ensure_ascii=False, indent=1); made.append(out); print('made', out, flush=True)
 print(len(made), '本')

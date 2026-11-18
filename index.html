@@ -2015,7 +2015,7 @@ let LIVE_W8={contour:1,flow:1,geometry:1,creature:2,calm:1.5};const liveSeed=Mat
 function liveStyleAt(k){const keys=LIVE_ROTATE.filter(x=>(LIVE_W8[x]||0)>0);if(!keys.length)return LIVE_ROTATE[k%LIVE_ROTATE.length];let prev=null;
  for(let i=0;i<=k;i++){let r=Math.abs(Math.sin((liveSeed+i)*12.9898+i*78.233))*43758.5453;r-=Math.floor(r);const ks=keys.filter(x=>x!==prev||keys.length===1),tot=ks.reduce((a,x)=>a+LIVE_W8[x],0);let acc=0,pick=ks[0];for(const x of ks){acc+=LIVE_W8[x]/tot;if(r<acc){pick=x;break}}prev=pick}
  return prev}
-function liveLoadWeights(){const q=new URLSearchParams(location.search).get('w');
+function liveLoadWeights(){const q=new URLSearchParams(location.search).get('w');if(!q&&LIVE_MOOD==='sleep'){LIVE_W8={contour:0,flow:0,geometry:0,creature:0,calm:1};return}if(!q&&LIVE_MOOD==='focus'){LIVE_W8={contour:2,flow:2,geometry:1,creature:1,calm:0};return}
  if(q){const o={};for(const kv of q.split(',')){const [k,v]=kv.split(':');if(LIVE_ROTATE.includes(k)&&+v>=0)o[k]=+v}if(Object.keys(o).length){LIVE_W8=Object.assign({contour:0,flow:0,geometry:0,creature:0,calm:0},o);return}}
  fetch('data/live_weights.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{if(j&&j.weights){const o={};for(const k of LIVE_ROTATE)o[k]=Math.max(0,+(j.weights[k]??1)||0);LIVE_W8=o}}).catch(()=>{})}
 // 2026-11-16 オーナー指示：音も少しずつ変えていく。配信中（自律演奏）は約2分半ごとに参加メンバーを1つ入れ替える（いちばん前から鳴っている音を外し、まだ鳴っていない音を1つ加える）。
@@ -2052,11 +2052,21 @@ function liveCalmDraw(c,v,E,now){const W=LIVE_W,H=LIVE_H;if(!liveCalm||liveCalm.
   const rg=c.createRadialGradient(x,y,0,x,y,r);rg.addColorStop(0,'rgba('+col+','+a.toFixed(3)+')');rg.addColorStop(o.big?1:.82,'rgba('+col+','+(o.big?0:a*.9).toFixed(3)+')');rg.addColorStop(1,'rgba('+col+',0)');c.fillStyle=rg;c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fill()}c.restore();return true}
 // 2026-11-19 配信の見せ方（オーナー「前回よりアップデートして人を惹きつける映像に」）：左上に LIVE の見出し、下に「いま聴いている音」を大きく（名前・場所）。
 // 10分に1回（自動の切り替え2回に1回）、最初の25秒は名前を隠して「これ、何の音？」→ 25〜40秒で答え。注記（…）は画面では省く。
+// 2026-11-19 オーナー指示：睡眠用と集中用で配信を分ける。&mood=sleep … ディジュリドゥなし・オルガンのペダルと波の低音・落ち着いた環境音だけ・ぼけた光のみ（暗め）・クイズなし。
+// &mood=focus … ディジュリドゥの持続音あり・等高線/流体/幾何/生き物の画面・クイズなし。指定なしは従来どおり（クイズあり）。
+const LIVE_MOOD=(()=>{const m=(new URLSearchParams(location.search).get('mood')||'').toLowerCase();return ['sleep','focus'].includes(m)?m:''})();
+const LIVE_MIX={sleep:{didge:0,didgePhrase:0,organPedal:38,natureLow:42,timpaniRoll:0,gong:0},focus:{didge:45,organPedal:24,natureLow:0}};
+function liveMoodApply(){if(!LIVE_MOOD)return;const mx=LIVE_MIX[LIVE_MOOD];for(const k in mx){const i=$('param-'+k);if(i){i.value=mx[k];i.dispatchEvent(new Event('input',{bubbles:true}));i.dispatchEvent(new Event('change',{bubbles:true}))}}
+ for(const g of ['rhythm']){try{for(const [k] of groups[g]){const i=$('param-'+k);if(i&&+i.value>0){i.value=0;i.dispatchEvent(new Event('input',{bubbles:true}))}}}catch(e){}}
+ if(LIVE_MOOD==='sleep'){try{for(const [k] of groups.music){const i=$('param-'+k);if(i&&+i.value>0){i.value=0;i.dispatchEvent(new Event('input',{bubbles:true}))}}}catch(e){}}
+ try{window.__saeMoodReset&&window.__saeMoodReset()}catch(e){}}
+window.__saeMoodOk=id=>{if(LIVE_MOOD!=='sleep')return true;let W=window.__saeWM;if(!W){try{W=window.__saeWM=JSON.parse($('ae-wildlife-meta').textContent)}catch(e){W=window.__saeWM={}}}
+ const m=W[id]||{},roles=new Set(m.soundRoles||[]),ac=m.acoustic||{};return (roles.has('Atmosphere')||roles.has('Texture')||roles.has('Drone'))&&(ac.envCV??1)<0.6};
 const liveClean=t=>String(t||'').replace(/\s*[（(][^）)]*[）)]\s*$/,'').trim();
-function liveWideText(c,list,el,M){const EN=/[?&]lang=en/.test(location.search),k=Math.floor(el/LIVE_EVERY),ph=el-k*LIVE_EVERY,quiz=liveMode==='auto'&&k%2===1&&list.length>0,ask=quiz&&ph<25,reveal=quiz&&ph>=25&&ph<40;
- c.textAlign='left';c.fillStyle='rgba(3,8,10,.55)';c.fillRect(M-18,40,800,92);c.fillStyle='#e0533d';c.beginPath();c.arc(M+4,72,9,0,Math.PI*2);c.fill();
- c.fillStyle='#f3efe6';c.font='700 30px '+REEL_SANS;c.fillText('LIVE',M+22,83);c.font='500 30px '+REEL_SANS;c.fillText(EN?'Real nature sounds from around the world':'世界の自然の音を、いま',M+100,83);
- c.fillStyle='#b9c9c0';c.font='19px '+REEL_MONO;c.fillText(EN?'field recordings · changes every 5 min · sleep / study / relax':'実際の録音 · 5分ごとに景色が変わる · 睡眠・作業・ひと息',M+22,115);
+function liveWideText(c,list,el,M){const EN=/[?&]lang=en/.test(location.search),k=Math.floor(el/LIVE_EVERY),ph=el-k*LIVE_EVERY,quiz=!LIVE_MOOD&&liveMode==='auto'&&k%2===1&&list.length>0,ask=quiz&&ph<25,reveal=quiz&&ph>=25&&ph<40;
+ c.textAlign='left';c.fillStyle='rgba(3,8,10,.55)';c.fillRect(M-18,40,LIVE_MOOD?960:800,92);c.fillStyle='#e0533d';c.beginPath();c.arc(M+4,72,9,0,Math.PI*2);c.fill();
+ c.fillStyle='#f3efe6';c.font='700 30px '+REEL_SANS;c.fillText('LIVE',M+22,83);c.font='500 30px '+REEL_SANS;c.fillText(LIVE_MOOD==='sleep'?(EN?'Sleep sounds · real nature + deep organ & ocean lows':'睡眠用 · 実際の自然の音と、オルガン・波の低い響き'):LIVE_MOOD==='focus'?(EN?'Focus sounds · real nature + didgeridoo drone':'集中用 · 実際の自然の音と、ディジュリドゥの持続音'):(EN?'Real nature sounds from around the world':'世界の自然の音を、いま'),M+100,83);
+ c.fillStyle='#b9c9c0';c.font='19px '+REEL_MONO;c.fillText(LIVE_MOOD==='sleep'?(EN?'field recordings · no sudden sounds · dim, slow light':'実際の録音 · 急な大きい音なし · 暗く、ゆっくりした光'):LIVE_MOOD==='focus'?(EN?'field recordings · changes every 5 min · work / study':'実際の録音 · 5分ごとに景色が変わる · 作業・勉強'):(EN?'field recordings · changes every 5 min · sleep / study / relax':'実際の録音 · 5分ごとに景色が変わる · 睡眠・作業・ひと息'),M+22,115);
  if(ask){c.textAlign='center';c.fillStyle='rgba(3,8,10,.6)';c.fillRect(LIVE_W/2-470,LIVE_H/2-120,940,200);c.fillStyle='#f3efe6';c.font='700 64px '+REEL_SANS;c.fillText("What's making this sound?",LIVE_W/2,LIVE_H/2-30);
   c.font='500 44px '+REEL_SANS;c.fillText('これ、何の音？  ·  answer in '+Math.max(1,Math.ceil(25-ph))+'s',LIVE_W/2,LIVE_H/2+40);c.textAlign='left'}
  const L=list.slice(0,3);let y=LIVE_H-60-(L.length-1)*70;
@@ -2070,6 +2080,7 @@ function liveDraw(){const cv=$('liveCanvas');if(!cv||!liveOn)return;const c=cv.g
  let drawn=false;if(style==='creature')drawn=liveCreature(c,v,E,now);if(style==='calm'||(style==='creature'&&!drawn))drawn=liveCalmDraw(c,v,E,now);
  if(!drawn&&!vxShader(c,v,E,VX_GL_MODE[style]??1,LIVE_W,LIVE_H,2*Math.round(LIVE_W/4),2*Math.round(LIVE_H/4))){const g=c.createRadialGradient(LIVE_W/2,LIVE_H/2,40,LIVE_W/2,LIVE_H/2,Math.max(LIVE_W,LIVE_H)/2);g.addColorStop(0,'hsl('+v.hue+',45%,'+(10+18*E.rms).toFixed(1)+'%)');g.addColorStop(1,'#03080a');c.fillStyle=g;c.fillRect(0,0,LIVE_W,LIVE_H)}
  if(fade<1){c.fillStyle='rgba(3,8,10,'+(1-Math.max(0,fade)).toFixed(3)+')';c.fillRect(0,0,LIVE_W,LIVE_H)}
+ if(LIVE_MOOD==='sleep'){c.fillStyle='rgba(3,8,10,.28)';c.fillRect(0,0,LIVE_W,LIVE_H);c.globalAlpha=.72}
  // 文字：横長は左下にクレジット・右下にブランド。縦長は下から 15% を空けて（Instagram などの操作部品に隠れないように）、ブランド → クレジットの順に左へ寄せる。
  const M=tall?56:64,list=reelNowPlaying().slice(0,3),gh=tall?Math.round(LIVE_H*.42):330;
  const g2=c.createLinearGradient(0,LIVE_H-gh,0,LIVE_H);g2.addColorStop(0,'rgba(3,8,10,0)');g2.addColorStop(1,'rgba(3,8,10,.84)');c.fillStyle=g2;c.fillRect(0,LIVE_H-gh,LIVE_W,gh);
@@ -2092,7 +2103,7 @@ const liveBind=()=>{const o=$('liveOpenBtn'),x=$('liveClose'),p=$('livePlay'),f=
  if(p)p.addEventListener('click',()=>{$('play').click()});
  if(f)f.addEventListener('click',()=>{const st=$('liveStage');if(st.requestFullscreen)st.requestFullscreen().catch(()=>{})});
  document.addEventListener('keydown',e=>{if(liveOn&&e.key==='Escape'&&!document.fullscreenElement)liveClose()});addEventListener('resize',()=>{if(liveOn)liveResize()});
- const qs=new URLSearchParams(location.search),q=qs.get('live');if(['portrait','wide'].includes(qs.get('size')))liveSize=qs.get('size');if(q!==null){liveOpen(q||'auto');const st=$('liveStage');if(st)st.classList.add('liveClean');if(qs.get('play')==='1')setTimeout(()=>{try{if($('play').getAttribute('aria-pressed')!=='true')$('play').click()}catch(e){}},1500)}};
+ const qs=new URLSearchParams(location.search),q=qs.get('live');if(['portrait','wide'].includes(qs.get('size')))liveSize=qs.get('size');if(q!==null){liveOpen(q||'auto');const st=$('liveStage');if(st)st.classList.add('liveClean');if(qs.get('play')==='1')setTimeout(()=>{try{if($('play').getAttribute('aria-pressed')!=='true')$('play').click()}catch(e){}},1500);if(LIVE_MOOD){setTimeout(liveMoodApply,600);setTimeout(liveMoodApply,4000)}}};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',liveBind);else liveBind();
 window.__reelDebug={style:()=>reelStyle,setStyle:reelSetStyle,preview:reelSetPreview,motion:()=>reelMo?{cardEvents:reelMo.cardEvents||0,strongRips:reelMo.strongRips||0,onsets:reelMo.onsets,cards:[...reelMo.cards.keys()],parts:reelMo.parts.length,rips:reelMo.rips.length,boxes:reelMo.boxes,drawMs:reelMo.drawMs.slice(),env:{...reelMo.env},hue:reelMo.hue}:null,start:(s,o)=>reelStart(s,o),stop:reelStop,mime:reelMime,now:()=>reelNowPlaying().map(n=>({id:n.id,role:n.role,location:n.r.location})),state:()=>reelState?{active:reelState.active,finalizing:reelState.finalizing,frames:reelState.frames,tick:reelState.tick?reelState.tick.kind:null,tickFrames:reelState.tickFrames||0,hiddenMs:reelState.hiddenMs||0,used:[...reelState.used.keys()],result:reelState.result||null}:null};
 __reelDebug.note=reelNote;__reelDebug.end=()=>{const s=reelState||{};return {endSec:s.endSec||0,endFrames:s.endFrames||0,endLines:s.endLines||[],endCut:s.endCut||0}};
@@ -2505,9 +2516,13 @@ function setMember(id,on){const k=engineKind(id);
 let liveDriftOrder=[];window.__saeDrift=function(){if(!playing)return;const ok=id=>engineKind(id)&&rightsAllowed(id)&&recAllowed(id);
  const all=recordings.map(r=>r.id).filter(ok),on=all.filter(member);liveDriftOrder=liveDriftOrder.filter(id=>on.includes(id));for(const id of on)if(!liveDriftOrder.includes(id))liveDriftOrder.push(id);
  if(on.length>=4){const out=liveDriftOrder.shift();if(out)setMember(out,false)}
- const fields=on.filter(id=>engineKind(id)==='field'&&member(id)).length,cand=all.filter(id=>!member(id)&&(engineKind(id)!=='field'||fields<2));
+ const fields=on.filter(id=>engineKind(id)==='field'&&member(id)).length,cand0=all.filter(id=>!member(id)&&(engineKind(id)!=='field'||fields<2)),cm=cand0.filter(id=>!window.__saeMoodOk||window.__saeMoodOk(id)),cand=cm.length?cm:cand0;
  if(cand.length){const add=cand[Math.floor(Math.random()*cand.length)];setMember(add,true);liveDriftOrder.push(add)}
  try{renderAllTiles();renderCount()}catch(e){}};
+window.__saeMoodReset=function(){if(!window.__saeMoodOk)return;const ok=id=>engineKind(id)&&rightsAllowed(id)&&recAllowed(id);const all=recordings.map(r=>r.id).filter(ok);
+ const good=all.filter(id=>window.__saeMoodOk(id));if(!good.length)return;for(const id of all.filter(member))if(!window.__saeMoodOk(id))setMember(id,false);
+ let on=all.filter(member),f=on.filter(id=>engineKind(id)==='field').length;for(const id of good.sort(()=>Math.random()-.5)){if(on.length>=3)break;if(member(id))continue;if(engineKind(id)==='field'&&f>=2)continue;setMember(id,true);on.push(id);if(engineKind(id)==='field')f++}
+ liveDriftOrder=on.slice();try{renderAllTiles();renderCount()}catch(e){}};
 window.__saeMembers=()=>recordings.map(r=>r.id).filter(member);
 // 自律演奏を始める直前：ループで鳴っている音を参加メンバーに引き継ぐ（鳴っている音がなければ、いまの参加メンバーのまま）
 function handOverToAuto(){const ids=playingIds().filter(id=>engineKind(id));if(!ids.length)return;const want=new Set(ids);

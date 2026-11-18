@@ -208,5 +208,18 @@
   "license": "CC BY 4.0",
   "author": "nathanwolek",
   "file": "saww_2026-12-03_snapping-shrimp.mp4"
+ },
+ {
+  "date": "2026-11-19",
+  "id": "cicada",
+  "pattern": "full",
+  "version": 1,
+  "mix": "didge",
+  "cat": "insects",
+  "style": "contour",
+  "hue": 273,
+  "license": "CC BY 2.1 JP",
+  "author": "Cory / ISAKA Yoji",
+  "file": "saww_2026-11-19_cicada.mp4"
  }
 ]

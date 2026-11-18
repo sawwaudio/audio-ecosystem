@@ -9,7 +9,7 @@
 import argparse, datetime, hashlib, json, os, re, subprocess, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 B = '/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc'; R = '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'
-URL = 'sawwaudio.github.io/audio-ecosystem-sounds-1'
+URL = 'sawwaudio.github.io/audio-ecosystem'   # 2026-11-18 アプリの正しい場所（sounds-1 は音の置き場）
 CATS = ['ambience', 'birds', 'aquatic', 'insects', 'amphibians', 'mammals']
 CAT_JA = {'ambience': '環境音', 'birds': '鳥', 'aquatic': '水の生き物', 'insects': '虫', 'amphibians': '両生類', 'mammals': '哺乳類'}
 STYLES = ['contour', 'flow', 'geometry']
@@ -123,7 +123,7 @@ Location / 録音地: {loc or '記載なし'}
 Changes / 加工: excerpt ({ss:.1f}–{ss+a.sec:.1f} s), loudness adjusted, fades, mixed with didgeridoo and organ pedal, visual added / 抜粋・音量の調整・両端のフェード・ディジュリドゥとオルガンのペダルとのミックス・映像の追加
 
 Didgeridoo & organ pedal / ディジュリドゥ・オルガンのペダル: Versilian Community Sample Library (VCSL) — Versilian Studios LLC / VCSL contributors / CC0 1.0 https://github.com/sgossner/VCSL (pitch-shifted, crossfaded / 音程の調整・つなぎ)
-All credits / 全クレジット: https://sawwaudio.github.io/audio-ecosystem-sounds-1/credits.html
+All credits / 全クレジット: https://sawwaudio.github.io/audio-ecosystem/credits.html
 
 #saww #sawwaudioecosystem #natureasaninstrument #fieldrecording #soundscape #naturesounds #audiovisual #自然音 #フィールドレコーディング
 """

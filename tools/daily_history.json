@@ -191,5 +191,37 @@
   "license": "CC BY 2.1 JP",
   "author": "Cory / ISAKA Yoji",
   "file": "saww_2026-11-19_cicada.mp4"
+ },
+ {
+  "date": "2026-11-28",
+  "id": "nightingale-russia",
+  "pattern": "guess",
+  "hook": "guess",
+  "look": "full",
+  "sec": 15,
+  "version": 1,
+  "mix": "field",
+  "cat": "birds",
+  "style": "flow",
+  "hue": 166,
+  "license": "CC0 1.0",
+  "author": "smand",
+  "file": "saww_2026-11-28_nightingale-russia.mp4"
+ },
+ {
+  "date": "2026-11-30",
+  "id": "sea-lion-valparaiso",
+  "pattern": "guess",
+  "hook": "guess",
+  "look": "full",
+  "sec": 15,
+  "version": 1,
+  "mix": "field",
+  "cat": "aquatic",
+  "style": "geometry",
+  "hue": 274,
+  "license": "CC0 1.0",
+  "author": "felix.blume",
+  "file": "saww_2026-11-30_sea-lion-valparaiso.mp4"
  }
 ]

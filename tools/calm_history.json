@@ -14,5 +14,21 @@
   "license": "CC BY 4.0",
   "author": "LG",
   "file": "saww_calm_2026-11-19_kyoto-rain.mp4"
+ },
+ {
+  "date": "2026-11-20",
+  "id": "takayama-river",
+  "series": "calm",
+  "pattern": "calm-saiun",
+  "version": 1,
+  "visual": "saiun",
+  "palette": "water",
+  "title_style": "use",
+  "use": "FOR FOCUS",
+  "loop": 1.5,
+  "sec": 30,
+  "license": "CC BY 4.0",
+  "author": "kzarkses",
+  "file": "saww_calm_2026-11-20_takayama-river.mp4"
  }
 ]

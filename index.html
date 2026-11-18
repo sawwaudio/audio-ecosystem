@@ -2050,6 +2050,20 @@ function liveCalmDraw(c,v,E,now){const W=LIVE_W,H=LIVE_H;if(!liveCalm||liveCalm.
  c.save();c.globalCompositeOperation='lighter';for(const o of L2.orbs){const x=((o.x+o.dx*tt*o.z+18*Math.sin(tt*.2+o.ph))%(W+300)+W+300)%(W+300)-150,y=((o.y+o.dy*tt*o.z)%(H+300)+H+300)%(H+300)-150,b=bands[o.band];
   const r=o.r*(1+.12*b),a=(o.big?.06:.18)*(.6+.4*Math.sin(tt*o.sp+o.ph))*(.5+.9*b)*(.45+.55*o.z),col=L2.pal[o.big?0:(o.band===2?1:0)];
   const rg=c.createRadialGradient(x,y,0,x,y,r);rg.addColorStop(0,'rgba('+col+','+a.toFixed(3)+')');rg.addColorStop(o.big?1:.82,'rgba('+col+','+(o.big?0:a*.9).toFixed(3)+')');rg.addColorStop(1,'rgba('+col+',0)');c.fillStyle=rg;c.beginPath();c.arc(x,y,r,0,Math.PI*2);c.fill()}c.restore();return true}
+// 2026-11-19 配信の見せ方（オーナー「前回よりアップデートして人を惹きつける映像に」）：左上に LIVE の見出し、下に「いま聴いている音」を大きく（名前・場所）。
+// 10分に1回（自動の切り替え2回に1回）、最初の25秒は名前を隠して「これ、何の音？」→ 25〜40秒で答え。注記（…）は画面では省く。
+const liveClean=t=>String(t||'').replace(/\s*[（(][^）)]*[）)]\s*$/,'').trim();
+function liveWideText(c,list,el,M){const EN=/[?&]lang=en/.test(location.search),k=Math.floor(el/LIVE_EVERY),ph=el-k*LIVE_EVERY,quiz=liveMode==='auto'&&k%2===1&&list.length>0,ask=quiz&&ph<25,reveal=quiz&&ph>=25&&ph<40;
+ c.textAlign='left';c.fillStyle='rgba(3,8,10,.55)';c.fillRect(M-18,40,800,92);c.fillStyle='#e0533d';c.beginPath();c.arc(M+4,72,9,0,Math.PI*2);c.fill();
+ c.fillStyle='#f3efe6';c.font='700 30px '+REEL_SANS;c.fillText('LIVE',M+22,83);c.font='500 30px '+REEL_SANS;c.fillText(EN?'Real nature sounds from around the world':'世界の自然の音を、いま',M+100,83);
+ c.fillStyle='#b9c9c0';c.font='19px '+REEL_MONO;c.fillText(EN?'field recordings · changes every 5 min · sleep / study / relax':'実際の録音 · 5分ごとに景色が変わる · 睡眠・作業・ひと息',M+22,115);
+ if(ask){c.textAlign='center';c.fillStyle='rgba(3,8,10,.6)';c.fillRect(LIVE_W/2-470,LIVE_H/2-120,940,200);c.fillStyle='#f3efe6';c.font='700 64px '+REEL_SANS;c.fillText("What's making this sound?",LIVE_W/2,LIVE_H/2-30);
+  c.font='500 44px '+REEL_SANS;c.fillText('これ、何の音？  ·  answer in '+Math.max(1,Math.ceil(25-ph))+'s',LIVE_W/2,LIVE_H/2+40);c.textAlign='left'}
+ const L=list.slice(0,3);let y=LIVE_H-60-(L.length-1)*70;
+ if(L.length){c.fillStyle='#b9c9c0';c.font='600 18px '+REEL_MONO;c.fillText(ask?'NOW LISTENING · guess in the chat':reveal?"IT'S…":'NOW LISTENING',M,y-58)}
+ L.forEach((n,i)=>{const nm=EN?(liveClean(n.en)||liveClean(n.r.jp)):(liveClean(n.r.jp)||liveClean(n.en)),sub=EN?liveClean(n.r.jp):liveClean(n.en),loc=n.r.location||'';
+  c.fillStyle='#f3efe6';c.font=(i===0?'600 40px ':'500 30px ')+REEL_SANS;c.fillText(reelFit(c,ask?'? ? ?':nm,1100),M,y-(i===0?6:0));
+  c.fillStyle='#b9c9c0';c.font='20px '+REEL_MONO;c.fillText(reelFit(c,ask?(n.r.author||'')+' · '+(n.r.license||''):[sub,loc,(n.r.author||'')+' · '+(n.r.license||'')].filter(Boolean).join('  ·  '),1100),M,y+26);y+=70})}
 function liveDraw(){const cv=$('liveCanvas');if(!cv||!liveOn)return;const c=cv.getContext('2d'),now=performance.now(),v=vxState(now),E=v.sm,el=(now-liveT0)/1000,tall=LIVE_H>LIVE_W;
  let style=liveMode,fade=1;if(liveMode==='auto'){const k=Math.floor(el/LIVE_EVERY),ph=el-k*LIVE_EVERY;style=liveStyleAt(k);fade=Math.min(1,ph/3,(LIVE_EVERY-ph)/3)}
  c.save();c.fillStyle='#03080a';c.fillRect(0,0,LIVE_W,LIVE_H);
@@ -2061,8 +2075,9 @@ function liveDraw(){const cv=$('liveCanvas');if(!cv||!liveOn)return;const c=cv.g
  const g2=c.createLinearGradient(0,LIVE_H-gh,0,LIVE_H);g2.addColorStop(0,'rgba(3,8,10,0)');g2.addColorStop(1,'rgba(3,8,10,.84)');c.fillStyle=g2;c.fillRect(0,LIVE_H-gh,LIVE_W,gh);
  const tw=tall?LIVE_W-2*M:1150,fs=tall?34:30,fm=tall?21:19,step=tall?74:64;let y=(tall?LIVE_H-Math.round(LIVE_H*.15):LIVE_H-60)-(list.length-1)*step;c.textAlign='left';
  if(tall){c.fillStyle='#e9f1ec';c.font='600 34px '+REEL_SANS;c.fillText('saww audio ecosystem',M,y-96);c.fillStyle='#a3bbb0';c.font='21px '+REEL_MONO;c.fillText(reelFit(c,'sawwaudio.github.io/audio-ecosystem',tw),M,y-62)}
- for(const n of list){c.fillStyle='#e9f1ec';c.font='500 '+fs+'px '+REEL_SANS;c.fillText(reelFit(c,(n.r.jp||'')+(n.en?' / '+n.en:''),tw),M,y);
-  c.fillStyle='#a3bbb0';c.font=fm+'px '+REEL_MONO;c.fillText(reelFit(c,(n.r.author||'')+' · '+(n.r.license||''),tw),M,y+(tall?30:27));y+=step}
+ if(tall){for(const n of list){c.fillStyle='#e9f1ec';c.font='500 '+fs+'px '+REEL_SANS;c.fillText(reelFit(c,(n.r.jp||'')+(n.en?' / '+n.en:''),tw),M,y);
+  c.fillStyle='#a3bbb0';c.font=fm+'px '+REEL_MONO;c.fillText(reelFit(c,(n.r.author||'')+' · '+(n.r.license||''),tw),M,y+(tall?30:27));y+=step}}
+ else liveWideText(c,list,el,M);
  if(!tall){c.textAlign='right';c.fillStyle='#e9f1ec';c.font='600 30px '+REEL_SANS;c.fillText('saww audio ecosystem',LIVE_W-64,LIVE_H-87);
   c.fillStyle='#a3bbb0';c.font='19px '+REEL_MONO;c.fillText('sawwaudio.github.io/audio-ecosystem',LIVE_W-64,LIVE_H-60)}
  c.restore();liveFrames++}

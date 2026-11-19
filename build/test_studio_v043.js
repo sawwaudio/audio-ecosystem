@@ -71,7 +71,7 @@ R.mic=await pg.evaluate(()=>({users:__studioDebug.users(),tracks:__studioDebug.t
 await pg.evaluate(()=>__studioDebug.trkStop());
 // 9. リール：タイルだけで作る（自律演奏は始めない）・テンプレート forest・写真と撮影者が説明欄に入る・書き出し後の共有
 await pg.evaluate(()=>__rightsDebug.set('nosa'));const photoTile=await pg.evaluate(()=>{const recs=JSON.parse(document.getElementById('ae-recordings').textContent);return recs.find(r=>__studioDebug.photoFor(r.id)&&!/BY-SA/.test(r.license)).id});
-await pg.evaluate(id=>__studioDebug.start(id),photoTile);await wait(1500);await pg.selectOption('#reelStyle','forest');
+await pg.evaluate(id=>__studioDebug.start(id),photoTile);await wait(1500);await pg.selectOption('#reelStyle','panels');
 const dlR=pg.waitForEvent('download',{timeout:60000,predicate:d=>/\.(mp4|webm)$/.test(d.suggestedFilename())});await pg.evaluate(()=>__reelDebug.start(4,{}));await wait(1500);
 if(OUT){const d=await pg.evaluate(()=>document.getElementById('reelCanvas').toDataURL('image/png'));fs.writeFileSync(path.join(OUT,'reel_forest.png'),Buffer.from(d.split(',')[1],'base64'))}
 const dr=await dlR;await wait(800);const st=await pg.evaluate(()=>__reelDebug.state());
@@ -80,8 +80,8 @@ R.reel.creditHasAuthor=st.result.text.includes(R.reel.photographer);R.reel.tileI
 ok('reel_from_tiles',/^saww_audio_ecosystem_reel_.+\.(mp4|webm)$/.test(R.reel.file)&&R.reel.frames>=60&&R.reel.photos.length===1&&R.reel.credits&&R.reel.creditHasAuthor&&R.reel.tileInCredits&&R.reel.done);
 await pg.click('#reelCopy');await wait(300);R.clip=await pg.evaluate(()=>navigator.clipboard.readText());ok('copy_credits',R.clip.includes('Photo credits')&&R.clip.includes('#sawwaudioecosystem'));
 R.share=await pg.evaluate(()=>document.getElementById('reelShare').dataset.mode);
-for(const tpl of ['ocean','night','wildlife','minimal','waveform','spectrum','abstract']){await pg.selectOption('#reelStyle',tpl);await wait(250)}R.tplErr=errs.length;ok('templates',R.tplErr===0);
-if(OUT)for(const tpl of ['minimal','waveform','wildlife']){await pg.selectOption('#reelStyle',tpl);await pg.evaluate(()=>__reelDebug.preview(true));await wait(1500);const d=await pg.evaluate(()=>document.getElementById('reelCanvas').toDataURL('image/png'));fs.writeFileSync(path.join(OUT,'reel_'+tpl+'.png'),Buffer.from(d.split(',')[1],'base64'));await pg.evaluate(()=>__reelDebug.preview(false))}
+for(const tpl of ['panels','minimal','waveform','spectrum','abstract','life-earth','life-organic','life-particle','life-math']){await pg.selectOption('#reelStyle',tpl);await wait(250)}R.tplErr=errs.length;ok('templates',R.tplErr===0);
+if(OUT)for(const tpl of ['minimal','waveform','panels']){await pg.selectOption('#reelStyle',tpl);await pg.evaluate(()=>__reelDebug.preview(true));await wait(1500);const d=await pg.evaluate(()=>document.getElementById('reelCanvas').toDataURL('image/png'));fs.writeFileSync(path.join(OUT,'reel_'+tpl+'.png'),Buffer.from(d.split(',')[1],'base64'));await pg.evaluate(()=>__reelDebug.preview(false))}
 await pg.evaluate(()=>__studioDebug.stopAll());await pg.evaluate(()=>__rightsDebug.set('all'));
 // 10. プラン：FREE / PRO（USD・提案価格・課金なし）・PRO の印
 R.plans=await pg.evaluate(()=>({cards:[...document.querySelectorAll('.planCard')].map(c=>c.querySelector('.planName').textContent+' '+c.querySelector('.planPrice').textContent),alt:document.querySelector('.plan-pro > .micro:not(.planNote)')?.textContent,rows:document.querySelectorAll('.planTable tbody tr').length,chips:[...document.querySelectorAll('[data-tier="pro"]')].filter(n=>n.querySelector('.proChip')).length,ent:__studioDebug.entitlement().enforce,pay:!!document.querySelector('#plansSection input:not(#planPreview), #plansSection form, script[src*="stripe"]') /* v0.55：無料版の見え方を試すチェックは支払いの入力ではない */}));

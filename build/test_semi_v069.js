@@ -6,7 +6,7 @@ const kp=await wc.subtle.generateKey({name:'ECDSA',namedCurve:'P-256'},true,['si
 const b64u=b=>Buffer.from(b).toString('base64url');
 const token=async(plan,days=30)=>{const t=Math.floor(Date.parse('2027-02-01T00:00:00Z')/1000),h=b64u(JSON.stringify({alg:'ES256',typ:'JWT',kid:'test'})),p=b64u(JSON.stringify({sub:'cus_t',plan,st:'active',pe:t+days*86400,iat:t,exp:t+days*86400}));
  const s=await wc.subtle.sign({name:'ECDSA',hash:'SHA-256'},kp.privateKey,Buffer.from(h+'.'+p));return h+'.'+p+'.'+b64u(s)};
-const CFG=semi=>({status:'live',apiBase:'https://billing.test',publicKey:{kty:'EC',crv:'P-256',x:pub.x,y:pub.y},paymentLink:'https://buy.stripe.com/test_pro',annualPaymentLink:'https://buy.stripe.com/test_year',portalLink:'https://billing.stripe.com/p/login/test',semiPaymentLink:semi?'https://buy.stripe.com/test_semi':''});
+const CFG=semi=>({status:'live',apiBase:'https://billing.test',publicKey:{kty:'EC',crv:'P-256',x:pub.x,y:pub.y},paymentLink:'https://buy.stripe.com/test_pro',annualPaymentLink:'https://buy.stripe.com/test_year',portalLink:'https://billing.stripe.com/p/login/test',semiPaymentLink:semi?'https://buy.stripe.com/test_semi':'',semiAnnualPaymentLink:''});
 const b=await chromium.launch({args:['--autoplay-policy=no-user-gesture-required']});
 async function page(cfg,tok,when){const cx=await b.newContext({viewport:{width:390,height:844},locale:'ja-JP'});const pg=await cx.newPage();
  pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));

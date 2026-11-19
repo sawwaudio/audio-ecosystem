@@ -1,6 +1,6 @@
 // v0.74 書き出しは PRO 専用の回帰テスト。python3 -m http.server 8765 で本体を配信して実行する。
-// オーナー指示（2026-11-19）：FREE・SEMI-PRO（年末の無料開放中も）では、音声（WAV・AIFF）・動画（リール）・プリセットのどの形式も書き出せない。
-// ブラウザ内のプレビューと再生は使える。PRO・管理者は書き出せる。書き出しの直前に課金の確認サーバー（/export/authorize）で契約を確かめる。
+// オーナー指示（2026-11-19）：FREE・SEMI-PRO（年末の無料開放中も）では、音声（WAV・AIFF）・プリセットを書き出せない。PRO・管理者は書き出せる。
+// 2026-11-20「リール動画の書き出しはフリーでこそ必要」：リール動画の書き出し・保存・共有は全プランで使える（課金サーバーにも問い合わせない）。書き出しの直前に課金の確認サーバー（/export/authorize）で契約を確かめる。
 // localhost だけで効く saww.billingTest で課金の設定と公開鍵を差し替え、証明・許可（ES256）はテストの鍵で署名する。課金サーバーは偽物（route）。
 const {chromium}=require('playwright');const {webcrypto:wc}=require('crypto');(async()=>{
 const APP='http://localhost:8765/index.html?lang=ja';const R={},fail=[];const ok=(k,c)=>{R[k]=!!c;if(!c)fail.push(k)};const errs=[];
@@ -45,22 +45,22 @@ async function reel(pg){await pg.evaluate(()=>__reelDebug.start(2,{endCredits:fa
  for(let i=0;i<40;i++){await pg.waitForTimeout(250);const r=await pg.evaluate(()=>{const s=__reelDebug.state();return s&&s.result?{saved:s.result.saved,err:s.result.error||null,status:document.getElementById('reelStatus').textContent,preview:!!document.getElementById('reelVideo').src,done:!document.getElementById('reelDone').hidden}:null});if(r)return r}return null}
 const PRO_MSG=/PRO で使えます/;
 // 1. FREE（2027年）：どの形式も書き出せない・プレビューは使える
-{const {cx,pg,dls}=await page();R.free=await state(pg);ok('free_plan',R.free.plan==='free'&&!R.free.allows&&!R.free.now&&R.free.locked.every(Boolean)&&R.free.nodl);
+{const {cx,pg,dls}=await page();R.free=await state(pg);ok('free_plan',R.free.plan==='free'&&!R.free.allows&&!R.free.now&&R.free.locked.join()==='true,true,true,true,false,false'&&!R.free.nodl);
  R.freeTry=await tryAll(pg);ok('free_no_export',PRO_MSG.test(R.freeTry.btnMsg)&&!R.freeTry.authorize&&PRO_MSG.test(R.freeTry.trk)&&PRO_MSG.test(R.freeTry.recMsg)&&!R.freeTry.recording);
- R.freeReel=await reel(pg);ok('free_reel_preview_only',R.freeReel&&R.freeReel.saved===false&&R.freeReel.preview&&R.freeReel.done&&/PREVIEW/.test(R.freeReel.status));
- await pg.evaluate(()=>document.getElementById('reelSave').click());await pg.evaluate(()=>document.getElementById('reelShare').click());await pg.waitForTimeout(500);
- R.freeDl=dls.slice();ok('free_no_download',dls.length===0);await cx.close()}
+ R.freeReel=await reel(pg);await pg.waitForTimeout(500);ok('free_reel_export',R.freeReel&&R.freeReel.saved===true&&R.freeReel.preview&&R.freeReel.done&&/SAVED/.test(R.freeReel.status));
+ await pg.evaluate(()=>document.getElementById('reelSave').click());await pg.waitForTimeout(600);
+ R.freeDl=dls.slice();ok('free_only_reel_downloads',dls.length===2&&dls.every(n=>/reel_.*\.(webm|mp4|mkv)$/.test(n)));await cx.close()}
 // 2. FREE（年末の無料開放中）：書き出しだけは使えない・案内文が出る
 {const {cx,pg,dls}=await page({when:OPEN});R.open=await state(pg);R.openTry=await tryAll(pg);
  R.openNote=await pg.evaluate(()=>document.getElementById('planAccount').textContent);
- ok('open_no_export',R.open.plan==='open'&&!R.open.allows&&!R.openTry.authorize&&PRO_MSG.test(R.openTry.btnMsg)&&dls.length===0&&/書き出し・ダウンロード（音声・動画・リール）は PRO のみ/.test(R.openNote));await cx.close()}
+ ok('open_no_export',R.open.plan==='open'&&!R.open.allows&&!R.openTry.authorize&&PRO_MSG.test(R.openTry.btnMsg)&&dls.length===0&&/音声ファイルの書き出し（WAV・AIFF）は PRO のみ/.test(R.openNote));await cx.close()}
 // 3. SEMI-PRO（月額・2027年）：書き出せない・ミキサーは使える・サンプラーは使えない
 {const {cx,pg,dls,calls}=await page({tok:await token('semi')});R.semi=await state(pg);R.semiTry=await tryAll(pg);
  R.semiF=await pg.evaluate(()=>({mixer:sawwEntitlement.allows('mixer'),sampler:sawwEntitlement.allows('sampler'),proRec:window.__recAllowed('wolf-yellowstone')}));
- ok('semi_no_export',R.semi.plan==='semi'&&!R.semi.allows&&R.semi.locked.every(Boolean)&&!R.semiTry.authorize&&/SEMI-PRO には含まれません/.test(R.semiTry.btnMsg+R.semiTry.trk)&&!R.semiTry.recording);
+ ok('semi_no_export',R.semi.plan==='semi'&&!R.semi.allows&&R.semi.locked.slice(0,4).every(Boolean)&&!R.semiTry.authorize&&/SEMI-PRO には含まれません/.test(R.semiTry.btnMsg+R.semiTry.trk)&&!R.semiTry.recording);
  ok('semi_features',R.semiF.mixer&&!R.semiF.sampler&&R.semiF.proRec!==false);
- R.semiReel=await reel(pg);ok('semi_reel_preview_only',R.semiReel&&R.semiReel.saved===false&&R.semiReel.preview);
- await pg.evaluate(()=>document.getElementById('reelSave').click());await pg.waitForTimeout(400);ok('semi_no_download',dls.length===0&&!calls.includes('/export/authorize'));await cx.close()}
+ R.semiReel=await reel(pg);await pg.waitForTimeout(500);ok('semi_reel_export',R.semiReel&&R.semiReel.saved===true);
+ ok('semi_only_reel_download',dls.length===1&&/reel_/.test(dls[0])&&!calls.includes('/export/authorize'));await cx.close()}
 // 4. SEMI-PRO（無料開放中）：サンプラーは開放、書き出しは不可
 {const {cx,pg,dls}=await page({tok:await token('semi',OPEN,400),when:OPEN});R.semiOpen=await state(pg);R.semiOpenTry=await tryAll(pg);
  ok('semi_open_no_export',!R.semiOpen.allows&&!R.semiOpenTry.authorize&&dls.length===0);await cx.close()}
@@ -70,10 +70,10 @@ const PRO_MSG=/PRO で使えます/;
  await pg.check('#period-semiYear');await pg.waitForTimeout(300);
  R.semiYear=await pg.evaluate(()=>({price:[...document.querySelectorAll('#subTerms dt')].map((d,i)=>[d.textContent,document.querySelectorAll('#subTerms dd')[i].textContent]).find(x=>x[0]==='価格')?.[1],what:[...document.querySelectorAll('#subTerms dt')].map((d,i)=>[d.textContent,document.querySelectorAll('#subTerms dd')[i].textContent]).find(x=>x[0]==='内容')?.[1],btn:document.getElementById('billBuy').textContent,href:document.getElementById('billBuy').getAttribute('href')}));
  await pg.check('#subAgree');const href=await pg.evaluate(()=>document.getElementById('billBuy').getAttribute('href'));
- ok('semi_annual_choice',R.radios.join()==='semi,semiYear,month,year'&&/年額 50\.00 米ドル/.test(R.semiYear.price||'')&&/書き出し/.test(R.semiYear.what||'')&&/US\$50/.test(R.semiYear.btn)&&!R.semiYear.href&&/^https:\/\/buy\.stripe\.com\/test_semi_year\?client_reference_id=/.test(href||''));await cx.close()}
+ ok('semi_annual_choice',R.radios.join()==='semi,semiYear,month,year'&&/年額 50\.00 米ドル/.test(R.semiYear.price||'')&&/音声ファイルの書き出し/.test(R.semiYear.what||'')&&/リール動画の書き出しはできます/.test(R.semiYear.what||'')&&/US\$50/.test(R.semiYear.btn)&&!R.semiYear.href&&/^https:\/\/buy\.stripe\.com\/test_semi_year\?client_reference_id=/.test(href||''));await cx.close()}
 // 6. PRO（サーバーが許可）：プリセット・リールを書き出せる
 {const {cx,pg,dls,calls}=await page({tok:await token('pro'),server:'ok'});R.pro=await state(pg);
- ok('pro_plan',R.pro.plan==='pro'&&R.pro.allows&&R.pro.now&&R.pro.locked.every(x=>!x)&&!R.pro.nodl);
+ ok('pro_plan',R.pro.plan==='pro'&&R.pro.allows&&R.pro.now&&R.pro.locked.every(x=>!x));
  await pg.evaluate(()=>document.getElementById('exportPreset').click());await pg.waitForTimeout(800);
  R.proReel=await reel(pg);await pg.waitForTimeout(500);R.proDl=dls.slice();
  ok('pro_exports',dls.some(n=>/preset.*\.json$/.test(n))&&R.proReel&&R.proReel.saved===true&&dls.some(n=>/reel_.*\.(webm|mp4|mkv)$/.test(n))&&calls.includes('/export/authorize'));
@@ -91,7 +91,7 @@ const PRO_MSG=/PRO で使えます/;
 {const {cx,pg,dls}=await page({tok:await token('pro'),server:'forged'});await pg.evaluate(()=>document.getElementById('exportPreset').click());await pg.waitForTimeout(800);ok('forged_ticket_denied',dls.length===0);await cx.close()}
 // 11. 偽の証明・plan を書き換えた証明・期限切れの証明：FREE のまま
 {const forged=(await token('pro')).replace(/\.[^.]+$/,'.'+b64u(Buffer.alloc(64)));const {cx,pg,dls}=await page({tok:forged,server:'ok'});
- R.forged=await pg.evaluate(async()=>({plan:sawwEntitlement.plan,auth:(await sawwExport.authorize('video')).ok}));ok('forged_token_free',R.forged.plan==='free'&&!R.forged.auth&&dls.length===0);await cx.close()}
+ R.forged=await pg.evaluate(async()=>({plan:sawwEntitlement.plan,auth:(await sawwExport.authorize('audio')).ok}));ok('forged_token_free',R.forged.plan==='free'&&!R.forged.auth&&dls.length===0);await cx.close()}
 {const {cx,pg}=await page({tok:await token('pro',AFTER,30,{cap:['sampler']}),server:'ok'});R.nocap=await pg.evaluate(async()=>(await sawwExport.authorize('audio')).ok);ok('cap_without_export_denied',!R.nocap);await cx.close()}
 {const {cx,pg}=await page({tok:await token('pro','2027-01-01T00:00:00Z',10),server:'down'});R.expired=await pg.evaluate(async()=>({plan:sawwEntitlement.plan,auth:(await sawwExport.authorize('audio')).ok}));ok('expired_token_denied',R.expired.plan==='free'&&!R.expired.auth);await cx.close()}
 // 12. 期限が使用中に切れる：その場で書き出せなくなる
@@ -107,8 +107,8 @@ const PRO_MSG=/PRO で使えます/;
  await pg.evaluate(()=>document.getElementById('exportPreset').click());await pg.waitForTimeout(800);ok('admin_exports',R.admin.plan==='admin'&&R.admin.allows&&dls.some(n=>/\.json$/.test(n))&&!calls.includes('/export/authorize'));await cx.close()}
 // 15. 課金を始める前のテスト公開（beta）：これまでどおり書き出せる
 {const {cx,pg,dls}=await page({cfg:{...CFG,status:'test'}});await pg.evaluate(()=>document.getElementById('exportPreset').click());await pg.waitForTimeout(800);ok('beta_exports',dls.some(n=>/\.json$/.test(n)));await cx.close()}
-// 16. 比較表：書き出しは FREE・SEMI-PRO とも —、リールは FREE で ✓（プレビュー）
+// 16. 比較表：音声の書き出しは FREE・SEMI-PRO とも —、リール（動画の書き出し）は FREE で ✓
 {const {cx,pg}=await page();R.table=await pg.evaluate(()=>[...document.querySelectorAll('.planTable tbody tr')].map(tr=>[...tr.children].map(td=>td.textContent)).filter(r=>/書き出し|リール/.test(r[0])));
- ok('table',R.table.some(r=>/ファイルの書き出し/.test(r[0])&&r[1]==='—'&&r[2]==='—'&&r[3]==='✓')&&R.table.some(r=>/プレビュー/.test(r[0])&&r[1]==='✓'));await cx.close()}
+ ok('table',R.table.some(r=>/音声ファイルの書き出し/.test(r[0])&&r[1]==='—'&&r[2]==='—'&&r[3]==='✓')&&R.table.some(r=>/リール作成と動画の書き出し/.test(r[0])&&r[1]==='✓'&&r[2]==='✓'));await cx.close()}
 R.errs=errs.filter(e=>!/favicon|net::ERR|Failed to fetch|audio|decode/i.test(e));ok('no_page_errors',R.errs.length===0);
 console.log(JSON.stringify(R,null,1));console.log(fail.length?'FAIL: '+fail.join(', '):'ALL PASS');await b.close();process.exit(fail.length?1:0)})();

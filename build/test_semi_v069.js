@@ -35,8 +35,8 @@ const st=pg=>pg.evaluate(()=>({plan:sawwEntitlement.plan,sampler:sawwEntitlement
  ok('semi_instruments_and_creatures',R.instr.proInstr!==false&&R.instr.proRec!==false);
  await pg.evaluate(()=>document.getElementById('record').click());await pg.waitForTimeout(500);R.recMsg=await pg.evaluate(()=>({msg:document.getElementById('message').textContent,status:document.getElementById('recordStatus').textContent}));
  ok('semi_record_blocked',/PRO で使えます/.test(R.recMsg.msg)&&!/REC/.test(R.recMsg.status.replace('READY','')));await cx.close()}
-// 4. SEMI-PRO の人（年末の無料開放中）：制限なし
-{const [cx,pg]=await page(CFG(true),await token('semi',400),'2026-11-20T00:00:00Z');R.open=await st(pg);ok('semi_open_until_2027',!R.open.samplerLocked&&!R.open.wavLocked&&R.open.sampler&&R.open.exportF);await cx.close()}
+// 4. SEMI-PRO の人（年末の無料開放中）：サンプラーも使える。v0.80 から音声ファイルの書き出しは PRO 専用（無料開放中も不可）
+{const [cx,pg]=await page(CFG(true),await token('semi',400),'2026-11-20T00:00:00Z');R.open=await st(pg);ok('semi_open_until_2027',!R.open.samplerLocked&&R.open.sampler&&!R.open.exportF);await cx.close()}
 // 5. PRO の人：すべて使える
 {const [cx,pg]=await page(CFG(true),await token('pro'),'2027-02-01T00:00:00Z');R.pro=await st(pg);ok('pro_all',R.pro.plan==='pro'&&!R.pro.samplerLocked&&!R.pro.wavLocked&&R.pro.sampler&&R.pro.exportF&&!/SEMI/.test(R.pro.status));await cx.close()}
 R.errs=errs.filter(e=>!/favicon|net::ERR/.test(e));ok('no_page_errors',R.errs.length===0);

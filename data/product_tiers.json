@@ -7,13 +7,13 @@
   {
    "id": "free",
    "name": "FREE",
-   "tagline": "create & preview.",
+   "tagline": "create & share.",
    "price": "$0",
    "period": "forever",
-   "note_ja": "アカウントなしで使えます。ファイルの書き出し・ダウンロードはできません（ブラウザ内のプレビューと再生はできます）。",
-   "note_en": "No account needed. No file export or downloads (preview and playback in the browser).",
-   "live_ja": "アカウントなしで使えます。ファイルの書き出し・ダウンロードはできません（ブラウザ内のプレビューと再生はできます）。",
-   "live_en": "No account needed. No file export or downloads (preview and playback in the browser)."
+   "note_ja": "アカウントなしで使えます。リール動画の書き出しもできます（音声ファイルの書き出しは PRO）。",
+   "note_en": "No account needed. Includes reel video export (audio file export needs PRO).",
+   "live_ja": "アカウントなしで使えます。リール動画の書き出しもできます（音声ファイルの書き出しは PRO）。",
+   "live_en": "No account needed. Includes reel video export (audio file export needs PRO)."
   },
   {
    "id": "semi",
@@ -21,8 +21,8 @@
    "tagline": "perform.",
    "price": "$5",
    "period": "USD / month",
-   "note_ja": "すべての音源とミキサー・FX・トラックなどの操作。サンプラーとファイルの書き出し（音声・動画・リール）は含みません。",
-   "note_en": "Every recording plus the mixer, FX and tracks. No sampler and no file export (audio, video, reels).",
+   "note_ja": "すべての音源とミキサー・FX・トラックなどの操作、リール動画の書き出し。サンプラーと音声ファイルの書き出し（WAV・AIFF）は含みません。",
+   "note_en": "Every recording, the mixer, FX and tracks, and reel video export. No sampler and no audio file export (WAV, AIFF).",
    "live_ja": "月額 US$5 または年額 US$50（税込）。いつでも解約でき、支払い済みの期間の終わりまで SEMI-PRO のまま使えます。",
    "live_en": "US$5/month or US$50/year (tax incl.). Cancel any time; SEMI-PRO stays on until the paid period ends.",
    "alt": "年額 US$50（税込）"
@@ -62,8 +62,8 @@
   {
    "id": "reel",
    "tier": "free",
-   "ja": "リール作成とブラウザ内のプレビュー（9:16・1080×1920・15〜60秒・テンプレート。動画ファイルの書き出しは PRO）",
-   "en": "Reel creator with in-browser preview (9:16, 1080×1920, 15–60 s, templates; video file export needs PRO)"
+   "ja": "リール作成と動画の書き出し・共有（9:16・1080×1920・15〜60秒・テンプレート）",
+   "en": "Reel creator with video export and sharing (9:16, 1080×1920, 15–60 s, templates)"
   },
   {
    "id": "credits",
@@ -128,8 +128,8 @@
   {
    "id": "export",
    "tier": "pro",
-   "ja": "ファイルの書き出し・ダウンロード（WAV・AIFF 24-bit、リール動画 MP4・WebM、プリセット）",
-   "en": "File export and downloads (WAV, AIFF 24-bit, reel video MP4/WebM, presets)"
+   "ja": "音声ファイルの書き出し（WAV・AIFF 24-bit）とプリセットの書き出し",
+   "en": "Audio file export (WAV, AIFF 24-bit) and preset export"
   },
   {
    "id": "midi",

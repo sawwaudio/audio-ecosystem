@@ -403,7 +403,8 @@
   "Shown in Japanese as required by Japanese law.": "Se muestra en japonés según exige la ley japonesa.",
   "Compare features (FREE / SEMI-PRO / PRO)": "Comparar funciones (FREE / SEMI-PRO / PRO)",
   "Compare features (FREE / PRO)": "Comparar funciones (FREE / PRO)",
-  "US$50 per year (tax included)": "US$50 al año (impuestos incluidos)"
+  "US$50 per year (tax included)": "US$50 al año (impuestos incluidos)",
+  "US$50 per year (tax included), renews yearly": "US$50 al año (impuestos incluidos), se renueva cada año"
  },
  "pt": {
   "saww audio ecosystem updates automatically every day.": "O saww audio ecosystem é atualizado automaticamente todos os dias.",
@@ -809,7 +810,8 @@
   "Shown in Japanese as required by Japanese law.": "Exibido em japonês conforme exige a lei japonesa.",
   "Compare features (FREE / SEMI-PRO / PRO)": "Comparar recursos (FREE / SEMI-PRO / PRO)",
   "Compare features (FREE / PRO)": "Comparar recursos (FREE / PRO)",
-  "US$50 per year (tax included)": "US$50 por ano (impostos incluídos)"
+  "US$50 per year (tax included)": "US$50 por ano (impostos incluídos)",
+  "US$50 per year (tax included), renews yearly": "US$50 por ano (impostos incluídos), renova todo ano"
  },
  "de": {
   "saww audio ecosystem updates automatically every day.": "saww audio ecosystem wird jeden Tag automatisch aktualisiert.",
@@ -1215,7 +1217,8 @@
   "Shown in Japanese as required by Japanese law.": "Auf Japanisch angezeigt, wie es das japanische Recht verlangt.",
   "Compare features (FREE / SEMI-PRO / PRO)": "Funktionen vergleichen (FREE / SEMI-PRO / PRO)",
   "Compare features (FREE / PRO)": "Funktionen vergleichen (FREE / PRO)",
-  "US$50 per year (tax included)": "US$50 pro Jahr (inkl. Steuer)"
+  "US$50 per year (tax included)": "US$50 pro Jahr (inkl. Steuer)",
+  "US$50 per year (tax included), renews yearly": "US$50 pro Jahr (inkl. Steuer), jährliche Verlängerung"
  },
  "fr": {
   "saww audio ecosystem updates automatically every day.": "saww audio ecosystem se met à jour automatiquement chaque jour.",
@@ -1621,7 +1624,8 @@
   "Shown in Japanese as required by Japanese law.": "Affiché en japonais conformément à la loi japonaise.",
   "Compare features (FREE / SEMI-PRO / PRO)": "Comparer les fonctions (FREE / SEMI-PRO / PRO)",
   "Compare features (FREE / PRO)": "Comparer les fonctions (FREE / PRO)",
-  "US$50 per year (tax included)": "50 US$ par an (TTC)"
+  "US$50 per year (tax included)": "50 US$ par an (TTC)",
+  "US$50 per year (tax included), renews yearly": "50 US$ par an (TTC), renouvellement annuel"
  },
  "ko": {
   "saww audio ecosystem updates automatically every day.": "saww audio ecosystem은 매일 자동으로 업데이트됩니다.",
@@ -2027,7 +2031,8 @@
   "Shown in Japanese as required by Japanese law.": "일본 법률에 따라 일본어로 표시합니다.",
   "Compare features (FREE / SEMI-PRO / PRO)": "기능 비교(FREE / SEMI-PRO / PRO)",
   "Compare features (FREE / PRO)": "기능 비교(FREE / PRO)",
-  "US$50 per year (tax included)": "연 US$50(세금 포함)"
+  "US$50 per year (tax included)": "연 US$50(세금 포함)",
+  "US$50 per year (tax included), renews yearly": "연 US$50(세금 포함), 매년 갱신"
  },
  "zh": {
   "saww audio ecosystem updates automatically every day.": "saww audio ecosystem 每天自动更新。",
@@ -2433,6 +2438,7 @@
   "Shown in Japanese as required by Japanese law.": "依日本法律要求以日语显示。",
   "Compare features (FREE / SEMI-PRO / PRO)": "功能对比（FREE / SEMI-PRO / PRO）",
   "Compare features (FREE / PRO)": "功能对比（FREE / PRO）",
-  "US$50 per year (tax included)": "每年 US$50（含税）"
+  "US$50 per year (tax included)": "每年 US$50（含税）",
+  "US$50 per year (tax included), renews yearly": "每年 US$50（含税），每年续订"
  }
 }

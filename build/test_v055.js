@@ -45,7 +45,7 @@ R.back=await pg.evaluate(()=>({dis:[...document.querySelectorAll('#instrBody .co
 ok('back_to_beta',!R.back.dis&&R.back.allowed&&R.back.saved==='beta');
 // 5. プランの比較表に楽器の行
 R.rows=await pg.evaluate(()=>[...document.querySelectorAll('.planTable tbody tr')].map(r=>[...r.children].map(c=>c.textContent).join('|')).filter(t=>/楽器（実録音）/.test(t)));
-ok('plan_rows',R.rows.length===2&&/^楽器（実録音）6種：.*\|✓\|✓$/.test(R.rows[0])&&/^すべての楽器（実録音）.*\|—\|✓$/.test(R.rows[1]));
+ok('plan_rows',R.rows.length===2&&/^楽器（実録音）6種：.*\|✓\|✓\|✓$/.test(R.rows[0])&&/^すべての楽器（実録音）.*\|—\|✓\|✓$/.test(R.rows[1]));
 // 6. 英語表示・はみ出し・エラー
 await pg.click('#langToggle');await wait(500);
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;

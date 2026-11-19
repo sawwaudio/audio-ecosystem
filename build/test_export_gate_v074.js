@@ -104,7 +104,20 @@ const PRO_MSG=/PRO で使えます/;
  const t=Math.floor(Date.parse(AFTER)/1000),body=b64u(JSON.stringify({role:'studio-admin',aud:'http://localhost:8765/',iat:t,exp:t+600})),pass=body+'.'+b64u(await wc.subtle.sign({name:'ECDSA',hash:'SHA-256'},sk.privateKey,Buffer.from(body)));
  const {cx,pg,dls,calls}=await page({cfg:{...CFG,studioPublicKey:{kty:'EC',crv:'P-256',x:sp.x,y:sp.y}}});
  await pg.evaluate(p=>{location.hash='saww-admin='+p;location.reload()},pass);await pg.waitForTimeout(1800);R.admin=await state(pg);
- await pg.evaluate(()=>document.getElementById('exportPreset').click());await pg.waitForTimeout(800);ok('admin_exports',R.admin.plan==='admin'&&R.admin.allows&&dls.some(n=>/\.json$/.test(n))&&!calls.includes('/export/authorize'));await cx.close()}
+ await pg.evaluate(()=>document.getElementById('exportPreset').click());await pg.waitForTimeout(800);ok('admin_exports',R.admin.plan==='admin'&&R.admin.allows&&dls.some(n=>/\.json$/.test(n))&&!calls.includes('/export/authorize'));
+ // v0.81 管理者モード：状態・運用リンク・ほかのプランの見え方（このタブだけ）
+ R.panel=await pg.evaluate(()=>({panel:!!document.getElementById('adminPanel'),views:[...document.querySelectorAll('[data-admin-view]')].map(b=>b.dataset.adminView).join(),links:document.querySelectorAll('.adminLinks a').length,status:document.querySelector('.adminStatus')?.textContent||''}));
+ ok('admin_panel',R.panel.panel&&R.panel.views==='open,free,semi,pro'&&R.panel.links>=6&&/v0\.\d+/.test(R.panel.status));
+ const view=async v=>{await pg.evaluate(v=>document.querySelector('[data-admin-view="'+v+'"]')?document.querySelector('[data-admin-view="'+v+'"]').click():(()=>{const s=document.getElementById('adminViewSelect');s.value=v;s.dispatchEvent(new Event('change'))})(),v);await pg.waitForTimeout(500);return pg.evaluate(async()=>({plan:sawwEntitlement.plan,bar:!!document.getElementById('adminViewBar'),exp:sawwExport.allowed(),auth:(await sawwExport.authorize('audio')).ok,sampler:sawwEntitlement.allows('sampler'),mixer:sawwEntitlement.allows('mixer'),rec:window.__recAllowed('wolf-yellowstone')}))};
+ R.vFree=await view('free');ok('admin_view_free',R.vFree.plan==='free'&&R.vFree.bar&&!R.vFree.exp&&!R.vFree.auth&&!R.vFree.mixer&&R.vFree.rec===false);
+ R.vSemi=await view('semi');ok('admin_view_semi',R.vSemi.plan==='semi'&&!R.vSemi.exp&&!R.vSemi.sampler&&R.vSemi.mixer);
+ R.vPro=await view('pro');ok('admin_view_pro',R.vPro.plan==='pro'&&R.vPro.exp&&R.vPro.auth&&R.vPro.sampler);
+ await pg.reload({waitUntil:'domcontentloaded'});await pg.waitForTimeout(1800);R.vKeep=await pg.evaluate(()=>sawwEntitlement.plan);ok('admin_view_kept_in_tab',R.vKeep==='pro');
+ await pg.evaluate(()=>document.getElementById('adminViewBack').click());await pg.waitForTimeout(500);
+ R.vBack=await pg.evaluate(()=>({plan:sawwEntitlement.plan,bar:!!document.getElementById('adminViewBar')}));ok('admin_view_back',R.vBack.plan==='admin'&&!R.vBack.bar);
+ const nc=await (await b.newContext()).newPage();await nc.goto(APP,{waitUntil:'domcontentloaded'});await nc.evaluate(([c])=>{localStorage.setItem('saww.billingTest',JSON.stringify(c));sessionStorage.setItem('saww.adminView','pro')},[CFG]);await nc.reload();await nc.waitForTimeout(1500);
+ R.nonAdminView=await nc.evaluate(()=>({plan:sawwEntitlement.plan,exp:sawwExport.allowed()}));ok('view_ignored_without_admin',R.nonAdminView.plan!=='pro'&&!R.nonAdminView.exp);await nc.context().close();
+ await cx.close()}
 // 15. 課金を始める前のテスト公開（beta）：これまでどおり書き出せる
 {const {cx,pg,dls}=await page({cfg:{...CFG,status:'test'}});await pg.evaluate(()=>document.getElementById('exportPreset').click());await pg.waitForTimeout(800);ok('beta_exports',dls.some(n=>/\.json$/.test(n)));await cx.close()}
 // 16. 比較表：音声の書き出しは FREE・SEMI-PRO とも —、リール（動画の書き出し）は FREE で ✓

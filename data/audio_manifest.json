@@ -7580,6 +7580,771 @@
     "gain": 0.5297418262202197,
     "provenance": "配信用 FLAC（beijing-drum-tower.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
    }
+  },
+  "yellowstone-fumarole": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-fumarole.mp3",
+    "bytes": 481115,
+    "sha256": "2c382a75ef71c70fa2aaebcfb2e530a711a927e3248887ddb59c936eb91339de",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 30.0,
+    "lossless": false,
+    "gain": 1.070765,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1323000,
+    "duration": 30.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-fumarole.flac",
+      "bytes": 2606986,
+      "sha256": "36bc7fb4770471e3197814bc7fd0ac97c712f24b45de3b33db51625eee937ece",
+      "frames": 1323000
+     }
+    ],
+    "pcmDataSha256": "10f5697f9c63c180a30387a8db54d8519c732f23e8e2946c97fc34e33f4e6ba6",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.3074721097946167,
+    "gain": 0.719503987946299,
+    "lossless": false,
+    "provenance": "原本（44100Hz・0-bit・2ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（4秒〜34秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-fumarole.mp3",
+    "bytes": 363194,
+    "sha256": "67357c8e603d4fb8f62e70c17cb4c4c73c1ac9c8630f39308c63f1ebb44f0570",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 30.040816,
+    "lossless": false,
+    "gain": 0.719503987946299,
+    "provenance": "配信用 FLAC（yellowstone-fumarole.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
+  },
+  "yellowstone-black-growler": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-black-growler.mp3",
+    "bytes": 417167,
+    "sha256": "3492a6b2d15ac872aa6def2c84c8bd989a445bb3b70c2345a33feb950dcec627",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 26.0,
+    "lossless": false,
+    "gain": 0.402956,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1146600,
+    "duration": 26.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-black-growler.flac",
+      "bytes": 2624331,
+      "sha256": "12b73bf2eac4df656775418aa21958736ff527ce299437d4f34ad9f556a44717",
+      "frames": 1146600
+     }
+    ],
+    "pcmDataSha256": "1ffc25a277af00fe200e1b094d1e64424cee9bb5504dbb5b6ed47343e0e62249",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.5994173288345337,
+    "gain": 0.27067499497402603,
+    "lossless": false,
+    "provenance": "原本（44100Hz・0-bit・2ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（2秒〜28秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-black-growler.mp3",
+    "bytes": 309066,
+    "sha256": "4899433b2cb9646c7542d5830c0b7780a012486200b64c14d19b9685cdd46cdf",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 26.044082,
+    "lossless": false,
+    "gain": 0.27067499497402603,
+    "provenance": "配信用 FLAC（yellowstone-black-growler.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
+  },
+  "yellowstone-dragons-mouth": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-dragons-mouth.mp3",
+    "bytes": 721023,
+    "sha256": "b3d7223bb53d5ff32365b60621a213fd9c9e9ad5b0a2917d26464f55dd9368f2",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "lossless": false,
+    "gain": 2.472672,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 1,
+    "frames": 2160000,
+    "duration": 45.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-dragons-mouth.flac",
+      "bytes": 3551716,
+      "sha256": "ad65b2f97751afcad0dcbbd61b91eb0109eca73baa5ef0ab898657c28d6b6fd6",
+      "frames": 2160000
+     }
+    ],
+    "pcmDataSha256": "145b4f967bb938a091f6fd1188465d7c070490883a297a24c98b020a365a894f",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.2248706817626953,
+    "gain": 2.3493472300373894,
+    "lossless": false,
+    "provenance": "原本（48000Hz・0-bit・1ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（18秒〜63秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-dragons-mouth.mp3",
+    "bytes": 496845,
+    "sha256": "662d63037a0daf5394b33125cb8447faaf8c9ac3903e6bb4977df747b63c060e",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 1,
+    "duration": 45.024,
+    "lossless": false,
+    "gain": 2.3493472300373894,
+    "provenance": "配信用 FLAC（yellowstone-dragons-mouth.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
+  },
+  "yellowstone-black-sand-pool": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-black-sand-pool.mp3",
+    "bytes": 577245,
+    "sha256": "0b829b2615b93cdfde838583c62b24216a2d68625f97eb6e763ea87d13f08956",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 36.0,
+    "lossless": false,
+    "gain": 1.824386,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1587600,
+    "duration": 36.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-black-sand-pool.flac",
+      "bytes": 4989628,
+      "sha256": "ff51003182e1422370cbae219d7f5cecee07b05ab1f6b47a3d1fafe28fd562c1",
+      "frames": 1587600
+     }
+    ],
+    "pcmDataSha256": "1b3cf1814ef0f85adf12c78c896733c6a00a778cd690ab4d76fd39db8cf6e6e1",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.7142633199691772,
+    "gain": 1.2153862065662435,
+    "lossless": false,
+    "provenance": "原本（44100Hz・0-bit・2ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（2秒〜38秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-black-sand-pool.mp3",
+    "bytes": 784396,
+    "sha256": "d43b2717e93df4973072be421c328efbbb4d795c53edd2e9b217218020c0db1e",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 36.04898,
+    "lossless": false,
+    "gain": 1.2153862065662435,
+    "provenance": "配信用 FLAC（yellowstone-black-sand-pool.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
+  },
+  "yellowstone-old-faithful": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-old-faithful.mp3",
+    "bytes": 960932,
+    "sha256": "0749bc1ee0166b92b7407102917ce5f91a2d994cc5afb3a607c474a830cb1940",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 60.0,
+    "lossless": false,
+    "gain": 0.490363,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 2646000,
+    "duration": 60.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-old-faithful.flac",
+      "bytes": 6357877,
+      "sha256": "0cbe5cb49d4eb9de436780010925b0cb3c8e1ea0b5c589ea9973ae5e81a30052",
+      "frames": 2646000
+     }
+    ],
+    "pcmDataSha256": "761afc7de72fe4de6792c87d479855de1bdbfd3c46c15b918490d0610b98fcd8",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.6699188947677612,
+    "gain": 0.32959575518899703,
+    "lossless": false,
+    "provenance": "原本（44100Hz・0-bit・2ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（40秒〜100秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-old-faithful.mp3",
+    "bytes": 722857,
+    "sha256": "b4807d798166719f7994e8ccbdcac58c2a7e8665742c0071724e2437c46f833e",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 60.029388,
+    "lossless": false,
+    "gain": 0.32959575518899703,
+    "provenance": "配信用 FLAC（yellowstone-old-faithful.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
+  },
+  "yellowstone-lake-sings": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-lake-sings.mp3",
+    "bytes": 960932,
+    "sha256": "0f3e68f46e54c904eb0ba17e4b3875b8a546af2741326f1e6cb9f92acb56379b",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 60.0,
+    "lossless": false,
+    "gain": 3.541663,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 2646000,
+    "duration": 60.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-lake-sings.flac",
+      "bytes": 4515781,
+      "sha256": "31de21cfe872425410bc9ce1fed8b00f0c5469a8638c25234e445e84fffe59b9",
+      "frames": 2646000
+     }
+    ],
+    "pcmDataSha256": "e0ac2fc00fa1634e199bacb7e9139894bfd4400607beed8fef9eccca66223986",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.20775270462036133,
+    "gain": 2.379259517005503,
+    "lossless": false,
+    "provenance": "原本（44100Hz・0-bit・2ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（62秒〜122秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-lake-sings.mp3",
+    "bytes": 735962,
+    "sha256": "d8a3d118733bd411b9f98f2d599e610f8163a0b0743ec84690da06656d449bc1",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 60.029388,
+    "lossless": false,
+    "gain": 2.379259517005503,
+    "provenance": "配信用 FLAC（yellowstone-lake-sings.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
+  },
+  "yellowstone-elk-bugle": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-elk-bugle.mp3",
+    "bytes": 104951,
+    "sha256": "6cbee57a9e1a966df1c7f7793e2fb869174c0cd891c5fbabc8a7ee0ec8654fc6",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 6.5,
+    "lossless": false,
+    "gain": 0.877594,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 286650,
+    "duration": 6.5,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-elk-bugle.flac",
+      "bytes": 561518,
+      "sha256": "5b42326b68dabaffde905ebb0e2fa5b9715bb179e2cb3f1d4c290e6e7089bfdc",
+      "frames": 286650
+     }
+    ],
+    "pcmDataSha256": "c466d000d93b02551f524af1ba7f7a86aa98fd33319af87464392ca07891843d",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.9670729637145996,
+    "gain": 0.8337816143220134,
+    "lossless": false,
+    "provenance": "原本（44100Hz・0-bit・1ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（2秒〜8.5秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-elk-bugle.mp3",
+    "bytes": 75099,
+    "sha256": "c355bc8cfa354160e4c4a11b40f93ea06963136aca81dd3bc375d013194ac430",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 6.530612,
+    "lossless": false,
+    "gain": 0.8337816143220134,
+    "provenance": "配信用 FLAC（yellowstone-elk-bugle.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
+  },
+  "yellowstone-chorus-frogs": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-chorus-frogs.mp3",
+    "bytes": 481115,
+    "sha256": "7c1497ae0a2ad9d8216998b1f04f444734fb9fb7358c2bee58851d572182cc68",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 30.0,
+    "lossless": false,
+    "gain": 2.521675,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1323000,
+    "duration": 30.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-chorus-frogs.flac",
+      "bytes": 3847143,
+      "sha256": "ab959c466dc45ef8ad1bab0df4ea5b31bcb592263b949947b988394cb67ea5eb",
+      "frames": 1323000
+     }
+    ],
+    "pcmDataSha256": "5ff221737fcce7a1d41fa85235c9edc6b6ea3330c23ad81b3e2649a191ae4d0f",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.5029244422912598,
+    "gain": 1.694194212077761,
+    "lossless": false,
+    "provenance": "原本（44100Hz・0-bit・2ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（2秒〜32秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-chorus-frogs.mp3",
+    "bytes": 630210,
+    "sha256": "ed407081c00c470edaedc2c40e2460bebba62c367632e775ce4c9b08facecb9f",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 30.040816,
+    "lossless": false,
+    "gain": 1.694194212077761,
+    "provenance": "配信用 FLAC（yellowstone-chorus-frogs.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
+  },
+  "yellowstone-coyotes": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-coyotes.mp3",
+    "bytes": 481115,
+    "sha256": "0cde47446f970a791d25ba0f03ce5013239e8f3868afe620204b10f6a1848d91",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 30.0,
+    "lossless": false,
+    "gain": 1.398473,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 48000,
+    "channels": 2,
+    "frames": 1440000,
+    "duration": 30.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-coyotes.flac",
+      "bytes": 4290799,
+      "sha256": "004a936138bf1b327daff4a20dd4f9aeed645c6915ec89bccd123ec79cb6541a",
+      "frames": 1440000
+     }
+    ],
+    "pcmDataSha256": "353c6f7ae2b5442c3abf107d58e7507cdb8cde84e17eed527339fd28ec2f2fe5",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.5648206472396851,
+    "gain": 0.9394482728471721,
+    "lossless": false,
+    "provenance": "原本（48000Hz・0-bit・2ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（10秒〜40秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-coyotes.mp3",
+    "bytes": 477117,
+    "sha256": "4a6d447f96be1bd32979f616db0256166924ae581b15bdfbddd0774529fc6a87",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 48000,
+    "channels": 2,
+    "duration": 30.024,
+    "lossless": false,
+    "gain": 0.9394482728471721,
+    "provenance": "配信用 FLAC（yellowstone-coyotes.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
+  },
+  "yellowstone-bison-rut": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-bison-rut.mp3",
+    "bytes": 481115,
+    "sha256": "8c696c42e31dbddba0ef8b2855dbec621fb70e2a0c51b25c9e4299b5f4b92475",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 30.0,
+    "lossless": false,
+    "gain": 6.529333,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1323000,
+    "duration": 30.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-bison-rut.flac",
+      "bytes": 2065777,
+      "sha256": "3a905a188c8aaa49586a62f43693f6856757ad7da526a2b78128b93ee682fd69",
+      "frames": 1323000
+     }
+    ],
+    "pcmDataSha256": "6723079ef316c682dfdcc0bec3e032f0c78d772831838737b38cb831fc278817",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.33780670166015625,
+    "gain": 4.386017056812106,
+    "lossless": false,
+    "provenance": "原本（44100Hz・0-bit・2ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（7.75秒〜37.75秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-bison-rut.mp3",
+    "bytes": 367591,
+    "sha256": "25c98fcd8cca19f5c0386e765e77769b07dfe0a9ec43501f9334b4b7f20f03d4",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 30.040816,
+    "lossless": false,
+    "gain": 4.386017056812106,
+    "provenance": "配信用 FLAC（yellowstone-bison-rut.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
+  },
+  "yellowstone-wilsons-snipe": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-wilsons-snipe.mp3",
+    "bytes": 481115,
+    "sha256": "65e9b319b9ca2b8bee1cdfe5359a7c0f07f9e1dc6656026304a12d25d09bc169",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 30.0,
+    "lossless": false,
+    "gain": 2.620419,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 1323000,
+    "duration": 30.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-wilsons-snipe.flac",
+      "bytes": 2559017,
+      "sha256": "4aa53ed0c38a41ea21f69dcd47606c099746b4b38a780ec2f847555a5ec841a4",
+      "frames": 1323000
+     }
+    ],
+    "pcmDataSha256": "8c75e635206cfb2892b94df073353d74824fb0507f67e86e1bc6e2d8102c0f01",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.3893171548843384,
+    "gain": 2.48939049732376,
+    "lossless": false,
+    "provenance": "原本（44100Hz・0-bit・1ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（147.25秒〜177.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-wilsons-snipe.mp3",
+    "bytes": 323959,
+    "sha256": "fe2ee92b648318f5c5e283e1f0c82aedd5d3e70b4e79dc4a80ab6dd011f38384",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 30.040816,
+    "lossless": false,
+    "gain": 2.48939049732376,
+    "provenance": "配信用 FLAC（yellowstone-wilsons-snipe.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
+  },
+  "yellowstone-sandhill-cranes": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-sandhill-cranes.mp3",
+    "bytes": 289271,
+    "sha256": "899cb9272bd0d24c36a341b0a36b1e57fbe6b740f739b613e6a1d54d95e7ab12",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 18.0,
+    "lossless": false,
+    "gain": 1.715343,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 1,
+    "frames": 793800,
+    "duration": 18.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-sandhill-cranes.flac",
+      "bytes": 1130201,
+      "sha256": "e1889ba704448b78e82ae95d1ef108242504a554801ca42e3bd2e9d09e5b3956",
+      "frames": 793800
+     }
+    ],
+    "pcmDataSha256": "50bfe227fc819b766cc383e1a34c25b3bcb8ed0a89b75bb26463743b94b9733e",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.4845505952835083,
+    "gain": 1.6290127966911698,
+    "lossless": false,
+    "provenance": "原本（44100Hz・0-bit・1ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（2秒〜20秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-sandhill-cranes.mp3",
+    "bytes": 188130,
+    "sha256": "4611de2a98a160784b9d7a4d5d8662497541dc35c62b5070b784054e884d2eae",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 18.050612,
+    "lossless": false,
+    "gain": 1.6290127966911698,
+    "provenance": "配信用 FLAC（yellowstone-sandhill-cranes.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
+  },
+  "yellowstone-killdeer": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-killdeer.mp3",
+    "bytes": 481115,
+    "sha256": "943eb4b110365d9243f10b031090d9491d727ec67b2cc53945c5e750e42ebfde",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 30.0,
+    "lossless": false,
+    "gain": 4.233351,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1323000,
+    "duration": 30.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-killdeer.flac",
+      "bytes": 4619201,
+      "sha256": "5d2138724f3dcb5c1cea357bc8d37a564d83db46e1f8995704f14424cfe1868c",
+      "frames": 1323000
+     }
+    ],
+    "pcmDataSha256": "c7633da7d7ed3d2e0f0d58a0cd83c1ced437ab859c54181b2c97de563f2726b8",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.33938539028167725,
+    "gain": 2.58256581229322,
+    "lossless": false,
+    "provenance": "原本（44100Hz・0-bit・2ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（15.25秒〜45.25秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-killdeer.mp3",
+    "bytes": 645724,
+    "sha256": "b9d64fd94b40e16089577158aa0cc05b253c76352d0314a52deffcc1f98f45e7",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 30.040816,
+    "lossless": false,
+    "gain": 2.58256581229322,
+    "provenance": "配信用 FLAC（yellowstone-killdeer.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
+  },
+  "yellowstone-ear-spring": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-ear-spring.mp3",
+    "bytes": 193141,
+    "sha256": "e64509671c8600f495c10bc8cb1d903cf34ca1159958cf9f2d61d7f9dd1649b3",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 12.0,
+    "lossless": false,
+    "gain": 5.04576,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 529200,
+    "duration": 12.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-ear-spring.flac",
+      "bytes": 944640,
+      "sha256": "7592fe342112a6ae7dd82c3b619da1738283bb8d70992e6a4eacd07493255850",
+      "frames": 529200
+     }
+    ],
+    "pcmDataSha256": "b4f6f270e10cdd887d7d260c435292cd2e706cf385964121767a55998e63bcbf",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.18617117404937744,
+    "gain": 3.3894939427934077,
+    "lossless": false,
+    "provenance": "原本（44100Hz・0-bit・2ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（2秒〜14秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-ear-spring.mp3",
+    "bytes": 157562,
+    "sha256": "be9f47e39a6d07e256d6009d937440272f7cf1d5ad969d2f920e5adfffbdf76e",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 12.042449,
+    "lossless": false,
+    "gain": 3.3894939427934077,
+    "provenance": "配信用 FLAC（yellowstone-ear-spring.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
+  },
+  "yellowstone-maple-fire": {
+   "compat": {
+    "path": "../audio-ecosystem-sounds-1/audio/compat/yellowstone-maple-fire.mp3",
+    "bytes": 721023,
+    "sha256": "5b5efda104d4955b01902cc3372b283ff6bf481ee325641393e234ddd939ba6d",
+    "format": "mp3",
+    "codec": "MP3 128kbps",
+    "sampleRate": 44100,
+    "channels": 1,
+    "duration": 45.0,
+    "lossless": false,
+    "gain": 1.336026,
+    "provenance": "v0.82：抜粋 FLAC から作成した互換MP3（44.1kHz・モノラル・128kbps）"
+   },
+   "pcm": {
+    "format": "flac",
+    "codec": "FLAC 24-bit（可逆圧縮）",
+    "bitDepth": 24,
+    "sampleRate": 44100,
+    "channels": 2,
+    "frames": 1984500,
+    "duration": 45.0,
+    "parts": [
+     {
+      "path": "../audio-ecosystem-sounds-1/audio/pcm/yellowstone-maple-fire.flac",
+      "bytes": 7597939,
+      "sha256": "aa9d5a6c9d2316d6eb940107fde0cabe2a0cb6e3079ef7864683ea9dd573b2b0",
+      "frames": 1984500
+     }
+    ],
+    "pcmDataSha256": "df4bf4c3a92f0450e202806b5369552f04f8f9a773b5a7a61ae1dc840c9f1222",
+    "headroomScale": 1.0,
+    "decodedPeak": 0.9071847200393677,
+    "gain": 0.8591240018817157,
+    "lossless": false,
+    "provenance": "原本（44100Hz・0-bit・2ch）から切り出し（mp3 0-bit → 24-bit 整数に変換）した抜粋（12秒〜57秒）。配信は FLAC（可逆圧縮。復号するとこの PCM とビット単位で同一）。原本全長はオーナーのMacに保管。音源リポジトリ sawwaudio/audio-ecosystem-sounds-1 に置く。"
+   },
+   "lite": {
+    "path": "../audio-ecosystem-sounds-1/audio/lite/yellowstone-maple-fire.mp3",
+    "bytes": 946086,
+    "sha256": "e9eca24dcc4e73de60037ea853cea52a3869f048db390a99493a76a82e4b3a2d",
+    "format": "mp3",
+    "codec": "MP3 VBR（約175kbps・軽量）",
+    "sampleRate": 44100,
+    "channels": 2,
+    "duration": 45.035102,
+    "lossless": false,
+    "gain": 0.8591240018817157,
+    "provenance": "配信用 FLAC（yellowstone-maple-fire.flac）から LAME VBR で書き出し（v0.53・軽量の既定）。チャンネル数は元のまま。"
+   }
   }
  },
  "instruments": {

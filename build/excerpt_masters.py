@@ -98,7 +98,10 @@ for j in json.load(open(JOBS)):
         nch = 2 if pick else info['ch']
         raw, x = decode(p, nch, sr_out, depth, limit, pick)
         sr = sr_out or info['sr']; full = 2 ** (depth - 1)
-        a, b = choose(x, sr, float(j.get('sec', 30)), j['kind'], full)
+        if 'start' in j:  # v0.82：区間を手で指定（例：間欠泉の噴出の部分）。結果に manualStart を記録
+            a = int(float(j['start']) * sr); b = min(x.shape[0], a + int(float(j.get('sec', 30)) * sr))
+        else:
+            a, b = choose(x, sr, float(j.get('sec', 30)), j['kind'], full)
         bps = depth // 8 * nch
         seg = raw[a * bps:b * bps]
         tmp = os.path.join(OUT, fs + '.tmp.raw'); open(tmp, 'wb').write(seg)
@@ -115,7 +118,7 @@ for j in json.load(open(JOBS)):
         res[fs] = dict(ok=True, kind=j['kind'], src=j['file'], srcBytes=os.path.getsize(p), info=info, sr=sr, ch=nch, bits=depth,
                        start=a / sr, sec=(b - a) / sr, frames=b - a, peakDb=20 * np.log10(peak + 1e-12), rmsDb=20 * np.log10(rms + 1e-12),
                        pcmSha256=sha(seg), flacBytes=len(fb), flacSha256=sha(fb), notes=notes,
-                       bitExact=not any('変換' in n for n in notes))
+                       bitExact=not any('変換' in n for n in notes), manualStart='start' in j)
         print(fs, j['kind'], f"{a/sr:7.1f}s +{(b-a)/sr:4.1f}s", info['sr'], depth, nch, f"{len(fb)/1e6:5.2f}MB", ' / '.join(notes), flush=True)
     except Exception as e:
         res[fs] = dict(ok=False, error=repr(e)); print(fs, 'ERROR', e, flush=True)

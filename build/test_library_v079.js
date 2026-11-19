@@ -17,7 +17,7 @@ R.lib=await pg.evaluate(()=>{const recs=JSON.parse(document.getElementById('ae-r
   floatNoted:['tokyo-night-rain','tokyo-balcony-crickets'].every(id=>{const r=v.find(x=>x.id===id);return r&&/浮動小数/.test(r.notes)}),
   pathsOk:v.every(r=>man.recordings[r.id]&&man.recordings[r.id].pcm.parts.every(p=>p.path.startsWith('../audio-ecosystem-sounds-1/audio/pcm/'))&&man.recordings[r.id].compat.path.startsWith('../audio-ecosystem-sounds-1/audio/compat/')&&man.recordings[r.id].lite&&man.recordings[r.id].lite.path.startsWith('../audio-ecosystem-sounds-1/audio/lite/')),
   ids:v.map(r=>r.id)}});
-ok('count',R.lib.total===150&&R.lib.n===23&&R.lib.beds.length===16&&R.lib.mixed===1&&R.lib.oneShot===6);
+ok('count',/* v0.82：全体 150→165 */R.lib.total===165&&R.lib.n===23&&R.lib.beds.length===16&&R.lib.mixed===1&&R.lib.oneShot===6);
 ok('licenses',R.lib.lic.join()==='CC BY 2.1 JP,CC BY 3.0,CC0 1.0,Public domain');ok('sources',R.lib.commons===6&&R.lib.freesound===17);
 ok('lossy_noted',R.lib.lossyNoted);ok('float_noted',R.lib.floatNoted);ok('paths',R.lib.pathsOk);
 const led=JSON.parse(fs.readFileSync(__dirname+'/../data/recording_licenses.json','utf8'));const lv=led.filter(r=>r.added==='v0.79');

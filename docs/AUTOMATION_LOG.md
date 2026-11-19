@@ -391,6 +391,16 @@ C. **合成音の置き換えの準備**（LIBRARY_300_PLAN 3）：**【v0.51（
   - プッシュ：できず（クラウドから `git push --dry-run` で 403「ss2d5sgg-tech/audio-ecosystem is not in this session's authorized repository set」。旧い名前の URL でも同じ。Mac の VM には認証情報なし。ネットワーク制限は回避していない）。今回のコミットだけを claude/patches/20261116-2022_a_first_guide.patch に保存。適用順：main（0f99206）に ①20261116-0523_a_touch_targets.patch → ②20261116-0725_d_live_longrun.patch → ③20261116-1126_b_locust_names.patch → ④20261116-2022_a_first_guide.patch（いずれも `git am -3`）。
   - 根本の解決（オーナーへ）：定期実行の設定の「ソース」に sawwaudio/audio-ecosystem（または旧名 ss2d5sgg-tech/audio-ecosystem）を加えると、自動実行から直接プッシュできるようになる見込み（docs/PUBLISHING.md の 2026-11-15 の記録どおり）。
   - 次の候補：B（秋の虫の合唱の「推定される主な種（未検証）」・トノサマバッタの MOKUROKU 照合）、d の続き（配信のタイマーを実時間で30分動かすテスト）、A の続き（スクリーンリーダー向けの名前の点検）。0①・C①・1①・3④はオーナー判断待ち。
+- 2026-11-20 JST（チャット）v0.82：音源の審査台帳と公開ゲート、イエローストーン（NPS）の15本。実録音 150→165（オーナーの指示書「World Voices / Earth Sounds Library Integration」。dev/semi-pro-export の v0.81 の上に積む）
+  - 審査台帳：research/source_review.json・.csv（93件。指示書の欄 id〜rejection_reason をすべて持つ）。APPROVED 15・REVIEW 58・REJECTED 20。アプリには埋め込まない（研究用メタデータと公開データを分離）。作成は build/review_v082.py。
+    - ChatGPT の探索候補（Folkways 9・アフリカ 9・アジア 12・その他 5 など）は1件も APPROVED にならなかった。Folkways は個別のライセンス申請が必要（REJECTED、儀礼・葬送の2件は sacred=yes）。Commons で見つかったものはほぼ CC BY-SA 4.0（Wiki Loves Africa/Folklore の投稿）で REJECTED。原本を特定できないものは REVIEW。
+    - カンボジアの木の葉笛（Freesound 469487・CC0）は録音者と演奏者が別人で、実演家の許諾の記録がないため REVIEW。自作自演の倍音唱法（Commons・CC0）は訳詞の権利が不明で REVIEW。
+  - 公開ゲート：公開中の録音すべてに verificationStatus を付けた（APPROVED 89：CC0・PD で懸念なし／LEGACY 76：方針前から公開している CC BY・CC BY-SA と、CC0 でも宗教的文脈・実演家の確認が要る3本＝善光寺の鐘・三社祭・北京の鼓楼）。アプリは APPROVED と LEGACY だけを読み込み、REVIEW・REJECTED・未設定は表示・試聴・書き出し・リールに出さない（fail-closed）。tools/make_credits.py・make_daily.py も同じ条件。LEGACY を残すのは既存のプリセットを壊さないため。新しい基準で隠すかはオーナー判断。
+  - 追加7本（build/library_v082.py。米国国立公園局のイエローストーン音源ライブラリ。ページに「public domain・制限なく利用可（National Park Service の表記を推奨）」と明記）：噴気孔の轟き・ブラック・グロウラー噴気孔・ドラゴンズ・マウス泉・ブラックサンド・プールの泡・オールド・フェイスフル間欠泉（人のいない晩秋）・冬の湖の氷が鳴る音（以上、環境層6）、アメリカアカシカの雄の声（哺乳類1）。NPS 単独表記の録音だけを選んだ（NPS & MSU Acoustic Atlas の共同表記のものは避けた）。
+    - 原本は NPS 配布の MP3（192〜256kbps）。24-bit 整数にデコードして抜粋（ビット完全ではない。changes に記録）。オールド・フェイスフルは噴出の部分を手で指定（build/excerpt_masters.py に区間指定 start を追加）。102kbps でクリップを含む Fountain Paint Pot は REVIEW で保留。
+  - 11-20 追加（次の一手③）：NPS ライブラリの全59ページの CREDIT / AUTHOR を確認。NPS 単独表記・128kbps 以上・クリップなし・既存と重ならない8本を追加：ボレアルコーラスガエルの合唱・コヨーテ・アメリカバイソンの雄・アメリカタシギの夜のディスプレイ・カナダヅル・フタオビチドリ（以上、生き物）、イヤー・スプリング・2016年メープル森林火災（環境層）。NPS & MSU Acoustic Atlas の共同表記21ページは権利の範囲の確認待ちで REVIEW、重複を避けた NPS 単独17ページは REVIEW、スノーモービル・馬車は REJECTED。
+  - テスト：新規 build/test_review_v082.js（候補の欄と状態、APPROVED は CC0/PD＋根拠＋ハッシュ、sacred は公開されない、REVIEW/REJECTED が録音・目録・CREDITS・音源リポジトリに漏れない、埋め込みに REVIEW を混ぜても読み込まれない、7本のデコード）。件数を見る既存テストを165本に合わせた。版表記 v0.82。
+  - 未検証：聴感（区間・音量）、iPhone 実機。
 - 2026-11-19 JST（チャット）v0.79：実録音 127→150（オーナー依頼「150 になるまで」「既存と重ならない音・楽器の実録音も」「保存は FLAC、容量を考える、必要なら WAV に戻せるように」）
   - 追加23本（build/library_v079.py。作者・題名・ライセンス・公開日・録音地・説明は 2026-11-19 に原典ページで確認）：
     - 環境層16：甲府の善光寺の鐘と朝の鳥・松戸の水路トンネル・雪の白馬八方神社・浅草三社祭・台風19号の風（三鷹）・深夜の雨（中野）・夕暮れの公園（東高円寺）・深夜の品川・夜の交差点（中野）・秋の夜の住宅地（中野）・都バスの車内・ライプツィヒの湖・嵐の園芸店の風鈴（英国）・チェンマイの森・竹の風鈴・8音のウィンドチャイム。

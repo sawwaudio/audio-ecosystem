@@ -600,6 +600,66 @@
   "beijing-drum-tower": {
    "cat": "ambience",
    "basis": "楽器の実録音（専用の分類がまだないため環境音に入れる・v0.79）"
+  },
+  "yellowstone-fumarole": {
+   "cat": "ambience",
+   "basis": "環境の録音（地熱・湖の氷。台帳の種別 landscape）"
+  },
+  "yellowstone-black-growler": {
+   "cat": "ambience",
+   "basis": "環境の録音（地熱・湖の氷。台帳の種別 landscape）"
+  },
+  "yellowstone-dragons-mouth": {
+   "cat": "ambience",
+   "basis": "環境の録音（地熱・湖の氷。台帳の種別 landscape）"
+  },
+  "yellowstone-black-sand-pool": {
+   "cat": "ambience",
+   "basis": "環境の録音（地熱・湖の氷。台帳の種別 landscape）"
+  },
+  "yellowstone-old-faithful": {
+   "cat": "ambience",
+   "basis": "環境の録音（地熱・湖の氷。台帳の種別 landscape）"
+  },
+  "yellowstone-lake-sings": {
+   "cat": "ambience",
+   "basis": "環境の録音（地熱・湖の氷。台帳の種別 landscape）"
+  },
+  "yellowstone-elk-bugle": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。アメリカアカシカ）"
+  },
+  "yellowstone-chorus-frogs": {
+   "cat": "amphibians",
+   "basis": "両生類（台帳の名前・学名から。ボレアルコーラスガエル）"
+  },
+  "yellowstone-coyotes": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。コヨーテ）"
+  },
+  "yellowstone-bison-rut": {
+   "cat": "mammals",
+   "basis": "哺乳類（台帳の名前・学名から。アメリカバイソン）"
+  },
+  "yellowstone-wilsons-snipe": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "yellowstone-sandhill-cranes": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "yellowstone-killdeer": {
+   "cat": "birds",
+   "basis": "台帳のグループ（birds）"
+  },
+  "yellowstone-ear-spring": {
+   "cat": "ambience",
+   "basis": "環境の録音（地熱・湖の氷。台帳の種別 landscape）"
+  },
+  "yellowstone-maple-fire": {
+   "cat": "ambience",
+   "basis": "環境の録音（森林火災。台帳の種別 landscape）"
   }
  }
 }

@@ -10,7 +10,7 @@ const errs=[];const watch=pg=>{pg.on('pageerror',e=>errs.push('PAGEERR '+e.messa
  await pg.goto('http://localhost:8765/index.html');await pg.evaluate(()=>{try{localStorage.removeItem('ae-source-mode')}catch(e){}});await pg.reload();await pg.waitForTimeout(900);
  R.mode=await pg.evaluate(()=>({mode:__sourceDebug.mode,seg:[...document.querySelectorAll('#netPanel [data-q]')].map(b=>b.dataset.q+':'+b.getAttribute('aria-checked')).join(),sel:document.getElementById('sourceMode').value,
   lite:Object.values(__sourceDebug.manifest.recordings).filter(m=>m.lite).length}));
- ok('default_lite',R.mode.mode==='lite'&&R.mode.seg==='lite:true,pcm:false'&&R.mode.sel==='lite'&&R.mode.lite===141); /* v0.79：軽量 MP3 は 118→141（23本追加） */
+ ok('default_lite',R.mode.mode==='lite'&&R.mode.seg==='lite:true,pcm:false'&&R.mode.sel==='lite'&&R.mode.lite===156); /* v0.82：141→156（NPS 15本）。v0.79：軽量 MP3 は 118→141（23本追加） */
  await pg.click('#play');await pg.waitForTimeout(15000);
  R.play={mb:+(bytes/1048576).toFixed(2),flac,lite,log:await pg.evaluate(()=>[...new Set(__sourceDebug.log().map(l=>l.key))].join())};
  ok('light_traffic',R.play.mb<9&&R.play.flac===0&&R.play.lite>0&&/lite/.test(R.play.log)&&!/pcm/.test(R.play.log));

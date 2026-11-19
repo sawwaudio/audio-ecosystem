@@ -20,7 +20,7 @@ R.help=await pg.evaluate(()=>{const helps=[...document.querySelectorAll('details
 ok('help_folded',R.help.count>=10&&R.help.closed&&R.help.long.length===0);
 // 4. 最初は12枚、「すべて表示」で127枚
 R.tiles={first:await pg.evaluate(()=>document.querySelectorAll('#tileGrid .tile').length),more:await pg.evaluate(()=>document.querySelector('#tileSection .tileMore')?.textContent)};
-R.tiles.all=await pg.evaluate(()=>__studioDebug.showAll(true));await pg.evaluate(()=>__studioDebug.showAll(false));R.tiles.amb=await pg.evaluate(()=>document.querySelectorAll('#ambGrid .tile').length);ok('tiles_paged',R.tiles.first===12&&/98/.test(R.tiles.more)&&R.tiles.all===98&&R.tiles.amb===52); // v0.79：生き物98（＋虫の合唱1）と環境音52（＋環境層16・楽器の実録音6）。v0.48：生き物97と環境音30（別の欄）
+R.tiles.all=await pg.evaluate(()=>__studioDebug.showAll(true));await pg.evaluate(()=>__studioDebug.showAll(false));R.tiles.amb=await pg.evaluate(()=>document.querySelectorAll('#ambGrid .tile').length);ok('tiles_paged',R.tiles.first===12&&/105/.test(R.tiles.more)&&R.tiles.all===105&&R.tiles.amb===60); // v0.82：生き物105（＋NPS の生き物7）・環境音60（＋NPS 8）。v0.79：生き物98（＋虫の合唱1）と環境音52（＋環境層16・楽器の実録音6）。v0.48：生き物97と環境音30（別の欄）
 // 5. タイル＝音場：ループで鳴らす → 自律演奏を始めると参加メンバーへ引き継ぐ（二重に鳴らさない）
 const ids=await pg.evaluate(()=>{const tiles=[...document.querySelectorAll('#tileSection .tile')].map(t=>t.dataset.id);return {bio:tiles.filter(id=>__studioDebug.engineKind(id)==='bio').slice(0,2)}});
 await pg.evaluate(()=>__studioDebug.showAll(true));const land=await pg.evaluate(()=>[...document.querySelectorAll('#tileSection .tile')].map(t=>t.dataset.id).find(id=>__studioDebug.engineKind(id)==='field'&&!(__studioDebug.fieldLevel(id)>0)));await pg.evaluate(()=>__studioDebug.showAll(false));

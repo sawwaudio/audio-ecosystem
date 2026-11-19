@@ -18,7 +18,7 @@ ap.add_argument('--start', required=True); ap.add_argument('--days', type=int, d
 a = ap.parse_args()
 h = open(a.app, encoding='utf-8').read(); appdir = os.path.dirname(os.path.abspath(a.app))
 blk = lambda i: json.loads(re.search(r'id="%s">(.*?)</script>' % i, h, re.S).group(1))
-recs = {r['id']: r for r in blk('ae-recordings')}; cat = blk('ae-categories')['categories']; man = blk('ae-audio-manifest')['recordings']; meta = blk('ae-wildlife-meta')
+recs = {r['id']: r for r in blk('ae-recordings') if r.get('verificationStatus') in ('APPROVED', 'LEGACY')}  # v0.82 公開の審査ゲート; cat = blk('ae-categories')['categories']; man = blk('ae-audio-manifest')['recordings']; meta = blk('ae-wildlife-meta')
 HP = os.path.join(ROOT, 'tools', 'daily_history.json'); hist = json.load(open(HP, encoding='utf-8')) if os.path.exists(HP) else []
 used = {x['id'] for x in hist}
 def allowed(r):

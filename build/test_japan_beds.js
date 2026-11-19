@@ -3,7 +3,7 @@ const {chromium}=require('playwright');(async()=>{const b=await chromium.launch(
 const pg=await b.newPage({viewport:{width:390,height:900}});await require('./photo_fixture')(pg);const errs=[];pg.on('pageerror',e=>errs.push('PAGEERR '+e.message));pg.on('console',m=>{if(m.type()==='error')errs.push('CONSOLE '+m.text())});
 const R={},fail=[];const ok=(k,c)=>{R[k]=c;if(!c)fail.push(k)};const NEW=['kashiwa-insects','bamboo-stream','ricefield-frogs','kyoto-rain'];
 await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
-R.controls=await pg.evaluate(()=>[...document.querySelectorAll('#fieldControls input')].map(i=>i.id));ok('field_controls',/* v0.79：環境層 31→47（v0.79 で16本追加） */R.controls.length===47&&NEW.every(id=>R.controls.includes('field-'+id)));
+R.controls=await pg.evaluate(()=>[...document.querySelectorAll('#fieldControls input')].map(i=>i.id));ok('field_controls',/* v0.82：47→55（NPS の地熱・湖氷・温泉・森林火災8本）。v0.79：環境層 31→47（v0.79 で16本追加） */R.controls.length===55&&NEW.every(id=>R.controls.includes('field-'+id)));
 await pg.click('#play');await pg.waitForTimeout(3000);
 // PCM・互換MP3の両方で4本を1本ずつデコード
 await pg.evaluate(()=>{const d=document.getElementById('devPanel');if(d)d.open=true}); // v0.53：確認・開発用の欄は畳んである

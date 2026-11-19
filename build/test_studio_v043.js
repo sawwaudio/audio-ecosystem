@@ -16,7 +16,7 @@ R.map=await pg.evaluate(()=>{const photos=JSON.parse(document.getElementById('ae
  for(const r of recs){const p=__studioDebug.photoFor(r.id),b=__studioDebug.binomial(r.latin);if(p){withPhoto.push(r.id);if(p.scene){if(sc.map[r.id]!==p.scene||(b&&photos[b]))bad.push('scene:'+r.id)}else if(!b||p.latin!==b||photos[b].file!==p.file)bad.push(r.id)}else if(b&&photos[b])bad.push('missing:'+r.id)
   if(p&&!/^(CC0|Public domain|CC BY \d)/.test(p.license))bad.push('license:'+r.id);if(p&&/SA|NC|ND/.test(p.license))bad.push('license:'+r.id)}
  const tiles=[...document.querySelectorAll('#tileSection .tile')];return {tiles:tiles.length,withPhoto:withPhoto.length,imgs:tiles.filter(t=>t.querySelector('img')).length,ph:tiles.filter(t=>t.querySelector('.ph')).length,bad,first:tiles.slice(0,3).map(t=>t.dataset.id)}});
-/* v0.79：127→150 */ok('tile_count',R.map.tiles===150&&R.map.imgs+R.map.ph===150);ok('photo_mapping',R.map.bad.length===0&&R.map.withPhoto>=30&&R.map.imgs===R.map.withPhoto);
+/* v0.82：150→165。v0.79：127→150 */ok('tile_count',R.map.tiles===165&&R.map.imgs+R.map.ph===165);ok('photo_mapping',R.map.bad.length===0&&R.map.withPhoto>=30&&R.map.imgs===R.map.withPhoto);
 // 3. タップで再生・もう一度で停止・重ねる
 const t1=R.map.first[0],t2=await pg.evaluate(()=>[...document.querySelectorAll('#tileSection .tile')].find(t=>t.dataset.group==='ambience'&&__studioDebug.engineKind(t.dataset.id)==='field').dataset.id);
 await pg.tap('#tileSection .tile[data-id="'+t1+'"] .tilePlay');await wait(2500);

@@ -1,0 +1,107 @@
+{
+ "yellowstone-fumarole": {
+  "duration": 38.056,
+  "sample_rate": "44100",
+  "bitrate": "192kbps",
+  "channels": "2",
+  "sha256": "23b3c8206423abe6c5a5007e85acca3a9cf3c1b619bd733e64f2fc039e5db7b5"
+ },
+ "yellowstone-black-growler": {
+  "duration": 31.848,
+  "sample_rate": "44100",
+  "bitrate": "192kbps",
+  "channels": "2",
+  "sha256": "91e3615e92c088e375c10bb1e4f2a65d8acf35c268e9ca53e55c535676ba96d9"
+ },
+ "yellowstone-dragons-mouth": {
+  "duration": 83.02,
+  "sample_rate": "48000",
+  "bitrate": "256kbps",
+  "channels": "1",
+  "sha256": "29589f6c45d563cb1aeb9e754a074b11b5852bbe12ef50ec07e6aa439cdb8744"
+ },
+ "yellowstone-black-sand-pool": {
+  "duration": 41.765,
+  "sample_rate": "44100",
+  "bitrate": "192kbps",
+  "channels": "2",
+  "sha256": "68e523c632291677a19534689b004b9aebceb4ce4c739b000daf495107455bef"
+ },
+ "yellowstone-lake-sings": {
+  "duration": 133.334,
+  "sample_rate": "44100",
+  "bitrate": "192kbps",
+  "channels": "2",
+  "sha256": "ad9c91c02385666c0c284da4526d7784d764d440251b46355f1f1b228de795fd"
+ },
+ "yellowstone-elk-bugle": {
+  "duration": 10.933,
+  "sample_rate": "44100",
+  "bitrate": "256kbps",
+  "channels": "1",
+  "sha256": "0c6b38fe14ea75dd7411acff841a2a9798237f2cbdf6c11b5c308a0ed16f54b1"
+ },
+ "yellowstone-old-faithful": {
+  "duration": 389.769,
+  "sample_rate": "44100",
+  "bitrate": "192kbps",
+  "channels": "2",
+  "sha256": "9afd780c6300b63bb1f1c437741aa8e0534f5cfe02ffef637f4e5b0d8927ec8c"
+ },
+ "yellowstone-chorus-frogs": {
+  "duration": 41.31,
+  "sample_rate": "44100",
+  "bitrate": "256kbps",
+  "channels": "2",
+  "sha256": "1a3b8a840d39452081b6468dcd0a28eddabd9f22711b95f87046351fea3a4377"
+ },
+ "yellowstone-coyotes": {
+  "duration": 79.852,
+  "sample_rate": "48000",
+  "bitrate": "256kbps",
+  "channels": "2",
+  "sha256": "4b309096c3f9ef89cf92a27232e106ad4d4bb5200eea663f2d82ba303b2147c9"
+ },
+ "yellowstone-bison-rut": {
+  "duration": 90.953,
+  "sample_rate": "44100",
+  "bitrate": "192kbps",
+  "channels": "2",
+  "sha256": "7bc21ce3a76d4a112ed0b8db389dac9250dc7c0a7ec57e93486b84d74bd8e194"
+ },
+ "yellowstone-wilsons-snipe": {
+  "duration": 258.981,
+  "sample_rate": "44100",
+  "bitrate": "192kbps",
+  "channels": "1",
+  "sha256": "67bf55a5c6b83eabc76067815d13722976ebd5078f01c506824e66c29abadc3a"
+ },
+ "yellowstone-sandhill-cranes": {
+  "duration": 24.012,
+  "sample_rate": "44100",
+  "bitrate": "128kbps",
+  "channels": "1",
+  "sha256": "23371e93ed2dc6c43cfe8ada4125a2f15bcff19946e9efe969c8ca03caa60df8"
+ },
+ "yellowstone-killdeer": {
+  "duration": 99.904,
+  "sample_rate": "44100",
+  "bitrate": "192kbps",
+  "channels": "2",
+  "sha256": "bc8d18f537160cae9d04648d5a61e81fa6db131444999fd3278a1ffd1fb441b8"
+ },
+ "yellowstone-ear-spring": {
+  "duration": 15.989,
+  "sample_rate": "44100",
+  "bitrate": "192kbps",
+  "channels": "2",
+  "sha256": "5ae00ea8c01e753e985f95edc7cc3eaec8fa3315037d15f4fbb4e5c28bb5c2f2"
+ },
+ "yellowstone-maple-fire": {
+  "duration": 59.971,
+  "sample_rate": "44100",
+  "bitrate": "192kbps",
+  "channels": "2",
+  "sha256": "15d698e6620f17e027b07b96f3dde2632f0e2dbf6d224dc939a6e86010d149d1"
+ }
+}

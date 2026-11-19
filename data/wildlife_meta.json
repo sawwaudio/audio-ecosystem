@@ -6014,5 +6014,606 @@
    "analysedFrom": "pcm"
   },
   "note": "v0.79 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-fumarole": {
+  "en": "Roaring fumarole (Norris Geyser Basin, Yellowstone)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園 ノリス間欠泉盆地 ポーセリン盆地",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "mountain"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Drone",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0149,
+   "tonality": 0.0904,
+   "envCV": 0.2253,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 607.1922,
+   "activity": 0.001,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-black-growler": {
+  "en": "Black Growler Steam Vent (Yellowstone)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園 ノリス間欠泉盆地 ポーセリン盆地",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "mountain"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Drone",
+   "Atmosphere"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0041,
+   "tonality": 0.2287,
+   "envCV": 0.2601,
+   "pulseHz": 28.5714,
+   "pulseStrength": 0.4575,
+   "centroidHz": 213.0299,
+   "activity": 0.0061,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-dragons-mouth": {
+  "en": "Dragon's Mouth Spring (Yellowstone)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園 マッドボルケーノ地域",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "mountain"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Pulse",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.01,
+   "tonality": 0.2648,
+   "envCV": 0.5876,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 242.6653,
+   "activity": 0.0865,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-black-sand-pool": {
+  "en": "Imploding bubbles at Black Sand Pool (Yellowstone)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園 ブラックサンド盆地",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "mountain"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Pulse",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.001,
+   "tonality": 0.2968,
+   "envCV": 1.7975,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 108.5433,
+   "activity": 0.347,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-old-faithful": {
+  "en": "Old Faithful Geyser, late fall without crowds (Yellowstone)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園 アッパー間欠泉盆地",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "mountain"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Drone",
+   "Atmosphere"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.1047,
+   "tonality": 0.0575,
+   "envCV": 0.3439,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1620.2118,
+   "activity": 0.0,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-lake-sings": {
+  "en": "Singing ice of Yellowstone Lake in winter",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園 イエローストーン湖",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "mountain"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Melody",
+   "Atmosphere"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0006,
+   "tonality": 0.3751,
+   "envCV": 0.9548,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 255.56,
+   "activity": 0.1788,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-elk-bugle": {
+  "en": "Bull elk bugle (Yellowstone)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園 マンモス・ホット・スプリングス",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Call"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0032,
+   "tonality": 0.3085,
+   "envCV": 1.069,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1037.5008,
+   "activity": 0.3922,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-chorus-frogs": {
+  "en": "Boreal chorus frogs (Yellowstone)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園（米国ワイオミング州）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture",
+   "Pulse"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0012,
+   "tonality": 0.1366,
+   "envCV": 0.5959,
+   "pulseHz": 25.0,
+   "pulseStrength": 0.7838,
+   "centroidHz": 2817.3396,
+   "activity": 0.0851,
+   "autoRoles": [
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-coyotes": {
+  "en": "Coyotes along the Gibbon River (Yellowstone)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園 ギボン川",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "river",
+   "grassland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Call"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0022,
+   "tonality": 0.1992,
+   "envCV": 0.8007,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 1279.7176,
+   "activity": 0.2293,
+   "autoRoles": [
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-bison-rut": {
+  "en": "Bull bison bellowing in the rut (Yellowstone)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園（米国ワイオミング州）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Call",
+   "Drone"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0005,
+   "tonality": 0.2985,
+   "envCV": 0.8595,
+   "pulseHz": 25.0,
+   "pulseStrength": 0.7274,
+   "centroidHz": 160.5702,
+   "activity": 0.1472,
+   "autoRoles": [
+    "Pulse",
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-wilsons-snipe": {
+  "en": "Wilson's snipe winnowing at night (Yellowstone)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園 水につかった草地",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland"
+  ],
+  "activity": [
+   "night"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Pulse",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0456,
+   "tonality": 0.1312,
+   "envCV": 2.1234,
+   "pulseHz": 8.6957,
+   "pulseStrength": 0.7817,
+   "centroidHz": 859.1774,
+   "activity": 0.3168,
+   "autoRoles": [
+    "Pulse",
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-sandhill-cranes": {
+  "en": "Sandhill cranes calling overhead (Yellowstone)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園（米国ワイオミング州）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "wetland",
+   "grassland"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Call"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0008,
+   "tonality": 0.2035,
+   "envCV": 1.2802,
+   "pulseHz": 20.0,
+   "pulseStrength": 0.7936,
+   "centroidHz": 810.4325,
+   "activity": 0.3034,
+   "autoRoles": [
+    "Pulse",
+    "Melody"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-killdeer": {
+  "en": "Killdeer chorus on Geyser Hill (Yellowstone)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "種名が原典にないため分布を付けない",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園 アッパー間欠泉盆地 ガイザーヒル",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "grassland"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Call",
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0015,
+   "tonality": 0.2184,
+   "envCV": 0.5521,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 302.0609,
+   "activity": 0.0648,
+   "autoRoles": [
+    "Texture"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-ear-spring": {
+  "en": "Ear Spring, sizzling and bubbling (Yellowstone)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園 アッパー間欠泉盆地 ガイザーヒル",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "mountain"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0285,
+   "tonality": 0.1011,
+   "envCV": 0.4916,
+   "pulseHz": null,
+   "pulseStrength": 0.0,
+   "centroidHz": 667.9507,
+   "activity": 0.091,
+   "autoRoles": [
+    "Atmosphere"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
+ },
+ "yellowstone-maple-fire": {
+  "en": "Wildfire: burning lodgepole pines (Maple Fire 2016, Yellowstone)",
+  "nativeRegions": [],
+  "japanNative": null,
+  "japanEndemic": null,
+  "distributionBasis": "環境音・種を特定しない合唱（分布なし）",
+  "recordedCountry": "アメリカ合衆国",
+  "recordedArea": "ワイオミング州",
+  "recordedRegions": [
+   "north_america"
+  ],
+  "recordingEnvironment": "イエローストーン国立公園（米国ワイオミング州）",
+  "wildOrCaptive": "野外",
+  "habitats": [
+   "temperate_forest"
+  ],
+  "activity": [
+   "day"
+  ],
+  "activityBasis": "原典の記載（録音時刻・夜／朝の記述）または鳴く時間帯の一般的な知識",
+  "soundRoles": [
+   "Texture"
+  ],
+  "soundRolesBasis": "原典の記載と録音の性格による手動分類（自動音響分析値を併記）",
+  "acoustic": {
+   "flatness": 0.0182,
+   "tonality": 0.3219,
+   "envCV": 0.4248,
+   "pulseHz": 7.4074,
+   "pulseStrength": 0.508,
+   "centroidHz": 251.1411,
+   "activity": 0.0518,
+   "autoRoles": [
+    "Atmosphere",
+    "Pulse"
+   ],
+   "analysedFrom": "pcm"
+  },
+  "note": "v0.82 取り込み。原典確認日 2026-11-19。"
  }
 }

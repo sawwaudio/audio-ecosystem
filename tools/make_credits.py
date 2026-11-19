@@ -7,7 +7,7 @@ import html, json, re, sys
 src, out = sys.argv[1], sys.argv[2]
 h = open(src, encoding='utf-8').read()
 blk = lambda i: json.loads(re.search(r'id="%s">(.*?)</script>' % i, h, re.S).group(1))
-recs = blk('ae-recordings'); meta = blk('ae-wildlife-meta'); cat = blk('ae-categories')['categories']
+recs = [r for r in blk('ae-recordings') if r.get('verificationStatus') in ('APPROVED', 'LEGACY')]; meta = blk('ae-wildlife-meta'); cat = blk('ae-categories')['categories']  # v0.82 公開の審査ゲート（アプリと同じ）
 CAT = [('ambience', 'Ambience / 環境音'), ('birds', 'Birds / 鳥'), ('insects', 'Insects / 虫'), ('amphibians', 'Amphibians / 両生類'), ('mammals', 'Mammals / 哺乳類'), ('aquatic', 'Aquatic life / 水の生き物')]
 e = html.escape
 rows = {k: [] for k, _ in CAT}; other = []

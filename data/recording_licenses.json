@@ -48,6 +48,8 @@
   "previewGain": 0.9327868378505203,
   "previewRms": 0.0820038691163063,
   "previewPeak": 0.6968365907669067,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C"
  },
  {
@@ -99,6 +101,8 @@
   "previewGain": 2.15993893253146,
   "previewRms": 0.036749232560396194,
   "previewPeak": 0.30093443393707275,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C"
  },
  {
@@ -152,6 +156,8 @@
   "previewGain": 0.6677239686492997,
   "previewRms": 0.09617816656827927,
   "previewPeak": 0.9734561443328857,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C"
  },
  {
@@ -203,6 +209,8 @@
   "previewGain": 0.6982165664146345,
   "previewRms": 0.06366608291864395,
   "previewPeak": 0.9309432506561279,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -254,6 +262,8 @@
   "previewGain": 1.0057788525983735,
   "previewRms": 0.09492288529872894,
   "previewPeak": 0.6462653279304504,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B",
   "nameJa": "アブラゼミ",
   "nameJaSource": {
@@ -320,6 +330,8 @@
   "previewGain": 1.5175213110264612,
   "previewRms": 0.027282247319817543,
   "previewPeak": 0.42833006381988525,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B",
   "nameJa": "ヒグラシ",
   "nameJaSource": {
@@ -386,6 +398,8 @@
   "previewGain": 2.3276619273622075,
   "previewRms": 0.05009360983967781,
   "previewPeak": 0.2792501747608185,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B",
   "nameJa": "ニイニイゼミ",
   "nameJaSource": {
@@ -452,6 +466,8 @@
   "previewGain": 0.9320886669655338,
   "previewRms": 0.05289849638938904,
   "previewPeak": 0.6973585486412048,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B",
   "nameJa": "ツクツクボウシ",
   "nameJaSource": {
@@ -518,6 +534,8 @@
   "previewGain": 2.285333861434276,
   "previewRms": 0.0620354525744915,
   "previewPeak": 0.2844223380088806,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C",
   "nameJa": "ミンミンゼミ",
   "nameJaSource": {
@@ -586,6 +604,8 @@
   "previewGain": 1.7559267975674762,
   "previewRms": 0.17261594533920288,
   "previewPeak": 0.3701748847961426,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B",
   "nameJa": "ウグイス",
   "nameJaSource": {
@@ -662,6 +682,8 @@
   "previewGain": 1.0586383575888825,
   "previewRms": 0.08591441065073013,
   "previewPeak": 0.6139962673187256,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B",
   "nameJa": "ホトトギス",
   "nameJaSource": {
@@ -731,6 +753,7 @@
   "previewGain": 1.8612868649546883,
   "previewRms": 0.04888858646154404,
   "previewPeak": 0.34922075271606445,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -782,6 +805,8 @@
   "previewGain": 4,
   "previewRms": 0.00028313026996329427,
   "previewPeak": 0.0033473894000053406,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -833,6 +858,8 @@
   "previewGain": 2.392055137608219,
   "previewRms": 0.014910344034433365,
   "previewPeak": 0.2717328667640686,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C",
   "nameJa": "カジカガエル",
   "nameJaSource": {
@@ -903,6 +930,8 @@
   "previewGain": 1.8128577328835265,
   "previewRms": 0.035310808569192886,
   "previewPeak": 0.35854992270469666,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B",
   "nameJa": "ヒヨドリ",
   "nameJaSource": {
@@ -972,6 +1001,8 @@
   "previewGain": 0.6094173993146033,
   "previewRms": 0.037959322333335876,
   "previewPeak": 1.0665924549102783,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -1023,6 +1054,8 @@
   "previewGain": 0.950634172195591,
   "previewRms": 0.21105606853961945,
   "previewPeak": 0.6837540864944458,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C"
  },
  {
@@ -1074,6 +1107,8 @@
   "previewGain": 0.4690307640960531,
   "previewRms": 0.2671172320842743,
   "previewPeak": 1.3858366012573242,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C"
  },
  {
@@ -1127,6 +1162,8 @@
   "previewGain": 1.7899909328406471,
   "previewRms": 0.048416618257761,
   "previewPeak": 0.3631303310394287,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C"
  },
  {
@@ -1179,6 +1216,7 @@
   "previewGain": 3.221244898584619,
   "previewRms": 0.020444083958864212,
   "previewPeak": 0.20178534090518951,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -1232,6 +1270,8 @@
   "previewGain": 1.57060862866225,
   "previewRms": 0.0452815443277359,
   "previewPeak": 0.4138523042201996,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C"
  },
  {
@@ -1285,6 +1325,7 @@
   "previewGain": 1.0170146138857887,
   "previewRms": 0.041210662573575974,
   "previewPeak": 0.6391255259513855,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -1338,6 +1379,7 @@
   "previewGain": 3.8497111707983414,
   "previewRms": 0.005476578138768673,
   "previewPeak": 0.1688438355922699,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -1382,6 +1424,8 @@
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
   "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C"
  },
  {
@@ -1426,6 +1470,8 @@
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
   "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C",
   "nameJa": "トノサマバッタ",
   "nameJaSource": {
@@ -1506,6 +1552,8 @@
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
   "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C"
  },
  {
@@ -1550,6 +1598,8 @@
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
   "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C"
  },
  {
@@ -1594,6 +1644,8 @@
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
   "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C"
  },
  {
@@ -1638,6 +1690,8 @@
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
   "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C"
  },
  {
@@ -1682,6 +1736,8 @@
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
   "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C",
   "nameJa": "スズメ",
   "nameJaSource": {
@@ -1744,6 +1800,8 @@
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
   "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY-SA（継承あり）。販売版・リールでは使わない（既存方針）",
   "rightsTier": "C",
   "nameJa": "ツバメ",
   "nameJaSource": {
@@ -1806,6 +1864,7 @@
   "embeddedSampleRate": 44100,
   "embeddedChannels": 1,
   "changes": "原本保存。全長をモノラル44.1kHz/128kbps MP3に変換。演奏時の音量/定位/フェード。",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -1858,6 +1917,7 @@
   "previewRms": 0.005000396125380734,
   "previewPeak": 0.03070296347141266,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -1910,6 +1970,7 @@
   "previewRms": 0.0011976370673128312,
   "previewPeak": 0.010272033512592316,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -1962,6 +2023,8 @@
   "previewRms": 0.06079184362311935,
   "previewPeak": 0.5289493799209595,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -2014,6 +2077,8 @@
   "previewRms": 0.05895745308452062,
   "previewPeak": 0.3453735113143921,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -2066,6 +2131,8 @@
   "previewRms": 0.04537438746313599,
   "previewPeak": 0.23964205384254456,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -2118,6 +2185,7 @@
   "previewRms": 0.0486556995435624,
   "previewPeak": 0.36989331245422363,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -2170,6 +2238,7 @@
   "previewRms": 0.007240735440493936,
   "previewPeak": 0.047501835972070694,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -2222,6 +2291,8 @@
   "previewRms": 0.01232640180549614,
   "previewPeak": 0.08062513172626495,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -2274,6 +2345,8 @@
   "previewRms": 0.07218742952560167,
   "previewPeak": 0.40750837326049805,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -2323,6 +2396,8 @@
   "previewRms": 0.05770666840206119,
   "previewPeak": 0.5260236263275146,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -2372,6 +2447,8 @@
   "previewRms": 0.15353555294162732,
   "previewPeak": 0.8846362829208374,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -2421,6 +2498,7 @@
   "previewRms": 0.021473771033030845,
   "previewPeak": 0.41288188099861145,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -2470,6 +2548,8 @@
   "previewRms": 0.05354626646478094,
   "previewPeak": 0.7352426052093506,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -2519,6 +2599,8 @@
   "previewRms": 0.025019812940481275,
   "previewPeak": 0.6704084873199463,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -2568,6 +2650,7 @@
   "previewRms": 0.01939797962175578,
   "previewPeak": 0.28033435344696045,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -2617,6 +2700,7 @@
   "previewRms": 0.022417422427544298,
   "previewPeak": 0.32389360666275024,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -2666,6 +2750,8 @@
   "previewRms": 0.05137889933287459,
   "previewPeak": 0.6368386149406433,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -2715,6 +2801,7 @@
   "previewRms": 0.04502666126581054,
   "previewPeak": 0.4828147292137146,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -2764,6 +2851,7 @@
   "previewRms": 0.020529707346274437,
   "previewPeak": 0.3017999231815338,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -2813,6 +2901,7 @@
   "previewRms": 0.0442982314176609,
   "previewPeak": 0.5766046047210693,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A",
   "nameJa": "ウグイス",
   "nameJaSource": {
@@ -2887,6 +2976,8 @@
   "previewRms": 0.03651474744014677,
   "previewPeak": 0.23797672986984253,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -2936,6 +3027,8 @@
   "previewRms": 0.027770351204487842,
   "previewPeak": 0.20751124620437622,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -2985,6 +3078,8 @@
   "previewRms": 0.02260294306866796,
   "previewPeak": 0.16141697764396667,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -3034,6 +3129,7 @@
   "previewRms": 0.03263859375833774,
   "previewPeak": 0.5567640662193298,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -3083,6 +3179,7 @@
   "previewRms": 0.13389528707261417,
   "previewPeak": 0.9613670110702515,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -3132,6 +3229,7 @@
   "previewRms": 0.023391446485472093,
   "previewPeak": 0.19626010954380035,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -3181,6 +3279,8 @@
   "previewRms": 0.006219918657929548,
   "previewPeak": 0.14660847187042236,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -3230,6 +3330,7 @@
   "previewRms": 0.04854320743272594,
   "previewPeak": 0.33264315128326416,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -3279,6 +3380,8 @@
   "previewRms": 0.01776089507103108,
   "previewPeak": 0.2749190330505371,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -3328,6 +3431,8 @@
   "previewRms": 0.04750355267605546,
   "previewPeak": 0.4104299545288086,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -3377,6 +3482,7 @@
   "previewRms": 0.00735534972511856,
   "previewPeak": 0.05872775614261627,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -3426,6 +3532,8 @@
   "previewRms": 0.004983266652618299,
   "previewPeak": 0.06257648020982742,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -3475,6 +3583,8 @@
   "previewRms": 0.05783475133989755,
   "previewPeak": 0.6131625175476074,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -3524,6 +3634,7 @@
   "previewRms": 0.009706628428339534,
   "previewPeak": 0.2671465575695038,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -3573,6 +3684,7 @@
   "previewRms": 0.030870280660313058,
   "previewPeak": 0.7932935357093811,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -3622,6 +3734,8 @@
   "previewRms": 0.06113172502157557,
   "previewPeak": 0.2812362313270569,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -3671,6 +3785,7 @@
   "previewRms": 0.008815642044205752,
   "previewPeak": 0.20954978466033936,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -3720,6 +3835,8 @@
   "previewRms": 0.10425194085475369,
   "previewPeak": 0.8568437695503235,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -3769,6 +3886,7 @@
   "previewRms": 0.03690520248904329,
   "previewPeak": 0.32061639428138733,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -3818,6 +3936,8 @@
   "previewRms": 0.11360725991812087,
   "previewPeak": 0.8109045028686523,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -3867,6 +3987,7 @@
   "previewRms": 0.09261488239068562,
   "previewPeak": 0.5178794264793396,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -3916,6 +4037,7 @@
   "previewRms": 0.05346625692484325,
   "previewPeak": 0.7364698648452759,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -3965,6 +4087,7 @@
   "previewRms": 0.07624183064594944,
   "previewPeak": 0.7506505250930786,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -4014,6 +4137,8 @@
   "previewRms": 0.009537048251903471,
   "previewPeak": 0.24326728284358978,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -4063,6 +4188,7 @@
   "previewRms": 0.033716021347648346,
   "previewPeak": 0.8057724833488464,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -4112,6 +4238,7 @@
   "previewRms": 0.015974265156703808,
   "previewPeak": 0.3275431990623474,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -4161,6 +4288,7 @@
   "previewRms": 0.04011925007558324,
   "previewPeak": 0.9070073962211609,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -4210,6 +4338,7 @@
   "previewRms": 0.07679596468829418,
   "previewPeak": 0.8199468851089478,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -4259,6 +4388,7 @@
   "previewRms": 0.06177454382312846,
   "previewPeak": 0.8537704348564148,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -4308,6 +4438,8 @@
   "previewRms": 0.06247912607395169,
   "previewPeak": 0.6173143982887268,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -4357,6 +4489,8 @@
   "previewRms": 0.035971905420759225,
   "previewPeak": 0.45743677020072937,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -4406,6 +4540,7 @@
   "previewRms": 0.031858793517209556,
   "previewPeak": 0.4212836027145386,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -4455,6 +4590,7 @@
   "previewRms": 0.016348210662309418,
   "previewPeak": 0.23444245755672455,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -4504,6 +4640,7 @@
   "previewRms": 0.060627299955332455,
   "previewPeak": 0.6118563413619995,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -4553,6 +4690,7 @@
   "previewRms": 0.014515226959714703,
   "previewPeak": 0.23965081572532654,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -4602,6 +4740,8 @@
   "previewRms": 0.06849655392669249,
   "previewPeak": 0.2897123098373413,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -4651,6 +4791,8 @@
   "previewRms": 0.01267728553415648,
   "previewPeak": 0.9622488021850586,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -4700,6 +4842,8 @@
   "previewRms": 0.10100440437433218,
   "previewPeak": 0.7031745910644531,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -4749,6 +4893,8 @@
   "previewRms": 0.009512857570959102,
   "previewPeak": 0.09115554392337799,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -4798,6 +4944,7 @@
   "previewRms": 0.0568643213502905,
   "previewPeak": 0.34727969765663147,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -4847,6 +4994,7 @@
   "previewRms": 0.007715893228081029,
   "previewPeak": 0.10275327414274216,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -4896,6 +5044,7 @@
   "previewRms": 0.009348816527569742,
   "previewPeak": 0.06577803194522858,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -4945,6 +5094,7 @@
   "previewRms": 0.00364559421419891,
   "previewPeak": 0.026397060602903366,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -4994,6 +5144,7 @@
   "previewRms": 0.00841751912087375,
   "previewPeak": 0.05643418803811073,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -5044,6 +5195,8 @@
   "previewPeak": 0.3030954897403717,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "attributionExtra": "Bill’s Amazonas Sound Library (by Bill Cutbill)",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -5093,6 +5246,8 @@
   "previewRms": 0.07832319355474024,
   "previewPeak": 0.47118961811065674,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -5142,6 +5297,7 @@
   "previewRms": 0.00466011318696234,
   "previewPeak": 0.040484651923179626,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -5191,6 +5347,7 @@
   "previewRms": 0.041050734732968684,
   "previewPeak": 0.30864161252975464,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -5240,6 +5397,7 @@
   "previewRms": 0.052751531755559404,
   "previewPeak": 0.572303831577301,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -5289,6 +5447,8 @@
   "previewRms": 0.0020178778845838254,
   "previewPeak": 0.019741248339414597,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -5338,6 +5498,8 @@
   "previewRms": 0.005601258520280781,
   "previewPeak": 0.7688747048377991,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -5387,6 +5549,8 @@
   "previewRms": 0.028027329277882543,
   "previewPeak": 0.44701722264289856,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -5436,6 +5600,7 @@
   "previewRms": 0.009090444104607494,
   "previewPeak": 0.5064226388931274,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -5485,6 +5650,7 @@
   "previewRms": 0.09402250859712018,
   "previewPeak": 0.5488218665122986,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -5534,6 +5700,7 @@
   "previewRms": 0.004984088497984615,
   "previewPeak": 0.0334121435880661,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -5583,6 +5750,7 @@
   "previewRms": 0.0032950981950614303,
   "previewPeak": 0.021291449666023254,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -5632,6 +5800,7 @@
   "previewRms": 0.012104634186428317,
   "previewPeak": 0.10968481004238129,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -5681,6 +5850,7 @@
   "previewRms": 0.05758717135840683,
   "previewPeak": 0.27793946862220764,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -5731,6 +5901,8 @@
   "previewPeak": 0.4387916326522827,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -5781,6 +5953,7 @@
   "previewPeak": 0.027879104018211365,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -5831,6 +6004,8 @@
   "previewPeak": 0.18314699828624725,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -5881,6 +6056,7 @@
   "previewPeak": 0.21503323316574097,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -5931,6 +6107,7 @@
   "previewPeak": 0.15796352922916412,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -5981,6 +6158,7 @@
   "previewPeak": 0.1591111123561859,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -6031,6 +6209,7 @@
   "previewPeak": 0.2956858277320862,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -6081,6 +6260,8 @@
   "previewPeak": 0.11662867665290833,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -6131,6 +6312,8 @@
   "previewPeak": 0.5147932171821594,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -6181,6 +6364,8 @@
   "previewPeak": 0.09561771899461746,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -6231,6 +6416,8 @@
   "previewPeak": 0.20163488388061523,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -6281,6 +6468,7 @@
   "previewPeak": 0.035001445561647415,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -6331,6 +6519,7 @@
   "previewPeak": 0.19454294443130493,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -6381,6 +6570,7 @@
   "previewPeak": 0.1520654559135437,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -6431,6 +6621,8 @@
   "previewPeak": 0.038903385400772095,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -6481,6 +6673,8 @@
   "previewPeak": 0.26351138949394226,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -6531,6 +6725,7 @@
   "previewPeak": 0.20157486200332642,
   "masterLocation": "オーナーのMac（~/Downloads、原本は無加工）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -6581,6 +6776,8 @@
   "previewPeak": 0.20793762803077698,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "寺院の鐘（宗教的な営みの音）。儀礼音として扱うかオーナー確認",
   "rightsTier": "A"
  },
  {
@@ -6631,6 +6828,7 @@
   "previewPeak": 0.8686370849609375,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -6681,6 +6879,7 @@
   "previewPeak": 0.018631041049957275,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -6731,6 +6930,8 @@
   "previewPeak": 0.3465827703475952,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "LEGACY",
+  "reviewNote": "三社祭（神社の祭礼）の場の音。宗教儀礼の音声に当たるかオーナー確認",
   "rightsTier": "A"
  },
  {
@@ -6781,6 +6982,7 @@
   "previewPeak": 0.35190773010253906,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -6831,6 +7033,7 @@
   "previewPeak": 0.2865198850631714,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -6881,6 +7084,7 @@
   "previewPeak": 0.37382611632347107,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -6931,6 +7135,7 @@
   "previewPeak": 0.011839151382446289,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -6981,6 +7186,7 @@
   "previewPeak": 0.2515122592449188,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -7031,6 +7237,7 @@
   "previewPeak": 0.0025152829475700855,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -7081,6 +7288,7 @@
   "previewPeak": 0.8598118424415588,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -7131,6 +7339,7 @@
   "previewPeak": 0.0036349964793771505,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -7181,6 +7390,7 @@
   "previewPeak": 0.9722440242767334,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -7231,6 +7441,7 @@
   "previewPeak": 0.04922909289598465,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -7281,6 +7492,7 @@
   "previewPeak": 0.2593425512313843,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -7331,6 +7543,7 @@
   "previewPeak": 0.24166476726531982,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
   "fieldBed": true,
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -7380,6 +7593,7 @@
   "previewRms": 0.003895235616361475,
   "previewPeak": 0.08417276293039322,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
+  "verificationStatus": "APPROVED",
   "rightsTier": "A"
  },
  {
@@ -7429,6 +7643,8 @@
   "previewRms": 0.102677232904953,
   "previewPeak": 0.4948924779891968,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -7478,6 +7694,8 @@
   "previewRms": 0.18751452192348278,
   "previewPeak": 0.5899105072021484,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -7527,6 +7745,8 @@
   "previewRms": 0.06502447399396073,
   "previewPeak": 0.6177634000778198,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -7576,6 +7796,8 @@
   "previewRms": 0.037579771552945326,
   "previewPeak": 0.48407110571861267,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -7625,6 +7847,8 @@
   "previewRms": 0.1836456437361743,
   "previewPeak": 0.4940505623817444,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "CC BY（表記が必要）。v0.82 以降の新規採用の対象外",
   "rightsTier": "B"
  },
  {
@@ -7674,6 +7898,811 @@
   "previewRms": 0.1121921249942038,
   "previewPeak": 0.8686898350715637,
   "masterLocation": "オーナーのMac（~/Downloads。WAV/AIFF の原本は可逆の FLAC にして ~/Downloads/flac に保管し、必要なら WAV に戻せる）",
+  "verificationStatus": "LEGACY",
+  "reviewNote": "鼓楼の太鼓の演奏（実演家の許諾の記録なし）",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-fumarole",
+  "file": "yellowstone-fumarole",
+  "jp": "噴気孔の轟き（イエローストーン・ノリス間欠泉盆地）",
+  "latin": "該当なし",
+  "group": "landscape",
+  "title": "Fumaroles — unnamed fumarole, Norris Porcelain Basin",
+  "author": "NPS/Jennifer Jerrett",
+  "copyright": "NPS/Jennifer Jerrett",
+  "date": "2014-01-31（原典記載）",
+  "location": "イエローストーン国立公園 ノリス間欠泉盆地 ポーセリン盆地",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-fumaroles.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-NorrisPorcelainBasinFumerole.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "landscape",
+  "japanRecording": false,
+  "notes": "名前のない噴気孔から吹き出す蒸気の轟き（原典記載）。地熱の音。",
+  "format": "mp3 0-bit 44100Hz 2ch",
+  "duration": 38.055583,
+  "size": 921359,
+  "sampleRate": 44100,
+  "channels": 2,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-fumarole.flac",
+  "embeddedSize": 2606986,
+  "embeddedSha256": "10f5697f9c63c180a30387a8db54d8519c732f23e8e2946c97fc34e33f4e6ba6",
+  "embeddedDuration": 30.0,
+  "embeddedSampleRate": 44100,
+  "embeddedChannels": 2,
+  "embeddedOffset": 4.0,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 1.070765,
+  "changes": "原本から 4秒〜34秒（30秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は1秒ごとの音量の揺れが最も小さい区間を自動選択（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "2c382a75ef71c70fa2aaebcfb2e530a711a927e3248887ddb59c936eb91339de",
+  "previewFile": "yellowstone-fumarole.mp3",
+  "previewGain": 1.070765,
+  "previewRms": 0.04576387890487777,
+  "previewPeak": 0.29041194915771484,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "fieldBed": true,
+  "attributionExtra": "National Park Service",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-black-growler",
+  "file": "yellowstone-black-growler",
+  "jp": "ブラック・グロウラー噴気孔（イエローストーン）",
+  "latin": "該当なし",
+  "group": "landscape",
+  "title": "Black Growler Steam Vent",
+  "author": "NPS/Jennifer Jerrett",
+  "copyright": "NPS/Jennifer Jerrett",
+  "date": "2014-01-31（原典記載）",
+  "location": "イエローストーン国立公園 ノリス間欠泉盆地 ポーセリン盆地",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-blackgrowler.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-NorrisBlackGrowler.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "landscape",
+  "japanRecording": false,
+  "notes": "ポーセリン盆地へ下りる道で最初に聞こえる噴気孔の一つ（原典記載）。",
+  "format": "mp3 0-bit 44100Hz 2ch",
+  "duration": 31.84775,
+  "size": 773426,
+  "sampleRate": 44100,
+  "channels": 2,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-black-growler.flac",
+  "embeddedSize": 2624331,
+  "embeddedSha256": "1ffc25a277af00fe200e1b094d1e64424cee9bb5504dbb5b6ed47343e0e62249",
+  "embeddedDuration": 26.0,
+  "embeddedSampleRate": 44100,
+  "embeddedChannels": 2,
+  "embeddedOffset": 2.0,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 0.402956,
+  "changes": "原本から 2秒〜28秒（26秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は1秒ごとの音量の揺れが最も小さい区間を自動選択（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "3492a6b2d15ac872aa6def2c84c8bd989a445bb3b70c2345a33feb950dcec627",
+  "previewFile": "yellowstone-black-growler.mp3",
+  "previewGain": 0.402956,
+  "previewRms": 0.12160711991318802,
+  "previewPeak": 0.5699676871299744,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "fieldBed": true,
+  "attributionExtra": "National Park Service",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-dragons-mouth",
+  "file": "yellowstone-dragons-mouth",
+  "jp": "ドラゴンズ・マウス泉（洞窟から噴く蒸気と水）",
+  "latin": "該当なし",
+  "group": "landscape",
+  "title": "The Dragon's Mouth",
+  "author": "NPS/David Restivo",
+  "copyright": "NPS/David Restivo",
+  "date": "2013-10-29（原典記載）",
+  "location": "イエローストーン国立公園 マッドボルケーノ地域",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-dragonsmouth.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-DragonsMouth.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "landscape",
+  "japanRecording": false,
+  "notes": "洞窟から周期的に吐き出される蒸気と、打ち寄せる水の音（原典記載）。",
+  "format": "mp3 0-bit 48000Hz 1ch",
+  "duration": 83.02,
+  "size": 2663357,
+  "sampleRate": 48000,
+  "channels": 1,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-dragons-mouth.flac",
+  "embeddedSize": 3551716,
+  "embeddedSha256": "145b4f967bb938a091f6fd1188465d7c070490883a297a24c98b020a365a894f",
+  "embeddedDuration": 45.0,
+  "embeddedSampleRate": 48000,
+  "embeddedChannels": 1,
+  "embeddedOffset": 18.0,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 2.472672,
+  "changes": "原本から 18秒〜63秒（45秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は1秒ごとの音量の揺れが最も小さい区間を自動選択（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "b3d7223bb53d5ff32365b60621a213fd9c9e9ad5b0a2917d26464f55dd9368f2",
+  "previewFile": "yellowstone-dragons-mouth.mp3",
+  "previewGain": 2.472672,
+  "previewRms": 0.019817579087382162,
+  "previewPeak": 0.21448110044002533,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "fieldBed": true,
+  "attributionExtra": "National Park Service",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-black-sand-pool",
+  "file": "yellowstone-black-sand-pool",
+  "jp": "ブラックサンド・プールの泡（地中ではじける低音）",
+  "latin": "該当なし",
+  "group": "landscape",
+  "title": "Black Sand Pool — imploding bubbles (binaural)",
+  "author": "NPS/Peter Comley",
+  "copyright": "NPS/Peter Comley",
+  "date": "2015-03-23（原典記載）",
+  "location": "イエローストーン国立公園 ブラックサンド盆地",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-blacksandpool.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-020102BlackSandBasinBlackSandPoolImplodingBubblesBinaural0101.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "landscape",
+  "japanRecording": false,
+  "notes": "泉の深いところで泡がつぶれる低い衝撃音と、水面に抜ける泡の音。バイノーラル録音（原典記載。ヘッドホン推奨）。",
+  "format": "mp3 0-bit 44100Hz 2ch",
+  "duration": 41.76475,
+  "size": 1008858,
+  "sampleRate": 44100,
+  "channels": 2,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-black-sand-pool.flac",
+  "embeddedSize": 4989628,
+  "embeddedSha256": "1b3cf1814ef0f85adf12c78c896733c6a00a778cd690ab4d76fd39db8cf6e6e1",
+  "embeddedDuration": 36.0,
+  "embeddedSampleRate": 44100,
+  "embeddedChannels": 2,
+  "embeddedOffset": 2.0,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 1.824386,
+  "changes": "原本から 2秒〜38秒（36秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は1秒ごとの音量の揺れが最も小さい区間を自動選択（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "0b829b2615b93cdfde838583c62b24216a2d68625f97eb6e763ea87d13f08956",
+  "previewFile": "yellowstone-black-sand-pool.mp3",
+  "previewGain": 1.824386,
+  "previewRms": 0.026859652735834152,
+  "previewPeak": 0.6504610776901245,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "fieldBed": true,
+  "attributionExtra": "National Park Service",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-old-faithful",
+  "file": "yellowstone-old-faithful",
+  "jp": "オールド・フェイスフル間欠泉（晩秋・人のいない噴出）",
+  "latin": "該当なし",
+  "group": "landscape",
+  "title": "Old Faithful (late-fall recording without crowds)",
+  "author": "NPS/Jennifer Jerrett",
+  "copyright": "NPS/Jennifer Jerrett",
+  "date": "2014-11-16（原典記載）",
+  "location": "イエローストーン国立公園 アッパー間欠泉盆地",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-oldfaithful.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-OldFaithful11162014.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "landscape",
+  "japanRecording": false,
+  "notes": "人のいない晩秋の録音。低い唸りは風ではなく噴出による自然の振動（原典記載）。原本はモノラル（配布ファイルは2ch）。",
+  "format": "mp3 0-bit 44100Hz 2ch",
+  "duration": 389.768583,
+  "size": 9363751,
+  "sampleRate": 44100,
+  "channels": 2,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-old-faithful.flac",
+  "embeddedSize": 6357877,
+  "embeddedSha256": "761afc7de72fe4de6792c87d479855de1bdbfd3c46c15b918490d0610b98fcd8",
+  "embeddedDuration": 60.0,
+  "embeddedSampleRate": 44100,
+  "embeddedChannels": 2,
+  "embeddedOffset": 40.0,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 0.490363,
+  "changes": "原本から 40秒〜100秒（60秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は噴出のいちばん大きい部分（10秒ごとの音量を見て手で指定した区間を選んだ）（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "0749bc1ee0166b92b7407102917ce5f91a2d994cc5afb3a607c474a830cb1940",
+  "previewFile": "yellowstone-old-faithful.mp3",
+  "previewGain": 0.490363,
+  "previewRms": 0.09993081208629889,
+  "previewPeak": 0.6312663555145264,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "fieldBed": true,
+  "attributionExtra": "National Park Service",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-lake-sings",
+  "file": "yellowstone-lake-sings",
+  "jp": "冬のイエローストーン湖の氷が鳴る音",
+  "latin": "該当なし",
+  "group": "landscape",
+  "title": "Singing Lake",
+  "author": "NPS/Jennifer Jerrett",
+  "copyright": "NPS/Jennifer Jerrett",
+  "date": "2013-12-17（原典記載）",
+  "location": "イエローストーン国立公園 イエローストーン湖",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-singinglake.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-YellowstoneLakeSings.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "landscape",
+  "japanRecording": false,
+  "notes": "気温の変化で湖の氷が鳴る、冬だけのまれな音。解説なしの生の録音（原典記載）。",
+  "format": "mp3 0-bit 44100Hz 2ch",
+  "duration": 133.334292,
+  "size": 3265559,
+  "sampleRate": 44100,
+  "channels": 2,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-lake-sings.flac",
+  "embeddedSize": 4515781,
+  "embeddedSha256": "e0ac2fc00fa1634e199bacb7e9139894bfd4400607beed8fef9eccca66223986",
+  "embeddedDuration": 60.0,
+  "embeddedSampleRate": 44100,
+  "embeddedChannels": 2,
+  "embeddedOffset": 62.0,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 3.541663,
+  "changes": "原本から 62秒〜122秒（60秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は1秒ごとの音量の揺れが最も小さい区間を自動選択（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "0f3e68f46e54c904eb0ba17e4b3875b8a546af2741326f1e6cb9f92acb56379b",
+  "previewFile": "yellowstone-lake-sings.mp3",
+  "previewGain": 3.541663,
+  "previewRms": 0.013835977269125355,
+  "previewPeak": 0.19741807878017426,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "fieldBed": true,
+  "attributionExtra": "National Park Service",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-elk-bugle",
+  "file": "yellowstone-elk-bugle",
+  "jp": "アメリカアカシカの雄の声（ビューグル・イエローストーン）",
+  "latin": "Cervus canadensis（原典は “elk”・Cervus elaphus）",
+  "group": "animals",
+  "title": "Elk Bugle 1",
+  "author": "NPS/Neal Herbert",
+  "copyright": "NPS/Neal Herbert",
+  "date": "2013-10-16（原典記載）",
+  "location": "イエローストーン国立公園 マンモス・ホット・スプリングス",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-elk.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-ElkBugle1.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "species",
+  "japanRecording": false,
+  "notes": "秋の朝、雌の群れの近くで雄が鳴く（原典記載）。",
+  "format": "mp3 0-bit 44100Hz 1ch",
+  "duration": 10.933281,
+  "size": 355286,
+  "sampleRate": 44100,
+  "channels": 1,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-elk-bugle.flac",
+  "embeddedSize": 561518,
+  "embeddedSha256": "c466d000d93b02551f524af1ba7f7a86aa98fd33319af87464392ca07891843d",
+  "embeddedDuration": 6.5,
+  "embeddedSampleRate": 44100,
+  "embeddedChannels": 1,
+  "embeddedOffset": 2.0,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 0.877594,
+  "changes": "原本から 2秒〜8.5秒（6.5秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は鳴いている時間（中央値＋6dB を超える 0.25 秒区間）が最も多い区間を自動選択（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "6cbee57a9e1a966df1c7f7793e2fb869174c0cd891c5fbabc8a7ee0ec8654fc6",
+  "previewFile": "yellowstone-elk-bugle.mp3",
+  "previewGain": 0.877594,
+  "previewRms": 0.10283056766832953,
+  "previewPeak": 0.9196536540985107,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "attributionExtra": "National Park Service",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-chorus-frogs",
+  "file": "yellowstone-chorus-frogs",
+  "jp": "ボレアルコーラスガエルの合唱（イエローストーン）",
+  "latin": "Pseudacris maculata（原典は “boreal chorus frog”）",
+  "group": "animals",
+  "title": "Frogs (boreal chorus)",
+  "author": "NPS/Neal Herbert",
+  "copyright": "NPS/Neal Herbert",
+  "date": "2014-05-02（原典記載）",
+  "location": "イエローストーン国立公園（米国ワイオミング州）",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-chorusfrogs.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-ChorusFrogs.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "species",
+  "japanRecording": false,
+  "notes": "春に聞こえる雄だけの合唱（原典記載）。",
+  "format": "mp3 0-bit 44100Hz 2ch",
+  "duration": 41.310406,
+  "size": 1329110,
+  "sampleRate": 44100,
+  "channels": 2,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-chorus-frogs.flac",
+  "embeddedSize": 3847143,
+  "embeddedSha256": "5ff221737fcce7a1d41fa85235c9edc6b6ea3330c23ad81b3e2649a191ae4d0f",
+  "embeddedDuration": 30.0,
+  "embeddedSampleRate": 44100,
+  "embeddedChannels": 2,
+  "embeddedOffset": 2.0,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 2.521675,
+  "changes": "原本から 2秒〜32秒（30秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は鳴いている時間（中央値＋6dB を超える 0.25 秒区間）が最も多い区間を自動選択（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "7c1497ae0a2ad9d8216998b1f04f444734fb9fb7358c2bee58851d572182cc68",
+  "previewFile": "yellowstone-chorus-frogs.mp3",
+  "previewGain": 2.521675,
+  "previewRms": 0.03578713652384609,
+  "previewPeak": 0.462809681892395,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "attributionExtra": "National Park Service",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-coyotes",
+  "file": "yellowstone-coyotes",
+  "jp": "コヨーテの群れの声（イエローストーン・ギボン川）",
+  "latin": "Canis latrans（原典は “coyotes”）",
+  "group": "animals",
+  "title": "Coyotes",
+  "author": "NPS/Neal Herbert",
+  "copyright": "NPS/Neal Herbert",
+  "date": "2014-01-31（原典記載）",
+  "location": "イエローストーン国立公園 ギボン川",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-coyote.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-Coyotes.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "species",
+  "japanRecording": false,
+  "notes": "ギボン川沿いで鳴き交わすコヨーテの群れ（原典記載）。",
+  "format": "mp3 0-bit 48000Hz 2ch",
+  "duration": 79.852,
+  "size": 2563129,
+  "sampleRate": 48000,
+  "channels": 2,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-coyotes.flac",
+  "embeddedSize": 4290799,
+  "embeddedSha256": "353c6f7ae2b5442c3abf107d58e7507cdb8cde84e17eed527339fd28ec2f2fe5",
+  "embeddedDuration": 30.0,
+  "embeddedSampleRate": 48000,
+  "embeddedChannels": 2,
+  "embeddedOffset": 10.0,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 1.398473,
+  "changes": "原本から 10秒〜40秒（30秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は鳴いている時間（中央値＋6dB を超える 0.25 秒区間）が最も多い区間を自動選択（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "0cde47446f970a791d25ba0f03ce5013239e8f3868afe620204b10f6a1848d91",
+  "previewFile": "yellowstone-coyotes.mp3",
+  "previewGain": 1.398473,
+  "previewRms": 0.06453002270696533,
+  "previewPeak": 0.5381913185119629,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "attributionExtra": "National Park Service",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-bison-rut",
+  "file": "yellowstone-bison-rut",
+  "jp": "アメリカバイソンの雄の吠え声（発情期・イエローストーン）",
+  "latin": "Bison bison（原典は “bison”）",
+  "group": "animals",
+  "title": "Bison (rut)",
+  "author": "NPS/Jennifer Jerrett",
+  "copyright": "NPS/Jennifer Jerrett",
+  "date": "2014-08-07（原典記載）",
+  "location": "イエローストーン国立公園（米国ワイオミング州）",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-bison.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/YELL-BisonRut-JenniferJerrett.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "species",
+  "japanRecording": false,
+  "notes": "群れの中で存在と優位を示す雄の吠え声。発情期に多くなる（原典記載）。",
+  "format": "mp3 0-bit 44100Hz 2ch",
+  "duration": 90.952583,
+  "size": 2193754,
+  "sampleRate": 44100,
+  "channels": 2,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-bison-rut.flac",
+  "embeddedSize": 2065777,
+  "embeddedSha256": "6723079ef316c682dfdcc0bec3e032f0c78d772831838737b38cb831fc278817",
+  "embeddedDuration": 30.0,
+  "embeddedSampleRate": 44100,
+  "embeddedChannels": 2,
+  "embeddedOffset": 7.75,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 6.529333,
+  "changes": "原本から 7.75秒〜37.75秒（30秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は鳴いている時間（中央値＋6dB を超える 0.25 秒区間）が最も多い区間を自動選択（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "8c696c42e31dbddba0ef8b2855dbec621fb70e2a0c51b25c9e4299b5f4b92475",
+  "previewFile": "yellowstone-bison-rut.mp3",
+  "previewGain": 6.529333,
+  "previewRms": 0.0138212447350389,
+  "previewPeak": 0.3208863139152527,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "attributionExtra": "National Park Service",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-wilsons-snipe",
+  "file": "yellowstone-wilsons-snipe",
+  "jp": "アメリカタシギのディスプレイ飛行の羽音（夜・イエローストーン）",
+  "latin": "Gallinago delicata（原典は “Wilson's snipe”）",
+  "group": "birds",
+  "title": "Wilson's Snipe",
+  "author": "NPS/Jennifer Jerrett",
+  "copyright": "NPS/Jennifer Jerrett",
+  "date": "2014-05-09（原典記載）",
+  "location": "イエローストーン国立公園 水につかった草地",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-wilsonssnip.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-Snipe.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "species",
+  "japanRecording": false,
+  "notes": "春の夜、水につかった草地から聞こえる縄張りの音（尾羽の振動）（原典記載）。",
+  "format": "mp3 0-bit 44100Hz 1ch",
+  "duration": 258.981417,
+  "size": 6225714,
+  "sampleRate": 44100,
+  "channels": 1,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-wilsons-snipe.flac",
+  "embeddedSize": 2559017,
+  "embeddedSha256": "8c75e635206cfb2892b94df073353d74824fb0507f67e86e1bc6e2d8102c0f01",
+  "embeddedDuration": 30.0,
+  "embeddedSampleRate": 44100,
+  "embeddedChannels": 1,
+  "embeddedOffset": 147.25,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 2.620419,
+  "changes": "原本から 147.25秒〜177.25秒（30秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は鳴いている時間（中央値＋6dB を超える 0.25 秒区間）が最も多い区間を自動選択（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "65e9b319b9ca2b8bee1cdfe5359a7c0f07f9e1dc6656026304a12d25d09bc169",
+  "previewFile": "yellowstone-wilsons-snipe.mp3",
+  "previewGain": 2.620419,
+  "previewRms": 0.03443857663380029,
+  "previewPeak": 0.37001484632492065,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "attributionExtra": "National Park Service",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-sandhill-cranes",
+  "file": "yellowstone-sandhill-cranes",
+  "jp": "カナダヅルの飛びながらの声（イエローストーン）",
+  "latin": "Antigone canadensis（原典は “sandhill cranes”）",
+  "group": "birds",
+  "title": "Sandhill Crane",
+  "author": "NPS/Shan Burson",
+  "copyright": "NPS/Shan Burson",
+  "date": "2007-05-17（原典記載）",
+  "location": "イエローストーン国立公園（米国ワイオミング州）",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-sandhillcrane.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-YELLFLBCSACR20075171.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "species",
+  "japanRecording": false,
+  "notes": "頭上を飛びながら鳴くカナダヅル。夏に多い（原典記載）。原本は MP3 128kbps・モノラル。",
+  "format": "mp3 0-bit 44100Hz 1ch",
+  "duration": 24.011563,
+  "size": 390212,
+  "sampleRate": 44100,
+  "channels": 1,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-sandhill-cranes.flac",
+  "embeddedSize": 1130201,
+  "embeddedSha256": "50bfe227fc819b766cc383e1a34c25b3bcb8ed0a89b75bb26463743b94b9733e",
+  "embeddedDuration": 18.0,
+  "embeddedSampleRate": 44100,
+  "embeddedChannels": 1,
+  "embeddedOffset": 2.0,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 1.715343,
+  "changes": "原本から 2秒〜20秒（18秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は鳴いている時間（中央値＋6dB を超える 0.25 秒区間）が最も多い区間を自動選択（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "899cb9272bd0d24c36a341b0a36b1e57fbe6b740f739b613e6a1d54d95e7ab12",
+  "previewFile": "yellowstone-sandhill-cranes.mp3",
+  "previewGain": 1.715343,
+  "previewRms": 0.052609600533018705,
+  "previewPeak": 0.462755411863327,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "attributionExtra": "National Park Service",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-killdeer",
+  "file": "yellowstone-killdeer",
+  "jp": "フタオビチドリの鳴き交わし（間欠泉の丘・イエローストーン）",
+  "latin": "Charadrius vociferus（原典記載）",
+  "group": "birds",
+  "title": "Killdeer chorus near Anemone Geyser",
+  "author": "NPS/Peter Comley",
+  "copyright": "NPS/Peter Comley",
+  "date": "2015-03-22（原典記載）",
+  "location": "イエローストーン国立公園 アッパー間欠泉盆地 ガイザーヒル",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-killdeer.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-030404GeyserHillAnemoneKilldeerChorus02M10013.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "species",
+  "japanRecording": false,
+  "notes": "アネモネ間欠泉の近くでのフタオビチドリの合唱。ステレオ録音（原典記載）。",
+  "format": "mp3 0-bit 44100Hz 2ch",
+  "duration": 99.9045,
+  "size": 2404224,
+  "sampleRate": 44100,
+  "channels": 2,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-killdeer.flac",
+  "embeddedSize": 4619201,
+  "embeddedSha256": "c7633da7d7ed3d2e0f0d58a0cd83c1ced437ab859c54181b2c97de563f2726b8",
+  "embeddedDuration": 30.0,
+  "embeddedSampleRate": 44100,
+  "embeddedChannels": 2,
+  "embeddedOffset": 15.25,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 4.233351,
+  "changes": "原本から 15.25秒〜45.25秒（30秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は鳴いている時間（中央値＋6dB を超える 0.25 秒区間）が最も多い区間を自動選択（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "943eb4b110365d9243f10b031090d9491d727ec67b2cc53945c5e750e42ebfde",
+  "previewFile": "yellowstone-killdeer.mp3",
+  "previewGain": 4.233351,
+  "previewRms": 0.02131727731564632,
+  "previewPeak": 0.2639465630054474,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "attributionExtra": "National Park Service",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-ear-spring",
+  "file": "yellowstone-ear-spring",
+  "jp": "イヤー・スプリング（絶えず泡立つ小さな温泉）",
+  "latin": "該当なし",
+  "group": "landscape",
+  "title": "Ear Spring",
+  "author": "NPS/Jennifer Jerrett",
+  "copyright": "NPS/Jennifer Jerrett",
+  "date": "2014-02-25（原典記載）",
+  "location": "イエローストーン国立公園 アッパー間欠泉盆地 ガイザーヒル",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-earspring.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-EarSpring.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "landscape",
+  "japanRecording": false,
+  "notes": "絶えずジュージューと泡立つ小さな温泉（原典記載）。原本は16秒。",
+  "format": "mp3 0-bit 44100Hz 2ch",
+  "duration": 15.989083,
+  "size": 391516,
+  "sampleRate": 44100,
+  "channels": 2,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-ear-spring.flac",
+  "embeddedSize": 944640,
+  "embeddedSha256": "b4f6f270e10cdd887d7d260c435292cd2e706cf385964121767a55998e63bcbf",
+  "embeddedDuration": 12.0,
+  "embeddedSampleRate": 44100,
+  "embeddedChannels": 2,
+  "embeddedOffset": 2.0,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 5.04576,
+  "changes": "原本から 2秒〜14秒（12秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は1秒ごとの音量の揺れが最も小さい区間を自動選択（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "e64509671c8600f495c10bc8cb1d903cf34ca1159958cf9f2d61d7f9dd1649b3",
+  "previewFile": "yellowstone-ear-spring.mp3",
+  "previewGain": 5.04576,
+  "previewRms": 0.009711592869567675,
+  "previewPeak": 0.17616160213947296,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "fieldBed": true,
+  "attributionExtra": "National Park Service",
+  "rightsTier": "A"
+ },
+ {
+  "id": "yellowstone-maple-fire",
+  "file": "yellowstone-maple-fire",
+  "jp": "森林火災（ロッジポールマツが燃える音・2016年メープル火災）",
+  "latin": "該当なし",
+  "group": "landscape",
+  "title": "Fire — Maple Fire",
+  "author": "NPS/Jennifer Jerrett",
+  "copyright": "NPS/Jennifer Jerrett",
+  "date": "2016-08-14（原典記載）",
+  "location": "イエローストーン国立公園（米国ワイオミング州）",
+  "url": "https://www.nps.gov/yell/learn/photosmultimedia/sounds-fire.htm",
+  "download": "https://www.nps.gov/nps-audiovideo/legacy/mp3/imr/avElement/yell-YELLMapleFire20160814T04ms3.mp3",
+  "license": "Public domain",
+  "licenseURL": "https://www.nps.gov/yell/learn/photosmultimedia/soundlibrary.htm",
+  "kind": "landscape",
+  "japanRecording": false,
+  "notes": "燃える若いロッジポールマツの約4.5m 手前で録音。約14秒で木の塊が炎に包まれる（原典記載）。抜粋はその前後を含む。",
+  "format": "mp3 0-bit 44100Hz 2ch",
+  "duration": 59.970917,
+  "size": 1458947,
+  "sampleRate": 44100,
+  "channels": 2,
+  "retrievedDate": "2026-11-19",
+  "acquired": true,
+  "decoded": true,
+  "playback": "抜粋は変換を含む（内容は changes 欄）。ブラウザでのデコードは回帰テストで確認。聴感と iPhone/Mac 実機は未検証。",
+  "added": "v0.82",
+  "embeddedFormat": "flac",
+  "embeddedFile": "yellowstone-maple-fire.flac",
+  "embeddedSize": 7597939,
+  "embeddedSha256": "df4bf4c3a92f0450e202806b5369552f04f8f9a773b5a7a61ae1dc840c9f1222",
+  "embeddedDuration": 45.0,
+  "embeddedSampleRate": 44100,
+  "embeddedChannels": 2,
+  "embeddedOffset": 12.0,
+  "embeddedOriginalBytes": false,
+  "pcmEquality": false,
+  "performanceGain": 1.336026,
+  "changes": "原本から 12秒〜57秒（45秒）を切り出し（mp3 0-bit → 24-bit 整数に変換）。区間は1秒ごとの音量の揺れが最も小さい区間を自動選択（聴感での確認は未実施）。音量・定位・両端フェードは演奏時に適用。原本と同じライセンスを保持。",
+  "previewFormat": "MP3",
+  "previewSha256": "5b5efda104d4955b01902cc3372b283ff6bf481ee325641393e234ddd939ba6d",
+  "previewFile": "yellowstone-maple-fire.mp3",
+  "previewGain": 1.336026,
+  "previewRms": 0.03667771979707071,
+  "previewPeak": 0.6402889490127563,
+  "masterLocation": "オーナーのMac（~/Downloads/nps-yell-*.mp3。NPS が配布する MP3 そのもの）",
+  "verificationStatus": "APPROVED",
+  "reviewSource": "research/source_review.json",
+  "creditLine": "National Park Service",
+  "fieldBed": true,
+  "attributionExtra": "National Park Service",
   "rightsTier": "A"
  }
 ]

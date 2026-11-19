@@ -169,8 +169,8 @@
    "kid": "saww-2026-11-08"
   },
   "annualPaymentLink": "https://buy.stripe.com/aFa5kDdOd1Wz3uz9mrbZe08",
-  "semiPaymentLink": "",
-  "semiAnnualPaymentLink": "",
+  "semiPaymentLink": "https://buy.stripe.com/5kQdR9cK9cBd8OTeGLbZe09",
+  "semiAnnualPaymentLink": "https://buy.stripe.com/14AdR911rdFh0indCHbZe0a",
   "_semi_note": "v0.74 SEMI-PRO：月額 US$5（price_1UdW3YIfqi9dWAQIenmwXziF）・年額 US$50（price_1UdW3fIfqi9dWAQIGb3FQ8ap）、税込。支払いリンクを semiPaymentLink・semiAnnualPaymentLink に入れると購入欄に出る。課金の確認サーバーの SEMI_PRICE_IDS に両方の価格 ID を入れる。"
  },
  "recordings": {

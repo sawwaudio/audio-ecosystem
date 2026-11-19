@@ -1892,16 +1892,18 @@ function vxShader(c,v,E,mode,W=REEL_W,H=REEL_H,gw=540,gh=960){const g=vxGLInit()
 // ── REELS VISUAL ENGINE 2.0（2026-11-19 オーナー参考画像：顕微鏡の分裂像・青く光る流体・珊瑚・光る粒子・ストレンジアトラクタ）
 // 以前の「少数の図形を線で描く」方式をやめ、何万もの点を光として積み重ねる（長時間露光）描き方にした。RGB の光の量を浮動小数で貯め、毎フレーム少しずつ減衰させ、
 // トーンカーブで画像にしてから拡大し、ぼかした光（ブルーム）を重ねる。どれも生物・自然現象を参考にした生成アート（科学的シミュレーションではない）。乱数はシードで再現でき、更新は1/60秒刻み。
-const V2_W=360,V2_H=640,V2_STYLES=['life-cell','life-earth','life-organic','life-particle','life-math'];
+const V2_DT=1/30,V2_W=360,V2_H=640,V2_STYLES=['life-cell','life-earth','life-organic','life-particle','life-math'];
 function v2Rng(seed){let a=seed>>>0;const f=()=>{a=(a+0x6D2B79F5)>>>0;let t=a;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296};f.n=()=>{let u=0;while(!u)u=f();return Math.sqrt(-2*Math.log(u))*Math.cos(6.283185*f())};return f}
 function v2Buf(v){if(v.v2)return v.v2;const cv=document.createElement('canvas');cv.width=V2_W;cv.height=V2_H;const bl=document.createElement('canvas');bl.width=V2_W/4;bl.height=V2_H/4;
  const N=V2_W*V2_H,B={cv,c:cv.getContext('2d'),bl,bc:bl.getContext('2d'),img:null,R:new Float32Array(N),G:new Float32Array(N),Bl:new Float32Array(N),acc:0,time:0,seed:(v.seed||((Date.now()/1000|0)%100000))>>>0};
  B.rng=v2Rng(B.seed);B.img=B.c.createImageData(V2_W,V2_H);return v.v2=B}
 function v2Add(B,x,y,r,g,b){x|=0;y|=0;if(x<0||y<0||x>=V2_W||y>=V2_H)return;const i=y*V2_W+x;B.R[i]+=r;B.G[i]+=g;B.Bl[i]+=b}
 function v2Fade(B,k){const R=B.R,G=B.G,L=B.Bl;for(let i=0;i<R.length;i++){R[i]*=k;G[i]*=k;L[i]*=k}}
-function v2Present(c,B,expo,bloom){const d=B.img.data,R=B.R,G=B.G,L=B.Bl;for(let i=0,j=0;i<R.length;i++,j+=4){d[j]=255*(1-Math.exp(-R[i]*expo));d[j+1]=255*(1-Math.exp(-G[i]*expo));d[j+2]=255*(1-Math.exp(-L[i]*expo));d[j+3]=255}
+const V2_LUT=new Uint8Array(4096);for(let i=0;i<4096;i++)V2_LUT[i]=255*(1-Math.exp(-i/512));   // 0〜8 を 4096 段に
+function v2Present(c,B,expo,bloom,fade){const d=B.img.data,R=B.R,G=B.G,L=B.Bl,s=expo*512,L2=V2_LUT;
+ for(let i=0,j=0;i<R.length;i++,j+=4){let r=R[i],g=G[i],b=L[i];if(fade<1){r*=fade;g*=fade;b*=fade;R[i]=r;G[i]=g;L[i]=b}d[j]=L2[Math.min(4095,r*s|0)];d[j+1]=L2[Math.min(4095,g*s|0)];d[j+2]=L2[Math.min(4095,b*s|0)];d[j+3]=255}
  B.c.putImageData(B.img,0,0);c.globalCompositeOperation='source-over';c.globalAlpha=1;c.fillStyle='#000';c.fillRect(0,0,REEL_W,REEL_H);c.imageSmoothingEnabled=true;c.drawImage(B.cv,0,0,REEL_W,REEL_H);
- B.bc.clearRect(0,0,B.bl.width,B.bl.height);B.bc.drawImage(B.cv,0,0,B.bl.width,B.bl.height);c.save();c.globalCompositeOperation='lighter';c.globalAlpha=bloom;c.filter='blur(14px)';c.drawImage(B.bl,0,0,REEL_W,REEL_H);c.restore()}
+ B.bc.filter='none';B.bc.clearRect(0,0,B.bl.width,B.bl.height);B.bc.filter='blur(3px)';B.bc.drawImage(B.cv,0,0,B.bl.width,B.bl.height);B.bc.filter='none';c.save();c.globalCompositeOperation='lighter';c.globalAlpha=bloom;c.drawImage(B.bl,0,0,REEL_W,REEL_H);c.restore()}
 // なめらかな流れ（sin の重ね合わせの勾配を90度回した＝発散のない流れ。渦が自然にできる）
 function v2Curl(x,y,t,s){const a=.011*s,b=.009*s,c=.006*s;const dnx=a*Math.cos(x*a+t*.21)+c*Math.cos((x+y)*c-t*.13)+.5*b*Math.cos(x*b*1.7-y*b+t*.17)*1.7,dny=b*Math.cos(y*b-t*.16)+c*Math.cos((x+y)*c-t*.13)-.5*b*Math.cos(x*b*1.7-y*b+t*.17);return[dny,-dnx]}
 
@@ -1925,36 +1927,36 @@ function v2Cell(B,E,on){const R=B.rng,t=B.time;if(!B.cell||t>B.cell.end){const p
  if(sep<.97)for(let i=0;i<300;i++){const u=R()*2-1,x=cx+ca*D*u+R.n()*(10*(1-sep)+2),y=cy+sa*D*u+R.n()*(10*(1-sep)+2);v2Add(B,x,y,.06*fade,.04*fade,.08*fade)}}
 
 // 02 EARTH ECOSYSTEM：青く光る流れ（海流・潮・夜光虫）。多数の粒が渦のある流れに運ばれ、密なところほど白く光る。低音で流れが速く、立ち上がりで発光が強まる。
-function v2Earth(B,E,on){const R=B.rng,t=B.time;if(!B.pe){B.pe=Array.from({length:12000},()=>({x:R()*V2_W,y:R()*V2_H,a:R()*80}))}
+function v2Earth(B,E,on){const R=B.rng,t=B.time;if(!B.pe){B.pe=Array.from({length:9000},()=>({x:R()*V2_W,y:R()*V2_H,a:R()*80}))}
  const sp=40+120*(E.low||0),br=.05+.12*(on||0)+.05*(E.rms||0);
- for(const q of B.pe){const [ux,uy]=v2Curl(q.x,q.y,t,1);const l=Math.hypot(ux,uy)||1e-6;q.x+=ux/l*sp*CL_DT*(.4+Math.min(1.6,l*60));q.y+=uy/l*sp*CL_DT*(.4+Math.min(1.6,l*60));q.a+=CL_DT;
+ for(const q of B.pe){const [ux,uy]=v2Curl(q.x,q.y,t,1);const l=Math.hypot(ux,uy)||1e-6;q.x+=ux/l*sp*V2_DT*(.4+Math.min(1.6,l*60));q.y+=uy/l*sp*V2_DT*(.4+Math.min(1.6,l*60));q.a+=V2_DT;
   if(q.x<0||q.y<0||q.x>=V2_W||q.y>=V2_H||q.a>14+R()*6){q.x=R()*V2_W;q.y=R()*V2_H;q.a=0}
   const w=Math.min(1,l*90),k=br/.08,hot=w>.92?(w-.92)*12:0;v2Add(B,q.x,q.y,(.004+.012*w*w+.06*hot)*k,(.016+.03*w+.07*hot)*k,(.06+.03*w+.07*hot)*k);v2Add(B,q.x-ux/l*.8,q.y-uy/l*.8,.004*k,.02*k,.06*k)}}
 
 // 03 ORGANIC SYSTEMS：珊瑚・菌糸・葉脈のような枝分かれ成長。先端は少しずつ曲がりながら伸び、確率で枝分かれし、ほかの枝に近づくと止まる（競合）。
 // 一定数伸び止まったら全体がゆっくり消えて、別の場所から再成長する。色は根元＝赤橙、先＝桃〜水色。低音で伸びが速く、立ち上がりで枝分かれが増える。
 function v2Organic(B,E,on){const R=B.rng,t=B.time;if(!B.og||B.og.done>2.5){B.og={tips:[],occ:new Uint8Array((V2_W>>2)*(V2_H>>2)),done:0,age:0};const n=4+(R()*3|0);for(let i=0;i<n;i++)B.og.tips.push({x:V2_W*(.3+.4*R()),y:V2_H*(.66+.06*R()),a:-1.57+R.n()*.9,d:0})}
- const O=B.og;O.age+=CL_DT;const occ=O.occ,ow=V2_W>>2,grow=(3+5*(E.low||0));const nt=[];
+ const O=B.og;O.age+=V2_DT;const occ=O.occ,ow=V2_W>>2,grow=(6+10*(E.low||0));const nt=[];
  for(const tp of O.tips){for(let s=0;s<grow;s++){tp.a+=R.n()*.09+(-1.5708-tp.a)*.012;tp.x+=Math.cos(tp.a)*.8;tp.y+=Math.sin(tp.a)*.8;tp.d+=.8;
    const gx=tp.x>>2,gy=tp.y>>2;if(tp.x<2||tp.y<2||tp.x>V2_W-2||tp.y>V2_H-2){tp.dead=1;break}const gi=gy*ow+gx;if(occ[gi]&&occ[gi]!==tp.id){tp.dead=1;for(let q=0;q<40;q++){const an=R()*6.283,rq=R()*2.6;v2Add(B,tp.x+Math.cos(an)*rq,tp.y+Math.sin(an)*rq,tp.h?.05:.2,tp.h?.18:.1,tp.h?.16:.12)}break}
    const u=Math.min(1,tp.d/240),th=Math.max(.5,3.6-tp.d/70),tl=tp.h?[.02+.05*u,.06+.08*u,.07+.06*u]:[.14-.04*u,.035+.03*u,.025+.05*u*u];for(let k=-th;k<=th;k+=.5)v2Add(B,tp.x+k*Math.sin(tp.a),tp.y-k*Math.cos(tp.a),tl[0],tl[1],tl[2]);
    if(R()<(.045+.06*(on||0))&&O.tips.length+nt.length<420)nt.push({x:tp.x,y:tp.y,a:tp.a+(R()<.5?-1:1)*(.3+R()*.6),d:tp.d,id:0,h:R()<.25?1:tp.h})}
   const gx=tp.x>>2,gy=tp.y>>2;if(gx>=0&&gy>=0&&gx<ow)occ[gy*ow+gx]=tp.id=tp.id||1+(R()*250|0)}
  O.tips=O.tips.filter(x=>!x.dead).concat(nt);for(const n of nt)n.id=1+(R()*250|0);
- if(!O.tips.length||O.age>22)O.done+=CL_DT;if(O.done>0)v2Fade(B,.985)}
+ if(!O.tips.length||O.age>22)O.done+=V2_DT;if(O.done>0)v2Fade(B,.97)}
 
 // 04 PARTICLE UNIVERSE：重力のある数個の引き寄せ点と渦、ブラウン運動。粒は互いの近くで速度をそろえ（群れ）、渦に巻かれて銀河や細胞の集まりのような構造をつくる。
 // 小さな泡（輪）が時々生まれてはじける。低音で重力、中音で渦、高音で揺らぎ、立ち上がりで新しい引き寄せ点。
 function v2Particle(B,E,on){const R=B.rng,t=B.time;if(!B.pp){B.pp=Array.from({length:7000},()=>({x:R()*V2_W,y:R()*V2_H,vx:0,vy:0}));B.at=[];B.ring=[]}
  if(B.at.length<2||(on>.6&&R()<.05))B.at.push({x:V2_W*(.2+.6*R()),y:V2_H*(.2+.6*R()),m:.6+R(),s:(R()<.5?-1:1),life:10+R()*10});
- B.at=B.at.filter(a=>(a.life-=CL_DT)>0).slice(-5);
+ B.at=B.at.filter(a=>(a.life-=V2_DT)>0).slice(-5);
  const g=70+120*(E.low||0),vor=60+140*(E.mid||0),br=.25+1.2*(E.high||0);
  for(const p of B.pp){let ax=0,ay=0;for(const a of B.at){const dx=a.x-p.x,dy=a.y-p.y,d2=dx*dx+dy*dy+400,d=Math.sqrt(d2);ax+=g*a.m*dx/d2*30/d*8+vor*a.s*(-dy)/d2*6;ay+=g*a.m*dy/d2*30/d*8+vor*a.s*dx/d2*6}
-  p.vx=(p.vx+ax*CL_DT)*.985+R.n()*br*CL_DT*20;p.vy=(p.vy+ay*CL_DT)*.985+R.n()*br*CL_DT*20;p.x+=p.vx*CL_DT;p.y+=p.vy*CL_DT;
+  p.vx=(p.vx+ax*V2_DT)*.985+R.n()*br*V2_DT*20;p.vy=(p.vy+ay*V2_DT)*.985+R.n()*br*V2_DT*20;p.x+=p.vx*V2_DT;p.y+=p.vy*V2_DT;
   if(p.x<0||p.y<0||p.x>=V2_W||p.y>=V2_H||R()<.002){const a=B.at[(R()*B.at.length)|0],r=40+R()*120,an=R()*6.283;p.x=a.x+Math.cos(an)*r;p.y=a.y+Math.sin(an)*r;p.vx=-Math.sin(an)*40*a.s;p.vy=Math.cos(an)*40*a.s}
   const s=Math.min(1,Math.hypot(p.vx,p.vy)/60);v2Add(B,p.x,p.y,.02+.06*s,.035+.07*s,.08+.07*s)}
  if(R()<.04+.2*(on||0))B.ring.push({x:R()*V2_W,y:R()*V2_H,r:1,m:2+R()*7});
- for(const r of B.ring){r.r+=CL_DT*6;const n=Math.ceil(r.r*5);for(let i=0;i<n;i++){const a=i/n*6.283;v2Add(B,r.x+Math.cos(a)*r.r,r.y+Math.sin(a)*r.r,.12,.14,.18)}}
+ for(const r of B.ring){r.r+=V2_DT*6;const n=Math.ceil(r.r*5);for(let i=0;i<n;i++){const a=i/n*6.283;v2Add(B,r.x+Math.cos(a)*r.r,r.y+Math.sin(a)*r.r,.12,.14,.18)}}
  B.ring=B.ring.filter(r=>r.r<r.m)}
 
 // 05 MATHEMATICAL LIFE：ストレンジアトラクタ（Clifford 型）。係数がゆっくり漂って形が生まれ変わる（対称性の破れ）。点を毎フレーム2万個重ねて密度を写真のように。
@@ -1962,15 +1964,15 @@ function v2Particle(B,E,on){const R=B.rng,t=B.time;if(!B.pp){B.pp=Array.from({le
 function v2Math(B,E,on){const R=B.rng,t=B.time;if(!B.mx){B.mx={a:-1.7+R()*.4,b:1.6+R()*.3,c:-.7+R()*.4,d:-1.1+R()*.4,x:.1,y:.1,ph:R()*6}}
  const M=B.mx,dr=.03+.12*(E.low||0),k=t*dr+M.ph;const a=M.a+.25*Math.sin(k),b=M.b+.2*Math.sin(k*.7+1),c=M.c+.3*Math.sin(k*.53+2)+.05*(on||0),d=M.d+.25*Math.sin(k*.41+3);
  let x=M.x,y=M.y;const sc=V2_W*.22,cx=V2_W/2,cy=V2_H*.46;
- for(let i=0;i<22000;i++){const nx=Math.sin(a*y)+c*Math.cos(a*x),ny=Math.sin(b*x)+d*Math.cos(b*y);const vel=Math.min(1,Math.hypot(nx-x,ny-y)/3);x=nx;y=ny;
+ for(let i=0;i<26000;i++){const nx=Math.sin(a*y)+c*Math.cos(a*x),ny=Math.sin(b*x)+d*Math.cos(b*y);const vel=Math.min(1,Math.hypot(nx-x,ny-y)/3);x=nx;y=ny;
   v2Add(B,cx+x*sc,cy+y*sc*1.15,.018+.012*vel,.014+.004*vel,.022+.016*(1-vel))}
  M.x=x;M.y=y}
 
 window.__v2Frame=(style,dt,seed,E)=>{const cv=$('reelCanvas'),c=cv.getContext('2d');window.__v2v=window.__v2v&&window.__v2v.style===style?window.__v2v:{style,seed,dt,on:0};const v=window.__v2v;v.dt=dt;c.save();try{v2Draw(c,v,E||{low:.3,mid:.3,high:.2,rms:.3},style)}finally{c.restore()}return cv.toDataURL('image/jpeg',.85)};
 function v2Draw(c,v,E,style){const B=v2Buf(v);B.acc+=Math.min(.1,v.dt||.016);let n=0;
- const P={'life-cell':[.8,v2Cell,1.1,.75],'life-earth':[.92,v2Earth,1.1,.9],'life-organic':[.9996,v2Organic,1.2,.8],'life-particle':[.93,v2Particle,1.4,1],'life-math':[.93,v2Math,1.25,.85]}[style];
- let steps=0;while(B.acc>=CL_DT&&steps<4){P[1](B,E,v.on||0);B.time+=CL_DT;B.acc-=CL_DT;steps++}if(steps)v2Fade(B,Math.pow(P[0],steps));
- v2Present(c,B,P[2],P[3]);c.fillStyle='rgba(220,225,230,.5)';c.font='18px '+REEL_MONO;
+ const P={'life-cell':[.8,v2Cell,1.9,.75],'life-earth':[.92,v2Earth,2,.9],'life-organic':[.9996,v2Organic,1.2,.8],'life-particle':[.93,v2Particle,2.2,1],'life-math':[.93,v2Math,1.6,.85]}[style];   // 1/30秒刻みなので減衰は1/60秒の2乗、露出は約2倍
+ let steps=0;while(B.acc>=V2_DT&&steps<3){P[1](B,E,v.on||0);B.time+=V2_DT;B.acc-=V2_DT;steps++}if(B.acc>V2_DT*3)B.acc=0;
+ v2Present(c,B,P[2],P[3],steps?Math.pow(P[0]*P[0],steps):1);c.fillStyle='rgba(220,225,230,.5)';c.font='18px '+REEL_MONO;
  c.fillText({'life-cell':'01 CELLULAR LIFE','life-earth':'02 EARTH ECOSYSTEM','life-organic':'03 ORGANIC SYSTEMS','life-particle':'04 PARTICLE UNIVERSE','life-math':'05 MATHEMATICAL LIFE'}[style]+' · generative art',60,REEL_SAFE.y0-40);vxOverlay(c)}
 
 // ── REELS VISUAL ENGINE 2.0 · 01 CELLULAR LIFE（2026-11-19 オーナー指示「生命の構造と運動、偶然性と秩序を映像で体験させる」）

@@ -10,7 +10,7 @@ R.lib=await pg.evaluate(()=>{const recs=JSON.parse(document.getElementById('ae-r
  const v=recs.filter(r=>r.added==='v0.38');return {total:recs.length,n:v.length,lic:[...new Set(v.map(r=>r.license))].sort(),beds:v.filter(r=>r.fieldBed).length,
   pathsOk:v.every(r=>man.recordings[r.id]&&man.recordings[r.id].pcm.parts.every(p=>p.path.startsWith('../audio-ecosystem-sounds-1/audio/pcm/'))&&man.recordings[r.id].compat.path.startsWith('../audio-ecosystem-sounds-1/audio/compat/')),
   ids:v.map(r=>r.id)}});
-ok('count',R.lib.total===127&&R.lib.n===86&&R.lib.beds===17);ok('licenses',R.lib.lic.join()==='CC BY 3.0,CC BY 4.0,CC0 1.0');ok('paths',R.lib.pathsOk);
+/* v0.79：全体は127→150（v0.79 で23本追加） */ok('count',R.lib.total===150&&R.lib.n===86&&R.lib.beds===17);ok('licenses',R.lib.lic.join()==='CC BY 3.0,CC BY 4.0,CC0 1.0');ok('paths',R.lib.pathsOk);
 // 2) 86本すべてを FLAC と互換MP3の両方でデコードできる（長さが台帳と一致・無音でない）
 R.decode=await pg.evaluate(async ids=>{const man=JSON.parse(document.getElementById('ae-audio-manifest').textContent).recordings,oc=new OfflineAudioContext(2,48000,48000),bad=[];
  for(const id of ids){for(const kind of ['pcm','compat']){const e=man[id][kind],p=kind==='pcm'?e.parts[0].path:e.path;

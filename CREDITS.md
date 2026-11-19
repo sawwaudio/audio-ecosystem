@@ -134,6 +134,29 @@ This app bundles the following field recordings and instrument samples under the
 | birds-stream-paris | 朝の鳥と小川（パリ西郊・リュエイユ＝マルメゾン）（抜粋） | kevp888 | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | [260528_050202_FR_Birds_and_water_stream_in_the_morning](https://freesound.org/people/kevp888/sounds/857847/) |
 | waterfall-hexenklamm | 滝と遠くの鳥（ドイツ・ヘクセンクラム）（抜粋） | Shuhmi | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | [WATRFall_Waterfall closeup birds distant_SHMI](https://freesound.org/people/Shuhmi/sounds/859225/) |
 | rain-frogs-guiana | 夜の小雨とカエル（仏領ギアナ）（抜粋） | felix.blume | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [Light Rain, Frogs and Toads at Night - Rémire-Montjoly, French Guiana](https://freesound.org/people/felix.blume/sounds/868995/) |
+| zenkoji-bells-kofu | 善光寺の鐘と朝の鳥（甲府・坂折）（抜粋） | earthmonkey1 | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [zenkojibells_norm.wav](https://freesound.org/people/earthmonkey1/sounds/514135/) |
+| matsudo-water-tunnel | 江戸川そばの金属の水路トンネル（千葉・松戸）（抜粋） | RutgerMuller | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [Japan_Matsudo_Water_Tunnel_3Takes_24Bit_96KHz_MS-Stereo.wav](https://freesound.org/people/RutgerMuller/sounds/361916/) |
+| hakuba-shrine-snow | 雪の白馬八方神社（長野・白馬）（抜粋） | Oscarno | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [Hakuba Happo Shrine (Winter).wav](https://freesound.org/people/Oscarno/sounds/377750/) |
+| asakusa-sanja-matsuri | 浅草・三社祭のおみくじと人のざわめき（東京）（抜粋） | manuke | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [Tokyo - Asakusa Shrine](https://freesound.org/people/manuke/sounds/315890/) |
+| typhoon-hagibis-mitaka | 台風19号（ハギビス）の風（東京・三鷹）（抜粋） | piego | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [Atmospheric typhoon wind noise](https://freesound.org/people/piego/sounds/490656/) |
+| tokyo-night-rain | 深夜の都会の雨（東京・中野）（抜粋） | markystar | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [Shin-Nakano_Rain_on_Balcony_Spring_2008.wav](https://freesound.org/people/markystar/sounds/75069/) |
+| koenji-park-dusk | 夕暮れの小さな公園と噴水（東京・東高円寺）（抜粋） | markystar | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [tokyo_park_at_dusk.wav](https://freesound.org/people/markystar/sounds/75273/) |
+| shinagawa-night-street | 深夜1時の品川の街（遠くの虫と車）（抜粋） | markystar | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [TokyoStreetAtNight_120.wav](https://freesound.org/people/markystar/sounds/42195/) |
+| nakano-night-intersection | 夜11時の交差点（東京・中野 青梅街道）（抜粋） | markystar | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [ShinNakanoOmekaidoLateNightNearIntersexion_4mics.wav](https://freesound.org/people/markystar/sounds/44616/) |
+| nakano-autumn-night | 秋の夜の住宅地（東京・中野）（抜粋） | markystar | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [ShinNakanoAutumnNightScape120.wav](https://freesound.org/people/markystar/sounds/42211/) |
+| tokyo-bus-interior | 東京の路線バスの車内（エンジンと車内放送）（抜粋） | cobwebjoe | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [inside a japanese bus2.WAV](https://freesound.org/people/cobwebjoe/sounds/136432/) |
+| leipzig-city-lake | 都市の湖（ドイツ・ライプツィヒ）（抜粋） | Garuda1982 | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [city lake atmo field recording](https://freesound.org/people/Garuda1982/sounds/524997/) |
+| chelmsford-storm-chimes | 嵐の園芸店の風鈴と防水シート（英国・チェルムズフォード）（抜粋） | sdotlyre | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [Field Recording_chimes tarp wind](https://freesound.org/people/sdotlyre/sounds/463353/) |
+| chiang-mai-forest | チェンマイの森（タイ）（抜粋） | marc.om | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [Forest Ambience, Chiang Mai, Thailand (March 7, 2019)](https://freesound.org/people/marc.om/sounds/804709/) |
+| bamboo-wind-chime | 竹の風鈴（竹のウィンドチャイム）（抜粋） | gmni | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [bamboo.wav](https://freesound.org/people/gmni/sounds/67046/) |
+| koshi-wind-chime | 8音のウィンドチャイム Koshi（竹の共鳴筒）（抜粋） | Kinoton | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [Koshi Wind Chimes, Medium](https://freesound.org/people/Kinoton/sounds/378431/) |
+| tokyo-balcony-crickets | ベランダの裏で鳴く夜のコオロギ類（東京）（抜粋） | markystar | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | [crickets_and_a_freak.wav](https://freesound.org/people/markystar/sounds/41502/) |
+| shakuhachi | 尺八（楽器の実録音）（抜粋） | kenekana | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) | [Syakuhachi.ogg](https://commons.wikimedia.org/wiki/File:Syakuhachi.ogg) |
+| wadaiko | 和太鼓（楽器の実録音）（抜粋） | 大橋亮介 | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) | [和太鼓の音オーディオ.ogg](https://commons.wikimedia.org/wiki/File:和太鼓の音オーディオ.ogg) |
+| koto | 琴（楽器の実録音）（抜粋） | KOIKICHIGAI | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) | [琴の音のオーディオ.ogg](https://commons.wikimedia.org/wiki/File:琴の音のオーディオ.ogg) |
+| shamisen | 三味線（楽器の実録音）（抜粋） | KOIKICHIGAI | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) | [三味線の音オーディオ.ogg](https://commons.wikimedia.org/wiki/File:三味線の音オーディオ.ogg) |
+| bonsho-chomeiji | 長命寺の梵鐘（滋賀・近江八幡）（抜粋） | Jnn | [CC BY 2.1 JP](https://creativecommons.org/licenses/by/2.1/jp/) | [Bonsyou5599.ogg](https://commons.wikimedia.org/wiki/File:Bonsyou5599.ogg) |
+| beijing-drum-tower | 北京・鼓楼の太鼓の演奏（中国）（抜粋） | Philip Jägenstedt | [Public domain](https://commons.wikimedia.org/wiki/Commons:Public_domain) | [Gulou performance.ogv](https://commons.wikimedia.org/wiki/File:Gulou_performance.ogv) |
 
 
 

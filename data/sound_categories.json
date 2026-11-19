@@ -508,6 +508,98 @@
   "rain-frogs-guiana": {
    "cat": "ambience",
    "basis": "環境の録音（雨・川・波・風・森など。台帳の種別 landscape）"
+  },
+  "zenkoji-bells-kofu": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "matsudo-water-tunnel": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "hakuba-shrine-snow": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "asakusa-sanja-matsuri": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "typhoon-hagibis-mitaka": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "tokyo-night-rain": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "koenji-park-dusk": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "shinagawa-night-street": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "nakano-night-intersection": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "nakano-autumn-night": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "tokyo-bus-interior": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "leipzig-city-lake": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "chelmsford-storm-chimes": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "chiang-mai-forest": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "bamboo-wind-chime": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "koshi-wind-chime": {
+   "cat": "ambience",
+   "basis": "環境音（台帳の環境層 fieldBed）"
+  },
+  "tokyo-balcony-crickets": {
+   "cat": "insects",
+   "basis": "台帳のグループ（insects）"
+  },
+  "shakuhachi": {
+   "cat": "ambience",
+   "basis": "楽器の実録音（専用の分類がまだないため環境音に入れる・v0.79）"
+  },
+  "wadaiko": {
+   "cat": "ambience",
+   "basis": "楽器の実録音（専用の分類がまだないため環境音に入れる・v0.79）"
+  },
+  "koto": {
+   "cat": "ambience",
+   "basis": "楽器の実録音（専用の分類がまだないため環境音に入れる・v0.79）"
+  },
+  "shamisen": {
+   "cat": "ambience",
+   "basis": "楽器の実録音（専用の分類がまだないため環境音に入れる・v0.79）"
+  },
+  "bonsho-chomeiji": {
+   "cat": "ambience",
+   "basis": "楽器の実録音（専用の分類がまだないため環境音に入れる・v0.79）"
+  },
+  "beijing-drum-tower": {
+   "cat": "ambience",
+   "basis": "楽器の実録音（専用の分類がまだないため環境音に入れる・v0.79）"
   }
  }
 }

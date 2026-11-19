@@ -391,6 +391,22 @@ C. **合成音の置き換えの準備**（LIBRARY_300_PLAN 3）：**【v0.51（
   - プッシュ：できず（クラウドから `git push --dry-run` で 403「ss2d5sgg-tech/audio-ecosystem is not in this session's authorized repository set」。旧い名前の URL でも同じ。Mac の VM には認証情報なし。ネットワーク制限は回避していない）。今回のコミットだけを claude/patches/20261116-2022_a_first_guide.patch に保存。適用順：main（0f99206）に ①20261116-0523_a_touch_targets.patch → ②20261116-0725_d_live_longrun.patch → ③20261116-1126_b_locust_names.patch → ④20261116-2022_a_first_guide.patch（いずれも `git am -3`）。
   - 根本の解決（オーナーへ）：定期実行の設定の「ソース」に sawwaudio/audio-ecosystem（または旧名 ss2d5sgg-tech/audio-ecosystem）を加えると、自動実行から直接プッシュできるようになる見込み（docs/PUBLISHING.md の 2026-11-15 の記録どおり）。
   - 次の候補：B（秋の虫の合唱の「推定される主な種（未検証）」・トノサマバッタの MOKUROKU 照合）、d の続き（配信のタイマーを実時間で30分動かすテスト）、A の続き（スクリーンリーダー向けの名前の点検）。0①・C①・1①・3④はオーナー判断待ち。
+- 2026-11-19 JST（チャット）v0.79：実録音 127→150（オーナー依頼「150 になるまで」「既存と重ならない音・楽器の実録音も」「保存は FLAC、容量を考える、必要なら WAV に戻せるように」）
+  - 追加23本（build/library_v079.py。作者・題名・ライセンス・公開日・録音地・説明は 2026-11-19 に原典ページで確認）：
+    - 環境層16：甲府の善光寺の鐘と朝の鳥・松戸の水路トンネル・雪の白馬八方神社・浅草三社祭・台風19号の風（三鷹）・深夜の雨（中野）・夕暮れの公園（東高円寺）・深夜の品川・夜の交差点（中野）・秋の夜の住宅地（中野）・都バスの車内・ライプツィヒの湖・嵐の園芸店の風鈴（英国）・チェンマイの森・竹の風鈴・8音のウィンドチャイム。
+    - 虫の合唱1：東京のベランダ裏のコオロギ類（種は特定しない。原典の途中にある人の声の区間は避けて手動で抜粋）。
+    - 楽器の実録音6（Wikimedia Commons）：尺八・和太鼓・琴・三味線（CC BY 3.0）、長命寺の梵鐘（CC BY 2.1 JP）、北京・鼓楼の太鼓（パブリックドメイン）。専用の群がまだないため landscape 群の単発音・分類は「環境音」。楽器層（src_studio.js の REAL_DEF）へ移すのは次の課題。
+    - 権利：A（CC0 17・PD 1）18本、B（CC BY）5本。BY-SA・NC はなし。電車の音はオーナーの指示で除外。Baltic Sea の雷雨はオーナーの判断で不採用。
+  - 抜粋：build/excerpt_masters.py をクラウドで実行（オーナーの Mac は空き容量不足で device_bash の VM が起動しないため）。取り込みは build/integrate_v079.py（v0.38 の integrate_library.py を元に、Commons の URL・ライセンス、台帳だけにある欄（nameJa・nameJaSource・latinCheck）を消さない処理を追加）。
+    - 非可逆の原本（Ogg Vorbis・m4a）と 32-bit 浮動小数の原本は 24-bit 整数に変換して抜粋し、changes／notes に記録（pcmEquality=false）。
+    - 原本全体がとても小さい音量の4本（白馬・品川・中野の秋の夜・ライプツィヒ）は、演奏時の音量の上限（16倍）でもほかの環境層より小さい。聴感は未確認。
+    - 軽量 MP3 は build/make_lite_audio.py で23本追加（118→141）。分類は data/sound_categories.json に23行を足して ae-categories に埋め込み直した。
+  - 原本の保管（オーナーの Mac）：~/Downloads の WAV/AIFF を可逆の FLAC に変換して ~/Downloads/flac に保存（1本ずつ、デコードした PCM が元と一致することを確認）。
+    - 32-bit 浮動小数の WAV 5本は FLAC が浮動小数を扱えないため 24-bit 整数（~/Downloads/flac/float_notes.txt）。
+    - WAV に戻す：bash ~/Downloads/flac/flac_to_wav.command ファイル名.flac（ffmpeg か macOS の afconvert を使う。README_FLAC.txt）。
+    - 元の WAV/AIFF はまだ削除していない（Mac の削除には device_bash が要るが、空き容量不足で使えない）。400MB を超える原本（576578・769592・687446・870414）は転送の上限を超えるため未変換。
+  - テスト：新規 build/test_library_v079.js ALL PASS。件数が変わったテストの期待値を更新（test_attribution 231→254・test_library_v038 の全体 127→150・test_japan_beds の環境層 31→47・test_net_v053 の軽量 118→141・test_reel_nature_v048 の分類 127→150／環境音 30→52・test_rights の A/B 59/51→77/56 と 110/127→133/150・test_studio_v043 のタイル 127→150・test_ui_v045 の生き物 97→98／環境音 30→52）。
+  - 未検証：抜粋区間の聴感、iPhone Safari の実機、楽器の音量のそろい方。
 （ここに追記）
 
 ## 2026-11-08 v0.64（チャット）

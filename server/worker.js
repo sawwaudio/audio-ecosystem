@@ -12,12 +12,15 @@ import {growthRoute} from './growth/routes.mjs';
 //   POST /login  {email}   購入したメールアドレスへログイン用のリンクを送る（有料会員でなくても同じ返事。登録の有無を漏らさない）
 //   GET  /magic?t=…        ログイン用リンクの行き先。証明を付けてアプリへ戻す（1回だけ使える・20分）
 //   POST /refresh {token}  証明の更新（更新・解約を反映）。有料でなくなっていれば plan:'free'
+//   POST /export/authorize {token, kind}  v0.74 書き出しの許可（PRO 専用）。Stripe の契約状態を確かめ、5分間だけ有効な署名付きの許可を返す。
+//                          FREE・SEMI-PRO・解約済み・期限切れ・支払い失敗（ACTIVE 以外）は 403。偽造・期限切れの証明は 401。
 //
 // env（wrangler.toml と secret）
 //   SAWW_KV（KV）、APP_URL（例 https://sawwaudio.github.io/audio-ecosystem-sounds-1/）、ALLOWED_ORIGINS（カンマ区切り。既定は APP_URL のオリジン）
 //   secret: STRIPE_SECRET_KEY（読み取り専用の制限付きキーで足りる）、STRIPE_WEBHOOK_SECRET、ENT_PRIVATE_JWK（server/keygen.mjs で作る）、
 //           MAGIC_SECRET（長い乱数）、RESEND_API_KEY、MAIL_FROM（例 "saww audio ecosystem <login@example.com>"）
-//   任意: PRICE_IDS（PRO として認める Stripe の価格 ID。カンマ区切り。空なら有効な定期購読はすべて PRO）、STRIPE_API・RESEND_API（テスト用の差し替え）
+//   任意: PRICE_IDS（PRO として認める Stripe の価格 ID。カンマ区切り。空なら SEMI_PRICE_IDS 以外の有効な定期購読はすべて PRO）、
+//         SEMI_PRICE_IDS（SEMI-PRO の価格 ID。月額 price_1UdW3YIfqi9dWAQIenmwXziF・年額 price_1UdW3fIfqi9dWAQIGb3FQ8ap）、STRIPE_API・RESEND_API（テスト用の差し替え）
 
 const ACTIVE = new Set(['active', 'trialing', 'past_due']);  // past_due は Stripe の再請求の間も使えるようにする（期限＋猶予まで）
 const MAX_TOKEN = 40 * 86400, MAGIC_TTL = 20 * 60, REFRESH_WINDOW = 60 * 86400;
@@ -92,6 +95,8 @@ function planOf(env, sub) {
   if (!pro.length && !semi.length) return 'pro';
   if (items.some(id => pro.includes(id))) return 'pro';
   if (items.some(id => semi.includes(id))) return 'semi';
+  // v0.74：PRICE_IDS が空のまま SEMI_PRICE_IDS だけを入れても、これまでの PRO の契約を FREE にしない
+  if (!pro.length && items.length) return 'pro';
   return null;
 }
 function priceOk(env, sub) { return !!planOf(env, sub); }
@@ -107,14 +112,16 @@ async function saveSub(env, sub, email) {
   return rec;
 }
 const isPro = rec => !!rec && rec.pro && ACTIVE.has(rec.status) && rec.pe > now();
+// v0.74 機能の範囲（cap）：書き出し（export）とサンプラーは PRO だけ。アプリは plan と cap の両方を見る
+const CAPS = { pro: ['export', 'sampler'], semi: [] };
 async function issue(env, rec) {
-  const t = now();
-  return signToken(env, { sub: rec.cus, plan: rec.plan === 'semi' ? 'semi' : 'pro', st: rec.status, pe: rec.pe, iat: t, exp: Math.min(rec.pe, t + MAX_TOKEN) });
+  const t = now(), plan = rec.plan === 'semi' ? 'semi' : 'pro';
+  return signToken(env, { sub: rec.cus, plan, cap: CAPS[plan], st: rec.status, pe: rec.pe, iat: t, exp: Math.min(rec.pe, t + MAX_TOKEN) });
 }
 // KV の記録が古い（12時間以上）時は Stripe に聞き直す
-async function freshRec(env, cus) {
+async function freshRec(env, cus, maxAge = 12 * 3600) {
   let rec = JSON.parse((await env.SAWW_KV.get('cus:' + cus)) || 'null');
-  if (rec && rec.pe > now() && now() - rec.at < 12 * 3600) return rec;
+  if (rec && rec.pe > now() && now() - rec.at < maxAge) return rec;
   try {
     const list = await stripe(env, '/v1/subscriptions?status=all&limit=10&customer=' + encodeURIComponent(cus));
     const subs = (list.data || []).sort((a, b) => (ACTIVE.has(b.status) - ACTIVE.has(a.status)) || (periodEnd(b) - periodEnd(a)));
@@ -221,10 +228,28 @@ async function refresh(req, env) {
   let tok = '';
   try { tok = (await req.json()).token; } catch (e) {}
   const pl = await readToken(env, tok);
-  if (!pl || !pl.sub || pl.exp + REFRESH_WINDOW < now()) return json({ ok: false, plan: 'free', error: 'token' }, 401, cors(env, req));
+  if (!pl || !pl.sub || pl.typ || pl.exp + REFRESH_WINDOW < now()) return json({ ok: false, plan: 'free', error: 'token' }, 401, cors(env, req));
   const rec = await freshRec(env, pl.sub);
   if (!isPro(rec)) return json({ ok: true, plan: 'free', status: rec ? rec.status : 'none' }, 200, cors(env, req));
   return json({ ok: true, plan: rec.plan === 'semi' ? 'semi' : 'pro', token: await issue(env, rec) }, 200, cors(env, req));
+}
+
+// v0.74 書き出しは PRO 専用。アプリの書き出しボタンを隠すだけでなく、書き出しの直前にここで契約を確かめる。
+// 書き出しの許可は短い（5分）。証明（最長40日）を盗まれても、解約・期限切れ後はここで止まる。
+const EXPORT_TTL = 300, EXPORT_KINDS = new Set(['audio', 'video', 'preset']);
+async function exportAuthorize(req, env) {
+  let body = {};
+  try { body = await req.json(); } catch (e) {}
+  const kind = String(body.kind || '');
+  if (!EXPORT_KINDS.has(kind)) return json({ ok: false, error: 'kind' }, 400, cors(env, req));
+  const pl = await readToken(env, body.token);
+  if (!pl || !pl.sub || pl.typ || pl.exp + REFRESH_WINDOW < now()) return json({ ok: false, plan: 'free', error: 'token' }, 401, cors(env, req));
+  const rec = await freshRec(env, pl.sub, 3600);
+  if (!isPro(rec)) return json({ ok: false, plan: 'free', status: rec ? rec.status : 'none', error: 'inactive' }, 403, cors(env, req));
+  if (rec.plan === 'semi') return json({ ok: false, plan: 'semi', error: 'plan', token: await issue(env, rec) }, 403, cors(env, req));
+  const t = now();
+  const ticket = await signToken(env, { typ: 'export', sub: rec.cus, plan: 'pro', kind, pe: rec.pe, iat: t, exp: Math.min(rec.pe, t + EXPORT_TTL) });
+  return json({ ok: true, plan: 'pro', ticket, exp: Math.min(rec.pe, t + EXPORT_TTL) }, 200, cors(env, req));
 }
 
 export default {
@@ -239,6 +264,7 @@ export default {
       if (pathname === '/login' && req.method === 'POST') return await login(req, env);
       if (pathname === '/magic' && req.method === 'GET') return await magic(req, env);
       if (pathname === '/refresh' && req.method === 'POST') return await refresh(req, env);
+      if (pathname === '/export/authorize' && req.method === 'POST') return await exportAuthorize(req, env);
       if (pathname === '/public-key' && req.method === 'GET') {
         const { pub, kid } = await privKey(env);
         return json({ ...pub, kid });

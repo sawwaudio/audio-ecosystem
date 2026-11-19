@@ -38,8 +38,8 @@
     },
     {
       "id": "reel",
-      "ja": "リール作成（9:16・1080×1920・15〜60秒・テンプレート）",
-      "en": "Reel creator (9:16, 1080×1920, 15–60 s, templates)",
+      "ja": "リール作成とブラウザ内のプレビュー（9:16・1080×1920・15〜60秒・テンプレート。動画ファイルの書き出しは PRO）",
+      "en": "Reel creator with in-browser preview (9:16, 1080×1920, 15–60 s, templates; video file export needs PRO)",
       "tier": "free",
       "plans": [
         "free",
@@ -50,8 +50,8 @@
     },
     {
       "id": "credits",
-      "ja": "クレジットの自動作成・コピー・共有",
-      "en": "Automatic credits, copy and share",
+      "ja": "クレジット（帰属表示）の自動作成・コピー・保存",
+      "en": "Automatic credits (attribution): copy and save",
       "tier": "free",
       "plans": [
         "free",
@@ -163,8 +163,8 @@
     },
     {
       "id": "export",
-      "ja": "高音質の書き出し（WAV・AIFF 24-bit）",
-      "en": "High-quality export (WAV, AIFF 24-bit)",
+      "ja": "ファイルの書き出し・ダウンロード（WAV・AIFF 24-bit、リール動画 MP4・WebM、プリセット）",
+      "en": "File export and downloads (WAV, AIFF 24-bit, reel video MP4/WebM, presets)",
       "tier": "pro",
       "plans": [
         "pro"
@@ -800,11 +800,11 @@
     {
       "id": "free",
       "name": "FREE",
-      "tagline": "create & share.",
+      "tagline": "create & preview.",
       "currency": "USD",
       "monthly": 0.0,
-      "note_ja": "アカウントなしで使えます。",
-      "note_en": "No account needed.",
+      "note_ja": "アカウントなしで使えます。ファイルの書き出し・ダウンロードはできません（ブラウザ内のプレビューと再生はできます）。",
+      "note_en": "No account needed. No file export or downloads (preview and playback in the browser).",
       "checkout": "none",
       "app": "https://sawwaudio.github.io/audio-ecosystem/#plansSection"
     },
@@ -814,10 +814,11 @@
       "tagline": "perform.",
       "currency": "USD",
       "monthly": 5.0,
-      "note_ja": "サンプラーと録音・書き出し以外の PRO の機能。",
-      "note_en": "Everything in PRO except the sampler and recording/export.",
+      "note_ja": "すべての音源とミキサー・FX・トラックなどの操作。サンプラーとファイルの書き出し（音声・動画・リール）は含みません。",
+      "note_en": "Every recording plus the mixer, FX and tracks. No sampler and no file export (audio, video, reels).",
       "checkout": "coming_soon",
-      "app": "https://sawwaudio.github.io/audio-ecosystem/#plansSection"
+      "app": "https://sawwaudio.github.io/audio-ecosystem/#plansSection",
+      "annual": 50.0
     },
     {
       "id": "pro",
@@ -834,8 +835,8 @@
       "id": "open-access",
       "name": "Free access period",
       "until": "2026-12-31T23:59:59+09:00",
-      "note_ja": "2026年12月31日（日本時間）まで全機能を無料開放中",
-      "note_en": "All features are free until Dec 31, 2026 (Japan time)",
+      "note_ja": "2026年12月31日（日本時間）まで全機能を無料開放中（ファイルの書き出し・ダウンロードは PRO のみ）",
+      "note_en": "All features are free until Dec 31, 2026 (Japan time), except file export and downloads (PRO only)",
       "app": "https://sawwaudio.github.io/audio-ecosystem/"
     }
   ]

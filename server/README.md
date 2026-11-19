@@ -121,3 +121,25 @@ ChatGPT 側で作った候補コード（2026-11-11〜13）を取り込んだも
 - `growth/operator/subscriptions.mjs`：読み取り専用の Stripe 鍵（STRIPE_REPORT_KEY）で PRO の契約者数と月額の総額を取る。手元で実行する（Worker では動かさない）。
 - テスト：`cd server/growth && node --test`（9件）、`cd server/growth/operator && node --test`（4件）、`node server/test_worker.mjs`（課金 + 入口4件）。
 - 未実装：管理者の承認・却下の画面、Durable Objects、操作履歴、Origin/CSRF の強化。候補コードの ZIP には入っていなかった（設計書で言及のみ）。
+
+## 7. SEMI-PRO と「書き出しは PRO 専用」（v0.74・2026-11-19）
+オーナー指示：FREE（$0）・SEMI-PRO（月額 $5／年額 $50）・PRO（月額 $9.99／年額 $99.99）。米ドル建て・税込。
+
+| | FREE | SEMI-PRO | PRO |
+|---|---|---|---|
+| 音源 | 無料の音源（product_tiers.json の recordings.free・freeAmbience） | すべて | すべて |
+| ミキサー・FX・トラックなどの操作 | — | ✓ | ✓ |
+| サンプラー | — | — | ✓ |
+| ファイルの書き出し・ダウンロード（WAV・AIFF・リール動画 MP4/WebM・プリセット） | — | — | ✓ |
+| ブラウザ内のプレビューと再生 | ✓ | ✓ | ✓ |
+
+- SEMI-PRO の価格 ID：月額 `price_1UdW3YIfqi9dWAQIenmwXziF`・年額 `price_1UdW3fIfqi9dWAQIGb3FQ8ap`。Worker の `SEMI_PRICE_IDS` に両方を入れる（本番の設定変更はオーナーの承認後）。
+- `PRICE_IDS` が空のまま `SEMI_PRICE_IDS` だけを入れても、SEMI 以外の価格の契約はこれまでどおり PRO（既存の契約を FREE にしない）。
+- 証明（JWT）に `cap` を入れる：PRO は `["export","sampler"]`、SEMI-PRO は `[]`。アプリは plan と cap の両方を見る。
+- `POST /export/authorize {token, kind}`（kind は audio・video・preset）：書き出しの直前にアプリが呼ぶ。証明の署名と Stripe の契約状態（KV が1時間より古ければ Stripe に聞き直す）を確かめ、PRO なら5分だけ有効な署名付きの許可（`typ:"export"`）を返す。
+  FREE・解約済み・期限切れ・支払い失敗は 403（plan free）、SEMI-PRO は 403（plan semi と SEMI-PRO の証明）、偽造・許可の使い回しは 401。`past_due` は Stripe の再請求の間（期間末まで）許可する（これまでの PRO と同じ扱い）。
+- 書き出しのファイルはブラウザの中で作る（サーバーには書き出しのファイル・ダウンロード URL・裏で動く書き出しの仕事がない）。そのためアプリは、書き出しの直前に上の許可を確かめ、許可がなければファイルを作らない・保存しない。
+  サーバーに届かない時は、端末にある署名付きの PRO の証明（最長40日・契約期間の終わりまで）で許可する。
+- 管理者の無料 PRO（署名付きの管理者パス・登録済み端末）はアプリ側で確かめる。サーバーには問い合わせない。
+- 限界：アプリのコードは公開されていてブラウザの中で動くため、開発者ツールでコードを書き換えれば、手元で鳴っている音や映像を取り出すことは技術的には防ぎきれない。この仕組みは、普通の操作・ボタンを隠すだけの迂回・API の直接呼び出し・解約後の証明の使い回しを止めるもの。
+- テスト：`node server/test_worker.mjs`（書き出しの認可 19 件を追加）、`node build/test_export_gate_v074.js`（アプリの通し 27 件）。

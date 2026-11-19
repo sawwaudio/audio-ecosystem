@@ -7,13 +7,13 @@
   {
    "id": "free",
    "name": "FREE",
-   "tagline": "create & share.",
+   "tagline": "create & preview.",
    "price": "$0",
    "period": "forever",
-   "note_ja": "アカウントなしで使えます。",
-   "note_en": "No account needed.",
-   "live_ja": "アカウントなしで使えます。",
-   "live_en": "No account needed."
+   "note_ja": "アカウントなしで使えます。ファイルの書き出し・ダウンロードはできません（ブラウザ内のプレビューと再生はできます）。",
+   "note_en": "No account needed. No file export or downloads (preview and playback in the browser).",
+   "live_ja": "アカウントなしで使えます。ファイルの書き出し・ダウンロードはできません（ブラウザ内のプレビューと再生はできます）。",
+   "live_en": "No account needed. No file export or downloads (preview and playback in the browser)."
   },
   {
    "id": "semi",
@@ -21,10 +21,11 @@
    "tagline": "perform.",
    "price": "$5",
    "period": "USD / month",
-   "note_ja": "サンプラーと録音・書き出し以外の PRO の機能。",
-   "note_en": "Everything in PRO except the sampler and recording/export.",
-   "live_ja": "いつでも解約でき、次の更新日までは SEMI-PRO のまま使えます。",
-   "live_en": "Cancel any time; SEMI-PRO stays on until the next renewal date."
+   "note_ja": "すべての音源とミキサー・FX・トラックなどの操作。サンプラーとファイルの書き出し（音声・動画・リール）は含みません。",
+   "note_en": "Every recording plus the mixer, FX and tracks. No sampler and no file export (audio, video, reels).",
+   "live_ja": "月額 US$5 または年額 US$50（税込）。いつでも解約でき、支払い済みの期間の終わりまで SEMI-PRO のまま使えます。",
+   "live_en": "US$5/month or US$50/year (tax incl.). Cancel any time; SEMI-PRO stays on until the paid period ends.",
+   "alt": "年額 US$50（税込）"
   },
   {
    "id": "pro",
@@ -61,14 +62,14 @@
   {
    "id": "reel",
    "tier": "free",
-   "ja": "リール作成（9:16・1080×1920・15〜60秒・テンプレート）",
-   "en": "Reel creator (9:16, 1080×1920, 15–60 s, templates)"
+   "ja": "リール作成とブラウザ内のプレビュー（9:16・1080×1920・15〜60秒・テンプレート。動画ファイルの書き出しは PRO）",
+   "en": "Reel creator with in-browser preview (9:16, 1080×1920, 15–60 s, templates; video file export needs PRO)"
   },
   {
    "id": "credits",
    "tier": "free",
-   "ja": "クレジットの自動作成・コピー・共有",
-   "en": "Automatic credits, copy and share"
+   "ja": "クレジット（帰属表示）の自動作成・コピー・保存",
+   "en": "Automatic credits (attribution): copy and save"
   },
   {
    "id": "autoplay",
@@ -127,8 +128,8 @@
   {
    "id": "export",
    "tier": "pro",
-   "ja": "高音質の書き出し（WAV・AIFF 24-bit）",
-   "en": "High-quality export (WAV, AIFF 24-bit)"
+   "ja": "ファイルの書き出し・ダウンロード（WAV・AIFF 24-bit、リール動画 MP4・WebM、プリセット）",
+   "en": "File export and downloads (WAV, AIFF 24-bit, reel video MP4/WebM, presets)"
   },
   {
    "id": "midi",
@@ -168,7 +169,9 @@
    "kid": "saww-2026-11-08"
   },
   "annualPaymentLink": "https://buy.stripe.com/aFa5kDdOd1Wz3uz9mrbZe08",
-  "semiPaymentLink": ""
+  "semiPaymentLink": "",
+  "semiAnnualPaymentLink": "",
+  "_semi_note": "v0.74 SEMI-PRO：月額 US$5（price_1UdW3YIfqi9dWAQIenmwXziF）・年額 US$50（price_1UdW3fIfqi9dWAQIGb3FQ8ap）、税込。支払いリンクを semiPaymentLink・semiAnnualPaymentLink に入れると購入欄に出る。課金の確認サーバーの SEMI_PRICE_IDS に両方の価格 ID を入れる。"
  },
  "recordings": {
   "_note": "生き物の声は5分類から各5録音、環境音は10録音。自分の音も無料。",

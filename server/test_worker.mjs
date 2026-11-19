@@ -103,4 +103,78 @@ ok('old_api_period', JSON.parse(kv.get('cus:cus_3')).pe === subs.sub_3.current_p
   const pt = ((p1.headers.get('Location') || '').match(/#saww-pro=(.+)$/) || [])[1];
   ok('pro_still_pro', !!pt && payload(pt).plan === 'pro');
 }
+
+// v0.74 書き出しは PRO 専用：/export/authorize（サーバー側の認可）
+{
+  const env3 = { ...env, PRICE_IDS: 'price_pro,price_pro_year', SEMI_PRICE_IDS: 'price_1UdW3YIfqi9dWAQIenmwXziF,price_1UdW3fIfqi9dWAQIGb3FQ8ap' };
+  const c3 = (method, path, body, origin = 'https://app.example') => worker.fetch(new Request('https://billing.example' + path, { method, headers: { Origin: origin, 'Content-Type': 'application/json' }, body }), env3);
+  const mk = async (id, cus, price, status = 'active', days = 30) => {
+    subs[id] = { id, customer: cus, status, items: { data: [{ price: { id: price }, current_period_end: T() + days * 86400 }] } };
+    const sid = 'cs_test_' + id.replace(/_/g, '').padEnd(12, '0');
+    sessions[sid] = { id: sid, status: 'complete', mode: 'subscription', subscription: id, customer_details: { email: id + '@example.com' } };
+    const l = (await c3('GET', '/activate?session_id=' + sid)).headers.get('Location') || '';
+    return (l.match(/#saww-pro=(.+)$/) || [])[1];
+  };
+  const auth = async (token, kind = 'audio', origin) => { const r = await c3('POST', '/export/authorize', JSON.stringify({ token, kind }), origin); return { status: r.status, body: await r.json(), cors: r.headers.get('Access-Control-Allow-Origin') }; };
+  // PRO（月額・年額）：許可が出る。許可は5分以内・署名あり・typ export
+  const tPro = await mk('sub_xp', 'cus_xp', 'price_pro'), tYear = await mk('sub_xy', 'cus_xy', 'price_pro_year');
+  ok('cap_pro', payload(tPro).cap.join() === 'export,sampler');
+  const a1 = await auth(tPro), a1y = await auth(tYear, 'video');
+  R.exportPro = a1.body.ok;
+  ok('export_pro_ok', a1.status === 200 && a1.body.ok && (await verifyES(a1.body.ticket)) && payload(a1.body.ticket).typ === 'export' && payload(a1.body.ticket).exp - payload(a1.body.ticket).iat <= 300 && a1.cors === 'https://app.example');
+  ok('export_pro_annual_ok', a1y.status === 200 && a1y.body.ok && payload(a1y.body.ticket).kind === 'video');
+  // SEMI-PRO（月額・年額の価格 ID）：403・plan semi・cap なし
+  const tSemiM = await mk('sub_sm', 'cus_sm', 'price_1UdW3YIfqi9dWAQIenmwXziF'), tSemiY = await mk('sub_sy', 'cus_sy', 'price_1UdW3fIfqi9dWAQIGb3FQ8ap');
+  ok('semi_monthly_plan', payload(tSemiM).plan === 'semi' && payload(tSemiM).cap.length === 0);
+  ok('semi_annual_plan', payload(tSemiY).plan === 'semi');
+  const s1 = await auth(tSemiM), s2 = await auth(tSemiY, 'video');
+  ok('export_semi_denied', s1.status === 403 && !s1.body.ok && s1.body.plan === 'semi' && !s1.body.ticket && s2.status === 403 && !s2.body.ticket);
+  // FREE（証明なし・偽造・別の価格）：拒否
+  ok('export_no_token', (await auth('')).status === 401);
+  ok('export_forged', (await auth(tPro.slice(0, -4) + 'AAAA')).status === 401);
+  const tOther = await mk('sub_xo', 'cus_xo', 'price_other');
+  ok('export_other_price_no_token', !tOther);
+  ok('export_bad_kind', (await auth(tPro, 'exe')).status === 400);
+  // 許可（ticket）を証明として使い回せない（/refresh・/export/authorize とも拒否）
+  ok('ticket_not_token', (await c3('POST', '/refresh', JSON.stringify({ token: a1.body.ticket }))).status === 401 && (await auth(a1.body.ticket)).status === 401);
+  // 解約（期間末で終了）・支払い失敗（unpaid）・期限切れ：証明が有効期限内でも拒否
+  subs.sub_xp = { ...subs.sub_xp, status: 'canceled' };
+  const dl = JSON.stringify({ id: 'evt_x1', type: 'customer.subscription.deleted', data: { object: subs.sub_xp } });
+  await worker.fetch(new Request('https://billing.example/stripe/webhook', { method: 'POST', headers: { 'Stripe-Signature': await sigHdr(dl) }, body: dl }), env3);
+  const c1 = await auth(tPro);
+  ok('export_canceled_denied', c1.status === 403 && c1.body.plan === 'free' && c1.body.status === 'canceled');
+  subs.sub_xy = { ...subs.sub_xy, status: 'unpaid' };
+  const up = JSON.stringify({ id: 'evt_x2', type: 'customer.subscription.updated', data: { object: subs.sub_xy } });
+  await worker.fetch(new Request('https://billing.example/stripe/webhook', { method: 'POST', headers: { 'Stripe-Signature': await sigHdr(up) }, body: up }), env3);
+  ok('export_unpaid_denied', (await auth(tYear)).status === 403);
+  const tPd = await mk('sub_pd', 'cus_pd', 'price_pro');
+  subs.sub_pd = { ...subs.sub_pd, status: 'past_due' };
+  const pd = JSON.stringify({ id: 'evt_x3', type: 'customer.subscription.updated', data: { object: subs.sub_pd } });
+  await worker.fetch(new Request('https://billing.example/stripe/webhook', { method: 'POST', headers: { 'Stripe-Signature': await sigHdr(pd) }, body: pd }), env3);
+  ok('export_past_due_grace', (await auth(tPd)).status === 200);
+  const tEx = await mk('sub_ex', 'cus_ex', 'price_pro');
+  const recEx = JSON.parse(kv.get('cus:cus_ex')); recEx.pe = T() - 10; recEx.at = T(); kv.set('cus:cus_ex', JSON.stringify(recEx));
+  subs.sub_ex = { ...subs.sub_ex, status: 'incomplete_expired', items: { data: [{ price: { id: 'price_pro' }, current_period_end: T() - 10 }] } };
+  ok('export_expired_denied', (await auth(tEx)).status === 403);
+  // PRO → SEMI-PRO へのダウングレード：書き出しは止まり、SEMI-PRO の証明が返る
+  const tDg = await mk('sub_dg', 'cus_dg', 'price_pro');
+  subs.sub_dg = { ...subs.sub_dg, items: { data: [{ price: { id: 'price_1UdW3YIfqi9dWAQIenmwXziF' }, current_period_end: T() + 30 * 86400 }] } };
+  const dg = JSON.stringify({ id: 'evt_x4', type: 'customer.subscription.updated', data: { object: subs.sub_dg } });
+  await worker.fetch(new Request('https://billing.example/stripe/webhook', { method: 'POST', headers: { 'Stripe-Signature': await sigHdr(dg) }, body: dg }), env3);
+  const g1 = await auth(tDg);
+  ok('export_downgrade_semi', g1.status === 403 && g1.body.plan === 'semi' && payload(g1.body.token).plan === 'semi');
+  // KV が古い（1時間以上）時は Stripe に聞き直す（Webhook が届かなかった解約も反映）
+  const tSt = await mk('sub_st', 'cus_st', 'price_pro');
+  const recSt = JSON.parse(kv.get('cus:cus_st')); recSt.at = T() - 7200; kv.set('cus:cus_st', JSON.stringify(recSt));
+  subs.sub_st = { ...subs.sub_st, status: 'canceled' };
+  ok('export_stale_rechecks_stripe', (await auth(tSt)).status === 403);
+  // PRICE_IDS が空で SEMI_PRICE_IDS だけを入れても、既存の PRO 契約は PRO のまま・SEMI は semi
+  const env4 = { ...env, PRICE_IDS: '', SEMI_PRICE_IDS: 'price_1UdW3YIfqi9dWAQIenmwXziF' };
+  subs.sub_l = { id: 'sub_l', customer: 'cus_l', status: 'active', items: { data: [{ price: { id: 'price_legacy_pro' }, current_period_end: T() + 30 * 86400 }] } };
+  sessions.cs_test_legacy000000 = { id: 'cs_test_legacy000000', status: 'complete', mode: 'subscription', subscription: 'sub_l', customer_details: { email: 'l@example.com' } };
+  const ll = (await worker.fetch(new Request('https://billing.example/activate?session_id=cs_test_legacy000000'), env4)).headers.get('Location') || '';
+  ok('legacy_pro_kept', /#saww-pro=/.test(ll) && payload(ll.split('#saww-pro=')[1]).plan === 'pro');
+  // 管理者の無料 PRO はアプリ側（署名付きの管理者パス）で、このサーバーは関わらない：既存の入口は変わらない
+  ok('routes_kept', (await c3('GET', '/')).status === 200 && (await c3('GET', '/public-key')).status === 200);
+}
 console.log(JSON.stringify(R, null, 1)); console.log(fail.length ? 'FAIL: ' + fail.join(', ') : 'ALL PASS'); process.exit(fail.length ? 1 : 0);

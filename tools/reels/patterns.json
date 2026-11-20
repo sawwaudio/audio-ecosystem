@@ -10,7 +10,10 @@
    "status": "active",
    "version": 1,
    "sec": 20,
-   "args": {"look": "specimen", "mix": "didge"},
+   "args": {
+    "look": "specimen",
+    "mix": "didge"
+   },
    "params": {},
    "knobs": [],
    "history": []
@@ -24,7 +27,10 @@
    "status": "paused",
    "version": 1,
    "sec": 20,
-   "args": {"look": "full", "mix": "field"},
+   "args": {
+    "look": "full",
+    "mix": "field"
+   },
    "params": {},
    "knobs": [],
    "history": []
@@ -38,12 +44,38 @@
    "status": "active",
    "version": 1,
    "sec": 30,
-   "args": {"visual": "bokeh", "kicker": "BREATHE  ·  {sec} SECONDS", "prefer": "rain,river,stream,water,night"},
-   "params": {"title_in": 2.0, "title_out": 11.5, "title_y": 820},
+   "args": {
+    "visual": "bokeh",
+    "kicker": "BREATHE  ·  {sec} SECONDS",
+    "prefer": "rain,river,stream,water,night"
+   },
+   "params": {
+    "title_in": 2.0,
+    "title_out": 11.5,
+    "title_y": 820
+   },
    "knobs": [
-    {"key": "title_in", "step": -0.8, "min": 0.4, "max": 4.0, "why": "最初の数秒で何の音か分かるか（継続率）"},
-    {"key": "sec", "step": -5, "min": 15, "max": 40, "why": "短いほど最後まで見られるか（視聴秒数÷長さ）"},
-    {"key": "title_y", "step": -180, "min": 300, "max": 1100, "why": "文字の位置（中央と上）"}
+    {
+     "key": "title_in",
+     "step": -0.8,
+     "min": 0.4,
+     "max": 4.0,
+     "why": "最初の数秒で何の音か分かるか（継続率）"
+    },
+    {
+     "key": "sec",
+     "step": -5,
+     "min": 15,
+     "max": 40,
+     "why": "短いほど最後まで見られるか（視聴秒数÷長さ）"
+    },
+    {
+     "key": "title_y",
+     "step": -180,
+     "min": 300,
+     "max": 1100,
+     "why": "文字の位置（中央と上）"
+    }
    ],
    "history": []
   },
@@ -56,13 +88,49 @@
    "status": "trial",
    "version": 1,
    "sec": 30,
-   "args": {"visual": "meadow", "kicker": "A MEADOW  ·  {sec} SECONDS", "prefer": "meadow,grassland,field,insect,cricket,bird,skylark"},
-   "params": {"palette": "spring", "sway": 1.0, "focus": 0.55, "flowers": 110, "title_in": 2.0, "title_out": 11.5, "title_y": 640},
+   "args": {
+    "visual": "meadow",
+    "kicker": "A MEADOW  ·  {sec} SECONDS",
+    "prefer": "meadow,grassland,field,insect,cricket,bird,skylark"
+   },
+   "params": {
+    "palette": "spring",
+    "sway": 1.0,
+    "focus": 0.55,
+    "flowers": 110,
+    "title_in": 2.0,
+    "title_out": 11.5,
+    "title_y": 640
+   },
    "knobs": [
-    {"key": "title_in", "step": -0.8, "min": 0.4, "max": 4.0, "why": "最初の数秒で何の音か分かるか"},
-    {"key": "sway", "step": 0.4, "min": 0.4, "max": 2.2, "why": "動きの量（スワイプされにくさ）"},
-    {"key": "focus", "step": 0.15, "min": 0.25, "max": 0.9, "why": "ピントの位置（手前の花か奥か）"},
-    {"key": "sec", "step": -5, "min": 15, "max": 40, "why": "長さ"}
+    {
+     "key": "title_in",
+     "step": -0.8,
+     "min": 0.4,
+     "max": 4.0,
+     "why": "最初の数秒で何の音か分かるか"
+    },
+    {
+     "key": "sway",
+     "step": 0.4,
+     "min": 0.4,
+     "max": 2.2,
+     "why": "動きの量（スワイプされにくさ）"
+    },
+    {
+     "key": "focus",
+     "step": 0.15,
+     "min": 0.25,
+     "max": 0.9,
+     "why": "ピントの位置（手前の花か奥か）"
+    },
+    {
+     "key": "sec",
+     "step": -5,
+     "min": 15,
+     "max": 40,
+     "why": "長さ"
+    }
    ],
    "history": []
   },
@@ -75,13 +143,49 @@
    "status": "trial",
    "version": 1,
    "sec": 30,
-   "args": {"visual": "komorebi", "kicker": "UNDER THE TREES  ·  {sec} SECONDS", "prefer": "forest,woods,wood,tree,bamboo,leaves,wind"},
-   "params": {"density": 0.68, "rays": 1.0, "sway": 1.0, "angle": 62, "title_in": 2.0, "title_out": 11.5, "title_y": 820},
+   "args": {
+    "visual": "komorebi",
+    "kicker": "UNDER THE TREES  ·  {sec} SECONDS",
+    "prefer": "forest,woods,wood,tree,bamboo,leaves,wind"
+   },
+   "params": {
+    "density": 0.68,
+    "rays": 1.0,
+    "sway": 1.0,
+    "angle": 62,
+    "title_in": 2.0,
+    "title_out": 11.5,
+    "title_y": 820
+   },
    "knobs": [
-    {"key": "title_in", "step": -0.8, "min": 0.4, "max": 4.0, "why": "最初の数秒で何の音か分かるか"},
-    {"key": "rays", "step": 0.4, "min": 0.4, "max": 2.0, "why": "光の筋の強さ（画面の明るさ）"},
-    {"key": "density", "step": -0.04, "min": 0.56, "max": 0.76, "why": "葉の隙間の量"},
-    {"key": "sec", "step": -5, "min": 15, "max": 40, "why": "長さ"}
+    {
+     "key": "title_in",
+     "step": -0.8,
+     "min": 0.4,
+     "max": 4.0,
+     "why": "最初の数秒で何の音か分かるか"
+    },
+    {
+     "key": "rays",
+     "step": 0.4,
+     "min": 0.4,
+     "max": 2.0,
+     "why": "光の筋の強さ（画面の明るさ）"
+    },
+    {
+     "key": "density",
+     "step": -0.04,
+     "min": 0.56,
+     "max": 0.76,
+     "why": "葉の隙間の量"
+    },
+    {
+     "key": "sec",
+     "step": -5,
+     "min": 15,
+     "max": 40,
+     "why": "長さ"
+    }
    ],
    "history": []
   },
@@ -94,13 +198,48 @@
    "status": "trial",
    "version": 1,
    "sec": 30,
-   "args": {"visual": "saiun", "kicker": "AN IRIDESCENT SKY  ·  {sec} SECONDS", "prefer": "wind,coast,sea,wave,open,dawn,skylark"},
-   "params": {"cover": 0.45, "iris": 1.0, "drift": 1.0, "title_in": 2.0, "title_out": 11.5, "title_y": 1000},
+   "args": {
+    "visual": "saiun",
+    "kicker": "AN IRIDESCENT SKY  ·  {sec} SECONDS",
+    "prefer": "wind,coast,sea,wave,open,dawn,skylark"
+   },
+   "params": {
+    "cover": 0.45,
+    "iris": 1.0,
+    "drift": 1.0,
+    "title_in": 2.0,
+    "title_out": 11.5,
+    "title_y": 1000
+   },
    "knobs": [
-    {"key": "title_in", "step": -0.8, "min": 0.4, "max": 4.0, "why": "最初の数秒で何の音か分かるか"},
-    {"key": "iris", "step": 0.35, "min": 0.4, "max": 2.0, "why": "虹色の強さ"},
-    {"key": "cover", "step": -0.06, "min": 0.3, "max": 0.6, "why": "雲の量"},
-    {"key": "sec", "step": -5, "min": 15, "max": 40, "why": "長さ"}
+    {
+     "key": "title_in",
+     "step": -0.8,
+     "min": 0.4,
+     "max": 4.0,
+     "why": "最初の数秒で何の音か分かるか"
+    },
+    {
+     "key": "iris",
+     "step": 0.35,
+     "min": 0.4,
+     "max": 2.0,
+     "why": "虹色の強さ"
+    },
+    {
+     "key": "cover",
+     "step": -0.06,
+     "min": 0.3,
+     "max": 0.6,
+     "why": "雲の量"
+    },
+    {
+     "key": "sec",
+     "step": -5,
+     "min": 15,
+     "max": 40,
+     "why": "長さ"
+    }
    ],
    "history": []
   },
@@ -116,6 +255,68 @@
    "args": {},
    "params": {},
    "knobs": [],
+   "history": []
+  },
+  {
+   "id": "rush-burst",
+   "name_ja": "脳汁・爆発",
+   "reference": "2026-11-20 オーナー指示「もっと脳汁出るコンテンツ。見る人は文章を読まず、視覚・聴覚の刺激を欲している」。自然音の一打×ビート（124BPM・8小節・ループ）。全面・高彩度、一打ごとに衝撃波と粒、キックで画面が跳ね、小節ごとに色と対称が変わる。文字なし。",
+   "series": "rush",
+   "maker": "rush",
+   "status": "trial",
+   "version": 1,
+   "sec": 15.5,
+   "args": {
+    "look": "burst"
+   },
+   "params": {},
+   "knobs": [
+    {
+     "key": "bpm",
+     "step": 6,
+     "min": 110,
+     "max": 140,
+     "why": "速いほど刺激が強いか（継続率）"
+    },
+    {
+     "key": "bars",
+     "step": -2,
+     "min": 4,
+     "max": 8,
+     "why": "短いほど最後まで見られ、ループで再生が伸びるか"
+    }
+   ],
+   "history": []
+  },
+  {
+   "id": "rush-satisfy",
+   "name_ja": "脳汁・液体の玉",
+   "reference": "同上の音で、映像は気持ちいい系：光沢のある液体の玉がゆっくり回り、一打ごとに新しい玉がぷるっと生まれて合体、キックで表面に波紋。カットなし・文字なし。rush-burst と A/B。",
+   "series": "rush",
+   "maker": "rush",
+   "status": "trial",
+   "version": 1,
+   "sec": 15.5,
+   "args": {
+    "look": "satisfy"
+   },
+   "params": {},
+   "knobs": [
+    {
+     "key": "bpm",
+     "step": 6,
+     "min": 110,
+     "max": 140,
+     "why": "速いほど刺激が強いか（継続率）"
+    },
+    {
+     "key": "bars",
+     "step": -2,
+     "min": 4,
+     "max": 8,
+     "why": "短いほど最後まで見られ、ループで再生が伸びるか"
+    }
+   ],
    "history": []
   }
  ]

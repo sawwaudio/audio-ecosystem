@@ -1,0 +1,26 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>SAE 投稿管理</title><style>body{font:16px system-ui;background:#122322;color:#f6f2e7;max-width:960px;margin:3em auto;padding:1rem}button,select,textarea{font:inherit;padding:.5em;margin:.3em}article{border-top:1px solid #83948e;padding:1em 0;display:flow-root}video{width:175px;float:left;margin:0 1.2em 1em 0}textarea{width:55%;height:8em}pre{white-space:pre-wrap}small{color:#c5d9ca}@media(max-width:600px){body{margin:0 auto}input,textarea,video,select{max-width:100%;box-sizing:border-box;font-size:16px}textarea{width:100%}video{float:none;display:block}button,select{min-height:44px}pre{overflow-wrap:anywhere}}</style><h1>Reels 投稿管理</h1><p>Reels は候補を承認後、公開先を確認して手動で投稿処理を進めてください。Feed の連続表紙は別管理です。</p><p>公開予定　19:00 JST　·　@saww_audio_ecosystem</p><button id="openStudio" type="button">SAEを新しいタブで開く</button><details><summary>ほかの端末を登録</summary><p>自分の端末で <a href="https://sawwaudio.github.io/audio-ecosystem-sounds-1/?setup=device" target="_blank" rel="noopener">SAEの端末登録ページ</a> を開き、表示された登録コードをここに貼ってください。</p><label>登録コード <input id="pairCode" size="32" autocomplete="off" spellcheck="false"></label><button id="pairDevice">この端末を承認</button><p id="pairMessage" role="status"></p><input hidden id="pairUrl" readonly aria-label="承認リンク"><button hidden id="copyPair">承認リンクをコピー</button></details><p id="status"></p><select id="mode"><option>DRAFT</option><option>APPROVAL</option><option>AUTO</option></select><button id="pause">一時停止</button><button id="manual">今日の投稿処理を進める</button><button id="insights">KPIを取得</button><main></main><h2>シリーズ別・直近の公開実績</h2><pre id="weekly"></pre><script>
+const q=s=>document.querySelector(s);
+q('#openStudio').onclick=async()=>{
+ const studio=window.open('about:blank','_blank');
+ if(!studio){alert('投稿管理は開いたままです。新しいタブを開くことを許可して、もう一度お試しください。');return}
+ studio.opener=null;
+ try{
+  const response=await fetch('/api',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'studio'})});
+  if(!response.ok)throw Error();
+  const {url}=await response.json();studio.location.replace(url);
+ }catch{studio.close();alert('SAEを開けませんでした。投稿管理からもう一度お試しください。')}
+};
+q('#pairDevice').onclick=async()=>{
+ const code=q('#pairCode').value.trim(),out=q('#pairUrl'),copy=q('#copyPair');
+ out.hidden=copy.hidden=true;out.value='';
+ try{
+  const r=await fetch('/api',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'pair-device',code})});
+  if(!r.ok)throw Error();
+  out.value=(await r.json()).url;out.hidden=copy.hidden=false;
+  q('#pairMessage').textContent='承認しました。このリンクを登録コードを出したブラウザーで開いてください。';
+ }catch{q('#pairMessage').textContent='登録コードと、管理画面へのログインを確認してください。'}
+};
+q('#copyPair').onclick=async()=>{try{await navigator.clipboard.writeText(q('#pairUrl').value);q('#pairMessage').textContent='承認リンクをコピーしました。'}catch{q('#pairUrl').select()}};
+async function command(action,extra={}){const r=await fetch('/api',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action,...extra})});if(!r.ok)return alert((await r.json()).error);await load()}
+async function load(){const {settings,jobs,weekly}=await(await fetch('/api')).json();q('#weekly').textContent=Object.entries(weekly).map(([s,r])=>s+'　'+r.posts+'本　保存＋共有／リーチ '+(r.rate===null?'未取得':(r.rate*100).toFixed(1)+'%')).join('\n')||'公開実績はまだありません。';q('#mode').value=settings.mode;q('#status').textContent=settings.paused?'一時停止中':'稼働中';q('#pause').textContent=settings.paused?'再開':'一時停止';q('#pause').onclick=()=>command(settings.paused?'resume':'pause');q('main').replaceChildren();for(const j of jobs){const a=document.createElement('article');q('main').append(a);const add=(tag,text)=>{const e=document.createElement(tag);e.textContent=text||'';a.append(e);return e};const v=add('video');v.src='/video/'+j.day;v.controls=true;v.preload='none';add('h2',j.day+' · '+j.series);add('p',[j.state,j.reason,j.media].filter(Boolean).join(' / '));const t=add('textarea');t.value=j.caption;for(const [title,action] of [['保存','save'],['承認','approve']])add('button',title).onclick=()=>command(action,{day:j.day,caption:t.value});add('button','再生成').onclick=()=>command('regenerate',{day:j.day});add('pre',j.rights.map(r=>r.author+' / '+r.license).join('\n'));add('small','KPI '+(Object.keys(JSON.parse(j.metrics)).length?j.metrics:'未取得'))}}
+q('#insights').onclick=()=>command('insights');q('#manual').onclick=()=>command('publish');q('#mode').onchange=e=>command('mode',{mode:e.target.value});load();</script></html>

@@ -1,0 +1,15 @@
+# saww audio ecosystem · Sandbox
+
+This branch serves the existing app and billing API on the same origin. The default GitHub Pages deployment cannot execute Python. Deploy this branch only on a sandbox origin with the API. Keep the public Pages branch on its current release until the billing deployment is ready.
+
+Python 3.9+ with SQLite. Run from the repository root. Set secrets using the server environment. Keep the database outside the checkout on a persistent private volume. The sample WSGI server binds loopback for development.
+
+1. Set STRIPE_SECRET_KEY to a restricted Sandbox key with permission to read/write the relevant catalog, customer, Checkout and portal resources and read subscriptions. Run `python3 billing/catalog.py`. Record its product ID and set STRIPE_PRICE_ID to its price ID.
+2. Set APP_ORIGIN to the external HTTPS sandbox origin without a trailing slash (local default http://localhost:8049), BILLING_DB to a private absolute file path, and SMTP_HOST, SMTP_PORT (465), SMTP_USER, SMTP_PASSWORD, MAIL_FROM for verified email delivery.
+3. Configure the same sandbox's Customer Portal for payment methods, invoice history and cancellation at period end. Keep plan switching disabled. Route signed events to /api/webhook and set STRIPE_WEBHOOK_SECRET from that endpoint. Subscribe to checkout.session.completed, checkout.session.async_payment_succeeded, checkout.session.async_payment_failed, customer.subscription.created/updated/deleted, invoice.paid and invoice.payment_failed.
+4. Run `python3 billing/server.py` and open the origin. For remote testing terminate TLS ahead of this service. Serve media with an HTTP server with range support for larger files. Expose only the paths allowed by the application. Do not expose SQLite, environment or source directories.
+5. Run `python3 -m unittest discover -s billing -v` for the local HTTP application tests. These simulate email and Stripe. In Sandbox, use two browser profiles and repeat signup, abandoned/paid Checkout, duplicate upgrade, portal cancellation, renewal failure, recovery and expiration. Verify an extracted WAV's audio and credits and that Free Reels still exports in a browser.
+
+Endpoints: GET /api/me and POST /api/login, /api/verify, /api/logout, /api/checkout, /api/portal, /api/webhook, /api/export-header. Success only polls local entitlement. The webhook serializes reconciliation and re-reads Stripe's current subscription and latest invoice. Delayed webhook delivery can delay account changes. Export checks subscription, price and expiry on the server before returning a PCM header. Audio stays on-device. This gate protects the official workflow; users can independently encode audio they control.
+
+Before live launch, supply approved seller identity, contact details, terms, privacy and refund conditions, confirm country-specific tax registration and sales disclosures, and review production hosting, backups, webhook monitoring and risk/refund handling. Sandbox code deliberately rejects live API keys. Do not simply swap keys.

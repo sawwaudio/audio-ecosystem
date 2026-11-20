@@ -1,0 +1,9 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="referrer" content="no-referrer"><title>SAE 端末登録</title><p id="msg">このブラウザーを登録しています。</p><script>
+(async()=>{
+ const [ticket,code]=location.hash.slice(1).split('.');
+ history.replaceState(null,'',location.pathname);
+ const r=await fetch('/finish-device',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ticket,code})});
+ if(!r.ok)throw Error();
+ location.replace((await r.json()).url);
+})().catch(()=>document.getElementById('msg').textContent='登録を完了できませんでした。Macの「管理者としてSAEを開く」からもう一度開いてください。');
+</script></html>

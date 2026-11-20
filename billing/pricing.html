@@ -1,0 +1,36 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><title>プランと契約 | saww audio ecosystem</title>
+<style>body{color:#e1eadc;background:#17251e;font:16px/1.7 system-ui;margin:3rem auto;padding:0 1.3rem;max-width:40rem}a{color:#c3dfb3}section{border-top:1px solid #596a5c;padding:1rem 0}button,input{padding:.6rem .9rem;font:inherit;margin:.3rem 0}button{cursor:pointer}small{display:block}</style>
+<a href="/">← saww audio ecosystem</a><h1>プランと契約</h1>
+<section><h2>Free · $0</h2><p>自然音をミックスして、クレジット付きのリールを作成・共有できます。</p></section>
+<section><h2>Pro · $9.99 USD / 月</h2><p>Free の全機能に加え、ステレオ WAV を書き出せます。解約するまで毎月自動更新されます。</p><small>Sandbox テスト。実際の請求は発生しません。契約管理から解約できます。</small></section>
+<p id="state" aria-live="polite"></p><p id="notice" role="status"></p>
+<form id="login" hidden><label>ログイン用メールアドレス <input type="email" required id="email" autocomplete="email"></label> <button>ログインリンクを送信</button></form>
+<button id="verify" hidden>この端末でログイン</button>
+<button id="upgrade" hidden>upgrade to pro</button> <button id="manage" hidden>契約・請求を管理</button> <button id="refresh">契約状態を更新</button> <button id="logout" hidden>ログアウト</button>
+<script>
+const el=id=>document.getElementById(id);
+const token=new URLSearchParams(location.hash.slice(1)).get('token');
+if(token) history.replaceState(null,'',location.pathname+location.search);
+const result=new URLSearchParams(location.search).get('result');
+el('notice').textContent=result==='cancel'?'購入を中断しました。':result==='success'?'Checkout から戻りました。契約確認中です。':'';
+async function api(name,body){
+ const r=await fetch('/api/'+name,body===undefined?{cache:'no-store'}:{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+ const d=await r.json();if(!r.ok)throw Error(d.error);return d;
+}
+async function render(){
+ const d=await api('me');
+ el('state').textContent='現在のプラン · '+(d.pro?'Pro':'Free')+(d.pro?' ／ '+(d.cancel?'利用期限 ':'次回更新予定 ')+new Date(1000*(d.cancel||d.end)).toLocaleString():'')+(d.status&&!d.pro?' ／ '+d.status:'');
+ if(result==='success'&&d.pro)el('notice').textContent='Pro が有効になりました。';
+ el('login').hidden=d.signedIn||!!token;el('verify').hidden=!token||d.signedIn;
+ el('upgrade').hidden=!d.signedIn||d.pro;el('manage').hidden=!d.signedIn||!d.status;el('logout').hidden=!d.signedIn;
+ return d;
+}
+function run(fn){return async e=>{e.preventDefault();const b=e.currentTarget;b.disabled=true;try{await fn()}catch(err){el('notice').textContent=err.message}finally{b.disabled=false}}}
+el('login').onsubmit=run(async()=>{await api('login',{email:el('email').value});el('notice').textContent='受信メールのリンクを開いてください。'});
+el('verify').onclick=run(async()=>{await api('verify',{token});location.replace('/billing/')});
+el('logout').onclick=run(async()=>{await api('logout',{});location.replace('/billing/')});
+el('upgrade').onclick=run(async()=>location.assign((await api('checkout',{})).url));
+el('manage').onclick=run(async()=>location.assign((await api('portal',{})).url));
+el('refresh').onclick=run(render);
+(async()=>{for(let i=0;i<10;i++){const d=await render();if(result!=='success'||d.pro)break;await new Promise(r=>setTimeout(r,2000))}})().catch(()=>el('notice').textContent='契約サーバーに接続できません。');
+</script></html>

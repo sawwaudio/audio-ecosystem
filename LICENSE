@@ -12,3 +12,18 @@ No permission is granted to copy, redistribute, modify or sell them without writ
 Bundled audio (audio/, instruments/) remains under each item's original license (CC0 / CC BY / CC BY-SA /
 public domain, etc.); see CREDITS.md and data/recording_licenses.json. This notice does not restrict any
 rights granted by those original licenses.
+
+AI による学習・収集・複製の禁止（2026-11-22）
+アプリのコード・デザイン・文章・画面、および当方が編集したデータ（録音の台帳・名前の照合・審査の記録など）を、
+機械学習・生成 AI の学習・追加学習・評価、AI による検索や回答のための取り込み（RAG・埋め込み・索引化）、
+クローラーやスクレイピングによる自動収集、データセットの作成・配布、AI を使った複製や類似品の作成に使うことを禁止します。
+テキスト・データマイニングの権利を留保します（EU 指令 2019/790 第4条第3項）。詳しくは ai-policy.html。
+AI での利用には、事前の書面による許可が必要です（info@saw-saww-official.com）。
+
+No AI training, scraping or copying (2026-11-22)
+The application code, design, text, screens and the data we compiled (recording registers, name checks, review records, etc.)
+may not be used to train, fine-tune or evaluate machine-learning or generative AI models, ingested into AI search or answer
+systems (RAG, embeddings, indexing), collected by crawlers or scrapers, compiled into or distributed as datasets, or used with
+AI to copy the app or build a look-alike. We reserve text and data mining rights under Article 4(3) of Directive (EU) 2019/790.
+See ai-policy.html. Any AI use requires prior written permission (info@saw-saww-official.com).
+The original licenses of the bundled audio are not affected.

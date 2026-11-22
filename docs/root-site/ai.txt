@@ -1,0 +1,14 @@
+# saww audio ecosystem — no AI training or data collection
+# https://sawwaudio.github.io/audio-ecosystem/ai-policy.html
+User-Agent: *
+Disallow: /
+Disallow: *.html
+Disallow: *.js
+Disallow: *.json
+Disallow: *.png
+Disallow: *.jpg
+Disallow: *.webp
+Disallow: *.mp3
+Disallow: *.flac
+Disallow: *.ogg
+Disallow: *.mp4

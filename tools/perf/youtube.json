@@ -380,13 +380,22 @@
     "swiped_pct": 86.8,
     "likes": 0,
     "subs": 0
+   },
+   {
+    "measured": "2026-11-22T17:15+09:00",
+    "views": 58,
+    "watch_hours": 0.0,
+    "stayed_pct": 14.3,
+    "swiped_pct": 85.7,
+    "likes": 0,
+    "subs": 0
    }
   ],
-  "measured": "2026-11-22T17:15+09:00",
-  "views": 58,
+  "measured": "2026-11-23T16:50+09:00",
+  "views": 57,
   "watch_hours": 0.0,
-  "stayed_pct": 14.3,
-  "swiped_pct": 85.7,
+  "stayed_pct": 13.2,
+  "swiped_pct": 86.8,
   "likes": 0,
   "subs": 0
  },
@@ -406,14 +415,24 @@
   "pattern": "specimen",
   "pattern_version": 1,
   "source": "Shorts feed 186 / YouTube search 4 / other 3 (48h)",
-  "measured": "2026-11-22T17:15+09:00",
+  "measured": "2026-11-23T16:49+09:00",
   "views": 193,
   "watch_hours": 0.2,
   "stayed_pct": 16.2,
   "swiped_pct": 83.8,
   "likes": 0,
   "subs": 0,
-  "snapshots": []
+  "snapshots": [
+   {
+    "measured": "2026-11-22T17:15+09:00",
+    "views": 193,
+    "watch_hours": 0.2,
+    "stayed_pct": 16.2,
+    "swiped_pct": 83.8,
+    "likes": 0,
+    "subs": 0
+   }
+  ]
  },
  {
   "video": "SaieGroQLXU",
@@ -431,14 +450,24 @@
   "pattern": "calm-saiun",
   "pattern_version": 1,
   "source": "Shorts feed 114 / YouTube search 10 / other 2 (48h)",
-  "measured": "2026-11-22T17:15+09:00",
+  "measured": "2026-11-23T16:49+09:00",
   "views": 125,
   "watch_hours": 0.1,
   "stayed_pct": 7.4,
   "swiped_pct": 92.6,
   "likes": 0,
   "subs": 0,
-  "snapshots": []
+  "snapshots": [
+   {
+    "measured": "2026-11-22T17:15+09:00",
+    "views": 125,
+    "watch_hours": 0.1,
+    "stayed_pct": 7.4,
+    "swiped_pct": 92.6,
+    "likes": 0,
+    "subs": 0
+   }
+  ]
  },
  {
   "video": "5N48nu5T4Jc",
@@ -455,15 +484,25 @@
   "sec": 21,
   "pattern": "specimen",
   "pattern_version": 1,
-  "source": "60min: no data",
-  "measured": "2026-11-22T17:15+09:00",
-  "views": 93,
+  "source": "Shorts feed 92 / YouTube search 6 / other 1 (48h)",
+  "measured": "2026-11-23T16:49+09:00",
+  "views": 99,
   "watch_hours": 0.1,
-  "stayed_pct": 8.8,
-  "swiped_pct": 91.2,
+  "stayed_pct": 10.7,
+  "swiped_pct": 89.3,
   "likes": 0,
   "subs": 0,
-  "snapshots": []
+  "snapshots": [
+   {
+    "measured": "2026-11-22T17:15+09:00",
+    "views": 93,
+    "watch_hours": 0.1,
+    "stayed_pct": 8.8,
+    "swiped_pct": 91.2,
+    "likes": 0,
+    "subs": 0
+   }
+  ]
  },
  {
   "video": "Il0-S4_Dlgc",
@@ -480,14 +519,74 @@
   "sec": 31,
   "pattern": "calm-bokeh",
   "pattern_version": 1,
-  "source": "60min: no data",
-  "measured": "2026-11-22T17:14+09:00",
+  "source": "Shorts feed 199 / YouTube search 4 / other 2 (48h)",
+  "measured": "2026-11-23T16:49+09:00",
   "views": 205,
   "watch_hours": 0.3,
   "stayed_pct": 12.8,
   "swiped_pct": 87.2,
   "likes": 0,
   "subs": 0,
-  "snapshots": []
+  "snapshots": [
+   {
+    "measured": "2026-11-22T17:14+09:00",
+    "views": 205,
+    "watch_hours": 0.3,
+    "stayed_pct": 12.8,
+    "swiped_pct": 87.2,
+    "likes": 0,
+    "subs": 0
+   }
+  ]
+ },
+ {
+  "video": "2jkpYxnQAlk",
+  "published": "2026-11-22T21:00+09:00",
+  "recording": "tokyo-cicadas-afternoon",
+  "category": "insects",
+  "style": "contour",
+  "palette": "hue 164",
+  "series": "20 seconds in nature",
+  "look": "specimen",
+  "look_note": "daily_history has no look/mix; added in the 11/14 batch with humpback (make_daily.py default --look specimen); description not re-checked this run",
+  "mix": "didgeridoo+organ pedal",
+  "sec": 21,
+  "pattern": "specimen",
+  "pattern_version": 1,
+  "snapshots": [],
+  "title": "Cicadas on a summer afternoon (Tokyo) | 20 seconds in nature #Shorts",
+  "measured": "2026-11-23T16:49+09:00",
+  "views": 313,
+  "watch_hours": 0.2,
+  "stayed_pct": 15.1,
+  "swiped_pct": 84.9,
+  "likes": 0,
+  "subs": 0,
+  "source": "60min: no data"
+ },
+ {
+  "video": "RHDo1EncSss",
+  "published": "2026-11-22T23:00+09:00",
+  "recording": "waves-big-lagoon",
+  "category": "ambience",
+  "category_note": "calm_history has no cat; ocean waves",
+  "series": "calm",
+  "visual": "komorebi",
+  "palette": "water",
+  "title_style": "desc",
+  "mix": "field only",
+  "sec": 31,
+  "pattern": "calm-komorebi",
+  "pattern_version": 1,
+  "snapshots": [],
+  "title": "Ocean waves at Big Lagoon | real nature sound, 30 sec #Shorts",
+  "measured": "2026-11-23T16:49+09:00",
+  "views": 136,
+  "watch_hours": 0.1,
+  "stayed_pct": 6.3,
+  "swiped_pct": 93.7,
+  "likes": 0,
+  "subs": 0,
+  "source": "60min: no data"
  }
 ]

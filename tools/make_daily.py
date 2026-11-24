@@ -15,7 +15,9 @@ CAT_JA = {'ambience': '環境音', 'birds': '鳥', 'aquatic': '水の生き物',
 STYLES = ['contour', 'flow', 'geometry']
 ap = argparse.ArgumentParser(); ap.add_argument('--app', required=True); ap.add_argument('--out', required=True)
 ap.add_argument('--start', required=True); ap.add_argument('--days', type=int, default=7); ap.add_argument('--sec', type=float, default=20); ap.add_argument('--mix', default='didge', choices=['didge', 'field'])
-ap.add_argument('--look', default='auto', choices=['auto', 'specimen', 'full'])  # auto＝1本ごとに tools/perf/prefs.json の look の重みで選ぶ（2026-11-18 いろいろな映像を出して最適化）  # specimen＝黒地の中央に音で育つ形を一つ（2026-11-14 参考リール）
+ap.add_argument('--look', default='auto', choices=['auto', 'specimen', 'full', 'v2'])  # v2＝新しいリールテンプレート（Visual Engine 2.0。2026-11-24 オーナー「新しいリールテンプレートを活かしてどれがウケる映像か研究する」）
+ap.add_argument('--v2style', default='cycle', help='v2 のテンプレート：life-earth／life-organic／life-particle／life-math、cycle＝1本ごとに順に')
+ap.add_argument('--v2app', default='', help='v2 の描き方を読む index.html（本体 main。latest52 にはまだ無い）'); ap.add_argument('--warm', type=float, default=4.0, help='v2：最初のコマより前に育てておく秒数（最初のフレームから完成した絵）')  # auto＝1本ごとに tools/perf/prefs.json の look の重みで選ぶ（2026-11-18 いろいろな映像を出して最適化）  # specimen＝黒地の中央に音で育つ形を一つ（2026-11-14 参考リール）
 ap.add_argument('--hook', default='none', choices=['none', 'guess'], help='guess＝「これ、何の音？」クイズ型（自然音だけ・出だしから音・答えは後半・15秒）。2026-11-19 伸ばす施策')
 ap.add_argument('--pattern', default=''); ap.add_argument('--version', type=int, default=1)  # 2026-11-14 パターン化（tools/make_reel.py から渡す）
 a = ap.parse_args()
@@ -27,6 +29,7 @@ blk = lambda i: json.loads(re.search(r'id="%s">(.*?)</script>' % i, h, re.S).gro
 recs = {r['id']: r for r in blk('ae-recordings')}; cat = blk('ae-categories')['categories']; man = blk('ae-audio-manifest')['recordings']; meta = blk('ae-wildlife-meta')
 HP = os.path.join(ROOT, 'tools', 'daily_history.json'); hist = json.load(open(HP, encoding='utf-8')) if os.path.exists(HP) else []
 used = {x['id'] for x in hist}
+CH = os.path.join(ROOT, 'tools', 'calm_history.json'); used |= {x['id'] for x in (json.load(open(CH, encoding='utf-8')) if os.path.exists(CH) else [])}   # 2026-11-24 CALM で使った録音も避ける（同じ週に同じ音が2回出ないように）
 def allowed(r):
     L = r['license']; return (L.startswith('CC0') or L == 'Public domain' or L.startswith('CC BY ')) and 'SA' not in L and 'NC' not in L
 def src(i):
@@ -70,7 +73,9 @@ for d in range(a.days):
         run(['ffmpeg', '-v', 'error', '-y', '-i', d1, '-i', d2, '-i', d3, '-i', org, '-i', org, '-ss', str(ss), '-t', str(a.sec + 1), '-i', src(i), '-filter_complex', fc, '-map', '[out]', '-ar', '48000', '-ac', '2', wav])
     else:
         run(['ffmpeg', '-v', 'error', '-y', '-ss', str(ss), '-t', str(a.sec), '-i', src(i), '-af', (f'loudnorm=I=-15:TP=-1.5,afade=t=in:d=0.04,afade=t=out:st={a.sec-0.8}:d=0.8' if a.hook == 'guess' else f'loudnorm=I=-18:TP=-1.5,afade=t=in:d=0.6,afade=t=out:st={a.sec-1.0}:d=1.0'), '-ar', '48000', '-ac', '2', wav])
-    base = os.path.join(od, 'base.mp4')
+    base = os.path.join(od, 'base.mp4'); V2S = ['life-earth', 'life-organic', 'life-particle', 'life-math']
+    v2s = (V2S[sum(1 for x in hist if x.get('look') == 'v2') % 4] if a.v2style == 'cycle' else a.v2style) if a.look == 'v2' else None
+    if a.look == 'v2' and not os.path.exists(base): run(['node', os.path.join(ROOT, 'tools', 'render_v2.js'), '--audio', wav, '--app', a.v2app or a.app, '--out', base, '--style', v2s, '--seed', str(int(hashlib.sha1(i.encode()).hexdigest(), 16) % 99991), '--warm', str(a.warm)])
     if not os.path.exists(base): run(['node', os.path.join(ROOT, 'tools', 'render_visual.js'), '--audio', wav, '--app', a.app, '--out', base, '--size', '1080x1920', '--plan', f'{style}:{a.sec}', '--hue', str(hue)] + (['--hook'] if a.hook == 'guess' else []))
     fs = [] if a.look == 'specimen' else ['drawbox=x=0:y=150:w=iw:h=460:color=black@0.28:t=fill', 'drawbox=x=0:y=1500:w=iw:h=420:color=black@0.45:t=fill']; tn = [0]
     mask = os.path.join(od, 'mask.mp4')
@@ -112,7 +117,7 @@ for d in range(a.days):
              '-i', os.path.join(od, 'rim.mp4'), '-f', 'lavfi', '-i', f'color=0xf3e6d2:s=1080x1920:r=30:d={a.sec}',
              '-filter_complex_script', vf, '-map', '[v]', '-map', '3:a', '-c:a', 'aac', '-b:a', '192k'] + enc)
     else:
-        open(vf, 'w').write(','.join(fs) + ',format=yuv420p')
+        open(vf, 'w').write(('eq=gamma=1.25:saturation=1.1,' if a.look == 'v2' else '') + ','.join(fs) + ',format=yuv420p')   # v2：暗い地に光を積む絵なので、全テンプレート共通で少し持ち上げる（最初の1秒の明るさ）
         run(['ffmpeg', '-v', 'error', '-y', '-i', base, '-filter_script:v', vf, '-c:a', 'copy'] + enc)
     name_en = en or r.get('latin') or r['jp']
     GN = sum(1 for x in hist if x.get('hook') == 'guess') + 1   # シリーズ番号
@@ -151,6 +156,6 @@ All credits / 全クレジット: https://sawwaudio.github.io/audio-ecosystem/cr
     open(os.path.join(od, 'caption.txt'), 'w', encoding='utf-8').write(cap)
     for f in os.listdir(od):
         if re.match(r't\d+\.txt|vf\.txt', f): os.remove(os.path.join(od, f))
-    hist.append({'date': date, 'id': i, 'pattern': a.pattern or ('guess' if a.hook == 'guess' else 'specimen' if a.look == 'specimen' else 'full'), 'hook': a.hook, 'look': a.look, 'sec': a.sec, 'version': a.version, 'mix': a.mix, 'cat': c, 'style': style, 'hue': hue, 'license': r['license'], 'author': r['author'], 'file': os.path.basename(out)})
+    hist.append({'date': date, 'id': i, 'pattern': a.pattern or ('guess' if a.hook == 'guess' else 'specimen' if a.look == 'specimen' else f'v2-{v2s}' if a.look == 'v2' else 'full'), 'v2style': v2s, 'warm': a.warm if v2s else None, 'hook': a.hook, 'look': a.look, 'sec': a.sec, 'version': a.version, 'mix': a.mix, 'cat': c, 'style': style, 'hue': hue, 'license': r['license'], 'author': r['author'], 'file': os.path.basename(out)})
     json.dump(hist, open(HP, 'w', encoding='utf-8'), ensure_ascii=False, indent=1); made.append(out); print('made', out, flush=True)
 print(len(made), '本')

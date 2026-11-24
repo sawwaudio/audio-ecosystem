@@ -70,7 +70,8 @@ async function readToken(env, tok) {
   const [h, p, s] = String(tok || '').split('.');
   if (!h || !p || !s) return null;
   const k = await privKey(env);
-  const ok = await crypto.subtle.verify({ name: 'ECDSA', hash: 'SHA-256' }, k.vkey, unb64u(s), enc.encode(h + '.' + p)).catch(() => false);
+  let ok = false;
+  try { ok = await crypto.subtle.verify({ name: 'ECDSA', hash: 'SHA-256' }, k.vkey, unb64u(s), enc.encode(h + '.' + p)); } catch (e) { ok = false; }
   if (!ok) return null;
   try { return JSON.parse(dec.decode(unb64u(p))); } catch (e) { return null; }
 }

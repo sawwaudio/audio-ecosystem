@@ -1,4 +1,4 @@
-// ../../sae-app/server/growth/billing-facts.mjs
+// server/growth/billing-facts.mjs
 async function billingFact(env, event, eligible) {
   if (!env.USAGE_DB || !eligible || typeof event.livemode !== "boolean" || !Number.isSafeInteger(event.created)) return;
   const o = event.data.object;
@@ -14,7 +14,7 @@ async function billingFact(env, event, eligible) {
   await env.USAGE_DB.prepare("INSERT OR IGNORE INTO billing_fact(id,event_time,kind,ref,live) VALUES(?,?,?,?,?)").bind(event.id, event.created, kind, ref, Number(event.livemode)).run();
 }
 
-// ../../sae-app/server/growth/readdy-jobs.mjs
+// server/growth/readdy-jobs.mjs
 var root = "/api/integrations/readdy/demo-jobs";
 async function demoJobs(req, env) {
   const path = new URL(req.url).pathname;
@@ -69,7 +69,7 @@ async function renderQueue(req, env) {
   return new Response(null, { status: done ? 204 : 409 });
 }
 
-// ../../sae-app/server/growth/catalog.json
+// server/growth/catalog.json
 var catalog_default = {
   features: [
     {
@@ -914,7 +914,7 @@ var catalog_default = {
   ]
 };
 
-// ../../sae-app/server/growth/routes.mjs
+// server/growth/routes.mjs
 var events = /* @__PURE__ */ new Set(["app_open", "audio_started", "recording_imported", "export_completed", "reels_exported", "checkout_started"]);
 var sources = /* @__PURE__ */ new Set(["instagram", "readdy", "youtube", "direct", "other"]);
 var uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -957,7 +957,7 @@ async function growthRoute(req, env) {
   return respond(204);
 }
 
-// ../../sae-app/server/worker.js
+// server/worker.js
 var ACTIVE = /* @__PURE__ */ new Set(["active", "trialing", "past_due"]);
 var MAX_TOKEN = 40 * 86400;
 var MAGIC_TTL = 20 * 60;
@@ -1013,7 +1013,12 @@ async function readToken(env, tok) {
   const [h, p, s] = String(tok || "").split(".");
   if (!h || !p || !s) return null;
   const k = await privKey(env);
-  const ok = await crypto.subtle.verify({ name: "ECDSA", hash: "SHA-256" }, k.vkey, unb64u(s), enc.encode(h + "." + p)).catch(() => false);
+  let ok = false;
+  try {
+    ok = await crypto.subtle.verify({ name: "ECDSA", hash: "SHA-256" }, k.vkey, unb64u(s), enc.encode(h + "." + p));
+  } catch (e) {
+    ok = false;
+  }
   if (!ok) return null;
   try {
     return JSON.parse(dec.decode(unb64u(p)));

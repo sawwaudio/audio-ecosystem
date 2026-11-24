@@ -131,6 +131,7 @@ ok('old_api_period', JSON.parse(kv.get('cus:cus_3')).pe === subs.sub_3.current_p
   ok('export_semi_denied', s1.status === 403 && !s1.body.ok && s1.body.plan === 'semi' && !s1.body.ticket && s2.status === 403 && !s2.body.ticket);
   // FREE（証明なし・偽造・別の価格）：拒否
   ok('export_no_token', (await auth('')).status === 401);
+  ok('export_malformed_token', (await auth('x.y.z')).status === 401 && (await c3('POST', '/refresh', JSON.stringify({ token: 'a.b.%%' }))).status === 401);
   ok('export_forged', (await auth(tPro.slice(0, -4) + 'AAAA')).status === 401);
   const tOther = await mk('sub_xo', 'cus_xo', 'price_other');
   ok('export_other_price_no_token', !tOther);

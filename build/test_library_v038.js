@@ -26,7 +26,7 @@ R.played=await pg.evaluate(()=>__bioDebug.history().map(h=>h.id));
 R.newPlayed=await pg.evaluate(ids=>ids.filter(id=>JSON.parse(document.getElementById('ae-recordings').textContent).some(r=>r.id===id&&r.added==='v0.38')),R.played);
 ok('new_recordings_play',R.newPlayed.length>=2);
 // 5) 英語表示：新しい名前・学名欄・国名に日本語が残らない（生き物の3つのタブを開いて確認）
-await pg.click('#langToggle');await pg.waitForTimeout(300);const un=new Set();
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(300);const un=new Set();
 for(const tab of ['birds','insects','animals']){await pg.evaluate(t=>{const b=document.querySelector('#bioTabs [data-tab="'+t+'"]');if(b)b.click()},tab);await pg.waitForTimeout(300);
  for(const x of await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()}))un.add(x)}
 R.untranslated=[...un].filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));ok('no_untranslated',R.untranslated.length===0);

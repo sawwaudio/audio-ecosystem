@@ -77,11 +77,11 @@ R.inst=await pg.evaluate(async()=>{const r=await __samplerDebug.load('instrument
 await pg.click('#smpStopAll');R.stopAll=await pg.evaluate(()=>__samplerDebug.state().playing.length);await pg.selectOption('#smpPadSel','3');await pg.click('#smpClear');R.cleared=await pg.evaluate(()=>__samplerDebug.state().pads[3]);
 ok('stop_clear',R.stopAll===0&&R.cleared===null);
 // 5) 英語表示・画面幅・エラー
-await pg.click('#langToggle');await pg.waitForTimeout(500);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(500);
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
 R.en=await pg.evaluate(()=>({aria:document.querySelector('#smpPads [data-pad="0"]').getAttribute('aria-label'),md:document.querySelector('#smpPads [data-pad="2"] .md').textContent,load:document.getElementById('smpLoad').textContent,empty:document.querySelector('#smpPads [data-pad="7"] .nm').textContent}));
 ok('english',R.en.aria==='Pad 1'&&R.en.md==='Loop · REV · +3'&&R.en.load==='Load'&&R.en.empty==='Empty');
-await pg.click('#langToggle');await pg.waitForTimeout(300);R.backJa=await pg.evaluate(()=>document.querySelector('#smpPads [data-pad="0"]').getAttribute('aria-label'));ok('back_ja',R.backJa==='パッド1');
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(300);R.backJa=await pg.evaluate(()=>document.querySelector('#smpPads [data-pad="0"]').getAttribute('aria-label'));ok('back_ja',R.backJa==='パッド1');
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 await pg.evaluate(()=>{try{localStorage.removeItem('ae-lang');localStorage.removeItem('ae-rights')}catch(e){}});
 R.errs=errs;ok('no_console_errors',errs.length===0);

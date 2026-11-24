@@ -63,11 +63,11 @@ ok('credits',['didge','organPedal','frameDrum','gong'].every(k=>R.credits.some(i
 // 7. 下のバーの「止める」：タイル・自律演奏・トラックをまとめて止める
 await pg.click('#tileStopAll');await wait(900);R.stop={auto:await pg.getAttribute('#play','aria-pressed'),loops:await pg.evaluate(()=>__studioDebug.playing()),dock:await pg.evaluate(()=>__studioDebug.dock().hidden)};ok('dock_stop',R.stop.auto==='false'&&R.stop.loops.length===0&&R.stop.dock);
 // 8. 英語表示・はみ出し・エラー
-await pg.click('#langToggle');await wait(500);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(500);
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
 R.en={title:await pg.textContent('#tileTitle'),nav:await pg.evaluate(()=>[...document.querySelectorAll('.jump a')].map(a=>a.textContent).join('|')),low:await pg.evaluate(()=>document.querySelector('label[for="param-didge"]').textContent)};
 ok('english',R.en.title==='Choose sounds'&&/Studio/.test(R.en.nav)&&R.en.low==='Didgeridoo'); // v0.49：楽器（実録音）の欄の中では「（実録音）」を省く
-await pg.click('#langToggle');await wait(300);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(300);
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 await pg.setViewportSize({width:1280,height:900});await wait(300);ok('overflow_desktop',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 await pg.evaluate(()=>{try{localStorage.removeItem('ae-lang');localStorage.removeItem('ae-rights')}catch(e){}});

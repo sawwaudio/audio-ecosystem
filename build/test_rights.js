@@ -45,11 +45,11 @@ ok('cc0_only_A',R.cc0Hist.every(x=>tierOf[x]==='A'||!tierOf[x])&&[...f2].every(x
 R.result2=await pg.textContent('#rightsResult');
 if(R.summerTiers.every(t=>t!=='A'))ok('cc0_silent_reason',R.cc0Hist.filter(x=>tierOf[x]).length===0&&R.result2.includes('参加中の生き物はすべて対象外'));
 // 英語表示で未翻訳0
-await pg.click('#langToggle');await pg.waitForTimeout(300);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(300);
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!ALLOW.includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
 R.resultEn=await pg.textContent('#rightsResult');R.summaryEn=await pg.textContent('#rightsPanel summary');
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
-await pg.click('#langToggle');await pg.waitForTimeout(200);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(200);
 // 選択の記憶
 await pg.reload();await pg.waitForTimeout(800);ok('persist',await pg.evaluate(()=>__rightsDebug.mode==='cc0'&&document.getElementById('rightsMode').value==='cc0'));
 await pg.selectOption('#rightsMode','all');ok('back_to_all',await pg.evaluate(()=>__rightsDebug.mode==='all'));

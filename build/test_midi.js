@@ -87,13 +87,13 @@ await pg.evaluate(()=>{__midi.maps={'cc:1:3':{t:'hold'}};__midi.render()});await
 ok('delete_clear',R.del===0&&R.clear.n===0&&R.clear.status==='割り当てをすべて消しました。'&&R.clear.ls==='{"v":1,"maps":{}}');
 // 10. 英語表示：未翻訳0・状態表示の英訳・日本語への往復
 await pg.evaluate(()=>{__midi.maps={'note:10:36':{t:'pad',i:0},'pb:2':{t:'mix',ch:'bio',k:'fader'}};__midi.render()});
-await pg.click('#langToggle');await wait(400);await pg.click('#midiConnect');await wait(100);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(400);await pg.click('#midiConnect');await wait(100);
 R.en={title:await pg.evaluate(()=>document.querySelector('#midiPanel .title').textContent),status:await st(),list:await pg.evaluate(()=>document.getElementById('midiList').textContent),learn:await pg.evaluate(()=>document.getElementById('midiLearn').textContent)};
 await pg.click('#midiLearn');R.en.learn2=await st();await pg.click('#mixGrid [data-ch="field"] [data-k="fader"]');R.en.pick=await st();await send(0xB0,1,10);R.en.bound=await st();await pg.click('#mixGrid [data-ch="field"] [data-k="trim"]');await send(0x90,1,1);R.en.needcc=await st();await pg.keyboard.press('Escape');
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;
 ok('en',R.en.title==='MIDI / CONTROLLER'&&R.en.status==='Connected MIDI input: Test Controller'&&/Note 36 · ch10 → Pad 1/.test(R.en.list)&&/Pitch bend · ch2 → /.test(R.en.list)&&R.en.learn==='Learn mapping'&&R.en.learn2==='Press the control you want to map (knob, fader, pad or button).'&&/^Mapping to “.+”\. Move a MIDI knob, fader, pad or button\.$/.test(R.en.pick)&&/^Mapped CC 1 · ch1 to “.+”\.$/.test(R.en.bound)&&R.en.needcc==='For knobs and faders, move a MIDI knob or fader (CC).');
 ok('no_untranslated',un.length===0);
-await pg.click('#langToggle');await wait(400);R.jp=await pg.evaluate(()=>document.querySelector('#midiPanel .title').textContent);ok('back_to_jp',R.jp==='MIDI / コントローラ');
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(400);R.jp=await pg.evaluate(()=>document.querySelector('#midiPanel .title').textContent);ok('back_to_jp',R.jp==='MIDI / コントローラ');
 // 11. 390px で横はみ出しなし
 R.overflow=await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth);ok('no_overflow',R.overflow<=0);
 // 12. Web MIDI のないブラウザ

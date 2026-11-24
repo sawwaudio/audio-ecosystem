@@ -30,7 +30,7 @@ R.decode=await pg.evaluate(async ids=>{const man=JSON.parse(document.getElementB
    if(Math.abs(a.duration-e.duration)>(kind==='pcm'?.01:kind==='lite'?.15:.08)||pk<1e-4)bad.push(id+':'+kind+' dur '+a.duration.toFixed(3)+'/'+e.duration+' pk '+pk.toExponential(2))}catch(er){bad.push(id+':'+kind+' '+er.message)}}}return bad},R.lib.ids);
 ok('decode_all',R.decode.length===0);
 R.controls=await pg.evaluate(()=>[...document.querySelectorAll('#fieldControls input')].map(i=>i.id));ok('bed_controls',R.lib.beds.every(id=>R.controls.includes('field-'+id)));
-await pg.click('#langToggle');await pg.waitForTimeout(300);const un=new Set();
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(300);const un=new Set();
 for(const tab of ['landscape','insects']){await pg.evaluate(t=>{const b=document.querySelector('#bioTabs [data-tab="'+t+'"]');if(b)b.click()},tab);await pg.waitForTimeout(300);
  for(const x of await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()}))un.add(x)}
 R.untranslated=[...un].filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));ok('no_untranslated',R.untranslated.length===0);

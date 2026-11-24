@@ -56,7 +56,7 @@ await pg.evaluate(()=>{__midi.acc={inputs:new Map(),outputs:new Map([['o',{name:
 await pg.evaluate(()=>{__midiMock.log.synth.length=0});await dclick('#midiConnect');await wait(400);L=await log();ok('no_matching_output',L.synth.length===0);
 // 英語表示・390px・i18n の一致
 await pg.evaluate(()=>{document.getElementById('mixerSection').open=true;document.querySelectorAll('#midiPanel details').forEach(d=>d.open=true)});
-await dclick('#langToggle');await wait(300);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(300);
 R.en=await pg.evaluate(()=>document.querySelector('#midiOut').parentElement.textContent.trim());ok('english',/Light the controller/.test(R.en));
 R.untr=await pg.evaluate(()=>__i18n.untranslated().filter(x=>/ランプ/.test(x)));ok('no_untranslated',R.untr.length===0);
 ok('no_overflow_390',await pg.evaluate(()=>document.documentElement.scrollWidth<=390));

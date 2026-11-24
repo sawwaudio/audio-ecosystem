@@ -38,11 +38,11 @@ const errs=[];const watch=pg=>{pg.on('pageerror',e=>errs.push('PAGEERR '+e.messa
  await pg.evaluate(()=>{const ac=new OfflineAudioContext(1,4800,48000);__studioDebug.addUser('テストの音',ac.createBuffer(1,4800,48000))});await pg.waitForTimeout(200);
  R.userFilter=await pg.evaluate(()=>[...document.querySelectorAll('#tileFilters button')].map(b=>b.dataset.f).join());ok('user_filter',R.userFilter.endsWith(',user'));
  await pg.click('#auto');await pg.waitForTimeout(100);R.autoOff=await pg.textContent('#auto');await pg.click('#auto');
- await pg.click('#langToggle');await pg.waitForTimeout(500);
+ await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(500);
  const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0','テストの音'].includes(x)&&!/テストの音/.test(x)); // 利用者の音の名前は訳さないR.untranslated=un;
  R.en=await pg.evaluate(()=>({net:document.querySelector('#netPanel .title').textContent,seg:document.querySelector('#netPanel [data-q="lite"]').textContent,save:document.getElementById('save').textContent,auto:document.getElementById('auto').textContent}));
  ok('english',un.length===0&&R.en.net==='Quality & data'&&/^Light/.test(R.en.seg)&&R.en.save==='Save on this device'&&R.en.auto==='AUTO COMPOSE ON'&&R.autoOff==='自動作曲 オフ');
- await pg.click('#langToggle');await pg.waitForTimeout(300);ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
+ await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(300);ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
  await cx.close()}
 
 // ── B. 端末への保存：一度鳴らした音は、電波がなくても鳴る（Service Worker。?sw=1 で自動テストでも登録）──

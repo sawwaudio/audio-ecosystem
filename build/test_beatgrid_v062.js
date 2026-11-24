@@ -37,8 +37,8 @@ R.parse=await pg.evaluate(()=>{const r={};const d=__presetDebug.exportData();
  r.after=__fxDebug.state().grid;r.box=document.getElementById('fxGrid').checked;return r});
 ok('preset_roundtrip',R.parse.bad==='rejected'&&R.parse.afterBad===true&&!R.parse.apply&&R.parse.after===false&&R.parse.box===false);
 // 6. 英語表示
-await pg.click('#langToggle');await wait(300);R.en=await pg.evaluate(()=>document.getElementById('fxGrid').parentElement.textContent.trim());ok('english',R.en==='Lock the autonomous instruments to the beat');
-await pg.click('#langToggle');await wait(200);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(300);R.en=await pg.evaluate(()=>document.getElementById('fxGrid').parentElement.textContent.trim());ok('english',R.en==='Lock the autonomous instruments to the beat');
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(200);
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 await pg.evaluate(()=>{try{localStorage.removeItem('ae-lang')}catch(e){}});
 R.errs=errs;ok('no_console_errors',errs.length===0);

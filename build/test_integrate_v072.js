@@ -11,7 +11,7 @@ const html=fs.readFileSync(__dirname+'/../index.html','utf8');
  await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(1500);
  R.open=await pg.evaluate(()=>({live:__billingDebug.live,plan:sawwEntitlement.plan,lang:document.documentElement.lang,mixer:sawwEntitlement.allows('mixer'),sampler:sawwEntitlement.allows('sampler')}));
  ok('live_open',R.open.live&&(Date.now()<Date.parse('2027-01-01T00:00:00+09:00')?R.open.plan==='open'&&R.open.mixer&&R.open.sampler:R.open.plan==='free'));
- ok('english_default',R.open.lang==='en'||await pg.evaluate(()=>document.getElementById('langToggle').textContent.trim()==='日本語'));
+ ok('english_default',R.open.lang==='en'||await pg.evaluate(()=>document.getElementById('langSelect').value==='en'));
  await cx.close()}
 // 2. 本体の機能：音律（432Hz・純正律）とキー、リールのテンプレートの並び（ポップを外し、流体・等高線・Bio Motion を足した）
 {const cx=await b.newContext({viewport:{width:390,height:844}});const pg=await cx.newPage();await require('./photo_fixture')(pg);

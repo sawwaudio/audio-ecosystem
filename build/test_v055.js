@@ -47,11 +47,11 @@ ok('back_to_beta',!R.back.dis&&R.back.allowed&&R.back.saved==='beta');
 R.rows=await pg.evaluate(()=>[...document.querySelectorAll('.planTable tbody tr')].map(r=>[...r.children].map(c=>c.textContent).join('|')).filter(t=>/楽器（実録音）/.test(t)));
 ok('plan_rows',R.rows.length===2&&/^楽器（実録音）6種：.*\|✓\|✓\|✓$/.test(R.rows[0])&&/^すべての楽器（実録音）.*\|—\|✓\|✓$/.test(R.rows[1]));
 // 6. 英語表示・はみ出し・エラー
-await pg.click('#langToggle');await wait(500);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(500);
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;
 R.en=await pg.evaluate(()=>({mbira:document.querySelector('label[for="param-mbira"]').firstChild.textContent,prev:document.querySelector('.planPreview').textContent.trim()}));
 ok('english',un.length===0&&R.en.mbira==='Mbira (Zimbabwe)'&&R.en.prev==='Preview the free version (instrument limits)');
-await pg.click('#langToggle');await wait(300);ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(300);ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 await pg.evaluate(()=>{try{['ae-lang','saww.planPreview'].forEach(k=>localStorage.removeItem(k))}catch(e){}});
 R.errs=errs;ok('no_console_errors',errs.length===0);
 console.log(JSON.stringify(R,null,1));console.log(fail.length?'FAIL: '+fail.join(', '):'ALL PASS');await b.close();process.exit(fail.length?1:0)})().catch(e=>{console.error(e);process.exit(1)});

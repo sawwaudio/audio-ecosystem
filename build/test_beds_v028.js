@@ -23,7 +23,7 @@ ok('geo_japan',['takayama-river','tokyo-park-cicadas','nakameguro-cicadas'].ever
 const n=await pg.evaluate(()=>__geoDebug.apply({region:'north_america',basis:'recorded',habitat:'any',time:'any',role:'any'}));
 ok('geo_na',n.fields['california-stream']>0&&n.fields['midwest-woods-wind']>0&&n.fields['takayama-river']===0);
 await pg.evaluate(()=>__geoDebug.apply({region:'off'}));
-await pg.click('#langToggle');await pg.waitForTimeout(300);const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
-await pg.click('#langToggle');ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(300);const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 R.errs=errs;ok('no_console_errors',errs.length===0);
 console.log(JSON.stringify(R,null,1));console.log(fail.length?'FAIL: '+fail.join(', '):'ALL PASS');await b.close();process.exit(fail.length?1:0)})().catch(e=>{console.error(e);process.exit(1)});

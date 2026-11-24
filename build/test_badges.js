@@ -21,7 +21,7 @@ await pg.selectOption('#rightsMode','cc0');await pg.waitForTimeout(300);c=await 
 await pg.evaluate(()=>{for(const b of document.querySelectorAll('#bioTabs button'))b.click()});await pg.waitForTimeout(300);c=await check('cc0');ok('after_tab_switch',c.bad.length===0&&c.res>=1);
 await pg.selectOption('#rightsMode','all');await pg.waitForTimeout(300);c=await check('all');ok('back_to_all',c.bad.length===0);
 // 英語表示
-await pg.click('#langToggle').catch(()=>pg.evaluate(()=>document.querySelector('[data-lang-toggle],#aeLang')?.click()));await pg.waitForTimeout(600);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(600);
 await pg.selectOption('#rightsMode','nosa');await pg.waitForTimeout(500);
 R.en=await pg.evaluate(()=>[...document.querySelectorAll('.rightsLine')].map(e=>e.innerText).filter(t=>/[぀-ヿ一-鿿]/.test(t)).slice(0,5));ok('en_translated',R.en.length===0);
 R.enTitle=await pg.evaluate(()=>[...document.querySelectorAll('.rightsBadge')].filter(e=>!e.closest('#auditTable')).map(e=>e.title).filter(t=>/[぀-ヿ一-鿿]/.test(t)).length);ok('en_title',R.enTitle===0);

@@ -41,7 +41,7 @@ const kn=pg.locator('#mixGrid [data-ch="music"] [data-k="filter"]');await kn.scr
 R.knobDrag=await pg.evaluate(()=>__mixerDebug.state().ch.music.filter);ok('knob_drag',R.knobDrag>.5&&R.knobDrag<.7);
 await pg.click('#mixReset');R.reset=await pg.evaluate(()=>Object.values(__mixerDebug.state().ch).every(s=>s.fader===1&&s.filter===0&&s.hi===.5&&!s.mute));ok('reset',R.reset);
 // 英語表示と画面幅
-await pg.click('#langToggle');await pg.waitForTimeout(400);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(400);
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
 R.en=await pg.evaluate(()=>({name:document.querySelector('#mixGrid [data-ch="field"] .mixName').textContent,aria:document.querySelector('#mixGrid [data-ch="field"] .fader').getAttribute('aria-label')}));ok('english',R.en.name==='Ambience'&&R.en.aria==='Ambience fader');
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);

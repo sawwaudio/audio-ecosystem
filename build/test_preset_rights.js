@@ -38,7 +38,7 @@ const old={...P};delete old.rightsMode;delete old.rights;R.m5=await imp(old,'old
 // 6. CC0 のみに厳しくする
 R.m6=await imp({...P,rightsMode:'cc0'},'cc0');ok('cc0_applied',await pg.evaluate(()=>__rightsDebug.mode==='cc0'));
 // 7. 英語表示
-await pg.click('#langToggle');await pg.waitForTimeout(600);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(600);
 await pg.evaluate(()=>__rightsDebug.set('nosa'));R.en1=await imp(loose,'loose_en');await pg.waitForTimeout(300);R.en1=await msg();
 ok('en_import_msg',!JP.test(R.en1)&&/stricter/.test(R.en1)&&/excluded by commercial mode/.test(R.en1));
 await pg.evaluate(()=>__rightsDebug.set('all'));R.en2=await imp({...P,rightsMode:'nosa'},'nosa_en');await pg.waitForTimeout(300);R.en2=await msg();ok('en_applied_msg',!JP.test(R.en2)&&/Applied the preset/.test(R.en2));

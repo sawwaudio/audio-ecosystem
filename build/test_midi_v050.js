@@ -79,13 +79,13 @@ await pg.evaluate(()=>{document.getElementById('mixerSection').open=true;__midi.
 R.clear=await pg.evaluate(()=>localStorage.getItem('ae-midi'));ok('clear',R.clear==='{"v":1,"maps":{},"soft":true}');
 
 // 8. 英語表示：未翻訳0・状態表示の英訳
-await pg.evaluate(()=>{__midi.maps={'cc:1:7':{t:'mix',ch:'bio',k:'fader'}};__midi.render()});await pg.click('#langToggle');await wait(400);await pg.click('#midiConnect');await wait(100);
+await pg.evaluate(()=>{__midi.maps={'cc:1:7':{t:'mix',ch:'bio',k:'fader'}};__midi.render()});await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(400);await pg.click('#midiConnect');await wait(100);
 await pg.evaluate(()=>{__midi.picked={};__mixerDebug.set('bio','fader',.5)});await send(0xB0,7,127);
 R.en={status:await st(),soft:await pg.evaluate(()=>document.querySelector('.midiSoftRow').textContent.trim()),opts:await pg.evaluate(()=>[...document.querySelectorAll('#midiList select.mode option')].map(o=>o.textContent).join('|')),aria:await pg.evaluate(()=>document.querySelector('#midiList select.mode').getAttribute('aria-label'))};
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;
 ok('en',R.en.status==='Soft takeover: move the MIDI knob to the on-screen value (50%) to take control.'&&R.en.soft==='Soft takeover (ignore a MIDI knob until it passes the on-screen value)'&&R.en.opts==='Absolute|Relative (two’s complement)|Relative (64 = centre)|Relative (sign bit)'&&R.en.aria==='Mode');
 ok('no_untranslated',un.length===0);
-await pg.click('#langToggle');await wait(300);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(300);
 // 9. 390px で横はみ出しなし
 R.overflow=await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth);ok('no_overflow',R.overflow<=0);
 // 10. ソースと埋め込みの一致・i18n の一致

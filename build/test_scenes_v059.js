@@ -33,7 +33,7 @@ R.credit=await pg.textContent('#sheetPhotoCredit');ok('sheet_credit',/^イメー
 if(SHOT)await pg.screenshot({path:SHOT+'/scenes_sheet.png'});
 await pg.keyboard.press('Escape');await pg.waitForTimeout(200);
 // 英語表示
-await pg.click('#langToggle');await pg.waitForTimeout(600);await pg.evaluate(()=>document.querySelector('.tile[data-id="takayama-river"] .tileInfo').click());await pg.waitForTimeout(400);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(600);await pg.evaluate(()=>document.querySelector('.tile[data-id="takayama-river"] .tileInfo').click());await pg.waitForTimeout(400);
 R.en={credit:await pg.textContent('#sheetPhotoCredit'),mark:await pg.evaluate(()=>document.querySelector('.tile[data-id="takayama-river"] .sceneMark')?.textContent)};
 ok('english',/^Mood photo \(not the recorded place or animal\): Fossil Creek, Arizona, USA · /.test(R.en.credit)&&R.en.mark==='MOOD');
 R.over=await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth);ok('no_overflow',R.over<=0);

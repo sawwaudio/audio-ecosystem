@@ -34,8 +34,8 @@ const dlP=pg.waitForEvent('download',{timeout:40000,predicate:d=>/\.(mp4|webm)$/
 const st=await pg.evaluate(()=>__reelDebug.state());R.rec={file:dl.suggestedFilename(),frames:st.frames,style:await pg.evaluate(()=>__reelDebug.style()),photos:await pg.evaluate(()=>__studioDebug.photosUsed()),credits:/Photo credits/i.test(st.result.text)};
 ok('record_pop',/^saww_audio_ecosystem_reel_.+\.(mp4|webm)$/.test(R.rec.file)&&R.rec.frames>=40&&R.rec.style==='pop'&&R.rec.photos.length>=1&&R.rec.credits);
 // 5. 英語表示・はみ出し・エラー
-await pg.click('#langToggle');await wait(400);const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;
-R.en=await pg.evaluate(()=>document.querySelector('#reelStyle option[value="pop-sunny"]').textContent);ok('english',un.length===0&&R.en==='Pop — sunflower');await pg.click('#langToggle');await wait(200);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(400);const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;
+R.en=await pg.evaluate(()=>document.querySelector('#reelStyle option[value="pop-sunny"]').textContent);ok('english',un.length===0&&R.en==='Pop — sunflower');await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(200);
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 await pg.evaluate(()=>{try{localStorage.removeItem('ae-lang');localStorage.removeItem('ae-rights')}catch(e){}});
 R.errs=errs;ok('no_console_errors',errs.length===0);

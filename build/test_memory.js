@@ -15,9 +15,9 @@ ok('cap',maxSound<=5&&over<=6);ok('rotation',seen.size>=8);ok('budget',maxPcm<=b
 R.fieldStatus=await pg.textContent('#fieldStatus');ok('status_note',R.fieldStatus.includes('同時に鳴るのは4層まで'));
 R.bio=await pg.evaluate(()=>__bioDebug.stats());ok('creatures_still_play',R.bio.highWater>=1);
 R.signal=await pg.evaluate(()=>__bioDebug.signal());ok('nonsilent',R.signal.rms>1e-4);
-await pg.click('#langToggle');await pg.waitForTimeout(300);R.fieldStatusEn=await pg.textContent('#fieldStatus');
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(300);R.fieldStatusEn=await pg.textContent('#fieldStatus');
 const un=(await pg.evaluate(()=>__i18n.untranslated())).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
-await pg.click('#langToggle');
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));
 // 2層だけ（既定）に戻すとローテーションの注記が消え、両方が鳴り続ける
 await pg.evaluate(()=>{for(const i of document.querySelectorAll('#fieldControls input')){i.value=['field-river-esk','field-forest-leaves'].includes(i.id)?30:0;i.dispatchEvent(new Event('input'))}});
 await pg.waitForTimeout(3000);R.after=await pg.evaluate(()=>__fieldDebug.sounding());ok('two_beds',R.after.length<=2&&R.after.every(x=>['river-esk','forest-leaves'].includes(x)));

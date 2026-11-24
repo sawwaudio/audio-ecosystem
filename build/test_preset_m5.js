@@ -59,12 +59,12 @@ const clampP=JSON.parse(raw);clampP.mixer.ch.bio.trim=50;clampP.beatFx.bpm=999;c
 R.clamp=await pg.evaluate(()=>({trim:__mixerDebug.state().ch.bio.trim,bpm:__fxDebug.state().bpm,gate:__fxDebug.state().params.gate}));ok('clamp',R.clamp.trim===9&&R.clamp.bpm===200&&R.clamp.gate===10);
 // 6) 英語表示・画面幅・エラー
 await pg.setInputFiles('#presetFile',{name:'p.json',mimeType:'application/json',buffer:Buffer.from(raw)});await pg.waitForFunction(()=>/^サンプラーのパッド\d+個を読み込みました。/.test(document.getElementById('smpStatus').textContent),null,{timeout:30000});
-await pg.click('#langToggle');await pg.waitForTimeout(500);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(500);
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
 R.en={msg:await pg.textContent('#message'),status:await pg.textContent('#smpStatus')};
 await pg.evaluate(()=>{try{__presetDebug.apply({...__presetDebug.exportData(),mixer:{cfx:'wah'}})}catch(e){document.getElementById('message').textContent='読み込み失敗: '+e.message}});await pg.waitForTimeout(300);R.en.err=await pg.textContent('#message');
 ok('english',R.en.msg.includes('Loaded mixer and effect settings (effect on/off is unchanged).')&&R.en.msg.includes('Loading 2 sampler pad(s) from the original recordings.')&&R.en.status==='Loaded 2 sampler pad(s).'&&R.en.err==='Load failed: Invalid mixer setting: cfx');
-await pg.click('#langToggle');await pg.waitForTimeout(300);ok('back_ja',(await pg.textContent('#smpStatus'))==='サンプラーのパッド2個を読み込みました。');
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(300);ok('back_ja',(await pg.textContent('#smpStatus'))==='サンプラーのパッド2個を読み込みました。');
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 await pg.evaluate(()=>{try{localStorage.removeItem('ae-lang');localStorage.removeItem('ae-rights')}catch(e){}});
 R.errs=errs;ok('no_console_errors',errs.length===0);

@@ -61,7 +61,7 @@ await cx.close();
 
 // 4. 英語表示（無料版）
 ({cx,pg}=await open(true));
-await pg.click('#langToggle');await pg.waitForTimeout(600);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(600);
 R.en={note:await pg.textContent('#recTierNote'),chip:await pg.evaluate(()=>document.querySelector('.tileProChip')?.textContent)};
 await pg.evaluate(id=>document.querySelector('.tile[data-id="'+id+'"] .tilePlay').click(),PRO_BIRD);await pg.waitForTimeout(500);R.en.status=await pg.textContent('#tileStatus');
 ok('english',/^FREE includes 25 wildlife recordings \(5 per group\) and 10 ambience/.test(R.en.note)&&R.en.chip==='PRO'&&/available with PRO/.test(R.en.status));

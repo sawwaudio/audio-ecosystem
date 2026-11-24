@@ -37,7 +37,7 @@ const st=await pg.evaluate(()=>__reelDebug.state());R.rec={file:dl.suggestedFile
 // 録画の開始時に見た目を指定できる（render_reel の --style）
 const dl2P=pg.waitForEvent('download',{timeout:30000});await pg.evaluate(()=>__reelDebug.start(2,{style:'analysis'}));R.optStyle=await pg.evaluate(()=>__reelDebug.style());await dl2P;await pg.evaluate(()=>__reelDebug.setStyle('motion'));ok('start_style_opt',R.optStyle==='analysis');
 // 6. 英語表示・画面幅
-await pg.click('#langToggle');await pg.waitForTimeout(500);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(500);
 R.en=await pg.evaluate(()=>{const s=document.getElementById('reelSection');const out=[];const w=document.createTreeWalker(s,NodeFilter.SHOW_TEXT);let n;const pre=document.getElementById('reelCreditsText');while(n=w.nextNode()){if(pre.contains(n))continue;const t=n.nodeValue.trim();if(t&&/[぀-ヿ一-鿿]/.test(t))out.push(t)}for(const el of s.querySelectorAll('[aria-label]'))if(/[぀-ヿ一-鿿]/.test(el.getAttribute('aria-label')))out.push('@'+el.getAttribute('aria-label'));return {jp:out,opt:document.querySelector('#reelStyle option[value="abstract"]').textContent,btn:document.getElementById('reelPreview').textContent}});
 ok('english',R.en.jp.length===0&&R.en.opt==='abstract (motion)'&&R.en.btn==='▶ Preview motion');
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);

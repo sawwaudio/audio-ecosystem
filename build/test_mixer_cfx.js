@@ -58,10 +58,10 @@ R.kbd={v:await pg.evaluate(()=>__mixerDebug.state().ch.bio.color),text:await kn.
 await pg.click('#mixReset');R.reset=await pg.evaluate(()=>Object.values(__mixerDebug.state().ch).every(s=>s.color===0));ok('reset',R.reset);
 // 中央に戻したチャンネルは差し込みが残っても原音のまま（実演奏でエラーなし）
 // 8) 英語表示・画面幅・エラー
-await pg.click('#langToggle');await pg.waitForTimeout(400);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(400);
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
 R.en=await pg.evaluate(()=>({btn:[...document.querySelectorAll('#mixCfx button')].map(b=>b.textContent).join(),aria:document.querySelector('#mixGrid [data-ch="field"] [data-k="color"]').getAttribute('aria-label')}));ok('english',R.en.btn==='Reverb,Dub echo,Sweep,Crush'&&R.en.aria==='Ambience FX');
-await pg.click('#langToggle');
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 R.errs=errs;ok('no_console_errors',errs.length===0);
 console.log(JSON.stringify(R,null,1));console.log(fail.length?'FAIL: '+fail.join(', '):'ALL PASS');await b.close();process.exit(fail.length?1:0)})().catch(e=>{console.error(e);process.exit(1)});

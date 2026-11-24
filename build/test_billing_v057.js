@@ -76,9 +76,9 @@ subs.sub_1={...subs.sub_1,status:'active'};await hook({id:'evt_3',type:'customer
 await pg.goto('https://billing.test/activate?session_id=cs_test_paid000000');await pg.waitForURL(u=>u.toString().startsWith(APP));await wait(pg,1200);
 await pg.evaluate(()=>document.getElementById('planAccount').scrollIntoView());await pg.click('#billLogout');await wait(pg,300);ok('logout',(await st(pg)).plan==='free');
 // H. 英語表示・はみ出し・エラー
-await pg.click('#langToggle');await wait(pg,500);const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(pg,500);const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;
 R.en=await pg.evaluate(()=>({buy:document.getElementById('billBuy').textContent,ph:document.getElementById('billEmail').placeholder}));ok('english',un.length===0&&R.en.buy==='Get PRO (monthly)'&&R.en.ph==='Email used for purchase');
-await pg.click('#langToggle');await wait(pg,300);ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(pg,300);ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 await pg.evaluate(()=>localStorage.clear());
 R.errs=errs;ok('no_console_errors',errs.length===0);
 console.log(JSON.stringify(R,null,1));console.log(fail.length?'FAIL: '+fail.join(', '):'ALL PASS');await b.close();process.exit(fail.length?1:0)})().catch(e=>{console.error(e);process.exit(1)});

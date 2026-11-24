@@ -45,7 +45,7 @@ await pg.check('#subAgree');R.after=await pg.evaluate(()=>({dis:document.getElem
 if(SHOT)await pg.locator('#plansSection').screenshot({path:SHOT+'/plans_live_checked.png'});
 await Promise.all([pg.waitForURL(/buy\.stripe\.com\/test_x\?client_reference_id=/,{timeout:8000}).catch(()=>{}),pg.click('#billBuy')]);R.went=pg.url();ok('buy_goes_to_stripe',/^https:\/\/buy\.stripe\.com\/test_x\?client_reference_id=[a-z0-9]{12,}$/.test(R.went));
 // 4. 英語表示：法律の本文は日本語のまま（翻訳対象から外す）、説明の一行、未翻訳0、はみ出しなし
-await pg.goto(APP);await pg.waitForTimeout(1200);await pg.click('#langToggle');await pg.waitForTimeout(600);
+await pg.goto(APP);await pg.waitForTimeout(1200);await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(600);
 R.en=await pg.evaluate(()=>({un:(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})(),title:document.querySelector('.subTermsTitle').textContent,note:document.querySelector('#subTerms > p.micro')?.textContent,agree:document.querySelector('.subAgree').textContent.trim(),link:document.querySelector('.planLegal a').textContent}));
 R.en.un=R.en.un.filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));
 ok('english',R.en.un.length===0&&R.en.title==='Before you subscribe — subscription terms'&&/Japanese law/.test(R.en.note||'')&&/renews monthly/.test(R.en.agree)&&/Legal notice/.test(R.en.link));

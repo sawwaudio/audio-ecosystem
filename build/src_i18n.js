@@ -357,9 +357,9 @@ const obs=new MutationObserver(list=>{if(lang==='ja')return;for(const m of list)
 function restore(){for(const [n,r] of textRec){if(n.isConnected&&n.nodeValue===r.en)n.nodeValue=r.ja}textRec.clear();
  for(const [el,m] of attrRec){for(const a in m)if(el.getAttribute(a)===m[a].en)el.setAttribute(a,m[a].ja)}attrRec.clear()}
 const btn=document.getElementById('langToggle'),note=document.getElementById('creditsLangNote');
-// 言語の選択欄（ボタンの隣）。ボタンは日本語⇄英語の切り替えのまま残す
-let sel=document.getElementById('langSelect');
-if(!sel&&btn){sel=document.createElement('select');sel.id='langSelect';sel.className='langSelect';sel.setAttribute('data-i18n-skip','');sel.setAttribute('aria-label','Language / 言語');for(const l of LANGS){const o=document.createElement('option');o.value=l;o.textContent=LANG_NAMES[l];sel.append(o)}btn.after(sel)}
+// v0.84 言語は選択欄だけにする（日本語⇄英語のボタンはやめた。2026-11-25 オーナー指示）
+let sel=document.getElementById('langSelect');const headTools=document.querySelector('.headTools');
+if(!sel&&(btn||headTools)){sel=document.createElement('select');sel.id='langSelect';sel.className='langSelect';sel.setAttribute('data-i18n-skip','');sel.setAttribute('aria-label','Language / 言語');for(const l of LANGS){const o=document.createElement('option');o.value=l;o.textContent=LANG_NAMES[l];sel.append(o)}if(btn)btn.after(sel);else headTools.prepend(sel)}
 function paint(){document.documentElement.lang=HTML_LANG[lang]||lang;if(btn){btn.textContent=lang==='ja'?'English':'日本語';btn.setAttribute('aria-label',lang==='ja'?'Switch display language to English':'表示言語を日本語に切り替える');btn.setAttribute('aria-pressed',String(lang!=='ja'))}
  if(sel)sel.value=lang;if(note)note.hidden=lang==='ja'}
 function set(l){l=pickLang(l)||'ja';if(l===lang&&(l==='ja'||textRec.size))return paint();restore();lang=l;try{localStorage.setItem(KEY,l)}catch(e){}

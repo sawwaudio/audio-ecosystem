@@ -52,11 +52,11 @@ R.pixels=await pg.evaluate(()=>{const c=document.getElementById('smpWave'),d=c.g
 await pg.evaluate(()=>__samplerDebug.setView(1,.5));await pg.click('#smpLoad');await pg.waitForFunction(()=>/を読み込みました/.test(document.getElementById('smpStatus').textContent),null,{timeout:20000});await pg.waitForTimeout(200);
 v=await V();ok('reload_resets_view',near(v.a,0,1e-9)&&near(v.b,(await S()).dur,1e-9));
 // 12) 英語表示
-await pg.evaluate(()=>__samplerDebug.setView(1,.5));await pg.click('#langToggle');await pg.waitForTimeout(300);
+await pg.evaluate(()=>__samplerDebug.setView(1,.5));await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(300);
 R.en=await pg.evaluate(()=>({in:document.getElementById('smpZoomIn').textContent,out:document.getElementById('smpZoomOut').textContent,all:document.getElementById('smpZoomAll').textContent,view:document.getElementById('smpView').textContent,un:__i18n.untranslated()}));
 ok('english',R.en.in==='+ Zoom in'&&R.en.out==='− Zoom out'&&R.en.all==='Show whole'&&/^View: [\d.]+–[\d.]+ s \(×[\d.]+\)$/.test(R.en.view));
 await pg.click('#smpZoomAll');await pg.waitForTimeout(300);R.enAll=await pg.textContent('#smpView');ok('english_whole',R.enAll==='View: whole');
-await pg.click('#langToggle');await pg.waitForTimeout(300);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(300);
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 const fs=require('fs'),path=require('path'),html=fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8'),src=fs.readFileSync(path.join(__dirname,'src_i18n.js'),'utf8');
 const m=html.match(/<script id="ae-i18n">([\s\S]*?)<\/script>/);ok('i18n_source_match',!!m&&m[1].trim()===src.trim());

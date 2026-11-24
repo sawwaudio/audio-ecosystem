@@ -24,7 +24,7 @@ await pg.selectOption('#reelStyle','flow');await pg.waitForTimeout(300);ok('sele
 await pg.click('.seg [data-len="45"]');R.len=await pg.evaluate(()=>({v:document.getElementById('reelLength').value,p:[...document.querySelectorAll('.seg [aria-pressed=true]')].map(b=>b.dataset.len).join()}));ok('length_buttons',R.len.v==='45'&&R.len.p==='45');
 ok('record_wide',await pg.evaluate(()=>{const r=document.getElementById('reelRecord').getBoundingClientRect(),p=document.getElementById('reelPreview').getBoundingClientRect();return r.width>p.width*1.6}));
 // 3. 英語表示・はみ出し
-await pg.click('#langToggle');await pg.waitForTimeout(600);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(600);
 R.en=await pg.evaluate(()=>({un:(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})(),chip:document.querySelector('.tplChip[data-tpl="organic"] .tplName').textContent,key:document.querySelector('.keyRow label').textContent}));
 R.en.un=R.en.un.filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));
 ok('english',R.en.un.length===0&&R.en.chip==='Organic'&&R.en.key==='Key');

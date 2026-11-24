@@ -50,11 +50,11 @@ ok('back_on',R.droneReload.sub===0&&R.backFire>=1&&R.droneBack.sub>0&&R.back.sav
 await pg.click('#play');await wait(400);
 
 // 6. 英語表示（未翻訳0）
-await pg.evaluate(()=>__synthOff.set(true));await pg.click('#langToggle');await wait(500);
+await pg.evaluate(()=>__synthOff.set(true));await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(500);
 R.en={label:await pg.evaluate(()=>document.getElementById('synthOff').closest('label').textContent.trim()),note:await pg.textContent('#synthOffNote'),badge:await pg.textContent('#synthOffBadge')};
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;
 ok('english',R.en.label==='Mute synth sounds (instruments from real recordings only)'&&R.en.badge==='Muted'&&/^Synth sounds are muted\./.test(R.en.note));ok('no_untranslated',un.length===0);
-await pg.click('#langToggle');await wait(300);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(300);
 // 7. 390px で横はみ出しなし・i18n の一致・エラー0
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 const fs=require('fs');const html=fs.readFileSync(__dirname+'/../index.html','utf8'),i18n=fs.readFileSync(__dirname+'/src_i18n.js','utf8');

@@ -66,11 +66,11 @@ await wait(600);R.credits=await pg.evaluate(()=>__audioEcosystemDebug.attributio
 ok('melodic_credits',['kalimba','marimba','tubularBells','glockenspiel'].every(k=>R.credits.some(id=>id.startsWith(k+'-'))));
 await pg.evaluate(()=>__studioDebug.stopEverything());await wait(600);
 // 10. 英語表示・はみ出し・エラー
-await pg.click('#langToggle');await wait(500);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(500);
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
 R.en={instr:await pg.textContent('#instrPanel>summary'),kal:await pg.textContent('label[for="param-kalimba"]'),tab:await pg.textContent('#tabAmbience')};
 ok('english',/Instruments \(real recordings\)/.test(R.en.instr)&&R.en.kal==='Kalimba'&&/Ambience/.test(R.en.tab));
-await pg.click('#langToggle');await wait(300);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(300);
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 await pg.setViewportSize({width:1280,height:900});await wait(300);ok('overflow_desktop',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 await pg.evaluate(()=>{try{['ae-rights','ae-lang','saww.boost'].forEach(k=>localStorage.removeItem(k))}catch(e){}});

@@ -100,7 +100,7 @@ await hold.focus();await pg.keyboard.down('Space');R.kbdHold=await pg.evaluate((
 // ミキサー M1 は引き続き動く（レーン・ミュート）
 R.lanes=await pg.evaluate(()=>__mixerDebug.lanes());ok('mixer_lanes',['bio','field','music','sampler'].every(c=>R.lanes[c].includes('dry')&&R.lanes[c].includes('wet'))&&R.lanes.music.includes('direct'));
 // 11) 英語表示・画面幅・エラー
-await pg.click('#fxOn');await pg.click('#langToggle');await pg.waitForTimeout(400);
+await pg.click('#fxOn');await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(400);
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
 R.en=await pg.evaluate(()=>({opt:document.querySelector('#fxTypes [data-type="pingpong"]').textContent,status:document.getElementById('fxStatus').textContent,hold:document.getElementById('fxHold').textContent}));
 ok('english',R.en.opt==='Ping-pong delay'&&/^On: Roll · 1 beat \(0\.50 s\) → Master$/.test(R.en.status)&&R.en.hold==='Hold to apply');

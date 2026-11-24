@@ -62,11 +62,11 @@ const old=JSON.parse(JSON.stringify(J));delete old.sampler.pads[0].vol;await pg.
 ok('old_preset_100',(await pg.evaluate(()=>__samplerDebug.state().pads[0].vol))===100);
 // 7) 英語表示・画面幅・ソースの一致・エラー
 await pg.selectOption('#smpPadSel','0');await setVol(80);
-await pg.click('#langToggle');await pg.waitForTimeout(500);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(500);
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
 R.en=await pg.evaluate(()=>({vol:document.querySelector('label[for="smpVol"]').textContent,zero:document.getElementById('smpZero').parentElement.textContent,status:document.getElementById('smpStatus').textContent}));
 ok('english',R.en.vol==='Pad volume (%)'&&R.en.zero==='Snap edges to zero crossings'&&R.en.status==='Pad 1 volume set to 80% (from its next trigger).');
-await pg.click('#langToggle');await pg.waitForTimeout(300);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(300);
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 const fs=require('fs'),path=require('path'),html=fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8'),src=fs.readFileSync(path.join(__dirname,'src_i18n.js'),'utf8');
 const m=html.match(/<script id="ae-i18n">([\s\S]*?)<\/script>/);ok('i18n_source_match',!!m&&m[1].trim()===src.trim());

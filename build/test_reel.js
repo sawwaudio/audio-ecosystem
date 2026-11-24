@@ -52,7 +52,7 @@ const dl3=await dl3P;await pg.waitForTimeout(300);const st3=await pg.evaluate(()
 ok('stop_button',st3.result.duration<10&&!st3.active&&await pg.evaluate(()=>__rightsDebug.mode==='cc0'));
 ok('cc0_only',st3.result.entries.every(e=>e.imported||/^(CC0|Public domain)/i.test(e.license)));
 // 4. 英語表示
-await pg.evaluate(()=>__rightsDebug.set('all'));await pg.click('#langToggle');await pg.waitForTimeout(600);
+await pg.evaluate(()=>__rightsDebug.set('all'));await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(600);
 R.enReelText=await pg.evaluate(()=>{const s=document.getElementById('reelSection');const pre=document.getElementById('reelCreditsText');const out=[];const w=document.createTreeWalker(s,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){if(pre.contains(n))continue;const t=n.nodeValue.trim();if(t&&/[぀-ヿ一-鿿]/.test(t))out.push(t)}for(const el of s.querySelectorAll('[aria-label]'))if(/[぀-ヿ一-鿿]/.test(el.getAttribute('aria-label')))out.push('@'+el.getAttribute('aria-label'));return out});
 ok('en_reel_section',R.enReelText.length===0);
 const dl4P=pg.waitForEvent('download',{timeout:30000});await pg.evaluate(()=>__reelDebug.start(2));await pg.waitForTimeout(200);R.en1=await msg();ok('en_start_msg',!JP.test(R.en1)&&/Switched commercial mode/.test(R.en1)&&/Recording reel/.test(R.en1));

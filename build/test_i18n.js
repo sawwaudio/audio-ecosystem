@@ -8,8 +8,8 @@ await pg.goto('http://localhost:8765/index.html');await pg.waitForTimeout(800);
 ok('default_ja',await pg.evaluate(()=>__i18n.get()==='ja'&&document.documentElement.lang==='ja'));
 const snap=()=>pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return document.querySelector('main').innerText+'|'+[...document.querySelectorAll('[aria-label]')].map(e=>e.getAttribute('aria-label')).join('|')});
 await snap();await pg.waitForTimeout(300);const ja1=await snap();
-await pg.click('#langToggle');await pg.waitForTimeout(200);
-ok('switched_en',await pg.evaluate(()=>__i18n.get()==='en'&&document.documentElement.lang==='en'&&document.getElementById('langToggle').textContent==='日本語'));
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(200);
+ok('switched_en',await pg.evaluate(()=>__i18n.get()==='en'&&document.documentElement.lang==='en'&&document.getElementById('langSelect').value==='en'&&!document.getElementById('langToggle')));
 for(const t of ['birds','insects','animals','landscape']){await pg.evaluate(t=>document.querySelector(`#bioTabs [data-tab="${t}"]`).click(),t);await pg.waitForTimeout(150)} // v0.45：生き物の一覧は画面から外した（処理は動く）
 let un=(await pg.evaluate(()=>__i18n.untranslated())).filter(x=>!ALLOW.includes(x));R.untranslated_static=un;ok('static_all_en',un.length===0);
 ok('play_label_en',(await pg.textContent('#play')).includes('Start autonomous play'));
@@ -28,11 +28,11 @@ await pg.screenshot({path:'/tmp/claude-0/s/shot_en.png'});
 await pg.reload();await pg.waitForTimeout(800);
 ok('persist_en',await pg.evaluate(()=>__i18n.get()==='en')&&(await pg.textContent('#play')).includes('Start'));
 // 日本語へ戻すと原文に完全一致
-await pg.click('#langToggle');await pg.waitForTimeout(200);await pg.evaluate(()=>{});
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(200);await pg.evaluate(()=>{});
 const p2=await ctx.newPage();await p2.goto('http://localhost:8765/index.html');await p2.waitForTimeout(800);
 ok('persist_ja',await p2.evaluate(()=>__i18n.get()==='ja'));await p2.close();
 await pg.reload();await pg.waitForTimeout(800);await snap();await pg.waitForTimeout(300);const ja1b=await snap();
-await pg.click('#langToggle');await pg.waitForTimeout(200);const en1=await snap();await pg.click('#langToggle');await pg.waitForTimeout(200);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(200);const en1=await snap();await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(200);
 const ja2=await snap();ok('en_differs',en1!==ja2);ok('roundtrip_identical',ja1b===ja2);if(ja1b!==ja2){let i=0;while(ja1b[i]===ja2[i])i++;R.diff=[ja1b.slice(i-40,i+60),ja2.slice(i-40,i+60)]}
 // URL 指定
 await pg.goto('http://localhost:8765/index.html?lang=en');await pg.waitForTimeout(800);ok('url_param_en',await pg.evaluate(()=>__i18n.get()==='en'));

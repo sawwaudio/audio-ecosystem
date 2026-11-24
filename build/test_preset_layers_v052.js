@@ -47,11 +47,11 @@ ok('invalid',R.bad.every(m=>m==='不正な層の設定')&&JSON.stringify(before)
 // 7. 読み直しても残る（localStorage 経由）
 await pg.reload();await wait(900);R.st6=await state();ok('reload',R.st6.s===1.3&&R.st6.sv==='130'&&R.st6.i===.5);
 // 8. 英語表示：お知らせとエラーの英訳・未翻訳0
-await pg.click('#langToggle');await wait(400);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(400);
 R.en=await pg.evaluate(()=>[__i18n.t('合成音を鳴らさない設定（楽器は実録音だけ）を読み込みました。'),__i18n.t('不正な層の設定')]);
 const un=(await pg.evaluate(()=>{document.querySelectorAll('details').forEach(d=>d.open=true);return __i18n.untranslated()})).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;
 ok('english',R.en[0]==='Loaded the “mute synth sounds” setting (instruments from real recordings only).'&&R.en[1]==='Invalid layer setting');ok('no_untranslated',un.length===0);
-await pg.click('#langToggle');await wait(300);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await wait(300);
 // 9. 390px・i18n の一致・エラー0
 ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 const fs=require('fs');const html=fs.readFileSync(__dirname+'/../index.html','utf8'),i18n=fs.readFileSync(__dirname+'/src_i18n.js','utf8');

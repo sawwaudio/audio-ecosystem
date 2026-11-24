@@ -27,8 +27,8 @@ ok('night_beds',R.night.includes('ricefield-frogs')&&R.night.includes('kyoto-rai
 const e=await pg.evaluate(()=>__geoDebug.apply({region:'europe',basis:'recorded',habitat:'any',time:'any',role:'any'}));ok('no_leak_europe',NEW.every(id=>e.fields[id]===0));
 await pg.evaluate(()=>__geoDebug.apply({region:'off'}));
 // 英語表示で未翻訳なし
-await pg.click('#langToggle');await pg.waitForTimeout(300);const un=(await pg.evaluate(()=>__i18n.untranslated())).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));await pg.waitForTimeout(300);const un=(await pg.evaluate(()=>__i18n.untranslated())).filter(x=>!['日本語','@aria-label=表示言語を日本語に切り替える','リトルスター / CC BY-SA 4.0'].includes(x));R.untranslated=un;ok('no_untranslated',un.length===0);
 R.fieldSmallEn=await pg.evaluate(()=>[...document.querySelectorAll('#fieldControls small')].slice(5).map(s=>s.textContent));
-await pg.click('#langToggle');ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
+await pg.selectOption('#langSelect',await pg.evaluate(()=>__i18n.get()==='ja'?'en':'ja'));ok('overflow',await pg.evaluate(()=>document.documentElement.scrollWidth-innerWidth)<=0);
 R.errs=errs;ok('no_console_errors',errs.length===0);
 console.log(JSON.stringify(R,null,1));console.log(fail.length?'FAIL: '+fail.join(', '):'ALL PASS');await b.close();process.exit(fail.length?1:0)})().catch(e=>{console.error(e);process.exit(1)});

@@ -957,21 +957,245 @@ async function growthRoute(req, env) {
   return respond(204);
 }
 
+// server/recordings.mjs
+var REC_MAX_BYTES = 20 * 1024 * 1024;
+var REC_PER_MONTH_APPROVED = 5;
+var REC_PER_MONTH_SUBMIT = 15;
+var REC_CREDIT_CENTS = 100;
+var REC_TERMS_VERSION = "2026-11-25";
+var AUDIO_TYPES = /* @__PURE__ */ new Set(["audio/wav", "audio/x-wav", "audio/wave", "audio/flac", "audio/x-flac", "audio/aiff", "audio/x-aiff", "audio/mpeg", "audio/mp4", "audio/x-m4a", "audio/aac", "audio/ogg", "audio/opus", "audio/webm"]);
+var STUDIO_PUBLIC_KEY = { kty: "EC", crv: "P-256", x: "n9AJGHmG7scZ-sSMfgY60Q12HGtxBWAXGNnVGzi1ZsE", y: "_V3fn6OoOlvSlJxpX5I9bz2C-U-Ia7sKnFUtscsHNu4" };
+var STUDIO_AUDIENCES = ["https://sawwaudio.github.io/audio-ecosystem/", "https://sawwaudio.github.io/audio-ecosystem-sounds-1/"];
+var enc = new TextEncoder();
+var dec = new TextDecoder();
+var unb64u = (s) => Uint8Array.from(atob(String(s).replace(/-/g, "+").replace(/_/g, "/") + "===".slice((String(s).length + 3) % 4)), (c) => c.charCodeAt(0));
+var fromB64uJSON = (s) => JSON.parse(dec.decode(unb64u(s)));
+var clip = (v, n) => String(v == null ? "" : v).replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, n);
+var monthJST = (t = Date.now() / 1e3) => {
+  const d = new Date((t + 9 * 3600) * 1e3);
+  return d.getUTCFullYear() + "-" + String(d.getUTCMonth() + 1).padStart(2, "0");
+};
+function corsFor(env, req) {
+  const origin = req.headers.get("Origin") || "";
+  const allow = String(env.ALLOWED_ORIGINS || (env.APP_URL ? new URL(env.APP_URL).origin : "")).split(",").map((s) => s.trim()).filter(Boolean);
+  if (env.TEST_ORIGIN) allow.push(env.TEST_ORIGIN);
+  return allow.includes(origin) ? { "Access-Control-Allow-Origin": origin, "Access-Control-Allow-Methods": "GET, POST, OPTIONS", "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Saww-Admin, X-Saww-Meta", "Access-Control-Max-Age": "600", Vary: "Origin" } : {};
+}
+var out = (obj, status, h) => new Response(JSON.stringify(obj), { status: status || 200, headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store", ...h || {} } });
+async function verifyAdmin(req, env) {
+  const h = req.headers.get("X-Saww-Admin") || "";
+  const key = await crypto.subtle.importKey("jwk", env.STUDIO_PUBLIC_KEY_JWK ? JSON.parse(env.STUDIO_PUBLIC_KEY_JWK) : STUDIO_PUBLIC_KEY, { name: "ECDSA", namedCurve: "P-256" }, false, ["verify"]);
+  const aud = env.STUDIO_AUDIENCES ? String(env.STUDIO_AUDIENCES).split(",") : STUDIO_AUDIENCES;
+  const algo = { name: "ECDSA", hash: "SHA-256" }, t = Date.now() / 1e3;
+  try {
+    if (h.startsWith("pass.")) {
+      const [body, sig] = h.slice(5).split(".");
+      if (!body || !sig || h.length > 2100) return false;
+      if (!await crypto.subtle.verify(algo, key, unb64u(sig), enc.encode(body))) return false;
+      const c = fromB64uJSON(body);
+      return c.role === "studio-admin" && aud.includes(c.aud) && Number.isSafeInteger(c.exp) && Number.isSafeInteger(c.iat) && c.iat <= t + 30 && c.exp > t && c.exp - c.iat <= 3600;
+    }
+    if (h.startsWith("device.")) {
+      const [grantB, grantSig, ts, reqSig] = h.slice(7).split(".");
+      if (!grantB || !grantSig || !ts || !reqSig || h.length > 3e3) return false;
+      if (!await crypto.subtle.verify(algo, key, unb64u(grantSig), enc.encode(grantB))) return false;
+      const g = fromB64uJSON(grantB);
+      if (g.role !== "studio-device" || !aud.includes(g.aud) || typeof g.key !== "string") return false;
+      const n = Number(ts);
+      if (!Number.isFinite(n) || Math.abs(t - n) > 120) return false;
+      const dk = await crypto.subtle.importKey("raw", unb64u(g.key), { name: "ECDSA", namedCurve: "P-256" }, false, ["verify"]);
+      const path = new URL(req.url).pathname;
+      return await crypto.subtle.verify(algo, dk, unb64u(reqSig), enc.encode(ts + "." + req.method + "." + path));
+    }
+  } catch (e) {
+    return false;
+  }
+  return false;
+}
+async function listAll(env, prefix, limit = 1e3) {
+  const keys = [];
+  let cursor;
+  do {
+    const r = await env.SAWW_KV.list({ prefix, cursor, limit: Math.min(1e3, limit - keys.length) });
+    keys.push(...r.keys);
+    cursor = r.list_complete ? null : r.cursor;
+  } while (cursor && keys.length < limit);
+  return keys;
+}
+var getRec = async (env, id) => JSON.parse(await env.SAWW_KV.get("recsub:" + id) || "null");
+var putRec = (env, r, ttl) => env.SAWW_KV.put("recsub:" + r.id, JSON.stringify(r), ttl ? { expirationTtl: ttl } : void 0);
+async function counts(env, cus, month) {
+  const keys = await listAll(env, "recby:" + cus + ":" + month + ":", 200);
+  let submitted = 0, approved = 0;
+  for (const k of keys) {
+    submitted++;
+    if (k.metadata && k.metadata.status === "approved") approved++;
+  }
+  return { submitted, approved };
+}
+var publicView = (r) => ({ id: r.id, title: r.title, place: r.place, recordedOn: r.recordedOn, status: r.status, note: r.status === "rejected" ? r.note || "" : "", at: r.at, decidedAt: r.decidedAt || null, credit: r.status === "approved" ? r.credit || null : null });
+async function creditCustomer(env, rec) {
+  if (!env.STRIPE_CREDIT_KEY) return { mode: "manual" };
+  const body = new URLSearchParams({ amount: String(-REC_CREDIT_CENTS), currency: "usd", description: "saww audio ecosystem recording purchase " + rec.id, "metadata[recording]": rec.id });
+  const r = await fetch((env.STRIPE_API || "https://api.stripe.com") + "/v1/customers/" + encodeURIComponent(rec.cus) + "/balance_transactions", { method: "POST", headers: { Authorization: "Bearer " + env.STRIPE_CREDIT_KEY, "Content-Type": "application/x-www-form-urlencoded", "Idempotency-Key": "saww-rec-" + rec.id }, body });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) return { mode: "error", error: j.error && j.error.message || "stripe " + r.status };
+  return { mode: "auto", txn: j.id };
+}
+async function recordingsRoute(req, env, deps) {
+  const url = new URL(req.url), path = url.pathname;
+  if (!(path === "/recordings" || path.startsWith("/recordings/") || path.startsWith("/admin/recordings"))) return null;
+  const h = corsFor(env, req);
+  if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: h });
+  if (path === "/recordings" && req.method === "POST") {
+    const tok = (req.headers.get("Authorization") || "").replace(/^Bearer\s+/i, "");
+    const pl = await deps.readToken(env, tok);
+    if (!pl || !pl.sub || pl.typ || pl.exp < Date.now() / 1e3) return out({ ok: false, error: "token" }, 401, h);
+    const rec = await deps.freshRec(env, pl.sub, 3600);
+    if (!deps.isPro(rec)) return out({ ok: false, error: "plan" }, 403, h);
+    let meta;
+    try {
+      meta = fromB64uJSON(req.headers.get("X-Saww-Meta") || "");
+    } catch (e) {
+      return out({ ok: false, error: "meta" }, 400, h);
+    }
+    const type = (req.headers.get("Content-Type") || "").split(";")[0].trim().toLowerCase();
+    if (!AUDIO_TYPES.has(type)) return out({ ok: false, error: "type" }, 415, h);
+    const len = Number(req.headers.get("Content-Length") || 0);
+    if (len > REC_MAX_BYTES) return out({ ok: false, error: "size" }, 413, h);
+    if (!meta || meta.terms !== REC_TERMS_VERSION || meta.own !== true || meta.noPeople !== true || meta.license !== true) return out({ ok: false, error: "terms" }, 400, h);
+    const title = clip(meta.title, 120);
+    if (title.length < 2) return out({ ok: false, error: "title" }, 400, h);
+    const month = monthJST();
+    const c = await counts(env, pl.sub, month);
+    if (c.submitted >= REC_PER_MONTH_SUBMIT) return out({ ok: false, error: "limit", month, ...c }, 429, h);
+    const buf = await req.arrayBuffer();
+    if (!buf.byteLength || buf.byteLength > REC_MAX_BYTES) return out({ ok: false, error: "size" }, 413, h);
+    const id = crypto.randomUUID();
+    const r = {
+      id,
+      cus: pl.sub,
+      plan: rec.plan === "semi" ? "semi" : "pro",
+      month,
+      at: Math.floor(Date.now() / 1e3),
+      status: "pending",
+      type,
+      size: buf.byteLength,
+      title,
+      place: clip(meta.place, 120),
+      recordedOn: clip(meta.recordedOn, 20),
+      credit: clip(meta.creditName, 60),
+      gear: clip(meta.gear, 120),
+      memo: clip(meta.memo, 500),
+      terms: REC_TERMS_VERSION,
+      name: clip(meta.fileName, 120)
+    };
+    await env.SAWW_KV.put("recaudio:" + id, buf, { metadata: { type } });
+    await putRec(env, r);
+    await env.SAWW_KV.put("recby:" + pl.sub + ":" + month + ":" + id, "1", { metadata: { status: "pending" } });
+    await env.SAWW_KV.put("recq:" + String(r.at).padStart(12, "0") + ":" + id, "1", { metadata: { status: "pending" } });
+    return out({ ok: true, id, month, submitted: c.submitted + 1, approved: c.approved, limit: REC_PER_MONTH_APPROVED }, 200, h);
+  }
+  if (path === "/recordings/mine" && req.method === "POST") {
+    let body = {};
+    try {
+      body = await req.json();
+    } catch (e) {
+    }
+    const pl = await deps.readToken(env, body.token);
+    if (!pl || !pl.sub || pl.typ) return out({ ok: false, error: "token" }, 401, h);
+    const month = monthJST();
+    const keys = await listAll(env, "recby:" + pl.sub + ":", 200);
+    const items = [];
+    for (const k of keys.slice(-60)) {
+      const r = await getRec(env, k.name.split(":").pop());
+      if (r) items.push(publicView(r));
+    }
+    items.sort((a, b) => b.at - a.at);
+    const c = await counts(env, pl.sub, month);
+    return out({ ok: true, month, ...c, limit: REC_PER_MONTH_APPROVED, items }, 200, h);
+  }
+  if (path.startsWith("/admin/recordings")) {
+    if (!await verifyAdmin(req, env)) return out({ ok: false, error: "admin" }, 401, h);
+    const parts = path.split("/").filter(Boolean);
+    if (parts.length === 2 && req.method === "GET") {
+      const status = url.searchParams.get("status") || "pending";
+      const keys = await listAll(env, "recq:", 500);
+      const items = [];
+      for (const k of keys.reverse()) {
+        if (status !== "all" && (!k.metadata || k.metadata.status !== status)) continue;
+        const r2 = await getRec(env, k.name.split(":").pop());
+        if (!r2) continue;
+        const c = await counts(env, r2.cus, r2.month);
+        items.push({ ...r2, monthApproved: c.approved, stripeUrl: "https://dashboard.stripe.com/customers/" + r2.cus });
+        if (items.length >= 50) break;
+      }
+      return out({ ok: true, items, autoCredit: !!env.STRIPE_CREDIT_KEY, limit: REC_PER_MONTH_APPROVED }, 200, h);
+    }
+    const id = parts[2];
+    if (!/^[0-9a-f-]{36}$/.test(id || "")) return out({ ok: false, error: "id" }, 400, h);
+    const r = await getRec(env, id);
+    if (!r) return out({ ok: false, error: "missing" }, 404, h);
+    if (parts[3] === "audio" && req.method === "GET") {
+      const a = await env.SAWW_KV.getWithMetadata("recaudio:" + id, { type: "arrayBuffer" });
+      if (!a || !a.value) return out({ ok: false, error: "missing" }, 404, h);
+      return new Response(a.value, { headers: { "Content-Type": a.metadata && a.metadata.type || r.type || "application/octet-stream", "Cache-Control": "no-store", ...h } });
+    }
+    if (parts.length === 3 && req.method === "POST") {
+      let body = {};
+      try {
+        body = await req.json();
+      } catch (e) {
+      }
+      if (r.status !== "pending") return out({ ok: false, error: "decided", status: r.status }, 409, h);
+      const qKey = "recq:" + String(r.at).padStart(12, "0") + ":" + id, byKey = "recby:" + r.cus + ":" + r.month + ":" + id;
+      if (body.action === "reject") {
+        r.status = "rejected";
+        r.note = clip(body.note, 300);
+        r.decidedAt = Math.floor(Date.now() / 1e3);
+        const ttl = 30 * 86400;
+        await putRec(env, r, ttl);
+        await env.SAWW_KV.put("recaudio:" + id, await env.SAWW_KV.get("recaudio:" + id, { type: "arrayBuffer" }) || new ArrayBuffer(0), { expirationTtl: ttl, metadata: { type: r.type } });
+        await env.SAWW_KV.put(qKey, "1", { metadata: { status: "rejected" }, expirationTtl: ttl });
+        await env.SAWW_KV.put(byKey, "1", { metadata: { status: "rejected" }, expirationTtl: ttl });
+        return out({ ok: true, status: "rejected" }, 200, h);
+      }
+      if (body.action === "approve") {
+        const c = await counts(env, r.cus, r.month);
+        if (c.approved >= REC_PER_MONTH_APPROVED) return out({ ok: false, error: "limit", approved: c.approved, limit: REC_PER_MONTH_APPROVED }, 409, h);
+        const cr = await creditCustomer(env, r);
+        if (cr.mode === "error") return out({ ok: false, error: "stripe", detail: cr.error }, 502, h);
+        r.status = "approved";
+        r.note = clip(body.note, 300);
+        r.decidedAt = Math.floor(Date.now() / 1e3);
+        r.creditMode = cr.mode;
+        if (cr.txn) r.creditTxn = cr.txn;
+        await putRec(env, r);
+        await env.SAWW_KV.put(qKey, "1", { metadata: { status: "approved" } });
+        await env.SAWW_KV.put(byKey, "1", { metadata: { status: "approved" } });
+        return out({ ok: true, status: "approved", credit: cr.mode, txn: cr.txn || null, stripeUrl: "https://dashboard.stripe.com/customers/" + r.cus, monthApproved: c.approved + 1 }, 200, h);
+      }
+      return out({ ok: false, error: "action" }, 400, h);
+    }
+  }
+  return out({ ok: false, error: "not found" }, 404, h);
+}
+
 // server/worker.js
 var ACTIVE = /* @__PURE__ */ new Set(["active", "trialing", "past_due"]);
 var MAX_TOKEN = 40 * 86400;
 var MAGIC_TTL = 20 * 60;
 var REFRESH_WINDOW = 60 * 86400;
-var enc = new TextEncoder();
-var dec = new TextDecoder();
+var enc2 = new TextEncoder();
+var dec2 = new TextDecoder();
 var b64u = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-var unb64u = (s) => Uint8Array.from(atob(s.replace(/-/g, "+").replace(/_/g, "/") + "===".slice((s.length + 3) % 4)), (c) => c.charCodeAt(0));
+var unb64u2 = (s) => Uint8Array.from(atob(s.replace(/-/g, "+").replace(/_/g, "/") + "===".slice((s.length + 3) % 4)), (c) => c.charCodeAt(0));
 var now = () => Math.floor(Date.now() / 1e3);
 var normEmail = (e) => String(e || "").trim().toLowerCase();
 var okEmail = (e) => /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/.test(e) && e.length <= 254;
 async function hmac(secret, data) {
-  const k = await crypto.subtle.importKey("raw", enc.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
-  return new Uint8Array(await crypto.subtle.sign("HMAC", k, enc.encode(data)));
+  const k = await crypto.subtle.importKey("raw", enc2.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  return new Uint8Array(await crypto.subtle.sign("HMAC", k, enc2.encode(data)));
 }
 var hex = (a) => [...a].map((x) => x.toString(16).padStart(2, "0")).join("");
 function safeEq(a, b) {
@@ -1005,8 +1229,8 @@ async function privKey(env) {
 }
 async function signToken(env, payload) {
   const k = await privKey(env);
-  const h = b64u(enc.encode(JSON.stringify({ alg: "ES256", typ: "JWT", kid: k.kid }))), p = b64u(enc.encode(JSON.stringify(payload)));
-  const sig = await crypto.subtle.sign({ name: "ECDSA", hash: "SHA-256" }, k.key, enc.encode(h + "." + p));
+  const h = b64u(enc2.encode(JSON.stringify({ alg: "ES256", typ: "JWT", kid: k.kid }))), p = b64u(enc2.encode(JSON.stringify(payload)));
+  const sig = await crypto.subtle.sign({ name: "ECDSA", hash: "SHA-256" }, k.key, enc2.encode(h + "." + p));
   return h + "." + p + "." + b64u(sig);
 }
 async function readToken(env, tok) {
@@ -1015,13 +1239,13 @@ async function readToken(env, tok) {
   const k = await privKey(env);
   let ok = false;
   try {
-    ok = await crypto.subtle.verify({ name: "ECDSA", hash: "SHA-256" }, k.vkey, unb64u(s), enc.encode(h + "." + p));
+    ok = await crypto.subtle.verify({ name: "ECDSA", hash: "SHA-256" }, k.vkey, unb64u2(s), enc2.encode(h + "." + p));
   } catch (e) {
     ok = false;
   }
   if (!ok) return null;
   try {
-    return JSON.parse(dec.decode(unb64u(p)));
+    return JSON.parse(dec2.decode(unb64u2(p)));
   } catch (e) {
     return null;
   }
@@ -1160,7 +1384,7 @@ async function login(req, env) {
   const cus = await env.SAWW_KV.get("email:" + email);
   const rec = cus && await freshRec(env, cus);
   if (!isPro(rec)) return reply;
-  const body = b64u(enc.encode(JSON.stringify({ c: rec.cus, e: email, exp: now() + MAGIC_TTL })));
+  const body = b64u(enc2.encode(JSON.stringify({ c: rec.cus, e: email, exp: now() + MAGIC_TTL })));
   const t = body + "." + b64u(await hmac(env.MAGIC_SECRET, body));
   const link = new URL("/magic?t=" + t, req.url).toString();
   const html = `<p>saww audio ecosystem \u306B\u30ED\u30B0\u30A4\u30F3\u3059\u308B\u305F\u3081\u306E\u30EA\u30F3\u30AF\u3067\u3059\uFF0820\u5206\u9593\u30FB1\u56DE\u3060\u3051\u4F7F\u3048\u307E\u3059\uFF09\u3002</p><p><a href="${link}">\u30ED\u30B0\u30A4\u30F3\u3059\u308B</a></p><p>\u5FC3\u5F53\u305F\u308A\u304C\u306A\u3044\u5834\u5408\u306F\u3001\u3053\u306E\u30E1\u30FC\u30EB\u3092\u7121\u8996\u3057\u3066\u304F\u3060\u3055\u3044\u3002</p><hr><p>This link signs you in to saww audio ecosystem (valid for 20 minutes, once).</p>`;
@@ -1179,7 +1403,7 @@ async function magic(req, env) {
   if (!body || !sig || !safeEq(sig, b64u(await hmac(env.MAGIC_SECRET, body)))) return back(env, "saww-billing=link");
   let m;
   try {
-    m = JSON.parse(dec.decode(unb64u(body)));
+    m = JSON.parse(dec2.decode(unb64u2(body)));
   } catch (e) {
     return back(env, "saww-billing=link");
   }
@@ -1226,6 +1450,8 @@ var worker_default = {
     try {
       const growth = await growthRoute(req, env);
       if (growth) return growth;
+      const recs = await recordingsRoute(req, env, { readToken, freshRec, isPro });
+      if (recs) return recs;
       if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors(env, req) });
       if (pathname === "/stripe/webhook" && req.method === "POST") return await webhook(req, env);
       if (pathname === "/activate" && req.method === "GET") return await activate(req, env);

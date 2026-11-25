@@ -124,5 +124,13 @@ function build(){const box=$('pdBoard');if(!box||box.dataset.built)return;box.da
  renderAll()}
 document.addEventListener('saww:lang',()=>setTimeout(renderAll,0));
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',build);else build();
-window.__pedals={attach,setOn,setVal,setTarget,allOff,state:()=>JSON.parse(JSON.stringify(st)),order:ORDER.slice(),def:DEF,makePedal,shifter,built:()=>built?{target:st.target,pedals:[...built.pedals.keys()]}:null};
+// プリセット・共有リンク用：かける場所・各ペダルのオン/オフとつまみ。読み込みは値を範囲に収め、知らないキーは無視する
+function preset(){return {target:st.target,p:Object.fromEntries(ORDER.map(id=>[id,{on:id==='freeze'?false:st.p[id].on,v:{...st.p[id].v}}]))}}
+function applyPreset(o){if(!o||typeof o!=='object')return false;if(TARGETS.includes(o.target)&&o.target!==st.target){st.target=o.target;teardown()}
+ for(const id of ORDER){const q=o.p&&o.p[id];if(!q||typeof q!=='object')continue;const d=DEF[id];
+  for(const k of d.knobs){const x=+(q.v||{})[k.k];if(Number.isFinite(x)){st.p[id].v[k.k]=Math.min(k.max,Math.max(k.min,x));const pd=built&&built.pedals.get(id);if(pd)try{pd.set(k.k,st.p[id].v[k.k])}catch(e){}}}
+  if(d.steps){const x=+(q.v||{})[d.steps.k];if(d.steps.opts.includes(x)){st.p[id].v[d.steps.k]=x;const pd=built&&built.pedals.get(id);if(pd)try{pd.set(d.steps.k,x)}catch(e){}}}
+  if(id!=='freeze')st.p[id].on=q.on===true}
+ save();attach();renderAll();return true}
+window.__pedals={preset,applyPreset,attach,setOn,setVal,setTarget,allOff,state:()=>JSON.parse(JSON.stringify(st)),order:ORDER.slice(),def:DEF,makePedal,shifter,built:()=>built?{target:st.target,pedals:[...built.pedals.keys()]}:null};
 })();

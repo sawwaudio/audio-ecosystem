@@ -34,7 +34,7 @@ const st=pg=>pg.evaluate(()=>({...__billingDebug.state(),live:__billingDebug.liv
  R.beta.note=await pg.textContent('#planAccount');ok('beta_default',!R.beta.live&&R.beta.plan==='beta'&&!R.beta.mbira&&R.beta.locked.every(x=>!x)&&R.beta.preview&&!R.beta.buy&&/課金はまだ始めていません/.test(R.beta.note));await cx.close()}
 // B. 課金あり・未購入：無料版。PRO の楽器と PRO の欄は使えない。購入ボタン
 const cx=await b.newContext({viewport:{width:390,height:844}});const pg=await newPage(cx);await setup(pg,CFG);R.free=await st(pg);
-ok('free_limits',R.free.live&&R.free.plan==='free'&&R.free.enforce&&R.free.mbira&&!R.free.didge&&R.free.locked.length===3&&R.free.locked.every(Boolean)&&!R.free.preview&&R.free.buy===null&&R.free.buyBtn&&/PRO にすると/.test(R.free.lead));
+ok('free_limits',R.free.live&&R.free.plan==='free'&&R.free.enforce&&R.free.mbira&&!R.free.didge&&R.free.locked.length===4&&R.free.locked.every(Boolean)&&!R.free.preview&&R.free.buy===null&&R.free.buyBtn&&/PRO にすると/.test(R.free.lead));
 R.lockOpen=await pg.evaluate(async()=>{const d=document.querySelector('details[data-tier="pro"]');d.open=true;await new Promise(r=>setTimeout(r,50));return {open:d.open,note:!(d.querySelector(':scope > .proLockNote')||{hidden:true}).hidden}});ok('free_section_locked',!R.lockOpen.open&&R.lockOpen.note);
 R.allows=await pg.evaluate(()=>({mixer:sawwEntitlement.allows('mixer'),autoplay:sawwEntitlement.allows('autoplay')}));ok('free_allows',R.allows.mixer===false&&R.allows.autoplay===true);
 // C. 支払い → 支払いリンクの「支払い後の移動先」（/activate）→ アプリへ戻って PRO

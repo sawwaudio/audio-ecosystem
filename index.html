@@ -3467,6 +3467,8 @@ const recApi=p=>BILL.apiBase.replace(/\/$/,'')+p;
 const b64uJSON=o=>{const s=new TextEncoder().encode(JSON.stringify(o));let b='';for(const c of s)b+=String.fromCharCode(c);return btoa(b).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')};
 const recStatusText=s=>s==='approved'?L('採用（US$1 を差し引き）','Accepted (US$1 credit)'):s==='rejected'?L('不採用','Not accepted'):L('審査待ち','Waiting for review');
 function recordingProgramPanel(){const wrap=el('details',{class:'recProgram',id:'recProgram'});
+ // 課金サーバーがまだ録音の受け付けに対応していない間は欄を出さない（対応すると自動で出る）
+ wrap.hidden=true;(async()=>{let tok='';try{tok=localStorage.getItem(PRO_KEY)||''}catch(e){}try{const r=await fetch(recApi('/recordings/mine'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:tok})});if(r.status!==404)wrap.hidden=false}catch(e){}})();
  wrap.append(el('summary',{text:L('録音を送って利用料から差し引く（1本 US$1・月 US$5 まで）','Send recordings for credit (US$1 each, up to US$5 a month)')}));
  wrap.append(el('p',{class:'micro',text:L('自分で録った自然の音を送ってください。オーナーが聴いて採用した1本ごとに、US$1 を次回以降の利用料から差し引きます（月5本まで・現金のお支払いはありません）。','Send nature sounds you recorded yourself. For each one the owner accepts, US$1 is taken off your next charges (up to 5 a month; no cash payouts).')}),el('p',{class:'micro'},el('a',{href:'recording-program.html',target:'_blank',rel:'noopener',text:L('条件を読む（必読）','Read the terms (required)')})));
  const f=el('form',{class:'recForm',id:'recForm'});

@@ -1,6 +1,7 @@
 import {billingFact} from './growth/billing-facts.mjs';
 import {growthRoute} from './growth/routes.mjs';
 import {recordingsRoute} from './recordings.mjs';
+import {libraryRoute} from './library.mjs';
 // saww audio ecosystem — 課金の確認サーバー（Cloudflare Workers）v0.57
 // オーナー要望（2026-11-07 16:31）「無料版と有料版で区別するシステム」。Stripe の支払いリンク（月額）を使う。
 // 役目：Stripe の知らせ（Webhook）で「誰が有料会員か」を記録し、有料の人に署名付きの「PRO の証明」（ES256 の JWT）を発行する。
@@ -262,6 +263,8 @@ export default {
       if (growth) return growth;
       const recs = await recordingsRoute(req, env, { readToken, freshRec, isPro });
       if (recs) return recs;
+      const lib = await libraryRoute(req, env, { readToken, freshRec, isPro });
+      if (lib) return lib;
       if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors(env, req) });
       if (pathname === '/stripe/webhook' && req.method === 'POST') return await webhook(req, env);
       if (pathname === '/activate' && req.method === 'GET') return await activate(req, env);

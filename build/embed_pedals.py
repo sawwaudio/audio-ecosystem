@@ -61,7 +61,7 @@ for k in E:
     else:add.append(k)
 h=h[:A]+seg
 i=h.index('const EXACT={',A)+len('const EXACT={')
-h=h[:i]+'\n// v0.87 ペダル 第2版\n'+','.join("'"+q(k)+"':'"+q(E[k])+"'" for k in add)+',\n'+h[i:]
+if add:h=h[:i]+'\n// v0.87 ペダル 第2版\n'+','.join("'"+q(k)+"':'"+q(E[k])+"'" for k in add)+',\n'+h[i:]
 A=h.index(tag)+len(tag);B=h.index('</script>',A);open('build/src_i18n.js','w',encoding='utf-8').write(h[A:B])
 open(P,'w',encoding='utf-8').write(h);print('added',len(add))
 
@@ -114,3 +114,33 @@ PB="const t=ctx.currentTime;const keepLoops=!!(window.__looper&&__looper.active(
 if PB not in h:
     assert h.count(PA)==1,h.count(PA);h=h.replace(PA,PB)
 open(P,'w',encoding='utf-8').write(h);print('looper i18n added',len(add2))
+
+# ── v0.89：アカウントのライブラリ（☁）。BILL・PRO_KEY と同じ場所（録音の買い取りの直後）に入れる ──
+h=open(P,encoding='utf-8').read()
+CL=open('build/src_cloud.js',encoding='utf-8').read().rstrip()+'\n'
+if '/*<ae-cloud>*/' in h:
+    a=h.index('/*<ae-cloud>*/\n')+len('/*<ae-cloud>*/\n');b=h.index('/*</ae-cloud>*/');h=h[:a]+CL+h[b:]
+else:
+    mk='// v0.81 管理者モードの画面：ほかのプランの見え方・いまの状態・運用のリンク';assert h.count(mk)==1
+    h=h.replace(mk,'/*<ae-cloud>*/\n'+CL+'/*</ae-cloud>*/\n'+mk)
+CP=('<div id="cloudPresets" class="cloudBox" hidden><h4 class="cloudH">☁ アカウントのプリセット</h4><p class="micro">アカウントに保存すると、ほかの端末からも読み込めます。</p>'
+ '<div class="cloudSave"><input id="cloudPresetName" type="text" maxlength="80" placeholder="名前（空なら日時）" aria-label="プリセットの名前"><button type="button" id="cloudPresetSave">☁ アカウントに保存</button></div>'
+ '<div id="cloudPresetList" class="cloudList"></div><p class="micro" id="cloudPresetMsg" role="status"></p></div>')
+if 'id="cloudPresets"' not in h:
+    i=h.index('id="presetSection"');k=h.index('<div id="shareOut"',i);h=h[:k]+CP+h[k:]
+CLP=('<div id="cloudLoops" class="cloudBox" hidden><h4 class="cloudH">☁ アカウントのループ（ほかの端末でも使える）</h4><p class="micro">各チャンネルの ☁ で保存します（PRO・20本・合計80MBまで）。読み込むと、空いているチャンネルに入ります。</p>'
+ '<div id="cloudLoopList" class="cloudList"></div><p class="micro" id="cloudLoopMsg" role="status"></p></div>')
+if 'id="cloudLoops"' not in h:
+    k=h.index('<details class="help"',h.index('id="lpLib"'));h=h[:k]+CLP+h[k:]
+CSS3='.cloudBox{border:1px solid #9fd8c855;border-radius:12px;padding:10px 12px;margin:10px 0;background:#9fd8c80d}.cloudH{margin:0 0 4px;font-size:13px}.cloudSave{display:flex;gap:6px;flex-wrap:wrap}.cloudSave input{flex:1;min-width:160px;font-size:16px;min-height:44px}.cloudSave button,.cloudRow button{min-height:44px}.cloudRow{display:flex;gap:6px;align-items:center;flex-wrap:wrap;padding:6px 0;border-bottom:1px solid #ffffff12}.cloudName{flex:1;min-width:140px;font-variant-numeric:tabular-nums}'
+if '.cloudBox{' not in h:h=h.replace('.shareOut{',CSS3+'.shareOut{',1)
+E3={'☁ アカウントのプリセット':'☁ Presets in your account','アカウントに保存すると、ほかの端末からも読み込めます。':'Saved to your account, they can be loaded on your other devices.','名前（空なら日時）':'Name (blank = date and time)','プリセットの名前':'Preset name','☁ アカウントに保存':'☁ Save to account',
+ '☁ アカウントのループ（ほかの端末でも使える）':'☁ Loops in your account (use them on any device)','各チャンネルの ☁ で保存します（PRO・20本・合計80MBまで）。読み込むと、空いているチャンネルに入ります。':'Save with each channel’s ☁ (PRO; up to 20 loops, 80 MB in total). Loading puts the loop in a free channel.',
+ 'アカウントに保存':'Save to account','まだありません。':'None yet.','ご契約中の方だけが保存できます。':'Only active subscribers can save.','ループの保存は PRO だけです。':'Saving loops is PRO only.','保存できる数の上限です。古いものを消してください。':'You have reached the limit. Delete an older one.',
+ 'ループの保存容量（80MB）を超えます。古いものを消してください。':'This would exceed the 80 MB loop storage. Delete an older one.','大きすぎて保存できません。':'Too large to save.','保存しています…':'Saving…','アカウントに保存しました。ほかの端末でも読み込めます。':'Saved to your account. You can load it on your other devices.',
+ '保存できませんでした。':'Could not save.','保存できませんでした。電波を確かめてください。':'Could not save. Check your connection.','読み込んでいます…':'Loading…','読み込みました。':'Loaded.','アカウントに保存しています…':'Saving to your account…'}
+tag='<script id="ae-i18n">';A=h.index(tag);seg=h[A:];add3=[k for k in E3 if ("'"+q(k)+"':") not in seg]
+i=h.index('const EXACT={',A)+len('const EXACT={')
+if add3:h=h[:i]+'\n// v0.89 アカウントのライブラリ\n'+','.join("'"+q(k)+"':'"+q(E3[k])+"'" for k in add3)+',\n'+h[i:]
+A=h.index(tag)+len(tag);B=h.index('</script>',A);open('build/src_i18n.js','w',encoding='utf-8').write(h[A:B])
+open(P,'w',encoding='utf-8').write(h);print('cloud i18n added',len(add3))

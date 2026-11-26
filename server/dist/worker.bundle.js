@@ -1181,21 +1181,138 @@ async function recordingsRoute(req, env, deps) {
   return out({ ok: false, error: "not found" }, 404, h);
 }
 
+// server/library.mjs
+var LIB_LIMITS = { presets: 100, presetBytes: 200 * 1024, loops: 20, loopBytes: 12 * 1024 * 1024, totalLoopBytes: 80 * 1024 * 1024 };
+var ID = /^[A-Za-z0-9_-]{1,40}$/;
+var enc2 = new TextEncoder();
+var dec2 = new TextDecoder();
+var unb64u2 = (s) => Uint8Array.from(atob(String(s).replace(/-/g, "+").replace(/_/g, "/") + "===".slice((String(s).length + 3) % 4)), (c) => c.charCodeAt(0));
+var b64uText = (s) => {
+  const b = enc2.encode(s);
+  let t = "";
+  for (const x of b) t += String.fromCharCode(x);
+  return btoa(t).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+};
+var clip2 = (v, n) => String(v == null ? "" : v).replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, n);
+function corsFor2(env, req) {
+  const origin = req.headers.get("Origin") || "";
+  const allow = String(env.ALLOWED_ORIGINS || (env.APP_URL ? new URL(env.APP_URL).origin : "")).split(",").map((s) => s.trim()).filter(Boolean);
+  if (env.TEST_ORIGIN) allow.push(env.TEST_ORIGIN);
+  return allow.includes(origin) ? { "Access-Control-Allow-Origin": origin, "Access-Control-Allow-Methods": "GET, PUT, DELETE, OPTIONS", "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Saww-Meta", "Access-Control-Expose-Headers": "X-Saww-Meta", "Access-Control-Max-Age": "600", Vary: "Origin" } : {};
+}
+var out2 = (obj, status, h) => new Response(JSON.stringify(obj), { status: status || 200, headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store", ...h || {} } });
+async function listAll2(env, prefix) {
+  const keys = [];
+  let cursor;
+  do {
+    const r = await env.SAWW_KV.list({ prefix, cursor });
+    keys.push(...r.keys);
+    cursor = r.list_complete ? null : r.cursor;
+  } while (cursor);
+  return keys;
+}
+async function libraryRoute(req, env, deps) {
+  const url = new URL(req.url), path = url.pathname;
+  if (!(path === "/library" || path.startsWith("/library/"))) return null;
+  const h = corsFor2(env, req);
+  if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: h });
+  const tok = (req.headers.get("Authorization") || "").replace(/^Bearer\s+/i, "");
+  const pl = await deps.readToken(env, tok);
+  if (!pl || !pl.sub || pl.typ || pl.exp < Date.now() / 1e3) return out2({ ok: false, error: "token" }, 401, h);
+  const cus = pl.sub, base = "lib:" + cus + ":";
+  if (path === "/library" && req.method === "GET") {
+    const keys2 = await listAll2(env, base);
+    const presets = [], loops = [];
+    for (const k of keys2) {
+      const m2 = k.metadata || {};
+      const id2 = k.name.slice(base.length + 2);
+      if (k.name.startsWith(base + "p:")) presets.push({ id: id2, name: m2.name || "", created: m2.created || 0, size: m2.size || 0 });
+      else if (k.name.startsWith(base + "l:")) loops.push({ id: id2, name: m2.name || "", sr: m2.sr, len: m2.len, created: m2.created || 0, size: m2.size || 0 });
+    }
+    presets.sort((a, b) => b.created - a.created);
+    loops.sort((a, b) => b.created - a.created);
+    return out2({ ok: true, presets, loops, limits: LIB_LIMITS, used: { loopBytes: loops.reduce((s, x) => s + (x.size || 0), 0) } }, 200, h);
+  }
+  const m = path.match(/^\/library\/(preset|loop)\/([^/]+)$/);
+  if (!m || !ID.test(m[2])) return out2({ ok: false, error: "path" }, 404, h);
+  const kind = m[1], id = m[2], key = base + (kind === "preset" ? "p:" : "l:") + id;
+  if (req.method === "GET") {
+    if (kind === "preset") {
+      const t = await env.SAWW_KV.get(key);
+      let v = null;
+      try {
+        v = t ? JSON.parse(t) : null;
+      } catch (e) {
+      }
+      return v ? out2({ ok: true, id, ...v }, 200, h) : out2({ ok: false, error: "missing" }, 404, h);
+    }
+    const r = await env.SAWW_KV.getWithMetadata(key, "arrayBuffer");
+    if (!r || !r.value) return out2({ ok: false, error: "missing" }, 404, h);
+    const md = r.metadata || {};
+    return new Response(r.value, { status: 200, headers: { "Content-Type": "application/octet-stream", "Cache-Control": "no-store", "X-Saww-Meta": b64uText(JSON.stringify({ name: md.name, sr: md.sr, len: md.len })), ...h } });
+  }
+  if (req.method === "DELETE") {
+    await env.SAWW_KV.delete(key);
+    return out2({ ok: true }, 200, h);
+  }
+  if (req.method !== "PUT") return out2({ ok: false, error: "method" }, 405, h);
+  const rec = await deps.freshRec(env, cus, 3600);
+  if (!deps.isPro(rec)) return out2({ ok: false, error: "plan" }, 403, h);
+  if (kind === "loop" && rec.plan === "semi") return out2({ ok: false, error: "plan_pro" }, 403, h);
+  const keys = await listAll2(env, base + (kind === "preset" ? "p:" : "l:"));
+  const exists = keys.some((k) => k.name === key);
+  const created = Math.floor(Date.now() / 1e3);
+  if (kind === "preset") {
+    if (!exists && keys.length >= LIB_LIMITS.presets) return out2({ ok: false, error: "limit" }, 429, h);
+    const text = await req.text();
+    if (enc2.encode(text).length > LIB_LIMITS.presetBytes) return out2({ ok: false, error: "size" }, 413, h);
+    let body;
+    try {
+      body = JSON.parse(text);
+    } catch (e) {
+      return out2({ ok: false, error: "json" }, 400, h);
+    }
+    if (!body || typeof body.data !== "object" || Array.isArray(body.data) || body.data.format !== "audio-ecosystem-preset") return out2({ ok: false, error: "data" }, 400, h);
+    const name2 = clip2(body.name, 80) || "Preset";
+    const val = JSON.stringify({ name: name2, created, data: body.data });
+    await env.SAWW_KV.put(key, val, { metadata: { name: name2, created, size: val.length } });
+    return out2({ ok: true, id, name: name2, created }, 200, h);
+  }
+  let meta;
+  try {
+    meta = JSON.parse(dec2.decode(unb64u2(req.headers.get("X-Saww-Meta") || "")));
+  } catch (e) {
+    return out2({ ok: false, error: "meta" }, 400, h);
+  }
+  const sr = Number(meta && meta.sr), len = Number(meta && meta.len);
+  if (!(sr >= 8e3 && sr <= 192e3 && Number.isInteger(sr)) || !(len > 0 && Number.isInteger(len) && len <= sr * 60)) return out2({ ok: false, error: "meta" }, 400, h);
+  const declared = Number(req.headers.get("Content-Length") || 0);
+  if (declared > LIB_LIMITS.loopBytes) return out2({ ok: false, error: "size" }, 413, h);
+  const buf = await req.arrayBuffer();
+  if (buf.byteLength !== len * 4 || buf.byteLength > LIB_LIMITS.loopBytes) return out2({ ok: false, error: "size" }, 413, h);
+  const used = keys.filter((k) => k.name !== key).reduce((s, k) => s + (k.metadata && k.metadata.size || 0), 0);
+  if (!exists && keys.length >= LIB_LIMITS.loops) return out2({ ok: false, error: "limit" }, 429, h);
+  if (used + buf.byteLength > LIB_LIMITS.totalLoopBytes) return out2({ ok: false, error: "quota" }, 429, h);
+  const name = clip2(meta.name, 80) || "Loop";
+  await env.SAWW_KV.put(key, buf, { metadata: { name, sr, len, created, size: buf.byteLength } });
+  return out2({ ok: true, id, name, created }, 200, h);
+}
+
 // server/worker.js
 var ACTIVE = /* @__PURE__ */ new Set(["active", "trialing", "past_due"]);
 var MAX_TOKEN = 40 * 86400;
 var MAGIC_TTL = 20 * 60;
 var REFRESH_WINDOW = 60 * 86400;
-var enc2 = new TextEncoder();
-var dec2 = new TextDecoder();
+var enc3 = new TextEncoder();
+var dec3 = new TextDecoder();
 var b64u = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
-var unb64u2 = (s) => Uint8Array.from(atob(s.replace(/-/g, "+").replace(/_/g, "/") + "===".slice((s.length + 3) % 4)), (c) => c.charCodeAt(0));
+var unb64u3 = (s) => Uint8Array.from(atob(s.replace(/-/g, "+").replace(/_/g, "/") + "===".slice((s.length + 3) % 4)), (c) => c.charCodeAt(0));
 var now = () => Math.floor(Date.now() / 1e3);
 var normEmail = (e) => String(e || "").trim().toLowerCase();
 var okEmail = (e) => /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/.test(e) && e.length <= 254;
 async function hmac(secret, data) {
-  const k = await crypto.subtle.importKey("raw", enc2.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
-  return new Uint8Array(await crypto.subtle.sign("HMAC", k, enc2.encode(data)));
+  const k = await crypto.subtle.importKey("raw", enc3.encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  return new Uint8Array(await crypto.subtle.sign("HMAC", k, enc3.encode(data)));
 }
 var hex = (a) => [...a].map((x) => x.toString(16).padStart(2, "0")).join("");
 function safeEq(a, b) {
@@ -1229,8 +1346,8 @@ async function privKey(env) {
 }
 async function signToken(env, payload) {
   const k = await privKey(env);
-  const h = b64u(enc2.encode(JSON.stringify({ alg: "ES256", typ: "JWT", kid: k.kid }))), p = b64u(enc2.encode(JSON.stringify(payload)));
-  const sig = await crypto.subtle.sign({ name: "ECDSA", hash: "SHA-256" }, k.key, enc2.encode(h + "." + p));
+  const h = b64u(enc3.encode(JSON.stringify({ alg: "ES256", typ: "JWT", kid: k.kid }))), p = b64u(enc3.encode(JSON.stringify(payload)));
+  const sig = await crypto.subtle.sign({ name: "ECDSA", hash: "SHA-256" }, k.key, enc3.encode(h + "." + p));
   return h + "." + p + "." + b64u(sig);
 }
 async function readToken(env, tok) {
@@ -1239,13 +1356,13 @@ async function readToken(env, tok) {
   const k = await privKey(env);
   let ok = false;
   try {
-    ok = await crypto.subtle.verify({ name: "ECDSA", hash: "SHA-256" }, k.vkey, unb64u2(s), enc2.encode(h + "." + p));
+    ok = await crypto.subtle.verify({ name: "ECDSA", hash: "SHA-256" }, k.vkey, unb64u3(s), enc3.encode(h + "." + p));
   } catch (e) {
     ok = false;
   }
   if (!ok) return null;
   try {
-    return JSON.parse(dec2.decode(unb64u2(p)));
+    return JSON.parse(dec3.decode(unb64u3(p)));
   } catch (e) {
     return null;
   }
@@ -1384,7 +1501,7 @@ async function login(req, env) {
   const cus = await env.SAWW_KV.get("email:" + email);
   const rec = cus && await freshRec(env, cus);
   if (!isPro(rec)) return reply;
-  const body = b64u(enc2.encode(JSON.stringify({ c: rec.cus, e: email, exp: now() + MAGIC_TTL })));
+  const body = b64u(enc3.encode(JSON.stringify({ c: rec.cus, e: email, exp: now() + MAGIC_TTL })));
   const t = body + "." + b64u(await hmac(env.MAGIC_SECRET, body));
   const link = new URL("/magic?t=" + t, req.url).toString();
   const html = `<p>saww audio ecosystem \u306B\u30ED\u30B0\u30A4\u30F3\u3059\u308B\u305F\u3081\u306E\u30EA\u30F3\u30AF\u3067\u3059\uFF0820\u5206\u9593\u30FB1\u56DE\u3060\u3051\u4F7F\u3048\u307E\u3059\uFF09\u3002</p><p><a href="${link}">\u30ED\u30B0\u30A4\u30F3\u3059\u308B</a></p><p>\u5FC3\u5F53\u305F\u308A\u304C\u306A\u3044\u5834\u5408\u306F\u3001\u3053\u306E\u30E1\u30FC\u30EB\u3092\u7121\u8996\u3057\u3066\u304F\u3060\u3055\u3044\u3002</p><hr><p>This link signs you in to saww audio ecosystem (valid for 20 minutes, once).</p>`;
@@ -1403,7 +1520,7 @@ async function magic(req, env) {
   if (!body || !sig || !safeEq(sig, b64u(await hmac(env.MAGIC_SECRET, body)))) return back(env, "saww-billing=link");
   let m;
   try {
-    m = JSON.parse(dec2.decode(unb64u2(body)));
+    m = JSON.parse(dec3.decode(unb64u3(body)));
   } catch (e) {
     return back(env, "saww-billing=link");
   }
@@ -1452,6 +1569,8 @@ var worker_default = {
       if (growth) return growth;
       const recs = await recordingsRoute(req, env, { readToken, freshRec, isPro });
       if (recs) return recs;
+      const lib = await libraryRoute(req, env, { readToken, freshRec, isPro });
+      if (lib) return lib;
       if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors(env, req) });
       if (pathname === "/stripe/webhook" && req.method === "POST") return await webhook(req, env);
       if (pathname === "/activate" && req.method === "GET") return await activate(req, env);

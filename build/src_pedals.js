@@ -1,4 +1,5 @@
-/* v0.87 ペダルボード 第2版 — 30種類から使うものだけを足して、好きな順番につなぐ（2026-11-26 オーナー「エフェクター30種類くらいまで増やす / 使ってないやつは外して、使うやつだけ表示」「UIが微妙」）。
+/* v0.88 ペダルボード 第3版（34種。Chase Bliss 系の好み：マイクロループ・グリッチ・記憶のやまびこ・リバースディレイ・ロッシー・ダブルドライブ・スウェル・ハーモニックトレモロ、テープ合奏、マルチコーラス・マルチリバーブ。2026-11-26 オーナー指示）。ルーパーはサンプラーの欄の 6ch ルーパーへ移した。
+   v0.87 ペダルボード 第2版 — 30種類から使うものだけを足して、好きな順番につなぐ（2026-11-26 オーナー「エフェクター30種類くらいまで増やす / 使ってないやつは外して、使うやつだけ表示」「UIが微妙」）。
    v0.85（2026-11-25「サンプラーの他にギターとかの面白いエフェクターを再現して自然音を加工して遊びたい」）の7種を引き継ぐ。
    特定の製品の回路や音を写したものではなく、よく知られた種類を Web Audio で作ったもの。名前・見た目も製品に似せない。
    ・定義（名前・説明・つまみ・英語）は build/pedals_def.json。組み込み時に DEF として入る。
@@ -15,7 +16,14 @@ const KEY='saww.pedals.v2',KEY1='saww.pedals.v1';
 const defaults=id=>{const d=P_[id],v={};for(const k of d.knobs)v[k.k]=k.def;if(d.steps)v[d.steps.k]=d.steps.def;return v};
 const clampV=(id,k,x)=>{const d=P_[id];const kn=d.knobs.find(q=>q.k===k);if(kn){x=+x;if(!Number.isFinite(x))return null;return Math.min(kn.max,Math.max(kn.min,x))}if(d.steps&&d.steps.k===k){x=+x;return d.steps.opts.includes(x)?x:null}return null};
 const st={target:'master',chain:[]};
-function cleanChain(arr,keepOn){const out=[],seen=new Set();if(!Array.isArray(arr))return out;for(const e of arr){if(!e||!P_[e.id]||seen.has(e.id)||out.length>=MAXN)continue;seen.add(e.id);const v=defaults(e.id);for(const k of Object.keys(v)){const x=clampV(e.id,k,(e.v||{})[k]);if(x!==null)v[k]=x}out.push({id:e.id,on:keepOn&&e.on===true&&P_[e.id].mode!=='freeze',v})}return out}
+// 旧い台（v0.85〜v0.87）を新しい台に読み替える：シマー・リバースリバーブ→マルチリバーブ、ビブラート・コーラス→マルチコーラス、ルーパー→（サンプラーのルーパーへ移ったので外す）
+function migrate(e){if(!e||typeof e!=='object')return e;const v=e.v||{};
+ if(e.id==='shimmer')return {id:'reverb',on:e.on,v:{type:4,decay:v.decay,mod:v.shimmer,tone:v.tone,mix:v.mix}};
+ if(e.id==='reversereverb')return {id:'reverb',on:e.on,v:{type:5,decay:v.len,mix:v.mix}};
+ if(e.id==='reverb'&&v.size!=null&&v.decay==null)return {id:'reverb',on:e.on,v:{type:1,decay:v.size,predelay:v.predelay,tone:v.tone,mix:v.mix}};
+ if(e.id==='vibrato')return {id:'chorus',on:e.on,v:{type:1,rate:v.rate,depth:v.depth}};
+ return e}
+function cleanChain(arr,keepOn){const out=[],seen=new Set();if(!Array.isArray(arr))return out;for(let e of arr){e=migrate(e);if(!e||!P_[e.id]||seen.has(e.id)||out.length>=MAXN)continue;seen.add(e.id);const v=defaults(e.id);for(const k of Object.keys(v)){const x=clampV(e.id,k,(e.v||{})[k]);if(x!==null)v[k]=x}out.push({id:e.id,on:keepOn&&e.on===true&&P_[e.id].mode!=='freeze',v})}return out}
 function fromV1(o){const order=['freeze','octave','fuzz','tape','pitchdelay','analog','shimmer'];return order.filter(id=>o.p&&o.p[id]&&o.p[id].on===true).map(id=>({id,on:true,v:(o.p[id]||{}).v||{}}))}
 try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&typeof s==='object'){if(TARGETS.includes(s.target))st.target=s.target;st.chain=cleanChain(s.chain,false)}
  else{const o=JSON.parse(localStorage.getItem(KEY1)||'null');if(o&&TARGETS.includes(o.target))st.target=o.target}}catch(e){}
@@ -40,29 +48,35 @@ function noiseBuf(c,secs){const n=Math.floor(c.sampleRate*secs),b=c.createBuffer
 function reverbIR(c,secs,reverse=false){const n=Math.max(256,Math.floor(c.sampleRate*secs)),b=c.createBuffer(2,n,c.sampleRate);for(let ch=0;ch<2;ch++){const d=b.getChannelData(ch);let lp=0;for(let i=0;i<n;i++){const x=i/n,att=Math.min(1,i/(c.sampleRate*.012));lp+=(Math.random()*2-1-lp)*.55;d[i]=lp*att*Math.exp(-6.9*x)}if(reverse){d.reverse();const f=Math.floor(c.sampleRate*.02);for(let i=0;i<f;i++)d[n-1-i]*=i/f}}return b}
 function crackleBuf(c,secs){const sr=c.sampleRate,n=Math.floor(sr*secs),b=c.createBuffer(1,n,sr),d=b.getChannelData(0);for(let i=0;i<n;i++){if(Math.random()<60/sr){const a=(Math.random()*.8+.2)*(Math.random()<.5?-1:1),len=2+Math.floor(Math.random()*14);for(let j=0;j<len&&i+j<n;j++)d[i+j]+=a*Math.exp(-j/3)}}return b}
 const SEMIS=[[4,7],[3,7],[5,7],[7,12],[-12,7]];
+const asymCurve=(n=4097)=>{const cv=new Float32Array(n);for(let i=0;i<n;i++){const x=-1+2*i/(n-1);cv[i]=x>0?Math.tanh(4*x)/Math.tanh(4):Math.max(-.6,Math.tanh(2.2*x))/.6*.8}return cv};
+// マルチリバーブの残響の形：0部屋 1ホール 2プレート 3スプリング 4シマー（ホール）5リバース 6クラウド 7暗い
+function verbIR(c,t,decay){const sr=c.sampleRate,len=t===0?Math.min(decay,2.5)*.8:t===6?decay*1.5:decay,n=Math.max(256,Math.floor(sr*len)),b=c.createBuffer(2,n,sr),sm=[.5,.55,.92,.6,.55,.55,.3,.15][t],atk=[.004,.03,.002,.004,.03,.03,.35,.03][t];
+ for(let ch=0;ch<2;ch++){const d=b.getChannelData(ch);let lp=0;for(let i=0;i<n;i++){const x=i/n,a=Math.min(1,i/(sr*atk));lp+=(Math.random()*2-1-lp)*sm;d[i]=lp*a*Math.exp(-6.9*x)}
+  if(t===0)for(const [tm,g] of [[.007,.8],[.013,.6],[.021,.5],[.029,.4],[.037,.3]]){const i=Math.floor(sr*(tm+ch*.0013));if(i<n)d[i]+=g*(ch?-1:1)}
+  if(t===3){for(let k=0;k*sr*.034<n;k++){const st=Math.floor(k*sr*.034),amp=Math.exp(-k*.12)*.5,L=Math.floor(sr*.03);for(let j=0;j<L&&st+j<n;j++){const tt=j/sr;d[st+j]+=amp*Math.sin(2*Math.PI*(3200-60000*tt)*tt)*(1-j/L)}}}
+  if(t===5){d.reverse();const f=Math.floor(sr*.02);for(let i=0;i<f;i++)d[n-1-i]*=i/f}}
+ return b}
+const WK_SRC=/*PEDAL_WORKLET*/'';const wkReady=new WeakMap(),wkJobs=new WeakMap();
+function ensureWorklet(c){if(wkJobs.has(c))return wkJobs.get(c);const job=(async()=>{if(!c.audioWorklet)throw Error('no worklet');const url=URL.createObjectURL(new Blob([WK_SRC],{type:'application/javascript'}));try{try{await c.audioWorklet.addModule(url)}catch(e){await c.audioWorklet.addModule('data:application/javascript;charset=utf-8,'+encodeURIComponent(WK_SRC))}}finally{URL.revokeObjectURL(url)}wkReady.set(c,true)})();wkJobs.set(c,job);job.catch(()=>{wkJobs.delete(c)});return job}
 
 // ── ペダル1台 ── {input,output,setOn(on),set(k,v),action(k),stop()}
 function makePedal(c,id,v){const D=P_[id],mode=D.mode,input=G(c),output=G(c),dry=G(c,1),send=G(c,0),wet=G(c,0);input.connect(dry);dry.connect(output);input.connect(send);wet.connect(output);
- const P={id,input,output,on:false,stops:[],v:{...v},ap(){},set(k,x){P.v[k]=x;P.ap();if(P.on)P.mix()},setOn(){},action(){},stop(){for(const s of P.stops)try{s.stop()}catch(e){}if(P.timer)clearInterval(P.timer)}};
+ const P={id,input,output,on:false,stops:[],v:{...v},ap(){},set(k,x){P.v[k]=x;P.ap();if(P.on)P.mix()},setOn(){},action(){},stop(){P.dead=true;for(const s of P.stops)try{s.stop()}catch(e){}if(P.timer)clearInterval(P.timer);if(P.node)try{P.node.disconnect()}catch(e){}}};
  const lfo=(hz,type='sine')=>{const o=c.createOscillator();o.type=type;o.frequency.value=hz;o.start();P.stops.push(o);return o};
  const mixV=()=>(P.v.mix??100)/100;
- P.mix=()=>{if(mode==='insert'){T(c,dry.gain,0,.012);T(c,wet.gain,1,.012)}else if(mode==='blend'){T(c,dry.gain,1-mixV(),.012);T(c,wet.gain,mixV(),.012)}else if(mode==='trails')T(c,wet.gain,mixV(),.02)};
+ P.mix=()=>{const ov=P.mixOverride&&P.mixOverride();if(ov!=null&&mode==='blend'){T(c,dry.gain,1-ov,.012);T(c,wet.gain,ov,.012);return}if(mode==='insert'){T(c,dry.gain,0,.012);T(c,wet.gain,1,.012)}else if(mode==='blend'){T(c,dry.gain,1-mixV(),.012);T(c,wet.gain,mixV(),.012)}else if(mode==='trails')T(c,wet.gain,mixV(),.02)};
  if(mode==='insert'||mode==='blend'){P.setOn=on=>{P.on=on;T(c,send.gain,on?1:0,.012);if(on)P.mix();else{T(c,dry.gain,1,.012);T(c,wet.gain,0,.012)}}}
  else if(mode==='trails'){P.setOn=on=>{P.on=on;T(c,send.gain,on?1:0,.012);if(on)P.mix()}}
  const o=G(c);o.connect(wet); // 加工した音の出口
+ // AudioWorklet の台：読み込みが済んでいればすぐ、まだならあとでつなぐ（その間は鳴らない）
+ const wk=opts=>{const mk=()=>{if(P.dead)return;const n=new AudioWorkletNode(c,'saww-fx',{numberOfInputs:1,numberOfOutputs:1,outputChannelCount:[2],processorOptions:opts});send.connect(n);n.connect(o);P.node=n;if(P.pend)n.port.postMessage(P.pend);if(P.held)n.parameters.get('hold').setValueAtTime(1,c.currentTime)};if(wkReady.get(c)===true)mk();else ensureWorklet(c).then(mk,()=>{})};
+ const cfg=x=>{if(P.node)P.node.port.postMessage(x);else P.pend=Object.assign(P.pend||{},x)};
  const B={
  freeze(){const gin=G(c,1),sum=G(c),d=c.createDelay(2.2),fb=G(c,0),hold=G(c,0);d.delayTime.value=v.len/1000;input.connect(gin);gin.connect(sum);sum.connect(d);d.connect(fb);fb.connect(sum);d.connect(hold);hold.connect(output);P.frozen=false;
   P.freeze=on=>{const t=c.currentTime;if(on&&!P.frozen){P.frozen=true;const L=P.v.len/1000,F=Math.min(.25,L*.4);d.delayTime.cancelScheduledValues(t);d.delayTime.setValueAtTime(L,t);
     for(const [g,a,b] of [[gin,1,0],[fb,0,1]]){g.gain.cancelScheduledValues(t);g.gain.setValueAtTime(a,t);g.gain.linearRampToValueAtTime(b,t+F)}hold.gain.cancelScheduledValues(t);hold.gain.setTargetAtTime(P.v.level/100,t,.02);T(c,dry.gain,P.v.dry/100,.05)}
    else if(!on&&P.frozen){P.frozen=false;hold.gain.cancelScheduledValues(t);hold.gain.setTargetAtTime(0,t,.12);fb.gain.cancelScheduledValues(t);fb.gain.setValueAtTime(1,t+.7);fb.gain.linearRampToValueAtTime(0,t+.75);gin.gain.cancelScheduledValues(t);gin.gain.setValueAtTime(0,t+.7);gin.gain.linearRampToValueAtTime(1,t+.75);T(c,dry.gain,1,.05)}};
   P.setOn=on=>{P.on=on;P.freeze(on)};P.set=(k,x)=>{P.v[k]=x;if(k==='level'&&P.frozen)T(c,hold.gain,x/100);if(k==='dry'&&P.frozen)T(c,dry.gain,x/100,.05)}},
- looper(){P.ls='empty';let loop=null;const out=G(c,0);out.connect(output);
-  const fresh=()=>{if(loop){try{loop.gin.disconnect()}catch(e){}try{loop.d.disconnect()}catch(e){}}const gin=G(c,0),sum=G(c),d=c.createDelay(16.5),fb=G(c,0);d.delayTime.value=P.v.len;input.connect(gin);gin.connect(sum);sum.connect(d);d.connect(fb);fb.connect(sum);d.connect(out);loop={gin,d,fb}};fresh();
-  const lv=()=>P.v.level/100;
-  P.action=k=>{const t=c.currentTime;if(k==='rec'){if(P.ls==='rec'){T(c,loop.gin.gain,0,.006);P.ls='play';T(c,out.gain,lv(),.01)}else{if(P.ls==='empty'){loop.d.delayTime.setValueAtTime(P.v.len,t)}loop.fb.gain.setTargetAtTime(1,t,.004);T(c,loop.gin.gain,1,.006);T(c,out.gain,lv(),.01);P.ls='rec'}}
-   else if(k==='play'){if(P.ls==='empty')return;if(P.ls==='rec')T(c,loop.gin.gain,0,.006);if(P.ls==='play'){T(c,out.gain,0,.03);P.ls='stop'}else{T(c,out.gain,lv(),.03);P.ls='play'}}
-   else if(k==='clear'){T(c,out.gain,0,.01);setTimeout(()=>{fresh()},60);P.ls='empty'}};
-  P.setOn=on=>{P.on=on;if(!on&&P.ls!=='empty'){if(P.ls==='rec')T(c,loop.gin.gain,0,.006);T(c,out.gain,0,.03);P.ls='stop'}};P.set=(k,x)=>{P.v[k]=x;if(k==='level'&&(P.ls==='play'||P.ls==='rec'))T(c,out.gain,lv())}},
  octave(){const sub=shifter(c,.5),up=shifter(c,2),sg=G(c),ug=G(c),dg=G(c),lp=BQ(c,'lowpass',2200);P.stops.push(sub,up);send.connect(lp);lp.connect(sub.input);sub.output.connect(sg);send.connect(up.input);up.output.connect(ug);send.connect(dg);for(const g of [sg,ug,dg])g.connect(o);
   P.ap=()=>{T(c,sg.gain,P.v.sub/100);T(c,ug.gain,P.v.up/100*.8);T(c,dg.gain,P.v.dry/100)}},
  pitchshift(){let sh=shifter(c,2**(v.semi/12));send.connect(sh.input);sh.output.connect(o);P.stops.push({stop(){sh.stop()}});
@@ -81,22 +95,28 @@ function makePedal(c,id,v){const D=P_[id],mode=D.mode,input=G(c),output=G(c),dry
   P.ap=()=>{if(P.v.bits!==bits){bits=P.v.bits;ws.curve=stepCurve(bits)}T(c,lp.frequency,1500*Math.pow(12,P.v.tone/100))}},
  compressor(){const cp=c.createDynamicsCompressor(),mk=G(c);cp.knee.value=6;cp.attack.value=.008;cp.release.value=.2;send.connect(cp);cp.connect(mk);mk.connect(o);
   P.ap=()=>{T(c,cp.threshold,P.v.threshold);T(c,cp.ratio,P.v.ratio);T(c,mk.gain,Math.pow(10,P.v.makeup/20))}},
- tremolo(){const vca=G(c,1),dep=G(c,0);send.connect(vca);vca.connect(o);const osc=lfo(v.rate,v.shape?'square':'sine');osc.connect(dep);dep.connect(vca.gain);
-  P.ap=()=>{const ty=P.v.shape?'square':'sine';if(ty!==osc.type)osc.type=ty;T(c,osc.frequency,P.v.rate);const d=P.v.depth/100;T(c,vca.gain,1-d/2);T(c,dep.gain,d/2)}},
+ tremolo(){const lo=BQ(c,'lowpass',700),hi=BQ(c,'highpass',700),vl=G(c,1),vh=G(c,1),dl=G(c,0),dh=G(c,0),one=G(c,1);send.connect(lo);send.connect(hi);lo.connect(vl);hi.connect(vh);vl.connect(o);vh.connect(o);const osc=lfo(v.rate,v.shape===1?'square':'sine');osc.connect(dl);osc.connect(dh);dl.connect(vl.gain);dh.connect(vh.gain);
+  P.ap=()=>{const ty=P.v.shape===1?'square':'sine';if(ty!==osc.type)osc.type=ty;T(c,osc.frequency,P.v.rate);const d=P.v.depth/100;T(c,vl.gain,1-d/2);T(c,vh.gain,1-d/2);T(c,dl.gain,d/2);T(c,dh.gain,P.v.shape===2?-d/2:d/2)}},
  filter(){const f=BQ(c,'lowpass',v.cutoff,v.reso),dep=G(c,0),osc=lfo(Math.max(.001,v.rate));osc.connect(dep);dep.connect(f.detune);send.connect(f);f.connect(o);
   P.ap=()=>{f.type=['lowpass','highpass','bandpass'][P.v.type];T(c,f.frequency,P.v.cutoff);T(c,f.Q,P.v.reso);T(c,osc.frequency,Math.max(.001,P.v.rate));T(c,dep.gain,P.v.rate>0?P.v.depth/100*2400:0)}},
  autowah(){const f=BQ(c,'bandpass',700,v.reso),dep=G(c,0),osc=lfo(v.rate,'triangle'),mk=G(c,2.2);osc.connect(dep);dep.connect(f.detune);send.connect(f);f.connect(mk);mk.connect(o);
   P.ap=()=>{T(c,osc.frequency,P.v.rate);T(c,dep.gain,P.v.depth/100*2000);T(c,f.Q,P.v.reso)}},
  eq3(){const lo=BQ(c,'lowshelf',200),mi=BQ(c,'peaking',1000,.8),hi=BQ(c,'highshelf',4500);send.connect(lo);lo.connect(mi);mi.connect(hi);hi.connect(o);
   P.ap=()=>{T(c,lo.gain,P.v.low);T(c,mi.gain,P.v.mid);T(c,hi.gain,P.v.high)}},
- chorus(){const sum=G(c,.7);P.ch=[];for(const [base,hz] of [[.016,1],[.023,1.27]]){const d=c.createDelay(.06),dep=G(c,0),osc=lfo(v.rate*hz);d.delayTime.value=base;osc.connect(dep);dep.connect(d.delayTime);send.connect(d);d.connect(sum);P.ch.push({osc,dep,hz})}sum.connect(o);
-  P.ap=()=>{for(const q of P.ch){T(c,q.osc.frequency,P.v.rate*q.hz);T(c,q.dep.gain,.006*P.v.depth/100)}}},
+ chorus(){const tone=BQ(c,'lowpass',8000),trem=G(c,1),tdep=G(c,0),pan=c.createStereoPanner(),pdep=G(c,0),fast=lfo(6),slow=lfo(.6);P.vs=[];
+  for(const [hz,pn] of [[1,-1],[1.13,1],[1.47,0]]){const d=c.createDelay(.06),dep=G(c,0),fdep=G(c,0),osc=lfo(v.rate*hz),g=G(c,0),p=c.createStereoPanner();d.delayTime.value=.012;osc.connect(dep);dep.connect(d.delayTime);fast.connect(fdep);fdep.connect(d.delayTime);send.connect(d);d.connect(g);g.connect(p);p.connect(tone);P.vs.push({d,dep,fdep,osc,g,p,hz,pn})}
+  // ワープ：ゆっくりした不規則な揺れ（8秒の滑らかな乱数を繰り返す）
+  const wb=c.createBuffer(1,c.sampleRate*8,c.sampleRate),wd=wb.getChannelData(0);{let a=0,t=0;for(let i=0;i<wd.length;i++){if(i%Math.floor(c.sampleRate*.4)===0)t=Math.random()*2-1;a+=(t-a)*.0004;wd[i]=a}}const warp=c.createBufferSource(),wdep=G(c,0);warp.buffer=wb;warp.loop=true;warp.start();P.stops.push(warp);warp.connect(wdep);for(const q of P.vs)wdep.connect(q.d.delayTime);
+  tone.connect(trem);trem.connect(pan);pan.connect(o);slow.connect(tdep);tdep.connect(trem.gain);slow.connect(pdep);pdep.connect(pan.pan);
+  P.mixOverride=()=>P.v.type===1?1:null;
+  P.ap=()=>{const t=P.v.type,dp=P.v.depth/100,r=P.v.rate;// [基準の遅れ, 揺れの幅, 使う声の数, 速い揺れ, 不規則な揺れ, 回転]
+   const M=[[.014,.006,2,0,0,0],[.006,.004,1,0,0,0],[.012,.003,3,.0003,0,0],[.008,.0012,2,0,0,0],[.012,.0015,1,0,.009,0],[.003,.0008,1,0,0,1]][t];
+   P.vs.forEach((q,ix)=>{T(c,q.d.delayTime,M[0]+ix*.003);T(c,q.osc.frequency,(t===3?r*.4:t===5?r*1.5:r)*q.hz);T(c,q.dep.gain,M[1]*dp);T(c,q.fdep.gain,M[3]*dp);T(c,q.g.gain,ix<M[2]?(M[2]===1?1:.8):0);T(c,q.p.pan,t===1||t===5?0:q.pn*(t===3?1:.6))});
+   T(c,wdep.gain,M[4]*dp);T(c,tone.frequency,1200*Math.pow(14,P.v.tone/100));T(c,slow.frequency,Math.max(.05,r*1.5));T(c,tdep.gain,M[5]?.25*dp:0);T(c,trem.gain,M[5]?1-.25*dp:1);T(c,pdep.gain,M[5]?.7*dp:0)}},
  flanger(){const sum=G(c),d=c.createDelay(.03),fb=G(c,0),dep=G(c,0),osc=lfo(v.rate,'triangle');d.delayTime.value=.004;osc.connect(dep);dep.connect(d.delayTime);send.connect(sum);sum.connect(d);d.connect(fb);fb.connect(sum);d.connect(o);
   P.ap=()=>{T(c,osc.frequency,P.v.rate);T(c,dep.gain,.0035*P.v.depth/100);T(c,fb.gain,P.v.feedback/100)}},
  phaser(){const sum=G(c),fb=G(c,0),dep=G(c,0),osc=lfo(v.rate),dl=c.createDelay(.01);dl.delayTime.value=.0005;osc.connect(dep);send.connect(sum);let prev=sum;for(const f of [300,700,1500,3000]){const a=BQ(c,'allpass',f,.6);dep.connect(a.detune);prev.connect(a);prev=a}prev.connect(dl);dl.connect(fb);fb.connect(sum);prev.connect(o);
   P.ap=()=>{T(c,osc.frequency,P.v.rate);T(c,dep.gain,P.v.depth/100*1800);T(c,fb.gain,P.v.feedback/100)}},
- vibrato(){const d=c.createDelay(.05),dep=G(c,0),osc=lfo(v.rate);d.delayTime.value=.008;osc.connect(dep);dep.connect(d.delayTime);send.connect(d);d.connect(o);
-  P.ap=()=>{T(c,osc.frequency,P.v.rate);T(c,dep.gain,.004*P.v.depth/100)}},
  autopan(){const pn=c.createStereoPanner(),dep=G(c,0),osc=lfo(v.rate);pn.pan.value=0;osc.connect(dep);dep.connect(pn.pan);send.connect(pn);pn.connect(o);
   P.ap=()=>{T(c,osc.frequency,P.v.rate);T(c,dep.gain,P.v.width/100)}},
  ringmod(){const vca=G(c,0),osc=lfo(v.freq),mk=G(c,1.6);osc.connect(vca.gain);send.connect(vca);vca.connect(mk);mk.connect(o);P.ap=()=>{T(c,osc.frequency,P.v.freq)}},
@@ -128,16 +148,28 @@ function makePedal(c,id,v){const D=P_[id],mode=D.mode,input=G(c),output=G(c),dry
   d.delayTime.value=v.time/1000;send.connect(sum);sum.connect(d);let sh=shifter(c,2**(v.interval/12));d.connect(sh.input);sh.output.connect(lp);lp.connect(hp);hp.connect(sat);sat.connect(post);post.connect(fb);fb.connect(sum);post.connect(o);P.stops.push({stop(){sh.stop()}});
   P.ap=()=>{T(c,d.delayTime,P.v.time/1000,.08);T(c,fb.gain,P.v.repeats/100)};
   P.set=(k,x)=>{P.v[k]=x;if(k==='interval'){const old=sh;sh=shifter(c,2**(x/12));d.connect(sh.input);sh.output.connect(lp);try{d.disconnect(old.input)}catch(e){}try{old.output.disconnect()}catch(e){}old.stop()}else P.ap();if(P.on)P.mix()}},
- reverb(){const pd=c.createDelay(.25),cv=c.createConvolver(),lp=BQ(c,'lowpass',6000);cv.buffer=reverbIR(c,v.size);send.connect(pd);pd.connect(cv);cv.connect(lp);lp.connect(o);let size=v.size;
-  P.ap=()=>{T(c,pd.delayTime,P.v.predelay/1000);T(c,lp.frequency,1500*Math.pow(10,P.v.tone/100));if(P.v.size!==size){size=P.v.size;cv.buffer=reverbIR(c,size)}}},
- reversereverb(){const cv=c.createConvolver(),hp=BQ(c,'highpass',120);cv.buffer=reverbIR(c,v.len,true);send.connect(hp);hp.connect(cv);cv.connect(o);let len=v.len;
-  P.ap=()=>{if(P.v.len!==len){len=P.v.len;cv.buffer=reverbIR(c,len,true)}}},
- shimmer(){const pre=BQ(c,'highpass',140),sum=G(c),cv=c.createConvolver(),lp=BQ(c,'lowpass',6000),sh=shifter(c,2,.08),sg=G(c,0),hp2=BQ(c,'highpass',300);P.stops.push(sh);let decay=v.decay;
-  cv.buffer=reverbIR(c,v.decay);send.connect(pre);pre.connect(sum);sum.connect(cv);cv.connect(lp);lp.connect(o);lp.connect(hp2);hp2.connect(sh.input);sh.output.connect(sg);sg.connect(sum);
-  // 帰還（きらめき）は最大 0.45：長い残響でも膨らみ続けない（テストで確認）
-  P.ap=()=>{T(c,sg.gain,.45*P.v.shimmer/100);T(c,lp.frequency,1800*Math.pow(9000/1800,P.v.tone/100));if(P.v.decay!==decay){decay=P.v.decay;cv.buffer=reverbIR(c,decay)}}}
+ reverb(){const pd=c.createDelay(.3),sum=G(c),cv=c.createConvolver(),lp=BQ(c,'lowpass',6000),md=c.createDelay(.03),mdep=G(c,0),mosc=lfo(.35),hp2=BQ(c,'highpass',300),sh=shifter(c,2,.08),sg=G(c,0);P.stops.push(sh);
+  md.delayTime.value=.006;mosc.connect(mdep);mdep.connect(md.delayTime);send.connect(pd);pd.connect(sum);sum.connect(cv);cv.connect(lp);lp.connect(md);md.connect(o);lp.connect(hp2);hp2.connect(sh.input);sh.output.connect(sg);sg.connect(sum);let key='';
+  // 帰還（シマーのきらめき）は最大 0.45：長い残響でも膨らみ続けない（テストで確認）
+  P.ap=()=>{const t=P.v.type,m=P.v.mod/100,k=t+':'+P.v.decay;if(k!==key){key=k;cv.buffer=verbIR(c,t,P.v.decay)}T(c,pd.delayTime,P.v.predelay/1000);T(c,lp.frequency,(t===7?700:1500)*Math.pow(t===7?6:10,P.v.tone/100));T(c,sg.gain,t===4?.45*m:0);T(c,mdep.gain,t===6?.004*m:.0006*m)}},
+ // ── AudioWorklet を使う台 ──
+ microloop(){wk({type:'micro',bufSec:9,cfg:{len:v.len,speed:v.speed,fb:v.fb/100}});P.ap=()=>cfg({len:P.v.len,speed:P.v.speed,fb:P.v.fb/100});P.held=false;
+  P.action=k=>{if(k==='hold'){P.held=!P.held;if(P.node)P.node.parameters.get('hold').setValueAtTime(P.held?1:0,c.currentTime)}}},
+ glitch(){wk({type:'glitch',bufSec:6,cfg:{}});P.ap=()=>cfg({thr:.25*Math.pow(10,-P.v.sens/40),ratio:3+(100-P.v.sens)/25,sustain:P.v.sustain,len:P.v.len,mode:P.v.mode})},
+ tapeensemble(){wk({type:'mel',cfg:{}});P.ap=()=>cfg({sens:P.v.sens,attack:P.v.attack,release:P.v.release,oct:P.v.oct+(P.v.voice===2?-1:0),voice:P.v.voice})},
+ swell(){wk({type:'swell',cfg:{}});P.ap=()=>cfg({rise:P.v.rise,sens:P.v.sens})},
+ memorydelay(){wk({type:'memory',bufSec:22,cfg:{}});P.ap=()=>cfg({spread:P.v.spread,size:P.v.size,fb:P.v.repeats/100,mode:P.v.mode})},
+ reversedelay(){wk({type:'micro',bufSec:5,cfg:{speed:-1}});P.ap=()=>cfg({len:P.v.len,speed:-1,fb:P.v.fb/100})},
+ dualdrive(){const hp=BQ(c,'highpass',70),ga=G(c),wa=c.createWaveShaper(),gb=G(c),wb=c.createWaveShaper(),sa=G(c),sb=G(c),pa=G(c),pb=G(c),lp=BQ(c,'lowpass',4000),lv=G(c);wa.curve=tanhCurve(1.3);wb.curve=asymCurve();wa.oversample=wb.oversample='4x';
+  send.connect(hp);hp.connect(ga);ga.connect(wa);wa.connect(sa);sa.connect(gb);hp.connect(pb);pb.connect(gb);gb.connect(wb);wb.connect(lp);wa.connect(pa);pa.connect(lp);lp.connect(lv);lv.connect(o);
+  P.ap=()=>{const ser=P.v.route===0;T(c,ga.gain,1+P.v.a/100*12);T(c,gb.gain,1+P.v.b/100*40);T(c,sa.gain,ser?1:0);T(c,pb.gain,ser?0:1);T(c,pa.gain,ser?0:.8);T(c,lp.frequency,900*Math.pow(10,P.v.tone/100));T(c,lv.gain,P.v.level/100*.55)}},
+ lossy(){const ws=c.createWaveShaper(),lp=BQ(c,'lowpass',6000),hp=BQ(c,'highpass',200),gate=G(c,1),gsrc=c.createBufferSource(),gd=G(c,0),cv=c.createConvolver(),sm=G(c,0),dr=G(c,1);
+  cv.buffer=reverbIR(c,.35);send.connect(hp);hp.connect(ws);ws.connect(lp);lp.connect(gate);gate.connect(dr);dr.connect(o);gate.connect(cv);cv.connect(sm);sm.connect(o);gsrc.loop=true;gsrc.connect(gd);gd.connect(gate.gain);let loss=-1,q=-1;
+  const lossBuf=x=>{const sr=c.sampleRate,n=sr*6,b=c.createBuffer(1,n,sr),d=b.getChannelData(0);let i=0;while(i<n){const gap=Math.floor(sr*(.03+Math.random()*.6*(1.05-x)));i+=gap;const len=Math.floor(sr*(.015+Math.random()*.08*x));for(let j=0;j<len&&i+j<n;j++)d[i+j]=-1;i+=len}return b};
+  P.ap=()=>{const x=P.v.loss/100;if(Math.abs(x-loss)>.02){loss=x;const s2=c.createBufferSource();s2.buffer=lossBuf(Math.max(.01,x));s2.loop=true;s2.connect(gd);s2.start();try{gsrc.stop()}catch(e){}P.stops.push(s2)}T(c,gd.gain,x>0?1:0);
+   const qq=P.v.quality/100;if(Math.abs(qq-q)>.04){q=qq;ws.curve=stepCurve(Math.round(4+qq*8))}T(c,lp.frequency,2000*Math.pow(5,qq));T(c,hp.frequency,350-qq*250);T(c,sm.gain,P.v.smear/100*.9);T(c,dr.gain,1-P.v.smear/100*.5)}}
  };
- B[id]();P.ap();return P}
+ B[id]();P.ap();if(P.on)P.mix();return P}
 
 // ── ボード ──
 let built=null; // {c,src,dest,pedals:Map,order}
@@ -147,7 +179,7 @@ function slotOf(target){const c=ctxNow();if(!c)return null;if(target==='master')
 function rewire(){if(!built)return;const {src,dest,pedals}=built;try{src.disconnect()}catch(e){}for(const p of pedals.values())try{p.output.disconnect()}catch(e){}
  let prev=src;for(const e of st.chain){const p=pedals.get(e.id);if(!p)continue;prev.connect(p.input);prev=p.output}prev.connect(dest)}
 function teardown(){if(!built)return;const {src,dest,pedals}=built;try{src.disconnect()}catch(e){}for(const p of pedals.values()){try{p.output.disconnect()}catch(e){}p.stop()}src.connect(dest);built=null}
-function attach(){const c=ctxNow();if(!c)return;const s=slotOf(st.target);if(!s)return;
+function attach(){const c=ctxNow();if(!c)return;ensureWorklet(c).catch(()=>{});const s=slotOf(st.target);if(!s)return;
  if(built&&(built.src!==s[0]||built.c!==c))teardown();if(!built)built={c,src:s[0],dest:s[1],pedals:new Map(),order:''};
  let changed=false;const ids=new Set(st.chain.map(e=>e.id));
  for(const [id,p] of built.pedals)if(!ids.has(id)){try{p.output.disconnect()}catch(e){}p.stop();built.pedals.delete(id);changed=true}
@@ -174,7 +206,7 @@ let _pa=null;function probe(){const c=ctxNow();if(!c)return null;if(!_pa){_pa=c.
 
 // ── 画面 ──
 const $=id=>document.getElementById(id);
-const fmt=(k,x)=>{const u=k.u;if(u==='%')return Math.round(x)+'%';if(u==='ms')return Math.round(x)+' ms';if(u==='s')return (+x).toFixed(1)+' s';if(u==='Hz')return x>=1000?(x/1000).toFixed(1)+' kHz':(x<10?(+x).toFixed(2):Math.round(x))+' Hz';if(u==='dB')return (x>0?'+':'')+(+x).toFixed(1)+' dB';if(u===':1')return (+x).toFixed(1)+':1';return String(Math.round(x*10)/10)};
+const fmt=(k,x)=>{const u=k.u;if(u==='%')return Math.round(x)+'%';if(u==='ms')return Math.round(x)+' ms';if(u==='s')return (+x).toFixed(1)+' s';if(u==='Hz')return x>=1000?(x/1000).toFixed(1)+' kHz':(x<10?(+x).toFixed(2):Math.round(x))+' Hz';if(u==='dB')return (x>0?'+':'')+(+x).toFixed(1)+' dB';if(u===':1')return (+x).toFixed(1)+':1';if(u==='oct')return (x>0?'+':x<0?'−':'±')+Math.abs(x)+' oct';return String(Math.round(x*10)/10)};
 const pos=(k,x)=>k.log?Math.log(x/k.min)/Math.log(k.max/k.min):(x-k.min)/(k.max-k.min);
 const valAt=(k,p)=>{p=Math.min(1,Math.max(0,p));const x=k.log?k.min*Math.pow(k.max/k.min,p):k.min+p*(k.max-k.min);return Math.min(k.max,Math.max(k.min,Math.round(x/k.step)*k.step))};
 const el=(t,cls,txt)=>{const n=document.createElement(t);if(cls)n.className=cls;if(txt!=null)n.textContent=txt;return n};
@@ -194,19 +226,19 @@ function cardEl(id,i,n){const d=P_[id],card=el('div','pdCard');card.dataset.peda
  const x=el('button','pdRemove','×');x.type='button';x.setAttribute('aria-label',J(UI.remove));x.onclick=()=>remove(id);tools.append(x);head.append(nm,tools);card.append(head,el('span','micro pdDesc',J(d.desc)));
  const kn=el('div','pdKnobs');for(const k of d.knobs)kn.append(knobEl(id,k));card.append(kn);
  if(d.steps){const sw=el('div','pdSteps');sw.setAttribute('role','group');sw.setAttribute('aria-label',J(d.steps.l));sw.append(el('span','micro',J(d.steps.l)));d.steps.opts.forEach((v,ix)=>{const b=el('button',null,d.steps.labels?J(d.steps.labels[ix]):(v>0?'+':'')+v);b.type='button';b.dataset.v=String(v);b.onclick=()=>setVal(id,d.steps.k,v);sw.append(b)});card.append(sw)}
- if(d.actions){const row=el('div','pdActions');for(const a of d.actions){const b=el('button','pdAct',J(a.l));b.type='button';b.dataset.a=a.k;b.onclick=()=>action(id,a.k);row.append(b)}const s=el('span','micro pdLoopState');s.setAttribute('role','status');row.append(s);card.append(row)}
- else{const fsw=el('button','pdSwitch');fsw.type='button';fsw.setAttribute('aria-pressed','false');fsw.append(el('span','pdLed'),el('span',null,J(d.mode==='freeze'?UI.freezeSw:UI.onoff)));fsw.onclick=()=>setOn(id,!entry(id).on);card.append(fsw)}
+ if(d.actions){const row=el('div','pdActions');for(const a of d.actions){const b=el('button','pdAct',J(a.l));b.type='button';b.dataset.a=a.k;b.setAttribute('aria-pressed','false');b.onclick=()=>action(id,a.k);row.append(b)}card.append(row)}
+ {const fsw=el('button','pdSwitch');fsw.type='button';fsw.setAttribute('aria-pressed','false');fsw.append(el('span','pdLed'),el('span',null,J(d.mode==='freeze'?UI.freezeSw:UI.onoff)));fsw.onclick=()=>setOn(id,!entry(id).on);card.append(fsw)}
  return card}
 function render(id){const card=document.querySelector('.pdCard[data-pedal="'+id+'"]'),e=entry(id);if(!card||!e)return;const d=P_[id];
- const p=built&&built.pedals.get(id),on=d.mode==='looper'?!!(p&&(p.ls==='rec'||p.ls==='play')):e.on;card.classList.toggle('on',on);
+ const p=built&&built.pedals.get(id);card.classList.toggle('on',e.on);
  const fsw=card.querySelector('.pdSwitch');if(fsw)fsw.setAttribute('aria-pressed',String(e.on));
  for(const k of d.knobs){const dial=card.querySelector('.pdDial[data-k="'+k.k+'"]'),out=card.querySelector('output[data-k="'+k.k+'"]'),x=e.v[k.k];if(dial){dial.setAttribute('aria-valuenow',String(x));dial.setAttribute('aria-valuetext',fmt(k,x));dial.style.setProperty('--p',String(pos(k,x)))}if(out)out.textContent=fmt(k,x)}
  if(d.steps)for(const b of card.querySelectorAll('.pdSteps button'))b.setAttribute('aria-pressed',String(+b.dataset.v===e.v[d.steps.k]));
- if(d.actions){const s=card.querySelector('.pdLoopState'),ls=p?p.ls:'empty';s.textContent=J(UI[{empty:'lEmpty',rec:'lRec',play:'lPlay',stop:'lStop'}[ls]]);for(const b of card.querySelectorAll('.pdAct'))b.classList.toggle('lit',(b.dataset.a==='rec'&&ls==='rec')||(b.dataset.a==='play'&&ls==='play'))}
+ if(d.actions)for(const b of card.querySelectorAll('.pdAct')){const lit=b.dataset.a==='hold'&&!!(p&&p.held);b.classList.toggle('lit',lit);b.setAttribute('aria-pressed',String(lit))}
  status()}
 function status(){const s=$('pdStatus');if(!s)return;const on=st.chain.filter(e=>e.on).map(e=>J(P_[e.id].name));s.textContent=on.length?on.join(' · '):J(UI.off);const c=$('pdCount');if(c)c.textContent=st.chain.length+' / '+MAXN}
 function renderAll(){const box=$('pdBoard');if(!box)return;if($('pdTarget'))$('pdTarget').value=st.target;box.textContent='';
- if(!st.chain.length){const em=el('div','pdEmpty');em.append(el('p','micro',J(UI.empty)));const row=el('div','pdSuggest');row.append(el('span','micro',J(UI.suggest)));for(const id of ['shimmer','tape','freeze','pingpong']){const b=el('button','pdChip',J(P_[id].name));b.type='button';b.dataset.pedal=id;b.style.setProperty('--pd',P_[id].color);b.onclick=()=>add(id);row.append(b)}em.append(row);box.append(em)}
+ if(!st.chain.length){const em=el('div','pdEmpty');em.append(el('p','micro',J(UI.empty)));const row=el('div','pdSuggest');row.append(el('span','micro',J(UI.suggest)));for(const id of ['microloop','reverb','tape','freeze']){const b=el('button','pdChip',J(P_[id].name));b.type='button';b.dataset.pedal=id;b.style.setProperty('--pd',P_[id].color);b.onclick=()=>add(id);row.append(b)}em.append(row);box.append(em)}
  st.chain.forEach((e,i)=>box.append(cardEl(e.id,i,st.chain.length)));for(const e of st.chain)render(e.id);renderCatalog();status()}
 function renderCatalog(){const cat=$('pdCatalog');if(!cat||cat.hidden)return;cat.textContent='';const full=st.chain.length>=MAXN;if(full)cat.append(el('p','micro pdFull',J(UI.full)));
  for(const [ck,ja] of DEF.cats){const ids=ALL.filter(id=>P_[id].cat===ck);if(!ids.length)continue;const g=el('div','pdCatGroup');g.append(el('h4','pdCatH',ja));const list=el('div','pdCatList');
@@ -222,6 +254,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 function preset(){return {v:2,target:st.target,chain:st.chain.map(e=>({id:e.id,on:P_[e.id].mode==='freeze'?false:e.on,v:{...e.v}}))}}
 function applyPreset(o){if(!o||typeof o!=='object')return false;const chain=Array.isArray(o.chain)?o.chain:(o.p&&typeof o.p==='object'?fromV1(o):null);if(!chain)return false;
  if(TARGETS.includes(o.target)&&o.target!==st.target){st.target=o.target;teardown()}st.chain=cleanChain(chain,true);save();attach();renderAll();return true}
-window.__pedals={preset,applyPreset,attach,add,remove,move,setOn,setVal,action,setTarget,allOff,routePreview,probe,ids:ALL.slice(),def:P_,cats:DEF.cats,makePedal,shifter,
+window.__pedals={ready:c=>ensureWorklet(c),preset,applyPreset,attach,add,remove,move,setOn,setVal,action,setTarget,allOff,routePreview,probe,ids:ALL.slice(),def:P_,cats:DEF.cats,makePedal,shifter,
  state:()=>JSON.parse(JSON.stringify(st)),built:()=>built?{target:st.target,pedals:st.chain.filter(e=>built.pedals.has(e.id)).map(e=>e.id)}:null,instance:id=>built&&built.pedals.get(id)};
 })();

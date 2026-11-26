@@ -8,7 +8,7 @@ const pick=d=>({species:d.species,field:d.field,p:d.p,ecosystem:d.ecosystem,chor
 const A=await newPage(APP+'?lang=ja');
 await A.pg.evaluate(()=>{const D=__audioEcosystemDebug,d=D.exportData();const ids=Object.keys(d.species);d.species[ids[0]]={...d.species[ids[0]],enabled:true,level:77};d.species[ids[5]]={...d.species[ids[5]],enabled:true,level:31};
  const f=Object.keys(d.field.levels);d.field.levels[f[0]]=33;d.ecosystem.rate=40;d.chordIndex=2;
- d.pedals={v:2,target:'sampler',chain:[{id:'fuzz',on:true,v:{tone:80}},{id:'shimmer',on:true,v:{mix:70}},{id:'looper',on:false,v:{len:6}}]};D.applyData(d)});
+ d.pedals={v:2,target:'sampler',chain:[{id:'fuzz',on:true,v:{tone:80}},{id:'shimmer',on:true,v:{mix:70}},{id:'microloop',on:false,v:{len:2}}]};D.applyData(d)});
 const before=pick(await A.pg.evaluate(()=>__audioEcosystemDebug.exportData()));
 await A.pg.click('#shareLink');await A.pg.waitForTimeout(600);
 R.link=await A.pg.evaluate(()=>({url:document.getElementById('shareUrl').value,shown:!document.getElementById('shareOut').hidden,note:document.getElementById('shareNote').textContent}));
@@ -22,7 +22,7 @@ const after=pick(await B.pg.evaluate(()=>__audioEcosystemDebug.exportData()));
 R.diff=Object.keys(before).filter(k=>JSON.stringify(before[k])!==JSON.stringify(after[k]));
 ok('opened',R.recv.opened===true&&R.recv.banner&&R.recv.hash===''&&/共有された音/.test(R.recv.msg));ok('same_setup',R.diff.length===0);
 await B.pg.click('#shareBannerPlay');await B.pg.waitForTimeout(2000);R.play=await B.pg.evaluate(()=>({playing:__audioEcosystemDebug.getState().playing,banner:!document.getElementById('shareBanner').hidden,pedals:__pedals.built()}));
-ok('banner_play',R.play.playing===true&&!R.play.banner&&R.play.pedals&&R.play.pedals.target==='sampler'&&R.play.pedals.pedals.join()==='fuzz,shimmer,looper');
+ok('banner_play',R.play.playing===true&&!R.play.banner&&R.play.pedals&&R.play.pedals.target==='sampler'&&R.play.pedals.pedals.join()==='fuzz,reverb,microloop');
 await B.cx.close();
 // 壊れたリンク・大きすぎるリンク
 for(const [k,h] of [['broken','#p=z!!!'],['garbage','#p=zAAAAAAAA'],['plain_bad','#p=j'+Buffer.from('{"p":"x"}').toString('base64url')],['too_big','#p=j'+Buffer.from(JSON.stringify({x:'a'.repeat(300000)})).toString('base64url')]]){
@@ -32,7 +32,7 @@ for(const [k,h] of [['broken','#p=z!!!'],['garbage','#p=zAAAAAAAA'],['plain_bad'
 // リールのクレジットにリンクを足す関数
 R.reelLine=await A.pg.evaluate(async()=>(await reelShareLine()).slice(0,30));ok('reel_line',R.reelLine.startsWith('http://localhost:8765/#p='));
 // ファイルのプリセットにもペダルが入る
-ok('preset_has_pedals',await A.pg.evaluate(()=>{const d=__audioEcosystemDebug.exportData();return d.pedals&&d.pedals.v===2&&d.pedals.chain.map(e=>e.id+(e.on?'+':'-')).join()==='fuzz+,shimmer+,looper-'&&d.pedals.chain[2].v.len===6}));
+ok('preset_has_pedals',await A.pg.evaluate(()=>{const d=__audioEcosystemDebug.exportData();return d.pedals&&d.pedals.v===2&&d.pedals.chain.map(e=>e.id+(e.on?'+':'-')).join()==='fuzz+,reverb+,microloop-'&&d.pedals.chain[2].v.len===2}));
 // 英語
 await A.pg.selectOption('#langSelect','en');await A.pg.waitForTimeout(400);
 R.en=await A.pg.evaluate(()=>{const s=document.getElementById('presetSection'),bn=document.getElementById('shareBanner');const roots=[s,bn];return {un:__i18n.untranslated().filter(t=>roots.some(r=>r.textContent.includes(t))),btn:document.getElementById('shareLink').textContent,banner:bn.querySelector('span').textContent}});

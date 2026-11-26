@@ -98,67 +98,189 @@
     }
    ]
   },
-  "looper": {
+  "microloop": {
    "cat": "hold",
-   "mode": "looper",
-   "color": "#9fd8c8",
+   "mode": "blend",
+   "wk": "micro",
+   "color": "#8fc8f0",
    "name": [
-    "ルーパー",
-    "Looper"
+    "マイクロループ",
+    "Micro-looper"
    ],
    "desc": [
-    "録って重ねて、ループで鳴らし続ける",
-    "Record, overdub and keep it looping"
+    "いま鳴った数秒をすくい取り、速さや向きを変えて重ねる",
+    "Scoops up the last few seconds and replays them faster, slower or backwards"
    ],
    "knobs": [
     {
      "k": "len",
      "l": [
-      "ループの長さ",
-      "Loop length"
+      "すくう長さ",
+      "Length"
      ],
-     "min": 1,
-     "max": 16,
-     "step": 0.5,
-     "def": 4,
+     "min": 0.25,
+     "max": 4,
+     "step": 0.05,
+     "def": 1.5,
      "u": "s"
     },
     {
-     "k": "level",
+     "k": "fb",
      "l": [
-      "ループの音量",
-      "Loop level"
+      "繰り返し",
+      "Repeats"
+     ],
+     "min": 0,
+     "max": 90,
+     "step": 1,
+     "def": 30,
+     "u": "%"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
      ],
      "min": 0,
      "max": 100,
      "step": 1,
-     "def": 85,
+     "def": 60,
      "u": "%"
     }
    ],
+   "steps": {
+    "k": "speed",
+    "l": [
+     "速さ",
+     "Speed"
+    ],
+    "def": -1,
+    "opts": [
+     0.5,
+     1,
+     2,
+     -1,
+     -0.5
+    ],
+    "labels": [
+     [
+      "½倍",
+      "½×"
+     ],
+     [
+      "そのまま",
+      "1×"
+     ],
+     [
+      "2倍",
+      "2×"
+     ],
+     [
+      "逆再生",
+      "Reverse"
+     ],
+     [
+      "逆・½倍",
+      "Reverse ½×"
+     ]
+    ]
+   },
    "actions": [
     {
-     "k": "rec",
+     "k": "hold",
      "l": [
-      "● 録音・重ねる",
-      "● Rec / overdub"
-     ]
-    },
-    {
-     "k": "play",
-     "l": [
-      "▶ 再生 / ■ 止める",
-      "▶ Play / ■ Stop"
-     ]
-    },
-    {
-     "k": "clear",
-     "l": [
-      "消す",
-      "Clear"
+      "つかむ / 放す",
+      "Hold / release"
      ]
     }
    ]
+  },
+  "glitch": {
+   "cat": "hold",
+   "mode": "blend",
+   "wk": "glitch",
+   "color": "#a0b8e8",
+   "name": [
+    "グリッチ",
+    "Glitch"
+   ],
+   "desc": [
+    "音の立ち上がりを見つけると、その瞬間をつかんで伸ばす・崩す",
+    "Grabs each new onset and stretches or scrambles it"
+   ],
+   "knobs": [
+    {
+     "k": "sens",
+     "l": [
+      "かかりやすさ",
+      "Sensitivity"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 60,
+     "u": "%"
+    },
+    {
+     "k": "sustain",
+     "l": [
+      "続く時間",
+      "Sustain"
+     ],
+     "min": 0.2,
+     "max": 3,
+     "step": 0.1,
+     "def": 1,
+     "u": "s"
+    },
+    {
+     "k": "len",
+     "l": [
+      "切り取る長さ",
+      "Slice"
+     ],
+     "min": 0.05,
+     "max": 1,
+     "step": 0.01,
+     "def": 0.25,
+     "u": "s"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 80,
+     "u": "%"
+    }
+   ],
+   "steps": {
+    "k": "mode",
+    "l": [
+     "ふるまい",
+     "Behaviour"
+    ],
+    "def": 1,
+    "opts": [
+     0,
+     1
+    ],
+    "labels": [
+     [
+      "のばす",
+      "Stretch"
+     ],
+     [
+      "くずす",
+      "Scramble"
+     ]
+    ]
+   }
   },
   "octave": {
    "cat": "pitch",
@@ -333,6 +455,134 @@
     ]
    }
   },
+  "tapeensemble": {
+   "cat": "pitch",
+   "mode": "blend",
+   "wk": "mel",
+   "color": "#e8c0a0",
+   "name": [
+    "テープ合奏",
+    "Tape ensemble"
+   ],
+   "desc": [
+    "音の高さを聞き取り、フルートや弦の古いテープ楽器の音で鳴らし直す",
+    "Hears the pitches and replays them as vintage tape flutes, strings and choirs"
+   ],
+   "knobs": [
+    {
+     "k": "sens",
+     "l": [
+      "聞き取る感度",
+      "Sensitivity"
+     ],
+     "min": -80,
+     "max": -20,
+     "step": 1,
+     "def": -55,
+     "u": "dB"
+    },
+    {
+     "k": "attack",
+     "l": [
+      "立ち上がり",
+      "Attack"
+     ],
+     "min": 0.01,
+     "max": 1,
+     "step": 0.01,
+     "def": 0.15,
+     "u": "s"
+    },
+    {
+     "k": "release",
+     "l": [
+      "余韻",
+      "Release"
+     ],
+     "min": 0.1,
+     "max": 4,
+     "step": 0.1,
+     "def": 0.9,
+     "u": "s"
+    },
+    {
+     "k": "oct",
+     "l": [
+      "オクターブ",
+      "Octave"
+     ],
+     "min": -3,
+     "max": 1,
+     "step": 1,
+     "def": -1,
+     "u": "oct"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 70,
+     "u": "%"
+    }
+   ],
+   "steps": {
+    "k": "voice",
+    "l": [
+     "音色",
+     "Voice"
+    ],
+    "def": 0,
+    "opts": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "labels": [
+     [
+      "フルート",
+      "Flute"
+     ],
+     [
+      "ストリングス",
+      "Strings"
+     ],
+     [
+      "チェロ",
+      "Cello"
+     ],
+     [
+      "クラリネット",
+      "Clarinet"
+     ],
+     [
+      "クワイア",
+      "Choir"
+     ],
+     [
+      "サックス",
+      "Sax"
+     ],
+     [
+      "ブラス",
+      "Brass"
+     ],
+     [
+      "オーケストラ",
+      "Orchestra"
+     ]
+    ]
+   }
+  },
   "overdrive": {
    "cat": "drive",
    "mode": "insert",
@@ -383,6 +633,91 @@
      "u": "%"
     }
    ]
+  },
+  "dualdrive": {
+   "cat": "drive",
+   "mode": "insert",
+   "color": "#f0a070",
+   "name": [
+    "ダブルドライブ",
+    "Dual drive"
+   ],
+   "desc": [
+    "性格の違う2つの歪みを、直列か並列でつなぐ",
+    "Two different drives, in series or in parallel"
+   ],
+   "knobs": [
+    {
+     "k": "a",
+     "l": [
+      "前段（なめらか）",
+      "Stage A (smooth)"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 40,
+     "u": "%"
+    },
+    {
+     "k": "b",
+     "l": [
+      "後段（荒い）",
+      "Stage B (rough)"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 45,
+     "u": "%"
+    },
+    {
+     "k": "tone",
+     "l": [
+      "音色",
+      "Tone"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 55,
+     "u": "%"
+    },
+    {
+     "k": "level",
+     "l": [
+      "音量",
+      "Volume"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 50,
+     "u": "%"
+    }
+   ],
+   "steps": {
+    "k": "route",
+    "l": [
+     "つなぎ方",
+     "Routing"
+    ],
+    "def": 0,
+    "opts": [
+     0,
+     1
+    ],
+    "labels": [
+     [
+      "直列",
+      "Series"
+     ],
+     [
+      "並列",
+      "Parallel"
+     ]
+    ]
+   }
   },
   "distortion": {
    "cat": "drive",
@@ -588,6 +923,46 @@
     }
    ]
   },
+  "swell": {
+   "cat": "dyn",
+   "mode": "insert",
+   "wk": "swell",
+   "color": "#c0d890",
+   "name": [
+    "スウェル",
+    "Swell"
+   ],
+   "desc": [
+    "音の出だしを消して、弓で弾いたようにゆっくり膨らませる",
+    "Removes the attack and swells each sound in like a bow"
+   ],
+   "knobs": [
+    {
+     "k": "rise",
+     "l": [
+      "膨らむ時間",
+      "Rise time"
+     ],
+     "min": 0.1,
+     "max": 4,
+     "step": 0.05,
+     "def": 1.2,
+     "u": "s"
+    },
+    {
+     "k": "sens",
+     "l": [
+      "かかり始め",
+      "Threshold"
+     ],
+     "min": -70,
+     "max": -10,
+     "step": 1,
+     "def": -42,
+     "u": "dB"
+    }
+   ]
+  },
   "tremolo": {
    "cat": "dyn",
    "mode": "insert",
@@ -597,8 +972,8 @@
     "Tremolo"
    ],
    "desc": [
-    "音量を一定の速さで揺らす",
-    "Pulses the volume"
+    "音量を揺らす。ハーモニックは低い音と高い音を交互に",
+    "Pulses the volume; Harmonic alternates lows and highs"
    ],
    "knobs": [
     {
@@ -635,7 +1010,8 @@
     "def": 0,
     "opts": [
      0,
-     1
+     1,
+     2
     ],
     "labels": [
      [
@@ -645,6 +1021,10 @@
      [
       "カクカク",
       "Square"
+     ],
+     [
+      "ハーモニック",
+      "Harmonic"
      ]
     ]
    }
@@ -859,12 +1239,12 @@
    "mode": "blend",
    "color": "#8ad0f0",
    "name": [
-    "コーラス",
-    "Chorus"
+    "マルチコーラス",
+    "Multi chorus"
    ],
    "desc": [
-    "少しずれた音を重ねて、広げる",
-    "Widens with slightly drifting copies"
+    "コーラス・ビブラート・アンサンブル・ディメンション・ワープ・ロータリーを切り替える",
+    "Chorus, vibrato, ensemble, dimension, warp and rotary in one"
    ],
    "knobs": [
     {
@@ -874,9 +1254,9 @@
       "Rate"
      ],
      "min": 0.05,
-     "max": 4,
+     "max": 8,
      "step": 0.05,
-     "def": 0.5,
+     "def": 0.6,
      "u": "Hz"
     },
     {
@@ -892,6 +1272,18 @@
      "u": "%"
     },
     {
+     "k": "tone",
+     "l": [
+      "明るさ",
+      "Brightness"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 70,
+     "u": "%"
+    },
+    {
      "k": "mix",
      "l": [
       "混ぜる量",
@@ -903,7 +1295,49 @@
      "def": 50,
      "u": "%"
     }
-   ]
+   ],
+   "steps": {
+    "k": "type",
+    "l": [
+     "種類",
+     "Type"
+    ],
+    "def": 0,
+    "opts": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "labels": [
+     [
+      "コーラス",
+      "Chorus"
+     ],
+     [
+      "ビブラート",
+      "Vibrato"
+     ],
+     [
+      "アンサンブル",
+      "Ensemble"
+     ],
+     [
+      "ディメンション",
+      "Dimension"
+     ],
+     [
+      "ワープ",
+      "Warp"
+     ],
+     [
+      "ロータリー",
+      "Rotary"
+     ]
+    ]
+   }
   },
   "flanger": {
    "cat": "mod",
@@ -1027,45 +1461,6 @@
      "max": 100,
      "step": 1,
      "def": 50,
-     "u": "%"
-    }
-   ]
-  },
-  "vibrato": {
-   "cat": "mod",
-   "mode": "insert",
-   "color": "#a8c8f8",
-   "name": [
-    "ビブラート",
-    "Vibrato"
-   ],
-   "desc": [
-    "音の高さを細かく揺らす",
-    "Wobbles the pitch"
-   ],
-   "knobs": [
-    {
-     "k": "rate",
-     "l": [
-      "速さ",
-      "Rate"
-     ],
-     "min": 0.2,
-     "max": 12,
-     "step": 0.1,
-     "def": 5,
-     "u": "Hz"
-    },
-    {
-     "k": "depth",
-     "l": [
-      "深さ",
-      "Depth"
-     ],
-     "min": 0,
-     "max": 100,
-     "step": 1,
-     "def": 35,
      "u": "%"
     }
    ]
@@ -1259,6 +1654,57 @@
      "max": 100,
      "step": 1,
      "def": 20,
+     "u": "%"
+    }
+   ]
+  },
+  "lossy": {
+   "cat": "texture",
+   "mode": "insert",
+   "color": "#d0a0b8",
+   "name": [
+    "ロッシー",
+    "Lossy"
+   ],
+   "desc": [
+    "電波の悪い通話のように、音が欠けて、にじんで、粗くなる",
+    "Drops, smears and degrades like a bad connection"
+   ],
+   "knobs": [
+    {
+     "k": "loss",
+     "l": [
+      "欠け",
+      "Loss"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 35,
+     "u": "%"
+    },
+    {
+     "k": "quality",
+     "l": [
+      "音質",
+      "Quality"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 45,
+     "u": "%"
+    },
+    {
+     "k": "smear",
+     "l": [
+      "にじみ",
+      "Smear"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 30,
      "u": "%"
     }
    ]
@@ -1546,53 +1992,54 @@
     ]
    }
   },
-  "reverb": {
-   "cat": "verb",
+  "memorydelay": {
+   "cat": "delay",
    "mode": "trails",
-   "color": "#c8d8b0",
+   "wk": "memory",
+   "color": "#e8b8d0",
    "name": [
-    "リバーブ",
-    "Reverb"
+    "記憶のやまびこ",
+    "Memory delay"
    ],
    "desc": [
-    "部屋から大聖堂まで、広さを選べる残響",
-    "Room-to-cathedral reverb"
+    "過去の数秒〜20秒のどこかを、小さな粒にして呼び戻す",
+    "Recalls tiny grains from anywhere in the last 20 seconds"
    ],
    "knobs": [
     {
-     "k": "size",
+     "k": "spread",
      "l": [
-      "広さ",
-      "Size"
+      "遡る範囲",
+      "Spread"
      ],
-     "min": 0.5,
-     "max": 10,
+     "min": 1,
+     "max": 20,
      "step": 0.5,
-     "def": 3,
+     "def": 8,
      "u": "s"
     },
     {
-     "k": "predelay",
+     "k": "size",
      "l": [
-      "始まりの間",
-      "Pre-delay"
+      "粒の長さ",
+      "Grain"
      ],
-     "min": 0,
-     "max": 200,
-     "step": 5,
-     "def": 25,
-     "u": "ms"
+     "min": 0.05,
+     "max": 1.5,
+     "step": 0.05,
+     "def": 0.35,
+     "u": "s"
     },
     {
-     "k": "tone",
+     "k": "repeats",
      "l": [
-      "明るさ",
-      "Tone"
+      "繰り返し",
+      "Repeats"
      ],
      "min": 0,
-     "max": 100,
+     "max": 80,
      "step": 1,
-     "def": 55,
+     "def": 35,
      "u": "%"
     },
     {
@@ -1604,97 +2051,74 @@
      "min": 0,
      "max": 100,
      "step": 1,
-     "def": 40,
+     "def": 45,
      "u": "%"
     }
-   ]
+   ],
+   "steps": {
+    "k": "mode",
+    "l": [
+     "呼び戻し方",
+     "Recall"
+    ],
+    "def": 1,
+    "opts": [
+     0,
+     1,
+     2
+    ],
+    "labels": [
+     [
+      "そのまま",
+      "Forward"
+     ],
+     [
+      "ときどき逆",
+      "Some reversed"
+     ],
+     [
+      "上の音も",
+      "Add octave up"
+     ]
+    ]
+   }
   },
-  "reversereverb": {
-   "cat": "verb",
+  "reversedelay": {
+   "cat": "delay",
    "mode": "trails",
-   "color": "#b0c8e0",
+   "wk": "micro",
+   "color": "#d8c8f0",
    "name": [
-    "リバースリバーブ",
-    "Reverse reverb"
+    "リバースディレイ",
+    "Reverse delay"
    ],
    "desc": [
-    "残響が後ろから吸い込まれるように膨らむ",
-    "A reverb that swells in backwards"
+    "やまびこが逆向きに、吸い込まれるように返ってくる",
+    "Echoes that come back backwards"
    ],
    "knobs": [
     {
      "k": "len",
      "l": [
-      "長さ",
-      "Length"
+      "間隔",
+      "Time"
      ],
-     "min": 0.5,
-     "max": 4,
-     "step": 0.1,
-     "def": 1.6,
+     "min": 0.2,
+     "max": 2,
+     "step": 0.05,
+     "def": 0.8,
      "u": "s"
     },
     {
-     "k": "mix",
+     "k": "fb",
      "l": [
-      "混ぜる量",
-      "Mix"
+      "繰り返し",
+      "Repeats"
      ],
      "min": 0,
-     "max": 100,
+     "max": 80,
      "step": 1,
-     "def": 50,
-     "u": "%"
-    }
-   ]
-  },
-  "shimmer": {
-   "cat": "verb",
-   "mode": "trails",
-   "color": "#f0e6b4",
-   "name": [
-    "シマー",
-    "Shimmer"
-   ],
-   "desc": [
-    "1オクターブ上へ昇りながら広がる長い残響",
-    "A long reverb that blooms upward an octave"
-   ],
-   "knobs": [
-    {
-     "k": "decay",
-     "l": [
-      "残響の長さ",
-      "Decay"
-     ],
-     "min": 2,
-     "max": 12,
-     "step": 0.5,
-     "def": 6,
-     "u": "s"
-    },
-    {
-     "k": "shimmer",
-     "l": [
-      "きらめき",
-      "Shimmer"
-     ],
-     "min": 0,
-     "max": 100,
-     "step": 1,
-     "def": 55,
-     "u": "%"
-    },
-    {
-     "k": "tone",
-     "l": [
-      "明るさ",
-      "Tone"
-     ],
-     "min": 0,
-     "max": 100,
-     "step": 1,
-     "def": 60,
+     "def": 30,
      "u": "%"
     },
     {
@@ -1710,6 +2134,133 @@
      "u": "%"
     }
    ]
+  },
+  "reverb": {
+   "cat": "verb",
+   "mode": "trails",
+   "color": "#c8d8b0",
+   "name": [
+    "マルチリバーブ",
+    "Multi reverb"
+   ],
+   "desc": [
+    "部屋・ホール・プレート・スプリング・シマー・リバース・クラウド・暗い残響を切り替える",
+    "Room, hall, plate, spring, shimmer, reverse, cloud and dark in one"
+   ],
+   "knobs": [
+    {
+     "k": "decay",
+     "l": [
+      "残響の長さ",
+      "Decay"
+     ],
+     "min": 0.3,
+     "max": 15,
+     "step": 0.1,
+     "def": 3,
+     "u": "s"
+    },
+    {
+     "k": "predelay",
+     "l": [
+      "始まりの間",
+      "Pre-delay"
+     ],
+     "min": 0,
+     "max": 250,
+     "step": 5,
+     "def": 20,
+     "u": "ms"
+    },
+    {
+     "k": "tone",
+     "l": [
+      "明るさ",
+      "Brightness"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 55,
+     "u": "%"
+    },
+    {
+     "k": "mod",
+     "l": [
+      "きらめき・揺れ",
+      "Shimmer / mod"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 45,
+     "u": "%"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 40,
+     "u": "%"
+    }
+   ],
+   "steps": {
+    "k": "type",
+    "l": [
+     "種類",
+     "Type"
+    ],
+    "def": 1,
+    "opts": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "labels": [
+     [
+      "部屋",
+      "Room"
+     ],
+     [
+      "ホール",
+      "Hall"
+     ],
+     [
+      "プレート",
+      "Plate"
+     ],
+     [
+      "スプリング",
+      "Spring"
+     ],
+     [
+      "シマー",
+      "Shimmer"
+     ],
+     [
+      "リバース",
+      "Reverse"
+     ],
+     [
+      "クラウド",
+      "Cloud"
+     ],
+     [
+      "暗い",
+      "Dark"
+     ]
+    ]
+   }
   }
  },
  "ui": {
@@ -1781,22 +2332,6 @@
    "台",
    "pedals"
   ],
-  "lEmpty": [
-   "空",
-   "Empty"
-  ],
-  "lRec": [
-   "録音中",
-   "Recording"
-  ],
-  "lPlay": [
-   "再生中",
-   "Playing"
-  ],
-  "lStop": [
-   "止めた",
-   "Stopped"
-  ],
   "help1": [
    "特定の製品の音を写したものではなく、よく知られた種類のエフェクターをこのアプリの中で作ったものです。上から下（左から右）の順につながります。ディレイ・残響はオフにしても余韻が自然に消えるまで鳴ります。",
    "These are not copies of any product; they are common kinds of effects built into this app. Pedals run top to bottom (left to right). Delays and reverbs keep ringing until their tails fade, even after you switch them off."
@@ -1808,6 +2343,10 @@
   "help3": [
    "「かける場所」を全体にすると、試聴・リール・録音の書き出しを含む全部の音に掛かります。チャンネルを選ぶと、そのチャンネルの入口に掛かります（残響の送りには掛かりません）。",
    "With “Apply to” set to everything, pedals process every sound, including previews, reels and recordings. Pick a channel to process just that channel’s input (its reverb send is not affected)."
+  ],
+  "held": [
+   "つかんでいる",
+   "Holding"
   ]
  }
 }

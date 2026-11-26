@@ -1,0 +1,1813 @@
+{
+ "cats": [
+  [
+   "hold",
+   "ループ・保持",
+   "Loop & hold"
+  ],
+  [
+   "pitch",
+   "音程",
+   "Pitch"
+  ],
+  [
+   "drive",
+   "歪み",
+   "Drive"
+  ],
+  [
+   "dyn",
+   "音量",
+   "Dynamics"
+  ],
+  [
+   "filter",
+   "フィルター",
+   "Filter"
+  ],
+  [
+   "mod",
+   "揺れ",
+   "Modulation"
+  ],
+  [
+   "texture",
+   "質感",
+   "Texture"
+  ],
+  [
+   "delay",
+   "やまびこ",
+   "Delay"
+  ],
+  [
+   "verb",
+   "残響",
+   "Reverb"
+  ]
+ ],
+ "pedals": {
+  "freeze": {
+   "cat": "hold",
+   "mode": "freeze",
+   "color": "#7fc8e8",
+   "name": [
+    "フリーズ",
+    "Freeze"
+   ],
+   "desc": [
+    "押した瞬間の音を、もう一度押すまで伸ばし続ける",
+    "Holds the moment you press it until you press again"
+   ],
+   "knobs": [
+    {
+     "k": "len",
+     "l": [
+      "つかむ長さ",
+      "Grab"
+     ],
+     "min": 200,
+     "max": 2000,
+     "step": 50,
+     "def": 700,
+     "u": "ms"
+    },
+    {
+     "k": "level",
+     "l": [
+      "伸ばす音",
+      "Hold level"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 80,
+     "u": "%"
+    },
+    {
+     "k": "dry",
+     "l": [
+      "元の音",
+      "Dry"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 100,
+     "u": "%"
+    }
+   ]
+  },
+  "looper": {
+   "cat": "hold",
+   "mode": "looper",
+   "color": "#9fd8c8",
+   "name": [
+    "ルーパー",
+    "Looper"
+   ],
+   "desc": [
+    "録って重ねて、ループで鳴らし続ける",
+    "Record, overdub and keep it looping"
+   ],
+   "knobs": [
+    {
+     "k": "len",
+     "l": [
+      "ループの長さ",
+      "Loop length"
+     ],
+     "min": 1,
+     "max": 16,
+     "step": 0.5,
+     "def": 4,
+     "u": "s"
+    },
+    {
+     "k": "level",
+     "l": [
+      "ループの音量",
+      "Loop level"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 85,
+     "u": "%"
+    }
+   ],
+   "actions": [
+    {
+     "k": "rec",
+     "l": [
+      "● 録音・重ねる",
+      "● Rec / overdub"
+     ]
+    },
+    {
+     "k": "play",
+     "l": [
+      "▶ 再生 / ■ 止める",
+      "▶ Play / ■ Stop"
+     ]
+    },
+    {
+     "k": "clear",
+     "l": [
+      "消す",
+      "Clear"
+     ]
+    }
+   ]
+  },
+  "octave": {
+   "cat": "pitch",
+   "mode": "insert",
+   "color": "#b99be6",
+   "name": [
+    "オクターブ",
+    "Octave"
+   ],
+   "desc": [
+    "1オクターブ下と上の音を足す",
+    "Adds an octave below and above"
+   ],
+   "knobs": [
+    {
+     "k": "sub",
+     "l": [
+      "下",
+      "Down"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 70,
+     "u": "%"
+    },
+    {
+     "k": "up",
+     "l": [
+      "上",
+      "Up"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 40,
+     "u": "%"
+    },
+    {
+     "k": "dry",
+     "l": [
+      "元の音",
+      "Dry"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 80,
+     "u": "%"
+    }
+   ]
+  },
+  "pitchshift": {
+   "cat": "pitch",
+   "mode": "blend",
+   "color": "#c9a8f0",
+   "name": [
+    "ピッチシフト",
+    "Pitch shift"
+   ],
+   "desc": [
+    "音の高さをまるごと上げ下げする",
+    "Moves the whole sound up or down"
+   ],
+   "knobs": [
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 100,
+     "u": "%"
+    }
+   ],
+   "steps": {
+    "k": "semi",
+    "l": [
+     "音程",
+     "Interval"
+    ],
+    "def": -12,
+    "opts": [
+     -12,
+     -7,
+     -5,
+     -3,
+     3,
+     4,
+     5,
+     7,
+     12
+    ]
+   }
+  },
+  "harmonizer": {
+   "cat": "pitch",
+   "mode": "insert",
+   "color": "#d6b3f2",
+   "name": [
+    "ハーモナイザー",
+    "Harmonizer"
+   ],
+   "desc": [
+    "和音になるように、別の高さの音を2つ重ねる",
+    "Stacks two pitched copies into a chord"
+   ],
+   "knobs": [
+    {
+     "k": "voices",
+     "l": [
+      "重ねる音",
+      "Voices"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 60,
+     "u": "%"
+    },
+    {
+     "k": "dry",
+     "l": [
+      "元の音",
+      "Dry"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 90,
+     "u": "%"
+    }
+   ],
+   "steps": {
+    "k": "chord",
+    "l": [
+     "和音",
+     "Chord"
+    ],
+    "def": 0,
+    "opts": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "labels": [
+     [
+      "長三和音",
+      "Major"
+     ],
+     [
+      "短三和音",
+      "Minor"
+     ],
+     [
+      "サス4",
+      "Sus4"
+     ],
+     [
+      "5度と8度",
+      "Power"
+     ],
+     [
+      "下と5度",
+      "Low + 5th"
+     ]
+    ]
+   }
+  },
+  "overdrive": {
+   "cat": "drive",
+   "mode": "insert",
+   "color": "#f0b45a",
+   "name": [
+    "オーバードライブ",
+    "Overdrive"
+   ],
+   "desc": [
+    "温かく、ほどよく押し出す歪み",
+    "Warm, gentle push"
+   ],
+   "knobs": [
+    {
+     "k": "drive",
+     "l": [
+      "歪み",
+      "Drive"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 45,
+     "u": "%"
+    },
+    {
+     "k": "tone",
+     "l": [
+      "音色",
+      "Tone"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 55,
+     "u": "%"
+    },
+    {
+     "k": "level",
+     "l": [
+      "音量",
+      "Level"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 60,
+     "u": "%"
+    }
+   ]
+  },
+  "distortion": {
+   "cat": "drive",
+   "mode": "insert",
+   "color": "#f07a4a",
+   "name": [
+    "ディストーション",
+    "Distortion"
+   ],
+   "desc": [
+    "硬く、粒の立った強い歪み",
+    "Hard, gritty clipping"
+   ],
+   "knobs": [
+    {
+     "k": "drive",
+     "l": [
+      "歪み",
+      "Drive"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 60,
+     "u": "%"
+    },
+    {
+     "k": "tone",
+     "l": [
+      "音色",
+      "Tone"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 50,
+     "u": "%"
+    },
+    {
+     "k": "level",
+     "l": [
+      "音量",
+      "Level"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 45,
+     "u": "%"
+    }
+   ]
+  },
+  "fuzz": {
+   "cat": "drive",
+   "mode": "insert",
+   "color": "#e8925a",
+   "name": [
+    "ファズ",
+    "Fuzz"
+   ],
+   "desc": [
+    "太く毛羽立った歪み。音色で中域を削る",
+    "Thick, fuzzy distortion with a mid-scoop tone"
+   ],
+   "knobs": [
+    {
+     "k": "sustain",
+     "l": [
+      "歪み",
+      "Sustain"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 60,
+     "u": "%"
+    },
+    {
+     "k": "tone",
+     "l": [
+      "音色",
+      "Tone"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 50,
+     "u": "%"
+    },
+    {
+     "k": "level",
+     "l": [
+      "音量",
+      "Level"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 50,
+     "u": "%"
+    }
+   ]
+  },
+  "bitcrush": {
+   "cat": "drive",
+   "mode": "blend",
+   "color": "#e86a8a",
+   "name": [
+    "ビットクラッシャー",
+    "Bitcrusher"
+   ],
+   "desc": [
+    "音を粗い段々にして、デジタルに崩す",
+    "Steps the sound into coarse digital grit"
+   ],
+   "knobs": [
+    {
+     "k": "bits",
+     "l": [
+      "ビット数",
+      "Bits"
+     ],
+     "min": 2,
+     "max": 12,
+     "step": 1,
+     "def": 5,
+     "u": ""
+    },
+    {
+     "k": "tone",
+     "l": [
+      "明るさ",
+      "Tone"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 70,
+     "u": "%"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 80,
+     "u": "%"
+    }
+   ]
+  },
+  "compressor": {
+   "cat": "dyn",
+   "mode": "insert",
+   "color": "#a8c070",
+   "name": [
+    "コンプレッサー",
+    "Compressor"
+   ],
+   "desc": [
+    "大きい音を抑えて、小さい音を持ち上げる",
+    "Evens out loud and quiet parts"
+   ],
+   "knobs": [
+    {
+     "k": "threshold",
+     "l": [
+      "かかり始め",
+      "Threshold"
+     ],
+     "min": -60,
+     "max": 0,
+     "step": 1,
+     "def": -28,
+     "u": "dB"
+    },
+    {
+     "k": "ratio",
+     "l": [
+      "圧縮",
+      "Ratio"
+     ],
+     "min": 1,
+     "max": 20,
+     "step": 0.5,
+     "def": 4,
+     "u": ":1"
+    },
+    {
+     "k": "makeup",
+     "l": [
+      "持ち上げ",
+      "Makeup"
+     ],
+     "min": 0,
+     "max": 24,
+     "step": 0.5,
+     "def": 8,
+     "u": "dB"
+    }
+   ]
+  },
+  "tremolo": {
+   "cat": "dyn",
+   "mode": "insert",
+   "color": "#b8d070",
+   "name": [
+    "トレモロ",
+    "Tremolo"
+   ],
+   "desc": [
+    "音量を一定の速さで揺らす",
+    "Pulses the volume"
+   ],
+   "knobs": [
+    {
+     "k": "rate",
+     "l": [
+      "速さ",
+      "Rate"
+     ],
+     "min": 0.5,
+     "max": 15,
+     "step": 0.1,
+     "def": 5,
+     "u": "Hz"
+    },
+    {
+     "k": "depth",
+     "l": [
+      "深さ",
+      "Depth"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 70,
+     "u": "%"
+    }
+   ],
+   "steps": {
+    "k": "shape",
+    "l": [
+     "波の形",
+     "Shape"
+    ],
+    "def": 0,
+    "opts": [
+     0,
+     1
+    ],
+    "labels": [
+     [
+      "なめらか",
+      "Smooth"
+     ],
+     [
+      "カクカク",
+      "Square"
+     ]
+    ]
+   }
+  },
+  "filter": {
+   "cat": "filter",
+   "mode": "insert",
+   "color": "#6ab0e0",
+   "name": [
+    "フィルター",
+    "Filter"
+   ],
+   "desc": [
+    "音の高い所や低い所を削り、ゆっくり動かす",
+    "Cuts highs or lows and sweeps slowly"
+   ],
+   "knobs": [
+    {
+     "k": "cutoff",
+     "l": [
+      "削る位置",
+      "Cutoff"
+     ],
+     "min": 60,
+     "max": 12000,
+     "step": 1,
+     "def": 1200,
+     "u": "Hz",
+     "log": true
+    },
+    {
+     "k": "reso",
+     "l": [
+      "くせ",
+      "Resonance"
+     ],
+     "min": 0.5,
+     "max": 18,
+     "step": 0.1,
+     "def": 4,
+     "u": ""
+    },
+    {
+     "k": "rate",
+     "l": [
+      "動く速さ",
+      "LFO rate"
+     ],
+     "min": 0,
+     "max": 8,
+     "step": 0.05,
+     "def": 0.2,
+     "u": "Hz"
+    },
+    {
+     "k": "depth",
+     "l": [
+      "動く幅",
+      "LFO depth"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 40,
+     "u": "%"
+    }
+   ],
+   "steps": {
+    "k": "type",
+    "l": [
+     "種類",
+     "Type"
+    ],
+    "def": 0,
+    "opts": [
+     0,
+     1,
+     2
+    ],
+    "labels": [
+     [
+      "高い所を削る",
+      "Low-pass"
+     ],
+     [
+      "低い所を削る",
+      "High-pass"
+     ],
+     [
+      "真ん中だけ",
+      "Band-pass"
+     ]
+    ]
+   }
+  },
+  "autowah": {
+   "cat": "filter",
+   "mode": "blend",
+   "color": "#5aa0d8",
+   "name": [
+    "オートワウ",
+    "Auto-wah"
+   ],
+   "desc": [
+    "「ワウワウ」と鳴るように、くせの強い帯域を往復させる",
+    "Sweeps a peaky band back and forth"
+   ],
+   "knobs": [
+    {
+     "k": "rate",
+     "l": [
+      "速さ",
+      "Rate"
+     ],
+     "min": 0.1,
+     "max": 8,
+     "step": 0.05,
+     "def": 1.5,
+     "u": "Hz"
+    },
+    {
+     "k": "depth",
+     "l": [
+      "深さ",
+      "Depth"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 70,
+     "u": "%"
+    },
+    {
+     "k": "reso",
+     "l": [
+      "くせ",
+      "Resonance"
+     ],
+     "min": 1,
+     "max": 15,
+     "step": 0.1,
+     "def": 6,
+     "u": ""
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 85,
+     "u": "%"
+    }
+   ]
+  },
+  "eq3": {
+   "cat": "filter",
+   "mode": "insert",
+   "color": "#7ac0c8",
+   "name": [
+    "3バンド EQ",
+    "3-band EQ"
+   ],
+   "desc": [
+    "低い音・真ん中・高い音の量を変える",
+    "Boosts or cuts lows, mids and highs"
+   ],
+   "knobs": [
+    {
+     "k": "low",
+     "l": [
+      "低い音",
+      "Low"
+     ],
+     "min": -12,
+     "max": 12,
+     "step": 0.5,
+     "def": 0,
+     "u": "dB"
+    },
+    {
+     "k": "mid",
+     "l": [
+      "真ん中",
+      "Mid"
+     ],
+     "min": -12,
+     "max": 12,
+     "step": 0.5,
+     "def": 0,
+     "u": "dB"
+    },
+    {
+     "k": "high",
+     "l": [
+      "高い音",
+      "High"
+     ],
+     "min": -12,
+     "max": 12,
+     "step": 0.5,
+     "def": 0,
+     "u": "dB"
+    }
+   ]
+  },
+  "chorus": {
+   "cat": "mod",
+   "mode": "blend",
+   "color": "#8ad0f0",
+   "name": [
+    "コーラス",
+    "Chorus"
+   ],
+   "desc": [
+    "少しずれた音を重ねて、広げる",
+    "Widens with slightly drifting copies"
+   ],
+   "knobs": [
+    {
+     "k": "rate",
+     "l": [
+      "速さ",
+      "Rate"
+     ],
+     "min": 0.05,
+     "max": 4,
+     "step": 0.05,
+     "def": 0.5,
+     "u": "Hz"
+    },
+    {
+     "k": "depth",
+     "l": [
+      "深さ",
+      "Depth"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 50,
+     "u": "%"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 50,
+     "u": "%"
+    }
+   ]
+  },
+  "flanger": {
+   "cat": "mod",
+   "mode": "blend",
+   "color": "#70b8f0",
+   "name": [
+    "フランジャー",
+    "Flanger"
+   ],
+   "desc": [
+    "ジェット機のように、うねりが昇り降りする",
+    "A jet-like sweeping whoosh"
+   ],
+   "knobs": [
+    {
+     "k": "rate",
+     "l": [
+      "速さ",
+      "Rate"
+     ],
+     "min": 0.05,
+     "max": 3,
+     "step": 0.05,
+     "def": 0.25,
+     "u": "Hz"
+    },
+    {
+     "k": "depth",
+     "l": [
+      "深さ",
+      "Depth"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 70,
+     "u": "%"
+    },
+    {
+     "k": "feedback",
+     "l": [
+      "戻し",
+      "Feedback"
+     ],
+     "min": 0,
+     "max": 85,
+     "step": 1,
+     "def": 55,
+     "u": "%"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 50,
+     "u": "%"
+    }
+   ]
+  },
+  "phaser": {
+   "cat": "mod",
+   "mode": "blend",
+   "color": "#9ab8f8",
+   "name": [
+    "フェイザー",
+    "Phaser"
+   ],
+   "desc": [
+    "うねる谷間がゆっくり動く",
+    "Slowly moving notches"
+   ],
+   "knobs": [
+    {
+     "k": "rate",
+     "l": [
+      "速さ",
+      "Rate"
+     ],
+     "min": 0.05,
+     "max": 4,
+     "step": 0.05,
+     "def": 0.4,
+     "u": "Hz"
+    },
+    {
+     "k": "depth",
+     "l": [
+      "深さ",
+      "Depth"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 70,
+     "u": "%"
+    },
+    {
+     "k": "feedback",
+     "l": [
+      "戻し",
+      "Feedback"
+     ],
+     "min": 0,
+     "max": 80,
+     "step": 1,
+     "def": 45,
+     "u": "%"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 50,
+     "u": "%"
+    }
+   ]
+  },
+  "vibrato": {
+   "cat": "mod",
+   "mode": "insert",
+   "color": "#a8c8f8",
+   "name": [
+    "ビブラート",
+    "Vibrato"
+   ],
+   "desc": [
+    "音の高さを細かく揺らす",
+    "Wobbles the pitch"
+   ],
+   "knobs": [
+    {
+     "k": "rate",
+     "l": [
+      "速さ",
+      "Rate"
+     ],
+     "min": 0.2,
+     "max": 12,
+     "step": 0.1,
+     "def": 5,
+     "u": "Hz"
+    },
+    {
+     "k": "depth",
+     "l": [
+      "深さ",
+      "Depth"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 35,
+     "u": "%"
+    }
+   ]
+  },
+  "autopan": {
+   "cat": "mod",
+   "mode": "insert",
+   "color": "#b8d8f8",
+   "name": [
+    "オートパン",
+    "Auto-pan"
+   ],
+   "desc": [
+    "音を左右にゆっくり動かす",
+    "Moves the sound left and right"
+   ],
+   "knobs": [
+    {
+     "k": "rate",
+     "l": [
+      "速さ",
+      "Rate"
+     ],
+     "min": 0.05,
+     "max": 8,
+     "step": 0.05,
+     "def": 0.3,
+     "u": "Hz"
+    },
+    {
+     "k": "width",
+     "l": [
+      "幅",
+      "Width"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 80,
+     "u": "%"
+    }
+   ]
+  },
+  "ringmod": {
+   "cat": "mod",
+   "mode": "blend",
+   "color": "#c8a0e8",
+   "name": [
+    "リングモジュレーター",
+    "Ring modulator"
+   ],
+   "desc": [
+    "金属的な、ベルのような響きに変える",
+    "Turns sounds metallic and bell-like"
+   ],
+   "knobs": [
+    {
+     "k": "freq",
+     "l": [
+      "周波数",
+      "Frequency"
+     ],
+     "min": 20,
+     "max": 2000,
+     "step": 1,
+     "def": 180,
+     "u": "Hz",
+     "log": true
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 70,
+     "u": "%"
+    }
+   ]
+  },
+  "tape": {
+   "cat": "texture",
+   "mode": "insert",
+   "color": "#d8c27a",
+   "name": [
+    "テープ",
+    "Tape"
+   ],
+   "desc": [
+    "古いテープのような揺れ・こもり・途切れ",
+    "Old-tape wobble, muffling and dropouts"
+   ],
+   "knobs": [
+    {
+     "k": "wow",
+     "l": [
+      "ゆっくり揺れる",
+      "Wow"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 45,
+     "u": "%"
+    },
+    {
+     "k": "flutter",
+     "l": [
+      "細かく揺れる",
+      "Flutter"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 25,
+     "u": "%"
+    },
+    {
+     "k": "age",
+     "l": [
+      "劣化",
+      "Wear"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 40,
+     "u": "%"
+    },
+    {
+     "k": "drop",
+     "l": [
+      "途切れ",
+      "Dropouts"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 15,
+     "u": "%"
+    }
+   ]
+  },
+  "vinyl": {
+   "cat": "texture",
+   "mode": "insert",
+   "color": "#c8b090",
+   "name": [
+    "レコード",
+    "Vinyl"
+   ],
+   "desc": [
+    "針のパチパチと、古いレコードのこもり",
+    "Crackle and the warmth of an old record"
+   ],
+   "knobs": [
+    {
+     "k": "crackle",
+     "l": [
+      "パチパチ",
+      "Crackle"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 45,
+     "u": "%"
+    },
+    {
+     "k": "age",
+     "l": [
+      "古さ",
+      "Age"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 45,
+     "u": "%"
+    },
+    {
+     "k": "wow",
+     "l": [
+      "回転の揺れ",
+      "Wow"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 20,
+     "u": "%"
+    }
+   ]
+  },
+  "stutter": {
+   "cat": "texture",
+   "mode": "stutter",
+   "color": "#e0a0c0",
+   "name": [
+    "スタッター",
+    "Stutter"
+   ],
+   "desc": [
+    "ときどき直前の音を細かく繰り返す",
+    "Now and then repeats a tiny slice"
+   ],
+   "knobs": [
+    {
+     "k": "chance",
+     "l": [
+      "起こる頻度",
+      "Chance"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 35,
+     "u": "%"
+    },
+    {
+     "k": "len",
+     "l": [
+      "切る長さ",
+      "Slice"
+     ],
+     "min": 40,
+     "max": 500,
+     "step": 10,
+     "def": 120,
+     "u": "ms"
+    },
+    {
+     "k": "repeats",
+     "l": [
+      "繰り返し",
+      "Repeats"
+     ],
+     "min": 2,
+     "max": 16,
+     "step": 1,
+     "def": 4,
+     "u": ""
+    }
+   ]
+  },
+  "digitaldelay": {
+   "cat": "delay",
+   "mode": "trails",
+   "color": "#e8d078",
+   "name": [
+    "デジタルディレイ",
+    "Digital delay"
+   ],
+   "desc": [
+    "澄んだ、くっきりしたやまびこ",
+    "Clean, clear echoes"
+   ],
+   "knobs": [
+    {
+     "k": "time",
+     "l": [
+      "間隔",
+      "Time"
+     ],
+     "min": 40,
+     "max": 1500,
+     "step": 10,
+     "def": 420,
+     "u": "ms"
+    },
+    {
+     "k": "repeats",
+     "l": [
+      "繰り返し",
+      "Repeats"
+     ],
+     "min": 0,
+     "max": 85,
+     "step": 1,
+     "def": 40,
+     "u": "%"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 40,
+     "u": "%"
+    }
+   ]
+  },
+  "analog": {
+   "cat": "delay",
+   "mode": "trails",
+   "color": "#e07a8f",
+   "name": [
+    "アナログディレイ",
+    "Analog delay"
+   ],
+   "desc": [
+    "暗く、ゆらゆら揺れるやまびこ",
+    "Dark, wobbling echoes"
+   ],
+   "knobs": [
+    {
+     "k": "time",
+     "l": [
+      "間隔",
+      "Time"
+     ],
+     "min": 60,
+     "max": 1000,
+     "step": 10,
+     "def": 450,
+     "u": "ms"
+    },
+    {
+     "k": "repeats",
+     "l": [
+      "繰り返し",
+      "Repeats"
+     ],
+     "min": 0,
+     "max": 85,
+     "step": 1,
+     "def": 50,
+     "u": "%"
+    },
+    {
+     "k": "mod",
+     "l": [
+      "揺れ",
+      "Modulation"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 35,
+     "u": "%"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 45,
+     "u": "%"
+    }
+   ]
+  },
+  "pingpong": {
+   "cat": "delay",
+   "mode": "trails",
+   "color": "#f0c890",
+   "name": [
+    "ピンポンディレイ",
+    "Ping-pong delay"
+   ],
+   "desc": [
+    "やまびこが左右に跳ね返る",
+    "Echoes bounce left and right"
+   ],
+   "knobs": [
+    {
+     "k": "time",
+     "l": [
+      "間隔",
+      "Time"
+     ],
+     "min": 60,
+     "max": 1200,
+     "step": 10,
+     "def": 360,
+     "u": "ms"
+    },
+    {
+     "k": "repeats",
+     "l": [
+      "繰り返し",
+      "Repeats"
+     ],
+     "min": 0,
+     "max": 85,
+     "step": 1,
+     "def": 50,
+     "u": "%"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 45,
+     "u": "%"
+    }
+   ]
+  },
+  "pitchdelay": {
+   "cat": "delay",
+   "mode": "trails",
+   "color": "#8fd39b",
+   "name": [
+    "ピッチディレイ",
+    "Pitch delay"
+   ],
+   "desc": [
+    "繰り返すたびに音程が上がる（下がる）やまびこ",
+    "Echoes that climb (or fall) in pitch"
+   ],
+   "knobs": [
+    {
+     "k": "time",
+     "l": [
+      "間隔",
+      "Time"
+     ],
+     "min": 80,
+     "max": 1000,
+     "step": 10,
+     "def": 380,
+     "u": "ms"
+    },
+    {
+     "k": "repeats",
+     "l": [
+      "繰り返し",
+      "Repeats"
+     ],
+     "min": 0,
+     "max": 75,
+     "step": 1,
+     "def": 45,
+     "u": "%"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 55,
+     "u": "%"
+    }
+   ],
+   "steps": {
+    "k": "interval",
+    "l": [
+     "音程",
+     "Interval"
+    ],
+    "def": 7,
+    "opts": [
+     -12,
+     -7,
+     -5,
+     5,
+     7,
+     12
+    ]
+   }
+  },
+  "reverb": {
+   "cat": "verb",
+   "mode": "trails",
+   "color": "#c8d8b0",
+   "name": [
+    "リバーブ",
+    "Reverb"
+   ],
+   "desc": [
+    "部屋から大聖堂まで、広さを選べる残響",
+    "Room-to-cathedral reverb"
+   ],
+   "knobs": [
+    {
+     "k": "size",
+     "l": [
+      "広さ",
+      "Size"
+     ],
+     "min": 0.5,
+     "max": 10,
+     "step": 0.5,
+     "def": 3,
+     "u": "s"
+    },
+    {
+     "k": "predelay",
+     "l": [
+      "始まりの間",
+      "Pre-delay"
+     ],
+     "min": 0,
+     "max": 200,
+     "step": 5,
+     "def": 25,
+     "u": "ms"
+    },
+    {
+     "k": "tone",
+     "l": [
+      "明るさ",
+      "Tone"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 55,
+     "u": "%"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 40,
+     "u": "%"
+    }
+   ]
+  },
+  "reversereverb": {
+   "cat": "verb",
+   "mode": "trails",
+   "color": "#b0c8e0",
+   "name": [
+    "リバースリバーブ",
+    "Reverse reverb"
+   ],
+   "desc": [
+    "残響が後ろから吸い込まれるように膨らむ",
+    "A reverb that swells in backwards"
+   ],
+   "knobs": [
+    {
+     "k": "len",
+     "l": [
+      "長さ",
+      "Length"
+     ],
+     "min": 0.5,
+     "max": 4,
+     "step": 0.1,
+     "def": 1.6,
+     "u": "s"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 50,
+     "u": "%"
+    }
+   ]
+  },
+  "shimmer": {
+   "cat": "verb",
+   "mode": "trails",
+   "color": "#f0e6b4",
+   "name": [
+    "シマー",
+    "Shimmer"
+   ],
+   "desc": [
+    "1オクターブ上へ昇りながら広がる長い残響",
+    "A long reverb that blooms upward an octave"
+   ],
+   "knobs": [
+    {
+     "k": "decay",
+     "l": [
+      "残響の長さ",
+      "Decay"
+     ],
+     "min": 2,
+     "max": 12,
+     "step": 0.5,
+     "def": 6,
+     "u": "s"
+    },
+    {
+     "k": "shimmer",
+     "l": [
+      "きらめき",
+      "Shimmer"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 55,
+     "u": "%"
+    },
+    {
+     "k": "tone",
+     "l": [
+      "明るさ",
+      "Tone"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 60,
+     "u": "%"
+    },
+    {
+     "k": "mix",
+     "l": [
+      "混ぜる量",
+      "Mix"
+     ],
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "def": 45,
+     "u": "%"
+    }
+   ]
+  }
+ },
+ "ui": {
+  "intro": [
+   "ギターのエフェクターのように、自然の音を加工して遊べます。使うペダルだけを足して、つなぐ順番も変えられます。",
+   "Process nature sounds like a guitar pedalboard. Add only the pedals you use, in the order you like."
+  ],
+  "target": [
+   "かける場所",
+   "Apply to"
+  ],
+  "add": [
+   "＋ ペダルを足す",
+   "＋ Add a pedal"
+  ],
+  "close": [
+   "閉じる",
+   "Close"
+  ],
+  "alloff": [
+   "すべてオフ",
+   "All off"
+  ],
+  "master": [
+   "全体（マスター）",
+   "Everything (master)"
+  ],
+  "empty": [
+   "まだペダルがありません。おすすめか「＋ ペダルを足す」から選んでください。",
+   "No pedals yet. Pick a suggestion or use “＋ Add a pedal”."
+  ],
+  "suggest": [
+   "おすすめ",
+   "Suggestions"
+  ],
+  "added": [
+   "✓ 追加済み",
+   "✓ Added"
+  ],
+  "full": [
+   "ペダルは8台までです。使わないものを外してください。",
+   "Up to 8 pedals. Remove one you don’t use."
+  ],
+  "onoff": [
+   "オン / オフ",
+   "On / Off"
+  ],
+  "freezeSw": [
+   "押してつかむ / もう一度で放す",
+   "Press to grab / press again to release"
+  ],
+  "up": [
+   "前へ",
+   "Move earlier"
+  ],
+  "down": [
+   "後ろへ",
+   "Move later"
+  ],
+  "remove": [
+   "外す",
+   "Remove"
+  ],
+  "off": [
+   "オフ",
+   "Off"
+  ],
+  "pedals": [
+   "台",
+   "pedals"
+  ],
+  "lEmpty": [
+   "空",
+   "Empty"
+  ],
+  "lRec": [
+   "録音中",
+   "Recording"
+  ],
+  "lPlay": [
+   "再生中",
+   "Playing"
+  ],
+  "lStop": [
+   "止めた",
+   "Stopped"
+  ],
+  "help1": [
+   "特定の製品の音を写したものではなく、よく知られた種類のエフェクターをこのアプリの中で作ったものです。上から下（左から右）の順につながります。ディレイ・残響はオフにしても余韻が自然に消えるまで鳴ります。",
+   "These are not copies of any product; they are common kinds of effects built into this app. Pedals run top to bottom (left to right). Delays and reverbs keep ringing until their tails fade, even after you switch them off."
+  ],
+  "help2": [
+   "つまみは上下にドラッグするか、選んで矢印キーで回します。ダブルクリック（2回タップ）で初めの値に戻ります。",
+   "Drag a knob up or down, or focus it and use the arrow keys. Double-click (double-tap) to reset."
+  ],
+  "help3": [
+   "「かける場所」を全体にすると、試聴・リール・録音の書き出しを含む全部の音に掛かります。チャンネルを選ぶと、そのチャンネルの入口に掛かります（残響の送りには掛かりません）。",
+   "With “Apply to” set to everything, pedals process every sound, including previews, reels and recordings. Pick a channel to process just that channel’s input (its reverb send is not affected)."
+  ]
+ }
+}

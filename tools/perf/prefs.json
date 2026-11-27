@@ -1,9 +1,9 @@
 {
  "title_style": {
-  "use": 1.0,
+  "use": 0.809,
   "desc": 1.0
  },
- "updated": "2026-11-25",
+ "updated": "2026-11-27",
  "visual": {
   "bokeh": 1.0,
   "meadow": 1.0,

@@ -1,4 +1,4 @@
-// v0.88 ペダルボード 第3版（34種・AudioWorklet の台を含む）の回帰テスト。python3 -m http.server 8765 で本体を配信して実行する。
+// v0.91 ペダルボード 第4版（70種・AudioWorklet の台を含む）の回帰テスト。python3 -m http.server 8765 で本体を配信して実行する。
 // 音：30台すべてをオフラインで鳴らす（数値が壊れない・大きすぎない・鳴る・オフは素通し）。主な台は中身も確かめる。
 // つなぎ：自然の録音を含む全体の音がペダルを通ること、試聴（audio 要素）もペダルを通ること。
 // 画面：空のボード→おすすめ→カタログで足す・外す・並べ替え・8台まで・つまみ（キー・ダブルクリック）・プリセット（旧形式も）・英語・はみ出し。
@@ -6,7 +6,7 @@ const {chromium}=require('playwright');(async()=>{const b=await chromium.launch(
 const R={},fail=[];const ok=(k,c)=>{R[k+'_ok']=!!c;if(!c)fail.push(k)};const errs=[];
 const pg=await b.newPage({viewport:{width:390,height:900}});pg.on('pageerror',e=>errs.push(e.message));pg.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
 await pg.goto('http://localhost:8765/index.html?lang=ja');await pg.waitForTimeout(1200);
-R.count=await pg.evaluate(()=>__pedals.ids.length);ok('thirty_four',R.count===34);
+R.count=await pg.evaluate(()=>__pedals.ids.length);ok('seventy',R.count===70);
 // ── 音（オフライン） ──
 R.all=await pg.evaluate(async()=>{const P=__pedals,sr=44100,out={};const defs=id=>{const d=P.def[id],v={};for(const k of d.knobs)v[k.k]=k.def;if(d.steps)v[d.steps.k]=d.steps.def;return v};
  for(const id of P.ids){const d=P.def[id],v={};if(id==='tapeensemble')v.sens=-80;for(const k of d.knobs)v[k.k]=k.def;if(d.steps)v[d.steps.k]=d.steps.def;
@@ -59,8 +59,21 @@ R.dsp=await pg.evaluate(async()=>{const P=__pedals,sr=48000,out={};
  a=await run('ringmod',{freq:180,mix:100},1.5,sine(440));out.ringHz=Math.round(freq(a,sr*.5,sr*1.4));
  // スタッター：繰り返しの間、元の音が切り替わる
  a=await run('stutter',{len:100,repeats:4,chance:0},1.5,sine(440),(oc,p)=>{oc.suspend(.5).then(()=>{p.fire();oc.resume()})});out.stut=+rms(a,sr*.6,sr*.85).toFixed(3);
+ // ── v0.91 で足した台 ──
+ a=await run('freqshift',{shift:100,mix:100},1.5,sine(440));out.fsh=Math.round(freq(a,sr*.5,sr*1.4));
+ a=await run('pitchbend',{bend:12,mix:100},1.5,sine(440));out.bend=Math.round(freq(a,sr*.5,sr*1.4));
+ a=await run('subharmonic',{sub1:100,sub2:0,dry:0},1.5,sine(440));out.sub=Math.round(freq(a,sr*.5,sr*1.4));
+ a=await run('gate',{thr:-30},1,(oc,dst)=>{const o=oc.createOscillator(),g=oc.createGain();g.gain.value=.005;o.connect(g);g.connect(dst);o.start()});out.gate=+rms(a,sr*.3,sr*.9).toFixed(5);
+ a=await run('decimator',{rate:1000,bits:4,mix:100},1,sine(440));{let st=0;for(let i=sr*.3+1;i<sr*.9;i++)if(a[i]!==a[i-1])st++;out.dec=st}
+ a=await run('infinite',{decay:85,mix:100,size:1},6,burst(.2),(oc,p)=>{oc.suspend(.5).then(()=>{p.action('hold');oc.resume()})});out.inf=[+rms(a,sr*.6,sr*1).toFixed(4),+rms(a,sr*5,sr*6).toFixed(4)];
+ a=await run('tapestop',{time:1,start:.5},2.5,sine(440),(oc,p)=>{p.setOn(false);oc.suspend(.5).then(()=>{p.setOn(true);oc.resume()})});out.ts=[Math.round(freq(a,sr*.55,sr*.75)),Math.round(freq(a,sr*1.05,sr*1.25))];
+ a=await run('resonator',{root:57,chord:0,decay:40,mix:100},2,burst(1.5));out.reso=+rms(a,sr*.3,sr*1.3).toFixed(4);
+ {const oc=new OfflineAudioContext(1,sr/2,sr),d=P.def.combfilter,v={};for(const k of d.knobs)v[k.k]=k.def;Object.assign(v,{freq:220,feedback:50,mix:100,tone:100});const p=P.makePedal(oc,'combfilter',v);const bf=oc.createBuffer(1,64,sr);bf.getChannelData(0)[0]=1;const s=oc.createBufferSource();s.buffer=bf;s.connect(p.input);p.output.connect(oc.destination);p.setOn(true);s.start(.1);const r=await oc.startRendering(),aa=r.getChannelData(0);
+  const pk=[];for(let i=1;i<aa.length-1;i++)if(Math.abs(aa[i])>.02&&Math.abs(aa[i])>=Math.abs(aa[i-1])&&Math.abs(aa[i])>=Math.abs(aa[i+1])){if(!pk.length||i-pk[pk.length-1]>20)pk.push(i)}out.comb=Math.round(sr/(pk[2]-pk[1]))}
  return out});
 const D=R.dsp;
+ok('freqshift',Math.abs(D.fsh-540)<15);ok('pitchbend',Math.abs(D.bend-880)<25);ok('subharmonic',Math.abs(D.sub-220)<12);ok('gate_cuts_quiet',D.gate<.0005);ok('decimator',D.dec<700);
+ok('infinite_hold',D.inf[1]>D.inf[0]*.2);ok('tapestop',D.ts[0]<430&&D.ts[1]<D.ts[0]*.6);ok('resonator',D.reso>.003);ok('combfilter',Math.abs(D.comb-220)<20);
 ok('octave_up',Math.abs(D.octUp-880)<25);ok('pitch_shift',Math.abs(D.shiftDown-220)<12);ok('pitch_delay',Math.abs(D.pdEchoHz-660)<30);
 ok('shimmer_stable',D.shim[1]<D.shim[0]&&D.shim[2]<D.shim[1]);ok('freeze',D.frz[0]>.05&&Math.abs(D.frz[1]/D.frz[0]-1)<.25&&D.frz[2]<.002);
 ok('microloop',Math.abs(D.loop.hz-330)<12&&D.loop.rms>.05&&Math.abs(D.loop2-660)<25);ok('tape_ensemble',Math.abs(D.mel-440)<15&&D.melRms>.02);ok('swell',D.swell[0]<D.swell[1]*.3);ok('lossy',D.lossy[0]<.02&&D.lossy[1]>.1);ok('memory',D.mem>.01);ok('reverse_delay',D.rev>.01);ok('multi_reverb',D.verbs.every(Boolean));ok('multi_chorus',D.chos.every(x=>x>.05));ok('pingpong',D.pp[0]>.01&&D.pp[1]<D.pp[0]*.2&&D.pp[2]>.005&&D.pp[3]<D.pp[2]*.3);
@@ -69,7 +82,11 @@ ok('tremolo',D.trem[0]<.05&&D.trem[1]>.25);ok('ringmod',Math.abs(D.ringHz-440)>4
 await pg.evaluate(()=>{document.getElementById('pedalSection').open=true});
 R.empty=await pg.evaluate(()=>({cards:document.querySelectorAll('.pdCard').length,chips:[...document.querySelectorAll('.pdChip')].map(b=>b.dataset.pedal)}));ok('empty_board',R.empty.cards===0&&R.empty.chips.join()==='microloop,reverb,tape,freeze');
 await pg.click('.pdChip[data-pedal="tape"]');await pg.click('#pdAdd');await pg.waitForTimeout(200);
-R.cat=await pg.evaluate(()=>({items:document.querySelectorAll('.pdCatItem').length,groups:document.querySelectorAll('.pdCatGroup').length,tapeDisabled:document.querySelector('.pdCatItem[data-pedal="tape"]').disabled}));ok('catalog',R.cat.items===34&&R.cat.groups===9&&R.cat.tapeDisabled);
+R.cat=await pg.evaluate(()=>({items:document.querySelectorAll('.pdCatItem').length,groups:document.querySelectorAll('.pdCatGroup').length,tapeDisabled:document.querySelector('.pdCatItem[data-pedal="tape"]').disabled}));ok('catalog',R.cat.items===70&&R.cat.groups===9&&R.cat.tapeDisabled);
+await pg.fill('#pdSearch','ドップラー');await pg.waitForTimeout(150);R.search=await pg.evaluate(()=>[...document.querySelectorAll('.pdCatItem')].map(b=>b.dataset.pedal).join());
+await pg.fill('#pdSearch','rotary');await pg.waitForTimeout(150);R.search2=await pg.evaluate(()=>[...document.querySelectorAll('.pdCatItem')].map(b=>b.dataset.pedal).join());
+await pg.fill('#pdSearch','zzzz');await pg.waitForTimeout(150);R.search3=await pg.evaluate(()=>document.getElementById('pdCatalog').textContent.includes('見つかりませんでした'));
+ok('search',R.search==='doppler'&&R.search2.split(',').includes('rotary')&&R.search3);await pg.fill('#pdSearch','');await pg.waitForTimeout(150);
 for(const id of ['reverb','fuzz','chorus'])await pg.click('.pdCatItem[data-pedal="'+id+'"]');
 R.order=await pg.evaluate(()=>[...document.querySelectorAll('.pdCard')].map(c=>c.dataset.pedal).join());ok('catalog_order',R.order==='fuzz,chorus,tape,reverb');
 await pg.click('.pdCard[data-pedal="reverb"] .pdMove[data-dir="-1"]');R.moved=await pg.evaluate(()=>__pedals.state().chain.map(e=>e.id).join());ok('move',R.moved==='fuzz,chorus,reverb,tape');

@@ -28,7 +28,7 @@ css=('.pdTop{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0
  '.pdSwitch{min-height:48px;border-radius:999px;display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(180deg,#3a3f40,#1d2122);color:#ecebe4;border:1px solid #ffffff22;box-shadow:inset 0 1px 0 #ffffff1f,0 2px 4px #0008}'
  '.pdLed{width:12px;height:12px;border-radius:50%;background:#3b2a2a;box-shadow:inset 0 0 0 1px #0008}.pdCard.on .pdLed{background:var(--pd);box-shadow:0 0 10px var(--pd),0 0 2px var(--pd)}'
  '.pdEmpty{grid-column:1/-1;border:1px dashed currentColor;border-radius:14px;padding:12px;opacity:.9}.pdSuggest{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.pdChip{min-height:40px;border-radius:999px;border:1px solid var(--pd);background:color-mix(in srgb,var(--pd) 14%,#0000)}'
- '.pdCatalog{border:1px solid currentColor;border-radius:14px;padding:10px 12px;margin:6px 0 12px;max-height:min(70vh,640px);overflow:auto}.pdCatH{margin:10px 0 6px;font-size:12px;letter-spacing:.08em;opacity:.8}'
+ '.pdSearch{width:100%;font-size:16px;min-height:44px;margin:0 0 6px}.pdCatalog{border:1px solid currentColor;border-radius:14px;padding:10px 12px;margin:6px 0 12px;max-height:min(70vh,640px);overflow:auto}.pdCatH{margin:10px 0 6px;font-size:12px;letter-spacing:.08em;opacity:.8}'
  '.pdCatList{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:6px}.pdCatItem{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;min-height:56px;padding:8px 10px;border-radius:10px;border:1px solid #ffffff1f;border-left:4px solid var(--pd)}.pdCatItem:disabled{opacity:.45}.pdCatItem strong{font-size:13px}.pdFull{color:#e6a86a}')
 k=h.index('.pdTop{');l=h.index('.shareOut{');h=h[:k]+css+h[l:]
 # 試聴をペダルに通す
@@ -47,7 +47,7 @@ for p in D['pedals'].values():
         for lb in p['steps'].get('labels',[]):E[lb[0]]=lb[1]
     for a_ in p.get('actions',[]):E[a_['l'][0]]=a_['l'][1]
 for v in U.values():E[v[0]]=v[1]
-E['30種類から、使うものだけ']='30 effects — show only the ones you use'
+E['30種類から、使うものだけ']='30 effects — show only the ones you use';E['70種類から、使うものだけ']='70 effects — show only the ones you use'
 E['歪み']='Drive';E['明るさ']='Brightness';E['元の音']='Dry';E['音量']='Volume';E['ビット数']='Bit depth'
 def q(s):return s.replace('\\','\\\\').replace("'","\\'")
 tag='<script id="ae-i18n">';A=h.index(tag);seg=h[A:]
@@ -77,7 +77,7 @@ if '/*<ae-looper>*/' in h:
 else:
     h=h.replace("/*</ae-share>*/\n","/*</ae-share>*/\n/*<ae-looper>*/\n"+LP+"/*</ae-looper>*/\n",1)
 h=h.replace('<span>サンプラー / SAMPLER</span><span class="micro">8パッド · 切り取り · ループ</span>','<span>サンプラー / ルーパー</span><span class="micro">8パッド · 6chルーパー · 保存</span>')
-h=h.replace('<span class="micro">30種類から、使うものだけ</span>','<span class="micro">34種類から、使うものだけ</span>')
+h=h.replace('<span class="micro">30種類から、使うものだけ</span>','<span class="micro">70種類から、使うものだけ</span>')
 LUI=('<div id="looperBlock" class="looperBlock"><h3 class="lpTitle">ルーパー（6ch）</h3>'
  '<p class="micro">いま聞こえている音（ペダルを通った音）を録って、6つのチャンネルでループさせます。●で録り始め、もう一度●でループになります。再生中に●を押すと重ねて録ります。</p>'
  '<div id="lpChannels" class="lpChannels"></div><p class="micro" id="lpMsg" role="status"></p>'

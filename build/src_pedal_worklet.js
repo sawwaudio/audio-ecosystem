@@ -11,12 +11,13 @@ class SawwFx extends AudioWorkletProcessor{
   if(this.t==='fshift'){this.hz=[0,0].map(()=>({x1:[0,0,0,0],x2:[0,0,0,0],y1:[0,0,0,0],y2:[0,0,0,0],u1:[0,0,0,0],u2:[0,0,0,0],v1:[0,0,0,0],v2:[0,0,0,0],d:0}));this.ph=0}
   if(this.t==='envf'){this.ev=[0,0];this.sv=[[0,0],[0,0]]}
   if(this.t==='gate'){this.ev=0;this.g=0;this.hold=0}
+  if(this.t==='trans'){this.f=0;this.s=0}
   if(this.t==='crush'){this.acc=0;this.hold=[0,0]}
   if(this.t==='tstop'){this.N=Math.floor(sr*(p.bufSec||12));this.b=[new Float32Array(this.N),new Float32Array(this.N)];this.w=0;this.r=0;this.s=1;this.eng=false}}
  rnd(){this.seed=(this.seed*1664525+1013904223)>>>0;return this.seed/4294967296}
  rd(ch,pos){const N=this.N;pos=((pos%N)+N)%N;const i=Math.floor(pos),f=pos-i,b=this.b[ch];return b[i]*(1-f)+b[(i+1)%N]*f}
  process(inputs,outputs,params){const inp=inputs[0]||[],out=outputs[0];const n=out[0].length,chs=out.length;const ins=[inp[0]||new Float32Array(n),inp[1]||inp[0]||new Float32Array(n)];
-  if(this.t==='micro'||this.t==='glitch')this.micro(ins,out,n,chs,params.hold[0]);else if(this.t==='memory')this.memory(ins,out,n,chs);else if(this.t==='swell')this.swell(ins,out,n,chs);else if(this.t==='mel')this.mel(ins,out,n,chs);else if(this.t==='fshift')this.fshift(ins,out,n,chs);else if(this.t==='envf')this.envf(ins,out,n,chs);else if(this.t==='gate')this.gatep(ins,out,n,chs);else if(this.t==='crush')this.crush(ins,out,n,chs);else if(this.t==='tstop')this.tstop(ins,out,n,chs,params.hold[0]);return true}
+  if(this.t==='micro'||this.t==='glitch')this.micro(ins,out,n,chs,params.hold[0]);else if(this.t==='memory')this.memory(ins,out,n,chs);else if(this.t==='swell')this.swell(ins,out,n,chs);else if(this.t==='mel')this.mel(ins,out,n,chs);else if(this.t==='fshift')this.fshift(ins,out,n,chs);else if(this.t==='envf')this.envf(ins,out,n,chs);else if(this.t==='gate')this.gatep(ins,out,n,chs);else if(this.t==='trans')this.trans(ins,out,n,chs);else if(this.t==='crush')this.crush(ins,out,n,chs);else if(this.t==='tstop')this.tstop(ins,out,n,chs,params.hold[0]);return true}
  // 窓の長さ L のループを2つの読み出しで交互に（sin² で重ねる）。つかんでいない間は書き続ける。u は「書き込み位置からどれだけ後ろか」を窓の中の割合で表す
  micro(ins,out,n,chs,holdP){const c=this.c,sr=this.sr,N=this.N;let L=Math.max(256,Math.min(N-512,Math.floor((c.len||1)*sr))),fb=c.fb||0;
   for(let i=0;i<n;i++){let hold=holdP>.5,s=c.speed==null?1:c.speed;
@@ -67,13 +68,17 @@ class SawwFx extends AudioWorkletProcessor{
    const fc=Math.min(sr*.2,base*Math.pow(2,oct)),f=2*Math.sin(Math.PI*fc/sr);const lp=s[1]+f*s[0],hp=x[i]-lp-q*s[0],bp=f*hp+s[0];s[0]=bp;s[1]=lp;o[i]=bp}}}
  // ゲート：小さい音を消す（開いてからしばらくは閉じない）
  gatep(ins,out,n,chs){const c=this.c,sr=this.sr,thr=Math.pow(10,(c.thr==null?-45:c.thr)/20),holdN=(c.hold||.05)*sr,rel=1-Math.exp(-1/(sr*Math.max(.005,c.release||.08))),atk=1-Math.exp(-1/(sr*.001));
-  for(let i=0;i<n;i++){const a=Math.max(Math.abs(ins[0][i]),Math.abs(ins[1][i]));this.ev=Math.max(a,this.ev*.9995);if(this.ev>thr)this.hold=holdN;else if(this.hold>0)this.hold--;const tg=this.hold>0?1:0;this.g+=(tg-this.g)*(tg>this.g?atk:rel);out[0][i]=ins[0][i]*this.g;if(chs>1)out[1][i]=ins[1][i]*this.g}}
+  for(let i=0;i<n;i++){const a=Math.max(Math.abs(ins[0][i]),Math.abs(ins[1][i]));this.ev=Math.max(a,this.ev*.9995);if(this.ev>thr)this.hold=holdN;else if(this.hold>0)this.hold--;const tg=c.ratio>1?(this.ev>thr?1:Math.pow(Math.max(1e-6,this.ev)/thr,c.ratio-1)):(this.hold>0?1:0);this.g+=(tg-this.g)*(tg>this.g?atk:rel);out[0][i]=ins[0][i]*this.g;if(chs>1)out[1][i]=ins[1][i]*this.g}}
  // テープストップ：押した瞬間から、読み出しの速さを 1→0 へ落とす（録り続けるので、離すと 0→1 へ戻る）
  tstop(ins,out,n,chs,h){const c=this.c,sr=this.sr,N=this.N,down=1/Math.max(1,(c.stop||1)*sr),up=1/Math.max(1,(c.start||.5)*sr);
   for(let i=0;i<n;i++){this.b[0][this.w]=ins[0][i];this.b[1][this.w]=ins[1][i];
    if(h>.5){if(!this.eng){this.eng=true;this.r=this.w;this.s=1}this.s=Math.max(0,this.s-down)}else if(this.eng){this.s=Math.min(1,this.s+up);if(this.s>=1)this.eng=false}
    let y0=0,y1=0;if(this.eng){const k=this.s*this.s;this.r+=k;y0=this.rd(0,this.r);y1=this.rd(1,this.r)}else{y0=ins[0][i];y1=ins[1][i]}
    this.w=(this.w+1)%N;out[0][i]=y0;if(chs>1)out[1][i]=y1}}
+ // トランジェント：速い包絡と遅い包絡の差で、出だしを強め（弱め）、余韻を伸ばす（縮める）
+ trans(ins,out,n,chs){const c=this.c,sr=this.sr,fa=1-Math.exp(-1/(sr*.0008)),fr=1-Math.exp(-1/(sr*.02)),sa=1-Math.exp(-1/(sr*.025)),sr2=1-Math.exp(-1/(sr*.25)),A=(c.attack||0),S=(c.sustain||0);
+  for(let i=0;i<n;i++){const x=Math.max(Math.abs(ins[0][i]),Math.abs(ins[1][i]));this.f+=(x-this.f)*(x>this.f?fa:fr);this.s+=(x-this.s)*(x>this.s?sa:sr2);const r=(this.f+1e-5)/(this.s+1e-5);
+   let g=Math.pow(Math.min(8,Math.max(.125,r)),A*1.2)*Math.pow(Math.min(8,Math.max(.125,1/r)),S*1.2);g=Math.min(6,Math.max(.05,g));out[0][i]=ins[0][i]*g;if(chs>1)out[1][i]=ins[1][i]*g}}
  // デシメーター：サンプルレートを下げて（同じ値を保つ）、ビット数を減らす
  crush(ins,out,n,chs){const c=this.c,step=Math.max(1,this.sr/Math.max(200,c.rate||8000)),q=Math.pow(2,(c.bits||8)-1);
   for(let i=0;i<n;i++){this.acc+=1;if(this.acc>=step){this.acc-=step;this.hold[0]=Math.round(ins[0][i]*q)/q;this.hold[1]=Math.round(ins[1][i]*q)/q}out[0][i]=this.hold[0];if(chs>1)out[1][i]=this.hold[1]}}
